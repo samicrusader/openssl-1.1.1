@@ -7,6 +7,12 @@
  https://github.com/openssl/openssl/commits/ and pick the appropriate
  release branch.
 
+ Changes between 1.1.1zb and 1.1.1zc [1 Jul 2025]
+
+ *) Correct patch version in Windows resource files
+
+    [Tomáš Mráz]
+
  Changes between 1.1.1za and 1.1.1zb [11 Feb 2025]
 
  *) Fixed timing side-channel in ECDSA signature computation.

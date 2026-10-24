@@ -1,5 +1,5 @@
 #! /usr/bin/env perl
-# Copyright 2006-2020 The OpenSSL Project Authors. All Rights Reserved.
+# Copyright 2006-2025 The OpenSSL Project Authors. All Rights Reserved.
 #
 # Licensed under the OpenSSL license (the "License").  You may not use
 # this file except in compliance with the License.  You can obtain a copy
@@ -28,11 +28,10 @@ while (<FD>) {
         $version = "$v1.$v2.$v3";
         if ( $beta == 0xf ) {
             my $range = ord('z') - ord('a');
-            while ($v4 > $range) {
-                $version .= 'z';
-                $v4 -= $range;
+            if ($v4 > 0) {
+                $version .= "z" x int(($v4 - 1) / $range);
+                $version .= chr(ord('a') + (($v4 - 1) % $range));
             }
-            $version .= chr( ord('a') + $v4 - 1 ) if ($v4);
         } elsif ( $beta == 0 ) {
             $version .= "-dev";
         } else {

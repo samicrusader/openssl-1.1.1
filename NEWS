@@ -5,6 +5,10 @@
   This file gives a brief overview of the major changes between each OpenSSL
   release. For more details please read the CHANGES file.
 
+  Major changes between OpenSSL 1.1.1zb and OpenSSL 1.1.1zc [1 Jul 2025]
+
+      o Correct patch version in Windows resource files
+
   Major changes between OpenSSL 1.1.1za and OpenSSL 1.1.1zb [11 Feb 2025]
 
       o Fixed timing side-channel in ECDSA signature computation
