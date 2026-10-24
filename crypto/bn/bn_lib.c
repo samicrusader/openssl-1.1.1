@@ -1,5 +1,5 @@
 /*
- * Copyright 1995-2025 The OpenSSL Project Authors. All Rights Reserved.
+ * Copyright 1995-2026 The OpenSSL Project Authors. All Rights Reserved.
  *
  * Licensed under the OpenSSL license (the "License").  You may not use
  * this file except in compliance with the License.  You can obtain a copy
@@ -11,7 +11,7 @@
 #include <limits.h>
 #include "internal/cryptlib.h"
 #include "bn_local.h"
-#include <openssl/opensslconf.h>
+#include <openssl/bn.h>
 #include "internal/constant_time.h"
 
 /* This stuff appears to be completely unused, so is deprecated */

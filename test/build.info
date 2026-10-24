@@ -317,7 +317,7 @@ INCLUDE_MAIN___test_libtestutil_OLB = /INCLUDE=MAIN
   DEPEND[ocspapitest]=../libcrypto libtestutil.a
 
   SOURCE[dtlstest]=dtlstest.c ssltestlib.c
-  INCLUDE[dtlstest]=../include
+  INCLUDE[dtlstest]=../include ..
   DEPEND[dtlstest]=../libcrypto ../libssl libtestutil.a
 
   SOURCE[sslcorrupttest]=sslcorrupttest.c ssltestlib.c

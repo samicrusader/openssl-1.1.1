@@ -1,5 +1,5 @@
 /*
- * Copyright 2014-2025 The OpenSSL Project Authors. All Rights Reserved.
+ * Copyright 2014-2026 The OpenSSL Project Authors. All Rights Reserved.
  *
  * Licensed under the OpenSSL license (the "License").  You may not use
  * this file except in compliance with the License.  You can obtain a copy
@@ -289,6 +289,19 @@ static ossl_inline size_t value_barrier_s(size_t a)
 #endif
     return r;
 }
+
+#ifdef BN_BYTES
+static ossl_inline BN_ULONG value_barrier_bn(BN_ULONG a)
+{
+#if !defined(OPENSSL_NO_ASM) && defined(__GNUC__)
+    BN_ULONG r;
+    __asm__("" : "=r"(r) : "0"(a));
+#else
+    volatile BN_ULONG r = a;
+#endif
+    return r;
+}
+#endif
 
 static ossl_inline unsigned int constant_time_select(unsigned int mask,
                                                      unsigned int a,

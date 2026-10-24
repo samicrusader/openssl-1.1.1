@@ -1,5 +1,5 @@
 /*
- * Copyright 2016-2024 The OpenSSL Project Authors. All Rights Reserved.
+ * Copyright 2016-2026 The OpenSSL Project Authors. All Rights Reserved.
  *
  * Licensed under the OpenSSL license (the "License").  You may not use
  * this file except in compliance with the License.  You can obtain a copy
@@ -22,43 +22,6 @@
 #include "ssltestlib.h"
 #include "testutil.h"
 #include "e_os.h"
-
-#ifdef OPENSSL_SYS_UNIX
-# include <unistd.h>
-
-static ossl_inline void ossl_sleep(unsigned int millis)
-{
-# ifdef OPENSSL_SYS_VXWORKS
-    struct timespec ts;
-    ts.tv_sec = (long int) (millis / 1000);
-    ts.tv_nsec = (long int) (millis % 1000) * 1000000ul;
-    nanosleep(&ts, NULL);
-# else
-    usleep(millis * 1000);
-# endif
-}
-#elif defined(_WIN32)
-# include <windows.h>
-
-static ossl_inline void ossl_sleep(unsigned int millis)
-{
-    Sleep(millis);
-}
-#else
-/* Fallback to a busy wait */
-static ossl_inline void ossl_sleep(unsigned int millis)
-{
-    struct timeval start, now;
-    unsigned int elapsedms;
-
-    gettimeofday(&start, NULL);
-    do {
-        gettimeofday(&now, NULL);
-        elapsedms = (((now.tv_sec - start.tv_sec) * 1000000)
-                     + now.tv_usec - start.tv_usec) / 1000;
-    } while (elapsedms < millis);
-}
-#endif
 
 static int tls_dump_new(BIO *bi);
 static int tls_dump_free(BIO *a);

@@ -1,5 +1,5 @@
 /*
- * Copyright 1999-2021 The OpenSSL Project Authors. All Rights Reserved.
+ * Copyright 1999-2026 The OpenSSL Project Authors. All Rights Reserved.
  *
  * Licensed under the OpenSSL license (the "License").  You may not use
  * this file except in compliance with the License.  You can obtain a copy
@@ -303,11 +303,8 @@ int X509_supported_extension(X509_EXTENSION *ex)
     return 0;
 }
 
-static int setup_dp(X509 *x, DIST_POINT *dp)
+static int setup_dp(DIST_POINT *dp)
 {
-    X509_NAME *iname = NULL;
-    int i;
-
     if (dp->reasons) {
         if (dp->reasons->length > 0)
             dp->dp_reasons = dp->reasons->data[0];
@@ -316,19 +313,7 @@ static int setup_dp(X509 *x, DIST_POINT *dp)
         dp->dp_reasons &= CRLDP_ALL_REASONS;
     } else
         dp->dp_reasons = CRLDP_ALL_REASONS;
-    if (!dp->distpoint || (dp->distpoint->type != 1))
-        return 1;
-    for (i = 0; i < sk_GENERAL_NAME_num(dp->CRLissuer); i++) {
-        GENERAL_NAME *gen = sk_GENERAL_NAME_value(dp->CRLissuer, i);
-        if (gen->type == GEN_DIRNAME) {
-            iname = gen->d.directoryName;
-            break;
-        }
-    }
-    if (!iname)
-        iname = X509_get_issuer_name(x);
-
-    return DIST_POINT_set_dpname(dp->distpoint, iname);
+    return 1;
 }
 
 static int setup_crldp(X509 *x)
@@ -339,7 +324,7 @@ static int setup_crldp(X509 *x)
     if (x->crldp == NULL && i != -1)
         return 0;
     for (i = 0; i < sk_DIST_POINT_num(x->crldp); i++) {
-        if (!setup_dp(x, sk_DIST_POINT_value(x->crldp, i)))
+        if (!setup_dp(sk_DIST_POINT_value(x->crldp, i)))
             return 0;
     }
     return 1;

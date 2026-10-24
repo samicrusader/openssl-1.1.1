@@ -1034,6 +1034,47 @@ int tls1_enc(SSL *s, SSL3_RECORD *recs, size_t n_recs, int sending)
             if (EVP_CIPHER_flags(EVP_CIPHER_CTX_cipher(ds))
                 & EVP_CIPH_FLAG_AEAD_CIPHER) {
                 unsigned char *seq;
+                size_t minlen = 0;
+
+                if (!sending) {
+                    /*
+                     * Publicly invalid: the record is shorter than the
+                     * mandatory AEAD overhead (explicit IV plus authentication
+                     * tag).  Leave alert handling to the caller so TLS reports
+                     * bad_record_mac and DTLS silently discards the record.
+                     *
+                     * GCM and CCM carry an 8 byte explicit IV.  AES-CCM and
+                     * AES-CCM8 share one EVP_CIPHER and differ only in tag
+                     * length, and 1.1.1 cannot read that back from the cipher
+                     * context, so they are told apart by the ciphersuite the
+                     * same way tls1_change_cipher_state() does when it
+                     * configures the context.  ChaCha20-Poly1305 has no
+                     * explicit IV, so the tag is the whole overhead.
+                     */
+                    int mode = EVP_CIPHER_mode(enc);
+
+                    if (mode == EVP_CIPH_GCM_MODE) {
+                        minlen = EVP_GCM_TLS_EXPLICIT_IV_LEN
+                                 + EVP_GCM_TLS_TAG_LEN;
+                    } else if (mode == EVP_CIPH_CCM_MODE
+                               && s->s3->tmp.new_cipher != NULL) {
+                        if (s->s3->tmp.new_cipher->algorithm_enc
+                            & (SSL_AES128CCM8 | SSL_AES256CCM8))
+                            minlen = EVP_CCM_TLS_EXPLICIT_IV_LEN
+                                     + EVP_CCM8_TLS_TAG_LEN;
+                        else
+                            minlen = EVP_CCM_TLS_EXPLICIT_IV_LEN
+                                     + EVP_CCM_TLS_TAG_LEN;
+                    } else if (EVP_CIPHER_nid(enc) == NID_chacha20_poly1305) {
+                        minlen = EVP_CHACHAPOLY_TLS_TAG_LEN;
+                    }
+                    /*
+                     * We do not support any other AEAD ciphers.  The fallback
+                     * is to keep the previous behaviour.
+                     */
+                    if (minlen != 0 && reclen[ctr] < minlen)
+                        return 0;
+                }
 
                 seq = sending ? RECORD_LAYER_get_write_sequence(&s->rlayer)
                     : RECORD_LAYER_get_read_sequence(&s->rlayer);
