@@ -1,5 +1,5 @@
 /*
- * Copyright 2017 The OpenSSL Project Authors. All Rights Reserved.
+ * Copyright 2017-2018 The OpenSSL Project Authors. All Rights Reserved.
  *
  * Licensed under the OpenSSL license (the "License").  You may not use
  * this file except in compliance with the License.  You can obtain a copy
@@ -118,7 +118,7 @@ static int watchccs_write(BIO *bio, const char *in, int inl)
                 return 0;
             if (msgtype == SSL3_MT_CLIENT_HELLO) {
                 chseen++;
-                expectedrecvers = TLS1_VERSION;
+
                 /*
                  * Skip legacy_version (2 bytes) and Random (32 bytes) to read
                  * session_id.
@@ -128,6 +128,8 @@ static int watchccs_write(BIO *bio, const char *in, int inl)
                     return 0;
 
                 if (chseen == 1) {
+                    expectedrecvers = TLS1_VERSION;
+
                     /* Save the session id for later */
                     chsessidlen = PACKET_remaining(&sessionid);
                     if (!PACKET_copy_bytes(&sessionid, chsessid, chsessidlen))

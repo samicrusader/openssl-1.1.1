@@ -1,5 +1,5 @@
 /*
- * Copyright 1995-2016 The OpenSSL Project Authors. All Rights Reserved.
+ * Copyright 1995-2018 The OpenSSL Project Authors. All Rights Reserved.
  *
  * Licensed under the OpenSSL license (the "License").  You may not use
  * this file except in compliance with the License.  You can obtain a copy
@@ -120,9 +120,10 @@ static int linebuffer_write(BIO *b, const char *in, int inl)
 
     do {
         const char *p;
+        char c;
 
-        for (p = in; p < in + inl && *p != '\n'; p++) ;
-        if (*p == '\n') {
+        for (p = in, c = '\0'; p < in + inl && (c = *p) != '\n'; p++) ;
+        if (c == '\n') {
             p++;
             foundnl = 1;
         } else

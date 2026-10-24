@@ -694,8 +694,7 @@ SSL *SSL_new(SSL_CTX *ctx)
      */
     if (RAND_get_rand_method() == RAND_OpenSSL()) {
         s->drbg =
-            RAND_DRBG_new(RAND_DRBG_NID, RAND_DRBG_FLAG_CTR_USE_DF,
-                          RAND_DRBG_get0_public());
+            RAND_DRBG_new(RAND_DRBG_NID, 0, RAND_DRBG_get0_public());
         if (s->drbg == NULL
             || RAND_DRBG_instantiate(s->drbg,
                                      (const unsigned char *) SSL_version_str,
@@ -2809,6 +2808,18 @@ int SSL_export_keying_material(SSL *s, unsigned char *out, size_t olen,
     return s->method->ssl3_enc->export_keying_material(s, out, olen, label,
                                                        llen, context,
                                                        contextlen, use_context);
+}
+
+int SSL_export_keying_material_early(SSL *s, unsigned char *out, size_t olen,
+                                     const char *label, size_t llen,
+                                     const unsigned char *context,
+                                     size_t contextlen)
+{
+    if (s->version != TLS1_3_VERSION)
+        return 0;
+
+    return tls13_export_keying_material_early(s, out, olen, label, llen,
+                                              context, contextlen);
 }
 
 static unsigned long ssl_session_hash(const SSL_SESSION *a)

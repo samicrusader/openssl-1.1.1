@@ -90,6 +90,21 @@ static RAND_DRBG *drbg_private;
  * |randomness| argument). This will immediately reseed the <master> DRBG.
  * The <public> and <private> DRBG will detect this on their next generate
  * call and reseed, pulling randomness from <master>.
+ *
+ * LOCKING
+ *
+ * The three shared DRBGs are intended to be used concurrently, so they
+ * support locking. The RAND methods take the locks automatically, so using
+ * the RAND api (in particular RAND_bytes() and RAND_priv_bytes()) is
+ * thread-safe. Note however that accessing the shared DRBGs directly via
+ * the RAND_DRBG interface is *not* thread-safe.
+ *
+ * All other DRBG instances don't support locking, because they are
+ * intendended to be used by a single thread. Instead of accessing a single
+ * DRBG instance concurrently from different threads, it is recommended to
+ * instantiate a separate DRBG instance per thread. Using the same shared
+ * DRBG (preferrably the public DRBG) as parent of DRBG instances on
+ * different threads is safe.
  */
 
 
@@ -99,7 +114,11 @@ static const char ossl_pers_string[] = "OpenSSL NIST SP 800-90A DRBG";
 static CRYPTO_ONCE rand_drbg_init = CRYPTO_ONCE_STATIC_INIT;
 
 static RAND_DRBG *drbg_setup(RAND_DRBG *parent);
-static void drbg_cleanup(RAND_DRBG *drbg);
+
+static RAND_DRBG *rand_drbg_new(int secure,
+                                int type,
+                                unsigned int flags,
+                                RAND_DRBG *parent);
 
 /*
  * Set/initialize |drbg| to be of type |nid|, with optional |flags|.
@@ -134,19 +153,26 @@ int RAND_DRBG_set(RAND_DRBG *drbg, int nid, unsigned int flags)
 }
 
 /*
- * Allocate memory and initialize a new DRBG.  The |parent|, if not
- * NULL, will be used to auto-seed this RAND_DRBG as needed.
+ * Allocate memory and initialize a new DRBG. The DRBG is allocated on
+ * the secure heap if |secure| is nonzero and the secure heap is enabled.
+ * The |parent|, if not NULL, will be used as random source for reseeding.
  *
  * Returns a pointer to the new DRBG instance on success, NULL on failure.
  */
-RAND_DRBG *RAND_DRBG_new(int type, unsigned int flags, RAND_DRBG *parent)
+static RAND_DRBG *rand_drbg_new(int secure,
+                                int type,
+                                unsigned int flags,
+                                RAND_DRBG *parent)
 {
-    RAND_DRBG *drbg = OPENSSL_zalloc(sizeof(*drbg));
+    RAND_DRBG *drbg = secure ?
+        OPENSSL_secure_zalloc(sizeof(*drbg)) : OPENSSL_zalloc(sizeof(*drbg));
 
     if (drbg == NULL) {
         RANDerr(RAND_F_RAND_DRBG_NEW, ERR_R_MALLOC_FAILURE);
         goto err;
     }
+
+    drbg->secure = secure && CRYPTO_secure_allocated(drbg);
     drbg->fork_count = rand_fork_count;
     drbg->parent = parent;
     if (RAND_DRBG_set(drbg, type, flags) == 0)
@@ -160,8 +186,22 @@ RAND_DRBG *RAND_DRBG_new(int type, unsigned int flags, RAND_DRBG *parent)
     return drbg;
 
 err:
-    OPENSSL_free(drbg);
+    if (drbg->secure)
+        OPENSSL_secure_free(drbg);
+    else
+        OPENSSL_free(drbg);
+
     return NULL;
+}
+
+RAND_DRBG *RAND_DRBG_new(int type, unsigned int flags, RAND_DRBG *parent)
+{
+    return rand_drbg_new(0, type, flags, parent);
+}
+
+RAND_DRBG *RAND_DRBG_secure_new(int type, unsigned int flags, RAND_DRBG *parent)
+{
+    return rand_drbg_new(1, type, flags, parent);
 }
 
 /*
@@ -174,8 +214,13 @@ void RAND_DRBG_free(RAND_DRBG *drbg)
 
     if (drbg->meth != NULL)
         drbg->meth->uninstantiate(drbg);
+    CRYPTO_THREAD_lock_free(drbg->lock);
     CRYPTO_free_ex_data(CRYPTO_EX_INDEX_DRBG, drbg, &drbg->ex_data);
-    OPENSSL_clear_free(drbg, sizeof(*drbg));
+
+    if (drbg->secure)
+        OPENSSL_secure_clear_free(drbg, sizeof(*drbg));
+    else
+        OPENSSL_clear_free(drbg, sizeof(*drbg));
 }
 
 /*
@@ -656,6 +701,69 @@ int RAND_DRBG_set_reseed_time_interval(RAND_DRBG *drbg, time_t interval)
     return 1;
 }
 
+
+/*
+ * Locks the given drbg. Locking a drbg which does not have locking
+ * enabled is considered a successful no-op.
+ *
+ * Returns 1 on success, 0 on failure.
+ */
+int rand_drbg_lock(RAND_DRBG *drbg)
+{
+    if (drbg->lock != NULL)
+        return CRYPTO_THREAD_write_lock(drbg->lock);
+
+    return 1;
+}
+
+/*
+ * Unlocks the given drbg. Unlocking a drbg which does not have locking
+ * enabled is considered a successful no-op.
+ *
+ * Returns 1 on success, 0 on failure.
+ */
+int rand_drbg_unlock(RAND_DRBG *drbg)
+{
+    if (drbg->lock != NULL)
+        return CRYPTO_THREAD_unlock(drbg->lock);
+
+    return 1;
+}
+
+/*
+ * Enables locking for the given drbg
+ *
+ * Locking can only be enabled if the random generator
+ * is in the uninitialized state.
+ *
+ * Returns 1 on success, 0 on failure.
+ */
+int rand_drbg_enable_locking(RAND_DRBG *drbg)
+{
+    if (drbg->state != DRBG_UNINITIALISED) {
+        RANDerr(RAND_F_RAND_DRBG_ENABLE_LOCKING,
+                RAND_R_DRBG_ALREADY_INITIALIZED);
+        return 0;
+    }
+
+    if (drbg->lock == NULL) {
+        if (drbg->parent != NULL && drbg->parent->lock == NULL) {
+            RANDerr(RAND_F_RAND_DRBG_ENABLE_LOCKING,
+                    RAND_R_PARENT_LOCKING_NOT_ENABLED);
+            return 0;
+        }
+
+        drbg->lock = CRYPTO_THREAD_lock_new();
+        if (drbg->lock == NULL) {
+            RANDerr(RAND_F_RAND_DRBG_ENABLE_LOCKING,
+                    RAND_R_FAILED_TO_CREATE_LOCK);
+            return 0;
+        }
+    }
+
+    return 1;
+}
+
 /*
  * Get and set the EXDATA
  */
@@ -685,28 +793,17 @@ static RAND_DRBG *drbg_setup(RAND_DRBG *parent)
 {
     RAND_DRBG *drbg;
 
-    drbg = OPENSSL_secure_zalloc(sizeof(RAND_DRBG));
+    drbg = RAND_DRBG_secure_new(RAND_DRBG_NID, 0, parent);
     if (drbg == NULL)
         return NULL;
 
-    drbg->lock = CRYPTO_THREAD_lock_new();
-    if (drbg->lock == NULL) {
-        RANDerr(RAND_F_DRBG_SETUP, RAND_R_FAILED_TO_CREATE_LOCK);
-        goto err;
-    }
-
-    if (RAND_DRBG_set(drbg,
-                      RAND_DRBG_NID, RAND_DRBG_FLAG_CTR_USE_DF) != 1)
-        goto err;
-    if (RAND_DRBG_set_callbacks(drbg, rand_drbg_get_entropy,
-                                rand_drbg_cleanup_entropy, NULL, NULL) != 1)
+    if (rand_drbg_enable_locking(drbg) == 0)
         goto err;
 
     if (parent == NULL) {
         drbg->reseed_interval = MASTER_RESEED_INTERVAL;
         drbg->reseed_time_interval = MASTER_RESEED_TIME_INTERVAL;
     } else {
-        drbg->parent = parent;
         drbg->reseed_interval = SLAVE_RESEED_INTERVAL;
         drbg->reseed_time_interval = SLAVE_RESEED_TIME_INTERVAL;
     }
@@ -726,7 +823,7 @@ static RAND_DRBG *drbg_setup(RAND_DRBG *parent)
     return drbg;
 
 err:
-    drbg_cleanup(drbg);
+    RAND_DRBG_free(drbg);
     return NULL;
 }
 
@@ -753,22 +850,12 @@ DEFINE_RUN_ONCE_STATIC(do_rand_drbg_init)
     return 1;
 }
 
-/* Cleans up the given global DRBG  */
-static void drbg_cleanup(RAND_DRBG *drbg)
-{
-    if (drbg != NULL) {
-        RAND_DRBG_uninstantiate(drbg);
-        CRYPTO_THREAD_lock_free(drbg->lock);
-        OPENSSL_secure_clear_free(drbg, sizeof(RAND_DRBG));
-    }
-}
-
 /* Clean up the global DRBGs before exit */
 void rand_drbg_cleanup_int(void)
 {
-    drbg_cleanup(drbg_private);
-    drbg_cleanup(drbg_public);
-    drbg_cleanup(drbg_master);
+    RAND_DRBG_free(drbg_private);
+    RAND_DRBG_free(drbg_public);
+    RAND_DRBG_free(drbg_master);
 
     drbg_private = drbg_public = drbg_master = NULL;
 }
@@ -782,9 +869,9 @@ static int drbg_bytes(unsigned char *out, int count)
     if (drbg == NULL)
         return 0;
 
-    CRYPTO_THREAD_write_lock(drbg->lock);
+    rand_drbg_lock(drbg);
     ret = RAND_DRBG_bytes(drbg, out, count);
-    CRYPTO_THREAD_unlock(drbg->lock);
+    rand_drbg_unlock(drbg);
 
     return ret;
 }
@@ -811,11 +898,11 @@ static int drbg_add(const void *buf, int num, double randomness)
         return 0;
     }
 
-    CRYPTO_THREAD_write_lock(drbg->lock);
+    rand_drbg_lock(drbg);
     ret = rand_drbg_restart(drbg, buf,
                             (size_t)(unsigned int)num,
                             (size_t)(8*randomness));
-    CRYPTO_THREAD_unlock(drbg->lock);
+    rand_drbg_unlock(drbg);
 
     return ret;
 }
@@ -835,9 +922,9 @@ static int drbg_status(void)
     if (drbg == NULL)
         return 0;
 
-    CRYPTO_THREAD_write_lock(drbg->lock);
+    rand_drbg_lock(drbg);
     ret = drbg->state == DRBG_READY ? 1 : 0;
-    CRYPTO_THREAD_unlock(drbg->lock);
+    rand_drbg_unlock(drbg);
     return ret;
 }
 

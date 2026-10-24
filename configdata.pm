@@ -27,7 +27,6 @@ our %config = (
   cflags => [ "-O" ],
   conf_files => [ "Configurations/00-base-templates.conf", "Configurations/90-team.conf", "Configurations/shared-info.pl" ],
   cppflags => [  ],
-  cross_compile_prefix => "",
   cxxflags => [  ],
   defines => [ "NDEBUG", "OPENSSL_NO_DYNAMIC_ENGINE" ],
   dirs => [ "crypto", "ssl", "engines", "apps", "test", "util", "tools", "fuzz" ],
@@ -50,6 +49,9 @@ our %config = (
   openssldir => "",
   options => " no-asan no-crypto-mdebug no-crypto-mdebug-backtrace no-devcryptoeng no-ec_nistp_64_gcc_128 no-egd no-external-tests no-fuzz-afl no-fuzz-libfuzzer no-heartbeats no-md2 no-msan no-rc5 no-sctp no-ssl-trace no-ssl3 no-ssl3-method no-tls13downgrade no-ubsan no-unit-test no-weak-ssl-ciphers no-zlib no-zlib-dynamic",
   perl => "/usr/bin/perl",
+  perl_archname => "x86_64-linux-gnu-thread-multi",
+  perl_cmd => "/usr/bin/perl",
+  perl_version => "5.26.0",
   perlargv => [ "dist" ],
   perlenv => {
       "AR" => undef,
@@ -83,7 +85,7 @@ our %config = (
   plib_lflags => [ "" ],
   prefix => "",
   processor => "",
-  ranlib => "\$(CROSS_COMPILE)ranlib",
+  ranlib => "ranlib",
   rc => "windres",
   rc4_int => "unsigned int",
   sdirs => [ "objects", "md4", "md5", "sha", "mdc2", "hmac", "ripemd", "whrlpool", "poly1305", "blake2", "siphash", "sm3", "des", "aes", "rc2", "rc4", "idea", "aria", "bf", "cast", "camellia", "seed", "sm4", "chacha", "modes", "bn", "ec", "rsa", "dsa", "dh", "dso", "engine", "buffer", "bio", "stack", "lhash", "rand", "err", "evp", "asn1", "pem", "x509", "x509v3", "conf", "txt_db", "pkcs7", "pkcs12", "comp", "ocsp", "ui", "cms", "ts", "srp", "cmac", "ct", "async", "kdf", "store" ],
@@ -94,8 +96,8 @@ our %config = (
   sourcedir => ".",
   target => "dist",
   tdirs => [ "ossl_shim" ],
-  version => "1.1.1-pre1",
-  version_num => "0x10101001L",
+  version => "1.1.1-pre2",
+  version_num => "0x10101002L",
 );
 
 our %target = (
@@ -150,7 +152,7 @@ our %target = (
   padlock_obj => "",
   poly1305_asm_src => "",
   poly1305_obj => "",
-  ranlib => "\$(CROSS_COMPILE)ranlib",
+  ranlib => "ranlib",
   rc => "windres",
   rc4_asm_src => "rc4_enc.c rc4_skey.c",
   rc4_obj => "rc4_enc.o rc4_skey.o",
@@ -1303,6 +1305,11 @@ our %unified_info = (
                     "libcrypto.a",
                     "test/libtestutil.a",
                 ],
+            "test/curve448_internal_test" =>
+                [
+                    "libcrypto.a",
+                    "test/libtestutil.a",
+                ],
             "test/d2i_test" =>
                 [
                     "libcrypto",
@@ -1702,9 +1709,7 @@ our %unified_info = (
                 [
                     "crypto/aes/asm/aes-586.pl",
                     "\$(PERLASM_SCHEME)",
-                    "\$(CFLAGS)",
                     "\$(LIB_CFLAGS)",
-                    "\$(CPPFLAGS)",
                     "\$(LIB_CPPFLAGS)",
                     "\$(PROCESSOR)",
                 ],
@@ -1771,9 +1776,7 @@ our %unified_info = (
                 [
                     "crypto/aes/asm/aesni-x86.pl",
                     "\$(PERLASM_SCHEME)",
-                    "\$(CFLAGS)",
                     "\$(LIB_CFLAGS)",
-                    "\$(CPPFLAGS)",
                     "\$(LIB_CPPFLAGS)",
                     "\$(PROCESSOR)",
                 ],
@@ -1821,9 +1824,7 @@ our %unified_info = (
                 [
                     "crypto/aes/asm/vpaes-x86.pl",
                     "\$(PERLASM_SCHEME)",
-                    "\$(CFLAGS)",
                     "\$(LIB_CFLAGS)",
-                    "\$(CPPFLAGS)",
                     "\$(LIB_CPPFLAGS)",
                     "\$(PROCESSOR)",
                 ],
@@ -1850,9 +1851,7 @@ our %unified_info = (
                 [
                     "crypto/bf/asm/bf-586.pl",
                     "\$(PERLASM_SCHEME)",
-                    "\$(CFLAGS)",
                     "\$(LIB_CFLAGS)",
-                    "\$(CPPFLAGS)",
                     "\$(LIB_CPPFLAGS)",
                     "\$(PROCESSOR)",
                 ],
@@ -1880,9 +1879,7 @@ our %unified_info = (
                 [
                     "crypto/bn/asm/bn-586.pl",
                     "\$(PERLASM_SCHEME)",
-                    "\$(CFLAGS)",
                     "\$(LIB_CFLAGS)",
-                    "\$(CPPFLAGS)",
                     "\$(LIB_CPPFLAGS)",
                     "\$(PROCESSOR)",
                 ],
@@ -1904,18 +1901,14 @@ our %unified_info = (
                 [
                     "crypto/bn/asm/co-586.pl",
                     "\$(PERLASM_SCHEME)",
-                    "\$(CFLAGS)",
                     "\$(LIB_CFLAGS)",
-                    "\$(CPPFLAGS)",
                     "\$(LIB_CPPFLAGS)",
                     "\$(PROCESSOR)",
                 ],
             "crypto/bn/ia64-mont.s" =>
                 [
                     "crypto/bn/asm/ia64-mont.pl",
-                    "\$(CFLAGS)",
                     "\$(LIB_CFLAGS)",
-                    "\$(CPPFLAGS)",
                     "\$(LIB_CPPFLAGS)",
                 ],
             "crypto/bn/mips-mont.S" =>
@@ -1987,9 +1980,7 @@ our %unified_info = (
                 [
                     "crypto/bn/asm/x86-gf2m.pl",
                     "\$(PERLASM_SCHEME)",
-                    "\$(CFLAGS)",
                     "\$(LIB_CFLAGS)",
-                    "\$(CPPFLAGS)",
                     "\$(LIB_CPPFLAGS)",
                     "\$(PROCESSOR)",
                 ],
@@ -1997,9 +1988,7 @@ our %unified_info = (
                 [
                     "crypto/bn/asm/x86-mont.pl",
                     "\$(PERLASM_SCHEME)",
-                    "\$(CFLAGS)",
                     "\$(LIB_CFLAGS)",
-                    "\$(CPPFLAGS)",
                     "\$(LIB_CPPFLAGS)",
                     "\$(PROCESSOR)",
                 ],
@@ -2030,9 +2019,7 @@ our %unified_info = (
                 [
                     "crypto/camellia/asm/cmll-x86.pl",
                     "\$(PERLASM_SCHEME)",
-                    "\$(CFLAGS)",
                     "\$(LIB_CFLAGS)",
-                    "\$(CPPFLAGS)",
                     "\$(LIB_CPPFLAGS)",
                     "\$(PROCESSOR)",
                 ],
@@ -2050,9 +2037,7 @@ our %unified_info = (
                 [
                     "crypto/cast/asm/cast-586.pl",
                     "\$(PERLASM_SCHEME)",
-                    "\$(CFLAGS)",
                     "\$(LIB_CFLAGS)",
-                    "\$(CPPFLAGS)",
                     "\$(LIB_CPPFLAGS)",
                     "\$(PROCESSOR)",
                 ],
@@ -2075,9 +2060,7 @@ our %unified_info = (
                 [
                     "crypto/chacha/asm/chacha-x86.pl",
                     "\$(PERLASM_SCHEME)",
-                    "\$(CFLAGS)",
                     "\$(LIB_CFLAGS)",
-                    "\$(CPPFLAGS)",
                     "\$(LIB_CPPFLAGS)",
                     "\$(PROCESSOR)",
                 ],
@@ -2090,18 +2073,14 @@ our %unified_info = (
                 [
                     "crypto/des/asm/crypt586.pl",
                     "\$(PERLASM_SCHEME)",
-                    "\$(CFLAGS)",
                     "\$(LIB_CFLAGS)",
-                    "\$(CPPFLAGS)",
                     "\$(LIB_CPPFLAGS)",
                 ],
             "crypto/des/des-586.s" =>
                 [
                     "crypto/des/asm/des-586.pl",
                     "\$(PERLASM_SCHEME)",
-                    "\$(CFLAGS)",
                     "\$(LIB_CFLAGS)",
-                    "\$(CPPFLAGS)",
                     "\$(LIB_CPPFLAGS)",
                 ],
             "crypto/des/des_enc-sparc.S" =>
@@ -2142,15 +2121,18 @@ our %unified_info = (
                 [
                     "crypto/ec/asm/ecp_nistz256-x86.pl",
                     "\$(PERLASM_SCHEME)",
-                    "\$(CFLAGS)",
                     "\$(LIB_CFLAGS)",
-                    "\$(CPPFLAGS)",
                     "\$(LIB_CPPFLAGS)",
                     "\$(PROCESSOR)",
                 ],
             "crypto/ec/ecp_nistz256-x86_64.s" =>
                 [
                     "crypto/ec/asm/ecp_nistz256-x86_64.pl",
+                    "\$(PERLASM_SCHEME)",
+                ],
+            "crypto/ec/x25519-x86_64.s" =>
+                [
+                    "crypto/ec/asm/x25519-x86_64.pl",
                     "\$(PERLASM_SCHEME)",
                 ],
             "crypto/ia64cpuid.s" =>
@@ -2169,9 +2151,7 @@ our %unified_info = (
                 [
                     "crypto/md5/asm/md5-586.pl",
                     "\$(PERLASM_SCHEME)",
-                    "\$(CFLAGS)",
                     "\$(LIB_CFLAGS)",
-                    "\$(CPPFLAGS)",
                     "\$(LIB_CPPFLAGS)",
                 ],
             "crypto/md5/md5-sparcv9.S" =>
@@ -2202,9 +2182,7 @@ our %unified_info = (
             "crypto/modes/ghash-ia64.s" =>
                 [
                     "crypto/modes/asm/ghash-ia64.pl",
-                    "\$(CFLAGS)",
                     "\$(LIB_CFLAGS)",
-                    "\$(CPPFLAGS)",
                     "\$(LIB_CPPFLAGS)",
                 ],
             "crypto/modes/ghash-parisc.s" =>
@@ -2226,9 +2204,7 @@ our %unified_info = (
                 [
                     "crypto/modes/asm/ghash-x86.pl",
                     "\$(PERLASM_SCHEME)",
-                    "\$(CFLAGS)",
                     "\$(LIB_CFLAGS)",
-                    "\$(CPPFLAGS)",
                     "\$(LIB_CPPFLAGS)",
                     "\$(PROCESSOR)",
                 ],
@@ -2286,9 +2262,7 @@ our %unified_info = (
                 [
                     "crypto/poly1305/asm/poly1305-x86.pl",
                     "\$(PERLASM_SCHEME)",
-                    "\$(CFLAGS)",
                     "\$(LIB_CFLAGS)",
-                    "\$(CPPFLAGS)",
                     "\$(LIB_CPPFLAGS)",
                     "\$(PROCESSOR)",
                 ],
@@ -2306,9 +2280,7 @@ our %unified_info = (
                 [
                     "crypto/rc4/asm/rc4-586.pl",
                     "\$(PERLASM_SCHEME)",
-                    "\$(CFLAGS)",
                     "\$(LIB_CFLAGS)",
-                    "\$(CPPFLAGS)",
                     "\$(LIB_CPPFLAGS)",
                     "\$(PROCESSOR)",
                 ],
@@ -2331,9 +2303,7 @@ our %unified_info = (
                 [
                     "crypto/ripemd/asm/rmd-586.pl",
                     "\$(PERLASM_SCHEME)",
-                    "\$(CFLAGS)",
                     "\$(LIB_CFLAGS)",
-                    "\$(CPPFLAGS)",
                     "\$(LIB_CPPFLAGS)",
                 ],
             "crypto/s390xcpuid.S" =>
@@ -2345,9 +2315,7 @@ our %unified_info = (
                 [
                     "crypto/sha/asm/sha1-586.pl",
                     "\$(PERLASM_SCHEME)",
-                    "\$(CFLAGS)",
                     "\$(LIB_CFLAGS)",
-                    "\$(CPPFLAGS)",
                     "\$(LIB_CPPFLAGS)",
                     "\$(PROCESSOR)",
                 ],
@@ -2369,9 +2337,7 @@ our %unified_info = (
             "crypto/sha/sha1-ia64.s" =>
                 [
                     "crypto/sha/asm/sha1-ia64.pl",
-                    "\$(CFLAGS)",
                     "\$(LIB_CFLAGS)",
-                    "\$(CPPFLAGS)",
                     "\$(LIB_CPPFLAGS)",
                 ],
             "crypto/sha/sha1-mb-x86_64.s" =>
@@ -2413,9 +2379,7 @@ our %unified_info = (
                 [
                     "crypto/sha/asm/sha256-586.pl",
                     "\$(PERLASM_SCHEME)",
-                    "\$(CFLAGS)",
                     "\$(LIB_CFLAGS)",
-                    "\$(CPPFLAGS)",
                     "\$(LIB_CPPFLAGS)",
                     "\$(PROCESSOR)",
                 ],
@@ -2432,9 +2396,7 @@ our %unified_info = (
             "crypto/sha/sha256-ia64.s" =>
                 [
                     "crypto/sha/asm/sha512-ia64.pl",
-                    "\$(CFLAGS)",
                     "\$(LIB_CFLAGS)",
-                    "\$(CPPFLAGS)",
                     "\$(LIB_CPPFLAGS)",
                 ],
             "crypto/sha/sha256-mb-x86_64.s" =>
@@ -2481,9 +2443,7 @@ our %unified_info = (
                 [
                     "crypto/sha/asm/sha512-586.pl",
                     "\$(PERLASM_SCHEME)",
-                    "\$(CFLAGS)",
                     "\$(LIB_CFLAGS)",
-                    "\$(CPPFLAGS)",
                     "\$(LIB_CPPFLAGS)",
                     "\$(PROCESSOR)",
                 ],
@@ -2500,9 +2460,7 @@ our %unified_info = (
             "crypto/sha/sha512-ia64.s" =>
                 [
                     "crypto/sha/asm/sha512-ia64.pl",
-                    "\$(CFLAGS)",
                     "\$(LIB_CFLAGS)",
-                    "\$(CPPFLAGS)",
                     "\$(LIB_CPPFLAGS)",
                 ],
             "crypto/sha/sha512-mips.S" =>
@@ -2559,9 +2517,7 @@ our %unified_info = (
                 [
                     "crypto/whrlpool/asm/wp-mmx.pl",
                     "\$(PERLASM_SCHEME)",
-                    "\$(CFLAGS)",
                     "\$(LIB_CFLAGS)",
-                    "\$(CPPFLAGS)",
                     "\$(LIB_CPPFLAGS)",
                     "\$(PROCESSOR)",
                 ],
@@ -2579,9 +2535,7 @@ our %unified_info = (
                 [
                     "crypto/x86cpuid.pl",
                     "\$(PERLASM_SCHEME)",
-                    "\$(CFLAGS)",
                     "\$(LIB_CFLAGS)",
-                    "\$(CPPFLAGS)",
                     "\$(LIB_CPPFLAGS)",
                     "\$(PROCESSOR)",
                 ],
@@ -2589,9 +2543,7 @@ our %unified_info = (
                 [
                     "engines/asm/e_padlock-x86.pl",
                     "\$(PERLASM_SCHEME)",
-                    "\$(CFLAGS)",
                     "\$(LIB_CFLAGS)",
-                    "\$(CPPFLAGS)",
                     "\$(LIB_CPPFLAGS)",
                     "\$(PROCESSOR)",
                 ],
@@ -5028,6 +4980,54 @@ our %unified_info = (
                     ".",
                     "crypto/include",
                     "include",
+                ],
+            "crypto/ec/curve448/arch_32/f_impl.o" =>
+                [
+                    ".",
+                    "crypto/include",
+                    "include",
+                    "crypto/ec/curve448/arch_32",
+                    "crypto/ec/curve448",
+                ],
+            "crypto/ec/curve448/curve448.o" =>
+                [
+                    ".",
+                    "crypto/include",
+                    "include",
+                    "crypto/ec/curve448/arch_32",
+                    "crypto/ec/curve448",
+                ],
+            "crypto/ec/curve448/curve448_tables.o" =>
+                [
+                    ".",
+                    "crypto/include",
+                    "include",
+                    "crypto/ec/curve448/arch_32",
+                    "crypto/ec/curve448",
+                ],
+            "crypto/ec/curve448/eddsa.o" =>
+                [
+                    ".",
+                    "crypto/include",
+                    "include",
+                    "crypto/ec/curve448/arch_32",
+                    "crypto/ec/curve448",
+                ],
+            "crypto/ec/curve448/f_generic.o" =>
+                [
+                    ".",
+                    "crypto/include",
+                    "include",
+                    "crypto/ec/curve448/arch_32",
+                    "crypto/ec/curve448",
+                ],
+            "crypto/ec/curve448/scalar.o" =>
+                [
+                    ".",
+                    "crypto/include",
+                    "include",
+                    "crypto/ec/curve448/arch_32",
+                    "crypto/ec/curve448",
                 ],
             "crypto/ec/ec2_mult.o" =>
                 [
@@ -8173,6 +8173,12 @@ our %unified_info = (
                     "crypto/include",
                     "include",
                 ],
+            "test/curve448_internal_test.o" =>
+                [
+                    ".",
+                    "include",
+                    "crypto/ec/curve448",
+                ],
             "test/d2i_test.o" =>
                 [
                     "include",
@@ -8696,6 +8702,7 @@ our %unified_info = (
             "test/crltest",
             "test/ct_test",
             "test/ctype_internal_test",
+            "test/curve448_internal_test",
             "test/d2i_test",
             "test/danetest",
             "test/destest",
@@ -9222,6 +9229,9 @@ our %unified_info = (
                 [
                 ],
             "test/ctype_internal_test" =>
+                [
+                ],
+            "test/curve448_internal_test" =>
                 [
                 ],
             "test/d2i_test" =>
@@ -10730,6 +10740,30 @@ our %unified_info = (
             "crypto/ec/curve25519.o" =>
                 [
                     "crypto/ec/curve25519.c",
+                ],
+            "crypto/ec/curve448/arch_32/f_impl.o" =>
+                [
+                    "crypto/ec/curve448/arch_32/f_impl.c",
+                ],
+            "crypto/ec/curve448/curve448.o" =>
+                [
+                    "crypto/ec/curve448/curve448.c",
+                ],
+            "crypto/ec/curve448/curve448_tables.o" =>
+                [
+                    "crypto/ec/curve448/curve448_tables.c",
+                ],
+            "crypto/ec/curve448/eddsa.o" =>
+                [
+                    "crypto/ec/curve448/eddsa.c",
+                ],
+            "crypto/ec/curve448/f_generic.o" =>
+                [
+                    "crypto/ec/curve448/f_generic.c",
+                ],
+            "crypto/ec/curve448/scalar.o" =>
+                [
+                    "crypto/ec/curve448/scalar.c",
                 ],
             "crypto/ec/ec2_mult.o" =>
                 [
@@ -12585,6 +12619,12 @@ our %unified_info = (
                     "crypto/dso/dso_win32.o",
                     "crypto/ebcdic.o",
                     "crypto/ec/curve25519.o",
+                    "crypto/ec/curve448/arch_32/f_impl.o",
+                    "crypto/ec/curve448/curve448.o",
+                    "crypto/ec/curve448/curve448_tables.o",
+                    "crypto/ec/curve448/eddsa.o",
+                    "crypto/ec/curve448/f_generic.o",
+                    "crypto/ec/curve448/scalar.o",
                     "crypto/ec/ec2_mult.o",
                     "crypto/ec/ec2_oct.o",
                     "crypto/ec/ec2_smpl.o",
@@ -14160,6 +14200,14 @@ our %unified_info = (
                 [
                     "test/ctype_internal_test.c",
                 ],
+            "test/curve448_internal_test" =>
+                [
+                    "test/curve448_internal_test.o",
+                ],
+            "test/curve448_internal_test.o" =>
+                [
+                    "test/curve448_internal_test.c",
+                ],
             "test/d2i_test" =>
                 [
                     "test/d2i_test.o",
@@ -14812,6 +14860,7 @@ our %unified_info = (
         },
 );
 
+# The following data is only used when this files is use as a script
 my %makevars = (
     AR                  => 'ar',
     ARFLAGS             => 'arflags',
@@ -14823,6 +14872,7 @@ my %makevars = (
     CPPDEFINES          => 'defines',
     CPPFLAGS            => 'cppflags',
     CPPINCLUDES         => 'includes',
+    CROSS_COMPILE       => 'cross_compile_prefix',
     CXX                 => 'cxx',
     CXXFLAGS            => 'cxxflags',
     HASHBANGPERL        => 'hashbangperl',
@@ -14903,6 +14953,7 @@ my %disabled_info = (
         macro => 'OPENSSL_NO_WEAK_SSL_CIPHERS',
     },
 );
+my @user_crossable = qw( AR AS CC CXX CPP LD MT RANLIB RC );
 # If run directly, we can give some answers, and even reconfigure
 unless (caller) {
     use Getopt::Long;
@@ -14954,17 +15005,22 @@ _____
                   -verbose => 2);
     }
     if ($dump || $cmdline) {
-        print "\n(with current working directory = $here)";
-        print "\nCommand line:\n\n";
+        print "\nCommand line (with current working directory = $here):\n\n";
         print '    ',join(' ',
                           $config{perl},
                           catfile($config{sourcedir}, 'Configure'),
                           @{$config{perlargv}}), "\n";
+        print "\nPerl information:\n\n";
+        print '    ',$config{perl_cmd},"\n";
+        print '    ',$config{perl_version},' for ',$config{perl_archname},"\n";
     }
     if ($dump || $options) {
         my $longest = 0;
+        my $longest2 = 0;
         foreach my $what (@disablables) {
             $longest = length($what) if $longest < length($what);
+            $longest2 = length($disabled{$what})
+                if $disabled{$what} && $longest2 < length($disabled{$what});
         }
         print "\nEnabled features:\n\n";
         foreach my $what (@disablables) {
@@ -14974,7 +15030,7 @@ _____
         foreach my $what (@disablables) {
             if ($disabled{$what}) {
                 print "    $what", ' ' x ($longest - length($what) + 1),
-                    "[$disabled{$what}]", ' ' x (10 - length($disabled{$what}));
+                    "[$disabled{$what}]", ' ' x ($longest2 - length($disabled{$what}) + 1);
                 print $disabled_info{$what}->{macro}
                     if $disabled_info{$what}->{macro};
                 print ' (skip ',
@@ -15008,13 +15064,16 @@ _____
     }
     if ($dump || $makevars) {
         print "\nMakevars:\n\n";
-        foreach (sort keys %makevars) {
-            print '    ',$_,' ' x (16 - length $_),'= ',
-                (ref $config{$makevars{$_}} eq 'ARRAY'
-                 ? join(' ', @{$config{$makevars{$_}}})
-                 : $config{$makevars{$_}}),
+        foreach my $var (sort keys %makevars) {
+            my $prefix = '';
+            $prefix = $config{cross_compile_prefix}
+                if grep { $var eq $_ } @user_crossable;
+            print '    ',$var,' ' x (16 - length $var),'= ',
+                (ref $config{$makevars{$var}} eq 'ARRAY'
+                 ? join(' ', @{$config{$makevars{$var}}})
+                 : $prefix.$config{$makevars{$var}}),
                 "\n"
-                if defined $config{$makevars{$_}};
+                if defined $config{$makevars{$var}};
         }
 
         my @buildfile = ($config{builddir}, $config{build_file});

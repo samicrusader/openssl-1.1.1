@@ -1,5 +1,5 @@
 /*
- * Copyright 2017 The OpenSSL Project Authors. All Rights Reserved.
+ * Copyright 2017-2018 The OpenSSL Project Authors. All Rights Reserved.
  * Copyright 2017 BaishanCloud. All rights reserved.
  *
  * Licensed under the OpenSSL license (the "License").  You may not use
@@ -51,6 +51,7 @@ RSA_PRIME_INFO *rsa_multip_info_new(void)
     BN_free(pinfo->d);
     BN_free(pinfo->t);
     BN_free(pinfo->pp);
+    OPENSSL_free(pinfo);
     return NULL;
 }
 

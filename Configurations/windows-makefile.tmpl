@@ -142,7 +142,7 @@ OPENSSLDIR_dev={- #
                   $openssldir_dev -}
 OPENSSLDIR_dir={- canonpath($openssldir_dir) -}
 LIBDIR={- our $libdir = $config{libdir} || "lib";
-          $libdir -}
+          file_name_is_absolute($libdir) ? "" : $libdir -}
 ENGINESDIR_dev={- use File::Spec::Functions qw(:DEFAULT splitpath);
                   our $enginesdir = catdir($prefix,$libdir,"engines-$sover_dirname");
                   our ($enginesdir_dev, $enginesdir_dir, $enginesdir_file) =
@@ -159,7 +159,12 @@ OPENSSLDIR=$(OPENSSLDIR_dev)$(OPENSSLDIR_dir)
 ENGINESDIR=$(ENGINESDIR_dev)$(ENGINESDIR_dir)
 !ENDIF
 
+# $(libdir) is chosen to be compatible with the GNU coding standards
+libdir={- file_name_is_absolute($libdir)
+          ? $libdir : '$(INSTALLTOP)\$(LIBDIR)' -}
+
 CC={- $config{cc} -}
+CPP={- $config{cpp} -}
 CPPFLAGS={- our $cppflags = join(" ",
                                  (map { "-D".$_} @{$config{defines}}),
                                  (map { " /I ".$_} @{$config{includes}}),
@@ -173,19 +178,20 @@ LD={- $config{ld} -}
 LDFLAGS={- join(' ', @{$config{lflags}}) -}
 LDOUTFLAG={- $target{loutflag} || "/out:" -}$(OSSL_EMPTY)
 EX_LIBS={- join(' ', @{$config{ex_libs}}) -}
-LIB_CPPFLAGS={- join(" ",
-                     $target{shared_cppflag} || "",
-                     (map { quotify_l("-D".$_) }
-                      "OPENSSLDIR=\"$openssldir\"",
-                      "ENGINESDIR=\"$enginesdir\"")) -}
-LIB_CFLAGS={- join(" ", $target{lib_cflags}, $target{shared_cflag}) -}
-LIB_LDFLAGS={- join(' ', $target{shared_ldflag}, $config{shared_ldflag}) -}
-DSO_CPPFLAGS={- $target{dso_cppflags} || "" -}
-DSO_CFLAGS={- $target{dso_cflags} || "" -}
-DSO_LDFLAGS={- $target{dso_ldflag} || "" -}
-BIN_CPPFLAGS={- $target{dso_cppflags} || "" -}
-BIN_CFLAGS={- $target{bin_cflags} -}
-BIN_LDFLAGS={- $target{bin_lflags} -}
+
+LIB_CPPFLAGS={- join(' ', '$(CPPFLAGS)',
+                          $target{shared_cppflag} || (),
+                          (map { quotify_l("-D".$_) }
+                           "OPENSSLDIR=\"$openssldir\"",
+                           "ENGINESDIR=\"$enginesdir\"")) -}
+LIB_CFLAGS={- join(' ', '$(CFLAGS)', $target{lib_cflags} || (), $target{shared_cflag} || ()) -}
+LIB_LDFLAGS={- join(' ', '$(LDFLAGS)', $target{shared_ldflag} || (), $config{shared_ldflag} || ()) -}
+DSO_CPPFLAGS={- join(' ', '$(CPPFLAGS)', $target{dso_cppflags} || ()) -}
+DSO_CFLAGS={- join(' ', '$(CFLAGS)', $target{dso_cflags} || ()) -}
+DSO_LDFLAGS={- join(' ', '$(LDFLAGS)', $target{dso_ldflag} || ()) -}
+BIN_CPPFLAGS={- join(' ', '$(CPPFLAGS)', $target{dso_cppflags} || ()) -}
+BIN_CFLAGS={- join(' ', '$(CFLAGS)', $target{bin_cflags} || ()) -}
+BIN_LDFLAGS={- join(' ', '$(LDFLAGS)', $target{bin_lflags} || ()) -}
 
 PERL={- $config{perl} -}
 
@@ -322,12 +328,10 @@ install_dev:
 				       "$(INSTALLTOP)\include\openssl"
 	@"$(PERL)" "$(SRCDIR)\util\copy.pl" $(BLDDIR)\include\openssl\*.h \
 				       "$(INSTALLTOP)\include\openssl"
-	@"$(PERL)" "$(SRCDIR)\util\mkdir-p.pl" "$(INSTALLTOP)\$(LIBDIR)"
-	@"$(PERL)" "$(SRCDIR)\util\copy.pl" $(INSTALL_LIBS) \
-				       "$(INSTALLTOP)\$(LIBDIR)"
+	@"$(PERL)" "$(SRCDIR)\util\mkdir-p.pl" "$(libdir)"
+	@"$(PERL)" "$(SRCDIR)\util\copy.pl" $(INSTALL_LIBS) "$(libdir)"
 	@if "$(SHLIBS)"=="" \
-	 "$(PERL)" "$(SRCDIR)\util\copy.pl" ossl_static.pdb \
-                                       "$(INSTALLTOP)\$(LIBDIR)"
+	 "$(PERL)" "$(SRCDIR)\util\copy.pl" ossl_static.pdb "$(libdir)"
 
 uninstall_dev:
 
@@ -370,7 +374,7 @@ uninstall_html_docs:
 
 configdata.pm: "$(SRCDIR)\Configure" {- join(" ", map { '"'.$_.'"' } @{$config{build_file_templates}}, @{$config{build_infos}}, @{$config{conf_files}}) -}
 	@echo "Detected changed: $?"
-	"$(PERL)" configdata.pm -r -v
+	"$(PERL)" configdata.pm -r
 	@echo "**************************************************"
 	@echo "***                                            ***"
 	@echo "***   Please run the same make command again   ***"
@@ -379,7 +383,7 @@ configdata.pm: "$(SRCDIR)\Configure" {- join(" ", map { '"'.$_.'"' } @{$config{b
 	@exit 1
 
 reconfigure reconf:
-	"$(PERL)" configdata.pm -r -v
+	"$(PERL)" configdata.pm -r
 
 {-
  use File::Basename;
@@ -433,6 +437,12 @@ EOF
               die "Generator type for $src unknown: $generator\n";
           }
 
+          my $cppflags = $incs;
+          $cppflags .= {
+              lib => ' $(LIB_CFLAGS) $(LIB_CPPFLAGS)',
+              dso => ' $(DSO_CFLAGS) $(DSO_CPPFLAGS)',
+              bin => ' $(BIN_CFLAGS) $(BIN_CPPFLAGS)'
+          } -> {$args{intent}};
           if (defined($generator)) {
               # If the target is named foo.S in build.info, we want to
               # end up generating foo.s in two steps.
@@ -441,7 +451,7 @@ EOF
 $target: "$args{generator}->[0]" $deps
 	set ASM=\$(AS)
 	$generator \$@.S
-	\$(CC) $incs \$(CFLAGS) \$(CPPFLAGS) /EP /C \$@.S > \$@.i && move /Y \$@.i \$@
+	\$(CPP) $cppflags \$@.S > \$@.i && move /Y \$@.i \$@
         del /Q \$@.S
 EOF
               }
@@ -454,7 +464,7 @@ EOF
           }
           return <<"EOF";
 $target: "$args{generator}->[0]" $deps
-	\$(CC) $incs \$(CFLAGS) \$(CPPFLAGS) /EP /C "$args{generator}->[0]" > \$@.i && move /Y \$@.i \$@
+	\$(CPP) $incs $cppflags "$args{generator}->[0]" > \$@.i && move /Y \$@.i \$@
 EOF
       }
   }
@@ -466,12 +476,10 @@ EOF
      my $srcs = '"'.join('" "',  @srcs).'"';
      my $deps = '"'.join('" "', @srcs, @{$args{deps}}).'"';
      my $incs = join("", map { ' /I "'.$_.'"' } @{$args{incs}});
-     my $cflags = '$(CFLAGS)';
-     $cflags .= { lib => ' $(LIB_CFLAGS)',
-		  dso => ' $(DSO_CFLAGS)',
-		  bin => ' $(BIN_CFLAGS)' } -> {$args{intent}};
+     my $cflags = { lib => ' $(LIB_CFLAGS)',
+		    dso => ' $(DSO_CFLAGS)',
+		    bin => ' $(BIN_CFLAGS)' } -> {$args{intent}};
      $cflags .= $incs;
-     $cflags .= ' $(CPPFLAGS)';
      $cflags .= { lib => ' $(LIB_CPPFLAGS)',
 		  dso => ' $(DSO_CPPFLAGS)',
 		  bin => ' $(BIN_CPPFLAGS)' } -> {$args{intent}};
