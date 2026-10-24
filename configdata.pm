@@ -22,6 +22,7 @@ our %config = (
   HASHBANGPERL => "/usr/bin/env perl",
   LDFLAGS => [  ],
   LDLIBS => [  ],
+  PERL => "/usr/bin/perl",
   RANLIB => "ranlib",
   RC => "windres",
   afalgeng => "",
@@ -52,12 +53,11 @@ our %config = (
   minor => "1.1",
   openssl_algorithm_defines => [ "OPENSSL_NO_MD2", "OPENSSL_NO_RC5" ],
   openssl_api_defines => [  ],
-  openssl_other_defines => [ "OPENSSL_RAND_SEED_OS", "OPENSSL_NO_ASAN", "OPENSSL_NO_CRYPTO_MDEBUG", "OPENSSL_NO_CRYPTO_MDEBUG_BACKTRACE", "OPENSSL_NO_DEVCRYPTOENG", "OPENSSL_NO_EC_NISTP_64_GCC_128", "OPENSSL_NO_EGD", "OPENSSL_NO_EXTERNAL_TESTS", "OPENSSL_NO_FUZZ_AFL", "OPENSSL_NO_FUZZ_LIBFUZZER", "OPENSSL_NO_HEARTBEATS", "OPENSSL_NO_MSAN", "OPENSSL_NO_SCTP", "OPENSSL_NO_SSL_TRACE", "OPENSSL_NO_SSL3", "OPENSSL_NO_SSL3_METHOD", "OPENSSL_NO_TLS13DOWNGRADE", "OPENSSL_NO_UBSAN", "OPENSSL_NO_UNIT_TEST", "OPENSSL_NO_WEAK_SSL_CIPHERS", "OPENSSL_NO_DYNAMIC_ENGINE", "OPENSSL_NO_AFALGENG" ],
+  openssl_other_defines => [ "OPENSSL_RAND_SEED_OS", "OPENSSL_NO_ASAN", "OPENSSL_NO_CRYPTO_MDEBUG", "OPENSSL_NO_CRYPTO_MDEBUG_BACKTRACE", "OPENSSL_NO_DEVCRYPTOENG", "OPENSSL_NO_EC_NISTP_64_GCC_128", "OPENSSL_NO_EGD", "OPENSSL_NO_EXTERNAL_TESTS", "OPENSSL_NO_FUZZ_AFL", "OPENSSL_NO_FUZZ_LIBFUZZER", "OPENSSL_NO_HEARTBEATS", "OPENSSL_NO_MSAN", "OPENSSL_NO_SCTP", "OPENSSL_NO_SSL_TRACE", "OPENSSL_NO_SSL3", "OPENSSL_NO_SSL3_METHOD", "OPENSSL_NO_UBSAN", "OPENSSL_NO_UNIT_TEST", "OPENSSL_NO_WEAK_SSL_CIPHERS", "OPENSSL_NO_DYNAMIC_ENGINE", "OPENSSL_NO_AFALGENG" ],
   openssl_sys_defines => [  ],
   openssl_thread_defines => [  ],
   openssldir => "",
-  options => " no-asan no-crypto-mdebug no-crypto-mdebug-backtrace no-devcryptoeng no-ec_nistp_64_gcc_128 no-egd no-external-tests no-fuzz-afl no-fuzz-libfuzzer no-heartbeats no-md2 no-msan no-rc5 no-sctp no-ssl-trace no-ssl3 no-ssl3-method no-tls13downgrade no-ubsan no-unit-test no-weak-ssl-ciphers no-zlib no-zlib-dynamic",
-  perl => "/usr/bin/perl",
+  options => " no-asan no-crypto-mdebug no-crypto-mdebug-backtrace no-devcryptoeng no-ec_nistp_64_gcc_128 no-egd no-external-tests no-fuzz-afl no-fuzz-libfuzzer no-heartbeats no-md2 no-msan no-rc5 no-sctp no-ssl-trace no-ssl3 no-ssl3-method no-ubsan no-unit-test no-weak-ssl-ciphers no-zlib no-zlib-dynamic",
   perl_archname => "x86_64-linux-gnu-thread-multi",
   perl_cmd => "/usr/bin/perl",
   perl_version => "5.26.1",
@@ -109,8 +109,8 @@ our %config = (
   sourcedir => ".",
   target => "dist",
   tdirs => [ "ossl_shim" ],
-  version => "1.1.1-pre8",
-  version_num => "0x10101008L",
+  version => "1.1.1-pre9",
+  version_num => "0x10101009L",
 );
 
 our %target = (
@@ -289,7 +289,6 @@ our @disablables = (
   "tests",
   "threads",
   "tls",
-  "tls13downgrade",
   "ts",
   "ubsan",
   "ui-console",
@@ -336,7 +335,6 @@ our %disabled = (
   "ssl3" => "default",
   "ssl3-method" => "default",
   "threads" => "unavailable",
-  "tls13downgrade" => "default",
   "ubsan" => "default",
   "unit-test" => "default",
   "weak-ssl-ciphers" => "default",
@@ -1233,6 +1231,11 @@ our %unified_info = (
                     "libcrypto",
                     "test/libtestutil.a",
                 ],
+            "test/dsa_no_digest_size_test" =>
+                [
+                    "libcrypto",
+                    "test/libtestutil.a",
+                ],
             "test/dsatest" =>
                 [
                     "libcrypto",
@@ -1309,6 +1312,12 @@ our %unified_info = (
             "test/gmdifftest" =>
                 [
                     "libcrypto",
+                    "test/libtestutil.a",
+                ],
+            "test/gosttest" =>
+                [
+                    "libcrypto",
+                    "libssl",
                     "test/libtestutil.a",
                 ],
             "test/hmactest" =>
@@ -2050,6 +2059,11 @@ our %unified_info = (
             "crypto/ec/ecp_nistz256-x86_64.s" =>
                 [
                     "crypto/ec/asm/ecp_nistz256-x86_64.pl",
+                    "\$(PERLASM_SCHEME)",
+                ],
+            "crypto/ec/x25519-ppc64.s" =>
+                [
+                    "crypto/ec/asm/x25519-ppc64.pl",
                     "\$(PERLASM_SCHEME)",
                 ],
             "crypto/ec/x25519-x86_64.s" =>
@@ -5460,6 +5474,7 @@ our %unified_info = (
                     ".",
                     "crypto/include",
                     "include",
+                    "crypto",
                 ],
             "crypto/evp/m_sigver.o" =>
                 [
@@ -7949,6 +7964,10 @@ our %unified_info = (
                 [
                     "include",
                 ],
+            "test/dsa_no_digest_size_test.o" =>
+                [
+                    "include",
+                ],
             "test/dsatest.o" =>
                 [
                     "include",
@@ -8010,6 +8029,11 @@ our %unified_info = (
             "test/gmdifftest.o" =>
                 [
                     "include",
+                ],
+            "test/gosttest.o" =>
+                [
+                    "include",
+                    ".",
                 ],
             "test/handshake_helper.o" =>
                 [
@@ -8320,7 +8344,7 @@ our %unified_info = (
             "scripts" =>
                 [
                     "apps/CA.pl",
-                    "apps/tsget",
+                    "apps/tsget.pl",
                     "tools/c_rehash",
                 ],
         },
@@ -8454,6 +8478,7 @@ our %unified_info = (
             "test/dhtest",
             "test/drbg_cavs_test",
             "test/drbgtest",
+            "test/dsa_no_digest_size_test",
             "test/dsatest",
             "test/dtls_mtu_test",
             "test/dtlstest",
@@ -8469,6 +8494,7 @@ our %unified_info = (
             "test/exptest",
             "test/fatalerrtest",
             "test/gmdifftest",
+            "test/gosttest",
             "test/hmactest",
             "test/ideatest",
             "test/igetest",
@@ -8565,7 +8591,7 @@ our %unified_info = (
     "scripts" =>
         [
             "apps/CA.pl",
-            "apps/tsget",
+            "apps/tsget.pl",
             "tools/c_rehash",
             "util/shlib_wrap.sh",
         ],
@@ -8925,6 +8951,9 @@ our %unified_info = (
             "test/drbgtest" =>
                 [
                 ],
+            "test/dsa_no_digest_size_test" =>
+                [
+                ],
             "test/dsatest" =>
                 [
                 ],
@@ -8968,6 +8997,9 @@ our %unified_info = (
                 [
                 ],
             "test/gmdifftest" =>
+                [
+                ],
+            "test/gosttest" =>
                 [
                 ],
             "test/hmactest" =>
@@ -9404,7 +9436,7 @@ our %unified_info = (
                 [
                     "apps/ts.c",
                 ],
-            "apps/tsget" =>
+            "apps/tsget.pl" =>
                 [
                     "apps/tsget.in",
                 ],
@@ -13774,6 +13806,14 @@ our %unified_info = (
                 [
                     "test/drbgtest.c",
                 ],
+            "test/dsa_no_digest_size_test" =>
+                [
+                    "test/dsa_no_digest_size_test.o",
+                ],
+            "test/dsa_no_digest_size_test.o" =>
+                [
+                    "test/dsa_no_digest_size_test.c",
+                ],
             "test/dsatest" =>
                 [
                     "test/dsatest.o",
@@ -13896,6 +13936,15 @@ our %unified_info = (
             "test/gmdifftest.o" =>
                 [
                     "test/gmdifftest.c",
+                ],
+            "test/gosttest" =>
+                [
+                    "test/gosttest.o",
+                    "test/ssltestlib.o",
+                ],
+            "test/gosttest.o" =>
+                [
+                    "test/gosttest.c",
                 ],
             "test/handshake_helper.o" =>
                 [
@@ -14447,6 +14496,7 @@ my @makevars = (
     'LDLIBS',
     'MT',
     'MTFLAGS',
+    'PERL',
     'RANLIB',
     'RC',
     'RCFLAGS',
@@ -14505,9 +14555,6 @@ my %disabled_info = (
     },
     'ssl3-method' => {
         macro => 'OPENSSL_NO_SSL3_METHOD',
-    },
-    'tls13downgrade' => {
-        macro => 'OPENSSL_NO_TLS13DOWNGRADE',
     },
     'ubsan' => {
         macro => 'OPENSSL_NO_UBSAN',
@@ -14573,7 +14620,7 @@ _____
     if ($dump || $cmdline) {
         print "\nCommand line (with current working directory = $here):\n\n";
         print '    ',join(' ',
-                          $config{perl},
+                          $config{PERL},
                           catfile($config{sourcedir}, 'Configure'),
                           @{$config{perlargv}}), "\n";
         print "\nPerl information:\n\n";

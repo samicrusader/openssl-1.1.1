@@ -700,7 +700,9 @@ SSL *SSL_new(SSL_CTX *ctx)
     s->mode = ctx->mode;
     s->max_cert_list = ctx->max_cert_list;
     s->max_early_data = ctx->max_early_data;
+    s->recv_max_early_data = ctx->recv_max_early_data;
     s->num_tickets = ctx->num_tickets;
+    s->pha_enabled = ctx->pha_enabled;
 
     /* Shallow copy of the ciphersuites stack */
     s->tls13_ciphersuites = sk_SSL_CIPHER_dup(ctx->tls13_ciphersuites);
@@ -804,6 +806,9 @@ SSL *SSL_new(SSL_CTX *ctx)
     s->method = ctx->method;
 
     s->key_update = SSL_KEY_UPDATE_NONE;
+
+    s->allow_early_data_cb = ctx->allow_early_data_cb;
+    s->allow_early_data_cb_data = ctx->allow_early_data_cb_data;
 
     if (!s->method->ssl_new(s))
         goto err;
@@ -2260,7 +2265,6 @@ LHASH_OF(SSL_SESSION) *SSL_CTX_sessions(SSL_CTX *ctx)
 long SSL_CTX_ctrl(SSL_CTX *ctx, int cmd, long larg, void *parg)
 {
     long l;
-    int i;
     /* For some cases with ctx == NULL perform syntax checks */
     if (ctx == NULL) {
         switch (cmd) {
@@ -2315,40 +2319,27 @@ long SSL_CTX_ctrl(SSL_CTX *ctx, int cmd, long larg, void *parg)
     case SSL_CTRL_SESS_NUMBER:
         return lh_SSL_SESSION_num_items(ctx->sessions);
     case SSL_CTRL_SESS_CONNECT:
-        return CRYPTO_atomic_read(&ctx->stats.sess_connect, &i, ctx->lock)
-                ? i : 0;
+        return tsan_load(&ctx->stats.sess_connect);
     case SSL_CTRL_SESS_CONNECT_GOOD:
-        return CRYPTO_atomic_read(&ctx->stats.sess_connect_good, &i, ctx->lock)
-                ? i : 0;
+        return tsan_load(&ctx->stats.sess_connect_good);
     case SSL_CTRL_SESS_CONNECT_RENEGOTIATE:
-        return CRYPTO_atomic_read(&ctx->stats.sess_connect_renegotiate, &i,
-                                  ctx->lock)
-                ? i : 0;
+        return tsan_load(&ctx->stats.sess_connect_renegotiate);
     case SSL_CTRL_SESS_ACCEPT:
-        return CRYPTO_atomic_read(&ctx->stats.sess_accept, &i, ctx->lock)
-                ? i : 0;
+        return tsan_load(&ctx->stats.sess_accept);
     case SSL_CTRL_SESS_ACCEPT_GOOD:
-        return CRYPTO_atomic_read(&ctx->stats.sess_accept_good, &i, ctx->lock)
-                ? i : 0;
+        return tsan_load(&ctx->stats.sess_accept_good);
     case SSL_CTRL_SESS_ACCEPT_RENEGOTIATE:
-        return CRYPTO_atomic_read(&ctx->stats.sess_accept_renegotiate, &i,
-                                  ctx->lock)
-                ? i : 0;
+        return tsan_load(&ctx->stats.sess_accept_renegotiate);
     case SSL_CTRL_SESS_HIT:
-        return CRYPTO_atomic_read(&ctx->stats.sess_hit, &i, ctx->lock)
-                ? i : 0;
+        return tsan_load(&ctx->stats.sess_hit);
     case SSL_CTRL_SESS_CB_HIT:
-        return CRYPTO_atomic_read(&ctx->stats.sess_cb_hit, &i, ctx->lock)
-                ? i : 0;
+        return tsan_load(&ctx->stats.sess_cb_hit);
     case SSL_CTRL_SESS_MISSES:
-        return CRYPTO_atomic_read(&ctx->stats.sess_miss, &i, ctx->lock)
-                ? i : 0;
+        return tsan_load(&ctx->stats.sess_miss);
     case SSL_CTRL_SESS_TIMEOUTS:
-        return CRYPTO_atomic_read(&ctx->stats.sess_timeout, &i, ctx->lock)
-                ? i : 0;
+        return tsan_load(&ctx->stats.sess_timeout);
     case SSL_CTRL_SESS_CACHE_FULL:
-        return CRYPTO_atomic_read(&ctx->stats.sess_cache_full, &i, ctx->lock)
-                ? i : 0;
+        return tsan_load(&ctx->stats.sess_cache_full);
     case SSL_CTRL_MODE:
         return (ctx->mode |= larg);
     case SSL_CTRL_CLEAR_MODE:
@@ -2608,7 +2599,18 @@ const char *SSL_get_servername(const SSL *s, const int type)
     if (type != TLSEXT_NAMETYPE_host_name)
         return NULL;
 
-    return s->session && !s->ext.hostname ?
+    /*
+     * TODO(OpenSSL1.2) clean up this compat mess.  This API is
+     * currently a mix of "what did I configure" and "what did the
+     * peer send" and "what was actually negotiated"; we should have
+     * a clear distinction amongst those three.
+     */
+    if (SSL_in_init(s)) {
+        if (s->hit)
+            return s->session->ext.hostname;
+        return s->ext.hostname;
+    }
+    return (s->session != NULL && s->ext.hostname == NULL) ?
         s->session->ext.hostname : s->ext.hostname;
 }
 
@@ -3036,6 +3038,16 @@ SSL_CTX *SSL_CTX_new(const SSL_METHOD *meth)
      */
     ret->max_early_data = 0;
 
+    /*
+     * Default recv_max_early_data is a fully loaded single record. Could be
+     * split across multiple records in practice. We set this differently to
+     * max_early_data so that, in the default case, we do not advertise any
+     * support for early_data, but if a client were to send us some (e.g.
+     * because of an old, stale ticket) then we will tolerate it and skip over
+     * it.
+     */
+    ret->recv_max_early_data = SSL3_RT_MAX_PLAIN_LENGTH;
+
     /* By default we send two session tickets automatically in TLSv1.3 */
     ret->num_tickets = 2;
 
@@ -3369,18 +3381,22 @@ void ssl_update_cache(SSL *s, int mode)
         && (!s->hit || SSL_IS_TLS13(s))) {
         /*
          * Add the session to the internal cache. In server side TLSv1.3 we
-         * normally don't do this because its a full stateless ticket with only
-         * a dummy session id so there is no reason to cache it, unless:
+         * normally don't do this because by default it's a full stateless ticket
+         * with only a dummy session id so there is no reason to cache it,
+         * unless:
          * - we are doing early_data, in which case we cache so that we can
          *   detect replays
          * - the application has set a remove_session_cb so needs to know about
          *   session timeout events
+         * - SSL_OP_NO_TICKET is set in which case it is a stateful ticket
          */
         if ((i & SSL_SESS_CACHE_NO_INTERNAL_STORE) == 0
                 && (!SSL_IS_TLS13(s)
                     || !s->server
-                    || s->max_early_data > 0
-                    || s->session_ctx->remove_session_cb != NULL))
+                    || (s->max_early_data > 0
+                        && (s->options & SSL_OP_NO_ANTI_REPLAY) == 0)
+                    || s->session_ctx->remove_session_cb != NULL
+                    || (s->options & SSL_OP_NO_TICKET) != 0))
             SSL_CTX_add_session(s->session_ctx, s->session);
 
         /*
@@ -3397,13 +3413,12 @@ void ssl_update_cache(SSL *s, int mode)
 
     /* auto flush every 255 connections */
     if ((!(i & SSL_SESS_CACHE_NO_AUTO_CLEAR)) && ((i & mode) == mode)) {
-        int *stat, val;
+        TSAN_QUALIFIER int *stat;
         if (mode & SSL_SESS_CACHE_CLIENT)
             stat = &s->session_ctx->stats.sess_connect_good;
         else
             stat = &s->session_ctx->stats.sess_accept_good;
-        if (CRYPTO_atomic_read(stat, &val, s->session_ctx->lock)
-            && (val & 0xff) == 0xff)
+        if ((tsan_load(stat) & 0xff) == 0xff)
             SSL_CTX_flush_sessions(s->session_ctx, (unsigned long)time(NULL));
     }
 }
@@ -5369,6 +5384,30 @@ uint32_t SSL_get_max_early_data(const SSL *s)
     return s->max_early_data;
 }
 
+int SSL_CTX_set_recv_max_early_data(SSL_CTX *ctx, uint32_t recv_max_early_data)
+{
+    ctx->recv_max_early_data = recv_max_early_data;
+
+    return 1;
+}
+
+uint32_t SSL_CTX_get_recv_max_early_data(const SSL_CTX *ctx)
+{
+    return ctx->recv_max_early_data;
+}
+
+int SSL_set_recv_max_early_data(SSL *s, uint32_t recv_max_early_data)
+{
+    s->recv_max_early_data = recv_max_early_data;
+
+    return 1;
+}
+
+uint32_t SSL_get_recv_max_early_data(const SSL *s)
+{
+    return s->recv_max_early_data;
+}
+
 __owur unsigned int ssl_get_max_send_fragment(const SSL *ssl)
 {
     /* Return any active Max Fragment Len extension */
@@ -5417,9 +5456,14 @@ int SSL_stateless(SSL *s)
     return -1;
 }
 
-void SSL_force_post_handshake_auth(SSL *ssl)
+void SSL_CTX_set_post_handshake_auth(SSL_CTX *ctx, int val)
 {
-    ssl->pha_forced = 1;
+    ctx->pha_enabled = val;
+}
+
+void SSL_set_post_handshake_auth(SSL *ssl, int val)
+{
+    ssl->pha_enabled = val;
 }
 
 int SSL_verify_client_post_handshake(SSL *ssl)
@@ -5478,4 +5522,20 @@ int SSL_CTX_set_session_ticket_cb(SSL_CTX *ctx,
     ctx->decrypt_ticket_cb = dec_cb;
     ctx->ticket_cb_data = arg;
     return 1;
+}
+
+void SSL_CTX_set_allow_early_data_cb(SSL_CTX *ctx,
+                                     SSL_allow_early_data_cb_fn cb,
+                                     void *arg)
+{
+    ctx->allow_early_data_cb = cb;
+    ctx->allow_early_data_cb_data = arg;
+}
+
+void SSL_set_allow_early_data_cb(SSL *s,
+                                 SSL_allow_early_data_cb_fn cb,
+                                 void *arg)
+{
+    s->allow_early_data_cb = cb;
+    s->allow_early_data_cb_data = arg;
 }

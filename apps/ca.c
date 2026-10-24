@@ -726,10 +726,6 @@ end_of_options:
             output_der = 1;
             batch = 1;
         }
-        Sout = bio_open_default(outfile, 'w',
-                                output_der ? FORMAT_ASN1 : FORMAT_TEXT);
-        if (Sout == NULL)
-            goto end;
     }
 
     if (md == NULL && (md = lookup_conf(conf, section, ENV_DEFAULT_MD)) == NULL)
@@ -1025,6 +1021,11 @@ end_of_options:
             if (verbose)
                 BIO_printf(bio_err, "writing %s\n", new_cert);
 
+            Sout = bio_open_default(outfile, 'w',
+                                    output_der ? FORMAT_ASN1 : FORMAT_TEXT);
+            if (Sout == NULL)
+                goto end;
+
             Cout = BIO_new_file(new_cert, "w");
             if (Cout == NULL) {
                 perror(new_cert);
@@ -1033,6 +1034,8 @@ end_of_options:
             write_new_certificate(Cout, xi, 0, notext);
             write_new_certificate(Sout, xi, output_der, notext);
             BIO_free_all(Cout);
+            BIO_free_all(Sout);
+            Sout = NULL;
         }
 
         if (sk_X509_num(cert_sk)) {
@@ -1179,6 +1182,11 @@ end_of_options:
         crlnumber = NULL;
 
         if (!do_X509_CRL_sign(crl, pkey, dgst, sigopts))
+            goto end;
+
+        Sout = bio_open_default(outfile, 'w',
+                                output_der ? FORMAT_ASN1 : FORMAT_TEXT);
+        if (Sout == NULL)
             goto end;
 
         PEM_write_bio_X509_CRL(Sout, crl);
@@ -1698,11 +1706,11 @@ static int do_body(X509 **xret, EVP_PKEY *pkey, X509 *x509,
             BIO_printf(bio_err, "Memory allocation failure\n");
             goto end;
         }
+        i = -1;
         while ((i = X509_NAME_get_index_by_NID(dn_subject,
                                                NID_pkcs9_emailAddress,
-                                               -1)) >= 0) {
-            tmpne = X509_NAME_get_entry(dn_subject, i);
-            X509_NAME_delete_entry(dn_subject, i);
+                                               i)) >= 0) {
+            tmpne = X509_NAME_delete_entry(dn_subject, i--);
             X509_NAME_ENTRY_free(tmpne);
         }
 

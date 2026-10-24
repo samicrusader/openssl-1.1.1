@@ -391,6 +391,10 @@ rsadsi 2 9		:			: hmacWithSHA256
 rsadsi 2 10		:			: hmacWithSHA384
 rsadsi 2 11		:			: hmacWithSHA512
 
+# From RFC8018
+rsadsi 2 12             :                       : hmacWithSHA512-224
+rsadsi 2 13             :                       : hmacWithSHA512-256
+
 rsadsi 3 2		: RC2-CBC		: rc2-cbc
 			: RC2-ECB		: rc2-ecb
 !Cname rc2-cfb64
@@ -1601,7 +1605,7 @@ secg-scheme 14 3 : dhSinglePass-cofactorDH-sha512kdf-scheme
 id-pkinit 4                     : pkInitClientAuth      : PKINIT Client Auth
 id-pkinit 5                     : pkInitKDC             : Signing KDC Response
 
-# New algorithms from draft-ietf-curdle-pkix-04
+# From RFC8410
 1 3 101 110 : X25519
 1 3 101 111 : X448
 1 3 101 112 : ED25519

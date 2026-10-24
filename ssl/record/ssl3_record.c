@@ -103,7 +103,7 @@ static int ssl3_record_app_data_waiting(SSL *s)
 
 int early_data_count_ok(SSL *s, size_t length, size_t overhead, int send)
 {
-    uint32_t max_early_data = s->max_early_data;
+    uint32_t max_early_data;
     SSL_SESSION *sess = s->session;
 
     /*
@@ -120,9 +120,14 @@ int early_data_count_ok(SSL *s, size_t length, size_t overhead, int send)
         }
         sess = s->psksession;
     }
-    if (!s->server
-            || (s->hit && sess->ext.max_early_data < s->max_early_data))
+
+    if (!s->server)
         max_early_data = sess->ext.max_early_data;
+    else if (s->ext.early_data != SSL_EARLY_DATA_ACCEPTED)
+        max_early_data = s->recv_max_early_data;
+    else
+        max_early_data = s->recv_max_early_data < sess->ext.max_early_data
+                         ? s->recv_max_early_data : sess->ext.max_early_data;
 
     if (max_early_data == 0) {
         SSLfatal(s, send ? SSL_AD_INTERNAL_ERROR : SSL_AD_UNEXPECTED_MESSAGE,
@@ -337,7 +342,10 @@ int ssl3_get_record(SSL *s)
                 if (SSL_IS_TLS13(s) && s->enc_read_ctx != NULL) {
                     if (thisrr->type != SSL3_RT_APPLICATION_DATA
                             && (thisrr->type != SSL3_RT_CHANGE_CIPHER_SPEC
-                                || !SSL_IS_FIRST_HANDSHAKE(s))) {
+                                || !SSL_IS_FIRST_HANDSHAKE(s))
+                            && (thisrr->type != SSL3_RT_ALERT
+                                || s->statem.enc_read_state
+                                   != ENC_READ_STATE_ALLOW_PLAIN_ALERTS)) {
                         SSLfatal(s, SSL_AD_UNEXPECTED_MESSAGE,
                                  SSL_F_SSL3_GET_RECORD, SSL_R_BAD_RECORD_TYPE);
                         return -1;
@@ -687,7 +695,9 @@ int ssl3_get_record(SSL *s)
             }
         }
 
-        if (SSL_IS_TLS13(s) && s->enc_read_ctx != NULL) {
+        if (SSL_IS_TLS13(s)
+                && s->enc_read_ctx != NULL
+                && thisrr->type != SSL3_RT_ALERT) {
             size_t end;
 
             if (thisrr->length == 0
