@@ -5,6 +5,15 @@
   This file gives a brief overview of the major changes between each OpenSSL
   release. For more details please read the CHANGES file.
 
+  Major changes between OpenSSL 1.1.1zh and OpenSSL 1.1.1zi [25 Aug 2026]
+
+      o Fixed heap buffer overflow in CMS key unwrapping.
+        (CVE-2026-63072)
+      o Fixed excessive memory use buffering DTLS records for a future epoch.
+        (CVE-2026-54874)
+      o Fixed excessive allocation of the handshake message buffer
+        (aka HollowByte).
+
   Major changes between OpenSSL 1.1.1zg and OpenSSL 1.1.1zh [9 Jun 2026]
 
       o Fixed heap use-after-free in PKCS7_verify().

@@ -7,6 +7,58 @@
  https://github.com/openssl/openssl/commits/ and pick the appropriate
  release branch.
 
+ Changes between 1.1.1zh and 1.1.1zi [25 Aug 2026]
+
+ *) Fixed heap buffer overflow in CMS key unwrapping.
+
+    Severity: Moderate
+
+    Issue summary: OpenSSL CMS decryption sizes the key-unwrap output buffer
+    based on querying the unwrapped key size, but the AES-WRAP-PAD unwrap
+    primitive can write and cleanse more bytes than that query reports, causing
+    an 8-byte out-of-bounds heap write.
+
+    Impact summary: An attacker who supplies a crafted CMS message can trigger
+    a deterministic 8-byte out-of-bounds heap write when the victim decrypts
+    it with CMS_decrypt(), corrupting the heap and typically resulting
+    in a Denial of Service.
+
+    Reported by: Bhabani Sankar Das and Filipe Casal (Trail of Bits).
+
+    (CVE-2026-63072)
+    [Daniel Kubec]
+
+ *) Fixed excessive memory use buffering DTLS records for a future epoch.
+
+    Severity: Low
+
+    Issue summary: Receiving a DTLS record for a future epoch while a handshake
+    is in progress causes OpenSSL to buffer far more memory than the record
+    itself requires.
+
+    Impact summary: A peer can use a small amount of network traffic to make
+    an OpenSSL DTLS endpoint retain a disproportionately large amount of memory,
+    which may lead to a Denial of Service.
+
+    Reported by: Amazon Web Services.
+
+    (CVE-2026-54874)
+    [Matt Caswell]
+
+ *) Fixed excessive allocation of the handshake message buffer (aka HollowByte).
+
+    Previously, we would allocate a buffer large enough to hold the full size
+    of an incoming handshake message as advertised by the peer. This could be
+    quite large (although it is bounded, e.g. for a ClientHello message
+    this is approximately 128 KiB).  If the peer then fails to send the full
+    handshake message, then the endpoint is left waiting for the remainder
+    of the message to arrive and the memory is still allocated (i.e. a Slowloris
+    attack).  To prevent this, we incrementally grow the buffer as we receive
+    the data.
+
+    This issue was reported by Okta Red Team.
+    [Matt Caswell]
+
  Changes between 1.1.1zg and 1.1.1zh [9 Jun 2026]
 
  *) Fixed heap use-after-free in PKCS7_verify().
