@@ -7,6 +7,77 @@
  https://github.com/openssl/openssl/commits/ and pick the appropriate
  release branch.
 
+ Changes between 1.1.1zd and 1.1.1ze [27 Jan 2026]
+
+ *) Fixed Unauthenticated/unecrypted trailing bytes with low-level OCB
+    function calls.
+
+    Severity: Low
+
+    Issue summary: When using the low-level OCB API directly with AES-NI or
+    other hardware-accelerated code paths, inputs whose length is not a multiple
+    of 16 bytes can leave the final partial block unencrypted and
+    unauthenticated.
+
+    Impact summary: The trailing 1-15 bytes of a message may be exposed in
+    cleartext on encryption and are not covered by the authentication tag,
+    allowing an attacker to read or tamper with those bytes without detection.
+
+    Reported by: Stanislav Fort (Aisle Research)
+
+    (CVE-2025-69418)
+    [Stanislav Fort]
+
+ *) Fixed Out of bounds write in PKCS12_get_friendlyname() UTF-8 conversion.
+
+    Severity: Low
+
+    Issue summary: Calling PKCS12_get_friendlyname() function on a maliciously
+    crafted PKCS#12 file with a BMPString (UTF-16BE) friendly name containing
+    non-ASCII BMP code point can trigger a one byte write before the allocated
+    buffer.
+
+    Impact summary: The out-of-bounds write can cause a memory corruption
+    which can have various consequences including a Denial of Service.
+
+    Reported by: Stanislav Fort (Aisle Research)
+
+    (CVE-2025-69419)
+    [Norbert Pócs]
+
+ *) Fixed NULL Pointer Dereference in PKCS12_item_decrypt_d2i_ex() function.
+
+    Severity: Low
+
+    Issue summary: Processing a malformed PKCS#12 file can trigger a NULL
+    pointer dereference in the PKCS12_item_decrypt_d2i_ex() function.
+
+    Impact summary: A NULL pointer dereference can trigger a crash which leads
+    to Denial of Service for an application processing PKCS#12 files.
+
+    Reported by: Luigino Camastra (Aisle Research)
+
+    (CVE-2025-69421)
+    [Luigino Camastra]
+
+ *) Fixed Heap out-of-bounds write in BIO_f_linebuffer on short writes.
+
+    Severity: Low
+
+    Issue summary: Writing large, newline-free data into a BIO chain using the
+    line-buffering filter where the next BIO performs short writes can trigger
+    a heap-based out-of-bounds write.
+
+    Impact summary: This out-of-bounds write can cause memory corruption
+    which typically results in a crash, leading to Denial of Service for
+    an application.
+
+    Reported by: Petr Simecek (Aisle Research) and Stanislav Fort (Aisle
+    Research)
+
+    (CVE-2025-68160)
+    [Neil Horman]
+
  Changes between 1.1.1zc and 1.1.1zd [30 Sep 2025]
 
  *) Fix Out-of-Bounds read & write in RFC 3211 KEK Unwrap
@@ -22,7 +93,6 @@
     The issue was reported by Stanislav Fort (Aisle Research).
 
     (CVE-2025-9230)
-
     [Viktor Dukhovni]
 
  Changes between 1.1.1zb and 1.1.1zc [1 Jul 2025]

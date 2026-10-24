@@ -1,5 +1,5 @@
 /*
- * Copyright 2000-2021 The OpenSSL Project Authors. All Rights Reserved.
+ * Copyright 2000-2026 The OpenSSL Project Authors. All Rights Reserved.
  *
  * Licensed under the OpenSSL license (the "License").  You may not use
  * this file except in compliance with the License.  You can obtain a copy
@@ -203,8 +203,10 @@ static int do_buf(unsigned char *buf, int buflen,
             orflags = CHARTYPE_LAST_ESC_2253;
         if (type & BUF_TYPE_CONVUTF8) {
             unsigned char utfbuf[6];
-            int utflen;
-            utflen = UTF8_putc(utfbuf, sizeof(utfbuf), c);
+            int utflen = UTF8_putc(utfbuf, sizeof(utfbuf), c);
+
+            if (utflen < 0)
+                return -1; /* error happened with UTF8 */
             for (i = 0; i < utflen; i++) {
                 /*
                  * We don't need to worry about setting orflags correctly

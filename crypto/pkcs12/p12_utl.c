@@ -1,5 +1,5 @@
 /*
- * Copyright 1999-2018 The OpenSSL Project Authors. All Rights Reserved.
+ * Copyright 1999-2026 The OpenSSL Project Authors. All Rights Reserved.
  *
  * Licensed under the OpenSSL license (the "License").  You may not use
  * this file except in compliance with the License.  You can obtain a copy
@@ -207,6 +207,10 @@ char *OPENSSL_uni2utf8(const unsigned char *uni, int unilen)
     /* re-run the loop emitting UTF-8 string */
     for (asclen = 0, i = 0; i < unilen; ) {
         j = bmp_to_utf8(asctmp+asclen, uni+i, unilen-i);
+        if (j < 0) {
+            OPENSSL_free(asctmp);
+            return NULL;
+        }
         if (j == 4) i += 4;
         else        i += 2;
         asclen += j;

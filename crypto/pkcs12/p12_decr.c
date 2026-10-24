@@ -1,5 +1,5 @@
 /*
- * Copyright 1999-2016 The OpenSSL Project Authors. All Rights Reserved.
+ * Copyright 1999-2026 The OpenSSL Project Authors. All Rights Reserved.
  *
  * Licensed under the OpenSSL license (the "License").  You may not use
  * this file except in compliance with the License.  You can obtain a copy
@@ -87,6 +87,12 @@ void *PKCS12_item_decrypt_d2i(const X509_ALGOR *algor, const ASN1_ITEM *it,
     const unsigned char *p;
     void *ret;
     int outlen;
+
+    if (oct == NULL) {
+        PKCS12err(PKCS12_F_PKCS12_ITEM_DECRYPT_D2I,
+                  PKCS12_R_INVALID_NULL_ARGUMENT);
+        return NULL;
+    }
 
     if (!PKCS12_pbe_crypt(algor, pass, passlen, oct->data, oct->length,
                           &out, &outlen, 0)) {
