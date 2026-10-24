@@ -1,5 +1,5 @@
 /*
- * Copyright 2009-2018 The OpenSSL Project Authors. All Rights Reserved.
+ * Copyright 2009-2025 The OpenSSL Project Authors. All Rights Reserved.
  *
  * Licensed under the OpenSSL license (the "License").  You may not use
  * this file except in compliance with the License.  You can obtain a copy
@@ -215,7 +215,7 @@ static int kek_unwrap_key(unsigned char *out, size_t *outlen,
         /* Check byte failure */
         goto err;
     }
-    if (inlen < (size_t)(tmp[0] - 4)) {
+    if (inlen < 4 + (size_t)tmp[0]) {
         /* Invalid length value */
         goto err;
     }
