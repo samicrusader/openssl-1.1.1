@@ -113,12 +113,6 @@
 #endif
 
 #define MAX_MISALIGNMENT 63
-
-#define ALGOR_NUM       31
-#define RSA_NUM         7
-#define DSA_NUM         3
-
-#define EC_NUM          18
 #define MAX_ECDH_SIZE   256
 #define MISALIGN        64
 
@@ -134,33 +128,6 @@ static volatile int run = 0;
 
 static int mr = 0;
 static int usertime = 1;
-
-typedef struct loopargs_st {
-    ASYNC_JOB *inprogress_job;
-    ASYNC_WAIT_CTX *wait_ctx;
-    unsigned char *buf;
-    unsigned char *buf2;
-    unsigned char *buf_malloc;
-    unsigned char *buf2_malloc;
-    unsigned char *key;
-    unsigned int siglen;
-#ifndef OPENSSL_NO_RSA
-    RSA *rsa_key[RSA_NUM];
-#endif
-#ifndef OPENSSL_NO_DSA
-    DSA *dsa_key[DSA_NUM];
-#endif
-#ifndef OPENSSL_NO_EC
-    EC_KEY *ecdsa[EC_NUM];
-    EVP_PKEY_CTX *ecdh_ctx[EC_NUM];
-    unsigned char *secret_a;
-    unsigned char *secret_b;
-    size_t outlen[EC_NUM];
-#endif
-    EVP_CIPHER_CTX *ctx;
-    HMAC_CTX *hctx;
-    GCM128_CONTEXT *gcm_ctx;
-} loopargs_t;
 
 #ifndef OPENSSL_NO_MD2
 static int EVP_Digest_MD2_loop(void *args);
@@ -215,13 +182,11 @@ static int DSA_verify_loop(void *args);
 static int ECDSA_sign_loop(void *args);
 static int ECDSA_verify_loop(void *args);
 #endif
-static int run_benchmark(int async_jobs, int (*loop_function) (void *),
-                         loopargs_t * loopargs);
 
 static double Time_F(int s);
 static void print_message(const char *s, long num, int length, int tm);
 static void pkey_print_message(const char *str, const char *str2,
-                               long num, int bits, int sec);
+                               long num, unsigned int bits, int sec);
 static void print_result(int alg, int run_no, int count, double time_used);
 #ifndef NO_FORK
 static int do_multi(int multi, int size_num);
@@ -230,33 +195,7 @@ static int do_multi(int multi, int size_num);
 static const int lengths_list[] = {
     16, 64, 256, 1024, 8 * 1024, 16 * 1024
 };
-static int lengths_single = 0;
-
 static const int *lengths = lengths_list;
-
-static const char *names[ALGOR_NUM] = {
-    "md2", "mdc2", "md4", "md5", "hmac(md5)", "sha1", "rmd160", "rc4",
-    "des cbc", "des ede3", "idea cbc", "seed cbc",
-    "rc2 cbc", "rc5-32/12 cbc", "blowfish cbc", "cast cbc",
-    "aes-128 cbc", "aes-192 cbc", "aes-256 cbc",
-    "camellia-128 cbc", "camellia-192 cbc", "camellia-256 cbc",
-    "evp", "sha256", "sha512", "whirlpool",
-    "aes-128 ige", "aes-192 ige", "aes-256 ige", "ghash",
-    "rand"
-};
-
-static double results[ALGOR_NUM][OSSL_NELEM(lengths_list)];
-
-#ifndef OPENSSL_NO_RSA
-static double rsa_results[RSA_NUM][2];
-#endif
-#ifndef OPENSSL_NO_DSA
-static double dsa_results[DSA_NUM][2];
-#endif
-#ifndef OPENSSL_NO_EC
-static double ecdsa_results[EC_NUM][2];
-static double ecdh_results[EC_NUM][1];
-#endif
 
 #ifdef SIGALRM
 # if defined(__STDC__) || defined(sgi) || defined(_AIX)
@@ -334,12 +273,17 @@ static double Time_F(int s)
 }
 #endif
 
-static void multiblock_speed(const EVP_CIPHER *evp_cipher,
+static void multiblock_speed(const EVP_CIPHER *evp_cipher, int lengths_single,
                              const openssl_speed_sec_t *seconds);
 
-static int found(const char *name, const OPT_PAIR *pairs, int *result)
+#define found(value, pairs, result)\
+    opt_found(value, result, pairs, OSSL_NELEM(pairs))
+static int opt_found(const char *name, unsigned int *result,
+                     const OPT_PAIR pairs[], unsigned int nbelem)
 {
-    for (; pairs->name; pairs++)
+    unsigned int idx;
+
+    for (idx = 0; idx < nbelem; ++idx, pairs++)
         if (strcmp(name, pairs->name) == 0) {
             *result = pairs->retval;
             return 1;
@@ -383,7 +327,7 @@ const OPTIONS speed_options[] = {
      "Run benchmarks for pnum seconds"},
     {"bytes", OPT_BYTES, 'p',
      "Run cipher, digest and rand benchmarks on pnum bytes"},
-    {NULL},
+    {NULL}
 };
 
 #define D_MD2           0
@@ -417,7 +361,21 @@ const OPTIONS speed_options[] = {
 #define D_IGE_256_AES   28
 #define D_GHASH         29
 #define D_RAND          30
-static OPT_PAIR doit_choices[] = {
+/* name of algorithms to test */
+static const char *names[] = {
+    "md2", "mdc2", "md4", "md5", "hmac(md5)", "sha1", "rmd160", "rc4",
+    "des cbc", "des ede3", "idea cbc", "seed cbc",
+    "rc2 cbc", "rc5-32/12 cbc", "blowfish cbc", "cast cbc",
+    "aes-128 cbc", "aes-192 cbc", "aes-256 cbc",
+    "camellia-128 cbc", "camellia-192 cbc", "camellia-256 cbc",
+    "evp", "sha256", "sha512", "whirlpool",
+    "aes-128 ige", "aes-192 ige", "aes-256 ige", "ghash",
+    "rand"
+};
+#define ALGOR_NUM       OSSL_NELEM(names)
+
+/* list of configured algorithm (remaining) */
+static const OPT_PAIR doit_choices[] = {
 #ifndef OPENSSL_NO_MD2
     {"md2", D_MD2},
 #endif
@@ -482,21 +440,24 @@ static OPT_PAIR doit_choices[] = {
     {"cast5", D_CBC_CAST},
 #endif
     {"ghash", D_GHASH},
-    {"rand", D_RAND},
-    {NULL}
+    {"rand", D_RAND}
 };
+
+static double results[ALGOR_NUM][OSSL_NELEM(lengths_list)];
 
 #ifndef OPENSSL_NO_DSA
 # define R_DSA_512       0
 # define R_DSA_1024      1
 # define R_DSA_2048      2
-static OPT_PAIR dsa_choices[] = {
+static const OPT_PAIR dsa_choices[] = {
     {"dsa512", R_DSA_512},
     {"dsa1024", R_DSA_1024},
-    {"dsa2048", R_DSA_2048},
-    {NULL},
+    {"dsa2048", R_DSA_2048}
 };
-#endif
+# define DSA_NUM         OSSL_NELEM(dsa_choices)
+
+static double dsa_results[DSA_NUM][2];  /* 2 ops: sign then verify */
+#endif  /* OPENSSL_NO_DSA */
 
 #define R_RSA_512       0
 #define R_RSA_1024      1
@@ -505,16 +466,20 @@ static OPT_PAIR dsa_choices[] = {
 #define R_RSA_4096      4
 #define R_RSA_7680      5
 #define R_RSA_15360     6
-static OPT_PAIR rsa_choices[] = {
+#ifndef OPENSSL_NO_RSA
+static const OPT_PAIR rsa_choices[] = {
     {"rsa512", R_RSA_512},
     {"rsa1024", R_RSA_1024},
     {"rsa2048", R_RSA_2048},
     {"rsa3072", R_RSA_3072},
     {"rsa4096", R_RSA_4096},
     {"rsa7680", R_RSA_7680},
-    {"rsa15360", R_RSA_15360},
-    {NULL}
+    {"rsa15360", R_RSA_15360}
 };
+# define RSA_NUM OSSL_NELEM(rsa_choices)
+
+static double rsa_results[RSA_NUM][2];  /* 2 ops: sign then verify */
+#endif /* OPENSSL_NO_RSA */
 
 #define R_EC_P160    0
 #define R_EC_P192    1
@@ -532,8 +497,14 @@ static OPT_PAIR rsa_choices[] = {
 #define R_EC_B283    13
 #define R_EC_B409    14
 #define R_EC_B571    15
-#define R_EC_X25519  16
-#define R_EC_X448    17
+#define R_EC_BRP256R1  16
+#define R_EC_BRP256T1  17
+#define R_EC_BRP384R1  18
+#define R_EC_BRP384T1  19
+#define R_EC_BRP512R1  20
+#define R_EC_BRP512T1  21
+#define R_EC_X25519  22
+#define R_EC_X448    23
 #ifndef OPENSSL_NO_EC
 static OPT_PAIR ecdsa_choices[] = {
     {"ecdsap160", R_EC_P160},
@@ -552,10 +523,18 @@ static OPT_PAIR ecdsa_choices[] = {
     {"ecdsab283", R_EC_B283},
     {"ecdsab409", R_EC_B409},
     {"ecdsab571", R_EC_B571},
-    {NULL}
+    {"ecdsabrp256r1", R_EC_BRP256R1},
+    {"ecdsabrp256t1", R_EC_BRP256T1},
+    {"ecdsabrp384r1", R_EC_BRP384R1},
+    {"ecdsabrp384t1", R_EC_BRP384T1},
+    {"ecdsabrp512r1", R_EC_BRP512R1},
+    {"ecdsabrp512t1", R_EC_BRP512T1}
 };
+# define ECDSA_NUM       OSSL_NELEM(ecdsa_choices)
 
-static OPT_PAIR ecdh_choices[] = {
+static double ecdsa_results[ECDSA_NUM][2];    /* 2 ops: sign then verify */
+
+static const OPT_PAIR ecdh_choices[] = {
     {"ecdhp160", R_EC_P160},
     {"ecdhp192", R_EC_P192},
     {"ecdhp224", R_EC_P224},
@@ -572,11 +551,19 @@ static OPT_PAIR ecdh_choices[] = {
     {"ecdhb283", R_EC_B283},
     {"ecdhb409", R_EC_B409},
     {"ecdhb571", R_EC_B571},
+    {"ecdhbrp256r1", R_EC_BRP256R1},
+    {"ecdhbrp256t1", R_EC_BRP256T1},
+    {"ecdhbrp384r1", R_EC_BRP384R1},
+    {"ecdhbrp384t1", R_EC_BRP384T1},
+    {"ecdhbrp512r1", R_EC_BRP512R1},
+    {"ecdhbrp512t1", R_EC_BRP512T1},
     {"ecdhx25519", R_EC_X25519},
-    {"ecdhx448", R_EC_X448},
-    {NULL}
+    {"ecdhx448", R_EC_X448}
 };
-#endif
+# define EC_NUM       OSSL_NELEM(ecdh_choices)
+
+static double ecdh_results[EC_NUM][1];  /* 1 op: derivation */
+#endif /* OPENSSL_NO_EC */
 
 #ifndef SIGALRM
 # define COND(d) (count < (d))
@@ -586,7 +573,36 @@ static OPT_PAIR ecdh_choices[] = {
 # define COUNT(d) (count)
 #endif                          /* SIGALRM */
 
-static int testnum;
+typedef struct loopargs_st {
+    ASYNC_JOB *inprogress_job;
+    ASYNC_WAIT_CTX *wait_ctx;
+    unsigned char *buf;
+    unsigned char *buf2;
+    unsigned char *buf_malloc;
+    unsigned char *buf2_malloc;
+    unsigned char *key;
+    unsigned int siglen;
+#ifndef OPENSSL_NO_RSA
+    RSA *rsa_key[RSA_NUM];
+#endif
+#ifndef OPENSSL_NO_DSA
+    DSA *dsa_key[DSA_NUM];
+#endif
+#ifndef OPENSSL_NO_EC
+    EC_KEY *ecdsa[ECDSA_NUM];
+    EVP_PKEY_CTX *ecdh_ctx[EC_NUM];
+    unsigned char *secret_a;
+    unsigned char *secret_b;
+    size_t outlen[EC_NUM];
+#endif
+    EVP_CIPHER_CTX *ctx;
+    HMAC_CTX *hctx;
+    GCM128_CONTEXT *gcm_ctx;
+} loopargs_t;
+static int run_benchmark(int async_jobs, int (*loop_function) (void *),
+                         loopargs_t * loopargs);
+
+static unsigned int testnum;
 
 /* Nb of iterations to do per algorithm and key-size */
 static long c[ALGOR_NUM][OSSL_NELEM(lengths_list)];
@@ -1040,7 +1056,7 @@ static int DSA_verify_loop(void *args)
 #endif
 
 #ifndef OPENSSL_NO_EC
-static long ecdsa_c[EC_NUM][2];
+static long ecdsa_c[ECDSA_NUM][2];
 static int ECDSA_sign_loop(void *args)
 {
     loopargs_t *tempargs = *(loopargs_t **) args;
@@ -1258,31 +1274,28 @@ int speed_main(int argc, char **argv)
     ENGINE *e = NULL;
     int (*loopfunc)(void *args);
     loopargs_t *loopargs = NULL;
-    int async_init = 0;
-    int loopargs_len = 0;
-    char *prog;
+    const char *prog;
     const char *engine_id = NULL;
     const EVP_CIPHER *evp_cipher = NULL;
     double d = 0.0;
     OPTION_CHOICE o;
-    int multiblock = 0, pr_header = 0;
+    int async_init = 0, multiblock = 0, pr_header = 0;
     int doit[ALGOR_NUM] = { 0 };
-    int ret = 1, i, k, misalign = 0;
+    int ret = 1, misalign = 0, lengths_single = 0;
     long count = 0;
-    int size_num = OSSL_NELEM(lengths_list);
+    unsigned int size_num = OSSL_NELEM(lengths_list);
+    unsigned int i, k, loop, loopargs_len = 0, async_jobs = 0;
     int keylen;
     int buflen;
 #ifndef NO_FORK
     int multi = 0;
 #endif
-    unsigned int async_jobs = 0;
 #if !defined(OPENSSL_NO_RSA) || !defined(OPENSSL_NO_DSA) \
     || !defined(OPENSSL_NO_EC)
     long rsa_count = 1;
 #endif
-#ifndef OPENSSL_NO_EC
-    size_t loop;
-#endif
+    openssl_speed_sec_t seconds = { SECONDS, RSA_SECONDS, DSA_SECONDS,
+                                    ECDSA_SECONDS, ECDH_SECONDS };
 
     /* What follows are the buffers and key material. */
 #ifndef OPENSSL_NO_RC5
@@ -1367,47 +1380,45 @@ int speed_main(int argc, char **argv)
     /*
      * We only test over the following curves as they are representative, To
      * add tests over more curves, simply add the curve NID and curve name to
-     * the following arrays and increase the EC_NUM value accordingly.
+     * the following arrays and increase the |ecdh_choices| list accordingly.
      */
-    static const unsigned int test_curves[EC_NUM] = {
+    static const struct {
+        const char *name;
+        unsigned int nid;
+        unsigned int bits;
+    } test_curves[] = {
         /* Prime Curves */
-        NID_secp160r1, NID_X9_62_prime192v1, NID_secp224r1,
-        NID_X9_62_prime256v1, NID_secp384r1, NID_secp521r1,
+        {"secp160r1", NID_secp160r1, 160},
+        {"nistp192", NID_X9_62_prime192v1, 192},
+        {"nistp224", NID_secp224r1, 224},
+        {"nistp256", NID_X9_62_prime256v1, 256},
+        {"nistp384", NID_secp384r1, 384}, 
+        {"nistp521", NID_secp521r1, 521},
         /* Binary Curves */
-        NID_sect163k1, NID_sect233k1, NID_sect283k1,
-        NID_sect409k1, NID_sect571k1, NID_sect163r2,
-        NID_sect233r1, NID_sect283r1, NID_sect409r1,
-        NID_sect571r1,
-        /* Other */
-        NID_X25519, NID_X448
+        {"nistk163", NID_sect163k1, 163},
+        {"nistk233", NID_sect233k1, 233}, 
+        {"nistk283", NID_sect283k1, 283},
+        {"nistk409", NID_sect409k1, 409},
+        {"nistk571", NID_sect571k1, 571},
+        {"nistb163", NID_sect163r2, 163},
+        {"nistb233", NID_sect233r1, 233},
+        {"nistb283", NID_sect283r1, 283},
+        {"nistb409", NID_sect409r1, 409},
+        {"nistb571", NID_sect571r1, 571},
+        {"brainpoolP256r1", NID_brainpoolP256r1, 256},
+        {"brainpoolP256t1", NID_brainpoolP256t1, 256},
+        {"brainpoolP384r1", NID_brainpoolP384r1, 384},
+        {"brainpoolP384t1", NID_brainpoolP384t1, 384},
+        {"brainpoolP512r1", NID_brainpoolP512r1, 512},
+        {"brainpoolP512t1", NID_brainpoolP512t1, 512},
+        /* Other and ECDH only ones */
+        {"X25519", NID_X25519, 253},
+        {"X448", NID_X448, 448}
     };
-    static const char *test_curves_names[EC_NUM] = {
-        /* Prime Curves */
-        "secp160r1", "nistp192", "nistp224",
-        "nistp256", "nistp384", "nistp521",
-        /* Binary Curves */
-        "nistk163", "nistk233", "nistk283",
-        "nistk409", "nistk571", "nistb163",
-        "nistb233", "nistb283", "nistb409",
-        "nistb571",
-        /* Other */
-        "X25519", "X448"
-    };
-    static const int test_curves_bits[EC_NUM] = {
-        160, 192, 224,
-        256, 384, 521,
-        163, 233, 283,
-        409, 571, 163,
-        233, 283, 409,
-        571, 253, 448
-    };
-
-    int ecdsa_doit[EC_NUM] = { 0 };
+    int ecdsa_doit[ECDSA_NUM] = { 0 };
     int ecdh_doit[EC_NUM] = { 0 };
+    OPENSSL_assert(OSSL_NELEM(test_curves) >= EC_NUM);
 #endif                          /* ndef OPENSSL_NO_EC */
-
-    openssl_speed_sec_t seconds = { SECONDS, RSA_SECONDS, DSA_SECONDS,
-                                    ECDSA_SECONDS, ECDH_SECONDS };
 
     prog = opt_init(argc, argv, speed_options);
     while ((o = opt_next()) != OPT_EOF) {
@@ -1463,9 +1474,7 @@ int speed_main(int argc, char **argv)
                 goto opterr;
             }
             if (async_jobs > 99999) {
-                BIO_printf(bio_err,
-                           "%s: too many async_jobs\n",
-                           prog);
+                BIO_printf(bio_err, "%s: too many async_jobs\n", prog);
                 goto opterr;
             }
 #endif
@@ -1533,10 +1542,8 @@ int speed_main(int argc, char **argv)
         if (strcmp(*argv, "openssl") == 0)
             continue;
         if (strcmp(*argv, "rsa") == 0) {
-            rsa_doit[R_RSA_512] = rsa_doit[R_RSA_1024] =
-                rsa_doit[R_RSA_2048] = rsa_doit[R_RSA_3072] =
-                rsa_doit[R_RSA_4096] = rsa_doit[R_RSA_7680] =
-                rsa_doit[R_RSA_15360] = 1;
+            for (loop = 0; loop < OSSL_NELEM(rsa_doit); loop++)
+                rsa_doit[loop] = 1;
             continue;
         }
         if (found(*argv, rsa_choices, &i)) {
@@ -1567,8 +1574,8 @@ int speed_main(int argc, char **argv)
 #endif
 #ifndef OPENSSL_NO_EC
         if (strcmp(*argv, "ecdsa") == 0) {
-            for (loop = 0; loop < OSSL_NELEM(ecdsa_choices); loop++)
-                ecdsa_doit[ecdsa_choices[loop].retval] = 1;
+            for (loop = 0; loop < OSSL_NELEM(ecdsa_doit); loop++)
+                ecdsa_doit[loop] = 1;
             continue;
         }
         if (found(*argv, ecdsa_choices, &i)) {
@@ -1576,8 +1583,8 @@ int speed_main(int argc, char **argv)
             continue;
         }
         if (strcmp(*argv, "ecdh") == 0) {
-            for (loop = 0; loop < OSSL_NELEM(ecdh_choices); loop++)
-                ecdh_doit[ecdh_choices[loop].retval] = 1;
+            for (loop = 0; loop < OSSL_NELEM(ecdh_doit); loop++)
+                ecdh_doit[loop] = 1;
             continue;
         }
         if (found(*argv, ecdh_choices, &i)) {
@@ -1649,10 +1656,10 @@ int speed_main(int argc, char **argv)
             dsa_doit[i] = 1;
 #endif
 #ifndef OPENSSL_NO_EC
-        for (loop = 0; loop < OSSL_NELEM(ecdsa_choices); loop++)
-            ecdsa_doit[ecdsa_choices[loop].retval] = 1;
-        for (loop = 0; loop < OSSL_NELEM(ecdh_choices); loop++)
-            ecdh_doit[ecdh_choices[loop].retval] = 1;
+        for (loop = 0; loop < OSSL_NELEM(ecdsa_doit); loop++)
+            ecdsa_doit[loop] = 1;
+        for (loop = 0; loop < OSSL_NELEM(ecdh_doit); loop++)
+            ecdh_doit[loop] = 1;
 #endif
     }
     for (i = 0; i < ALGOR_NUM; i++)
@@ -1922,6 +1929,32 @@ int speed_main(int argc, char **argv)
             }
         }
     }
+    /* repeated code good to factorize */
+    ecdh_c[R_EC_BRP256R1][0] = count / 1000;
+    for (i = R_EC_BRP384R1; i <= R_EC_BRP512R1; i += 2) {
+        ecdh_c[i][0] = ecdh_c[i - 2][0] / 2;
+        if (ecdh_doit[i] <= 1 && ecdh_c[i][0] == 0)
+            ecdh_doit[i] = 0;
+        else {
+            if (ecdh_c[i][0] == 0) {
+                ecdh_c[i][0] = 1;
+            }
+        }
+    }
+    ecdh_c[R_EC_BRP256T1][0] = count / 1000;
+    for (i = R_EC_BRP384T1; i <= R_EC_BRP512T1; i += 2) {
+        ecdh_c[i][0] = ecdh_c[i - 2][0] / 2;
+        if (ecdh_doit[i] <= 1 && ecdh_c[i][0] == 0)
+            ecdh_doit[i] = 0;
+        else {
+            if (ecdh_c[i][0] == 0) {
+                ecdh_c[i][0] = 1;
+            }
+        }
+    }
+    /* default iteration count for the last two EC Curves */
+    ecdh_c[R_EC_X25519][0] = count / 1800;
+    ecdh_c[R_EC_X448][0] = count / 7200;
 #  endif
 
 # else
@@ -2399,7 +2432,7 @@ int speed_main(int argc, char **argv)
                 BIO_printf(bio_err, "Async mode is not supported, exiting...");
                 exit(1);
             }
-            multiblock_speed(evp_cipher, &seconds);
+            multiblock_speed(evp_cipher, lengths_single, &seconds);
             ret = 0;
             goto end;
         }
@@ -2512,7 +2545,7 @@ int speed_main(int argc, char **argv)
             d = Time_F(STOP);
             BIO_printf(bio_err,
                        mr ? "+R1:%ld:%d:%.2f\n"
-                       : "%ld %d bit private RSA's in %.2fs\n",
+                       : "%ld %u bits private RSA's in %.2fs\n",
                        count, rsa_bits[testnum], d);
             rsa_results[testnum][0] = (double)count / d;
             rsa_count = count;
@@ -2538,7 +2571,7 @@ int speed_main(int argc, char **argv)
             d = Time_F(STOP);
             BIO_printf(bio_err,
                        mr ? "+R2:%ld:%d:%.2f\n"
-                       : "%ld %d bit public RSA's in %.2fs\n",
+                       : "%ld %u bits public RSA's in %.2fs\n",
                        count, rsa_bits[testnum], d);
             rsa_results[testnum][1] = (double)count / d;
         }
@@ -2581,8 +2614,8 @@ int speed_main(int argc, char **argv)
             count = run_benchmark(async_jobs, DSA_sign_loop, loopargs);
             d = Time_F(STOP);
             BIO_printf(bio_err,
-                       mr ? "+R3:%ld:%d:%.2f\n"
-                       : "%ld %d bit DSA signs in %.2fs\n",
+                       mr ? "+R3:%ld:%u:%.2f\n"
+                       : "%ld %u bits DSA signs in %.2fs\n",
                        count, dsa_bits[testnum], d);
             dsa_results[testnum][0] = (double)count / d;
             rsa_count = count;
@@ -2607,8 +2640,8 @@ int speed_main(int argc, char **argv)
             count = run_benchmark(async_jobs, DSA_verify_loop, loopargs);
             d = Time_F(STOP);
             BIO_printf(bio_err,
-                       mr ? "+R4:%ld:%d:%.2f\n"
-                       : "%ld %d bit DSA verify in %.2fs\n",
+                       mr ? "+R4:%ld:%u:%.2f\n"
+                       : "%ld %u bits DSA verify in %.2fs\n",
                        count, dsa_bits[testnum], d);
             dsa_results[testnum][1] = (double)count / d;
         }
@@ -2622,14 +2655,14 @@ int speed_main(int argc, char **argv)
 #endif                          /* OPENSSL_NO_DSA */
 
 #ifndef OPENSSL_NO_EC
-    for (testnum = 0; testnum < EC_NUM; testnum++) {
+    for (testnum = 0; testnum < ECDSA_NUM; testnum++) {
         int st = 1;
 
         if (!ecdsa_doit[testnum])
             continue;           /* Ignore Curve */
         for (i = 0; i < loopargs_len; i++) {
             loopargs[i].ecdsa[testnum] =
-                EC_KEY_new_by_curve_name(test_curves[testnum]);
+                EC_KEY_new_by_curve_name(test_curves[testnum].nid);
             if (loopargs[i].ecdsa[testnum] == NULL) {
                 st = 0;
                 break;
@@ -2658,16 +2691,15 @@ int speed_main(int argc, char **argv)
             } else {
                 pkey_print_message("sign", "ecdsa",
                                    ecdsa_c[testnum][0],
-                                   test_curves_bits[testnum],
-                                   seconds.ecdsa);
+                                   test_curves[testnum].bits, seconds.ecdsa);
                 Time_F(START);
                 count = run_benchmark(async_jobs, ECDSA_sign_loop, loopargs);
                 d = Time_F(STOP);
 
                 BIO_printf(bio_err,
-                           mr ? "+R5:%ld:%d:%.2f\n" :
-                           "%ld %d bit ECDSA signs in %.2fs \n",
-                           count, test_curves_bits[testnum], d);
+                           mr ? "+R5:%ld:%u:%.2f\n" :
+                           "%ld %u bits ECDSA signs in %.2fs \n",
+                           count, test_curves[testnum].bits, d);
                 ecdsa_results[testnum][0] = (double)count / d;
                 rsa_count = count;
             }
@@ -2688,15 +2720,14 @@ int speed_main(int argc, char **argv)
             } else {
                 pkey_print_message("verify", "ecdsa",
                                    ecdsa_c[testnum][1],
-                                   test_curves_bits[testnum],
-                                   seconds.ecdsa);
+                                   test_curves[testnum].bits, seconds.ecdsa);
                 Time_F(START);
                 count = run_benchmark(async_jobs, ECDSA_verify_loop, loopargs);
                 d = Time_F(STOP);
                 BIO_printf(bio_err,
-                           mr ? "+R6:%ld:%d:%.2f\n"
-                           : "%ld %d bit ECDSA verify in %.2fs\n",
-                           count, test_curves_bits[testnum], d);
+                           mr ? "+R6:%ld:%u:%.2f\n"
+                           : "%ld %u bits ECDSA verify in %.2fs\n",
+                           count, test_curves[testnum].bits, d);
                 ecdsa_results[testnum][1] = (double)count / d;
             }
 
@@ -2736,7 +2767,7 @@ int speed_main(int argc, char **argv)
              * If this fails we try creating a EVP_PKEY_EC generic param ctx,
              * then we set the curve by NID before deriving the actual keygen
              * ctx for that specific curve. */
-            kctx = EVP_PKEY_CTX_new_id(test_curves[testnum], NULL); /* keygen ctx from NID */
+            kctx = EVP_PKEY_CTX_new_id(test_curves[testnum].nid, NULL); /* keygen ctx from NID */
             if (!kctx) {
                 EVP_PKEY_CTX *pctx = NULL;
                 EVP_PKEY *params = NULL;
@@ -2767,7 +2798,7 @@ int speed_main(int argc, char **argv)
                        /* Set the curve by NID */
                        !EVP_PKEY_CTX_set_ec_paramgen_curve_nid(pctx,
                                                                test_curves
-                                                               [testnum]) ||
+                                                               [testnum].nid) ||
                        /* Create the parameter object params */
                        !EVP_PKEY_paramgen(pctx, &params)) {
                     ecdh_checks = 0;
@@ -2849,23 +2880,22 @@ int speed_main(int argc, char **argv)
         if (ecdh_checks != 0) {
             pkey_print_message("", "ecdh",
                                ecdh_c[testnum][0],
-                               test_curves_bits[testnum],
-                               seconds.ecdh);
+                               test_curves[testnum].bits, seconds.ecdh);
             Time_F(START);
             count =
                 run_benchmark(async_jobs, ECDH_EVP_derive_key_loop, loopargs);
             d = Time_F(STOP);
             BIO_printf(bio_err,
                        mr ? "+R7:%ld:%d:%.2f\n" :
-                       "%ld %d-bit ECDH ops in %.2fs\n", count,
-                       test_curves_bits[testnum], d);
+                       "%ld %u-bits ECDH ops in %.2fs\n", count,
+                       test_curves[testnum].bits, d);
             ecdh_results[testnum][0] = (double)count / d;
             rsa_count = count;
         }
 
         if (rsa_count <= 1) {
             /* if longer than 10s, don't do any more */
-            for (testnum++; testnum < EC_NUM; testnum++)
+            for (testnum++; testnum < OSSL_NELEM(ecdh_doit); testnum++)
                 ecdh_doit[testnum] = 0;
         }
     }
@@ -2914,7 +2944,7 @@ int speed_main(int argc, char **argv)
         if (!doit[k])
             continue;
         if (mr)
-            printf("+F:%d:%s", k, names[k]);
+            printf("+F:%u:%s", k, names[k]);
         else
             printf("%-13s", names[k]);
         for (testnum = 0; testnum < size_num; testnum++) {
@@ -2963,7 +2993,7 @@ int speed_main(int argc, char **argv)
 #endif
 #ifndef OPENSSL_NO_EC
     testnum = 1;
-    for (k = 0; k < EC_NUM; k++) {
+    for (k = 0; k < OSSL_NELEM(ecdsa_doit); k++) {
         if (!ecdsa_doit[k])
             continue;
         if (testnum && !mr) {
@@ -2973,12 +3003,11 @@ int speed_main(int argc, char **argv)
 
         if (mr)
             printf("+F4:%u:%u:%f:%f\n",
-                   k, test_curves_bits[k],
+                   k, test_curves[k].bits,
                    ecdsa_results[k][0], ecdsa_results[k][1]);
         else
-            printf("%4u bit ecdsa (%s) %8.4fs %8.4fs %8.1f %8.1f\n",
-                   test_curves_bits[k],
-                   test_curves_names[k],
+            printf("%4u bits ecdsa (%s) %8.4fs %8.4fs %8.1f %8.1f\n",
+                   test_curves[k].bits, test_curves[k].name,
                    1.0 / ecdsa_results[k][0], 1.0 / ecdsa_results[k][1],
                    ecdsa_results[k][0], ecdsa_results[k][1]);
     }
@@ -2993,13 +3022,12 @@ int speed_main(int argc, char **argv)
         }
         if (mr)
             printf("+F5:%u:%u:%f:%f\n",
-                   k, test_curves_bits[k],
+                   k, test_curves[k].bits,
                    ecdh_results[k][0], 1.0 / ecdh_results[k][0]);
 
         else
-            printf("%4u bit ecdh (%s) %8.4fs %8.1f\n",
-                   test_curves_bits[k],
-                   test_curves_names[k],
+            printf("%4u bits ecdh (%s) %8.4fs %8.1f\n",
+                   test_curves[k].bits, test_curves[k].name,
                    1.0 / ecdh_results[k][0], ecdh_results[k][0]);
     }
 #endif
@@ -3021,10 +3049,10 @@ int speed_main(int argc, char **argv)
             DSA_free(loopargs[i].dsa_key[k]);
 #endif
 #ifndef OPENSSL_NO_EC
-        for (k = 0; k < EC_NUM; k++) {
+        for (k = 0; k < ECDSA_NUM; k++)
             EC_KEY_free(loopargs[i].ecdsa[k]);
+        for (k = 0; k < EC_NUM; k++)
             EVP_PKEY_CTX_free(loopargs[i].ecdh_ctx[k]);
-        }
         OPENSSL_free(loopargs[i].secret_a);
         OPENSSL_free(loopargs[i].secret_b);
 #endif
@@ -3060,18 +3088,18 @@ static void print_message(const char *s, long num, int length, int tm)
 }
 
 static void pkey_print_message(const char *str, const char *str2, long num,
-                               int bits, int tm)
+                               unsigned int bits, int tm)
 {
 #ifdef SIGALRM
     BIO_printf(bio_err,
                mr ? "+DTP:%d:%s:%s:%d\n"
-               : "Doing %d bit %s %s's for %ds: ", bits, str, str2, tm);
+               : "Doing %u bits %s %s's for %ds: ", bits, str, str2, tm);
     (void)BIO_flush(bio_err);
     alarm(tm);
 #else
     BIO_printf(bio_err,
                mr ? "+DNP:%ld:%d:%s:%s\n"
-               : "Doing %ld %d bit %s %s's: ", num, bits, str, str2);
+               : "Doing %ld %u bits %s %s's: ", num, bits, str, str2);
     (void)BIO_flush(bio_err);
 #endif
 }
@@ -3124,7 +3152,7 @@ static int do_multi(int multi, int size_num)
     int *fds;
     static char sep[] = ":";
 
-    fds = malloc(sizeof(*fds) * multi);
+    fds = app_malloc(sizeof(*fds) * multi, "fd buffer for do_multi");
     for (n = 0; n < multi; ++n) {
         if (pipe(fd) == -1) {
             BIO_printf(bio_err, "pipe failure\n");
@@ -3249,7 +3277,7 @@ static int do_multi(int multi, int size_num)
 }
 #endif
 
-static void multiblock_speed(const EVP_CIPHER *evp_cipher,
+static void multiblock_speed(const EVP_CIPHER *evp_cipher, int lengths_single,
                              const openssl_speed_sec_t *seconds)
 {
     static const int mblengths_list[] =

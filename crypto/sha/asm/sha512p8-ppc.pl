@@ -1,5 +1,5 @@
 #! /usr/bin/env perl
-# Copyright 2014-2016 The OpenSSL Project Authors. All Rights Reserved.
+# Copyright 2014-2018 The OpenSSL Project Authors. All Rights Reserved.
 #
 # Licensed under the OpenSSL license (the "License").  You may not use
 # this file except in compliance with the License.  You can obtain a copy
@@ -36,9 +36,9 @@
 # little-endian system]. Numbers in square brackets are for 64-bit
 # build of sha512-ppc.pl, presented for reference.
 #
-#		POWER8
-# SHA256	9.9 [15.8]
-# SHA512	6.3 [10.3]
+#		POWER8		POWER9
+# SHA256	9.9 [15.8]	9.2 [9.3]
+# SHA512	6.3 [10.3]	5.8 [5.9]
 
 $flavour=shift;
 $output =shift;

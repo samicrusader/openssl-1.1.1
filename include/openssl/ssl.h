@@ -1497,7 +1497,7 @@ __owur int SSL_get_fd(const SSL *s);
 __owur int SSL_get_rfd(const SSL *s);
 __owur int SSL_get_wfd(const SSL *s);
 __owur const char *SSL_get_cipher_list(const SSL *s, int n);
-__owur char *SSL_get_shared_ciphers(const SSL *s, char *buf, int len);
+__owur char *SSL_get_shared_ciphers(const SSL *s, char *buf, int size);
 __owur int SSL_get_read_ahead(const SSL *s);
 __owur int SSL_pending(const SSL *s);
 __owur int SSL_has_pending(const SSL *s);
@@ -2095,6 +2095,11 @@ void SSL_set_record_padding_callback_arg(SSL *ssl, void *arg);
 void *SSL_get_record_padding_callback_arg(SSL *ssl);
 int SSL_set_block_padding(SSL *ssl, size_t block_size);
 
+int SSL_set_num_tickets(SSL *s, size_t num_tickets);
+size_t SSL_get_num_tickets(SSL *s);
+int SSL_CTX_set_num_tickets(SSL_CTX *ctx, size_t num_tickets);
+size_t SSL_CTX_get_num_tickets(SSL_CTX *ctx);
+
 # if OPENSSL_API_COMPAT < 0x10100000L
 #  define SSL_cache_hit(s) SSL_session_reused(s)
 # endif
@@ -2330,8 +2335,9 @@ __owur const struct openssl_ssl_test_functions *SSL_test_functions(void);
 __owur int SSL_free_buffers(SSL *ssl);
 __owur int SSL_alloc_buffers(SSL *ssl);
 
-/* Return codes for tls_get_ticket_from_client() and tls_decrypt_ticket() */
-typedef int SSL_TICKET_RETURN;
+/* Status codes passed to the decrypt session ticket callback. Some of these
+ * are for internal use only and are never passed to the callback. */
+typedef int SSL_TICKET_STATUS;
 
 /* Support for ticket appdata */
 /* fatal error, malloc failure */
@@ -2349,11 +2355,25 @@ typedef int SSL_TICKET_RETURN;
 /* same as above but the ticket needs to be renewed */
 # define SSL_TICKET_SUCCESS_RENEW    6
 
+/* Return codes for the decrypt session ticket callback */
+typedef int SSL_TICKET_RETURN;
+
+/* An error occurred */
+#define SSL_TICKET_RETURN_ABORT             0
+/* Do not use the ticket, do not send a renewed ticket to the client */
+#define SSL_TICKET_RETURN_IGNORE            1
+/* Do not use the ticket, send a renewed ticket to the client */
+#define SSL_TICKET_RETURN_IGNORE_RENEW      2
+/* Use the ticket, do not send a renewed ticket to the client */
+#define SSL_TICKET_RETURN_USE               3
+/* Use the ticket, send a renewed ticket to the client */
+#define SSL_TICKET_RETURN_USE_RENEW         4
+
 typedef int (*SSL_CTX_generate_session_ticket_fn)(SSL *s, void *arg);
 typedef SSL_TICKET_RETURN (*SSL_CTX_decrypt_session_ticket_fn)(SSL *s, SSL_SESSION *ss,
                                                                const unsigned char *keyname,
                                                                size_t keyname_length,
-                                                               SSL_TICKET_RETURN retv,
+                                                               SSL_TICKET_STATUS status,
                                                                void *arg);
 int SSL_CTX_set_session_ticket_cb(SSL_CTX *ctx,
                                   SSL_CTX_generate_session_ticket_fn gen_cb,

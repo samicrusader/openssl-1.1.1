@@ -747,7 +747,7 @@ typedef enum OPTION_choice {
     OPT_ID_PREFIX, OPT_SERVERNAME, OPT_SERVERNAME_FATAL,
     OPT_CERT2, OPT_KEY2, OPT_NEXTPROTONEG, OPT_ALPN,
     OPT_SRTP_PROFILES, OPT_KEYMATEXPORT, OPT_KEYMATEXPORTLEN,
-    OPT_KEYLOG_FILE, OPT_MAX_EARLY, OPT_EARLY_DATA,
+    OPT_KEYLOG_FILE, OPT_MAX_EARLY, OPT_EARLY_DATA, OPT_S_NUM_TICKETS,
     OPT_R_ENUM,
     OPT_S_ENUM,
     OPT_V_ENUM,
@@ -955,6 +955,8 @@ const OPTIONS s_server_options[] = {
     {"max_early_data", OPT_MAX_EARLY, 'n',
      "The maximum number of bytes of early data"},
     {"early_data", OPT_EARLY_DATA, '-', "Attempt to read early data"},
+    {"num_tickets", OPT_S_NUM_TICKETS, 'n',
+     "The number of TLSv1.3 session tickets that a server will automatically  issue" },
     {NULL, OPT_EOF, 0, NULL}
 };
 
@@ -1018,7 +1020,9 @@ int s_server_main(int argc, char *argv[])
     char *srpuserseed = NULL;
     char *srp_verifier_file = NULL;
 #endif
+#ifndef OPENSSL_NO_SRTP
     char *srtp_profiles = NULL;
+#endif
     int min_version = 0, max_version = 0, prot_opt = 0, no_prot_opt = 0;
     int s_server_verify = SSL_VERIFY_NONE;
     int s_server_session_id_context = 1; /* anything will do */
@@ -1252,6 +1256,7 @@ int s_server_main(int argc, char *argv[])
                 goto opthelp;
             break;
         case OPT_S_CASES:
+        case OPT_S_NUM_TICKETS:
             if (ssl_args == NULL)
                 ssl_args = sk_OPENSSL_STRING_new_null();
             if (ssl_args == NULL
@@ -1524,7 +1529,9 @@ int s_server_main(int argc, char *argv[])
             alpn_in = opt_arg();
             break;
         case OPT_SRTP_PROFILES:
+#ifndef OPENSSL_NO_SRTP
             srtp_profiles = opt_arg();
+#endif
             break;
         case OPT_KEYMATEXPORT:
             keymatexportlabel = opt_arg();
@@ -1746,6 +1753,9 @@ int s_server_main(int argc, char *argv[])
         ERR_print_errors(bio_err);
         goto end;
     }
+
+    SSL_CTX_clear_mode(ctx, SSL_MODE_AUTO_RETRY);
+
     if (sdebug)
         ssl_ctx_security_debug(ctx, sdebug);
 
@@ -2398,18 +2408,15 @@ static int sv_body(int s, int stype, int prot, unsigned char *context)
             if ((i < 0) || (!i && !read_from_terminal))
                 continue;
 #else
-            if ((SSL_version(con) == DTLS1_VERSION) &&
-                DTLSv1_get_timeout(con, &timeout))
+            if (SSL_is_dtls(con) && DTLSv1_get_timeout(con, &timeout))
                 timeoutp = &timeout;
             else
                 timeoutp = NULL;
 
             i = select(width, (void *)&readfds, NULL, NULL, timeoutp);
 
-            if ((SSL_version(con) == DTLS1_VERSION)
-                && DTLSv1_handle_timeout(con) > 0) {
+            if ((SSL_is_dtls(con)) && DTLSv1_handle_timeout(con) > 0)
                 BIO_printf(bio_err, "TIMEOUT occurred\n");
-            }
 
             if (i <= 0)
                 continue;

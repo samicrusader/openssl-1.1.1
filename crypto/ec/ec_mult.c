@@ -113,9 +113,9 @@ void EC_ec_pre_comp_free(EC_PRE_COMP *pre)
  *
  * At a high level, it is Montgomery ladder with conditional swaps.
  *
- * It performs either a fixed scalar point multiplication
+ * It performs either a fixed point multiplication
  *          (scalar * generator)
- * when point is NULL, or a generic scalar point multiplication
+ * when point is NULL, or a variable point multiplication
  *          (scalar * point)
  * when point is not NULL.
  *
@@ -140,7 +140,9 @@ static int ec_mul_consttime(const EC_GROUP *group, EC_POINT *r,
     int ret = 0;
 
     if (ctx == NULL && (ctx = new_ctx = BN_CTX_secure_new()) == NULL)
-        goto err;
+        return 0;
+
+    BN_CTX_start(ctx);
 
     order_bits = BN_num_bits(group->order);
 
@@ -158,7 +160,6 @@ static int ec_mul_consttime(const EC_GROUP *group, EC_POINT *r,
 
     EC_POINT_BN_set_flags(s, BN_FLG_CONSTTIME);
 
-    BN_CTX_start(ctx);
     lambda = BN_CTX_get(ctx);
     k = BN_CTX_get(ctx);
     if (k == NULL)
@@ -367,7 +368,7 @@ int ec_wNAF_mul(const EC_GROUP *group, EC_POINT *r, const BIGNUM *scalar,
                                  * precomputation is not available */
     int ret = 0;
 
-    if (group->meth != r->meth) {
+    if (!ec_point_is_compat(r, group)) {
         ECerr(EC_F_EC_WNAF_MUL, EC_R_INCOMPATIBLE_OBJECTS);
         return 0;
     }
@@ -403,7 +404,7 @@ int ec_wNAF_mul(const EC_GROUP *group, EC_POINT *r, const BIGNUM *scalar,
     }
 
     for (i = 0; i < num; i++) {
-        if (group->meth != points[i]->meth) {
+        if (!ec_point_is_compat(points[i], group)) {
             ECerr(EC_F_EC_WNAF_MUL, EC_R_INCOMPATIBLE_OBJECTS);
             return 0;
         }

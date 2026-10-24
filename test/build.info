@@ -51,7 +51,7 @@ INCLUDE_MAIN___test_libtestutil_OLB = /INCLUDE=MAIN
           recordlentest drbgtest drbg_cavs_test sslbuffertest \
           time_offset_test pemtest ssl_cert_table_internal_test ciphername_test \
           servername_test ocspapitest rsa_mp_test fatalerrtest tls13ccstest \
-          sysdefaulttest
+          sysdefaulttest errtest
 
   SOURCE[versions]=versions.c
   INCLUDE[versions]=../include
@@ -373,6 +373,13 @@ INCLUDE_MAIN___test_libtestutil_OLB = /INCLUDE=MAIN
   INCLUDE[servername_test]=../include
   DEPEND[servername_test]=../libcrypto ../libssl libtestutil.a
 
+  IF[{- !$disabled{cms} -}]
+    PROGRAMS_NO_INST=cmsapitest
+    SOURCE[cmsapitest]=cmsapitest.c
+    INCLUDE[cmsapitest]=../include
+    DEPEND[cmsapitest]=../libcrypto libtestutil.a
+  ENDIF
+
   IF[{- !$disabled{psk} -}]
     PROGRAMS_NO_INST=dtls_mtu_test
     SOURCE[dtls_mtu_test]=dtls_mtu_test.c ssltestlib.c
@@ -528,6 +535,10 @@ INCLUDE_MAIN___test_libtestutil_OLB = /INCLUDE=MAIN
   SOURCE[sysdefaulttest]=sysdefaulttest.c
   INCLUDE[sysdefaulttest]=../include
   DEPEND[sysdefaulttest]=../libcrypto ../libssl libtestutil.a
+
+  SOURCE[errtest]=errtest.c
+  INCLUDE[errtest]=../include
+  DEPEND[errtest]=../libcrypto libtestutil.a
 ENDIF
 
 {-
@@ -536,6 +547,7 @@ ENDIF
    use OpenSSL::Glob;
 
    my @nogo_headers = ( "asn1_mac.h",
+                        "opensslconf.h",
                         "__decc_include_prologue.h",
                         "__decc_include_epilogue.h" );
    my @nogo_headers_re = ( qr/.*err\.h/ );

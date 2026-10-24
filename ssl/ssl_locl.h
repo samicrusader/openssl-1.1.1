@@ -550,7 +550,7 @@ struct ssl_session_st {
     const SSL_CIPHER *cipher;
     unsigned long cipher_id;    /* when ASN.1 loaded, this needs to be used to
                                  * load the 'cipher' structure */
-    STACK_OF(SSL_CIPHER) *ciphers; /* shared ciphers? */
+    STACK_OF(SSL_CIPHER) *ciphers; /* ciphers offered by the client */
     CRYPTO_EX_DATA ex_data;     /* application specific data */
     /*
      * These are used to make removal of session-ids more efficient and to
@@ -1049,6 +1049,9 @@ struct ssl_ctx_st {
     SSL_CTX_generate_session_ticket_fn generate_ticket_cb;
     SSL_CTX_decrypt_session_ticket_fn decrypt_ticket_cb;
     void *ticket_cb_data;
+
+    /* The number of TLS1.3 tickets to automatically send */
+    size_t num_tickets;
 };
 
 struct ssl_st {
@@ -1057,6 +1060,8 @@ struct ssl_st {
      * DTLS1_VERSION)
      */
     int version;
+    /* TODO(TLS1.3): Remove this before release */
+    int version_draft;
     /* SSLv3 */
     const SSL_METHOD *method;
     /*
@@ -1416,6 +1421,12 @@ struct ssl_st {
     size_t block_padding;
 
     CRYPTO_RWLOCK *lock;
+    RAND_DRBG *drbg;
+
+    /* The number of TLS1.3 tickets to automatically send */
+    size_t num_tickets;
+    /* The number of TLS1.3 tickets actually sent so far */
+    size_t sent_tickets;
 };
 
 /*
@@ -2473,9 +2484,9 @@ void tls1_get_supported_groups(SSL *s, const uint16_t **pgroups,
 
 __owur int tls1_set_server_sigalgs(SSL *s);
 
-__owur SSL_TICKET_RETURN tls_get_ticket_from_client(SSL *s, CLIENTHELLO_MSG *hello,
+__owur SSL_TICKET_STATUS tls_get_ticket_from_client(SSL *s, CLIENTHELLO_MSG *hello,
                                                     SSL_SESSION **ret);
-__owur SSL_TICKET_RETURN tls_decrypt_ticket(SSL *s, const unsigned char *etick,
+__owur SSL_TICKET_STATUS tls_decrypt_ticket(SSL *s, const unsigned char *etick,
                                             size_t eticklen,
                                             const unsigned char *sess_id,
                                             size_t sesslen, SSL_SESSION **psess);

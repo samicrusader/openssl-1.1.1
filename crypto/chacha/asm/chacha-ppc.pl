@@ -1,5 +1,5 @@
 #! /usr/bin/env perl
-# Copyright 2016 The OpenSSL Project Authors. All Rights Reserved.
+# Copyright 2016-2018 The OpenSSL Project Authors. All Rights Reserved.
 #
 # Licensed under the OpenSSL license (the "License").  You may not use
 # this file except in compliance with the License.  You can obtain a copy
@@ -27,6 +27,7 @@
 # PPC970/G5		9.29/+160%	4.60
 # POWER7		8.62/+61%	4.27
 # POWER8		8.70/+51%	3.96
+# POWER9		6.61/+29%	3.67
 
 $flavour = shift;
 

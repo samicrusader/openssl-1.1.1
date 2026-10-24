@@ -34,7 +34,7 @@ our %config = (
   build_infos => [ "./build.info", "crypto/build.info", "ssl/build.info", "engines/build.info", "apps/build.info", "test/build.info", "util/build.info", "tools/build.info", "fuzz/build.info", "crypto/objects/build.info", "crypto/md4/build.info", "crypto/md5/build.info", "crypto/sha/build.info", "crypto/mdc2/build.info", "crypto/hmac/build.info", "crypto/ripemd/build.info", "crypto/whrlpool/build.info", "crypto/poly1305/build.info", "crypto/blake2/build.info", "crypto/siphash/build.info", "crypto/sm3/build.info", "crypto/des/build.info", "crypto/aes/build.info", "crypto/rc2/build.info", "crypto/rc4/build.info", "crypto/idea/build.info", "crypto/aria/build.info", "crypto/bf/build.info", "crypto/cast/build.info", "crypto/camellia/build.info", "crypto/seed/build.info", "crypto/sm4/build.info", "crypto/chacha/build.info", "crypto/modes/build.info", "crypto/bn/build.info", "crypto/ec/build.info", "crypto/rsa/build.info", "crypto/dsa/build.info", "crypto/dh/build.info", "crypto/sm2/build.info", "crypto/dso/build.info", "crypto/engine/build.info", "crypto/buffer/build.info", "crypto/bio/build.info", "crypto/stack/build.info", "crypto/lhash/build.info", "crypto/rand/build.info", "crypto/err/build.info", "crypto/evp/build.info", "crypto/asn1/build.info", "crypto/pem/build.info", "crypto/x509/build.info", "crypto/x509v3/build.info", "crypto/conf/build.info", "crypto/txt_db/build.info", "crypto/pkcs7/build.info", "crypto/pkcs12/build.info", "crypto/comp/build.info", "crypto/ocsp/build.info", "crypto/ui/build.info", "crypto/cms/build.info", "crypto/ts/build.info", "crypto/srp/build.info", "crypto/cmac/build.info", "crypto/ct/build.info", "crypto/async/build.info", "crypto/kdf/build.info", "crypto/store/build.info", "test/ossl_shim/build.info" ],
   build_type => "release",
   builddir => ".",
-  cflags => [  ],
+  cflags => [ "-Wa,--noexecstack" ],
   conf_files => [ "Configurations/00-base-templates.conf", "Configurations/dist.conf", "Configurations/shared-info.pl" ],
   cppflags => [  ],
   cxxflags => [  ],
@@ -60,7 +60,7 @@ our %config = (
   perl => "/usr/bin/perl",
   perl_archname => "x86_64-linux-gnu-thread-multi",
   perl_cmd => "/usr/bin/perl",
-  perl_version => "5.26.0",
+  perl_version => "5.26.1",
   perlargv => [ "dist" ],
   perlenv => {
       "AR" => undef,
@@ -109,8 +109,8 @@ our %config = (
   sourcedir => ".",
   target => "dist",
   tdirs => [ "ossl_shim" ],
-  version => "1.1.1-pre6",
-  version_num => "0x10101006L",
+  version => "1.1.1-pre7",
+  version_num => "0x10101007L",
 );
 
 our %target = (
@@ -1172,6 +1172,11 @@ our %unified_info = (
                     "libssl",
                     "test/libtestutil.a",
                 ],
+            "test/cmsapitest" =>
+                [
+                    "libcrypto",
+                    "test/libtestutil.a",
+                ],
             "test/conf_include_test" =>
                 [
                     "libcrypto",
@@ -1271,6 +1276,11 @@ our %unified_info = (
                     "test/libtestutil.a",
                 ],
             "test/enginetest" =>
+                [
+                    "libcrypto",
+                    "test/libtestutil.a",
+                ],
+            "test/errtest" =>
                 [
                     "libcrypto",
                     "test/libtestutil.a",
@@ -4842,12 +4852,6 @@ our %unified_info = (
                     "crypto/ec/curve448/arch_32",
                     "crypto/ec/curve448",
                 ],
-            "crypto/ec/ec2_mult.o" =>
-                [
-                    ".",
-                    "crypto/include",
-                    "include",
-                ],
             "crypto/ec/ec2_oct.o" =>
                 [
                     ".",
@@ -7888,6 +7892,10 @@ our %unified_info = (
                 [
                     "include",
                 ],
+            "test/cmsapitest.o" =>
+                [
+                    "include",
+                ],
             "test/conf_include_test.o" =>
                 [
                     "include",
@@ -7978,6 +7986,10 @@ our %unified_info = (
                     "include",
                 ],
             "test/enginetest.o" =>
+                [
+                    "include",
+                ],
+            "test/errtest.o" =>
                 [
                     "include",
                 ],
@@ -8440,6 +8452,7 @@ our %unified_info = (
             "test/cipherlist_test",
             "test/ciphername_test",
             "test/clienthellotest",
+            "test/cmsapitest",
             "test/conf_include_test",
             "test/constant_time_test",
             "test/crltest",
@@ -8460,6 +8473,7 @@ our %unified_info = (
             "test/ecstresstest",
             "test/ectest",
             "test/enginetest",
+            "test/errtest",
             "test/evp_extra_test",
             "test/evp_test",
             "test/exdatatest",
@@ -8887,6 +8901,9 @@ our %unified_info = (
             "test/clienthellotest" =>
                 [
                 ],
+            "test/cmsapitest" =>
+                [
+                ],
             "test/conf_include_test" =>
                 [
                 ],
@@ -8945,6 +8962,9 @@ our %unified_info = (
                 [
                 ],
             "test/enginetest" =>
+                [
+                ],
+            "test/errtest" =>
                 [
                 ],
             "test/evp_extra_test" =>
@@ -10457,10 +10477,6 @@ our %unified_info = (
             "crypto/ec/curve448/scalar.o" =>
                 [
                     "crypto/ec/curve448/scalar.c",
-                ],
-            "crypto/ec/ec2_mult.o" =>
-                [
-                    "crypto/ec/ec2_mult.c",
                 ],
             "crypto/ec/ec2_oct.o" =>
                 [
@@ -12335,7 +12351,6 @@ our %unified_info = (
                     "crypto/ec/curve448/eddsa.o",
                     "crypto/ec/curve448/f_generic.o",
                     "crypto/ec/curve448/scalar.o",
-                    "crypto/ec/ec2_mult.o",
                     "crypto/ec/ec2_oct.o",
                     "crypto/ec/ec2_smpl.o",
                     "crypto/ec/ec_ameth.o",
@@ -13666,6 +13681,14 @@ our %unified_info = (
                 [
                     "test/clienthellotest.c",
                 ],
+            "test/cmsapitest" =>
+                [
+                    "test/cmsapitest.o",
+                ],
+            "test/cmsapitest.o" =>
+                [
+                    "test/cmsapitest.c",
+                ],
             "test/conf_include_test" =>
                 [
                     "test/conf_include_test.o",
@@ -13832,6 +13855,14 @@ our %unified_info = (
             "test/enginetest.o" =>
                 [
                     "test/enginetest.c",
+                ],
+            "test/errtest" =>
+                [
+                    "test/errtest.o",
+                ],
+            "test/errtest.o" =>
+                [
+                    "test/errtest.c",
                 ],
             "test/evp_extra_test" =>
                 [

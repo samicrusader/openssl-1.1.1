@@ -8,6 +8,45 @@
  release branch.
 
  Changes between 1.1.0h and 1.1.1 [xx XXX xxxx]
+  *) Enforce checking in the pkeyutl command line app to ensure that the input
+     length does not exceed the maximum supported digest length when performing
+     a sign, verify or verifyrecover operation.
+     [Matt Caswell]
+
+  *) SSL_MODE_AUTO_RETRY is enabled by default. Applications that use blocking
+     I/O in combination with something like select() or poll() will hang. This
+     can be turned off again using SSL_CTX_clear_mode().
+     Many applications do not properly handle non-application data records, and
+     TLS 1.3 sends more of such records. Setting SSL_MODE_AUTO_RETRY works
+     around the problems in those applications, but can also break some.
+     It's recommended to read the manpages about SSL_read(), SSL_write(),
+     SSL_get_error(), SSL_shutdown(), SSL_CTX_set_mode() and
+     SSL_CTX_set_read_ahead() again.
+     [Kurt Roeckx]
+
+  *) When unlocking a pass phrase protected PEM file or PKCS#8 container, we
+     now allow empty (zero character) pass phrases.
+     [Richard Levitte]
+
+  *) Apply blinding to binary field modular inversion and remove patent
+     pending (OPENSSL_SUN_GF2M_DIV) BN_GF2m_mod_div implementation.
+     [Billy Bob Brumley]
+
+  *) Deprecate ec2_mult.c and unify scalar multiplication code paths for
+     binary and prime elliptic curves.
+     [Billy Bob Brumley]
+
+  *) Remove ECDSA nonce padding: EC_POINT_mul is now responsible for
+     constant time fixed point multiplication.
+     [Billy Bob Brumley]
+
+  *) Revise elliptic curve scalar multiplication with timing attack
+     defenses: ec_wNAF_mul redirects to a constant time implementation
+     when computing fixed point and variable point multiplication (which
+     in OpenSSL are mostly used with secret scalars in keygen, sign,
+     ECDH derive operations).
+     [Billy Bob Brumley, Nicola Tuveri, Cesar Pereida García,
+      Sohaib ul Hassan]
 
   *) Updated CONTRIBUTING
      [Rich Salz]
