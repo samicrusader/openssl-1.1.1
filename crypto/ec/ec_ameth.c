@@ -1,5 +1,5 @@
 /*
- * Copyright 2006-2016 The OpenSSL Project Authors. All Rights Reserved.
+ * Copyright 2006-2018 The OpenSSL Project Authors. All Rights Reserved.
  *
  * Licensed under the OpenSSL license (the "License").  You may not use
  * this file except in compliance with the License.  You can obtain a copy
@@ -601,6 +601,14 @@ const EVP_PKEY_ASN1_METHOD eckey_asn1_meth = {
     ec_pkey_public_check,
     ec_pkey_param_check
 };
+
+#if !defined(OPENSSL_NO_SM2)
+const EVP_PKEY_ASN1_METHOD sm2_asn1_meth = {
+   EVP_PKEY_SM2,
+   EVP_PKEY_EC,
+   ASN1_PKEY_ALIAS
+};
+#endif
 
 int EC_KEY_print(BIO *bp, const EC_KEY *x, int off)
 {

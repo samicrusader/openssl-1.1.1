@@ -708,9 +708,11 @@ update: generate errors ordinals
 generate: generate_apps generate_crypto_bn generate_crypto_objects \
           generate_crypto_conf generate_crypto_asn1 generate_fuzz_oids
 
+.PHONY: doc-nits
 doc-nits:
 	(cd $(SRCDIR); $(PERL) util/find-doc-nits -n -p ) >doc-nits
-	if [ -s doc-nits ] ; then cat doc-nits; rm doc-nits ; exit 1; fi
+	@if [ -s doc-nits ] ; then cat doc-nits ; exit 1; \
+	else echo 'doc-nits: no errors.'; rm doc-nits ; fi
 
 # Test coverage is a good idea for the future
 #coverage: $(PROGRAMS) $(TESTPROGRAMS)
@@ -760,11 +762,13 @@ generate_fuzz_oids:
 # Set to -force to force a rebuild
 ERROR_REBUILD=
 errors:
-	( cd $(SRCDIR); $(PERL) util/ck_errf.pl -strict */*.c */*/*.c )
-	( b=`pwd`; cd $(SRCDIR); \
+	( b=`pwd`; set -e; cd $(SRCDIR); \
+          $(PERL) util/ck_errf.pl -strict -internal; \
           $(PERL) -I$$b util/mkerr.pl $(ERROR_REBUILD) -internal )
-	( b=`pwd`; cd $(SRCDIR)/engines; \
+	( b=`pwd`; set -e; cd $(SRCDIR)/engines; \
           for E in *.ec ; do \
+              $(PERL) ../util/ck_errf.pl -strict \
+                -conf $$E `basename $$E .ec`.c; \
               $(PERL) -I$$b ../util/mkerr.pl $(ERROR_REBUILD) -static \
                 -conf $$E `basename $$E .ec`.c ; \
           done )

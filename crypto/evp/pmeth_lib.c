@@ -64,6 +64,9 @@ static const EVP_PKEY_METHOD *standard_methods[] = {
     &ed25519_pkey_meth,
     &ed448_pkey_meth,
 #endif
+#ifndef OPENSSL_NO_SM2
+    &sm2_pkey_meth,
+#endif
 };
 
 DECLARE_OBJ_BSEARCH_CMP_FN(const EVP_PKEY_METHOD *, const EVP_PKEY_METHOD *,
@@ -101,10 +104,9 @@ static EVP_PKEY_CTX *int_ctx_new(EVP_PKEY *pkey, ENGINE *e, int id)
 {
     EVP_PKEY_CTX *ret;
     const EVP_PKEY_METHOD *pmeth;
+
     if (id == -1) {
-        if (!pkey || !pkey->ameth)
-            return NULL;
-        id = pkey->ameth->pkey_id;
+        id = pkey->type;
     }
 #ifndef OPENSSL_NO_ENGINE
     if (e == NULL && pkey != NULL)

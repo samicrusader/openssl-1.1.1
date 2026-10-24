@@ -116,6 +116,8 @@ static const ERR_STRING_DATA EC_str_functs[] = {
      "ec_GFp_nist_field_sqr"},
     {ERR_PACK(ERR_LIB_EC, EC_F_EC_GFP_NIST_GROUP_SET_CURVE, 0),
      "ec_GFp_nist_group_set_curve"},
+    {ERR_PACK(ERR_LIB_EC, EC_F_EC_GFP_SIMPLE_BLIND_COORDINATES, 0),
+     "ec_GFp_simple_blind_coordinates"},
     {ERR_PACK(ERR_LIB_EC, EC_F_EC_GFP_SIMPLE_GROUP_CHECK_DISCRIMINANT, 0),
      "ec_GFp_simple_group_check_discriminant"},
     {ERR_PACK(ERR_LIB_EC, EC_F_EC_GFP_SIMPLE_GROUP_SET_CURVE, 0),
@@ -259,6 +261,12 @@ static const ERR_STRING_DATA EC_str_functs[] = {
     {ERR_PACK(ERR_LIB_EC, EC_F_PKEY_EC_KEYGEN, 0), "pkey_ec_keygen"},
     {ERR_PACK(ERR_LIB_EC, EC_F_PKEY_EC_PARAMGEN, 0), "pkey_ec_paramgen"},
     {ERR_PACK(ERR_LIB_EC, EC_F_PKEY_EC_SIGN, 0), "pkey_ec_sign"},
+    {ERR_PACK(ERR_LIB_EC, EC_F_PKEY_SM2_CTRL, 0), "pkey_sm2_ctrl"},
+    {ERR_PACK(ERR_LIB_EC, EC_F_PKEY_SM2_CTRL_STR, 0), "pkey_sm2_ctrl_str"},
+    {ERR_PACK(ERR_LIB_EC, EC_F_PKEY_SM2_INIT, 0), "pkey_sm2_init"},
+    {ERR_PACK(ERR_LIB_EC, EC_F_PKEY_SM2_KEYGEN, 0), "pkey_sm2_keygen"},
+    {ERR_PACK(ERR_LIB_EC, EC_F_PKEY_SM2_PARAMGEN, 0), "pkey_sm2_paramgen"},
+    {ERR_PACK(ERR_LIB_EC, EC_F_PKEY_SM2_SIGN, 0), "pkey_sm2_sign"},
     {ERR_PACK(ERR_LIB_EC, EC_F_VALIDATE_ECX_DERIVE, 0), "validate_ecx_derive"},
     {0, NULL}
 };

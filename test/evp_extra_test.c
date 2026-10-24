@@ -1,5 +1,5 @@
 /*
- * Copyright 2015-2017 The OpenSSL Project Authors. All Rights Reserved.
+ * Copyright 2015-2018 The OpenSSL Project Authors. All Rights Reserved.
  *
  * Licensed under the OpenSSL license (the "License").  You may not use
  * this file except in compliance with the License.  You can obtain a copy
@@ -9,6 +9,7 @@
 
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 #include <openssl/bio.h>
 #include <openssl/crypto.h>
 #include <openssl/err.h>
@@ -476,6 +477,209 @@ static int test_EVP_PKCS82PKEY(void)
 }
 #endif
 
+#ifndef OPENSSL_NO_SM2
+
+static int test_EVP_SM2(void)
+{
+    int ret = 0;
+    EVP_PKEY *pkey = NULL;
+    EVP_PKEY *params = NULL;
+    EVP_PKEY_CTX *pctx = NULL;
+    EVP_PKEY_CTX *kctx = NULL;
+    size_t sig_len = 0;
+    unsigned char *sig = NULL;
+    EVP_MD_CTX *md_ctx = NULL;
+    EVP_MD_CTX *md_ctx_verify = NULL;
+    EVP_PKEY_CTX *cctx = NULL;
+
+    uint8_t ciphertext[128];
+    size_t ctext_len = sizeof(ciphertext);
+
+    uint8_t plaintext[8];
+    size_t ptext_len = sizeof(plaintext);
+
+    pctx = EVP_PKEY_CTX_new_id(EVP_PKEY_EC, NULL);
+    if (!TEST_ptr(pctx))
+        goto done;
+
+    if (!TEST_true(EVP_PKEY_paramgen_init(pctx) == 1))
+        goto done;
+
+    if (!TEST_true(EVP_PKEY_CTX_set_ec_paramgen_curve_nid(pctx, NID_sm2)))
+        goto done;
+
+    if (!TEST_true(EVP_PKEY_paramgen(pctx, &params)))
+        goto done;
+
+    kctx = EVP_PKEY_CTX_new(params, NULL);
+    if (!TEST_ptr(kctx))
+        goto done;
+
+    if (!TEST_true(EVP_PKEY_keygen_init(kctx)))
+        goto done;
+
+    if (!TEST_true(EVP_PKEY_keygen(kctx, &pkey)))
+        goto done;
+
+    if (!TEST_true(EVP_PKEY_set_alias_type(pkey, EVP_PKEY_SM2)))
+        goto done;
+
+    if (!TEST_ptr(md_ctx = EVP_MD_CTX_new()))
+        goto done;
+
+    if (!TEST_ptr(md_ctx_verify = EVP_MD_CTX_new()))
+        goto done;
+
+    if (!TEST_true(EVP_DigestSignInit(md_ctx, NULL, EVP_sm3(), NULL, pkey)))
+        goto done;
+
+    if(!TEST_true(EVP_DigestSignUpdate(md_ctx, kMsg, sizeof(kMsg))))
+        goto done;
+
+    /* Determine the size of the signature. */
+    if (!TEST_true(EVP_DigestSignFinal(md_ctx, NULL, &sig_len)))
+        goto done;
+
+    if (!TEST_size_t_eq(sig_len, (size_t)EVP_PKEY_size(pkey)))
+        goto done;
+
+    if (!TEST_ptr(sig = OPENSSL_malloc(sig_len)))
+        goto done;
+
+    if (!TEST_true(EVP_DigestSignFinal(md_ctx, sig, &sig_len)))
+        goto done;
+
+    /* Ensure that the signature round-trips. */
+
+    if (!TEST_true(EVP_DigestVerifyInit(md_ctx_verify, NULL, EVP_sm3(), NULL, pkey)))
+        goto done;
+
+    if (!TEST_true(EVP_DigestVerifyUpdate(md_ctx_verify, kMsg, sizeof(kMsg))))
+        goto done;
+
+    if (!TEST_true(EVP_DigestVerifyFinal(md_ctx_verify, sig, sig_len)))
+        goto done;
+
+    /* now check encryption/decryption */
+
+    if (!TEST_ptr(cctx = EVP_PKEY_CTX_new(pkey, NULL)))
+        goto done;
+
+    if (!TEST_true(EVP_PKEY_encrypt_init(cctx)))
+        goto done;
+
+    if (!TEST_true(EVP_PKEY_encrypt(cctx, ciphertext, &ctext_len, kMsg, sizeof(kMsg))))
+        goto done;
+
+    if (!TEST_true(EVP_PKEY_decrypt_init(cctx)))
+        goto done;
+
+    if (!TEST_true(EVP_PKEY_decrypt(cctx, plaintext, &ptext_len, ciphertext, ctext_len)))
+        goto done;
+
+    if (!TEST_true(ptext_len == sizeof(kMsg)))
+        goto done;
+
+    if (!TEST_true(memcmp(plaintext, kMsg, sizeof(kMsg)) == 0))
+        goto done;
+
+    ret = 1;
+done:
+    EVP_PKEY_CTX_free(pctx);
+    EVP_PKEY_CTX_free(kctx);
+    EVP_PKEY_CTX_free(cctx);
+    EVP_PKEY_free(pkey);
+    EVP_PKEY_free(params);
+    EVP_MD_CTX_free(md_ctx);
+    EVP_MD_CTX_free(md_ctx_verify);
+    OPENSSL_free(sig);
+    return ret;
+}
+
+#endif
+
+static struct keys_st {
+    int type;
+    char *priv;
+    char *pub;
+} keys[] = {
+    {
+        EVP_PKEY_HMAC, "0123456789", NULL
+    }, {
+        EVP_PKEY_POLY1305, "01234567890123456789012345678901", NULL
+    }, {
+        EVP_PKEY_SIPHASH, "0123456789012345", NULL
+    },
+#ifndef OPENSSL_NO_EC
+    {
+        EVP_PKEY_X25519, "01234567890123456789012345678901",
+        "abcdefghijklmnopqrstuvwxyzabcdef"
+    }, {
+        EVP_PKEY_ED25519, "01234567890123456789012345678901",
+        "abcdefghijklmnopqrstuvwxyzabcdef"
+    }, {
+        EVP_PKEY_X448,
+        "01234567890123456789012345678901234567890123456789012345",
+        "abcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabcd"
+    }, {
+        EVP_PKEY_ED448,
+        "012345678901234567890123456789012345678901234567890123456",
+        "abcdefghijklmnopqrstuvwxyzabcdefghijklmnopqrstuvwxyzabcde"
+    }
+#endif
+};
+
+static int test_set_get_raw_keys_int(int tst, int pub)
+{
+    int ret = 0;
+    unsigned char buf[80];
+    unsigned char *in;
+    size_t inlen, len = 0;
+    EVP_PKEY *pkey;
+
+    /* Check if this algorithm supports public keys */
+    if (keys[tst].pub == NULL)
+        return 1;
+
+    memset(buf, 0, sizeof(buf));
+
+    if (pub) {
+        inlen = strlen(keys[tst].pub);
+        in = (unsigned char *)keys[tst].pub;
+        pkey = EVP_PKEY_new_raw_public_key(keys[tst].type,
+                                           NULL,
+                                           in,
+                                           inlen);
+    } else {
+        inlen = strlen(keys[tst].priv);
+        in = (unsigned char *)keys[tst].priv;
+        pkey = EVP_PKEY_new_raw_private_key(keys[tst].type,
+                                            NULL,
+                                            in,
+                                            inlen);
+    }
+
+    if (!TEST_ptr(pkey)
+            || (!pub && !TEST_true(EVP_PKEY_get_raw_private_key(pkey, NULL, &len)))
+            || (pub && !TEST_true(EVP_PKEY_get_raw_public_key(pkey, NULL, &len)))
+            || !TEST_true(len == inlen)
+            || (!pub && !TEST_true(EVP_PKEY_get_raw_private_key(pkey, buf, &len)))
+            || (pub && !TEST_true(EVP_PKEY_get_raw_public_key(pkey, buf, &len)))
+            || !TEST_mem_eq(in, inlen, buf, len))
+        goto done;
+
+    ret = 1;
+ done:
+    EVP_PKEY_free(pkey);
+    return ret;
+}
+
+static int test_set_get_raw_keys(int tst)
+{
+    return test_set_get_raw_keys_int(tst, 0)
+           && test_set_get_raw_keys_int(tst, 1);
+}
+
 static int pkey_custom_check(EVP_PKEY *pkey)
 {
     return 0xbeef;
@@ -581,6 +785,10 @@ int setup_tests(void)
 #ifndef OPENSSL_NO_EC
     ADD_TEST(test_EVP_PKCS82PKEY);
 #endif
+#ifndef OPENSSL_NO_SM2
+    ADD_TEST(test_EVP_SM2);
+#endif
+    ADD_ALL_TESTS(test_set_get_raw_keys, OSSL_NELEM(keys));
     custom_pmeth = EVP_PKEY_meth_new(0xdefaced, 0);
     if (!TEST_ptr(custom_pmeth))
         return 0;

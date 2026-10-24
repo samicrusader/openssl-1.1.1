@@ -995,6 +995,7 @@ int EVP_PKEY_security_bits(const EVP_PKEY *pkey);
 int EVP_PKEY_size(EVP_PKEY *pkey);
 int EVP_PKEY_set_type(EVP_PKEY *pkey, int type);
 int EVP_PKEY_set_type_str(EVP_PKEY *pkey, const char *str, int len);
+int EVP_PKEY_set_alias_type(EVP_PKEY *pkey, int type);
 # ifndef OPENSSL_NO_ENGINE
 int EVP_PKEY_set1_engine(EVP_PKEY *pkey, ENGINE *e);
 # endif
@@ -1238,6 +1239,14 @@ void EVP_PKEY_asn1_set_set_pub_key(EVP_PKEY_ASN1_METHOD *ameth,
                                    int (*set_pub_key) (EVP_PKEY *pk,
                                                        const unsigned char *pub,
                                                        size_t len));
+void EVP_PKEY_asn1_set_get_priv_key(EVP_PKEY_ASN1_METHOD *ameth,
+                                    int (*get_priv_key) (const EVP_PKEY *pk,
+                                                         unsigned char *priv,
+                                                         size_t *len));
+void EVP_PKEY_asn1_set_get_pub_key(EVP_PKEY_ASN1_METHOD *ameth,
+                                   int (*get_pub_key) (const EVP_PKEY *pk,
+                                                       unsigned char *pub,
+                                                       size_t *len));
 
 void EVP_PKEY_asn1_set_security_bits(EVP_PKEY_ASN1_METHOD *ameth,
                                      int (*pkey_security_bits) (const EVP_PKEY
@@ -1352,6 +1361,11 @@ EVP_PKEY *EVP_PKEY_new_raw_private_key(int type, ENGINE *e,
 EVP_PKEY *EVP_PKEY_new_raw_public_key(int type, ENGINE *e,
                                       const unsigned char *pub,
                                       size_t len);
+int EVP_PKEY_get_raw_private_key(const EVP_PKEY *pkey, unsigned char *priv,
+                                 size_t *len);
+int EVP_PKEY_get_raw_public_key(const EVP_PKEY *pkey, unsigned char *pub,
+                                size_t *len);
+
 EVP_PKEY *EVP_PKEY_new_CMAC_key(ENGINE *e, const unsigned char *priv,
                                 size_t len, const EVP_CIPHER *cipher);
 

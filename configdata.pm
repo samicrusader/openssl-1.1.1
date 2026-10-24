@@ -109,8 +109,8 @@ our %config = (
   sourcedir => ".",
   target => "dist",
   tdirs => [ "ossl_shim" ],
-  version => "1.1.1-pre7",
-  version_num => "0x10101007L",
+  version => "1.1.1-pre8",
+  version_num => "0x10101008L",
 );
 
 our %target = (
@@ -1052,11 +1052,6 @@ our %unified_info = (
                     "libcrypto",
                     "libssl",
                 ],
-            "test/buildtest_sm2" =>
-                [
-                    "libcrypto",
-                    "libssl",
-                ],
             "test/buildtest_srp" =>
                 [
                     "libcrypto",
@@ -1457,14 +1452,9 @@ our %unified_info = (
                     "libcrypto.a",
                     "test/libtestutil.a",
                 ],
-            "test/sm2crypttest" =>
+            "test/sm2_internal_test" =>
                 [
-                    "libcrypto",
-                    "test/libtestutil.a",
-                ],
-            "test/sm2sigtest" =>
-                [
-                    "libcrypto",
+                    "libcrypto.a",
                     "test/libtestutil.a",
                 ],
             "test/sm4_internal_test" =>
@@ -2782,11 +2772,6 @@ our %unified_info = (
                 [
                     "test/generate_buildtest.pl",
                     "sha",
-                ],
-            "test/buildtest_sm2.c" =>
-                [
-                    "test/generate_buildtest.pl",
-                    "sm2",
                 ],
             "test/buildtest_srp.c" =>
                 [
@@ -6585,6 +6570,12 @@ our %unified_info = (
                     "crypto/include",
                     "include",
                 ],
+            "crypto/sm2/sm2_pmeth.o" =>
+                [
+                    ".",
+                    "crypto/include",
+                    "include",
+                ],
             "crypto/sm2/sm2_sign.o" =>
                 [
                     ".",
@@ -6874,6 +6865,12 @@ our %unified_info = (
                     "include",
                 ],
             "crypto/x509/x509_lu.o" =>
+                [
+                    ".",
+                    "crypto/include",
+                    "include",
+                ],
+            "crypto/x509/x509_meth.o" =>
                 [
                     ".",
                     "crypto/include",
@@ -7797,10 +7794,6 @@ our %unified_info = (
                 [
                     "include",
                 ],
-            "test/buildtest_sm2.o" =>
-                [
-                    "include",
-                ],
             "test/buildtest_srp.o" =>
                 [
                     "include",
@@ -8137,13 +8130,10 @@ our %unified_info = (
                     "include",
                     "crypto/include",
                 ],
-            "test/sm2crypttest.o" =>
+            "test/sm2_internal_test.o" =>
                 [
                     "include",
-                ],
-            "test/sm2sigtest.o" =>
-                [
-                    "include",
+                    "crypto/include",
                 ],
             "test/sm4_internal_test.o" =>
                 [
@@ -8429,7 +8419,6 @@ our %unified_info = (
             "test/buildtest_safestack",
             "test/buildtest_seed",
             "test/buildtest_sha",
-            "test/buildtest_sm2",
             "test/buildtest_srp",
             "test/buildtest_srtp",
             "test/buildtest_ssl",
@@ -8507,8 +8496,7 @@ our %unified_info = (
             "test/secmemtest",
             "test/servername_test",
             "test/siphash_internal_test",
-            "test/sm2crypttest",
-            "test/sm2sigtest",
+            "test/sm2_internal_test",
             "test/sm4_internal_test",
             "test/srptest",
             "test/ssl_cert_table_internal_test",
@@ -8832,9 +8820,6 @@ our %unified_info = (
             "test/buildtest_sha" =>
                 [
                 ],
-            "test/buildtest_sm2" =>
-                [
-                ],
             "test/buildtest_srp" =>
                 [
                 ],
@@ -9069,10 +9054,7 @@ our %unified_info = (
             "test/siphash_internal_test" =>
                 [
                 ],
-            "test/sm2crypttest" =>
-                [
-                ],
-            "test/sm2sigtest" =>
+            "test/sm2_internal_test" =>
                 [
                 ],
             "test/sm4_internal_test" =>
@@ -11542,6 +11524,10 @@ our %unified_info = (
                 [
                     "crypto/sm2/sm2_err.c",
                 ],
+            "crypto/sm2/sm2_pmeth.o" =>
+                [
+                    "crypto/sm2/sm2_pmeth.c",
+                ],
             "crypto/sm2/sm2_sign.o" =>
                 [
                     "crypto/sm2/sm2_sign.c",
@@ -11737,6 +11723,10 @@ our %unified_info = (
             "crypto/x509/x509_lu.o" =>
                 [
                     "crypto/x509/x509_lu.c",
+                ],
+            "crypto/x509/x509_meth.o" =>
+                [
+                    "crypto/x509/x509_meth.c",
                 ],
             "crypto/x509/x509_obj.o" =>
                 [
@@ -12617,6 +12607,7 @@ our %unified_info = (
                     "crypto/siphash/siphash_pmeth.o",
                     "crypto/sm2/sm2_crypt.o",
                     "crypto/sm2/sm2_err.o",
+                    "crypto/sm2/sm2_pmeth.o",
                     "crypto/sm2/sm2_sign.o",
                     "crypto/sm2/sm2_za.o",
                     "crypto/sm3/m_sm3.o",
@@ -12666,6 +12657,7 @@ our %unified_info = (
                     "crypto/x509/x509_err.o",
                     "crypto/x509/x509_ext.o",
                     "crypto/x509/x509_lu.o",
+                    "crypto/x509/x509_meth.o",
                     "crypto/x509/x509_obj.o",
                     "crypto/x509/x509_r2x.o",
                     "crypto/x509/x509_req.o",
@@ -13497,14 +13489,6 @@ our %unified_info = (
                 [
                     "test/buildtest_sha.c",
                 ],
-            "test/buildtest_sm2" =>
-                [
-                    "test/buildtest_sm2.o",
-                ],
-            "test/buildtest_sm2.o" =>
-                [
-                    "test/buildtest_sm2.c",
-                ],
             "test/buildtest_srp" =>
                 [
                     "test/buildtest_srp.o",
@@ -14148,21 +14132,13 @@ our %unified_info = (
                 [
                     "test/siphash_internal_test.c",
                 ],
-            "test/sm2crypttest" =>
+            "test/sm2_internal_test" =>
                 [
-                    "test/sm2crypttest.o",
+                    "test/sm2_internal_test.o",
                 ],
-            "test/sm2crypttest.o" =>
+            "test/sm2_internal_test.o" =>
                 [
-                    "test/sm2crypttest.c",
-                ],
-            "test/sm2sigtest" =>
-                [
-                    "test/sm2sigtest.o",
-                ],
-            "test/sm2sigtest.o" =>
-                [
-                    "test/sm2sigtest.c",
+                    "test/sm2_internal_test.c",
                 ],
             "test/sm4_internal_test" =>
                 [

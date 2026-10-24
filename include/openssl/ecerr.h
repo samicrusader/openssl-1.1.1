@@ -87,6 +87,7 @@ int ERR_load_EC_strings(void);
 #  define EC_F_EC_GFP_NIST_FIELD_MUL                       200
 #  define EC_F_EC_GFP_NIST_FIELD_SQR                       201
 #  define EC_F_EC_GFP_NIST_GROUP_SET_CURVE                 202
+#  define EC_F_EC_GFP_SIMPLE_BLIND_COORDINATES             287
 #  define EC_F_EC_GFP_SIMPLE_GROUP_CHECK_DISCRIMINANT      165
 #  define EC_F_EC_GFP_SIMPLE_GROUP_SET_CURVE               166
 #  define EC_F_EC_GFP_SIMPLE_MAKE_AFFINE                   102
@@ -182,6 +183,12 @@ int ERR_load_EC_strings(void);
 #  define EC_F_PKEY_EC_KEYGEN                              199
 #  define EC_F_PKEY_EC_PARAMGEN                            219
 #  define EC_F_PKEY_EC_SIGN                                218
+#  define EC_F_PKEY_SM2_CTRL                               284
+#  define EC_F_PKEY_SM2_CTRL_STR                           285
+#  define EC_F_PKEY_SM2_INIT                               287
+#  define EC_F_PKEY_SM2_KEYGEN                             288
+#  define EC_F_PKEY_SM2_PARAMGEN                           289
+#  define EC_F_PKEY_SM2_SIGN                               290
 #  define EC_F_VALIDATE_ECX_DERIVE                         278
 
 /*
