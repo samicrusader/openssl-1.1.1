@@ -744,6 +744,9 @@ EXT_RETURN tls_construct_ctos_early_data(SSL *s, WPACKET *pkt,
                                          unsigned int context, X509 *x,
                                          size_t chainidx)
 {
+#ifndef OPENSSL_NO_PSK
+    char identity[PSK_MAX_IDENTITY_LEN + 1];
+#endif  /* OPENSSL_NO_PSK */
     const unsigned char *id = NULL;
     size_t idlen = 0;
     SSL_SESSION *psksess = NULL;
@@ -765,7 +768,6 @@ EXT_RETURN tls_construct_ctos_early_data(SSL *s, WPACKET *pkt,
 
 #ifndef OPENSSL_NO_PSK
     if (psksess == NULL && s->psk_client_callback != NULL) {
-        char identity[PSK_MAX_IDENTITY_LEN + 1];
         unsigned char psk[PSK_MAX_PSK_LEN];
         size_t psklen = 0;
 
@@ -1677,7 +1679,15 @@ int tls_parse_stoc_alpn(SSL *s, PACKET *pkt, unsigned int context, X509 *x,
         s->ext.early_data_ok = 0;
     }
     if (!s->hit) {
-        /* If a new session then update it with the selected ALPN */
+        /*
+         * This is a new session and so alpn_selected should have been
+         * initialised to NULL. We should update it with the selected ALPN.
+         */
+        if (!ossl_assert(s->session->ext.alpn_selected == NULL)) {
+            SSLfatal(s, SSL_AD_INTERNAL_ERROR, SSL_F_TLS_PARSE_STOC_ALPN,
+                     ERR_R_INTERNAL_ERROR);
+            return 0;
+        }
         s->session->ext.alpn_selected =
             OPENSSL_memdup(s->s3->alpn_selected, s->s3->alpn_selected_len);
         if (s->session->ext.alpn_selected == NULL) {

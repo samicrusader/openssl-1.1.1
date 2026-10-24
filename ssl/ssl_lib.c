@@ -1127,7 +1127,6 @@ void SSL_free(SSL *s)
 
     if (s == NULL)
         return;
-
     CRYPTO_DOWN_REF(&s->references, &i, s->lock);
     REF_PRINT_COUNT("SSL", s);
     if (i > 0)
@@ -3048,13 +3047,13 @@ SSL_CTX *SSL_CTX_new(const SSL_METHOD *meth)
     /* Setup RFC5077 ticket keys */
     if ((RAND_bytes(ret->ext.tick_key_name,
                     sizeof(ret->ext.tick_key_name)) <= 0)
-        || (RAND_bytes(ret->ext.secure->tick_hmac_key,
+        || (RAND_priv_bytes(ret->ext.secure->tick_hmac_key,
                        sizeof(ret->ext.secure->tick_hmac_key)) <= 0)
-        || (RAND_bytes(ret->ext.secure->tick_aes_key,
+        || (RAND_priv_bytes(ret->ext.secure->tick_aes_key,
                        sizeof(ret->ext.secure->tick_aes_key)) <= 0))
         ret->options |= SSL_OP_NO_TICKET;
 
-    if (RAND_bytes(ret->ext.cookie_hmac_key,
+    if (RAND_priv_bytes(ret->ext.cookie_hmac_key,
                    sizeof(ret->ext.cookie_hmac_key)) <= 0)
         goto err;
 
@@ -3425,6 +3424,18 @@ void ssl_update_cache(SSL *s, int mode)
      * would be rather hard to do anyway :-)
      */
     if (s->session->session_id_length == 0)
+        return;
+
+    /*
+     * If sid_ctx_length is 0 there is no specific application context
+     * associated with this session, so when we try to resume it and
+     * SSL_VERIFY_PEER is requested, we have no indication that this is
+     * actually a session for the proper application context, and the
+     * *handshake* will fail, not just the resumption attempt.
+     * Do not cache these sessions that are not resumable.
+     */
+    if (s->session->sid_ctx_length == 0
+            && (s->verify_mode & SSL_VERIFY_PEER) != 0)
         return;
 
     i = s->session_ctx->session_cache_mode;

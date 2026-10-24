@@ -13,7 +13,7 @@ our @EXPORT = qw(%config %target %disabled %withargs %unified_info @disablables)
 our %config = (
   AR => "ar",
   ARFLAGS => [ "r" ],
-  CC => "gcc",
+  CC => "cc",
   CFLAGS => [ "-O" ],
   CPPDEFINES => [  ],
   CPPFLAGS => [  ],
@@ -48,7 +48,7 @@ our %config = (
   lflags => [  ],
   libdir => "",
   major => "1",
-  makedepprog => "\$(CROSS_COMPILE)gcc",
+  makedepprog => "\$(CROSS_COMPILE)cc",
   minor => "1.1",
   openssl_algorithm_defines => [ "OPENSSL_NO_MD2", "OPENSSL_NO_RC5" ],
   openssl_api_defines => [  ],
@@ -68,7 +68,7 @@ our %config = (
       "AS" => undef,
       "ASFLAGS" => undef,
       "BUILDFILE" => undef,
-      "CC" => "gcc",
+      "CC" => undef,
       "CFLAGS" => undef,
       "CPP" => undef,
       "CPPDEFINES" => undef,
@@ -109,8 +109,8 @@ our %config = (
   sourcedir => ".",
   target => "dist",
   tdirs => [ "ossl_shim" ],
-  version => "1.1.1-pre3",
-  version_num => "0x10101003L",
+  version => "1.1.1-pre4",
+  version_num => "0x10101004L",
 );
 
 our %target = (
@@ -1220,6 +1220,11 @@ our %unified_info = (
                     "libcrypto",
                     "test/libtestutil.a",
                 ],
+            "test/drbg_cavs_test" =>
+                [
+                    "libcrypto",
+                    "test/libtestutil.a",
+                ],
             "test/drbgtest" =>
                 [
                     "libcrypto",
@@ -1558,6 +1563,10 @@ our %unified_info = (
                 [
                     "libcrypto",
                     "test/libtestutil.a",
+                ],
+            "test/versions" =>
+                [
+                    "libcrypto",
                 ],
             "test/wpackettest" =>
                 [
@@ -7885,6 +7894,18 @@ our %unified_info = (
                 [
                     "include",
                 ],
+            "test/drbg_cavs_data.o" =>
+                [
+                    "include",
+                    "test",
+                    ".",
+                ],
+            "test/drbg_cavs_test.o" =>
+                [
+                    "include",
+                    "test",
+                    ".",
+                ],
             "test/drbgtest.o" =>
                 [
                     "include",
@@ -8215,6 +8236,10 @@ our %unified_info = (
                 [
                     "include",
                 ],
+            "test/versions.o" =>
+                [
+                    "include",
+                ],
             "test/wpackettest.o" =>
                 [
                     "include",
@@ -8387,6 +8412,7 @@ our %unified_info = (
             "test/danetest",
             "test/destest",
             "test/dhtest",
+            "test/drbg_cavs_test",
             "test/drbgtest",
             "test/dsatest",
             "test/dtls_mtu_test",
@@ -8451,6 +8477,7 @@ our %unified_info = (
             "test/v3ext",
             "test/v3nametest",
             "test/verify_extra_test",
+            "test/versions",
             "test/wpackettest",
             "test/x509_check_cert_pkey_test",
             "test/x509_dup_cert_test",
@@ -8852,6 +8879,9 @@ our %unified_info = (
             "test/dhtest" =>
                 [
                 ],
+            "test/drbg_cavs_test" =>
+                [
+                ],
             "test/drbgtest" =>
                 [
                 ],
@@ -9045,6 +9075,9 @@ our %unified_info = (
                 [
                 ],
             "test/verify_extra_test" =>
+                [
+                ],
+            "test/versions" =>
                 [
                 ],
             "test/wpackettest" =>
@@ -13670,6 +13703,19 @@ our %unified_info = (
                 [
                     "test/dhtest.c",
                 ],
+            "test/drbg_cavs_data.o" =>
+                [
+                    "test/drbg_cavs_data.c",
+                ],
+            "test/drbg_cavs_test" =>
+                [
+                    "test/drbg_cavs_data.o",
+                    "test/drbg_cavs_test.o",
+                ],
+            "test/drbg_cavs_test.o" =>
+                [
+                    "test/drbg_cavs_test.c",
+                ],
             "test/drbgtest" =>
                 [
                     "test/drbgtest.o",
@@ -14262,6 +14308,14 @@ our %unified_info = (
             "test/verify_extra_test.o" =>
                 [
                     "test/verify_extra_test.c",
+                ],
+            "test/versions" =>
+                [
+                    "test/versions.o",
+                ],
+            "test/versions.o" =>
+                [
+                    "test/versions.c",
                 ],
             "test/wpackettest" =>
                 [

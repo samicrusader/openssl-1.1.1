@@ -551,7 +551,7 @@ int ocsp_main(int argc, char **argv)
     }
 
     if (ridx_filename != NULL
-        && (rkey != NULL || rsigner != NULL || rca_cert != NULL)) {
+        && (rkey == NULL || rsigner == NULL || rca_cert == NULL)) {
         BIO_printf(bio_err,
                    "Responder mode requires certificate, key, and CA.\n");
         goto end;
@@ -813,7 +813,10 @@ log_message(int level, const char *fmt, ...)
     va_start(ap, fmt);
 # ifdef OCSP_DAEMON
     if (multi) {
-        vsyslog(level, fmt, ap);
+        char buf[1024];
+        if (vsnprintf(buf, sizeof(buf), fmt, ap) > 0) {
+            syslog(level, "%s", buf);
+        }
         if (level >= LOG_ERR)
             ERR_print_errors_cb(print_syslog, &level);
     }
@@ -879,7 +882,6 @@ static void noteterm (int sig)
  */
 static void spawn_loop(void)
 {
-    const char *signame;
     pid_t *kidpids = NULL;
     int status;
     int procs = 0;
@@ -928,7 +930,10 @@ static void spawn_loop(void)
                     else if (WIFSIGNALED(status))
                         syslog(LOG_WARNING, "child process: %ld, term signal %d%s",
                                (long)fpid, WTERMSIG(status),
-                               WCOREDUMP(status) ? " (core dumped)" : "");
+#ifdef WCOREDUMP
+                               WCOREDUMP(status) ? " (core dumped)" :
+#endif
+                               "");
                     sleep(1);
                 }
                 break;
@@ -972,9 +977,7 @@ static void spawn_loop(void)
     }
 
     /* The loop above can only break on termsig */
-    signame = strsignal(termsig);
-    syslog(LOG_INFO, "terminating on signal: %s(%d)",
-           signame ? signame : "", termsig);
+    syslog(LOG_INFO, "terminating on signal: %d", termsig);
     killall(0, kidpids);
 }
 # endif
