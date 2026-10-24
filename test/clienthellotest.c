@@ -78,6 +78,8 @@ static int test_client_hello(int currtest)
     ctx = SSL_CTX_new(TLS_method());
     if (!TEST_ptr(ctx))
         goto end;
+    if (!TEST_true(SSL_CTX_set_max_proto_version(ctx, TLS_MAX_VERSION)))
+        goto end;
 
     switch(currtest) {
     case TEST_SET_SESSION_TICK_DATA_VER_NEG:
@@ -97,8 +99,7 @@ static int test_client_hello(int currtest)
          * ClientHello is already going to be quite long. To avoid getting one
          * that is too long for this test we use a restricted ciphersuite list
          */
-        if (!TEST_true(SSL_CTX_set_cipher_list(ctx,
-                                               "TLS13-AES-128-GCM-SHA256")))
+        if (!TEST_true(SSL_CTX_set_cipher_list(ctx, "")))
             goto end;
          /* Fall through */
     case TEST_ADD_PADDING:
@@ -111,12 +112,21 @@ static int test_client_hello(int currtest)
          * F5_WORKAROUND_MIN_MSG_LEN bytes long - meaning padding will be
          * needed.
          */
-        if (currtest == TEST_ADD_PADDING
-                && (!TEST_false(SSL_CTX_set_alpn_protos(ctx,
+        if (currtest == TEST_ADD_PADDING) {
+             if (!TEST_false(SSL_CTX_set_alpn_protos(ctx,
                                     (unsigned char *)alpn_prots,
-                                    sizeof(alpn_prots) - 1))))
+                                    sizeof(alpn_prots) - 1)))
+                goto end;
+        /*
+         * Otherwise we need to make sure we have a small enough message to
+         * not need padding.
+         */
+        } else if (!TEST_true(SSL_CTX_set_cipher_list(ctx,
+                              "AES128-SHA"))
+                   || !TEST_true(SSL_CTX_set_ciphersuites(ctx,
+                                 "TLS_AES_128_GCM_SHA256"))) {
             goto end;
-
+        }
         break;
 
     default:

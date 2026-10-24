@@ -2737,7 +2737,7 @@ int tls_construct_certificate_request(SSL *s, WPACKET *pkt)
             OPENSSL_free(s->pha_context);
             s->pha_context_len = 32;
             if ((s->pha_context = OPENSSL_malloc(s->pha_context_len)) == NULL
-                    || ssl_randbytes(s, s->pha_context, s->pha_context_len) <= 0
+                    || RAND_bytes(s->pha_context, s->pha_context_len) <= 0
                     || !WPACKET_sub_memcpy_u8(pkt, s->pha_context, s->pha_context_len)) {
                 SSLfatal(s, SSL_AD_INTERNAL_ERROR,
                          SSL_F_TLS_CONSTRUCT_CERTIFICATE_REQUEST,
@@ -2926,7 +2926,7 @@ static int tls_process_cke_rsa(SSL *s, PACKET *pkt)
      * fails. See https://tools.ietf.org/html/rfc5246#section-7.4.7.1
      */
 
-    if (ssl_randbytes(s, rand_premaster_secret,
+    if (RAND_bytes(rand_premaster_secret,
                       sizeof(rand_premaster_secret)) <= 0) {
         SSLfatal(s, SSL_AD_INTERNAL_ERROR, SSL_F_TLS_PROCESS_CKE_RSA,
                  ERR_R_INTERNAL_ERROR);
@@ -3608,9 +3608,6 @@ MSG_PROCESS_RETURN tls_process_client_certificate(SSL *s, PACKET *pkt)
     sk_X509_pop_free(s->session->peer_chain, X509_free);
     s->session->peer_chain = sk;
 
-    if (new_sess != NULL)
-        ssl_update_cache(s, SSL_SESS_CACHE_SERVER);
-
     /*
      * Freeze the handshake buffer. For <TLS1.3 we do this after the CKE
      * message
@@ -3691,7 +3688,11 @@ int tls_construct_new_session_ticket(SSL *s, WPACKET *pkt)
     } age_add_u;
 
     if (SSL_IS_TLS13(s)) {
-        if (ssl_randbytes(s, age_add_u.age_add_c, sizeof(age_add_u)) <= 0) {
+        if (!ssl_generate_session_id(s, s->session)) {
+            /* SSLfatal() already called */
+            goto err;
+        }
+        if (RAND_bytes(age_add_u.age_add_c, sizeof(age_add_u)) <= 0) {
             SSLfatal(s, SSL_AD_INTERNAL_ERROR,
                      SSL_F_TLS_CONSTRUCT_NEW_SESSION_TICKET,
                      ERR_R_INTERNAL_ERROR);
@@ -3727,6 +3728,10 @@ int tls_construct_new_session_ticket(SSL *s, WPACKET *pkt)
         }
         s->session->ext.max_early_data = s->max_early_data;
     }
+
+    if (tctx->generate_ticket_cb != NULL &&
+        tctx->generate_ticket_cb(s, tctx->ticket_cb_data) == 0)
+        goto err;
 
     /* get session encoding length */
     slen_full = i2d_SSL_SESSION(s->session, NULL);
@@ -3771,7 +3776,6 @@ int tls_construct_new_session_ticket(SSL *s, WPACKET *pkt)
                  SSL_F_TLS_CONSTRUCT_NEW_SESSION_TICKET, ERR_R_INTERNAL_ERROR);
         goto err;
     }
-    sess->session_id_length = 0; /* ID is irrelevant for the ticket */
 
     slen = i2d_SSL_SESSION(sess, NULL);
     if (slen == 0 || slen > slen_full) {
@@ -3825,11 +3829,11 @@ int tls_construct_new_session_ticket(SSL *s, WPACKET *pkt)
         const EVP_CIPHER *cipher = EVP_aes_256_cbc();
 
         iv_len = EVP_CIPHER_iv_length(cipher);
-        if (ssl_randbytes(s, iv, iv_len) <= 0
+        if (RAND_bytes(iv, iv_len) <= 0
                 || !EVP_EncryptInit_ex(ctx, cipher, NULL,
-                                       tctx->ext.tick_aes_key, iv)
-                || !HMAC_Init_ex(hctx, tctx->ext.tick_hmac_key,
-                                 sizeof(tctx->ext.tick_hmac_key),
+                                       tctx->ext.secure->tick_aes_key, iv)
+                || !HMAC_Init_ex(hctx, tctx->ext.secure->tick_hmac_key,
+                                 sizeof(tctx->ext.secure->tick_hmac_key),
                                  EVP_sha256(), NULL)) {
             SSLfatal(s, SSL_AD_INTERNAL_ERROR,
                      SSL_F_TLS_CONSTRUCT_NEW_SESSION_TICKET,
@@ -3884,12 +3888,14 @@ int tls_construct_new_session_ticket(SSL *s, WPACKET *pkt)
                  SSL_F_TLS_CONSTRUCT_NEW_SESSION_TICKET, ERR_R_INTERNAL_ERROR);
         goto err;
     }
-    if (SSL_IS_TLS13(s)
-            && !tls_construct_extensions(s, pkt,
-                                         SSL_EXT_TLS1_3_NEW_SESSION_TICKET,
-                                         NULL, 0)) {
-        /* SSLfatal() already called */
-        goto err;
+    if (SSL_IS_TLS13(s)) {
+        ssl_update_cache(s, SSL_SESS_CACHE_SERVER);
+        if (!tls_construct_extensions(s, pkt,
+                                      SSL_EXT_TLS1_3_NEW_SESSION_TICKET,
+                                      NULL, 0)) {
+            /* SSLfatal() already called */
+            goto err;
+        }
     }
     EVP_CIPHER_CTX_free(ctx);
     HMAC_CTX_free(hctx);

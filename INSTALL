@@ -22,6 +22,7 @@
   * NOTES.VMS (OpenVMS)
   * NOTES.WIN (any supported Windows)
   * NOTES.DJGPP (DOS platform with DJGPP)
+  * NOTES.ANDROID (obviously Android [NDK])
 
  Notational conventions in this document
  ---------------------------------------
@@ -536,7 +537,7 @@
                    these flags interact with those variables.
 
   VAR=value
-                   Assignment if environment variable for Configure.  These
+                   Assignment of environment variable for Configure.  These
                    work just like normal environment variable assignments,
                    but are supported on all platforms and are confined to
                    the configuration scripts only.  These assignments override
@@ -561,12 +562,16 @@
                    CPPDEFINES      List of CPP macro definitions, separated
                                    by a platform specific character (':' or
                                    space for Unix, ';' for Windows, ',' for
-                                   VMS).  This can be used in place of -D.
+                                   VMS).  This can be used instead of using
+                                   -D (or what corresponds to that on your
+                                   compiler) in CPPFLAGS.
                    CPPINCLUDES     List of CPP inclusion directories, separated
                                    the same way as for CPPDEFINES.  This can
-                                   be used in place of -I.
+                                   be used instead of -I (or what corresponds
+                                   to that on your compiler) in CPPFLAGS.
                    HASHBANGPERL    Perl invocation to be inserted after '#!'
-                                   in public perl scripts.
+                                   in public perl scripts (only relevant on
+                                   Unix).
                    LD              The program linker (not used on Unix, $(CC)
                                    is used there).
                    LDFLAGS         Flags for the shared library, DSO and
@@ -581,29 +586,29 @@
                    RCFLAGS         Flags for the Windows reources manipulator.
                    RM              The command to remove files and directories.
 
-                   These can be mixed with flags given on the command line.
-                   Any variable assignment resets any corresponding flags
-                   given before it, so for example:
+                   These cannot be mixed with compiling / linking flags given
+                   on the command line.  In other words, something like this
+                   isn't permitted.
 
                        ./config -DFOO CPPFLAGS=-DBAR -DCOOKIE
 
-                   Will end up having 'CPPFLAGS=-DBAR -DCOOKIE'.
+                   Backward compatibility note:
 
-                   Here is how the flags documented above are collected as
-                   augmentation of these variables:
+                   To be compatible with older configuration scripts, the
+                   environment variables are ignored if compiling / linking
+                   flags are given on the command line, except for these:
 
-                   -Dxxx           xxx is collected in CPPDEFINES
-                   -Ixxx           xxx is collected in CPPINCLUDES
-                   -Wp,xxx         collected in CPPFLAGS
-                   -Lxxx           collected in LDFLAGS
-                   -lxxx           collected in LDLIBS
-                   -Wp,xxx         collected in LDLIBS
-                   -rpath xxx      collected in LDLIBS
-                   -R xxx          collected in LDLIBS
-                   -framework xxx  collected in LDLIBS
-                   -static         collected in LDLIBS
-                   -xxx            collected in CFLAGS
-                   +xxx            collected in CFLAGS
+                   AR, CC, CXX, CROSS_COMPILE, HASHBANGPERL, PERL, RANLIB, RC
+                   and WINDRES
+
+                   For example, the following command will not see -DBAR:
+
+                        CPPFLAGS=-DBAR ./config -DCOOKIE
+
+                   However, the following will see both set variables:
+
+                        CC=gcc CROSS_COMPILE=x86_64-w64-mingw32- \
+                        ./config -DCOOKIE
 
   reconf
   reconfigure

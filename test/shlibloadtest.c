@@ -1,5 +1,5 @@
 /*
- * Copyright 2016-2017 The OpenSSL Project Authors. All Rights Reserved.
+ * Copyright 2016-2018 The OpenSSL Project Authors. All Rights Reserved.
  *
  * Licensed under the OpenSSL license (the "License").  You may not use
  * this file except in compliance with the License.  You can obtain a copy
@@ -52,12 +52,10 @@ static int shlib_sym(SHLIB lib, const char *symname, SHLIB_SYM *sym)
     return *sym != NULL;
 }
 
-# ifdef OPENSSL_USE_NODELETE
 static int shlib_close(SHLIB lib)
 {
     return dlclose(lib) != 0 ? 0 : 1;
 }
-# endif
 #endif
 
 #ifdef DSO_WIN32
@@ -81,12 +79,10 @@ static int shlib_sym(SHLIB lib, const char *symname, SHLIB_SYM *sym)
     return *sym != NULL;
 }
 
-# ifdef OPENSSL_USE_NODELETE
 static int shlib_close(SHLIB lib)
 {
     return FreeLibrary(lib) == 0 ? 0 : 1;
 }
-# endif
 #endif
 
 
@@ -145,11 +141,22 @@ static int test_lib(void)
     myERR_get_error = (ERR_get_error_t)symbols[0].func;
     if (!TEST_int_eq(myERR_get_error(), 0))
         goto end;
+
+    /*
+     * The bits that COMPATIBILITY_MASK lets through MUST be the same in
+     * the library and in the application.
+     * The bits that are masked away MUST be a larger or equal number in
+     * the library compared to the application.
+     */
+# define COMPATIBILITY_MASK 0xfff00000L
     myOpenSSL_version_num = (OpenSSL_version_num_t)symbols[1].func;
-    if (!TEST_int_eq(myOpenSSL_version_num(), OPENSSL_VERSION_NUMBER))
+    if (!TEST_int_eq(myOpenSSL_version_num() & COMPATIBILITY_MASK,
+                     OPENSSL_VERSION_NUMBER & COMPATIBILITY_MASK)
+        goto end;
+    if (!TEST_int_ge(myOpenSSL_version_num() & ~COMPATIBILITY_MASK,
+                     OPENSSL_VERSION_NUMBER & ~COMPATIBILITY_MASK)
         goto end;
 
-#ifdef OPENSSL_USE_NODELETE
     switch (test_type) {
     case JUST_CRYPTO:
         if (!TEST_true(shlib_close(cryptolib)))
@@ -166,7 +173,6 @@ static int test_lib(void)
             goto end;
         break;
     }
-#endif
 
     result = 1;
 end:

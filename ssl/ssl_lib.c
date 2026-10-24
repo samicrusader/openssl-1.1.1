@@ -14,13 +14,13 @@
 #include <openssl/objects.h>
 #include <openssl/x509v3.h>
 #include <openssl/rand.h>
+#include <openssl/rand_drbg.h>
 #include <openssl/ocsp.h>
 #include <openssl/dh.h>
 #include <openssl/engine.h>
 #include <openssl/async.h>
 #include <openssl/ct.h>
 #include "internal/cryptlib.h"
-#include "internal/rand.h"
 #include "internal/refcount.h"
 
 const char SSL_version_str[] = OPENSSL_VERSION_TEXT;
@@ -653,7 +653,9 @@ int SSL_CTX_set_ssl_version(SSL_CTX *ctx, const SSL_METHOD *meth)
 
     ctx->method = meth;
 
-    sk = ssl_create_cipher_list(ctx->method, &(ctx->cipher_list),
+    sk = ssl_create_cipher_list(ctx->method,
+                                ctx->tls13_ciphersuites,
+                                &(ctx->cipher_list),
                                 &(ctx->cipher_list_by_id),
                                 SSL_DEFAULT_CIPHER_LIST, ctx->cert);
     if ((sk == NULL) || (sk_SSL_CIPHER_num(sk) <= 0)) {
@@ -688,20 +690,6 @@ SSL *SSL_new(SSL_CTX *ctx)
         goto err;
     }
 
-    /*
-     * If not using the standard RAND (say for fuzzing), then don't use a
-     * chained DRBG.
-     */
-    if (RAND_get_rand_method() == RAND_OpenSSL()) {
-        s->drbg =
-            RAND_DRBG_new(RAND_DRBG_NID, 0, RAND_DRBG_get0_public());
-        if (s->drbg == NULL
-            || RAND_DRBG_instantiate(s->drbg,
-                                     (const unsigned char *) SSL_version_str,
-                                     sizeof(SSL_version_str) - 1) == 0)
-            goto err;
-    }
-
     RECORD_LAYER_init(&s->rlayer, s);
 
     s->options = ctx->options;
@@ -711,6 +699,11 @@ SSL *SSL_new(SSL_CTX *ctx)
     s->mode = ctx->mode;
     s->max_cert_list = ctx->max_cert_list;
     s->max_early_data = ctx->max_early_data;
+
+    /* Shallow copy of the ciphersuites stack */
+    s->tls13_ciphersuites = sk_SSL_CIPHER_dup(ctx->tls13_ciphersuites);
+    if (s->tls13_ciphersuites == NULL)
+        goto err;
 
     /*
      * Earlier library versions used to copy the pointer to the CERT, not
@@ -1156,6 +1149,7 @@ void SSL_free(SSL *s)
     /* add extra stuff */
     sk_SSL_CIPHER_free(s->cipher_list);
     sk_SSL_CIPHER_free(s->cipher_list_by_id);
+    sk_SSL_CIPHER_free(s->tls13_ciphersuites);
 
     /* Make the next call work :-) */
     if (s->session != NULL) {
@@ -1212,7 +1206,6 @@ void SSL_free(SSL *s)
     sk_SRTP_PROTECTION_PROFILE_free(s->srtp_profiles);
 #endif
 
-    RAND_DRBG_free(s->drbg);
     CRYPTO_THREAD_lock_free(s->lock);
 
     OPENSSL_free(s);
@@ -2520,8 +2513,9 @@ int SSL_CTX_set_cipher_list(SSL_CTX *ctx, const char *str)
 {
     STACK_OF(SSL_CIPHER) *sk;
 
-    sk = ssl_create_cipher_list(ctx->method, &ctx->cipher_list,
-                                &ctx->cipher_list_by_id, str, ctx->cert);
+    sk = ssl_create_cipher_list(ctx->method, ctx->tls13_ciphersuites,
+                                &ctx->cipher_list, &ctx->cipher_list_by_id, str,
+                                ctx->cert);
     /*
      * ssl_create_cipher_list may return an empty stack if it was unable to
      * find a cipher matching the given rule string (for example if the rule
@@ -2543,8 +2537,9 @@ int SSL_set_cipher_list(SSL *s, const char *str)
 {
     STACK_OF(SSL_CIPHER) *sk;
 
-    sk = ssl_create_cipher_list(s->ctx->method, &s->cipher_list,
-                                &s->cipher_list_by_id, str, s->cert);
+    sk = ssl_create_cipher_list(s->ctx->method, s->tls13_ciphersuites,
+                                &s->cipher_list, &s->cipher_list_by_id, str,
+                                s->cert);
     /* see comment in SSL_CTX_set_cipher_list */
     if (sk == NULL)
         return 0;
@@ -2553,6 +2548,99 @@ int SSL_set_cipher_list(SSL *s, const char *str)
         return 0;
     }
     return 1;
+}
+
+static int ciphersuite_cb(const char *elem, int len, void *arg)
+{
+    STACK_OF(SSL_CIPHER) *ciphersuites = (STACK_OF(SSL_CIPHER) *)arg;
+    const SSL_CIPHER *cipher;
+    /* Arbitrary sized temp buffer for the cipher name. Should be big enough */
+    char name[80];
+
+    if (len > (int)(sizeof(name) - 1)) {
+        SSLerr(SSL_F_CIPHERSUITE_CB, SSL_R_NO_CIPHER_MATCH);
+        return 0;
+    }
+
+    memcpy(name, elem, len);
+    name[len] = '\0';
+
+    cipher = ssl3_get_cipher_by_std_name(name);
+    if (cipher == NULL) {
+        SSLerr(SSL_F_CIPHERSUITE_CB, SSL_R_NO_CIPHER_MATCH);
+        return 0;
+    }
+
+    if (!sk_SSL_CIPHER_push(ciphersuites, cipher)) {
+        SSLerr(SSL_F_CIPHERSUITE_CB, ERR_R_INTERNAL_ERROR);
+        return 0;
+    }
+
+    return 1;
+}
+
+static int set_ciphersuites(STACK_OF(SSL_CIPHER) **currciphers, const char *str)
+{
+    STACK_OF(SSL_CIPHER) *newciphers = sk_SSL_CIPHER_new_null();
+
+    if (newciphers == NULL)
+        return 0;
+
+    /* Parse the list. We explicitly allow an empty list */
+    if (*str != '\0'
+            && !CONF_parse_list(str, ':', 1, ciphersuite_cb, newciphers)) {
+        sk_SSL_CIPHER_free(newciphers);
+        return 0;
+    }
+    sk_SSL_CIPHER_free(*currciphers);
+    *currciphers = newciphers;
+
+    return 1;
+}
+
+static int update_cipher_list(STACK_OF(SSL_CIPHER) *cipher_list,
+                              STACK_OF(SSL_CIPHER) *tls13_ciphersuites)
+{
+    int i;
+
+    /*
+     * Delete any existing TLSv1.3 ciphersuites. These are always first in the
+     * list.
+     */
+    while (sk_SSL_CIPHER_num(cipher_list) > 0
+           && sk_SSL_CIPHER_value(cipher_list, 0)->min_tls == TLS1_3_VERSION)
+        sk_SSL_CIPHER_delete(cipher_list, 0);
+
+    /* Insert the new TLSv1.3 ciphersuites */
+    for (i = 0; i < sk_SSL_CIPHER_num(tls13_ciphersuites); i++)
+        sk_SSL_CIPHER_insert(cipher_list,
+                             sk_SSL_CIPHER_value(tls13_ciphersuites, i), i);
+
+    return 1;
+}
+
+int SSL_CTX_set_ciphersuites(SSL_CTX *ctx, const char *str)
+{
+    int ret = set_ciphersuites(&(ctx->tls13_ciphersuites), str);
+
+    if (ret && ctx->cipher_list != NULL) {
+        /* We already have a cipher_list, so we need to update it */
+        return update_cipher_list(ctx->cipher_list, ctx->tls13_ciphersuites);
+    }
+
+    return ret;
+}
+
+int SSL_set_ciphersuites(SSL *s, const char *str)
+{
+    int ret = set_ciphersuites(&(s->tls13_ciphersuites), str);
+
+    if (ret && s->cipher_list != NULL) {
+        /* We already have a cipher_list, so we need to update it */
+        return update_cipher_list(s->cipher_list, s->tls13_ciphersuites);
+    }
+
+    return ret;
 }
 
 char *SSL_get_shared_ciphers(const SSL *s, char *buf, int len)
@@ -2915,7 +3003,12 @@ SSL_CTX *SSL_CTX_new(const SSL_METHOD *meth)
     if (ret->ctlog_store == NULL)
         goto err;
 #endif
+
+    if (!SSL_CTX_set_ciphersuites(ret, TLS_DEFAULT_CIPHERSUITES))
+        goto err;
+
     if (!ssl_create_cipher_list(ret->method,
+                                ret->tls13_ciphersuites,
                                 &ret->cipher_list, &ret->cipher_list_by_id,
                                 SSL_DEFAULT_CIPHER_LIST, ret->cert)
         || sk_SSL_CIPHER_num(ret->cipher_list) <= 0) {
@@ -2942,6 +3035,9 @@ SSL_CTX *SSL_CTX_new(const SSL_METHOD *meth)
     if (!CRYPTO_new_ex_data(CRYPTO_EX_INDEX_SSL_CTX, ret, &ret->ex_data))
         goto err;
 
+    if ((ret->ext.secure = OPENSSL_secure_zalloc(sizeof(*ret->ext.secure))) == NULL)
+        goto err;
+
     /* No compression for DTLS */
     if (!(meth->ssl3_enc->enc_flags & SSL_ENC_FLAG_DTLS))
         ret->comp_methods = SSL_COMP_get_compression_methods();
@@ -2952,10 +3048,10 @@ SSL_CTX *SSL_CTX_new(const SSL_METHOD *meth)
     /* Setup RFC5077 ticket keys */
     if ((RAND_bytes(ret->ext.tick_key_name,
                     sizeof(ret->ext.tick_key_name)) <= 0)
-        || (RAND_bytes(ret->ext.tick_hmac_key,
-                       sizeof(ret->ext.tick_hmac_key)) <= 0)
-        || (RAND_bytes(ret->ext.tick_aes_key,
-                       sizeof(ret->ext.tick_aes_key)) <= 0))
+        || (RAND_bytes(ret->ext.secure->tick_hmac_key,
+                       sizeof(ret->ext.secure->tick_hmac_key)) <= 0)
+        || (RAND_bytes(ret->ext.secure->tick_aes_key,
+                       sizeof(ret->ext.secure->tick_aes_key)) <= 0))
         ret->options |= SSL_OP_NO_TICKET;
 
     if (RAND_bytes(ret->ext.cookie_hmac_key,
@@ -3002,10 +3098,24 @@ SSL_CTX *SSL_CTX_new(const SSL_METHOD *meth)
     ret->ext.status_type = TLSEXT_STATUSTYPE_nothing;
 
     /*
-     * Default max early data is a fully loaded single record. Could be split
-     * across multiple records in practice
+     * We cannot usefully set a default max_early_data here (which gets
+     * propagated in SSL_new(), for the following reason: setting the
+     * SSL field causes tls_construct_stoc_early_data() to tell the
+     * client that early data will be accepted when constructing a TLS 1.3
+     * session ticket, and the client will accordingly send us early data
+     * when using that ticket (if the client has early data to send).
+     * However, in order for the early data to actually be consumed by
+     * the application, the application must also have calls to
+     * SSL_read_early_data(); otherwise we'll just skip past the early data
+     * and ignore it.  So, since the application must add calls to
+     * SSL_read_early_data(), we also require them to add
+     * calls to SSL_CTX_set_max_early_data() in order to use early data,
+     * eliminating the bandwidth-wasting early data in the case described
+     * above.
      */
-    ret->max_early_data = SSL3_RT_MAX_PLAIN_LENGTH;
+    ret->max_early_data = 0;
+
+    ssl_ctx_system_config(ret);
 
     return ret;
  err:
@@ -3063,6 +3173,7 @@ void SSL_CTX_free(SSL_CTX *a)
 #endif
     sk_SSL_CIPHER_free(a->cipher_list);
     sk_SSL_CIPHER_free(a->cipher_list_by_id);
+    sk_SSL_CIPHER_free(a->tls13_ciphersuites);
     ssl_cert_free(a->cert);
     sk_X509_NAME_pop_free(a->ca_names, X509_NAME_free);
     sk_X509_pop_free(a->extra_certs, X509_free);
@@ -3082,6 +3193,7 @@ void SSL_CTX_free(SSL_CTX *a)
     OPENSSL_free(a->ext.supportedgroups);
 #endif
     OPENSSL_free(a->ext.alpn);
+    OPENSSL_secure_free(a->ext.secure);
 
     CRYPTO_THREAD_lock_free(a->lock);
 
@@ -3244,6 +3356,12 @@ void ssl_set_masks(SSL *s)
     /* Allow Ed25519 for TLS 1.2 if peer supports it */
     if (!(mask_a & SSL_aECDSA) && ssl_has_cert(s, SSL_PKEY_ED25519)
             && pvalid[SSL_PKEY_ED25519] & CERT_PKEY_EXPLICIT_SIGN
+            && TLS1_get_version(s) == TLS1_2_VERSION)
+            mask_a |= SSL_aECDSA;
+
+    /* Allow Ed448 for TLS 1.2 if peer supports it */
+    if (!(mask_a & SSL_aECDSA) && ssl_has_cert(s, SSL_PKEY_ED448)
+            && pvalid[SSL_PKEY_ED448] & CERT_PKEY_EXPLICIT_SIGN
             && TLS1_get_version(s) == TLS1_2_VERSION)
             mask_a |= SSL_aECDSA;
 #endif
@@ -5270,28 +5388,6 @@ uint32_t SSL_get_max_early_data(const SSL *s)
     return s->max_early_data;
 }
 
-int ssl_randbytes(SSL *s, unsigned char *rnd, size_t size)
-{
-    if (s->drbg != NULL) {
-        /*
-         * Currently, it's the duty of the caller to serialize the generate
-         * requests to the DRBG. So formally we have to check whether
-         * s->drbg->lock != NULL and take the lock if this is the case.
-         * However, this DRBG is unique to a given SSL object, and we already
-         * require that SSL objects are only accessed by a single thread at
-         * a given time. Also, SSL DRBGs have no child DRBG, so there is
-         * no risk that this DRBG is accessed by a child DRBG in parallel
-         * for reseeding.  As such, we can rely on the application's
-         * serialization of SSL accesses for the needed concurrency protection
-         * here.
-         */
-        return RAND_DRBG_bytes(s->drbg, rnd, size);
-    }
-    if (size > INT_MAX)
-        return 0;
-    return RAND_bytes(rnd, size);
-}
-
 __owur unsigned int ssl_get_max_send_fragment(const SSL *ssl)
 {
     /* Return any active Max Fragment Len extension */
@@ -5334,7 +5430,10 @@ int SSL_stateless(SSL *s)
     if (ret > 0 && s->ext.cookieok)
         return 1;
 
-    return 0;
+    if (s->hello_retry_request == SSL_HRR_PENDING && !ossl_statem_in_error(s))
+        return 0;
+
+    return -1;
 }
 
 void SSL_force_post_handshake_auth(SSL *ssl)
@@ -5386,5 +5485,16 @@ int SSL_verify_client_post_handshake(SSL *ssl)
     }
 
     ossl_statem_set_in_init(ssl, 1);
+    return 1;
+}
+
+int SSL_CTX_set_session_ticket_cb(SSL_CTX *ctx,
+                                  SSL_CTX_generate_session_ticket_fn gen_cb,
+                                  SSL_CTX_decrypt_session_ticket_fn dec_cb,
+                                  void *arg)
+{
+    ctx->generate_ticket_cb = gen_cb;
+    ctx->decrypt_ticket_cb = dec_cb;
+    ctx->ticket_cb_data = arg;
     return 1;
 }

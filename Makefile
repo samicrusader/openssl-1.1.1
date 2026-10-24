@@ -6,11 +6,11 @@
 
 PLATFORM=dist
 OPTIONS= no-asan no-crypto-mdebug no-crypto-mdebug-backtrace no-devcryptoeng no-ec_nistp_64_gcc_128 no-egd no-external-tests no-fuzz-afl no-fuzz-libfuzzer no-heartbeats no-md2 no-msan no-rc5 no-sctp no-ssl-trace no-ssl3 no-ssl3-method no-tls13downgrade no-ubsan no-unit-test no-weak-ssl-ciphers no-zlib no-zlib-dynamic
-CONFIGURE_ARGS=("dist")
+CONFIGURE_ARGS=(dist)
 SRCDIR=.
 BLDDIR=.
 
-VERSION=1.1.1-pre2
+VERSION=1.1.1-pre3
 MAJOR=1
 MINOR=1.1
 SHLIB_VERSION_NUMBER=1.1
@@ -26,13 +26,13 @@ LIBS=apps/libapps.a libcrypto.a libssl.a test/libtestutil.a
 SHLIBS=
 SHLIB_INFO=";" ";" ";" ";"
 ENGINES=
-PROGRAMS=apps/openssl fuzz/asn1-test fuzz/asn1parse-test fuzz/bignum-test fuzz/bndiv-test fuzz/client-test fuzz/cms-test fuzz/conf-test fuzz/crl-test fuzz/ct-test fuzz/server-test fuzz/x509-test test/aborttest test/afalgtest test/asn1_encode_test test/asn1_internal_test test/asn1_string_table_test test/asn1_time_test test/asynciotest test/asynctest test/bad_dtls_test test/bftest test/bio_enc_test test/bioprinttest test/bntest test/buildtest_aes test/buildtest_asn1 test/buildtest_asn1err test/buildtest_asn1t test/buildtest_async test/buildtest_asyncerr test/buildtest_bio test/buildtest_bioerr test/buildtest_blowfish test/buildtest_bn test/buildtest_bnerr test/buildtest_buffer test/buildtest_buffererr test/buildtest_camellia test/buildtest_cast test/buildtest_cmac test/buildtest_cms test/buildtest_cmserr test/buildtest_comp test/buildtest_comperr test/buildtest_conf test/buildtest_conf_api test/buildtest_conferr test/buildtest_crypto test/buildtest_cryptoerr test/buildtest_ct test/buildtest_cterr test/buildtest_des test/buildtest_dh test/buildtest_dherr test/buildtest_dsa test/buildtest_dsaerr test/buildtest_dtls1 test/buildtest_e_os2 test/buildtest_ebcdic test/buildtest_ec test/buildtest_ecdh test/buildtest_ecdsa test/buildtest_ecerr test/buildtest_engine test/buildtest_engineerr test/buildtest_err test/buildtest_evp test/buildtest_evperr test/buildtest_hmac test/buildtest_idea test/buildtest_kdf test/buildtest_kdferr test/buildtest_lhash test/buildtest_md4 test/buildtest_md5 test/buildtest_mdc2 test/buildtest_modes test/buildtest_obj_mac test/buildtest_objects test/buildtest_objectserr test/buildtest_ocsp test/buildtest_ocsperr test/buildtest_opensslv test/buildtest_ossl_typ test/buildtest_pem test/buildtest_pem2 test/buildtest_pemerr test/buildtest_pkcs12 test/buildtest_pkcs12err test/buildtest_pkcs7 test/buildtest_pkcs7err test/buildtest_rand test/buildtest_randerr test/buildtest_rc2 test/buildtest_rc4 test/buildtest_ripemd test/buildtest_rsa test/buildtest_rsaerr test/buildtest_safestack test/buildtest_seed test/buildtest_sha test/buildtest_srp test/buildtest_srtp test/buildtest_ssl test/buildtest_ssl2 test/buildtest_sslerr test/buildtest_stack test/buildtest_store test/buildtest_storeerr test/buildtest_symhacks test/buildtest_tls1 test/buildtest_ts test/buildtest_tserr test/buildtest_txt_db test/buildtest_ui test/buildtest_uierr test/buildtest_whrlpool test/buildtest_x509 test/buildtest_x509_vfy test/buildtest_x509err test/buildtest_x509v3 test/buildtest_x509v3err test/casttest test/chacha_internal_test test/cipher_overhead_test test/cipherbytes_test test/cipherlist_test test/ciphername_test test/clienthellotest test/constant_time_test test/crltest test/ct_test test/ctype_internal_test test/curve448_internal_test test/d2i_test test/danetest test/destest test/dhtest test/drbgtest test/dsatest test/dtls_mtu_test test/dtlstest test/dtlsv1listentest test/ecdsatest test/ecstresstest test/ectest test/enginetest test/evp_extra_test test/evp_test test/exdatatest test/exptest test/fatalerrtest test/gmdifftest test/hmactest test/ideatest test/igetest test/lhash_test test/md2test test/mdc2_internal_test test/mdc2test test/memleaktest test/modes_internal_test test/ocspapitest test/packettest test/pbelutest test/pemtest test/pkey_meth_kdf_test test/pkey_meth_test test/poly1305_internal_test test/rc2test test/rc4test test/rc5test test/recordlentest test/rsa_mp_test test/rsa_test test/sanitytest test/secmemtest test/servername_test test/siphash_internal_test test/sm4_internal_test test/srptest test/ssl_cert_table_internal_test test/ssl_test test/ssl_test_ctx_test test/sslapitest test/sslbuffertest test/sslcorrupttest test/ssltest_old test/stack_test test/test_test test/threadstest test/time_offset_test test/tls13ccstest test/tls13encryptiontest test/uitest test/v3ext test/v3nametest test/verify_extra_test test/wpackettest test/x509_check_cert_pkey_test test/x509_dup_cert_test test/x509_internal_test test/x509_time_test test/x509aux
+PROGRAMS=apps/openssl fuzz/asn1-test fuzz/asn1parse-test fuzz/bignum-test fuzz/bndiv-test fuzz/client-test fuzz/cms-test fuzz/conf-test fuzz/crl-test fuzz/ct-test fuzz/server-test fuzz/x509-test test/aborttest test/afalgtest test/asn1_encode_test test/asn1_internal_test test/asn1_string_table_test test/asn1_time_test test/asynciotest test/asynctest test/bad_dtls_test test/bftest test/bio_callback_test test/bio_enc_test test/bioprinttest test/bntest test/buildtest_aes test/buildtest_asn1 test/buildtest_asn1t test/buildtest_async test/buildtest_bio test/buildtest_blowfish test/buildtest_bn test/buildtest_buffer test/buildtest_camellia test/buildtest_cast test/buildtest_cmac test/buildtest_cms test/buildtest_comp test/buildtest_conf test/buildtest_conf_api test/buildtest_crypto test/buildtest_ct test/buildtest_des test/buildtest_dh test/buildtest_dsa test/buildtest_dtls1 test/buildtest_e_os2 test/buildtest_ebcdic test/buildtest_ec test/buildtest_ecdh test/buildtest_ecdsa test/buildtest_engine test/buildtest_evp test/buildtest_hmac test/buildtest_idea test/buildtest_kdf test/buildtest_lhash test/buildtest_md4 test/buildtest_md5 test/buildtest_mdc2 test/buildtest_modes test/buildtest_obj_mac test/buildtest_objects test/buildtest_ocsp test/buildtest_opensslv test/buildtest_ossl_typ test/buildtest_pem test/buildtest_pem2 test/buildtest_pkcs12 test/buildtest_pkcs7 test/buildtest_rand test/buildtest_rand_drbg test/buildtest_rc2 test/buildtest_rc4 test/buildtest_ripemd test/buildtest_rsa test/buildtest_safestack test/buildtest_seed test/buildtest_sha test/buildtest_sm2 test/buildtest_srp test/buildtest_srtp test/buildtest_ssl test/buildtest_ssl2 test/buildtest_stack test/buildtest_store test/buildtest_symhacks test/buildtest_tls1 test/buildtest_ts test/buildtest_txt_db test/buildtest_ui test/buildtest_whrlpool test/buildtest_x509 test/buildtest_x509_vfy test/buildtest_x509v3 test/casttest test/chacha_internal_test test/cipher_overhead_test test/cipherbytes_test test/cipherlist_test test/ciphername_test test/clienthellotest test/conf_include_test test/constant_time_test test/crltest test/ct_test test/ctype_internal_test test/curve448_internal_test test/d2i_test test/danetest test/destest test/dhtest test/drbgtest test/dsatest test/dtls_mtu_test test/dtlstest test/dtlsv1listentest test/ecdsatest test/ecstresstest test/ectest test/enginetest test/evp_extra_test test/evp_test test/exdatatest test/exptest test/fatalerrtest test/gmdifftest test/hmactest test/ideatest test/igetest test/lhash_test test/md2test test/mdc2_internal_test test/mdc2test test/memleaktest test/modes_internal_test test/ocspapitest test/packettest test/pbelutest test/pemtest test/pkey_meth_kdf_test test/pkey_meth_test test/poly1305_internal_test test/rc2test test/rc4test test/rc5test test/rdrand_sanitytest test/recordlentest test/rsa_mp_test test/rsa_test test/sanitytest test/secmemtest test/servername_test test/siphash_internal_test test/sm2crypttest test/sm2sigtest test/sm4_internal_test test/srptest test/ssl_cert_table_internal_test test/ssl_test test/ssl_test_ctx_test test/sslapitest test/sslbuffertest test/sslcorrupttest test/ssltest_old test/stack_test test/sysdefaulttest test/test_test test/threadstest test/time_offset_test test/tls13ccstest test/tls13encryptiontest test/uitest test/v3ext test/v3nametest test/verify_extra_test test/wpackettest test/x509_check_cert_pkey_test test/x509_dup_cert_test test/x509_internal_test test/x509_time_test test/x509aux
 SCRIPTS=apps/CA.pl apps/tsget tools/c_rehash util/shlib_wrap.sh
 
-DEPS=test/time_offset_test.d crypto/dsa/dsa_prn.d fuzz/conf.d crypto/asn1/x_int64.d crypto/x509/x509_def.d test/drbgtest.d crypto/pem/pem_xaux.d crypto/sha/sha256.d test/sm4_internal_test.d crypto/camellia/cmll_cbc.d crypto/dsa/dsa_gen.d crypto/bn/bn_const.d apps/prime.d test/buildtest_ecdsa.d test/sslapitest.d crypto/engine/eng_ctrl.d crypto/srp/srp_vfy.d test/buildtest_ecdh.d crypto/x509v3/v3_enum.d crypto/ct/ct_x509v3.d test/ectest.d crypto/x509v3/v3_crld.d crypto/bn/bn_sqrt.d test/ssl_test_ctx.d crypto/engine/eng_pkey.d test/buildtest_ssl.d crypto/dh/dh_lib.d crypto/dsa/dsa_asn1.d crypto/cms/cms_io.d crypto/x509/x509_r2x.d crypto/dsa/dsa_meth.d crypto/camellia/camellia.d crypto/x509v3/v3_ncons.d crypto/x509v3/v3_info.d test/cipher_overhead_test.d crypto/asn1/tasn_typ.d test/buildtest_x509_vfy.d crypto/mem_dbg.d crypto/objects/obj_err.d crypto/ripemd/rmd_one.d crypto/ec/curve448/scalar.d crypto/asn1/x_val.d apps/ocsp.d apps/enc.d crypto/bn/bn_shift.d test/buildtest_rsa.d crypto/des/cbc_cksm.d crypto/bn/bn_gf2m.d crypto/rc4/rc4_enc.d crypto/ocsp/v3_ocsp.d crypto/dso/dso_lib.d apps/ciphers.d crypto/bn/bn_exp2.d crypto/aes/aes_ecb.d crypto/objects/obj_xref.d crypto/cast/c_skey.d crypto/ec/ecp_nistputil.d test/v3nametest.d crypto/evp/e_camellia.d test/buildtest_obj_mac.d crypto/des/des_enc.d crypto/evp/e_rc4_hmac_md5.d crypto/evp/e_idea.d crypto/evp/p_verify.d crypto/pkcs12/p12_decr.d test/bad_dtls_test.d test/buildtest_cryptoerr.d test/buildtest_ocsp.d apps/rsautl.d apps/pkey.d crypto/x509/x509_trs.d crypto/bio/bss_dgram.d test/curve448_internal_test.d crypto/idea/i_ecb.d crypto/ec/ecdsa_vrf.d crypto/conf/conf_err.d crypto/asn1/t_bitst.d crypto/asn1/x_algor.d crypto/x509v3/pcy_lib.d crypto/x509v3/v3_lib.d crypto/rsa/rsa_none.d crypto/evp/m_null.d crypto/asn1/a_mbstr.d crypto/rc2/rc2_ecb.d crypto/aes/aes_cbc.d test/buildtest_sslerr.d test/buildtest_md5.d crypto/camellia/cmll_cfb.d crypto/x509/x509name.d crypto/x509/x_attrib.d crypto/bio/b_sock.d crypto/evp/pbe_scrypt.d crypto/pkcs12/pk12err.d crypto/dh/dh_rfc5114.d crypto/x509v3/v3_ia5.d crypto/camellia/cmll_ofb.d crypto/x509/x509_vfy.d crypto/bn/bn_mul.d test/buildtest_bioerr.d apps/cms.d crypto/x509v3/v3_asid.d crypto/ocsp/ocsp_vfy.d crypto/ts/ts_req_utils.d test/uitest.d test/d2i_test.d apps/x509.d crypto/pem/pem_oth.d crypto/bn/bn_exp.d crypto/md5/md5_dgst.d crypto/kdf/hkdf.d test/cipherbytes_test.d crypto/store/store_strings.d crypto/x509/x_x509a.d crypto/ec/ecx_meth.d crypto/cms/cms_pwri.d crypto/pkcs12/p12_crt.d crypto/ts/ts_rsp_verify.d test/buildtest_idea.d crypto/pem/pvkfmt.d crypto/rsa/rsa_crpt.d test/pkey_meth_kdf_test.d crypto/asn1/x_bignum.d crypto/async/arch/async_null.d crypto/bio/bio_lib.d apps/genrsa.d test/asynciotest.d crypto/ec/ecp_nist.d test/buildtest_asn1.d apps/genpkey.d test/bntest.d crypto/ui/ui_util.d crypto/ec/curve448/arch_32/f_impl.d test/buildtest_bn.d test/buildtest_pem2.d test/recordlentest.d crypto/ec/ec_cvt.d crypto/ct/ct_b64.d apps/pkeyparam.d crypto/des/fcrypt_b.d crypto/mdc2/mdc2_one.d crypto/ec/curve448/curve448_tables.d crypto/x509v3/v3err.d crypto/evp/c_allc.d crypto/conf/conf_api.d crypto/asn1/asn_pack.d crypto/bio/bf_null.d ssl/ssl_rsa.d test/asn1_encode_test.d crypto/store/store_lib.d crypto/x509v3/v3_sxnet.d crypto/rsa/rsa_gen.d apps/ca.d crypto/mdc2/mdc2dgst.d crypto/des/cbc_enc.d crypto/kdf/scrypt.d crypto/o_init.d crypto/rand/drbg_ctr.d ssl/ssl_err.d crypto/asn1/bio_asn1.d ssl/record/rec_layer_s3.d crypto/evp/evp_err.d crypto/evp/e_seed.d test/constant_time_test.d crypto/mem_clr.d crypto/sha/sha1dgst.d crypto/des/ecb_enc.d test/buildtest_x509.d test/ssltest_old.d test/casttest.d apps/s_socket.d crypto/evp/p5_crpt2.d crypto/cms/cms_asn1.d crypto/asn1/p5_pbev2.d fuzz/test-corpus.d crypto/async/arch/async_win.d crypto/x509v3/v3_cpols.d test/x509aux.d crypto/dh/dh_key.d crypto/bf/bf_ofb64.d ssl/d1_srtp.d crypto/des/rand_key.d test/buildtest_cmac.d crypto/cms/cms_sd.d test/bio_enc_test.d test/ssl_test.d test/buildtest_cmserr.d crypto/bio/bss_mem.d crypto/cms/cms_lib.d test/fatalerrtest.d crypto/hmac/hmac.d test/dsatest.d test/testutil/cb.d test/buildtest_storeerr.d crypto/bn/bn_word.d crypto/o_str.d crypto/dh/dh_meth.d crypto/x509v3/v3_bcons.d crypto/asn1/x_sig.d crypto/x509/x509rset.d crypto/ec/ecp_mont.d test/buildtest_ecerr.d test/buildtest_rsaerr.d crypto/modes/wrap128.d test/pbelutest.d test/testutil/output_helpers.d crypto/blake2/m_blake2b.d crypto/pkcs12/p12_attr.d crypto/cms/cms_ess.d crypto/ocsp/ocsp_srv.d crypto/evp/p_sign.d crypto/idea/i_cbc.d ssl/t1_trce.d crypto/rsa/rsa_pss.d crypto/evp/p_dec.d test/buildtest_evperr.d crypto/bn/bn_sqr.d test/buildtest_camellia.d test/buildtest_kdf.d crypto/modes/cbc128.d test/asn1_time_test.d test/buildtest_ct.d crypto/evp/m_sha1.d crypto/asn1/x_pkey.d crypto/whrlpool/wp_dgst.d crypto/comp/comp_err.d test/memleaktest.d test/buildtest_ossl_typ.d crypto/sm3/sm3.d crypto/ec/ecdh_ossl.d test/wpackettest.d test/ecstresstest.d test/buildtest_txt_db.d crypto/asn1/a_int.d test/hmactest.d apps/asn1pars.d apps/pkeyutl.d crypto/siphash/siphash.d crypto/store/store_init.d crypto/blake2/blake2s.d crypto/cast/c_enc.d crypto/x509/x509_req.d crypto/ui/ui_lib.d crypto/engine/tb_pkmeth.d test/buildtest_asn1err.d crypto/bn/bn_dh.d apps/ecparam.d crypto/ocsp/ocsp_cl.d crypto/x509/x509_ext.d crypto/asn1/i2d_pr.d crypto/rsa/rsa_lib.d test/buildtest_buffererr.d test/evp_test.d crypto/comp/comp_lib.d test/destest.d ssl/statem/extensions_srvr.d crypto/bio/bio_cb.d crypto/ec/ec_curve.d crypto/asn1/p5_scrypt.d crypto/dsa/dsa_sign.d test/md2test.d crypto/x509v3/pcy_data.d test/buildtest_rc2.d crypto/asn1/a_strex.d crypto/asn1/p5_pbe.d crypto/ts/ts_lib.d crypto/dh/dh_pmeth.d test/sslcorrupttest.d apps/pkcs8.d test/buildtest_x509v3.d crypto/evp/e_rc5.d crypto/bf/bf_cfb64.d crypto/asn1/asn1_item_list.d crypto/engine/tb_asnmth.d crypto/init.d crypto/ec/ec2_oct.d apps/smime.d crypto/poly1305/poly1305_pmeth.d test/stack_test.d crypto/asn1/a_dup.d crypto/asn1/t_spki.d crypto/bio/b_addr.d crypto/x509/x509_d2.d crypto/bio/bss_null.d apps/spkac.d crypto/ec/ec_print.d apps/app_rand.d test/buildtest_rc4.d crypto/pem/pem_all.d crypto/seed/seed_cfb.d crypto/engine/eng_rdrand.d crypto/evp/e_old.d crypto/des/ofb64enc.d crypto/asn1/a_d2i_fp.d crypto/x509v3/v3_tlsf.d ssl/t1_lib.d ssl/ssl_lib.d crypto/ct/ct_sct.d test/x509_time_test.d test/poly1305_internal_test.d crypto/rsa/rsa_ameth.d crypto/ec/ecp_nistp521.d crypto/rsa/rsa_chk.d crypto/pkcs7/pk7_doit.d crypto/rc4/rc4_skey.d test/buildtest_conf.d crypto/ts/ts_rsp_sign.d crypto/lhash/lhash.d test/buildtest_tls1.d crypto/dh/dh_err.d test/buildtest_blowfish.d test/igetest.d crypto/asn1/a_verify.d crypto/evp/e_aria.d crypto/x509/by_dir.d ssl/s3_enc.d crypto/blake2/blake2b.d apps/gendsa.d test/buildtest_md4.d test/buildtest_ripemd.d test/buildtest_objects.d crypto/rsa/rsa_pmeth.d crypto/poly1305/poly1305_ameth.d crypto/dh/dh_check.d test/ssl_cert_table_internal_test.d crypto/pkcs7/pkcs7err.d test/rsa_test.d crypto/poly1305/poly1305.d crypto/sha/keccak1600.d crypto/x509/x509_att.d crypto/x509v3/v3_akeya.d crypto/bn/bn_mod.d test/rc4test.d crypto/sha/sha512.d crypto/dsa/dsa_vrf.d test/buildtest_aes.d crypto/rc2/rc2ofb64.d crypto/rsa/rsa_prn.d crypto/bn/bn_asm.d crypto/asn1/a_utf8.d crypto/pkcs12/p12_add.d crypto/bn/bn_div.d crypto/mem_sec.d crypto/evp/m_mdc2.d crypto/evp/m_sigver.d test/ideatest.d crypto/des/fcrypt.d crypto/asn1/a_time.d test/bioprinttest.d test/buildtest_engineerr.d test/buildtest_pkcs7err.d crypto/dsa/dsa_key.d crypto/asn1/a_i2d_fp.d crypto/x509v3/v3_bitst.d crypto/evp/e_bf.d crypto/asn1/a_type.d test/buildtest_comperr.d test/buildtest_dsa.d crypto/dsa/dsa_err.d test/ecdsatest.d crypto/rsa/rsa_sign.d ssl/statem/extensions.d ssl/ssl_conf.d crypto/bn/bn_print.d crypto/camellia/cmll_ctr.d crypto/bn/bn_kron.d test/buildtest_des.d crypto/evp/p5_crpt.d crypto/bio/bss_conn.d crypto/evp/m_md5_sha1.d crypto/x509/t_req.d test/buildtest_e_os2.d test/buildtest_ui.d crypto/evp/m_wp.d crypto/asn1/x_info.d test/siphash_internal_test.d crypto/async/async_wait.d crypto/ct/ct_oct.d test/threadstest.d crypto/des/qud_cksm.d ssl/statem/statem_lib.d crypto/store/loader_file.d crypto/pkcs7/pk7_attr.d crypto/ec/curve448/eddsa.d crypto/ocsp/ocsp_ext.d crypto/cast/c_ecb.d test/srptest.d test/dhtest.d crypto/dh/dh_ameth.d test/afalgtest.d crypto/pkcs12/p12_utl.d ssl/t1_enc.d crypto/blake2/m_blake2s.d fuzz/server.d crypto/x509/x_pubkey.d crypto/x509/x_req.d crypto/engine/eng_init.d crypto/pem/pem_lib.d crypto/evp/m_md2.d ssl/record/ssl3_record_tls13.d test/buildtest_pkcs12.d test/buildtest_pkcs12err.d test/buildtest_hmac.d crypto/engine/eng_fat.d crypto/x509v3/v3_prn.d crypto/x509/x509_txt.d test/testutil/driver.d crypto/x509/x_x509.d crypto/asn1/d2i_pu.d test/buildtest_dsaerr.d fuzz/bignum.d crypto/chacha/chacha_enc.d crypto/bio/bss_log.d crypto/asn1/a_bitstr.d test/buildtest_cast.d apps/apps.d crypto/bf/bf_ecb.d crypto/mem.d crypto/async/async_err.d ssl/statem/statem_srvr.d test/x509_check_cert_pkey_test.d crypto/threads_none.d crypto/cms/cms_dd.d crypto/o_dir.d crypto/rand/rand_vms.d crypto/kdf/kdf_err.d apps/version.d crypto/modes/ocb128.d crypto/evp/e_aes_cbc_hmac_sha1.d crypto/pkcs12/p12_key.d test/cipherlist_test.d test/buildtest_kdferr.d crypto/pem/pem_sign.d crypto/ct/ct_prn.d fuzz/bndiv.d crypto/dh/dh_kdf.d crypto/ec/eck_prn.d crypto/ec/curve448/f_generic.d crypto/sm4/sm4.d crypto/ts/ts_err.d crypto/dsa/dsa_lib.d crypto/ct/ct_vfy.d apps/pkcs12.d apps/dsa.d ssl/record/rec_layer_d1.d crypto/evp/e_des3.d crypto/x509/x509_vpm.d crypto/lhash/lh_stats.d crypto/ts/ts_rsp_print.d apps/rand.d crypto/ec/curve448/curve448.d crypto/threads_pthread.d crypto/asn1/t_pkey.d crypto/evp/bio_b64.d crypto/x509/t_x509.d crypto/x509v3/v3_pcons.d test/buildtest_pemerr.d test/buildtest_ec.d crypto/async/async.d crypto/cmac/cm_pmeth.d test/modes_internal_test.d crypto/pkcs12/p12_p8e.d crypto/asn1/i2d_pu.d apps/pkcs7.d crypto/pkcs7/bio_pk7.d ssl/ssl_asn1.d test/buildtest_dtls1.d crypto/sha/sha1_one.d test/evp_extra_test.d crypto/pkcs12/p12_p8d.d crypto/bio/bss_file.d crypto/bio/bio_meth.d crypto/asn1/tasn_new.d apps/crl.d crypto/store/store_err.d crypto/objects/obj_lib.d apps/engine.d test/testutil/stanza.d test/buildtest_whrlpool.d crypto/evp/e_sm4.d ssl/bio_ssl.d crypto/sm3/m_sm3.d crypto/ec/ecdsa_ossl.d ssl/record/dtls1_bitmap.d test/buildtest_dherr.d crypto/engine/eng_table.d test/buildtest_cterr.d test/pemtest.d test/ssltestlib.d crypto/bn/bn_lib.d ssl/record/ssl3_buffer.d crypto/asn1/x_spki.d crypto/dso/dso_dlfcn.d test/bftest.d test/test_test.d crypto/evp/bio_md.d crypto/evp/m_ripemd.d crypto/bio/bf_nbio.d crypto/aes/aes_cfb.d crypto/des/pcbc_enc.d crypto/conf/conf_lib.d crypto/pem/pem_pk8.d crypto/evp/bio_ok.d crypto/bio/bss_sock.d crypto/engine/tb_dsa.d crypto/ui/ui_null.d crypto/asn1/asn1_err.d crypto/asn1/a_sign.d test/buildtest_store.d crypto/pem/pem_info.d crypto/aes/aes_misc.d test/chacha_internal_test.d crypto/ec/ec_lib.d test/buildtest_rand.d crypto/ec/ec_check.d crypto/cms/cms_cd.d crypto/rsa/rsa_ossl.d engines/e_padlock.d crypto/ts/ts_req_print.d test/danetest.d test/buildtest_err.d test/buildtest_srtp.d test/tls13encryptiontest.d crypto/evp/e_rc4.d test/sslbuffertest.d crypto/ec/ec_key.d crypto/x509v3/pcy_node.d test/ct_test.d crypto/ctype.d test/buildtest_x509err.d crypto/engine/tb_digest.d crypto/bn/bn_x931p.d crypto/x509v3/pcy_map.d test/buildtest_bio.d crypto/seed/seed_ecb.d crypto/dh/dh_gen.d test/buildtest_objectserr.d test/buildtest_crypto.d test/buildtest_sha.d crypto/err/err_all.d crypto/conf/conf_mod.d crypto/modes/ctr128.d crypto/bf/bf_enc.d crypto/buffer/buf_err.d test/buildtest_mdc2.d ssl/methods.d crypto/dso/dso_err.d crypto/seed/seed.d crypto/cast/c_cfb64.d ssl/ssl_cert.d ssl/ssl_txt.d crypto/bn/bn_prime.d crypto/asn1/ameth_lib.d test/servername_test.d crypto/cversion.d test/buildtest_engine.d crypto/engine/eng_all.d crypto/x509/by_file.d crypto/ec/ecp_smpl.d crypto/ec/ec_asn1.d crypto/bn/bn_mpi.d crypto/x509/x509_lu.d crypto/evp/m_sha3.d crypto/engine/eng_lib.d test/buildtest_randerr.d crypto/asn1/a_utctm.d crypto/modes/ccm128.d test/enginetest.d crypto/err/err.d test/buildtest_modes.d apps/rsa.d test/packettest.d crypto/async/arch/async_posix.d apps/ec.d crypto/asn1/a_gentm.d apps/crl2p7.d test/buildtest_ocsperr.d crypto/x509v3/v3_pci.d crypto/engine/eng_dyn.d crypto/evp/evp_cnf.d ssl/tls_srp.d crypto/evp/evp_pbe.d crypto/ocsp/ocsp_asn.d crypto/asn1/asn1_par.d crypto/ec/ecdsa_sign.d crypto/bio/bss_acpt.d test/testutil/format_output.d crypto/engine/eng_cnf.d crypto/hmac/hm_ameth.d test/rc5test.d test/testutil/basic_output.d crypto/x509v3/pcy_cache.d test/sanitytest.d crypto/engine/eng_err.d crypto/engine/tb_dh.d crypto/dh/dh_prn.d crypto/evp/e_rc2.d ssl/ssl_ciph.d test/buildtest_conferr.d crypto/x509v3/v3_utl.d crypto/asn1/tasn_enc.d crypto/camellia/cmll_ecb.d crypto/bn/bn_err.d fuzz/asn1.d crypto/evp/p_seal.d crypto/evp/evp_pkey.d crypto/ripemd/rmd_dgst.d ssl/s3_msg.d crypto/engine/eng_openssl.d ssl/pqueue.d crypto/des/str2key.d crypto/des/ofb_enc.d crypto/dh/dh_rfc7919.d crypto/x509/x509spki.d crypto/rsa/rsa_saos.d crypto/evp/bio_enc.d crypto/rand/rand_win.d crypto/des/cfb_enc.d crypto/ct/ct_err.d crypto/dsa/dsa_pmeth.d test/buildtest_buffer.d crypto/des/cfb64ede.d apps/sess_id.d fuzz/x509.d test/testutil/init.d crypto/x509v3/v3_alt.d test/buildtest_conf_api.d crypto/cmac/cmac.d crypto/bn/bn_add.d crypto/x509v3/v3_extku.d crypto/o_fopen.d crypto/srp/srp_lib.d crypto/uid.d test/dtlstest.d ssl/record/ssl3_record.d crypto/evp/encode.d crypto/evp/evp_key.d crypto/whrlpool/wp_block.d crypto/asn1/evp_asn1.d crypto/idea/i_cfb64.d crypto/x509v3/v3_admis.d apps/dhparam.d test/buildtest_uierr.d crypto/ec/ec_pmeth.d test/handshake_helper.d crypto/evp/evp_lib.d crypto/x509v3/v3_addr.d crypto/modes/xts128.d crypto/pkcs12/p12_mutl.d fuzz/client.d crypto/ts/ts_conf.d test/buildtest_bnerr.d test/buildtest_ebcdic.d crypto/rand/drbg_lib.d crypto/cms/cms_smime.d crypto/bio/b_dump.d crypto/x509v3/v3_akey.d crypto/bio/bf_lbuf.d ssl/ssl_mcnf.d crypto/rsa/rsa_pk1.d crypto/x509/x509_v3.d crypto/x509v3/v3_conf.d crypto/evp/c_alld.d test/x509_internal_test.d crypto/evp/m_md5.d test/mdc2_internal_test.d crypto/x509/x509cset.d crypto/aes/aes_wrap.d crypto/pkcs12/p12_crpt.d crypto/asn1/tasn_prn.d crypto/dh/dh_depr.d crypto/asn1/nsseq.d crypto/aes/aes_ige.d test/testutil/tap_bio.d crypto/evp/e_chacha20_poly1305.d crypto/cms/cms_err.d crypto/dsa/dsa_ossl.d crypto/engine/tb_rand.d crypto/ec/ecp_nistp224.d test/v3ext.d test/buildtest_dh.d crypto/rc2/rc2_cbc.d crypto/ec/ec2_mult.d crypto/aes/aes_core.d crypto/o_fips.d test/buildtest_evp.d crypto/aria/aria.d ssl/ssl_utst.d test/ssl_test_ctx_test.d engines/e_capi.d crypto/ts/ts_rsp_utils.d crypto/ec/ec_err.d crypto/rsa/rsa_mp.d crypto/cms/cms_env.d ssl/d1_lib.d crypto/siphash/siphash_pmeth.d crypto/x509/x_crl.d crypto/bio/bio_err.d apps/nseq.d crypto/x509/x_name.d test/buildtest_pem.d crypto/ocsp/ocsp_prn.d crypto/ebcdic.d crypto/rc2/rc2cfb64.d crypto/conf/conf_sap.d ssl/statem/extensions_clnt.d crypto/dh/dh_asn1.d crypto/ct/ct_policy.d fuzz/asn1parse.d test/secmemtest.d crypto/ec/ec_oct.d crypto/bn/bn_mont.d crypto/asn1/a_object.d crypto/pkcs7/pk7_lib.d crypto/rand/rand_err.d crypto/objects/o_names.d test/ciphername_test.d ssl/packet.d crypto/bn/bn_srp.d crypto/modes/cts128.d crypto/evp/e_aes.d crypto/ex_data.d apps/s_cb.d ssl/s3_lib.d crypto/evp/e_aes_cbc_hmac_sha256.d crypto/pkcs12/p12_init.d test/buildtest_tserr.d ssl/s3_cbc.d crypto/x509/x509_set.d ssl/statem/statem_dtls.d crypto/rand/rand_lib.d test/testutil/main.d crypto/x509v3/v3_int.d crypto/modes/ofb128.d crypto/x509/x_exten.d crypto/evp/e_cast.d crypto/x509v3/v3_genn.d crypto/rand/rand_unix.d crypto/rsa/rsa_depr.d crypto/x509/x509_cmp.d test/buildtest_async.d crypto/rsa/rsa_err.d test/exdatatest.d crypto/cmac/cm_ameth.d crypto/dso/dso_openssl.d crypto/asn1/asn1_gen.d crypto/kdf/tls1_prf.d test/buildtest_asn1t.d crypto/idea/i_ofb64.d test/buildtest_ts.d test/exptest.d crypto/x509v3/v3_pcia.d crypto/threads_win.d crypto/aes/aes_ofb.d crypto/engine/tb_eckey.d crypto/ts/ts_asn1.d ssl/statem/statem.d test/testutil/test_cleanup.d crypto/evp/pmeth_fn.d test/asn1_string_table_test.d crypto/stack/stack.d crypto/bn/bn_gcd.d crypto/o_time.d crypto/evp/cmeth_lib.d crypto/ec/ec_kmeth.d crypto/x509v3/v3_pmaps.d crypto/evp/e_null.d crypto/pem/pem_x509.d crypto/bn/bn_ctx.d crypto/bn/bn_rand.d test/ocspapitest.d test/buildtest_x509v3err.d apps/rehash.d crypto/engine/tb_cipher.d crypto/pkcs7/pk7_asn1.d crypto/bn/bn_intern.d crypto/bio/bss_bio.d crypto/des/ecb3_enc.d crypto/pem/pem_pkey.d crypto/asn1/tasn_fre.d fuzz/crl.d crypto/ec/ecdh_kdf.d crypto/asn1/a_octet.d crypto/camellia/cmll_misc.d test/buildtest_opensslv.d crypto/des/xcbc_enc.d apps/srp.d crypto/evp/e_xcbc_d.d crypto/evp/names.d apps/passwd.d test/crltest.d crypto/pkcs12/p12_npas.d crypto/modes/cfb128.d crypto/evp/p_open.d crypto/asn1/n_pkey.d test/clienthellotest.d crypto/ts/ts_verify_ctx.d crypto/ec/ec_mult.d crypto/ocsp/ocsp_ht.d crypto/ec/ec_ameth.d crypto/buffer/buffer.d apps/speed.d crypto/hmac/hm_pmeth.d apps/opt.d crypto/x509/x_all.d test/buildtest_cms.d crypto/pem/pem_err.d crypto/evp/evp_enc.d apps/verify.d test/gmdifftest.d crypto/pkcs12/p12_asn.d crypto/asn1/asn_mstbl.d test/dtlsv1listentest.d crypto/engine/tb_rsa.d crypto/seed/seed_cbc.d crypto/asn1/x_long.d crypto/bn/bn_nist.d crypto/conf/conf_mall.d crypto/ocsp/ocsp_lib.d crypto/md5/md5_one.d ssl/statem/statem_clnt.d crypto/evp/pmeth_lib.d crypto/bio/bf_buff.d crypto/conf/conf_def.d crypto/des/set_key.d crypto/cryptlib.d crypto/asn1/tasn_utl.d test/buildtest_comp.d test/asn1_internal_test.d crypto/asn1/asn_mime.d crypto/bio/bss_fd.d crypto/bn/bn_depr.d crypto/modes/gcm128.d fuzz/ct.d test/buildtest_srp.d crypto/des/ofb64ede.d crypto/asn1/tasn_scn.d crypto/ocsp/ocsp_err.d test/rc2test.d crypto/asn1/tasn_dec.d crypto/bio/b_print.d crypto/cms/cms_att.d crypto/asn1/d2i_pr.d apps/dgst.d crypto/pkcs7/pk7_smime.d crypto/x509v3/v3_skey.d crypto/x509/x509_err.d apps/s_client.d test/buildtest_safestack.d crypto/dsa/dsa_depr.d test/buildtest_lhash.d crypto/evp/digest.d crypto/ui/ui_openssl.d crypto/evp/pmeth_gn.d apps/openssl.d crypto/rand/rand_egd.d crypto/ec/curve25519.d test/rsa_mp_test.d crypto/rsa/rsa_meth.d test/verify_extra_test.d crypto/asn1/f_int.d test/tls13ccstest.d crypto/x509v3/v3_purp.d test/buildtest_pkcs7.d crypto/evp/m_md4.d crypto/dsa/dsa_ameth.d crypto/asn1/a_digest.d test/pkey_meth_test.d crypto/dso/dso_win32.d ssl/ssl_stat.d crypto/store/store_register.d apps/s_server.d ssl/ssl_init.d crypto/cms/cms_enc.d crypto/md4/md4_dgst.d crypto/asn1/bio_ndef.d crypto/rsa/rsa_x931.d apps/ts.d crypto/bio/b_sock2.d crypto/md4/md4_one.d crypto/pkcs7/pk7_mime.d crypto/cpt_err.d crypto/siphash/siphash_ameth.d ssl/ssl_sess.d crypto/bn/bn_blind.d test/ctype_internal_test.d apps/errstr.d crypto/rsa/rsa_oaep.d crypto/engine/eng_list.d crypto/asn1/p8_pkey.d crypto/ui/ui_err.d crypto/des/cfb64enc.d crypto/ec/ecp_oct.d crypto/bn/bn_recp.d crypto/bf/bf_skey.d test/aborttest.d crypto/ct/ct_sct_ctx.d apps/bf_prefix.d crypto/rsa/rsa_x931g.d test/buildtest_ssl2.d crypto/rsa/rsa_ssl.d crypto/dso/dso_dl.d crypto/objects/obj_dat.d crypto/rc2/rc2_skey.d crypto/evp/p_enc.d crypto/x509v3/v3_pku.d test/asynctest.d ssl/statem/extensions_cust.d test/lhash_test.d test/buildtest_stack.d ssl/tls13_enc.d crypto/pkcs12/p12_sbag.d crypto/cms/cms_kari.d crypto/asn1/a_print.d apps/storeutl.d crypto/x509/t_crl.d crypto/asn1/a_strnid.d crypto/ec/ecp_nistp256.d crypto/asn1/asn_moid.d crypto/cast/c_ofb64.d crypto/ct/ct_log.d crypto/seed/seed_ofb.d crypto/pkcs12/p12_kiss.d test/buildtest_asyncerr.d crypto/dso/dso_vms.d crypto/rsa/rsa_asn1.d crypto/asn1/asn1_lib.d crypto/err/err_prn.d test/mdc2test.d apps/s_time.d crypto/x509/x509type.d crypto/idea/i_skey.d crypto/txt_db/txt_db.d crypto/x509v3/pcy_tree.d test/dtls_mtu_test.d ssl/d1_msg.d test/testutil/tests.d apps/req.d crypto/comp/c_zlib.d crypto/evp/p_lib.d test/buildtest_seed.d crypto/ec/ec2_smpl.d crypto/x509/x509_obj.d test/x509_dup_cert_test.d crypto/evp/e_des.d crypto/asn1/f_string.d test/buildtest_symhacks.d crypto/rand/randfile.d apps/dsaparam.d fuzz/cms.d
+DEPS=crypto/asn1/a_time.d crypto/rc2/rc2cfb64.d crypto/bio/bss_null.d crypto/ts/ts_rsp_utils.d crypto/async/async_wait.d crypto/pkcs12/p12_utl.d crypto/bn/bn_sqrt.d ssl/statem/statem_dtls.d crypto/aria/aria.d test/ciphername_test.d crypto/x509/x509_trs.d crypto/des/cfb64enc.d crypto/x509v3/v3_ia5.d crypto/rc4/rc4_skey.d test/poly1305_internal_test.d test/handshake_helper.d crypto/asn1/asn1_gen.d crypto/pem/pvkfmt.d apps/gendsa.d crypto/cmac/cmac.d crypto/rsa/rsa_lib.d test/sm2crypttest.d crypto/modes/wrap128.d crypto/x509/t_crl.d crypto/engine/eng_dyn.d test/time_offset_test.d crypto/asn1/p5_pbe.d engines/e_capi.d test/buildtest_objects.d crypto/x509v3/v3_alt.d crypto/ocsp/ocsp_lib.d test/secmemtest.d crypto/evp/pmeth_fn.d test/buildtest_rc4.d test/hmactest.d crypto/bn/bn_const.d crypto/ec/ec_err.d crypto/o_str.d crypto/cms/cms_kari.d crypto/ec/curve448/scalar.d test/pbelutest.d apps/app_rand.d crypto/dsa/dsa_pmeth.d crypto/ct/ct_prn.d test/asn1_internal_test.d crypto/rand/drbg_ctr.d test/bad_dtls_test.d test/rc5test.d fuzz/server.d crypto/store/loader_file.d crypto/pkcs12/p12_npas.d crypto/ripemd/rmd_one.d crypto/asn1/a_d2i_fp.d crypto/kdf/scrypt.d crypto/evp/m_md2.d crypto/asn1/asn_pack.d crypto/x509v3/pcy_cache.d test/testutil/cb.d crypto/camellia/cmll_ofb.d crypto/md4/md4_one.d crypto/poly1305/poly1305.d test/asynciotest.d crypto/o_init.d test/conf_include_test.d test/buildtest_sha.d crypto/evp/e_old.d test/testutil/tap_bio.d crypto/bio/bss_fd.d crypto/ex_data.d crypto/evp/m_mdc2.d crypto/bio/bf_nbio.d crypto/bio/bio_lib.d crypto/dsa/dsa_vrf.d crypto/dh/dh_key.d crypto/seed/seed_ecb.d crypto/srp/srp_vfy.d crypto/x509v3/v3_pmaps.d crypto/rand/rand_lib.d crypto/o_time.d test/siphash_internal_test.d crypto/x509v3/pcy_map.d crypto/evp/pbe_scrypt.d crypto/rc4/rc4_enc.d test/buildtest_ossl_typ.d crypto/conf/conf_mall.d crypto/pkcs12/p12_kiss.d crypto/camellia/cmll_ctr.d crypto/ec/ec_asn1.d test/buildtest_ct.d crypto/comp/c_zlib.d fuzz/bignum.d test/mdc2_internal_test.d ssl/record/ssl3_record.d crypto/x509/x_name.d test/buildtest_safestack.d crypto/rsa/rsa_ssl.d crypto/asn1/x_pkey.d ssl/methods.d ssl/statem/extensions.d crypto/evp/e_chacha20_poly1305.d test/asn1_encode_test.d crypto/idea/i_cbc.d test/buildtest_whrlpool.d crypto/bn/bn_intern.d crypto/x509/x509_req.d crypto/x509v3/v3_asid.d crypto/kdf/tls1_prf.d crypto/des/ofb64enc.d crypto/evp/p_seal.d crypto/rsa/rsa_err.d test/modes_internal_test.d ssl/record/rec_layer_s3.d test/chacha_internal_test.d apps/rand.d crypto/uid.d ssl/statem/extensions_cust.d apps/version.d crypto/cast/c_ecb.d test/buildtest_opensslv.d crypto/x509v3/v3_enum.d crypto/md5/md5_one.d crypto/mdc2/mdc2_one.d test/buildtest_dsa.d crypto/evp/m_sigver.d test/buildtest_pkcs7.d crypto/idea/i_skey.d crypto/asn1/x_int64.d test/testutil/tests.d crypto/evp/e_des.d test/ssl_test.d ssl/statem/statem_clnt.d crypto/x509/x509name.d crypto/rsa/rsa_pss.d crypto/ec/ecp_nistp521.d crypto/asn1/x_val.d crypto/evp/e_cast.d test/crltest.d crypto/rand/rand_vms.d test/buildtest_aes.d crypto/des/pcbc_enc.d crypto/rand/randfile.d crypto/err/err.d crypto/ec/ec2_mult.d crypto/evp/m_sha3.d test/ctype_internal_test.d crypto/evp/evp_enc.d crypto/engine/eng_openssl.d crypto/asn1/asn_mstbl.d test/bioprinttest.d crypto/evp/e_aes_cbc_hmac_sha1.d crypto/bn/bn_rand.d crypto/poly1305/poly1305_pmeth.d crypto/asn1/a_utctm.d test/sslcorrupttest.d crypto/bio/bf_buff.d crypto/evp/names.d crypto/ripemd/rmd_dgst.d crypto/pkcs12/p12_mutl.d crypto/bn/bn_div.d crypto/err/err_all.d test/sslapitest.d crypto/asn1/f_string.d ssl/statem/extensions_srvr.d ssl/ssl_cert.d crypto/rsa/rsa_x931g.d crypto/x509v3/v3_pku.d crypto/asn1/a_int.d crypto/ec/ec2_smpl.d crypto/asn1/p5_scrypt.d test/buildtest_e_os2.d crypto/asn1/tasn_fre.d crypto/bio/bss_mem.d test/buildtest_obj_mac.d crypto/asn1/x_algor.d crypto/x509v3/v3_utl.d crypto/des/set_key.d crypto/asn1/evp_asn1.d crypto/engine/tb_rsa.d crypto/pkcs12/pk12err.d crypto/asn1/asn_moid.d apps/verify.d crypto/pkcs12/p12_sbag.d crypto/aes/aes_wrap.d test/rsa_test.d apps/dsaparam.d crypto/ct/ct_x509v3.d crypto/modes/ofb128.d crypto/asn1/asn1_err.d ssl/s3_cbc.d crypto/ec/ecp_smpl.d crypto/camellia/cmll_cbc.d crypto/bn/bn_mod.d crypto/x509v3/v3_crld.d fuzz/ct.d test/exdatatest.d crypto/evp/e_des3.d test/buildtest_tls1.d test/buildtest_ripemd.d crypto/evp/e_bf.d crypto/ct/ct_err.d crypto/sha/sha512.d crypto/asn1/d2i_pu.d crypto/objects/obj_lib.d crypto/conf/conf_sap.d test/exptest.d crypto/asn1/n_pkey.d crypto/x509/x509_r2x.d crypto/conf/conf_api.d crypto/rsa/rsa_mp.d crypto/rsa/rsa_crpt.d apps/rsautl.d crypto/store/store_init.d crypto/ui/ui_util.d ssl/s3_lib.d crypto/ec/ec_check.d test/ssl_test_ctx_test.d crypto/asn1/tasn_typ.d crypto/md5/md5_dgst.d test/buildtest_mdc2.d fuzz/x509.d crypto/evp/e_idea.d test/buildtest_ocsp.d test/drbgtest.d test/dtlsv1listentest.d crypto/modes/xts128.d crypto/evp/e_camellia.d crypto/ec/curve25519.d crypto/bf/bf_ecb.d crypto/ec/ecp_mont.d test/dhtest.d crypto/sha/sha1dgst.d test/x509_dup_cert_test.d crypto/bn/bn_lib.d crypto/objects/obj_dat.d crypto/aes/aes_core.d crypto/threads_none.d crypto/ec/ecp_nist.d apps/pkeyutl.d apps/ca.d crypto/asn1/a_strnid.d apps/s_cb.d test/cipherbytes_test.d test/buildtest_x509.d test/buildtest_symhacks.d test/tls13ccstest.d crypto/x509v3/v3_pci.d ssl/statem/statem_srvr.d crypto/dso/dso_dlfcn.d crypto/cms/cms_smime.d crypto/ec/ecdsa_sign.d crypto/des/cfb64ede.d crypto/idea/i_ofb64.d crypto/x509v3/v3_pcia.d crypto/pem/pem_pk8.d crypto/pkcs12/p12_p8e.d crypto/x509/x509_err.d crypto/pem/pem_x509.d crypto/cpt_err.d crypto/conf/conf_mod.d crypto/asn1/a_digest.d ssl/ssl_lib.d crypto/x509/x_all.d crypto/x509v3/pcy_data.d test/stack_test.d crypto/rc2/rc2_ecb.d test/buildtest_ts.d test/buildtest_pem.d crypto/poly1305/poly1305_ameth.d ssl/bio_ssl.d crypto/asn1/asn1_item_list.d crypto/evp/e_rc5.d ssl/record/rec_layer_d1.d crypto/pkcs12/p12_p8d.d apps/s_client.d crypto/siphash/siphash_pmeth.d crypto/dh/dh_rfc5114.d crypto/evp/pmeth_gn.d crypto/ui/ui_err.d crypto/x509v3/v3_admis.d crypto/bio/b_dump.d crypto/engine/eng_ctrl.d crypto/x509/x509_txt.d test/ct_test.d crypto/kdf/hkdf.d crypto/asn1/x_sig.d crypto/dh/dh_meth.d test/aborttest.d crypto/buffer/buf_err.d test/testutil/stanza.d crypto/o_fips.d crypto/evp/e_aes.d crypto/evp/e_rc2.d crypto/sm2/sm2_sign.d crypto/bn/bn_exp.d crypto/modes/gcm128.d crypto/threads_pthread.d apps/ec.d crypto/bf/bf_skey.d crypto/evp/e_rc4.d test/buildtest_evp.d crypto/engine/eng_rdrand.d crypto/ct/ct_b64.d crypto/ec/curve448/f_generic.d crypto/rsa/rsa_meth.d crypto/kdf/kdf_err.d crypto/aes/aes_misc.d test/testutil/main.d crypto/ts/ts_asn1.d apps/smime.d ssl/packet.d crypto/des/ofb64ede.d apps/nseq.d crypto/asn1/tasn_new.d crypto/rsa/rsa_sign.d test/buildtest_rand.d crypto/des/ecb_enc.d crypto/dsa/dsa_sign.d apps/pkey.d crypto/ec/ec_oct.d apps/cms.d crypto/des/ofb_enc.d crypto/ts/ts_err.d crypto/ct/ct_log.d crypto/ts/ts_lib.d crypto/whrlpool/wp_dgst.d crypto/ocsp/ocsp_cl.d crypto/pkcs12/p12_asn.d crypto/bn/bn_gcd.d test/uitest.d test/buildtest_ui.d test/buildtest_seed.d crypto/rsa/rsa_chk.d crypto/modes/ocb128.d crypto/x509/x_req.d crypto/pem/pem_sign.d crypto/lhash/lh_stats.d apps/sess_id.d crypto/des/cbc_enc.d crypto/sm2/sm2_crypt.d crypto/evp/m_wp.d crypto/asn1/tasn_scn.d ssl/ssl_mcnf.d test/buildtest_sm2.d crypto/evp/p_open.d crypto/evp/evp_pkey.d crypto/asn1/t_bitst.d crypto/store/store_err.d test/evp_test.d test/bntest.d crypto/cryptlib.d apps/s_server.d test/asynctest.d apps/prime.d test/fatalerrtest.d crypto/pkcs12/p12_crt.d crypto/engine/eng_list.d crypto/engine/eng_table.d test/mdc2test.d crypto/ocsp/ocsp_err.d crypto/x509v3/v3_pcons.d crypto/engine/eng_lib.d test/testutil/basic_output.d crypto/x509v3/v3_akeya.d crypto/async/async_err.d crypto/conf/conf_err.d crypto/evp/encode.d crypto/cms/cms_env.d crypto/bf/bf_enc.d crypto/x509/x509type.d ssl/d1_srtp.d test/destest.d crypto/x509/x_x509.d crypto/ct/ct_oct.d test/ssl_cert_table_internal_test.d engines/e_padlock.d crypto/ec/curve448/curve448.d apps/genpkey.d test/buildtest_comp.d crypto/des/des_enc.d apps/enc.d test/buildtest_store.d ssl/statem/extensions_clnt.d test/buildtest_srtp.d crypto/sha/sha1_one.d crypto/dsa/dsa_err.d crypto/bn/bn_print.d test/buildtest_ssl.d crypto/store/store_lib.d crypto/bn/bn_shift.d crypto/ts/ts_rsp_sign.d test/recordlentest.d crypto/blake2/blake2s.d crypto/pkcs12/p12_attr.d apps/apps.d crypto/ec/ec_mult.d crypto/bf/bf_cfb64.d crypto/dh/dh_kdf.d crypto/pkcs12/p12_crpt.d crypto/des/cbc_cksm.d test/testutil/test_cleanup.d crypto/x509v3/pcy_node.d crypto/mem_clr.d crypto/bn/bn_gf2m.d crypto/evp/p5_crpt2.d crypto/async/arch/async_null.d test/gmdifftest.d crypto/stack/stack.d crypto/comp/comp_lib.d crypto/evp/pmeth_lib.d test/buildtest_cmac.d crypto/rsa/rsa_ameth.d crypto/err/err_prn.d test/ecdsatest.d crypto/bio/bf_null.d apps/speed.d crypto/aes/aes_cfb.d crypto/evp/m_ripemd.d crypto/x509v3/v3_addr.d crypto/ui/ui_openssl.d crypto/evp/e_aria.d crypto/asn1/a_object.d apps/asn1pars.d ssl/ssl_err.d crypto/x509/x509_set.d crypto/ts/ts_rsp_verify.d test/bio_callback_test.d crypto/rsa/rsa_saos.d crypto/x509v3/v3_lib.d crypto/ec/ecdh_ossl.d test/buildtest_engine.d crypto/ocsp/ocsp_ht.d ssl/s3_enc.d crypto/x509v3/v3_extku.d crypto/ocsp/ocsp_asn.d test/buildtest_rc2.d crypto/srp/srp_lib.d crypto/asn1/a_i2d_fp.d test/igetest.d ssl/record/ssl3_record_tls13.d crypto/pkcs7/pk7_attr.d crypto/bn/bn_sqr.d test/threadstest.d crypto/engine/tb_dsa.d apps/storeutl.d fuzz/bndiv.d ssl/ssl_init.d test/lhash_test.d ssl/record/dtls1_bitmap.d test/buildtest_asn1.d crypto/x509v3/v3_purp.d test/testutil/output_helpers.d crypto/async/arch/async_win.d crypto/asn1/p8_pkey.d crypto/bio/bss_bio.d crypto/cms/cms_asn1.d crypto/des/fcrypt_b.d test/srptest.d crypto/hmac/hm_pmeth.d crypto/ec/ec_cvt.d crypto/dh/dh_prn.d crypto/dh/dh_rfc7919.d test/curve448_internal_test.d apps/errstr.d crypto/dsa/dsa_ameth.d crypto/x509v3/v3_ncons.d crypto/ocsp/ocsp_vfy.d test/evp_extra_test.d crypto/ocsp/ocsp_prn.d test/rsa_mp_test.d crypto/ui/ui_lib.d crypto/asn1/a_print.d crypto/ec/curve448/curve448_tables.d crypto/x509v3/v3_skey.d crypto/bio/bss_sock.d test/buildtest_idea.d crypto/x509/x509_vfy.d crypto/bio/bss_conn.d crypto/x509/x509cset.d crypto/bio/bf_lbuf.d apps/dgst.d crypto/siphash/siphash.d crypto/bn/bn_depr.d crypto/bn/bn_mul.d crypto/evp/evp_lib.d crypto/evp/e_aes_cbc_hmac_sha256.d crypto/ec/ecp_nistp224.d crypto/ebcdic.d crypto/rsa/rsa_ossl.d crypto/store/store_register.d test/rc2test.d crypto/asn1/asn_mime.d apps/dsa.d crypto/engine/eng_init.d crypto/pkcs7/pk7_lib.d test/buildtest_blowfish.d crypto/evp/m_sha1.d crypto/asn1/asn1_par.d crypto/ec/ec_kmeth.d test/sysdefaulttest.d crypto/ocsp/v3_ocsp.d test/buildtest_lhash.d test/tls13encryptiontest.d crypto/evp/cmeth_lib.d test/buildtest_stack.d crypto/objects/obj_xref.d crypto/des/fcrypt.d test/testutil/format_output.d ssl/t1_lib.d crypto/x509/x509_ext.d crypto/cms/cms_ess.d test/v3nametest.d ssl/t1_trce.d crypto/pem/pem_oth.d crypto/des/cfb_enc.d crypto/evp/m_null.d crypto/engine/eng_cnf.d crypto/x509v3/v3err.d crypto/engine/tb_dh.d crypto/ts/ts_conf.d crypto/bn/bn_ctx.d crypto/aes/aes_ige.d crypto/dso/dso_openssl.d crypto/asn1/a_octet.d crypto/rsa/rsa_gen.d crypto/cms/cms_cd.d fuzz/crl.d crypto/init.d crypto/des/str2key.d crypto/siphash/siphash_ameth.d ssl/d1_lib.d crypto/pem/pem_err.d crypto/seed/seed_cfb.d test/x509_check_cert_pkey_test.d test/x509aux.d test/buildtest_buffer.d crypto/engine/eng_fat.d crypto/ec/ecdsa_vrf.d crypto/x509/by_file.d apps/pkcs12.d test/buildtest_conf.d crypto/hmac/hm_ameth.d crypto/cast/c_cfb64.d crypto/ec/ecp_nistp256.d crypto/pkcs7/pkcs7err.d crypto/des/qud_cksm.d crypto/rsa/rsa_depr.d crypto/ts/ts_verify_ctx.d crypto/pkcs7/pk7_smime.d test/bftest.d crypto/rand/rand_unix.d fuzz/client.d crypto/sm2/sm2_err.d crypto/asn1/a_bitstr.d crypto/pkcs12/p12_init.d crypto/rsa/rsa_pk1.d apps/engine.d apps/bf_prefix.d crypto/x509v3/pcy_lib.d crypto/threads_win.d crypto/x509v3/v3_tlsf.d crypto/bio/bss_log.d crypto/bn/bn_exp2.d crypto/bio/bio_err.d crypto/evp/bio_b64.d ssl/ssl_rsa.d crypto/bn/bn_recp.d crypto/ec/ec_print.d test/sm2sigtest.d test/verify_extra_test.d crypto/chacha/chacha_enc.d test/clienthellotest.d apps/rsa.d crypto/rsa/rsa_oaep.d crypto/rsa/rsa_prn.d crypto/idea/i_cfb64.d test/memleaktest.d crypto/dsa/dsa_meth.d crypto/cast/c_skey.d crypto/asn1/nsseq.d crypto/rand/rand_egd.d crypto/ec/ec_ameth.d crypto/blake2/m_blake2b.d crypto/evp/p5_crpt.d ssl/ssl_stat.d test/buildtest_async.d crypto/modes/ccm128.d crypto/sha/keccak1600.d crypto/asn1/i2d_pr.d test/buildtest_crypto.d crypto/camellia/cmll_cfb.d crypto/ec/ecp_nistputil.d crypto/x509/x_crl.d crypto/asn1/a_utf8.d crypto/rand/rand_err.d crypto/dso/dso_dl.d crypto/x509/t_x509.d test/buildtest_ssl2.d crypto/x509/x509_att.d crypto/rc2/rc2_cbc.d ssl/pqueue.d apps/openssl.d crypto/blake2/blake2b.d crypto/cms/cms_dd.d apps/spkac.d apps/ecparam.d apps/s_time.d crypto/rc2/rc2_skey.d crypto/cms/cms_att.d crypto/dsa/dsa_lib.d test/pkey_meth_kdf_test.d crypto/asn1/a_type.d crypto/rand/drbg_lib.d test/buildtest_ec.d test/pkey_meth_test.d crypto/ec/curve448/arch_32/f_impl.d apps/x509.d crypto/rand/rand_win.d crypto/rsa/rsa_none.d test/buildtest_rsa.d apps/pkcs8.d test/sslbuffertest.d crypto/ec/ec_lib.d crypto/cast/c_enc.d crypto/dsa/dsa_asn1.d crypto/asn1/t_spki.d test/v3ext.d crypto/ct/ct_sct_ctx.d test/afalgtest.d crypto/asn1/x_bignum.d crypto/bn/bn_nist.d crypto/cmac/cm_ameth.d crypto/pkcs7/pk7_asn1.d test/rc4test.d crypto/rc2/rc2ofb64.d ssl/ssl_asn1.d crypto/whrlpool/wp_block.d crypto/engine/tb_rand.d crypto/pem/pem_xaux.d crypto/evp/e_rc4_hmac_md5.d crypto/asn1/a_verify.d crypto/pkcs12/p12_key.d crypto/dso/dso_err.d test/sm4_internal_test.d apps/pkeyparam.d apps/s_socket.d test/buildtest_ecdsa.d crypto/ec/ecp_oct.d crypto/asn1/a_sign.d crypto/ctype.d crypto/x509v3/v3_prn.d crypto/asn1/t_pkey.d crypto/engine/tb_cipher.d fuzz/asn1.d test/buildtest_hmac.d crypto/ct/ct_vfy.d test/cipher_overhead_test.d test/buildtest_md5.d crypto/asn1/x_long.d crypto/sm3/m_sm3.d crypto/bio/bss_acpt.d crypto/bn/bn_dh.d test/rdrand_sanitytest.d apps/ts.d crypto/bn/bn_prime.d crypto/x509/x509_d2.d ssl/ssl_sess.d crypto/engine/eng_err.d crypto/bn/bn_asm.d crypto/engine/tb_digest.d crypto/asn1/d2i_pr.d ssl/tls13_enc.d fuzz/asn1parse.d crypto/async/async.d crypto/lhash/lhash.d crypto/seed/seed_cbc.d crypto/comp/comp_err.d crypto/ec/ecdsa_ossl.d test/buildtest_pem2.d crypto/pkcs7/pk7_mime.d crypto/x509v3/v3_cpols.d crypto/pkcs7/bio_pk7.d crypto/ts/ts_req_utils.d crypto/rsa/rsa_x931.d crypto/asn1/ameth_lib.d crypto/pem/pem_lib.d crypto/bio/b_addr.d crypto/blake2/m_blake2s.d test/ocspapitest.d test/test_test.d crypto/sm2/sm2_za.d test/buildtest_cms.d crypto/evp/evp_err.d crypto/mem_dbg.d crypto/x509/x509spki.d crypto/cversion.d crypto/dso/dso_lib.d test/ssltest_old.d test/buildtest_md4.d apps/crl2p7.d crypto/engine/tb_asnmth.d ssl/d1_msg.d crypto/asn1/tasn_prn.d crypto/dh/dh_check.d test/buildtest_pkcs12.d crypto/x509v3/v3_akey.d crypto/bio/bss_dgram.d test/ectest.d crypto/bn/bn_mpi.d crypto/bn/bn_srp.d crypto/ec/ecx_meth.d crypto/ui/ui_null.d crypto/x509v3/v3_sxnet.d crypto/dsa/dsa_key.d crypto/store/store_strings.d crypto/evp/p_lib.d crypto/aes/aes_ecb.d crypto/async/arch/async_posix.d crypto/engine/tb_eckey.d crypto/pkcs12/p12_decr.d test/packettest.d crypto/ec/eck_prn.d ssl/tls_srp.d test/buildtest_ecdh.d crypto/bio/b_sock.d crypto/bn/bn_mont.d crypto/des/ecb3_enc.d crypto/pem/pem_info.d crypto/dh/dh_gen.d crypto/dh/dh_depr.d crypto/engine/tb_pkmeth.d apps/crl.d crypto/conf/conf_def.d test/buildtest_ebcdic.d crypto/ct/ct_sct.d crypto/hmac/hmac.d apps/srp.d ssl/record/ssl3_buffer.d crypto/asn1/bio_ndef.d crypto/x509v3/v3_conf.d crypto/buffer/buffer.d crypto/x509/x509rset.d crypto/bio/b_print.d crypto/dh/dh_asn1.d crypto/ec/ecdh_kdf.d crypto/txt_db/txt_db.d test/testutil/driver.d apps/rehash.d test/md2test.d ssl/statem/statem_lib.d crypto/ts/ts_rsp_print.d crypto/evp/c_alld.d crypto/bio/bio_meth.d crypto/x509/x_attrib.d crypto/evp/c_allc.d ssl/ssl_ciph.d crypto/engine/eng_pkey.d test/asn1_string_table_test.d crypto/x509/t_req.d crypto/ec/curve448/eddsa.d crypto/cms/cms_enc.d crypto/asn1/x_spki.d crypto/modes/cbc128.d crypto/dh/dh_ameth.d crypto/ocsp/ocsp_srv.d crypto/sm4/sm4.d crypto/ocsp/ocsp_ext.d crypto/pkcs7/pk7_doit.d crypto/bio/bio_cb.d crypto/evp/p_sign.d apps/opt.d crypto/cmac/cm_pmeth.d test/dsatest.d test/buildtest_modes.d crypto/asn1/f_int.d crypto/asn1/i2d_pu.d apps/dhparam.d crypto/evp/digest.d crypto/dsa/dsa_depr.d crypto/asn1/asn1_lib.d crypto/pem/pem_pkey.d test/x509_time_test.d ssl/ssl_txt.d test/buildtest_bn.d crypto/x509v3/v3_bcons.d apps/genrsa.d apps/ciphers.d crypto/evp/evp_cnf.d crypto/mem_sec.d crypto/asn1/x_info.d crypto/x509v3/pcy_tree.d crypto/evp/p_enc.d crypto/evp/m_md4.d crypto/des/rand_key.d crypto/camellia/camellia.d fuzz/test-corpus.d test/casttest.d crypto/seed/seed.d crypto/evp/m_md5_sha1.d crypto/evp/m_md5.d crypto/evp/e_null.d crypto/cms/cms_lib.d crypto/objects/obj_err.d test/ideatest.d test/d2i_test.d crypto/bn/bn_word.d test/buildtest_dtls1.d crypto/dsa/dsa_ossl.d crypto/cms/cms_pwri.d test/buildtest_srp.d crypto/asn1/bio_asn1.d crypto/aes/aes_cbc.d test/buildtest_kdf.d crypto/x509/x509_def.d test/testutil/init.d test/servername_test.d crypto/bf/bf_ofb64.d crypto/o_fopen.d crypto/evp/e_sm4.d crypto/seed/seed_ofb.d crypto/x509v3/v3_int.d test/buildtest_bio.d test/buildtest_rand_drbg.d test/bio_enc_test.d crypto/x509/x509_cmp.d test/buildtest_txt_db.d test/buildtest_conf_api.d test/buildtest_dh.d crypto/evp/e_xcbc_d.d ssl/t1_enc.d crypto/pkcs12/p12_add.d crypto/x509/x509_lu.d crypto/sm3/sm3.d crypto/dh/dh_pmeth.d crypto/des/xcbc_enc.d apps/ocsp.d crypto/dh/dh_lib.d crypto/md4/md4_dgst.d crypto/sha/sha256.d test/danetest.d test/wpackettest.d crypto/cms/cms_io.d crypto/bn/bn_err.d crypto/bn/bn_x931p.d crypto/mdc2/mdc2dgst.d crypto/evp/bio_ok.d crypto/o_dir.d apps/pkcs7.d test/enginetest.d crypto/asn1/tasn_enc.d crypto/dso/dso_win32.d crypto/mem.d crypto/asn1/a_mbstr.d crypto/ct/ct_policy.d crypto/bn/bn_add.d crypto/asn1/p5_pbev2.d crypto/dsa/dsa_gen.d crypto/x509/x509_obj.d crypto/pem/pem_all.d crypto/evp/e_seed.d crypto/aes/aes_ofb.d crypto/evp/evp_pbe.d crypto/idea/i_ecb.d crypto/rsa/rsa_pmeth.d crypto/x509v3/v3_bitst.d crypto/engine/eng_all.d test/buildtest_cast.d test/pemtest.d fuzz/cms.d crypto/x509/by_dir.d ssl/statem/statem.d test/asn1_time_test.d test/dtls_mtu_test.d crypto/dh/dh_err.d crypto/cast/c_ofb64.d test/buildtest_des.d crypto/asn1/a_gentm.d crypto/evp/p_verify.d crypto/modes/ctr128.d crypto/cms/cms_err.d crypto/x509/x_x509a.d fuzz/conf.d crypto/evp/bio_md.d crypto/bio/b_sock2.d ssl/ssl_utst.d test/ssltestlib.d crypto/camellia/cmll_misc.d crypto/dso/dso_vms.d crypto/evp/p_dec.d crypto/evp/bio_enc.d crypto/cms/cms_sd.d test/buildtest_x509_vfy.d crypto/asn1/tasn_utl.d ssl/s3_msg.d test/constant_time_test.d crypto/bn/bn_kron.d test/buildtest_camellia.d crypto/ts/ts_req_print.d apps/req.d test/sanitytest.d crypto/x509v3/v3_info.d crypto/asn1/a_dup.d crypto/x509/x509_v3.d test/ecstresstest.d crypto/asn1/a_strex.d crypto/bio/bss_file.d test/ssl_test_ctx.d ssl/ssl_conf.d crypto/x509v3/v3_genn.d crypto/x509/x509_vpm.d test/dtlstest.d test/buildtest_x509v3.d crypto/camellia/cmll_ecb.d crypto/x509/x_pubkey.d crypto/ec/ec2_oct.d crypto/rsa/rsa_asn1.d crypto/objects/o_names.d crypto/ec/ec_pmeth.d crypto/conf/conf_lib.d test/x509_internal_test.d crypto/dsa/dsa_prn.d crypto/modes/cfb128.d apps/passwd.d test/buildtest_asn1t.d crypto/ec/ec_curve.d crypto/modes/cts128.d crypto/evp/evp_key.d crypto/bn/bn_blind.d crypto/asn1/tasn_dec.d crypto/ec/ec_key.d crypto/x509/x_exten.d test/cipherlist_test.d
 
 GENERATED_MANDATORY=crypto/include/internal/bn_conf.h crypto/include/internal/dso_conf.h include/openssl/opensslconf.h
-GENERATED=test/buildtest_ecdsa.c test/buildtest_ecdh.c test/buildtest_ssl.c test/buildtest_x509_vfy.c test/buildtest_rsa.c test/buildtest_obj_mac.c test/buildtest_cryptoerr.c test/buildtest_ocsp.c test/buildtest_sslerr.c test/buildtest_md5.c test/buildtest_bioerr.c test/buildtest_idea.c test/buildtest_asn1.c test/buildtest_bn.c test/buildtest_pem2.c test/buildtest_x509.c test/buildtest_cmac.c test/buildtest_cmserr.c test/buildtest_storeerr.c test/buildtest_ecerr.c test/buildtest_rsaerr.c test/buildtest_evperr.c test/buildtest_camellia.c test/buildtest_kdf.c test/buildtest_ct.c test/buildtest_ossl_typ.c test/buildtest_txt_db.c test/buildtest_asn1err.c test/buildtest_buffererr.c test/buildtest_rc2.c test/buildtest_x509v3.c test/buildtest_rc4.c test/buildtest_conf.c test/buildtest_tls1.c test/buildtest_blowfish.c test/buildtest_md4.c test/buildtest_ripemd.c test/buildtest_objects.c test/buildtest_aes.c test/buildtest_engineerr.c test/buildtest_pkcs7err.c test/buildtest_comperr.c test/buildtest_dsa.c test/buildtest_des.c test/buildtest_e_os2.c test/buildtest_ui.c test/buildtest_pkcs12.c test/buildtest_pkcs12err.c test/buildtest_hmac.c test/buildtest_dsaerr.c test/buildtest_cast.c test/buildtest_kdferr.c test/buildtest_pemerr.c test/buildtest_ec.c test/buildtest_dtls1.c test/buildtest_whrlpool.c test/buildtest_dherr.c test/buildtest_cterr.c test/buildtest_store.c test/buildtest_rand.c test/buildtest_err.c test/buildtest_srtp.c test/buildtest_x509err.c test/buildtest_bio.c test/buildtest_objectserr.c test/buildtest_crypto.c test/buildtest_sha.c test/buildtest_mdc2.c test/buildtest_engine.c test/buildtest_randerr.c test/buildtest_modes.c test/buildtest_ocsperr.c test/buildtest_conferr.c test/buildtest_buffer.c test/buildtest_conf_api.c test/buildtest_uierr.c test/buildtest_bnerr.c test/buildtest_ebcdic.c test/buildtest_dh.c test/buildtest_evp.c test/buildtest_pem.c test/buildtest_tserr.c test/buildtest_async.c test/buildtest_asn1t.c test/buildtest_ts.c test/buildtest_x509v3err.c test/buildtest_opensslv.c test/buildtest_cms.c test/buildtest_comp.c test/buildtest_srp.c test/buildtest_safestack.c test/buildtest_lhash.c test/buildtest_pkcs7.c test/buildtest_ssl2.c test/buildtest_stack.c test/buildtest_asyncerr.c test/buildtest_seed.c test/buildtest_symhacks.c crypto/include/internal/bn_conf.h apps/progs.h crypto/include/internal/dso_conf.h crypto/buildinf.h include/openssl/opensslconf.h
+GENERATED=test/buildtest_objects.c test/buildtest_rc4.c test/buildtest_sha.c test/buildtest_ossl_typ.c test/buildtest_ct.c test/buildtest_safestack.c test/buildtest_whrlpool.c test/buildtest_opensslv.c test/buildtest_dsa.c test/buildtest_pkcs7.c test/buildtest_aes.c test/buildtest_e_os2.c test/buildtest_obj_mac.c test/buildtest_tls1.c test/buildtest_ripemd.c test/buildtest_mdc2.c test/buildtest_ocsp.c test/buildtest_x509.c test/buildtest_symhacks.c test/buildtest_ts.c test/buildtest_pem.c test/buildtest_evp.c test/buildtest_rand.c test/buildtest_ui.c test/buildtest_seed.c test/buildtest_sm2.c test/buildtest_comp.c test/buildtest_store.c test/buildtest_srtp.c test/buildtest_ssl.c test/buildtest_cmac.c test/buildtest_engine.c test/buildtest_rc2.c test/buildtest_asn1.c test/buildtest_idea.c test/buildtest_blowfish.c test/buildtest_lhash.c test/buildtest_stack.c test/buildtest_buffer.c test/buildtest_conf.c test/buildtest_async.c test/buildtest_crypto.c test/buildtest_ssl2.c test/buildtest_ec.c test/buildtest_rsa.c test/buildtest_ecdsa.c test/buildtest_hmac.c test/buildtest_md5.c test/buildtest_pem2.c test/buildtest_cms.c test/buildtest_md4.c test/buildtest_pkcs12.c test/buildtest_ecdh.c test/buildtest_ebcdic.c test/buildtest_modes.c test/buildtest_bn.c test/buildtest_dtls1.c test/buildtest_srp.c test/buildtest_kdf.c test/buildtest_bio.c test/buildtest_rand_drbg.c test/buildtest_txt_db.c test/buildtest_conf_api.c test/buildtest_dh.c test/buildtest_cast.c test/buildtest_des.c test/buildtest_x509_vfy.c test/buildtest_camellia.c test/buildtest_x509v3.c test/buildtest_asn1t.c crypto/include/internal/dso_conf.h crypto/buildinf.h crypto/include/internal/bn_conf.h apps/progs.h include/openssl/opensslconf.h
 
 INSTALL_LIBS=libcrypto.a libssl.a
 INSTALL_SHLIBS=
@@ -77,29 +77,25 @@ HTMLSUFFIX=html
 # For "optional" echo messages, to get "real" silence
 ECHO = echo
 
-CROSS_COMPILE= 
-CPPFLAGS=-DNDEBUG -DOPENSSL_NO_DYNAMIC_ENGINE
-CPPFLAGS_Q=-DNDEBUG -DOPENSSL_NO_DYNAMIC_ENGINE
-CC= $(CROSS_COMPILE)cc
-CFLAGS=-O
+##### User defined commands and flags ################################
+
+# We let the C compiler driver to take care of .s files. This is done in
+# order to be excused from maintaining a separate set of architecture
+# dependent assembler flags. E.g. if you throw -mcpu=ultrasparc at SPARC
+# gcc, then the driver will automatically translate it to -xarch=v8plus
+# and pass it down to assembler.  In any case, we do not define AS or
+# ASFLAGS for this reason.
+
+CROSS_COMPILE=
+CC=$(CROSS_COMPILE)gcc
 CXX=
+CPPFLAGS=
+CFLAGS=-O
 CXXFLAGS=
 LDFLAGS= 
-PLIB_LDFLAGS= 
 EX_LIBS= 
 
-LIB_CPPFLAGS=$(CPPFLAGS) -DOPENSSLDIR="\"$(OPENSSLDIR)\"" -DENGINESDIR="\"$(ENGINESDIR)\""
-LIB_CFLAGS=$(CFLAGS)
-LIB_CXXFLAGS=$(CXXFLAGS)
-LIB_LDFLAGS=$(LDFLAGS)
-DSO_CPPFLAGS=$(CPPFLAGS)
-DSO_CFLAGS=$(CFLAGS)
-DSO_CXXFLAGS=$(CXXFLAGS)
-DSO_LDFLAGS=$(LDFLAGS)
-BIN_CPPFLAGS=$(CPPFLAGS)
-BIN_CFLAGS=$(CFLAGS)
-BIN_CXXFLAGS=$(CXXFLAGS)
-BIN_LDFLAGS=$(LDFLAGS)
+MAKEDEPEND=$(CROSS_COMPILE)gcc
 
 PERL=/usr/bin/perl
 
@@ -108,23 +104,51 @@ ARFLAGS= r
 RANLIB=$(CROSS_COMPILE)ranlib
 RC= $(CROSS_COMPILE)windres
 RCFLAGS= 
+
 RM= rm -f
 RMDIR= rmdir
 TAR= tar
 TARFLAGS= 
-MAKEDEPEND=$(CROSS_COMPILE)cc
 
 BASENAME=       openssl
 NAME=           $(BASENAME)-$(VERSION)
 TARFILE=        ../$(NAME).tar
 
-# We let the C compiler driver to take care of .s files. This is done in
-# order to be excused from maintaining a separate set of architecture
-# dependent assembler flags. E.g. if you throw -mcpu=ultrasparc at SPARC
-# gcc, then the driver will automatically translate it to -xarch=v8plus
-# and pass it down to assembler.
-AS=$(CC) -c
-ASFLAGS=$(CFLAGS)
+##### Project flags ##################################################
+
+# Variables starting with CNF_ are common variables for all product types
+
+CNF_CPPFLAGS=-DNDEBUG
+CNF_CFLAGS=
+CNF_CXXFLAGS=
+CNF_LDFLAGS=
+CNF_EX_LIBS=
+
+# Variables starting with LIB_ are used to build library object files
+# and shared libraries.
+# Variables starting with DSO_ are used to build DSOs and their object files.
+# Variables starting with BIN_ are used to build programs and their object
+# files.
+
+LIB_CPPFLAGS= -DOPENSSLDIR="\"$(OPENSSLDIR)\"" -DENGINESDIR="\"$(ENGINESDIR)\"" $(CNF_CPPFLAGS) $(CPPFLAGS)
+LIB_CFLAGS=$(CNF_CFLAGS) $(CFLAGS)
+LIB_CXXFLAGS=$(CNF_CXXFLAGS) $(CXXFLAGS)
+LIB_LDFLAGS=$(CNF_LDFLAGS) $(LDFLAGS)
+LIB_EX_LIBS=$(CNF_EX_LIBS) $(EX_LIBS)
+DSO_CPPFLAGS=$(CNF_CPPFLAGS) $(CPPFLAGS)
+DSO_CFLAGS=$(CNF_CFLAGS) $(CFLAGS)
+DSO_CXXFLAGS=$(CNF_CXXFLAGS) $(CXXFLAGS)
+DSO_LDFLAGS=$(CNF_LDFLAGS) $(LDFLAGS)
+DSO_EX_LIBS=$(CNF_EX_LIBS) $(EX_LIBS)
+BIN_CPPFLAGS=$(CNF_CPPFLAGS) $(CPPFLAGS)
+BIN_CFLAGS=$(CNF_CFLAGS) $(CFLAGS)
+BIN_CXXFLAGS=$(CNF_CXXFLAGS) $(CXXFLAGS)
+BIN_LDFLAGS=$(CNF_LDFLAGS) $(LDFLAGS)
+BIN_EX_LIBS=$(CNF_EX_LIBS) $(EX_LIBS)
+
+# CPPFLAGS_Q is used for one thing only: to build up buildinf.h
+CPPFLAGS_Q=-DNDEBUG
+
 PERLASM_SCHEME= 
 
 # For x86 assembler: Set PROCESSOR to 386 if you want to support
@@ -228,19 +252,7 @@ distclean: clean
 # concatenate only if that is true.
 depend:
 	@: 
-	@if egrep "^# DO NOT DELETE THIS LINE" Makefile >/dev/null && [ -z "`find $(DEPS) -newer Makefile 2>/dev/null; exit 0`" ]; then :; else \
-	  ( $(PERL) -pe 'exit 0 if /^# DO NOT DELETE THIS LINE.*/' < Makefile; \
-	    echo '# DO NOT DELETE THIS LINE -- make depend depends on it.'; \
-	    echo; \
-	    for f in $(DEPS); do \
-	      if [ -f $$f ]; then cat $$f; fi; \
-	    done ) > Makefile.new; \
-	  if cmp Makefile.new Makefile >/dev/null 2>&1; then \
-	    rm -f Makefile.new; \
-	  else \
-	    mv -f Makefile.new Makefile; \
-	  fi; \
-	fi
+	@$(PERL) $(SRCDIR)/util/add-depends.pl gcc
 	@: 
 
 # Install helper targets #############################################
@@ -477,13 +489,18 @@ generate_crypto_bn:
 	( cd $(SRCDIR); $(PERL) crypto/bn/bn_prime.pl > crypto/bn/bn_prime.h )
 
 generate_crypto_objects:
+	( cd $(SRCDIR); $(PERL) crypto/objects/objects.pl -n \
+				crypto/objects/objects.txt \
+				crypto/objects/obj_mac.num \
+				> crypto/objects/obj_mac.new && \
+	    mv crypto/objects/obj_mac.new crypto/objects/obj_mac.num )
 	( cd $(SRCDIR); $(PERL) crypto/objects/objects.pl \
 				crypto/objects/objects.txt \
 				crypto/objects/obj_mac.num \
-				include/openssl/obj_mac.h )
+				> include/openssl/obj_mac.h )
 	( cd $(SRCDIR); $(PERL) crypto/objects/obj_dat.pl \
 				include/openssl/obj_mac.h \
-				crypto/objects/obj_dat.h )
+				> crypto/objects/obj_dat.h )
 	( cd $(SRCDIR); $(PERL) crypto/objects/objxref.pl \
 				crypto/objects/obj_mac.num \
 				crypto/objects/obj_xref.txt \
@@ -533,7 +550,7 @@ tags TAGS: FORCE
 
 # If your tar command doesn't support --owner and --group, make sure to
 # use one that does, for example GNU tar
-TAR_COMMAND=$(TAR) $(TARFLAGS) --owner 0 --group 0 -cvf -
+TAR_COMMAND=$(TAR) $(TARFLAGS) --owner 0 --group 0 -cf -
 PREPARE_CMD=:
 tar:
 	set -e; \
@@ -593,7 +610,7 @@ libcrypto.pc:
 	    echo 'Description: OpenSSL cryptography library'; \
 	    echo 'Version: '$(VERSION); \
 	    echo 'Libs: -L$${libdir} -lcrypto'; \
-	    echo 'Libs.private: $(EX_LIBS)'; \
+	    echo 'Libs.private: $(LIB_EX_LIBS)'; \
 	    echo 'Cflags: -I$${includedir}' ) > libcrypto.pc
 
 libssl.pc:
@@ -628,7 +645,7 @@ openssl.pc:
 	    echo 'Version: '$(VERSION); \
 	    echo 'Requires: libssl libcrypto' ) > openssl.pc
 
-configdata.pm: $(SRCDIR)/Configure $(SRCDIR)/config Configurations/unix-Makefile.tmpl Configurations/common.tmpl ./build.info crypto/build.info ssl/build.info engines/build.info apps/build.info test/build.info util/build.info tools/build.info fuzz/build.info crypto/objects/build.info crypto/md4/build.info crypto/md5/build.info crypto/sha/build.info crypto/mdc2/build.info crypto/hmac/build.info crypto/ripemd/build.info crypto/whrlpool/build.info crypto/poly1305/build.info crypto/blake2/build.info crypto/siphash/build.info crypto/sm3/build.info crypto/des/build.info crypto/aes/build.info crypto/rc2/build.info crypto/rc4/build.info crypto/idea/build.info crypto/aria/build.info crypto/bf/build.info crypto/cast/build.info crypto/camellia/build.info crypto/seed/build.info crypto/sm4/build.info crypto/chacha/build.info crypto/modes/build.info crypto/bn/build.info crypto/ec/build.info crypto/rsa/build.info crypto/dsa/build.info crypto/dh/build.info crypto/dso/build.info crypto/engine/build.info crypto/buffer/build.info crypto/bio/build.info crypto/stack/build.info crypto/lhash/build.info crypto/rand/build.info crypto/err/build.info crypto/evp/build.info crypto/asn1/build.info crypto/pem/build.info crypto/x509/build.info crypto/x509v3/build.info crypto/conf/build.info crypto/txt_db/build.info crypto/pkcs7/build.info crypto/pkcs12/build.info crypto/comp/build.info crypto/ocsp/build.info crypto/ui/build.info crypto/cms/build.info crypto/ts/build.info crypto/srp/build.info crypto/cmac/build.info crypto/ct/build.info crypto/async/build.info crypto/kdf/build.info crypto/store/build.info test/ossl_shim/build.info Configurations/00-base-templates.conf Configurations/90-team.conf Configurations/shared-info.pl
+configdata.pm: $(SRCDIR)/Configure $(SRCDIR)/config Configurations/unix-Makefile.tmpl Configurations/common.tmpl ./build.info crypto/build.info ssl/build.info engines/build.info apps/build.info test/build.info util/build.info tools/build.info fuzz/build.info crypto/objects/build.info crypto/md4/build.info crypto/md5/build.info crypto/sha/build.info crypto/mdc2/build.info crypto/hmac/build.info crypto/ripemd/build.info crypto/whrlpool/build.info crypto/poly1305/build.info crypto/blake2/build.info crypto/siphash/build.info crypto/sm3/build.info crypto/des/build.info crypto/aes/build.info crypto/rc2/build.info crypto/rc4/build.info crypto/idea/build.info crypto/aria/build.info crypto/bf/build.info crypto/cast/build.info crypto/camellia/build.info crypto/seed/build.info crypto/sm4/build.info crypto/chacha/build.info crypto/modes/build.info crypto/bn/build.info crypto/ec/build.info crypto/rsa/build.info crypto/dsa/build.info crypto/dh/build.info crypto/sm2/build.info crypto/dso/build.info crypto/engine/build.info crypto/buffer/build.info crypto/bio/build.info crypto/stack/build.info crypto/lhash/build.info crypto/rand/build.info crypto/err/build.info crypto/evp/build.info crypto/asn1/build.info crypto/pem/build.info crypto/x509/build.info crypto/x509v3/build.info crypto/conf/build.info crypto/txt_db/build.info crypto/pkcs7/build.info crypto/pkcs12/build.info crypto/comp/build.info crypto/ocsp/build.info crypto/ui/build.info crypto/cms/build.info crypto/ts/build.info crypto/srp/build.info crypto/cmac/build.info crypto/ct/build.info crypto/async/build.info crypto/kdf/build.info crypto/store/build.info test/ossl_shim/build.info Configurations/00-base-templates.conf Configurations/90-team.conf Configurations/shared-info.pl
 	@echo "Detected changed: $?"
 	$(PERL) configdata.pm -r
 	@echo "**************************************************"
@@ -655,7 +672,7 @@ apps/libapps.a: apps/app_rand.o apps/apps.o apps/bf_prefix.o apps/opt.o apps/s_c
 	$(AR) $(ARFLAGS) $@ $?
 	$(RANLIB) $@ || echo Never mind.
 apps/app_rand.o: apps/app_rand.c
-	$(CC)  -I. -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF apps/app_rand.d.tmp -MT $@ -c -o $@ apps/app_rand.c
+	$(CC)  -I. -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF apps/app_rand.d.tmp -MT $@ -c -o $@ apps/app_rand.c
 	@touch apps/app_rand.d.tmp
 	@if cmp apps/app_rand.d.tmp apps/app_rand.d > /dev/null 2> /dev/null; then \
 		rm -f apps/app_rand.d.tmp; \
@@ -663,7 +680,7 @@ apps/app_rand.o: apps/app_rand.c
 		mv apps/app_rand.d.tmp apps/app_rand.d; \
 	fi
 apps/apps.o: apps/apps.c
-	$(CC)  -I. -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF apps/apps.d.tmp -MT $@ -c -o $@ apps/apps.c
+	$(CC)  -I. -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF apps/apps.d.tmp -MT $@ -c -o $@ apps/apps.c
 	@touch apps/apps.d.tmp
 	@if cmp apps/apps.d.tmp apps/apps.d > /dev/null 2> /dev/null; then \
 		rm -f apps/apps.d.tmp; \
@@ -671,7 +688,7 @@ apps/apps.o: apps/apps.c
 		mv apps/apps.d.tmp apps/apps.d; \
 	fi
 apps/bf_prefix.o: apps/bf_prefix.c
-	$(CC)  -I. -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF apps/bf_prefix.d.tmp -MT $@ -c -o $@ apps/bf_prefix.c
+	$(CC)  -I. -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF apps/bf_prefix.d.tmp -MT $@ -c -o $@ apps/bf_prefix.c
 	@touch apps/bf_prefix.d.tmp
 	@if cmp apps/bf_prefix.d.tmp apps/bf_prefix.d > /dev/null 2> /dev/null; then \
 		rm -f apps/bf_prefix.d.tmp; \
@@ -679,7 +696,7 @@ apps/bf_prefix.o: apps/bf_prefix.c
 		mv apps/bf_prefix.d.tmp apps/bf_prefix.d; \
 	fi
 apps/opt.o: apps/opt.c
-	$(CC)  -I. -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF apps/opt.d.tmp -MT $@ -c -o $@ apps/opt.c
+	$(CC)  -I. -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF apps/opt.d.tmp -MT $@ -c -o $@ apps/opt.c
 	@touch apps/opt.d.tmp
 	@if cmp apps/opt.d.tmp apps/opt.d > /dev/null 2> /dev/null; then \
 		rm -f apps/opt.d.tmp; \
@@ -687,7 +704,7 @@ apps/opt.o: apps/opt.c
 		mv apps/opt.d.tmp apps/opt.d; \
 	fi
 apps/s_cb.o: apps/s_cb.c
-	$(CC)  -I. -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF apps/s_cb.d.tmp -MT $@ -c -o $@ apps/s_cb.c
+	$(CC)  -I. -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF apps/s_cb.d.tmp -MT $@ -c -o $@ apps/s_cb.c
 	@touch apps/s_cb.d.tmp
 	@if cmp apps/s_cb.d.tmp apps/s_cb.d > /dev/null 2> /dev/null; then \
 		rm -f apps/s_cb.d.tmp; \
@@ -695,18 +712,18 @@ apps/s_cb.o: apps/s_cb.c
 		mv apps/s_cb.d.tmp apps/s_cb.d; \
 	fi
 apps/s_socket.o: apps/s_socket.c
-	$(CC)  -I. -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF apps/s_socket.d.tmp -MT $@ -c -o $@ apps/s_socket.c
+	$(CC)  -I. -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF apps/s_socket.d.tmp -MT $@ -c -o $@ apps/s_socket.c
 	@touch apps/s_socket.d.tmp
 	@if cmp apps/s_socket.d.tmp apps/s_socket.d > /dev/null 2> /dev/null; then \
 		rm -f apps/s_socket.d.tmp; \
 	else \
 		mv apps/s_socket.d.tmp apps/s_socket.d; \
 	fi
-libcrypto.a: crypto/aes/aes_cbc.o crypto/aes/aes_cfb.o crypto/aes/aes_core.o crypto/aes/aes_ecb.o crypto/aes/aes_ige.o crypto/aes/aes_misc.o crypto/aes/aes_ofb.o crypto/aes/aes_wrap.o crypto/aria/aria.o crypto/asn1/a_bitstr.o crypto/asn1/a_d2i_fp.o crypto/asn1/a_digest.o crypto/asn1/a_dup.o crypto/asn1/a_gentm.o crypto/asn1/a_i2d_fp.o crypto/asn1/a_int.o crypto/asn1/a_mbstr.o crypto/asn1/a_object.o crypto/asn1/a_octet.o crypto/asn1/a_print.o crypto/asn1/a_sign.o crypto/asn1/a_strex.o crypto/asn1/a_strnid.o crypto/asn1/a_time.o crypto/asn1/a_type.o crypto/asn1/a_utctm.o crypto/asn1/a_utf8.o crypto/asn1/a_verify.o crypto/asn1/ameth_lib.o crypto/asn1/asn1_err.o crypto/asn1/asn1_gen.o crypto/asn1/asn1_item_list.o crypto/asn1/asn1_lib.o crypto/asn1/asn1_par.o crypto/asn1/asn_mime.o crypto/asn1/asn_moid.o crypto/asn1/asn_mstbl.o crypto/asn1/asn_pack.o crypto/asn1/bio_asn1.o crypto/asn1/bio_ndef.o crypto/asn1/d2i_pr.o crypto/asn1/d2i_pu.o crypto/asn1/evp_asn1.o crypto/asn1/f_int.o crypto/asn1/f_string.o crypto/asn1/i2d_pr.o crypto/asn1/i2d_pu.o crypto/asn1/n_pkey.o crypto/asn1/nsseq.o crypto/asn1/p5_pbe.o crypto/asn1/p5_pbev2.o crypto/asn1/p5_scrypt.o crypto/asn1/p8_pkey.o crypto/asn1/t_bitst.o crypto/asn1/t_pkey.o crypto/asn1/t_spki.o crypto/asn1/tasn_dec.o crypto/asn1/tasn_enc.o crypto/asn1/tasn_fre.o crypto/asn1/tasn_new.o crypto/asn1/tasn_prn.o crypto/asn1/tasn_scn.o crypto/asn1/tasn_typ.o crypto/asn1/tasn_utl.o crypto/asn1/x_algor.o crypto/asn1/x_bignum.o crypto/asn1/x_info.o crypto/asn1/x_int64.o crypto/asn1/x_long.o crypto/asn1/x_pkey.o crypto/asn1/x_sig.o crypto/asn1/x_spki.o crypto/asn1/x_val.o crypto/async/arch/async_null.o crypto/async/arch/async_posix.o crypto/async/arch/async_win.o crypto/async/async.o crypto/async/async_err.o crypto/async/async_wait.o crypto/bf/bf_cfb64.o crypto/bf/bf_ecb.o crypto/bf/bf_enc.o crypto/bf/bf_ofb64.o crypto/bf/bf_skey.o crypto/bio/b_addr.o crypto/bio/b_dump.o crypto/bio/b_print.o crypto/bio/b_sock.o crypto/bio/b_sock2.o crypto/bio/bf_buff.o crypto/bio/bf_lbuf.o crypto/bio/bf_nbio.o crypto/bio/bf_null.o crypto/bio/bio_cb.o crypto/bio/bio_err.o crypto/bio/bio_lib.o crypto/bio/bio_meth.o crypto/bio/bss_acpt.o crypto/bio/bss_bio.o crypto/bio/bss_conn.o crypto/bio/bss_dgram.o crypto/bio/bss_fd.o crypto/bio/bss_file.o crypto/bio/bss_log.o crypto/bio/bss_mem.o crypto/bio/bss_null.o crypto/bio/bss_sock.o crypto/blake2/blake2b.o crypto/blake2/blake2s.o crypto/blake2/m_blake2b.o crypto/blake2/m_blake2s.o crypto/bn/bn_add.o crypto/bn/bn_asm.o crypto/bn/bn_blind.o crypto/bn/bn_const.o crypto/bn/bn_ctx.o crypto/bn/bn_depr.o crypto/bn/bn_dh.o crypto/bn/bn_div.o crypto/bn/bn_err.o crypto/bn/bn_exp.o crypto/bn/bn_exp2.o crypto/bn/bn_gcd.o crypto/bn/bn_gf2m.o crypto/bn/bn_intern.o crypto/bn/bn_kron.o crypto/bn/bn_lib.o crypto/bn/bn_mod.o crypto/bn/bn_mont.o crypto/bn/bn_mpi.o crypto/bn/bn_mul.o crypto/bn/bn_nist.o crypto/bn/bn_prime.o crypto/bn/bn_print.o crypto/bn/bn_rand.o crypto/bn/bn_recp.o crypto/bn/bn_shift.o crypto/bn/bn_sqr.o crypto/bn/bn_sqrt.o crypto/bn/bn_srp.o crypto/bn/bn_word.o crypto/bn/bn_x931p.o crypto/buffer/buf_err.o crypto/buffer/buffer.o crypto/camellia/camellia.o crypto/camellia/cmll_cbc.o crypto/camellia/cmll_cfb.o crypto/camellia/cmll_ctr.o crypto/camellia/cmll_ecb.o crypto/camellia/cmll_misc.o crypto/camellia/cmll_ofb.o crypto/cast/c_cfb64.o crypto/cast/c_ecb.o crypto/cast/c_enc.o crypto/cast/c_ofb64.o crypto/cast/c_skey.o crypto/chacha/chacha_enc.o crypto/cmac/cm_ameth.o crypto/cmac/cm_pmeth.o crypto/cmac/cmac.o crypto/cms/cms_asn1.o crypto/cms/cms_att.o crypto/cms/cms_cd.o crypto/cms/cms_dd.o crypto/cms/cms_enc.o crypto/cms/cms_env.o crypto/cms/cms_err.o crypto/cms/cms_ess.o crypto/cms/cms_io.o crypto/cms/cms_kari.o crypto/cms/cms_lib.o crypto/cms/cms_pwri.o crypto/cms/cms_sd.o crypto/cms/cms_smime.o crypto/comp/c_zlib.o crypto/comp/comp_err.o crypto/comp/comp_lib.o crypto/conf/conf_api.o crypto/conf/conf_def.o crypto/conf/conf_err.o crypto/conf/conf_lib.o crypto/conf/conf_mall.o crypto/conf/conf_mod.o crypto/conf/conf_sap.o crypto/cpt_err.o crypto/cryptlib.o crypto/ct/ct_b64.o crypto/ct/ct_err.o crypto/ct/ct_log.o crypto/ct/ct_oct.o crypto/ct/ct_policy.o crypto/ct/ct_prn.o crypto/ct/ct_sct.o crypto/ct/ct_sct_ctx.o crypto/ct/ct_vfy.o crypto/ct/ct_x509v3.o crypto/ctype.o crypto/cversion.o crypto/des/cbc_cksm.o crypto/des/cbc_enc.o crypto/des/cfb64ede.o crypto/des/cfb64enc.o crypto/des/cfb_enc.o crypto/des/des_enc.o crypto/des/ecb3_enc.o crypto/des/ecb_enc.o crypto/des/fcrypt.o crypto/des/fcrypt_b.o crypto/des/ofb64ede.o crypto/des/ofb64enc.o crypto/des/ofb_enc.o crypto/des/pcbc_enc.o crypto/des/qud_cksm.o crypto/des/rand_key.o crypto/des/set_key.o crypto/des/str2key.o crypto/des/xcbc_enc.o crypto/dh/dh_ameth.o crypto/dh/dh_asn1.o crypto/dh/dh_check.o crypto/dh/dh_depr.o crypto/dh/dh_err.o crypto/dh/dh_gen.o crypto/dh/dh_kdf.o crypto/dh/dh_key.o crypto/dh/dh_lib.o crypto/dh/dh_meth.o crypto/dh/dh_pmeth.o crypto/dh/dh_prn.o crypto/dh/dh_rfc5114.o crypto/dh/dh_rfc7919.o crypto/dsa/dsa_ameth.o crypto/dsa/dsa_asn1.o crypto/dsa/dsa_depr.o crypto/dsa/dsa_err.o crypto/dsa/dsa_gen.o crypto/dsa/dsa_key.o crypto/dsa/dsa_lib.o crypto/dsa/dsa_meth.o crypto/dsa/dsa_ossl.o crypto/dsa/dsa_pmeth.o crypto/dsa/dsa_prn.o crypto/dsa/dsa_sign.o crypto/dsa/dsa_vrf.o crypto/dso/dso_dl.o crypto/dso/dso_dlfcn.o crypto/dso/dso_err.o crypto/dso/dso_lib.o crypto/dso/dso_openssl.o crypto/dso/dso_vms.o crypto/dso/dso_win32.o crypto/ebcdic.o crypto/ec/curve25519.o crypto/ec/curve448/arch_32/f_impl.o crypto/ec/curve448/curve448.o crypto/ec/curve448/curve448_tables.o crypto/ec/curve448/eddsa.o crypto/ec/curve448/f_generic.o crypto/ec/curve448/scalar.o crypto/ec/ec2_mult.o crypto/ec/ec2_oct.o crypto/ec/ec2_smpl.o crypto/ec/ec_ameth.o crypto/ec/ec_asn1.o crypto/ec/ec_check.o crypto/ec/ec_curve.o crypto/ec/ec_cvt.o crypto/ec/ec_err.o crypto/ec/ec_key.o crypto/ec/ec_kmeth.o crypto/ec/ec_lib.o crypto/ec/ec_mult.o crypto/ec/ec_oct.o crypto/ec/ec_pmeth.o crypto/ec/ec_print.o crypto/ec/ecdh_kdf.o crypto/ec/ecdh_ossl.o crypto/ec/ecdsa_ossl.o crypto/ec/ecdsa_sign.o crypto/ec/ecdsa_vrf.o crypto/ec/eck_prn.o crypto/ec/ecp_mont.o crypto/ec/ecp_nist.o crypto/ec/ecp_nistp224.o crypto/ec/ecp_nistp256.o crypto/ec/ecp_nistp521.o crypto/ec/ecp_nistputil.o crypto/ec/ecp_oct.o crypto/ec/ecp_smpl.o crypto/ec/ecx_meth.o crypto/engine/eng_all.o crypto/engine/eng_cnf.o crypto/engine/eng_ctrl.o crypto/engine/eng_dyn.o crypto/engine/eng_err.o crypto/engine/eng_fat.o crypto/engine/eng_init.o crypto/engine/eng_lib.o crypto/engine/eng_list.o crypto/engine/eng_openssl.o crypto/engine/eng_pkey.o crypto/engine/eng_rdrand.o crypto/engine/eng_table.o crypto/engine/tb_asnmth.o crypto/engine/tb_cipher.o crypto/engine/tb_dh.o crypto/engine/tb_digest.o crypto/engine/tb_dsa.o crypto/engine/tb_eckey.o crypto/engine/tb_pkmeth.o crypto/engine/tb_rand.o crypto/engine/tb_rsa.o crypto/err/err.o crypto/err/err_all.o crypto/err/err_prn.o crypto/evp/bio_b64.o crypto/evp/bio_enc.o crypto/evp/bio_md.o crypto/evp/bio_ok.o crypto/evp/c_allc.o crypto/evp/c_alld.o crypto/evp/cmeth_lib.o crypto/evp/digest.o crypto/evp/e_aes.o crypto/evp/e_aes_cbc_hmac_sha1.o crypto/evp/e_aes_cbc_hmac_sha256.o crypto/evp/e_aria.o crypto/evp/e_bf.o crypto/evp/e_camellia.o crypto/evp/e_cast.o crypto/evp/e_chacha20_poly1305.o crypto/evp/e_des.o crypto/evp/e_des3.o crypto/evp/e_idea.o crypto/evp/e_null.o crypto/evp/e_old.o crypto/evp/e_rc2.o crypto/evp/e_rc4.o crypto/evp/e_rc4_hmac_md5.o crypto/evp/e_rc5.o crypto/evp/e_seed.o crypto/evp/e_sm4.o crypto/evp/e_xcbc_d.o crypto/evp/encode.o crypto/evp/evp_cnf.o crypto/evp/evp_enc.o crypto/evp/evp_err.o crypto/evp/evp_key.o crypto/evp/evp_lib.o crypto/evp/evp_pbe.o crypto/evp/evp_pkey.o crypto/evp/m_md2.o crypto/evp/m_md4.o crypto/evp/m_md5.o crypto/evp/m_md5_sha1.o crypto/evp/m_mdc2.o crypto/evp/m_null.o crypto/evp/m_ripemd.o crypto/evp/m_sha1.o crypto/evp/m_sha3.o crypto/evp/m_sigver.o crypto/evp/m_wp.o crypto/evp/names.o crypto/evp/p5_crpt.o crypto/evp/p5_crpt2.o crypto/evp/p_dec.o crypto/evp/p_enc.o crypto/evp/p_lib.o crypto/evp/p_open.o crypto/evp/p_seal.o crypto/evp/p_sign.o crypto/evp/p_verify.o crypto/evp/pbe_scrypt.o crypto/evp/pmeth_fn.o crypto/evp/pmeth_gn.o crypto/evp/pmeth_lib.o crypto/ex_data.o crypto/hmac/hm_ameth.o crypto/hmac/hm_pmeth.o crypto/hmac/hmac.o crypto/idea/i_cbc.o crypto/idea/i_cfb64.o crypto/idea/i_ecb.o crypto/idea/i_ofb64.o crypto/idea/i_skey.o crypto/init.o crypto/kdf/hkdf.o crypto/kdf/kdf_err.o crypto/kdf/scrypt.o crypto/kdf/tls1_prf.o crypto/lhash/lh_stats.o crypto/lhash/lhash.o crypto/md4/md4_dgst.o crypto/md4/md4_one.o crypto/md5/md5_dgst.o crypto/md5/md5_one.o crypto/mdc2/mdc2_one.o crypto/mdc2/mdc2dgst.o crypto/mem.o crypto/mem_clr.o crypto/mem_dbg.o crypto/mem_sec.o crypto/modes/cbc128.o crypto/modes/ccm128.o crypto/modes/cfb128.o crypto/modes/ctr128.o crypto/modes/cts128.o crypto/modes/gcm128.o crypto/modes/ocb128.o crypto/modes/ofb128.o crypto/modes/wrap128.o crypto/modes/xts128.o crypto/o_dir.o crypto/o_fips.o crypto/o_fopen.o crypto/o_init.o crypto/o_str.o crypto/o_time.o crypto/objects/o_names.o crypto/objects/obj_dat.o crypto/objects/obj_err.o crypto/objects/obj_lib.o crypto/objects/obj_xref.o crypto/ocsp/ocsp_asn.o crypto/ocsp/ocsp_cl.o crypto/ocsp/ocsp_err.o crypto/ocsp/ocsp_ext.o crypto/ocsp/ocsp_ht.o crypto/ocsp/ocsp_lib.o crypto/ocsp/ocsp_prn.o crypto/ocsp/ocsp_srv.o crypto/ocsp/ocsp_vfy.o crypto/ocsp/v3_ocsp.o crypto/pem/pem_all.o crypto/pem/pem_err.o crypto/pem/pem_info.o crypto/pem/pem_lib.o crypto/pem/pem_oth.o crypto/pem/pem_pk8.o crypto/pem/pem_pkey.o crypto/pem/pem_sign.o crypto/pem/pem_x509.o crypto/pem/pem_xaux.o crypto/pem/pvkfmt.o crypto/pkcs12/p12_add.o crypto/pkcs12/p12_asn.o crypto/pkcs12/p12_attr.o crypto/pkcs12/p12_crpt.o crypto/pkcs12/p12_crt.o crypto/pkcs12/p12_decr.o crypto/pkcs12/p12_init.o crypto/pkcs12/p12_key.o crypto/pkcs12/p12_kiss.o crypto/pkcs12/p12_mutl.o crypto/pkcs12/p12_npas.o crypto/pkcs12/p12_p8d.o crypto/pkcs12/p12_p8e.o crypto/pkcs12/p12_sbag.o crypto/pkcs12/p12_utl.o crypto/pkcs12/pk12err.o crypto/pkcs7/bio_pk7.o crypto/pkcs7/pk7_asn1.o crypto/pkcs7/pk7_attr.o crypto/pkcs7/pk7_doit.o crypto/pkcs7/pk7_lib.o crypto/pkcs7/pk7_mime.o crypto/pkcs7/pk7_smime.o crypto/pkcs7/pkcs7err.o crypto/poly1305/poly1305.o crypto/poly1305/poly1305_ameth.o crypto/poly1305/poly1305_pmeth.o crypto/rand/drbg_ctr.o crypto/rand/drbg_lib.o crypto/rand/rand_egd.o crypto/rand/rand_err.o crypto/rand/rand_lib.o crypto/rand/rand_unix.o crypto/rand/rand_vms.o crypto/rand/rand_win.o crypto/rand/randfile.o crypto/rc2/rc2_cbc.o crypto/rc2/rc2_ecb.o crypto/rc2/rc2_skey.o crypto/rc2/rc2cfb64.o crypto/rc2/rc2ofb64.o crypto/rc4/rc4_enc.o crypto/rc4/rc4_skey.o crypto/ripemd/rmd_dgst.o crypto/ripemd/rmd_one.o crypto/rsa/rsa_ameth.o crypto/rsa/rsa_asn1.o crypto/rsa/rsa_chk.o crypto/rsa/rsa_crpt.o crypto/rsa/rsa_depr.o crypto/rsa/rsa_err.o crypto/rsa/rsa_gen.o crypto/rsa/rsa_lib.o crypto/rsa/rsa_meth.o crypto/rsa/rsa_mp.o crypto/rsa/rsa_none.o crypto/rsa/rsa_oaep.o crypto/rsa/rsa_ossl.o crypto/rsa/rsa_pk1.o crypto/rsa/rsa_pmeth.o crypto/rsa/rsa_prn.o crypto/rsa/rsa_pss.o crypto/rsa/rsa_saos.o crypto/rsa/rsa_sign.o crypto/rsa/rsa_ssl.o crypto/rsa/rsa_x931.o crypto/rsa/rsa_x931g.o crypto/seed/seed.o crypto/seed/seed_cbc.o crypto/seed/seed_cfb.o crypto/seed/seed_ecb.o crypto/seed/seed_ofb.o crypto/sha/keccak1600.o crypto/sha/sha1_one.o crypto/sha/sha1dgst.o crypto/sha/sha256.o crypto/sha/sha512.o crypto/siphash/siphash.o crypto/siphash/siphash_ameth.o crypto/siphash/siphash_pmeth.o crypto/sm3/m_sm3.o crypto/sm3/sm3.o crypto/sm4/sm4.o crypto/srp/srp_lib.o crypto/srp/srp_vfy.o crypto/stack/stack.o crypto/store/loader_file.o crypto/store/store_err.o crypto/store/store_init.o crypto/store/store_lib.o crypto/store/store_register.o crypto/store/store_strings.o crypto/threads_none.o crypto/threads_pthread.o crypto/threads_win.o crypto/ts/ts_asn1.o crypto/ts/ts_conf.o crypto/ts/ts_err.o crypto/ts/ts_lib.o crypto/ts/ts_req_print.o crypto/ts/ts_req_utils.o crypto/ts/ts_rsp_print.o crypto/ts/ts_rsp_sign.o crypto/ts/ts_rsp_utils.o crypto/ts/ts_rsp_verify.o crypto/ts/ts_verify_ctx.o crypto/txt_db/txt_db.o crypto/ui/ui_err.o crypto/ui/ui_lib.o crypto/ui/ui_null.o crypto/ui/ui_openssl.o crypto/ui/ui_util.o crypto/uid.o crypto/whrlpool/wp_block.o crypto/whrlpool/wp_dgst.o crypto/x509/by_dir.o crypto/x509/by_file.o crypto/x509/t_crl.o crypto/x509/t_req.o crypto/x509/t_x509.o crypto/x509/x509_att.o crypto/x509/x509_cmp.o crypto/x509/x509_d2.o crypto/x509/x509_def.o crypto/x509/x509_err.o crypto/x509/x509_ext.o crypto/x509/x509_lu.o crypto/x509/x509_obj.o crypto/x509/x509_r2x.o crypto/x509/x509_req.o crypto/x509/x509_set.o crypto/x509/x509_trs.o crypto/x509/x509_txt.o crypto/x509/x509_v3.o crypto/x509/x509_vfy.o crypto/x509/x509_vpm.o crypto/x509/x509cset.o crypto/x509/x509name.o crypto/x509/x509rset.o crypto/x509/x509spki.o crypto/x509/x509type.o crypto/x509/x_all.o crypto/x509/x_attrib.o crypto/x509/x_crl.o crypto/x509/x_exten.o crypto/x509/x_name.o crypto/x509/x_pubkey.o crypto/x509/x_req.o crypto/x509/x_x509.o crypto/x509/x_x509a.o crypto/x509v3/pcy_cache.o crypto/x509v3/pcy_data.o crypto/x509v3/pcy_lib.o crypto/x509v3/pcy_map.o crypto/x509v3/pcy_node.o crypto/x509v3/pcy_tree.o crypto/x509v3/v3_addr.o crypto/x509v3/v3_admis.o crypto/x509v3/v3_akey.o crypto/x509v3/v3_akeya.o crypto/x509v3/v3_alt.o crypto/x509v3/v3_asid.o crypto/x509v3/v3_bcons.o crypto/x509v3/v3_bitst.o crypto/x509v3/v3_conf.o crypto/x509v3/v3_cpols.o crypto/x509v3/v3_crld.o crypto/x509v3/v3_enum.o crypto/x509v3/v3_extku.o crypto/x509v3/v3_genn.o crypto/x509v3/v3_ia5.o crypto/x509v3/v3_info.o crypto/x509v3/v3_int.o crypto/x509v3/v3_lib.o crypto/x509v3/v3_ncons.o crypto/x509v3/v3_pci.o crypto/x509v3/v3_pcia.o crypto/x509v3/v3_pcons.o crypto/x509v3/v3_pku.o crypto/x509v3/v3_pmaps.o crypto/x509v3/v3_prn.o crypto/x509v3/v3_purp.o crypto/x509v3/v3_skey.o crypto/x509v3/v3_sxnet.o crypto/x509v3/v3_tlsf.o crypto/x509v3/v3_utl.o crypto/x509v3/v3err.o engines/e_capi.o engines/e_padlock.o
+libcrypto.a: crypto/aes/aes_cbc.o crypto/aes/aes_cfb.o crypto/aes/aes_core.o crypto/aes/aes_ecb.o crypto/aes/aes_ige.o crypto/aes/aes_misc.o crypto/aes/aes_ofb.o crypto/aes/aes_wrap.o crypto/aria/aria.o crypto/asn1/a_bitstr.o crypto/asn1/a_d2i_fp.o crypto/asn1/a_digest.o crypto/asn1/a_dup.o crypto/asn1/a_gentm.o crypto/asn1/a_i2d_fp.o crypto/asn1/a_int.o crypto/asn1/a_mbstr.o crypto/asn1/a_object.o crypto/asn1/a_octet.o crypto/asn1/a_print.o crypto/asn1/a_sign.o crypto/asn1/a_strex.o crypto/asn1/a_strnid.o crypto/asn1/a_time.o crypto/asn1/a_type.o crypto/asn1/a_utctm.o crypto/asn1/a_utf8.o crypto/asn1/a_verify.o crypto/asn1/ameth_lib.o crypto/asn1/asn1_err.o crypto/asn1/asn1_gen.o crypto/asn1/asn1_item_list.o crypto/asn1/asn1_lib.o crypto/asn1/asn1_par.o crypto/asn1/asn_mime.o crypto/asn1/asn_moid.o crypto/asn1/asn_mstbl.o crypto/asn1/asn_pack.o crypto/asn1/bio_asn1.o crypto/asn1/bio_ndef.o crypto/asn1/d2i_pr.o crypto/asn1/d2i_pu.o crypto/asn1/evp_asn1.o crypto/asn1/f_int.o crypto/asn1/f_string.o crypto/asn1/i2d_pr.o crypto/asn1/i2d_pu.o crypto/asn1/n_pkey.o crypto/asn1/nsseq.o crypto/asn1/p5_pbe.o crypto/asn1/p5_pbev2.o crypto/asn1/p5_scrypt.o crypto/asn1/p8_pkey.o crypto/asn1/t_bitst.o crypto/asn1/t_pkey.o crypto/asn1/t_spki.o crypto/asn1/tasn_dec.o crypto/asn1/tasn_enc.o crypto/asn1/tasn_fre.o crypto/asn1/tasn_new.o crypto/asn1/tasn_prn.o crypto/asn1/tasn_scn.o crypto/asn1/tasn_typ.o crypto/asn1/tasn_utl.o crypto/asn1/x_algor.o crypto/asn1/x_bignum.o crypto/asn1/x_info.o crypto/asn1/x_int64.o crypto/asn1/x_long.o crypto/asn1/x_pkey.o crypto/asn1/x_sig.o crypto/asn1/x_spki.o crypto/asn1/x_val.o crypto/async/arch/async_null.o crypto/async/arch/async_posix.o crypto/async/arch/async_win.o crypto/async/async.o crypto/async/async_err.o crypto/async/async_wait.o crypto/bf/bf_cfb64.o crypto/bf/bf_ecb.o crypto/bf/bf_enc.o crypto/bf/bf_ofb64.o crypto/bf/bf_skey.o crypto/bio/b_addr.o crypto/bio/b_dump.o crypto/bio/b_print.o crypto/bio/b_sock.o crypto/bio/b_sock2.o crypto/bio/bf_buff.o crypto/bio/bf_lbuf.o crypto/bio/bf_nbio.o crypto/bio/bf_null.o crypto/bio/bio_cb.o crypto/bio/bio_err.o crypto/bio/bio_lib.o crypto/bio/bio_meth.o crypto/bio/bss_acpt.o crypto/bio/bss_bio.o crypto/bio/bss_conn.o crypto/bio/bss_dgram.o crypto/bio/bss_fd.o crypto/bio/bss_file.o crypto/bio/bss_log.o crypto/bio/bss_mem.o crypto/bio/bss_null.o crypto/bio/bss_sock.o crypto/blake2/blake2b.o crypto/blake2/blake2s.o crypto/blake2/m_blake2b.o crypto/blake2/m_blake2s.o crypto/bn/bn_add.o crypto/bn/bn_asm.o crypto/bn/bn_blind.o crypto/bn/bn_const.o crypto/bn/bn_ctx.o crypto/bn/bn_depr.o crypto/bn/bn_dh.o crypto/bn/bn_div.o crypto/bn/bn_err.o crypto/bn/bn_exp.o crypto/bn/bn_exp2.o crypto/bn/bn_gcd.o crypto/bn/bn_gf2m.o crypto/bn/bn_intern.o crypto/bn/bn_kron.o crypto/bn/bn_lib.o crypto/bn/bn_mod.o crypto/bn/bn_mont.o crypto/bn/bn_mpi.o crypto/bn/bn_mul.o crypto/bn/bn_nist.o crypto/bn/bn_prime.o crypto/bn/bn_print.o crypto/bn/bn_rand.o crypto/bn/bn_recp.o crypto/bn/bn_shift.o crypto/bn/bn_sqr.o crypto/bn/bn_sqrt.o crypto/bn/bn_srp.o crypto/bn/bn_word.o crypto/bn/bn_x931p.o crypto/buffer/buf_err.o crypto/buffer/buffer.o crypto/camellia/camellia.o crypto/camellia/cmll_cbc.o crypto/camellia/cmll_cfb.o crypto/camellia/cmll_ctr.o crypto/camellia/cmll_ecb.o crypto/camellia/cmll_misc.o crypto/camellia/cmll_ofb.o crypto/cast/c_cfb64.o crypto/cast/c_ecb.o crypto/cast/c_enc.o crypto/cast/c_ofb64.o crypto/cast/c_skey.o crypto/chacha/chacha_enc.o crypto/cmac/cm_ameth.o crypto/cmac/cm_pmeth.o crypto/cmac/cmac.o crypto/cms/cms_asn1.o crypto/cms/cms_att.o crypto/cms/cms_cd.o crypto/cms/cms_dd.o crypto/cms/cms_enc.o crypto/cms/cms_env.o crypto/cms/cms_err.o crypto/cms/cms_ess.o crypto/cms/cms_io.o crypto/cms/cms_kari.o crypto/cms/cms_lib.o crypto/cms/cms_pwri.o crypto/cms/cms_sd.o crypto/cms/cms_smime.o crypto/comp/c_zlib.o crypto/comp/comp_err.o crypto/comp/comp_lib.o crypto/conf/conf_api.o crypto/conf/conf_def.o crypto/conf/conf_err.o crypto/conf/conf_lib.o crypto/conf/conf_mall.o crypto/conf/conf_mod.o crypto/conf/conf_sap.o crypto/cpt_err.o crypto/cryptlib.o crypto/ct/ct_b64.o crypto/ct/ct_err.o crypto/ct/ct_log.o crypto/ct/ct_oct.o crypto/ct/ct_policy.o crypto/ct/ct_prn.o crypto/ct/ct_sct.o crypto/ct/ct_sct_ctx.o crypto/ct/ct_vfy.o crypto/ct/ct_x509v3.o crypto/ctype.o crypto/cversion.o crypto/des/cbc_cksm.o crypto/des/cbc_enc.o crypto/des/cfb64ede.o crypto/des/cfb64enc.o crypto/des/cfb_enc.o crypto/des/des_enc.o crypto/des/ecb3_enc.o crypto/des/ecb_enc.o crypto/des/fcrypt.o crypto/des/fcrypt_b.o crypto/des/ofb64ede.o crypto/des/ofb64enc.o crypto/des/ofb_enc.o crypto/des/pcbc_enc.o crypto/des/qud_cksm.o crypto/des/rand_key.o crypto/des/set_key.o crypto/des/str2key.o crypto/des/xcbc_enc.o crypto/dh/dh_ameth.o crypto/dh/dh_asn1.o crypto/dh/dh_check.o crypto/dh/dh_depr.o crypto/dh/dh_err.o crypto/dh/dh_gen.o crypto/dh/dh_kdf.o crypto/dh/dh_key.o crypto/dh/dh_lib.o crypto/dh/dh_meth.o crypto/dh/dh_pmeth.o crypto/dh/dh_prn.o crypto/dh/dh_rfc5114.o crypto/dh/dh_rfc7919.o crypto/dsa/dsa_ameth.o crypto/dsa/dsa_asn1.o crypto/dsa/dsa_depr.o crypto/dsa/dsa_err.o crypto/dsa/dsa_gen.o crypto/dsa/dsa_key.o crypto/dsa/dsa_lib.o crypto/dsa/dsa_meth.o crypto/dsa/dsa_ossl.o crypto/dsa/dsa_pmeth.o crypto/dsa/dsa_prn.o crypto/dsa/dsa_sign.o crypto/dsa/dsa_vrf.o crypto/dso/dso_dl.o crypto/dso/dso_dlfcn.o crypto/dso/dso_err.o crypto/dso/dso_lib.o crypto/dso/dso_openssl.o crypto/dso/dso_vms.o crypto/dso/dso_win32.o crypto/ebcdic.o crypto/ec/curve25519.o crypto/ec/curve448/arch_32/f_impl.o crypto/ec/curve448/curve448.o crypto/ec/curve448/curve448_tables.o crypto/ec/curve448/eddsa.o crypto/ec/curve448/f_generic.o crypto/ec/curve448/scalar.o crypto/ec/ec2_mult.o crypto/ec/ec2_oct.o crypto/ec/ec2_smpl.o crypto/ec/ec_ameth.o crypto/ec/ec_asn1.o crypto/ec/ec_check.o crypto/ec/ec_curve.o crypto/ec/ec_cvt.o crypto/ec/ec_err.o crypto/ec/ec_key.o crypto/ec/ec_kmeth.o crypto/ec/ec_lib.o crypto/ec/ec_mult.o crypto/ec/ec_oct.o crypto/ec/ec_pmeth.o crypto/ec/ec_print.o crypto/ec/ecdh_kdf.o crypto/ec/ecdh_ossl.o crypto/ec/ecdsa_ossl.o crypto/ec/ecdsa_sign.o crypto/ec/ecdsa_vrf.o crypto/ec/eck_prn.o crypto/ec/ecp_mont.o crypto/ec/ecp_nist.o crypto/ec/ecp_nistp224.o crypto/ec/ecp_nistp256.o crypto/ec/ecp_nistp521.o crypto/ec/ecp_nistputil.o crypto/ec/ecp_oct.o crypto/ec/ecp_smpl.o crypto/ec/ecx_meth.o crypto/engine/eng_all.o crypto/engine/eng_cnf.o crypto/engine/eng_ctrl.o crypto/engine/eng_dyn.o crypto/engine/eng_err.o crypto/engine/eng_fat.o crypto/engine/eng_init.o crypto/engine/eng_lib.o crypto/engine/eng_list.o crypto/engine/eng_openssl.o crypto/engine/eng_pkey.o crypto/engine/eng_rdrand.o crypto/engine/eng_table.o crypto/engine/tb_asnmth.o crypto/engine/tb_cipher.o crypto/engine/tb_dh.o crypto/engine/tb_digest.o crypto/engine/tb_dsa.o crypto/engine/tb_eckey.o crypto/engine/tb_pkmeth.o crypto/engine/tb_rand.o crypto/engine/tb_rsa.o crypto/err/err.o crypto/err/err_all.o crypto/err/err_prn.o crypto/evp/bio_b64.o crypto/evp/bio_enc.o crypto/evp/bio_md.o crypto/evp/bio_ok.o crypto/evp/c_allc.o crypto/evp/c_alld.o crypto/evp/cmeth_lib.o crypto/evp/digest.o crypto/evp/e_aes.o crypto/evp/e_aes_cbc_hmac_sha1.o crypto/evp/e_aes_cbc_hmac_sha256.o crypto/evp/e_aria.o crypto/evp/e_bf.o crypto/evp/e_camellia.o crypto/evp/e_cast.o crypto/evp/e_chacha20_poly1305.o crypto/evp/e_des.o crypto/evp/e_des3.o crypto/evp/e_idea.o crypto/evp/e_null.o crypto/evp/e_old.o crypto/evp/e_rc2.o crypto/evp/e_rc4.o crypto/evp/e_rc4_hmac_md5.o crypto/evp/e_rc5.o crypto/evp/e_seed.o crypto/evp/e_sm4.o crypto/evp/e_xcbc_d.o crypto/evp/encode.o crypto/evp/evp_cnf.o crypto/evp/evp_enc.o crypto/evp/evp_err.o crypto/evp/evp_key.o crypto/evp/evp_lib.o crypto/evp/evp_pbe.o crypto/evp/evp_pkey.o crypto/evp/m_md2.o crypto/evp/m_md4.o crypto/evp/m_md5.o crypto/evp/m_md5_sha1.o crypto/evp/m_mdc2.o crypto/evp/m_null.o crypto/evp/m_ripemd.o crypto/evp/m_sha1.o crypto/evp/m_sha3.o crypto/evp/m_sigver.o crypto/evp/m_wp.o crypto/evp/names.o crypto/evp/p5_crpt.o crypto/evp/p5_crpt2.o crypto/evp/p_dec.o crypto/evp/p_enc.o crypto/evp/p_lib.o crypto/evp/p_open.o crypto/evp/p_seal.o crypto/evp/p_sign.o crypto/evp/p_verify.o crypto/evp/pbe_scrypt.o crypto/evp/pmeth_fn.o crypto/evp/pmeth_gn.o crypto/evp/pmeth_lib.o crypto/ex_data.o crypto/hmac/hm_ameth.o crypto/hmac/hm_pmeth.o crypto/hmac/hmac.o crypto/idea/i_cbc.o crypto/idea/i_cfb64.o crypto/idea/i_ecb.o crypto/idea/i_ofb64.o crypto/idea/i_skey.o crypto/init.o crypto/kdf/hkdf.o crypto/kdf/kdf_err.o crypto/kdf/scrypt.o crypto/kdf/tls1_prf.o crypto/lhash/lh_stats.o crypto/lhash/lhash.o crypto/md4/md4_dgst.o crypto/md4/md4_one.o crypto/md5/md5_dgst.o crypto/md5/md5_one.o crypto/mdc2/mdc2_one.o crypto/mdc2/mdc2dgst.o crypto/mem.o crypto/mem_clr.o crypto/mem_dbg.o crypto/mem_sec.o crypto/modes/cbc128.o crypto/modes/ccm128.o crypto/modes/cfb128.o crypto/modes/ctr128.o crypto/modes/cts128.o crypto/modes/gcm128.o crypto/modes/ocb128.o crypto/modes/ofb128.o crypto/modes/wrap128.o crypto/modes/xts128.o crypto/o_dir.o crypto/o_fips.o crypto/o_fopen.o crypto/o_init.o crypto/o_str.o crypto/o_time.o crypto/objects/o_names.o crypto/objects/obj_dat.o crypto/objects/obj_err.o crypto/objects/obj_lib.o crypto/objects/obj_xref.o crypto/ocsp/ocsp_asn.o crypto/ocsp/ocsp_cl.o crypto/ocsp/ocsp_err.o crypto/ocsp/ocsp_ext.o crypto/ocsp/ocsp_ht.o crypto/ocsp/ocsp_lib.o crypto/ocsp/ocsp_prn.o crypto/ocsp/ocsp_srv.o crypto/ocsp/ocsp_vfy.o crypto/ocsp/v3_ocsp.o crypto/pem/pem_all.o crypto/pem/pem_err.o crypto/pem/pem_info.o crypto/pem/pem_lib.o crypto/pem/pem_oth.o crypto/pem/pem_pk8.o crypto/pem/pem_pkey.o crypto/pem/pem_sign.o crypto/pem/pem_x509.o crypto/pem/pem_xaux.o crypto/pem/pvkfmt.o crypto/pkcs12/p12_add.o crypto/pkcs12/p12_asn.o crypto/pkcs12/p12_attr.o crypto/pkcs12/p12_crpt.o crypto/pkcs12/p12_crt.o crypto/pkcs12/p12_decr.o crypto/pkcs12/p12_init.o crypto/pkcs12/p12_key.o crypto/pkcs12/p12_kiss.o crypto/pkcs12/p12_mutl.o crypto/pkcs12/p12_npas.o crypto/pkcs12/p12_p8d.o crypto/pkcs12/p12_p8e.o crypto/pkcs12/p12_sbag.o crypto/pkcs12/p12_utl.o crypto/pkcs12/pk12err.o crypto/pkcs7/bio_pk7.o crypto/pkcs7/pk7_asn1.o crypto/pkcs7/pk7_attr.o crypto/pkcs7/pk7_doit.o crypto/pkcs7/pk7_lib.o crypto/pkcs7/pk7_mime.o crypto/pkcs7/pk7_smime.o crypto/pkcs7/pkcs7err.o crypto/poly1305/poly1305.o crypto/poly1305/poly1305_ameth.o crypto/poly1305/poly1305_pmeth.o crypto/rand/drbg_ctr.o crypto/rand/drbg_lib.o crypto/rand/rand_egd.o crypto/rand/rand_err.o crypto/rand/rand_lib.o crypto/rand/rand_unix.o crypto/rand/rand_vms.o crypto/rand/rand_win.o crypto/rand/randfile.o crypto/rc2/rc2_cbc.o crypto/rc2/rc2_ecb.o crypto/rc2/rc2_skey.o crypto/rc2/rc2cfb64.o crypto/rc2/rc2ofb64.o crypto/rc4/rc4_enc.o crypto/rc4/rc4_skey.o crypto/ripemd/rmd_dgst.o crypto/ripemd/rmd_one.o crypto/rsa/rsa_ameth.o crypto/rsa/rsa_asn1.o crypto/rsa/rsa_chk.o crypto/rsa/rsa_crpt.o crypto/rsa/rsa_depr.o crypto/rsa/rsa_err.o crypto/rsa/rsa_gen.o crypto/rsa/rsa_lib.o crypto/rsa/rsa_meth.o crypto/rsa/rsa_mp.o crypto/rsa/rsa_none.o crypto/rsa/rsa_oaep.o crypto/rsa/rsa_ossl.o crypto/rsa/rsa_pk1.o crypto/rsa/rsa_pmeth.o crypto/rsa/rsa_prn.o crypto/rsa/rsa_pss.o crypto/rsa/rsa_saos.o crypto/rsa/rsa_sign.o crypto/rsa/rsa_ssl.o crypto/rsa/rsa_x931.o crypto/rsa/rsa_x931g.o crypto/seed/seed.o crypto/seed/seed_cbc.o crypto/seed/seed_cfb.o crypto/seed/seed_ecb.o crypto/seed/seed_ofb.o crypto/sha/keccak1600.o crypto/sha/sha1_one.o crypto/sha/sha1dgst.o crypto/sha/sha256.o crypto/sha/sha512.o crypto/siphash/siphash.o crypto/siphash/siphash_ameth.o crypto/siphash/siphash_pmeth.o crypto/sm2/sm2_crypt.o crypto/sm2/sm2_err.o crypto/sm2/sm2_sign.o crypto/sm2/sm2_za.o crypto/sm3/m_sm3.o crypto/sm3/sm3.o crypto/sm4/sm4.o crypto/srp/srp_lib.o crypto/srp/srp_vfy.o crypto/stack/stack.o crypto/store/loader_file.o crypto/store/store_err.o crypto/store/store_init.o crypto/store/store_lib.o crypto/store/store_register.o crypto/store/store_strings.o crypto/threads_none.o crypto/threads_pthread.o crypto/threads_win.o crypto/ts/ts_asn1.o crypto/ts/ts_conf.o crypto/ts/ts_err.o crypto/ts/ts_lib.o crypto/ts/ts_req_print.o crypto/ts/ts_req_utils.o crypto/ts/ts_rsp_print.o crypto/ts/ts_rsp_sign.o crypto/ts/ts_rsp_utils.o crypto/ts/ts_rsp_verify.o crypto/ts/ts_verify_ctx.o crypto/txt_db/txt_db.o crypto/ui/ui_err.o crypto/ui/ui_lib.o crypto/ui/ui_null.o crypto/ui/ui_openssl.o crypto/ui/ui_util.o crypto/uid.o crypto/whrlpool/wp_block.o crypto/whrlpool/wp_dgst.o crypto/x509/by_dir.o crypto/x509/by_file.o crypto/x509/t_crl.o crypto/x509/t_req.o crypto/x509/t_x509.o crypto/x509/x509_att.o crypto/x509/x509_cmp.o crypto/x509/x509_d2.o crypto/x509/x509_def.o crypto/x509/x509_err.o crypto/x509/x509_ext.o crypto/x509/x509_lu.o crypto/x509/x509_obj.o crypto/x509/x509_r2x.o crypto/x509/x509_req.o crypto/x509/x509_set.o crypto/x509/x509_trs.o crypto/x509/x509_txt.o crypto/x509/x509_v3.o crypto/x509/x509_vfy.o crypto/x509/x509_vpm.o crypto/x509/x509cset.o crypto/x509/x509name.o crypto/x509/x509rset.o crypto/x509/x509spki.o crypto/x509/x509type.o crypto/x509/x_all.o crypto/x509/x_attrib.o crypto/x509/x_crl.o crypto/x509/x_exten.o crypto/x509/x_name.o crypto/x509/x_pubkey.o crypto/x509/x_req.o crypto/x509/x_x509.o crypto/x509/x_x509a.o crypto/x509v3/pcy_cache.o crypto/x509v3/pcy_data.o crypto/x509v3/pcy_lib.o crypto/x509v3/pcy_map.o crypto/x509v3/pcy_node.o crypto/x509v3/pcy_tree.o crypto/x509v3/v3_addr.o crypto/x509v3/v3_admis.o crypto/x509v3/v3_akey.o crypto/x509v3/v3_akeya.o crypto/x509v3/v3_alt.o crypto/x509v3/v3_asid.o crypto/x509v3/v3_bcons.o crypto/x509v3/v3_bitst.o crypto/x509v3/v3_conf.o crypto/x509v3/v3_cpols.o crypto/x509v3/v3_crld.o crypto/x509v3/v3_enum.o crypto/x509v3/v3_extku.o crypto/x509v3/v3_genn.o crypto/x509v3/v3_ia5.o crypto/x509v3/v3_info.o crypto/x509v3/v3_int.o crypto/x509v3/v3_lib.o crypto/x509v3/v3_ncons.o crypto/x509v3/v3_pci.o crypto/x509v3/v3_pcia.o crypto/x509v3/v3_pcons.o crypto/x509v3/v3_pku.o crypto/x509v3/v3_pmaps.o crypto/x509v3/v3_prn.o crypto/x509v3/v3_purp.o crypto/x509v3/v3_skey.o crypto/x509v3/v3_sxnet.o crypto/x509v3/v3_tlsf.o crypto/x509v3/v3_utl.o crypto/x509v3/v3err.o engines/e_capi.o engines/e_padlock.o
 	$(AR) $(ARFLAGS) $@ $?
 	$(RANLIB) $@ || echo Never mind.
 crypto/aes/aes_cbc.o: crypto/aes/aes_cbc.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/aes/aes_cbc.d.tmp -MT $@ -c -o $@ crypto/aes/aes_cbc.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/aes/aes_cbc.d.tmp -MT $@ -c -o $@ crypto/aes/aes_cbc.c
 	@touch crypto/aes/aes_cbc.d.tmp
 	@if cmp crypto/aes/aes_cbc.d.tmp crypto/aes/aes_cbc.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/aes/aes_cbc.d.tmp; \
@@ -714,7 +731,7 @@ crypto/aes/aes_cbc.o: crypto/aes/aes_cbc.c
 		mv crypto/aes/aes_cbc.d.tmp crypto/aes/aes_cbc.d; \
 	fi
 crypto/aes/aes_cfb.o: crypto/aes/aes_cfb.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/aes/aes_cfb.d.tmp -MT $@ -c -o $@ crypto/aes/aes_cfb.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/aes/aes_cfb.d.tmp -MT $@ -c -o $@ crypto/aes/aes_cfb.c
 	@touch crypto/aes/aes_cfb.d.tmp
 	@if cmp crypto/aes/aes_cfb.d.tmp crypto/aes/aes_cfb.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/aes/aes_cfb.d.tmp; \
@@ -722,7 +739,7 @@ crypto/aes/aes_cfb.o: crypto/aes/aes_cfb.c
 		mv crypto/aes/aes_cfb.d.tmp crypto/aes/aes_cfb.d; \
 	fi
 crypto/aes/aes_core.o: crypto/aes/aes_core.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/aes/aes_core.d.tmp -MT $@ -c -o $@ crypto/aes/aes_core.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/aes/aes_core.d.tmp -MT $@ -c -o $@ crypto/aes/aes_core.c
 	@touch crypto/aes/aes_core.d.tmp
 	@if cmp crypto/aes/aes_core.d.tmp crypto/aes/aes_core.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/aes/aes_core.d.tmp; \
@@ -730,7 +747,7 @@ crypto/aes/aes_core.o: crypto/aes/aes_core.c
 		mv crypto/aes/aes_core.d.tmp crypto/aes/aes_core.d; \
 	fi
 crypto/aes/aes_ecb.o: crypto/aes/aes_ecb.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/aes/aes_ecb.d.tmp -MT $@ -c -o $@ crypto/aes/aes_ecb.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/aes/aes_ecb.d.tmp -MT $@ -c -o $@ crypto/aes/aes_ecb.c
 	@touch crypto/aes/aes_ecb.d.tmp
 	@if cmp crypto/aes/aes_ecb.d.tmp crypto/aes/aes_ecb.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/aes/aes_ecb.d.tmp; \
@@ -738,7 +755,7 @@ crypto/aes/aes_ecb.o: crypto/aes/aes_ecb.c
 		mv crypto/aes/aes_ecb.d.tmp crypto/aes/aes_ecb.d; \
 	fi
 crypto/aes/aes_ige.o: crypto/aes/aes_ige.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/aes/aes_ige.d.tmp -MT $@ -c -o $@ crypto/aes/aes_ige.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/aes/aes_ige.d.tmp -MT $@ -c -o $@ crypto/aes/aes_ige.c
 	@touch crypto/aes/aes_ige.d.tmp
 	@if cmp crypto/aes/aes_ige.d.tmp crypto/aes/aes_ige.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/aes/aes_ige.d.tmp; \
@@ -746,7 +763,7 @@ crypto/aes/aes_ige.o: crypto/aes/aes_ige.c
 		mv crypto/aes/aes_ige.d.tmp crypto/aes/aes_ige.d; \
 	fi
 crypto/aes/aes_misc.o: crypto/aes/aes_misc.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/aes/aes_misc.d.tmp -MT $@ -c -o $@ crypto/aes/aes_misc.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/aes/aes_misc.d.tmp -MT $@ -c -o $@ crypto/aes/aes_misc.c
 	@touch crypto/aes/aes_misc.d.tmp
 	@if cmp crypto/aes/aes_misc.d.tmp crypto/aes/aes_misc.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/aes/aes_misc.d.tmp; \
@@ -754,7 +771,7 @@ crypto/aes/aes_misc.o: crypto/aes/aes_misc.c
 		mv crypto/aes/aes_misc.d.tmp crypto/aes/aes_misc.d; \
 	fi
 crypto/aes/aes_ofb.o: crypto/aes/aes_ofb.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/aes/aes_ofb.d.tmp -MT $@ -c -o $@ crypto/aes/aes_ofb.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/aes/aes_ofb.d.tmp -MT $@ -c -o $@ crypto/aes/aes_ofb.c
 	@touch crypto/aes/aes_ofb.d.tmp
 	@if cmp crypto/aes/aes_ofb.d.tmp crypto/aes/aes_ofb.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/aes/aes_ofb.d.tmp; \
@@ -762,7 +779,7 @@ crypto/aes/aes_ofb.o: crypto/aes/aes_ofb.c
 		mv crypto/aes/aes_ofb.d.tmp crypto/aes/aes_ofb.d; \
 	fi
 crypto/aes/aes_wrap.o: crypto/aes/aes_wrap.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/aes/aes_wrap.d.tmp -MT $@ -c -o $@ crypto/aes/aes_wrap.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/aes/aes_wrap.d.tmp -MT $@ -c -o $@ crypto/aes/aes_wrap.c
 	@touch crypto/aes/aes_wrap.d.tmp
 	@if cmp crypto/aes/aes_wrap.d.tmp crypto/aes/aes_wrap.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/aes/aes_wrap.d.tmp; \
@@ -770,7 +787,7 @@ crypto/aes/aes_wrap.o: crypto/aes/aes_wrap.c
 		mv crypto/aes/aes_wrap.d.tmp crypto/aes/aes_wrap.d; \
 	fi
 crypto/aria/aria.o: crypto/aria/aria.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/aria/aria.d.tmp -MT $@ -c -o $@ crypto/aria/aria.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/aria/aria.d.tmp -MT $@ -c -o $@ crypto/aria/aria.c
 	@touch crypto/aria/aria.d.tmp
 	@if cmp crypto/aria/aria.d.tmp crypto/aria/aria.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/aria/aria.d.tmp; \
@@ -778,7 +795,7 @@ crypto/aria/aria.o: crypto/aria/aria.c
 		mv crypto/aria/aria.d.tmp crypto/aria/aria.d; \
 	fi
 crypto/asn1/a_bitstr.o: crypto/asn1/a_bitstr.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/asn1/a_bitstr.d.tmp -MT $@ -c -o $@ crypto/asn1/a_bitstr.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/asn1/a_bitstr.d.tmp -MT $@ -c -o $@ crypto/asn1/a_bitstr.c
 	@touch crypto/asn1/a_bitstr.d.tmp
 	@if cmp crypto/asn1/a_bitstr.d.tmp crypto/asn1/a_bitstr.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/asn1/a_bitstr.d.tmp; \
@@ -786,7 +803,7 @@ crypto/asn1/a_bitstr.o: crypto/asn1/a_bitstr.c
 		mv crypto/asn1/a_bitstr.d.tmp crypto/asn1/a_bitstr.d; \
 	fi
 crypto/asn1/a_d2i_fp.o: crypto/asn1/a_d2i_fp.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/asn1/a_d2i_fp.d.tmp -MT $@ -c -o $@ crypto/asn1/a_d2i_fp.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/asn1/a_d2i_fp.d.tmp -MT $@ -c -o $@ crypto/asn1/a_d2i_fp.c
 	@touch crypto/asn1/a_d2i_fp.d.tmp
 	@if cmp crypto/asn1/a_d2i_fp.d.tmp crypto/asn1/a_d2i_fp.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/asn1/a_d2i_fp.d.tmp; \
@@ -794,7 +811,7 @@ crypto/asn1/a_d2i_fp.o: crypto/asn1/a_d2i_fp.c
 		mv crypto/asn1/a_d2i_fp.d.tmp crypto/asn1/a_d2i_fp.d; \
 	fi
 crypto/asn1/a_digest.o: crypto/asn1/a_digest.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/asn1/a_digest.d.tmp -MT $@ -c -o $@ crypto/asn1/a_digest.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/asn1/a_digest.d.tmp -MT $@ -c -o $@ crypto/asn1/a_digest.c
 	@touch crypto/asn1/a_digest.d.tmp
 	@if cmp crypto/asn1/a_digest.d.tmp crypto/asn1/a_digest.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/asn1/a_digest.d.tmp; \
@@ -802,7 +819,7 @@ crypto/asn1/a_digest.o: crypto/asn1/a_digest.c
 		mv crypto/asn1/a_digest.d.tmp crypto/asn1/a_digest.d; \
 	fi
 crypto/asn1/a_dup.o: crypto/asn1/a_dup.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/asn1/a_dup.d.tmp -MT $@ -c -o $@ crypto/asn1/a_dup.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/asn1/a_dup.d.tmp -MT $@ -c -o $@ crypto/asn1/a_dup.c
 	@touch crypto/asn1/a_dup.d.tmp
 	@if cmp crypto/asn1/a_dup.d.tmp crypto/asn1/a_dup.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/asn1/a_dup.d.tmp; \
@@ -810,7 +827,7 @@ crypto/asn1/a_dup.o: crypto/asn1/a_dup.c
 		mv crypto/asn1/a_dup.d.tmp crypto/asn1/a_dup.d; \
 	fi
 crypto/asn1/a_gentm.o: crypto/asn1/a_gentm.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/asn1/a_gentm.d.tmp -MT $@ -c -o $@ crypto/asn1/a_gentm.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/asn1/a_gentm.d.tmp -MT $@ -c -o $@ crypto/asn1/a_gentm.c
 	@touch crypto/asn1/a_gentm.d.tmp
 	@if cmp crypto/asn1/a_gentm.d.tmp crypto/asn1/a_gentm.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/asn1/a_gentm.d.tmp; \
@@ -818,7 +835,7 @@ crypto/asn1/a_gentm.o: crypto/asn1/a_gentm.c
 		mv crypto/asn1/a_gentm.d.tmp crypto/asn1/a_gentm.d; \
 	fi
 crypto/asn1/a_i2d_fp.o: crypto/asn1/a_i2d_fp.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/asn1/a_i2d_fp.d.tmp -MT $@ -c -o $@ crypto/asn1/a_i2d_fp.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/asn1/a_i2d_fp.d.tmp -MT $@ -c -o $@ crypto/asn1/a_i2d_fp.c
 	@touch crypto/asn1/a_i2d_fp.d.tmp
 	@if cmp crypto/asn1/a_i2d_fp.d.tmp crypto/asn1/a_i2d_fp.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/asn1/a_i2d_fp.d.tmp; \
@@ -826,7 +843,7 @@ crypto/asn1/a_i2d_fp.o: crypto/asn1/a_i2d_fp.c
 		mv crypto/asn1/a_i2d_fp.d.tmp crypto/asn1/a_i2d_fp.d; \
 	fi
 crypto/asn1/a_int.o: crypto/asn1/a_int.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/asn1/a_int.d.tmp -MT $@ -c -o $@ crypto/asn1/a_int.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/asn1/a_int.d.tmp -MT $@ -c -o $@ crypto/asn1/a_int.c
 	@touch crypto/asn1/a_int.d.tmp
 	@if cmp crypto/asn1/a_int.d.tmp crypto/asn1/a_int.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/asn1/a_int.d.tmp; \
@@ -834,7 +851,7 @@ crypto/asn1/a_int.o: crypto/asn1/a_int.c
 		mv crypto/asn1/a_int.d.tmp crypto/asn1/a_int.d; \
 	fi
 crypto/asn1/a_mbstr.o: crypto/asn1/a_mbstr.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/asn1/a_mbstr.d.tmp -MT $@ -c -o $@ crypto/asn1/a_mbstr.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/asn1/a_mbstr.d.tmp -MT $@ -c -o $@ crypto/asn1/a_mbstr.c
 	@touch crypto/asn1/a_mbstr.d.tmp
 	@if cmp crypto/asn1/a_mbstr.d.tmp crypto/asn1/a_mbstr.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/asn1/a_mbstr.d.tmp; \
@@ -842,7 +859,7 @@ crypto/asn1/a_mbstr.o: crypto/asn1/a_mbstr.c
 		mv crypto/asn1/a_mbstr.d.tmp crypto/asn1/a_mbstr.d; \
 	fi
 crypto/asn1/a_object.o: crypto/asn1/a_object.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/asn1/a_object.d.tmp -MT $@ -c -o $@ crypto/asn1/a_object.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/asn1/a_object.d.tmp -MT $@ -c -o $@ crypto/asn1/a_object.c
 	@touch crypto/asn1/a_object.d.tmp
 	@if cmp crypto/asn1/a_object.d.tmp crypto/asn1/a_object.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/asn1/a_object.d.tmp; \
@@ -850,7 +867,7 @@ crypto/asn1/a_object.o: crypto/asn1/a_object.c
 		mv crypto/asn1/a_object.d.tmp crypto/asn1/a_object.d; \
 	fi
 crypto/asn1/a_octet.o: crypto/asn1/a_octet.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/asn1/a_octet.d.tmp -MT $@ -c -o $@ crypto/asn1/a_octet.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/asn1/a_octet.d.tmp -MT $@ -c -o $@ crypto/asn1/a_octet.c
 	@touch crypto/asn1/a_octet.d.tmp
 	@if cmp crypto/asn1/a_octet.d.tmp crypto/asn1/a_octet.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/asn1/a_octet.d.tmp; \
@@ -858,7 +875,7 @@ crypto/asn1/a_octet.o: crypto/asn1/a_octet.c
 		mv crypto/asn1/a_octet.d.tmp crypto/asn1/a_octet.d; \
 	fi
 crypto/asn1/a_print.o: crypto/asn1/a_print.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/asn1/a_print.d.tmp -MT $@ -c -o $@ crypto/asn1/a_print.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/asn1/a_print.d.tmp -MT $@ -c -o $@ crypto/asn1/a_print.c
 	@touch crypto/asn1/a_print.d.tmp
 	@if cmp crypto/asn1/a_print.d.tmp crypto/asn1/a_print.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/asn1/a_print.d.tmp; \
@@ -866,7 +883,7 @@ crypto/asn1/a_print.o: crypto/asn1/a_print.c
 		mv crypto/asn1/a_print.d.tmp crypto/asn1/a_print.d; \
 	fi
 crypto/asn1/a_sign.o: crypto/asn1/a_sign.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/asn1/a_sign.d.tmp -MT $@ -c -o $@ crypto/asn1/a_sign.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/asn1/a_sign.d.tmp -MT $@ -c -o $@ crypto/asn1/a_sign.c
 	@touch crypto/asn1/a_sign.d.tmp
 	@if cmp crypto/asn1/a_sign.d.tmp crypto/asn1/a_sign.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/asn1/a_sign.d.tmp; \
@@ -874,7 +891,7 @@ crypto/asn1/a_sign.o: crypto/asn1/a_sign.c
 		mv crypto/asn1/a_sign.d.tmp crypto/asn1/a_sign.d; \
 	fi
 crypto/asn1/a_strex.o: crypto/asn1/a_strex.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/asn1/a_strex.d.tmp -MT $@ -c -o $@ crypto/asn1/a_strex.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/asn1/a_strex.d.tmp -MT $@ -c -o $@ crypto/asn1/a_strex.c
 	@touch crypto/asn1/a_strex.d.tmp
 	@if cmp crypto/asn1/a_strex.d.tmp crypto/asn1/a_strex.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/asn1/a_strex.d.tmp; \
@@ -882,7 +899,7 @@ crypto/asn1/a_strex.o: crypto/asn1/a_strex.c
 		mv crypto/asn1/a_strex.d.tmp crypto/asn1/a_strex.d; \
 	fi
 crypto/asn1/a_strnid.o: crypto/asn1/a_strnid.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/asn1/a_strnid.d.tmp -MT $@ -c -o $@ crypto/asn1/a_strnid.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/asn1/a_strnid.d.tmp -MT $@ -c -o $@ crypto/asn1/a_strnid.c
 	@touch crypto/asn1/a_strnid.d.tmp
 	@if cmp crypto/asn1/a_strnid.d.tmp crypto/asn1/a_strnid.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/asn1/a_strnid.d.tmp; \
@@ -890,7 +907,7 @@ crypto/asn1/a_strnid.o: crypto/asn1/a_strnid.c
 		mv crypto/asn1/a_strnid.d.tmp crypto/asn1/a_strnid.d; \
 	fi
 crypto/asn1/a_time.o: crypto/asn1/a_time.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/asn1/a_time.d.tmp -MT $@ -c -o $@ crypto/asn1/a_time.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/asn1/a_time.d.tmp -MT $@ -c -o $@ crypto/asn1/a_time.c
 	@touch crypto/asn1/a_time.d.tmp
 	@if cmp crypto/asn1/a_time.d.tmp crypto/asn1/a_time.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/asn1/a_time.d.tmp; \
@@ -898,7 +915,7 @@ crypto/asn1/a_time.o: crypto/asn1/a_time.c
 		mv crypto/asn1/a_time.d.tmp crypto/asn1/a_time.d; \
 	fi
 crypto/asn1/a_type.o: crypto/asn1/a_type.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/asn1/a_type.d.tmp -MT $@ -c -o $@ crypto/asn1/a_type.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/asn1/a_type.d.tmp -MT $@ -c -o $@ crypto/asn1/a_type.c
 	@touch crypto/asn1/a_type.d.tmp
 	@if cmp crypto/asn1/a_type.d.tmp crypto/asn1/a_type.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/asn1/a_type.d.tmp; \
@@ -906,7 +923,7 @@ crypto/asn1/a_type.o: crypto/asn1/a_type.c
 		mv crypto/asn1/a_type.d.tmp crypto/asn1/a_type.d; \
 	fi
 crypto/asn1/a_utctm.o: crypto/asn1/a_utctm.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/asn1/a_utctm.d.tmp -MT $@ -c -o $@ crypto/asn1/a_utctm.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/asn1/a_utctm.d.tmp -MT $@ -c -o $@ crypto/asn1/a_utctm.c
 	@touch crypto/asn1/a_utctm.d.tmp
 	@if cmp crypto/asn1/a_utctm.d.tmp crypto/asn1/a_utctm.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/asn1/a_utctm.d.tmp; \
@@ -914,7 +931,7 @@ crypto/asn1/a_utctm.o: crypto/asn1/a_utctm.c
 		mv crypto/asn1/a_utctm.d.tmp crypto/asn1/a_utctm.d; \
 	fi
 crypto/asn1/a_utf8.o: crypto/asn1/a_utf8.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/asn1/a_utf8.d.tmp -MT $@ -c -o $@ crypto/asn1/a_utf8.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/asn1/a_utf8.d.tmp -MT $@ -c -o $@ crypto/asn1/a_utf8.c
 	@touch crypto/asn1/a_utf8.d.tmp
 	@if cmp crypto/asn1/a_utf8.d.tmp crypto/asn1/a_utf8.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/asn1/a_utf8.d.tmp; \
@@ -922,7 +939,7 @@ crypto/asn1/a_utf8.o: crypto/asn1/a_utf8.c
 		mv crypto/asn1/a_utf8.d.tmp crypto/asn1/a_utf8.d; \
 	fi
 crypto/asn1/a_verify.o: crypto/asn1/a_verify.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/asn1/a_verify.d.tmp -MT $@ -c -o $@ crypto/asn1/a_verify.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/asn1/a_verify.d.tmp -MT $@ -c -o $@ crypto/asn1/a_verify.c
 	@touch crypto/asn1/a_verify.d.tmp
 	@if cmp crypto/asn1/a_verify.d.tmp crypto/asn1/a_verify.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/asn1/a_verify.d.tmp; \
@@ -930,7 +947,7 @@ crypto/asn1/a_verify.o: crypto/asn1/a_verify.c
 		mv crypto/asn1/a_verify.d.tmp crypto/asn1/a_verify.d; \
 	fi
 crypto/asn1/ameth_lib.o: crypto/asn1/ameth_lib.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/asn1/ameth_lib.d.tmp -MT $@ -c -o $@ crypto/asn1/ameth_lib.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/asn1/ameth_lib.d.tmp -MT $@ -c -o $@ crypto/asn1/ameth_lib.c
 	@touch crypto/asn1/ameth_lib.d.tmp
 	@if cmp crypto/asn1/ameth_lib.d.tmp crypto/asn1/ameth_lib.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/asn1/ameth_lib.d.tmp; \
@@ -938,7 +955,7 @@ crypto/asn1/ameth_lib.o: crypto/asn1/ameth_lib.c
 		mv crypto/asn1/ameth_lib.d.tmp crypto/asn1/ameth_lib.d; \
 	fi
 crypto/asn1/asn1_err.o: crypto/asn1/asn1_err.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/asn1/asn1_err.d.tmp -MT $@ -c -o $@ crypto/asn1/asn1_err.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/asn1/asn1_err.d.tmp -MT $@ -c -o $@ crypto/asn1/asn1_err.c
 	@touch crypto/asn1/asn1_err.d.tmp
 	@if cmp crypto/asn1/asn1_err.d.tmp crypto/asn1/asn1_err.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/asn1/asn1_err.d.tmp; \
@@ -946,7 +963,7 @@ crypto/asn1/asn1_err.o: crypto/asn1/asn1_err.c
 		mv crypto/asn1/asn1_err.d.tmp crypto/asn1/asn1_err.d; \
 	fi
 crypto/asn1/asn1_gen.o: crypto/asn1/asn1_gen.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/asn1/asn1_gen.d.tmp -MT $@ -c -o $@ crypto/asn1/asn1_gen.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/asn1/asn1_gen.d.tmp -MT $@ -c -o $@ crypto/asn1/asn1_gen.c
 	@touch crypto/asn1/asn1_gen.d.tmp
 	@if cmp crypto/asn1/asn1_gen.d.tmp crypto/asn1/asn1_gen.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/asn1/asn1_gen.d.tmp; \
@@ -954,7 +971,7 @@ crypto/asn1/asn1_gen.o: crypto/asn1/asn1_gen.c
 		mv crypto/asn1/asn1_gen.d.tmp crypto/asn1/asn1_gen.d; \
 	fi
 crypto/asn1/asn1_item_list.o: crypto/asn1/asn1_item_list.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/asn1/asn1_item_list.d.tmp -MT $@ -c -o $@ crypto/asn1/asn1_item_list.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/asn1/asn1_item_list.d.tmp -MT $@ -c -o $@ crypto/asn1/asn1_item_list.c
 	@touch crypto/asn1/asn1_item_list.d.tmp
 	@if cmp crypto/asn1/asn1_item_list.d.tmp crypto/asn1/asn1_item_list.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/asn1/asn1_item_list.d.tmp; \
@@ -962,7 +979,7 @@ crypto/asn1/asn1_item_list.o: crypto/asn1/asn1_item_list.c
 		mv crypto/asn1/asn1_item_list.d.tmp crypto/asn1/asn1_item_list.d; \
 	fi
 crypto/asn1/asn1_lib.o: crypto/asn1/asn1_lib.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/asn1/asn1_lib.d.tmp -MT $@ -c -o $@ crypto/asn1/asn1_lib.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/asn1/asn1_lib.d.tmp -MT $@ -c -o $@ crypto/asn1/asn1_lib.c
 	@touch crypto/asn1/asn1_lib.d.tmp
 	@if cmp crypto/asn1/asn1_lib.d.tmp crypto/asn1/asn1_lib.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/asn1/asn1_lib.d.tmp; \
@@ -970,7 +987,7 @@ crypto/asn1/asn1_lib.o: crypto/asn1/asn1_lib.c
 		mv crypto/asn1/asn1_lib.d.tmp crypto/asn1/asn1_lib.d; \
 	fi
 crypto/asn1/asn1_par.o: crypto/asn1/asn1_par.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/asn1/asn1_par.d.tmp -MT $@ -c -o $@ crypto/asn1/asn1_par.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/asn1/asn1_par.d.tmp -MT $@ -c -o $@ crypto/asn1/asn1_par.c
 	@touch crypto/asn1/asn1_par.d.tmp
 	@if cmp crypto/asn1/asn1_par.d.tmp crypto/asn1/asn1_par.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/asn1/asn1_par.d.tmp; \
@@ -978,7 +995,7 @@ crypto/asn1/asn1_par.o: crypto/asn1/asn1_par.c
 		mv crypto/asn1/asn1_par.d.tmp crypto/asn1/asn1_par.d; \
 	fi
 crypto/asn1/asn_mime.o: crypto/asn1/asn_mime.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/asn1/asn_mime.d.tmp -MT $@ -c -o $@ crypto/asn1/asn_mime.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/asn1/asn_mime.d.tmp -MT $@ -c -o $@ crypto/asn1/asn_mime.c
 	@touch crypto/asn1/asn_mime.d.tmp
 	@if cmp crypto/asn1/asn_mime.d.tmp crypto/asn1/asn_mime.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/asn1/asn_mime.d.tmp; \
@@ -986,7 +1003,7 @@ crypto/asn1/asn_mime.o: crypto/asn1/asn_mime.c
 		mv crypto/asn1/asn_mime.d.tmp crypto/asn1/asn_mime.d; \
 	fi
 crypto/asn1/asn_moid.o: crypto/asn1/asn_moid.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/asn1/asn_moid.d.tmp -MT $@ -c -o $@ crypto/asn1/asn_moid.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/asn1/asn_moid.d.tmp -MT $@ -c -o $@ crypto/asn1/asn_moid.c
 	@touch crypto/asn1/asn_moid.d.tmp
 	@if cmp crypto/asn1/asn_moid.d.tmp crypto/asn1/asn_moid.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/asn1/asn_moid.d.tmp; \
@@ -994,7 +1011,7 @@ crypto/asn1/asn_moid.o: crypto/asn1/asn_moid.c
 		mv crypto/asn1/asn_moid.d.tmp crypto/asn1/asn_moid.d; \
 	fi
 crypto/asn1/asn_mstbl.o: crypto/asn1/asn_mstbl.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/asn1/asn_mstbl.d.tmp -MT $@ -c -o $@ crypto/asn1/asn_mstbl.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/asn1/asn_mstbl.d.tmp -MT $@ -c -o $@ crypto/asn1/asn_mstbl.c
 	@touch crypto/asn1/asn_mstbl.d.tmp
 	@if cmp crypto/asn1/asn_mstbl.d.tmp crypto/asn1/asn_mstbl.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/asn1/asn_mstbl.d.tmp; \
@@ -1002,7 +1019,7 @@ crypto/asn1/asn_mstbl.o: crypto/asn1/asn_mstbl.c
 		mv crypto/asn1/asn_mstbl.d.tmp crypto/asn1/asn_mstbl.d; \
 	fi
 crypto/asn1/asn_pack.o: crypto/asn1/asn_pack.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/asn1/asn_pack.d.tmp -MT $@ -c -o $@ crypto/asn1/asn_pack.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/asn1/asn_pack.d.tmp -MT $@ -c -o $@ crypto/asn1/asn_pack.c
 	@touch crypto/asn1/asn_pack.d.tmp
 	@if cmp crypto/asn1/asn_pack.d.tmp crypto/asn1/asn_pack.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/asn1/asn_pack.d.tmp; \
@@ -1010,7 +1027,7 @@ crypto/asn1/asn_pack.o: crypto/asn1/asn_pack.c
 		mv crypto/asn1/asn_pack.d.tmp crypto/asn1/asn_pack.d; \
 	fi
 crypto/asn1/bio_asn1.o: crypto/asn1/bio_asn1.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/asn1/bio_asn1.d.tmp -MT $@ -c -o $@ crypto/asn1/bio_asn1.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/asn1/bio_asn1.d.tmp -MT $@ -c -o $@ crypto/asn1/bio_asn1.c
 	@touch crypto/asn1/bio_asn1.d.tmp
 	@if cmp crypto/asn1/bio_asn1.d.tmp crypto/asn1/bio_asn1.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/asn1/bio_asn1.d.tmp; \
@@ -1018,7 +1035,7 @@ crypto/asn1/bio_asn1.o: crypto/asn1/bio_asn1.c
 		mv crypto/asn1/bio_asn1.d.tmp crypto/asn1/bio_asn1.d; \
 	fi
 crypto/asn1/bio_ndef.o: crypto/asn1/bio_ndef.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/asn1/bio_ndef.d.tmp -MT $@ -c -o $@ crypto/asn1/bio_ndef.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/asn1/bio_ndef.d.tmp -MT $@ -c -o $@ crypto/asn1/bio_ndef.c
 	@touch crypto/asn1/bio_ndef.d.tmp
 	@if cmp crypto/asn1/bio_ndef.d.tmp crypto/asn1/bio_ndef.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/asn1/bio_ndef.d.tmp; \
@@ -1026,7 +1043,7 @@ crypto/asn1/bio_ndef.o: crypto/asn1/bio_ndef.c
 		mv crypto/asn1/bio_ndef.d.tmp crypto/asn1/bio_ndef.d; \
 	fi
 crypto/asn1/d2i_pr.o: crypto/asn1/d2i_pr.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/asn1/d2i_pr.d.tmp -MT $@ -c -o $@ crypto/asn1/d2i_pr.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/asn1/d2i_pr.d.tmp -MT $@ -c -o $@ crypto/asn1/d2i_pr.c
 	@touch crypto/asn1/d2i_pr.d.tmp
 	@if cmp crypto/asn1/d2i_pr.d.tmp crypto/asn1/d2i_pr.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/asn1/d2i_pr.d.tmp; \
@@ -1034,7 +1051,7 @@ crypto/asn1/d2i_pr.o: crypto/asn1/d2i_pr.c
 		mv crypto/asn1/d2i_pr.d.tmp crypto/asn1/d2i_pr.d; \
 	fi
 crypto/asn1/d2i_pu.o: crypto/asn1/d2i_pu.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/asn1/d2i_pu.d.tmp -MT $@ -c -o $@ crypto/asn1/d2i_pu.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/asn1/d2i_pu.d.tmp -MT $@ -c -o $@ crypto/asn1/d2i_pu.c
 	@touch crypto/asn1/d2i_pu.d.tmp
 	@if cmp crypto/asn1/d2i_pu.d.tmp crypto/asn1/d2i_pu.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/asn1/d2i_pu.d.tmp; \
@@ -1042,7 +1059,7 @@ crypto/asn1/d2i_pu.o: crypto/asn1/d2i_pu.c
 		mv crypto/asn1/d2i_pu.d.tmp crypto/asn1/d2i_pu.d; \
 	fi
 crypto/asn1/evp_asn1.o: crypto/asn1/evp_asn1.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/asn1/evp_asn1.d.tmp -MT $@ -c -o $@ crypto/asn1/evp_asn1.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/asn1/evp_asn1.d.tmp -MT $@ -c -o $@ crypto/asn1/evp_asn1.c
 	@touch crypto/asn1/evp_asn1.d.tmp
 	@if cmp crypto/asn1/evp_asn1.d.tmp crypto/asn1/evp_asn1.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/asn1/evp_asn1.d.tmp; \
@@ -1050,7 +1067,7 @@ crypto/asn1/evp_asn1.o: crypto/asn1/evp_asn1.c
 		mv crypto/asn1/evp_asn1.d.tmp crypto/asn1/evp_asn1.d; \
 	fi
 crypto/asn1/f_int.o: crypto/asn1/f_int.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/asn1/f_int.d.tmp -MT $@ -c -o $@ crypto/asn1/f_int.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/asn1/f_int.d.tmp -MT $@ -c -o $@ crypto/asn1/f_int.c
 	@touch crypto/asn1/f_int.d.tmp
 	@if cmp crypto/asn1/f_int.d.tmp crypto/asn1/f_int.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/asn1/f_int.d.tmp; \
@@ -1058,7 +1075,7 @@ crypto/asn1/f_int.o: crypto/asn1/f_int.c
 		mv crypto/asn1/f_int.d.tmp crypto/asn1/f_int.d; \
 	fi
 crypto/asn1/f_string.o: crypto/asn1/f_string.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/asn1/f_string.d.tmp -MT $@ -c -o $@ crypto/asn1/f_string.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/asn1/f_string.d.tmp -MT $@ -c -o $@ crypto/asn1/f_string.c
 	@touch crypto/asn1/f_string.d.tmp
 	@if cmp crypto/asn1/f_string.d.tmp crypto/asn1/f_string.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/asn1/f_string.d.tmp; \
@@ -1066,7 +1083,7 @@ crypto/asn1/f_string.o: crypto/asn1/f_string.c
 		mv crypto/asn1/f_string.d.tmp crypto/asn1/f_string.d; \
 	fi
 crypto/asn1/i2d_pr.o: crypto/asn1/i2d_pr.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/asn1/i2d_pr.d.tmp -MT $@ -c -o $@ crypto/asn1/i2d_pr.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/asn1/i2d_pr.d.tmp -MT $@ -c -o $@ crypto/asn1/i2d_pr.c
 	@touch crypto/asn1/i2d_pr.d.tmp
 	@if cmp crypto/asn1/i2d_pr.d.tmp crypto/asn1/i2d_pr.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/asn1/i2d_pr.d.tmp; \
@@ -1074,7 +1091,7 @@ crypto/asn1/i2d_pr.o: crypto/asn1/i2d_pr.c
 		mv crypto/asn1/i2d_pr.d.tmp crypto/asn1/i2d_pr.d; \
 	fi
 crypto/asn1/i2d_pu.o: crypto/asn1/i2d_pu.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/asn1/i2d_pu.d.tmp -MT $@ -c -o $@ crypto/asn1/i2d_pu.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/asn1/i2d_pu.d.tmp -MT $@ -c -o $@ crypto/asn1/i2d_pu.c
 	@touch crypto/asn1/i2d_pu.d.tmp
 	@if cmp crypto/asn1/i2d_pu.d.tmp crypto/asn1/i2d_pu.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/asn1/i2d_pu.d.tmp; \
@@ -1082,7 +1099,7 @@ crypto/asn1/i2d_pu.o: crypto/asn1/i2d_pu.c
 		mv crypto/asn1/i2d_pu.d.tmp crypto/asn1/i2d_pu.d; \
 	fi
 crypto/asn1/n_pkey.o: crypto/asn1/n_pkey.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/asn1/n_pkey.d.tmp -MT $@ -c -o $@ crypto/asn1/n_pkey.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/asn1/n_pkey.d.tmp -MT $@ -c -o $@ crypto/asn1/n_pkey.c
 	@touch crypto/asn1/n_pkey.d.tmp
 	@if cmp crypto/asn1/n_pkey.d.tmp crypto/asn1/n_pkey.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/asn1/n_pkey.d.tmp; \
@@ -1090,7 +1107,7 @@ crypto/asn1/n_pkey.o: crypto/asn1/n_pkey.c
 		mv crypto/asn1/n_pkey.d.tmp crypto/asn1/n_pkey.d; \
 	fi
 crypto/asn1/nsseq.o: crypto/asn1/nsseq.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/asn1/nsseq.d.tmp -MT $@ -c -o $@ crypto/asn1/nsseq.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/asn1/nsseq.d.tmp -MT $@ -c -o $@ crypto/asn1/nsseq.c
 	@touch crypto/asn1/nsseq.d.tmp
 	@if cmp crypto/asn1/nsseq.d.tmp crypto/asn1/nsseq.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/asn1/nsseq.d.tmp; \
@@ -1098,7 +1115,7 @@ crypto/asn1/nsseq.o: crypto/asn1/nsseq.c
 		mv crypto/asn1/nsseq.d.tmp crypto/asn1/nsseq.d; \
 	fi
 crypto/asn1/p5_pbe.o: crypto/asn1/p5_pbe.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/asn1/p5_pbe.d.tmp -MT $@ -c -o $@ crypto/asn1/p5_pbe.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/asn1/p5_pbe.d.tmp -MT $@ -c -o $@ crypto/asn1/p5_pbe.c
 	@touch crypto/asn1/p5_pbe.d.tmp
 	@if cmp crypto/asn1/p5_pbe.d.tmp crypto/asn1/p5_pbe.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/asn1/p5_pbe.d.tmp; \
@@ -1106,7 +1123,7 @@ crypto/asn1/p5_pbe.o: crypto/asn1/p5_pbe.c
 		mv crypto/asn1/p5_pbe.d.tmp crypto/asn1/p5_pbe.d; \
 	fi
 crypto/asn1/p5_pbev2.o: crypto/asn1/p5_pbev2.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/asn1/p5_pbev2.d.tmp -MT $@ -c -o $@ crypto/asn1/p5_pbev2.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/asn1/p5_pbev2.d.tmp -MT $@ -c -o $@ crypto/asn1/p5_pbev2.c
 	@touch crypto/asn1/p5_pbev2.d.tmp
 	@if cmp crypto/asn1/p5_pbev2.d.tmp crypto/asn1/p5_pbev2.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/asn1/p5_pbev2.d.tmp; \
@@ -1114,7 +1131,7 @@ crypto/asn1/p5_pbev2.o: crypto/asn1/p5_pbev2.c
 		mv crypto/asn1/p5_pbev2.d.tmp crypto/asn1/p5_pbev2.d; \
 	fi
 crypto/asn1/p5_scrypt.o: crypto/asn1/p5_scrypt.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/asn1/p5_scrypt.d.tmp -MT $@ -c -o $@ crypto/asn1/p5_scrypt.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/asn1/p5_scrypt.d.tmp -MT $@ -c -o $@ crypto/asn1/p5_scrypt.c
 	@touch crypto/asn1/p5_scrypt.d.tmp
 	@if cmp crypto/asn1/p5_scrypt.d.tmp crypto/asn1/p5_scrypt.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/asn1/p5_scrypt.d.tmp; \
@@ -1122,7 +1139,7 @@ crypto/asn1/p5_scrypt.o: crypto/asn1/p5_scrypt.c
 		mv crypto/asn1/p5_scrypt.d.tmp crypto/asn1/p5_scrypt.d; \
 	fi
 crypto/asn1/p8_pkey.o: crypto/asn1/p8_pkey.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/asn1/p8_pkey.d.tmp -MT $@ -c -o $@ crypto/asn1/p8_pkey.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/asn1/p8_pkey.d.tmp -MT $@ -c -o $@ crypto/asn1/p8_pkey.c
 	@touch crypto/asn1/p8_pkey.d.tmp
 	@if cmp crypto/asn1/p8_pkey.d.tmp crypto/asn1/p8_pkey.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/asn1/p8_pkey.d.tmp; \
@@ -1130,7 +1147,7 @@ crypto/asn1/p8_pkey.o: crypto/asn1/p8_pkey.c
 		mv crypto/asn1/p8_pkey.d.tmp crypto/asn1/p8_pkey.d; \
 	fi
 crypto/asn1/t_bitst.o: crypto/asn1/t_bitst.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/asn1/t_bitst.d.tmp -MT $@ -c -o $@ crypto/asn1/t_bitst.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/asn1/t_bitst.d.tmp -MT $@ -c -o $@ crypto/asn1/t_bitst.c
 	@touch crypto/asn1/t_bitst.d.tmp
 	@if cmp crypto/asn1/t_bitst.d.tmp crypto/asn1/t_bitst.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/asn1/t_bitst.d.tmp; \
@@ -1138,7 +1155,7 @@ crypto/asn1/t_bitst.o: crypto/asn1/t_bitst.c
 		mv crypto/asn1/t_bitst.d.tmp crypto/asn1/t_bitst.d; \
 	fi
 crypto/asn1/t_pkey.o: crypto/asn1/t_pkey.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/asn1/t_pkey.d.tmp -MT $@ -c -o $@ crypto/asn1/t_pkey.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/asn1/t_pkey.d.tmp -MT $@ -c -o $@ crypto/asn1/t_pkey.c
 	@touch crypto/asn1/t_pkey.d.tmp
 	@if cmp crypto/asn1/t_pkey.d.tmp crypto/asn1/t_pkey.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/asn1/t_pkey.d.tmp; \
@@ -1146,7 +1163,7 @@ crypto/asn1/t_pkey.o: crypto/asn1/t_pkey.c
 		mv crypto/asn1/t_pkey.d.tmp crypto/asn1/t_pkey.d; \
 	fi
 crypto/asn1/t_spki.o: crypto/asn1/t_spki.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/asn1/t_spki.d.tmp -MT $@ -c -o $@ crypto/asn1/t_spki.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/asn1/t_spki.d.tmp -MT $@ -c -o $@ crypto/asn1/t_spki.c
 	@touch crypto/asn1/t_spki.d.tmp
 	@if cmp crypto/asn1/t_spki.d.tmp crypto/asn1/t_spki.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/asn1/t_spki.d.tmp; \
@@ -1154,7 +1171,7 @@ crypto/asn1/t_spki.o: crypto/asn1/t_spki.c
 		mv crypto/asn1/t_spki.d.tmp crypto/asn1/t_spki.d; \
 	fi
 crypto/asn1/tasn_dec.o: crypto/asn1/tasn_dec.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/asn1/tasn_dec.d.tmp -MT $@ -c -o $@ crypto/asn1/tasn_dec.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/asn1/tasn_dec.d.tmp -MT $@ -c -o $@ crypto/asn1/tasn_dec.c
 	@touch crypto/asn1/tasn_dec.d.tmp
 	@if cmp crypto/asn1/tasn_dec.d.tmp crypto/asn1/tasn_dec.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/asn1/tasn_dec.d.tmp; \
@@ -1162,7 +1179,7 @@ crypto/asn1/tasn_dec.o: crypto/asn1/tasn_dec.c
 		mv crypto/asn1/tasn_dec.d.tmp crypto/asn1/tasn_dec.d; \
 	fi
 crypto/asn1/tasn_enc.o: crypto/asn1/tasn_enc.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/asn1/tasn_enc.d.tmp -MT $@ -c -o $@ crypto/asn1/tasn_enc.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/asn1/tasn_enc.d.tmp -MT $@ -c -o $@ crypto/asn1/tasn_enc.c
 	@touch crypto/asn1/tasn_enc.d.tmp
 	@if cmp crypto/asn1/tasn_enc.d.tmp crypto/asn1/tasn_enc.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/asn1/tasn_enc.d.tmp; \
@@ -1170,7 +1187,7 @@ crypto/asn1/tasn_enc.o: crypto/asn1/tasn_enc.c
 		mv crypto/asn1/tasn_enc.d.tmp crypto/asn1/tasn_enc.d; \
 	fi
 crypto/asn1/tasn_fre.o: crypto/asn1/tasn_fre.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/asn1/tasn_fre.d.tmp -MT $@ -c -o $@ crypto/asn1/tasn_fre.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/asn1/tasn_fre.d.tmp -MT $@ -c -o $@ crypto/asn1/tasn_fre.c
 	@touch crypto/asn1/tasn_fre.d.tmp
 	@if cmp crypto/asn1/tasn_fre.d.tmp crypto/asn1/tasn_fre.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/asn1/tasn_fre.d.tmp; \
@@ -1178,7 +1195,7 @@ crypto/asn1/tasn_fre.o: crypto/asn1/tasn_fre.c
 		mv crypto/asn1/tasn_fre.d.tmp crypto/asn1/tasn_fre.d; \
 	fi
 crypto/asn1/tasn_new.o: crypto/asn1/tasn_new.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/asn1/tasn_new.d.tmp -MT $@ -c -o $@ crypto/asn1/tasn_new.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/asn1/tasn_new.d.tmp -MT $@ -c -o $@ crypto/asn1/tasn_new.c
 	@touch crypto/asn1/tasn_new.d.tmp
 	@if cmp crypto/asn1/tasn_new.d.tmp crypto/asn1/tasn_new.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/asn1/tasn_new.d.tmp; \
@@ -1186,7 +1203,7 @@ crypto/asn1/tasn_new.o: crypto/asn1/tasn_new.c
 		mv crypto/asn1/tasn_new.d.tmp crypto/asn1/tasn_new.d; \
 	fi
 crypto/asn1/tasn_prn.o: crypto/asn1/tasn_prn.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/asn1/tasn_prn.d.tmp -MT $@ -c -o $@ crypto/asn1/tasn_prn.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/asn1/tasn_prn.d.tmp -MT $@ -c -o $@ crypto/asn1/tasn_prn.c
 	@touch crypto/asn1/tasn_prn.d.tmp
 	@if cmp crypto/asn1/tasn_prn.d.tmp crypto/asn1/tasn_prn.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/asn1/tasn_prn.d.tmp; \
@@ -1194,7 +1211,7 @@ crypto/asn1/tasn_prn.o: crypto/asn1/tasn_prn.c
 		mv crypto/asn1/tasn_prn.d.tmp crypto/asn1/tasn_prn.d; \
 	fi
 crypto/asn1/tasn_scn.o: crypto/asn1/tasn_scn.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/asn1/tasn_scn.d.tmp -MT $@ -c -o $@ crypto/asn1/tasn_scn.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/asn1/tasn_scn.d.tmp -MT $@ -c -o $@ crypto/asn1/tasn_scn.c
 	@touch crypto/asn1/tasn_scn.d.tmp
 	@if cmp crypto/asn1/tasn_scn.d.tmp crypto/asn1/tasn_scn.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/asn1/tasn_scn.d.tmp; \
@@ -1202,7 +1219,7 @@ crypto/asn1/tasn_scn.o: crypto/asn1/tasn_scn.c
 		mv crypto/asn1/tasn_scn.d.tmp crypto/asn1/tasn_scn.d; \
 	fi
 crypto/asn1/tasn_typ.o: crypto/asn1/tasn_typ.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/asn1/tasn_typ.d.tmp -MT $@ -c -o $@ crypto/asn1/tasn_typ.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/asn1/tasn_typ.d.tmp -MT $@ -c -o $@ crypto/asn1/tasn_typ.c
 	@touch crypto/asn1/tasn_typ.d.tmp
 	@if cmp crypto/asn1/tasn_typ.d.tmp crypto/asn1/tasn_typ.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/asn1/tasn_typ.d.tmp; \
@@ -1210,7 +1227,7 @@ crypto/asn1/tasn_typ.o: crypto/asn1/tasn_typ.c
 		mv crypto/asn1/tasn_typ.d.tmp crypto/asn1/tasn_typ.d; \
 	fi
 crypto/asn1/tasn_utl.o: crypto/asn1/tasn_utl.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/asn1/tasn_utl.d.tmp -MT $@ -c -o $@ crypto/asn1/tasn_utl.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/asn1/tasn_utl.d.tmp -MT $@ -c -o $@ crypto/asn1/tasn_utl.c
 	@touch crypto/asn1/tasn_utl.d.tmp
 	@if cmp crypto/asn1/tasn_utl.d.tmp crypto/asn1/tasn_utl.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/asn1/tasn_utl.d.tmp; \
@@ -1218,7 +1235,7 @@ crypto/asn1/tasn_utl.o: crypto/asn1/tasn_utl.c
 		mv crypto/asn1/tasn_utl.d.tmp crypto/asn1/tasn_utl.d; \
 	fi
 crypto/asn1/x_algor.o: crypto/asn1/x_algor.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/asn1/x_algor.d.tmp -MT $@ -c -o $@ crypto/asn1/x_algor.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/asn1/x_algor.d.tmp -MT $@ -c -o $@ crypto/asn1/x_algor.c
 	@touch crypto/asn1/x_algor.d.tmp
 	@if cmp crypto/asn1/x_algor.d.tmp crypto/asn1/x_algor.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/asn1/x_algor.d.tmp; \
@@ -1226,7 +1243,7 @@ crypto/asn1/x_algor.o: crypto/asn1/x_algor.c
 		mv crypto/asn1/x_algor.d.tmp crypto/asn1/x_algor.d; \
 	fi
 crypto/asn1/x_bignum.o: crypto/asn1/x_bignum.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/asn1/x_bignum.d.tmp -MT $@ -c -o $@ crypto/asn1/x_bignum.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/asn1/x_bignum.d.tmp -MT $@ -c -o $@ crypto/asn1/x_bignum.c
 	@touch crypto/asn1/x_bignum.d.tmp
 	@if cmp crypto/asn1/x_bignum.d.tmp crypto/asn1/x_bignum.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/asn1/x_bignum.d.tmp; \
@@ -1234,7 +1251,7 @@ crypto/asn1/x_bignum.o: crypto/asn1/x_bignum.c
 		mv crypto/asn1/x_bignum.d.tmp crypto/asn1/x_bignum.d; \
 	fi
 crypto/asn1/x_info.o: crypto/asn1/x_info.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/asn1/x_info.d.tmp -MT $@ -c -o $@ crypto/asn1/x_info.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/asn1/x_info.d.tmp -MT $@ -c -o $@ crypto/asn1/x_info.c
 	@touch crypto/asn1/x_info.d.tmp
 	@if cmp crypto/asn1/x_info.d.tmp crypto/asn1/x_info.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/asn1/x_info.d.tmp; \
@@ -1242,7 +1259,7 @@ crypto/asn1/x_info.o: crypto/asn1/x_info.c
 		mv crypto/asn1/x_info.d.tmp crypto/asn1/x_info.d; \
 	fi
 crypto/asn1/x_int64.o: crypto/asn1/x_int64.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/asn1/x_int64.d.tmp -MT $@ -c -o $@ crypto/asn1/x_int64.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/asn1/x_int64.d.tmp -MT $@ -c -o $@ crypto/asn1/x_int64.c
 	@touch crypto/asn1/x_int64.d.tmp
 	@if cmp crypto/asn1/x_int64.d.tmp crypto/asn1/x_int64.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/asn1/x_int64.d.tmp; \
@@ -1250,7 +1267,7 @@ crypto/asn1/x_int64.o: crypto/asn1/x_int64.c
 		mv crypto/asn1/x_int64.d.tmp crypto/asn1/x_int64.d; \
 	fi
 crypto/asn1/x_long.o: crypto/asn1/x_long.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/asn1/x_long.d.tmp -MT $@ -c -o $@ crypto/asn1/x_long.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/asn1/x_long.d.tmp -MT $@ -c -o $@ crypto/asn1/x_long.c
 	@touch crypto/asn1/x_long.d.tmp
 	@if cmp crypto/asn1/x_long.d.tmp crypto/asn1/x_long.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/asn1/x_long.d.tmp; \
@@ -1258,7 +1275,7 @@ crypto/asn1/x_long.o: crypto/asn1/x_long.c
 		mv crypto/asn1/x_long.d.tmp crypto/asn1/x_long.d; \
 	fi
 crypto/asn1/x_pkey.o: crypto/asn1/x_pkey.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/asn1/x_pkey.d.tmp -MT $@ -c -o $@ crypto/asn1/x_pkey.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/asn1/x_pkey.d.tmp -MT $@ -c -o $@ crypto/asn1/x_pkey.c
 	@touch crypto/asn1/x_pkey.d.tmp
 	@if cmp crypto/asn1/x_pkey.d.tmp crypto/asn1/x_pkey.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/asn1/x_pkey.d.tmp; \
@@ -1266,7 +1283,7 @@ crypto/asn1/x_pkey.o: crypto/asn1/x_pkey.c
 		mv crypto/asn1/x_pkey.d.tmp crypto/asn1/x_pkey.d; \
 	fi
 crypto/asn1/x_sig.o: crypto/asn1/x_sig.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/asn1/x_sig.d.tmp -MT $@ -c -o $@ crypto/asn1/x_sig.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/asn1/x_sig.d.tmp -MT $@ -c -o $@ crypto/asn1/x_sig.c
 	@touch crypto/asn1/x_sig.d.tmp
 	@if cmp crypto/asn1/x_sig.d.tmp crypto/asn1/x_sig.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/asn1/x_sig.d.tmp; \
@@ -1274,7 +1291,7 @@ crypto/asn1/x_sig.o: crypto/asn1/x_sig.c
 		mv crypto/asn1/x_sig.d.tmp crypto/asn1/x_sig.d; \
 	fi
 crypto/asn1/x_spki.o: crypto/asn1/x_spki.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/asn1/x_spki.d.tmp -MT $@ -c -o $@ crypto/asn1/x_spki.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/asn1/x_spki.d.tmp -MT $@ -c -o $@ crypto/asn1/x_spki.c
 	@touch crypto/asn1/x_spki.d.tmp
 	@if cmp crypto/asn1/x_spki.d.tmp crypto/asn1/x_spki.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/asn1/x_spki.d.tmp; \
@@ -1282,7 +1299,7 @@ crypto/asn1/x_spki.o: crypto/asn1/x_spki.c
 		mv crypto/asn1/x_spki.d.tmp crypto/asn1/x_spki.d; \
 	fi
 crypto/asn1/x_val.o: crypto/asn1/x_val.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/asn1/x_val.d.tmp -MT $@ -c -o $@ crypto/asn1/x_val.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/asn1/x_val.d.tmp -MT $@ -c -o $@ crypto/asn1/x_val.c
 	@touch crypto/asn1/x_val.d.tmp
 	@if cmp crypto/asn1/x_val.d.tmp crypto/asn1/x_val.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/asn1/x_val.d.tmp; \
@@ -1290,7 +1307,7 @@ crypto/asn1/x_val.o: crypto/asn1/x_val.c
 		mv crypto/asn1/x_val.d.tmp crypto/asn1/x_val.d; \
 	fi
 crypto/async/arch/async_null.o: crypto/async/arch/async_null.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/async/arch/async_null.d.tmp -MT $@ -c -o $@ crypto/async/arch/async_null.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/async/arch/async_null.d.tmp -MT $@ -c -o $@ crypto/async/arch/async_null.c
 	@touch crypto/async/arch/async_null.d.tmp
 	@if cmp crypto/async/arch/async_null.d.tmp crypto/async/arch/async_null.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/async/arch/async_null.d.tmp; \
@@ -1298,7 +1315,7 @@ crypto/async/arch/async_null.o: crypto/async/arch/async_null.c
 		mv crypto/async/arch/async_null.d.tmp crypto/async/arch/async_null.d; \
 	fi
 crypto/async/arch/async_posix.o: crypto/async/arch/async_posix.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/async/arch/async_posix.d.tmp -MT $@ -c -o $@ crypto/async/arch/async_posix.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/async/arch/async_posix.d.tmp -MT $@ -c -o $@ crypto/async/arch/async_posix.c
 	@touch crypto/async/arch/async_posix.d.tmp
 	@if cmp crypto/async/arch/async_posix.d.tmp crypto/async/arch/async_posix.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/async/arch/async_posix.d.tmp; \
@@ -1306,7 +1323,7 @@ crypto/async/arch/async_posix.o: crypto/async/arch/async_posix.c
 		mv crypto/async/arch/async_posix.d.tmp crypto/async/arch/async_posix.d; \
 	fi
 crypto/async/arch/async_win.o: crypto/async/arch/async_win.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/async/arch/async_win.d.tmp -MT $@ -c -o $@ crypto/async/arch/async_win.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/async/arch/async_win.d.tmp -MT $@ -c -o $@ crypto/async/arch/async_win.c
 	@touch crypto/async/arch/async_win.d.tmp
 	@if cmp crypto/async/arch/async_win.d.tmp crypto/async/arch/async_win.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/async/arch/async_win.d.tmp; \
@@ -1314,7 +1331,7 @@ crypto/async/arch/async_win.o: crypto/async/arch/async_win.c
 		mv crypto/async/arch/async_win.d.tmp crypto/async/arch/async_win.d; \
 	fi
 crypto/async/async.o: crypto/async/async.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/async/async.d.tmp -MT $@ -c -o $@ crypto/async/async.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/async/async.d.tmp -MT $@ -c -o $@ crypto/async/async.c
 	@touch crypto/async/async.d.tmp
 	@if cmp crypto/async/async.d.tmp crypto/async/async.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/async/async.d.tmp; \
@@ -1322,7 +1339,7 @@ crypto/async/async.o: crypto/async/async.c
 		mv crypto/async/async.d.tmp crypto/async/async.d; \
 	fi
 crypto/async/async_err.o: crypto/async/async_err.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/async/async_err.d.tmp -MT $@ -c -o $@ crypto/async/async_err.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/async/async_err.d.tmp -MT $@ -c -o $@ crypto/async/async_err.c
 	@touch crypto/async/async_err.d.tmp
 	@if cmp crypto/async/async_err.d.tmp crypto/async/async_err.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/async/async_err.d.tmp; \
@@ -1330,7 +1347,7 @@ crypto/async/async_err.o: crypto/async/async_err.c
 		mv crypto/async/async_err.d.tmp crypto/async/async_err.d; \
 	fi
 crypto/async/async_wait.o: crypto/async/async_wait.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/async/async_wait.d.tmp -MT $@ -c -o $@ crypto/async/async_wait.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/async/async_wait.d.tmp -MT $@ -c -o $@ crypto/async/async_wait.c
 	@touch crypto/async/async_wait.d.tmp
 	@if cmp crypto/async/async_wait.d.tmp crypto/async/async_wait.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/async/async_wait.d.tmp; \
@@ -1338,7 +1355,7 @@ crypto/async/async_wait.o: crypto/async/async_wait.c
 		mv crypto/async/async_wait.d.tmp crypto/async/async_wait.d; \
 	fi
 crypto/bf/bf_cfb64.o: crypto/bf/bf_cfb64.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/bf/bf_cfb64.d.tmp -MT $@ -c -o $@ crypto/bf/bf_cfb64.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/bf/bf_cfb64.d.tmp -MT $@ -c -o $@ crypto/bf/bf_cfb64.c
 	@touch crypto/bf/bf_cfb64.d.tmp
 	@if cmp crypto/bf/bf_cfb64.d.tmp crypto/bf/bf_cfb64.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/bf/bf_cfb64.d.tmp; \
@@ -1346,7 +1363,7 @@ crypto/bf/bf_cfb64.o: crypto/bf/bf_cfb64.c
 		mv crypto/bf/bf_cfb64.d.tmp crypto/bf/bf_cfb64.d; \
 	fi
 crypto/bf/bf_ecb.o: crypto/bf/bf_ecb.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/bf/bf_ecb.d.tmp -MT $@ -c -o $@ crypto/bf/bf_ecb.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/bf/bf_ecb.d.tmp -MT $@ -c -o $@ crypto/bf/bf_ecb.c
 	@touch crypto/bf/bf_ecb.d.tmp
 	@if cmp crypto/bf/bf_ecb.d.tmp crypto/bf/bf_ecb.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/bf/bf_ecb.d.tmp; \
@@ -1354,7 +1371,7 @@ crypto/bf/bf_ecb.o: crypto/bf/bf_ecb.c
 		mv crypto/bf/bf_ecb.d.tmp crypto/bf/bf_ecb.d; \
 	fi
 crypto/bf/bf_enc.o: crypto/bf/bf_enc.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/bf/bf_enc.d.tmp -MT $@ -c -o $@ crypto/bf/bf_enc.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/bf/bf_enc.d.tmp -MT $@ -c -o $@ crypto/bf/bf_enc.c
 	@touch crypto/bf/bf_enc.d.tmp
 	@if cmp crypto/bf/bf_enc.d.tmp crypto/bf/bf_enc.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/bf/bf_enc.d.tmp; \
@@ -1362,7 +1379,7 @@ crypto/bf/bf_enc.o: crypto/bf/bf_enc.c
 		mv crypto/bf/bf_enc.d.tmp crypto/bf/bf_enc.d; \
 	fi
 crypto/bf/bf_ofb64.o: crypto/bf/bf_ofb64.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/bf/bf_ofb64.d.tmp -MT $@ -c -o $@ crypto/bf/bf_ofb64.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/bf/bf_ofb64.d.tmp -MT $@ -c -o $@ crypto/bf/bf_ofb64.c
 	@touch crypto/bf/bf_ofb64.d.tmp
 	@if cmp crypto/bf/bf_ofb64.d.tmp crypto/bf/bf_ofb64.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/bf/bf_ofb64.d.tmp; \
@@ -1370,7 +1387,7 @@ crypto/bf/bf_ofb64.o: crypto/bf/bf_ofb64.c
 		mv crypto/bf/bf_ofb64.d.tmp crypto/bf/bf_ofb64.d; \
 	fi
 crypto/bf/bf_skey.o: crypto/bf/bf_skey.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/bf/bf_skey.d.tmp -MT $@ -c -o $@ crypto/bf/bf_skey.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/bf/bf_skey.d.tmp -MT $@ -c -o $@ crypto/bf/bf_skey.c
 	@touch crypto/bf/bf_skey.d.tmp
 	@if cmp crypto/bf/bf_skey.d.tmp crypto/bf/bf_skey.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/bf/bf_skey.d.tmp; \
@@ -1378,7 +1395,7 @@ crypto/bf/bf_skey.o: crypto/bf/bf_skey.c
 		mv crypto/bf/bf_skey.d.tmp crypto/bf/bf_skey.d; \
 	fi
 crypto/bio/b_addr.o: crypto/bio/b_addr.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/bio/b_addr.d.tmp -MT $@ -c -o $@ crypto/bio/b_addr.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/bio/b_addr.d.tmp -MT $@ -c -o $@ crypto/bio/b_addr.c
 	@touch crypto/bio/b_addr.d.tmp
 	@if cmp crypto/bio/b_addr.d.tmp crypto/bio/b_addr.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/bio/b_addr.d.tmp; \
@@ -1386,7 +1403,7 @@ crypto/bio/b_addr.o: crypto/bio/b_addr.c
 		mv crypto/bio/b_addr.d.tmp crypto/bio/b_addr.d; \
 	fi
 crypto/bio/b_dump.o: crypto/bio/b_dump.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/bio/b_dump.d.tmp -MT $@ -c -o $@ crypto/bio/b_dump.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/bio/b_dump.d.tmp -MT $@ -c -o $@ crypto/bio/b_dump.c
 	@touch crypto/bio/b_dump.d.tmp
 	@if cmp crypto/bio/b_dump.d.tmp crypto/bio/b_dump.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/bio/b_dump.d.tmp; \
@@ -1394,7 +1411,7 @@ crypto/bio/b_dump.o: crypto/bio/b_dump.c
 		mv crypto/bio/b_dump.d.tmp crypto/bio/b_dump.d; \
 	fi
 crypto/bio/b_print.o: crypto/bio/b_print.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/bio/b_print.d.tmp -MT $@ -c -o $@ crypto/bio/b_print.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/bio/b_print.d.tmp -MT $@ -c -o $@ crypto/bio/b_print.c
 	@touch crypto/bio/b_print.d.tmp
 	@if cmp crypto/bio/b_print.d.tmp crypto/bio/b_print.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/bio/b_print.d.tmp; \
@@ -1402,7 +1419,7 @@ crypto/bio/b_print.o: crypto/bio/b_print.c
 		mv crypto/bio/b_print.d.tmp crypto/bio/b_print.d; \
 	fi
 crypto/bio/b_sock.o: crypto/bio/b_sock.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/bio/b_sock.d.tmp -MT $@ -c -o $@ crypto/bio/b_sock.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/bio/b_sock.d.tmp -MT $@ -c -o $@ crypto/bio/b_sock.c
 	@touch crypto/bio/b_sock.d.tmp
 	@if cmp crypto/bio/b_sock.d.tmp crypto/bio/b_sock.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/bio/b_sock.d.tmp; \
@@ -1410,7 +1427,7 @@ crypto/bio/b_sock.o: crypto/bio/b_sock.c
 		mv crypto/bio/b_sock.d.tmp crypto/bio/b_sock.d; \
 	fi
 crypto/bio/b_sock2.o: crypto/bio/b_sock2.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/bio/b_sock2.d.tmp -MT $@ -c -o $@ crypto/bio/b_sock2.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/bio/b_sock2.d.tmp -MT $@ -c -o $@ crypto/bio/b_sock2.c
 	@touch crypto/bio/b_sock2.d.tmp
 	@if cmp crypto/bio/b_sock2.d.tmp crypto/bio/b_sock2.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/bio/b_sock2.d.tmp; \
@@ -1418,7 +1435,7 @@ crypto/bio/b_sock2.o: crypto/bio/b_sock2.c
 		mv crypto/bio/b_sock2.d.tmp crypto/bio/b_sock2.d; \
 	fi
 crypto/bio/bf_buff.o: crypto/bio/bf_buff.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/bio/bf_buff.d.tmp -MT $@ -c -o $@ crypto/bio/bf_buff.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/bio/bf_buff.d.tmp -MT $@ -c -o $@ crypto/bio/bf_buff.c
 	@touch crypto/bio/bf_buff.d.tmp
 	@if cmp crypto/bio/bf_buff.d.tmp crypto/bio/bf_buff.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/bio/bf_buff.d.tmp; \
@@ -1426,7 +1443,7 @@ crypto/bio/bf_buff.o: crypto/bio/bf_buff.c
 		mv crypto/bio/bf_buff.d.tmp crypto/bio/bf_buff.d; \
 	fi
 crypto/bio/bf_lbuf.o: crypto/bio/bf_lbuf.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/bio/bf_lbuf.d.tmp -MT $@ -c -o $@ crypto/bio/bf_lbuf.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/bio/bf_lbuf.d.tmp -MT $@ -c -o $@ crypto/bio/bf_lbuf.c
 	@touch crypto/bio/bf_lbuf.d.tmp
 	@if cmp crypto/bio/bf_lbuf.d.tmp crypto/bio/bf_lbuf.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/bio/bf_lbuf.d.tmp; \
@@ -1434,7 +1451,7 @@ crypto/bio/bf_lbuf.o: crypto/bio/bf_lbuf.c
 		mv crypto/bio/bf_lbuf.d.tmp crypto/bio/bf_lbuf.d; \
 	fi
 crypto/bio/bf_nbio.o: crypto/bio/bf_nbio.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/bio/bf_nbio.d.tmp -MT $@ -c -o $@ crypto/bio/bf_nbio.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/bio/bf_nbio.d.tmp -MT $@ -c -o $@ crypto/bio/bf_nbio.c
 	@touch crypto/bio/bf_nbio.d.tmp
 	@if cmp crypto/bio/bf_nbio.d.tmp crypto/bio/bf_nbio.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/bio/bf_nbio.d.tmp; \
@@ -1442,7 +1459,7 @@ crypto/bio/bf_nbio.o: crypto/bio/bf_nbio.c
 		mv crypto/bio/bf_nbio.d.tmp crypto/bio/bf_nbio.d; \
 	fi
 crypto/bio/bf_null.o: crypto/bio/bf_null.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/bio/bf_null.d.tmp -MT $@ -c -o $@ crypto/bio/bf_null.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/bio/bf_null.d.tmp -MT $@ -c -o $@ crypto/bio/bf_null.c
 	@touch crypto/bio/bf_null.d.tmp
 	@if cmp crypto/bio/bf_null.d.tmp crypto/bio/bf_null.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/bio/bf_null.d.tmp; \
@@ -1450,7 +1467,7 @@ crypto/bio/bf_null.o: crypto/bio/bf_null.c
 		mv crypto/bio/bf_null.d.tmp crypto/bio/bf_null.d; \
 	fi
 crypto/bio/bio_cb.o: crypto/bio/bio_cb.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/bio/bio_cb.d.tmp -MT $@ -c -o $@ crypto/bio/bio_cb.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/bio/bio_cb.d.tmp -MT $@ -c -o $@ crypto/bio/bio_cb.c
 	@touch crypto/bio/bio_cb.d.tmp
 	@if cmp crypto/bio/bio_cb.d.tmp crypto/bio/bio_cb.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/bio/bio_cb.d.tmp; \
@@ -1458,7 +1475,7 @@ crypto/bio/bio_cb.o: crypto/bio/bio_cb.c
 		mv crypto/bio/bio_cb.d.tmp crypto/bio/bio_cb.d; \
 	fi
 crypto/bio/bio_err.o: crypto/bio/bio_err.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/bio/bio_err.d.tmp -MT $@ -c -o $@ crypto/bio/bio_err.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/bio/bio_err.d.tmp -MT $@ -c -o $@ crypto/bio/bio_err.c
 	@touch crypto/bio/bio_err.d.tmp
 	@if cmp crypto/bio/bio_err.d.tmp crypto/bio/bio_err.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/bio/bio_err.d.tmp; \
@@ -1466,7 +1483,7 @@ crypto/bio/bio_err.o: crypto/bio/bio_err.c
 		mv crypto/bio/bio_err.d.tmp crypto/bio/bio_err.d; \
 	fi
 crypto/bio/bio_lib.o: crypto/bio/bio_lib.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/bio/bio_lib.d.tmp -MT $@ -c -o $@ crypto/bio/bio_lib.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/bio/bio_lib.d.tmp -MT $@ -c -o $@ crypto/bio/bio_lib.c
 	@touch crypto/bio/bio_lib.d.tmp
 	@if cmp crypto/bio/bio_lib.d.tmp crypto/bio/bio_lib.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/bio/bio_lib.d.tmp; \
@@ -1474,7 +1491,7 @@ crypto/bio/bio_lib.o: crypto/bio/bio_lib.c
 		mv crypto/bio/bio_lib.d.tmp crypto/bio/bio_lib.d; \
 	fi
 crypto/bio/bio_meth.o: crypto/bio/bio_meth.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/bio/bio_meth.d.tmp -MT $@ -c -o $@ crypto/bio/bio_meth.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/bio/bio_meth.d.tmp -MT $@ -c -o $@ crypto/bio/bio_meth.c
 	@touch crypto/bio/bio_meth.d.tmp
 	@if cmp crypto/bio/bio_meth.d.tmp crypto/bio/bio_meth.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/bio/bio_meth.d.tmp; \
@@ -1482,7 +1499,7 @@ crypto/bio/bio_meth.o: crypto/bio/bio_meth.c
 		mv crypto/bio/bio_meth.d.tmp crypto/bio/bio_meth.d; \
 	fi
 crypto/bio/bss_acpt.o: crypto/bio/bss_acpt.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/bio/bss_acpt.d.tmp -MT $@ -c -o $@ crypto/bio/bss_acpt.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/bio/bss_acpt.d.tmp -MT $@ -c -o $@ crypto/bio/bss_acpt.c
 	@touch crypto/bio/bss_acpt.d.tmp
 	@if cmp crypto/bio/bss_acpt.d.tmp crypto/bio/bss_acpt.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/bio/bss_acpt.d.tmp; \
@@ -1490,7 +1507,7 @@ crypto/bio/bss_acpt.o: crypto/bio/bss_acpt.c
 		mv crypto/bio/bss_acpt.d.tmp crypto/bio/bss_acpt.d; \
 	fi
 crypto/bio/bss_bio.o: crypto/bio/bss_bio.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/bio/bss_bio.d.tmp -MT $@ -c -o $@ crypto/bio/bss_bio.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/bio/bss_bio.d.tmp -MT $@ -c -o $@ crypto/bio/bss_bio.c
 	@touch crypto/bio/bss_bio.d.tmp
 	@if cmp crypto/bio/bss_bio.d.tmp crypto/bio/bss_bio.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/bio/bss_bio.d.tmp; \
@@ -1498,7 +1515,7 @@ crypto/bio/bss_bio.o: crypto/bio/bss_bio.c
 		mv crypto/bio/bss_bio.d.tmp crypto/bio/bss_bio.d; \
 	fi
 crypto/bio/bss_conn.o: crypto/bio/bss_conn.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/bio/bss_conn.d.tmp -MT $@ -c -o $@ crypto/bio/bss_conn.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/bio/bss_conn.d.tmp -MT $@ -c -o $@ crypto/bio/bss_conn.c
 	@touch crypto/bio/bss_conn.d.tmp
 	@if cmp crypto/bio/bss_conn.d.tmp crypto/bio/bss_conn.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/bio/bss_conn.d.tmp; \
@@ -1506,7 +1523,7 @@ crypto/bio/bss_conn.o: crypto/bio/bss_conn.c
 		mv crypto/bio/bss_conn.d.tmp crypto/bio/bss_conn.d; \
 	fi
 crypto/bio/bss_dgram.o: crypto/bio/bss_dgram.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/bio/bss_dgram.d.tmp -MT $@ -c -o $@ crypto/bio/bss_dgram.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/bio/bss_dgram.d.tmp -MT $@ -c -o $@ crypto/bio/bss_dgram.c
 	@touch crypto/bio/bss_dgram.d.tmp
 	@if cmp crypto/bio/bss_dgram.d.tmp crypto/bio/bss_dgram.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/bio/bss_dgram.d.tmp; \
@@ -1514,7 +1531,7 @@ crypto/bio/bss_dgram.o: crypto/bio/bss_dgram.c
 		mv crypto/bio/bss_dgram.d.tmp crypto/bio/bss_dgram.d; \
 	fi
 crypto/bio/bss_fd.o: crypto/bio/bss_fd.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/bio/bss_fd.d.tmp -MT $@ -c -o $@ crypto/bio/bss_fd.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/bio/bss_fd.d.tmp -MT $@ -c -o $@ crypto/bio/bss_fd.c
 	@touch crypto/bio/bss_fd.d.tmp
 	@if cmp crypto/bio/bss_fd.d.tmp crypto/bio/bss_fd.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/bio/bss_fd.d.tmp; \
@@ -1522,7 +1539,7 @@ crypto/bio/bss_fd.o: crypto/bio/bss_fd.c
 		mv crypto/bio/bss_fd.d.tmp crypto/bio/bss_fd.d; \
 	fi
 crypto/bio/bss_file.o: crypto/bio/bss_file.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/bio/bss_file.d.tmp -MT $@ -c -o $@ crypto/bio/bss_file.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/bio/bss_file.d.tmp -MT $@ -c -o $@ crypto/bio/bss_file.c
 	@touch crypto/bio/bss_file.d.tmp
 	@if cmp crypto/bio/bss_file.d.tmp crypto/bio/bss_file.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/bio/bss_file.d.tmp; \
@@ -1530,7 +1547,7 @@ crypto/bio/bss_file.o: crypto/bio/bss_file.c
 		mv crypto/bio/bss_file.d.tmp crypto/bio/bss_file.d; \
 	fi
 crypto/bio/bss_log.o: crypto/bio/bss_log.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/bio/bss_log.d.tmp -MT $@ -c -o $@ crypto/bio/bss_log.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/bio/bss_log.d.tmp -MT $@ -c -o $@ crypto/bio/bss_log.c
 	@touch crypto/bio/bss_log.d.tmp
 	@if cmp crypto/bio/bss_log.d.tmp crypto/bio/bss_log.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/bio/bss_log.d.tmp; \
@@ -1538,7 +1555,7 @@ crypto/bio/bss_log.o: crypto/bio/bss_log.c
 		mv crypto/bio/bss_log.d.tmp crypto/bio/bss_log.d; \
 	fi
 crypto/bio/bss_mem.o: crypto/bio/bss_mem.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/bio/bss_mem.d.tmp -MT $@ -c -o $@ crypto/bio/bss_mem.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/bio/bss_mem.d.tmp -MT $@ -c -o $@ crypto/bio/bss_mem.c
 	@touch crypto/bio/bss_mem.d.tmp
 	@if cmp crypto/bio/bss_mem.d.tmp crypto/bio/bss_mem.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/bio/bss_mem.d.tmp; \
@@ -1546,7 +1563,7 @@ crypto/bio/bss_mem.o: crypto/bio/bss_mem.c
 		mv crypto/bio/bss_mem.d.tmp crypto/bio/bss_mem.d; \
 	fi
 crypto/bio/bss_null.o: crypto/bio/bss_null.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/bio/bss_null.d.tmp -MT $@ -c -o $@ crypto/bio/bss_null.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/bio/bss_null.d.tmp -MT $@ -c -o $@ crypto/bio/bss_null.c
 	@touch crypto/bio/bss_null.d.tmp
 	@if cmp crypto/bio/bss_null.d.tmp crypto/bio/bss_null.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/bio/bss_null.d.tmp; \
@@ -1554,7 +1571,7 @@ crypto/bio/bss_null.o: crypto/bio/bss_null.c
 		mv crypto/bio/bss_null.d.tmp crypto/bio/bss_null.d; \
 	fi
 crypto/bio/bss_sock.o: crypto/bio/bss_sock.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/bio/bss_sock.d.tmp -MT $@ -c -o $@ crypto/bio/bss_sock.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/bio/bss_sock.d.tmp -MT $@ -c -o $@ crypto/bio/bss_sock.c
 	@touch crypto/bio/bss_sock.d.tmp
 	@if cmp crypto/bio/bss_sock.d.tmp crypto/bio/bss_sock.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/bio/bss_sock.d.tmp; \
@@ -1562,7 +1579,7 @@ crypto/bio/bss_sock.o: crypto/bio/bss_sock.c
 		mv crypto/bio/bss_sock.d.tmp crypto/bio/bss_sock.d; \
 	fi
 crypto/blake2/blake2b.o: crypto/blake2/blake2b.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/blake2/blake2b.d.tmp -MT $@ -c -o $@ crypto/blake2/blake2b.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/blake2/blake2b.d.tmp -MT $@ -c -o $@ crypto/blake2/blake2b.c
 	@touch crypto/blake2/blake2b.d.tmp
 	@if cmp crypto/blake2/blake2b.d.tmp crypto/blake2/blake2b.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/blake2/blake2b.d.tmp; \
@@ -1570,7 +1587,7 @@ crypto/blake2/blake2b.o: crypto/blake2/blake2b.c
 		mv crypto/blake2/blake2b.d.tmp crypto/blake2/blake2b.d; \
 	fi
 crypto/blake2/blake2s.o: crypto/blake2/blake2s.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/blake2/blake2s.d.tmp -MT $@ -c -o $@ crypto/blake2/blake2s.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/blake2/blake2s.d.tmp -MT $@ -c -o $@ crypto/blake2/blake2s.c
 	@touch crypto/blake2/blake2s.d.tmp
 	@if cmp crypto/blake2/blake2s.d.tmp crypto/blake2/blake2s.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/blake2/blake2s.d.tmp; \
@@ -1578,7 +1595,7 @@ crypto/blake2/blake2s.o: crypto/blake2/blake2s.c
 		mv crypto/blake2/blake2s.d.tmp crypto/blake2/blake2s.d; \
 	fi
 crypto/blake2/m_blake2b.o: crypto/blake2/m_blake2b.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/blake2/m_blake2b.d.tmp -MT $@ -c -o $@ crypto/blake2/m_blake2b.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/blake2/m_blake2b.d.tmp -MT $@ -c -o $@ crypto/blake2/m_blake2b.c
 	@touch crypto/blake2/m_blake2b.d.tmp
 	@if cmp crypto/blake2/m_blake2b.d.tmp crypto/blake2/m_blake2b.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/blake2/m_blake2b.d.tmp; \
@@ -1586,7 +1603,7 @@ crypto/blake2/m_blake2b.o: crypto/blake2/m_blake2b.c
 		mv crypto/blake2/m_blake2b.d.tmp crypto/blake2/m_blake2b.d; \
 	fi
 crypto/blake2/m_blake2s.o: crypto/blake2/m_blake2s.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/blake2/m_blake2s.d.tmp -MT $@ -c -o $@ crypto/blake2/m_blake2s.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/blake2/m_blake2s.d.tmp -MT $@ -c -o $@ crypto/blake2/m_blake2s.c
 	@touch crypto/blake2/m_blake2s.d.tmp
 	@if cmp crypto/blake2/m_blake2s.d.tmp crypto/blake2/m_blake2s.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/blake2/m_blake2s.d.tmp; \
@@ -1594,7 +1611,7 @@ crypto/blake2/m_blake2s.o: crypto/blake2/m_blake2s.c
 		mv crypto/blake2/m_blake2s.d.tmp crypto/blake2/m_blake2s.d; \
 	fi
 crypto/bn/bn_add.o: crypto/bn/bn_add.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/bn/bn_add.d.tmp -MT $@ -c -o $@ crypto/bn/bn_add.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/bn/bn_add.d.tmp -MT $@ -c -o $@ crypto/bn/bn_add.c
 	@touch crypto/bn/bn_add.d.tmp
 	@if cmp crypto/bn/bn_add.d.tmp crypto/bn/bn_add.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/bn/bn_add.d.tmp; \
@@ -1602,7 +1619,7 @@ crypto/bn/bn_add.o: crypto/bn/bn_add.c
 		mv crypto/bn/bn_add.d.tmp crypto/bn/bn_add.d; \
 	fi
 crypto/bn/bn_asm.o: crypto/bn/bn_asm.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/bn/bn_asm.d.tmp -MT $@ -c -o $@ crypto/bn/bn_asm.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/bn/bn_asm.d.tmp -MT $@ -c -o $@ crypto/bn/bn_asm.c
 	@touch crypto/bn/bn_asm.d.tmp
 	@if cmp crypto/bn/bn_asm.d.tmp crypto/bn/bn_asm.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/bn/bn_asm.d.tmp; \
@@ -1610,7 +1627,7 @@ crypto/bn/bn_asm.o: crypto/bn/bn_asm.c
 		mv crypto/bn/bn_asm.d.tmp crypto/bn/bn_asm.d; \
 	fi
 crypto/bn/bn_blind.o: crypto/bn/bn_blind.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/bn/bn_blind.d.tmp -MT $@ -c -o $@ crypto/bn/bn_blind.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/bn/bn_blind.d.tmp -MT $@ -c -o $@ crypto/bn/bn_blind.c
 	@touch crypto/bn/bn_blind.d.tmp
 	@if cmp crypto/bn/bn_blind.d.tmp crypto/bn/bn_blind.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/bn/bn_blind.d.tmp; \
@@ -1618,7 +1635,7 @@ crypto/bn/bn_blind.o: crypto/bn/bn_blind.c
 		mv crypto/bn/bn_blind.d.tmp crypto/bn/bn_blind.d; \
 	fi
 crypto/bn/bn_const.o: crypto/bn/bn_const.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/bn/bn_const.d.tmp -MT $@ -c -o $@ crypto/bn/bn_const.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/bn/bn_const.d.tmp -MT $@ -c -o $@ crypto/bn/bn_const.c
 	@touch crypto/bn/bn_const.d.tmp
 	@if cmp crypto/bn/bn_const.d.tmp crypto/bn/bn_const.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/bn/bn_const.d.tmp; \
@@ -1626,7 +1643,7 @@ crypto/bn/bn_const.o: crypto/bn/bn_const.c
 		mv crypto/bn/bn_const.d.tmp crypto/bn/bn_const.d; \
 	fi
 crypto/bn/bn_ctx.o: crypto/bn/bn_ctx.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/bn/bn_ctx.d.tmp -MT $@ -c -o $@ crypto/bn/bn_ctx.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/bn/bn_ctx.d.tmp -MT $@ -c -o $@ crypto/bn/bn_ctx.c
 	@touch crypto/bn/bn_ctx.d.tmp
 	@if cmp crypto/bn/bn_ctx.d.tmp crypto/bn/bn_ctx.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/bn/bn_ctx.d.tmp; \
@@ -1634,7 +1651,7 @@ crypto/bn/bn_ctx.o: crypto/bn/bn_ctx.c
 		mv crypto/bn/bn_ctx.d.tmp crypto/bn/bn_ctx.d; \
 	fi
 crypto/bn/bn_depr.o: crypto/bn/bn_depr.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/bn/bn_depr.d.tmp -MT $@ -c -o $@ crypto/bn/bn_depr.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/bn/bn_depr.d.tmp -MT $@ -c -o $@ crypto/bn/bn_depr.c
 	@touch crypto/bn/bn_depr.d.tmp
 	@if cmp crypto/bn/bn_depr.d.tmp crypto/bn/bn_depr.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/bn/bn_depr.d.tmp; \
@@ -1642,7 +1659,7 @@ crypto/bn/bn_depr.o: crypto/bn/bn_depr.c
 		mv crypto/bn/bn_depr.d.tmp crypto/bn/bn_depr.d; \
 	fi
 crypto/bn/bn_dh.o: crypto/bn/bn_dh.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/bn/bn_dh.d.tmp -MT $@ -c -o $@ crypto/bn/bn_dh.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/bn/bn_dh.d.tmp -MT $@ -c -o $@ crypto/bn/bn_dh.c
 	@touch crypto/bn/bn_dh.d.tmp
 	@if cmp crypto/bn/bn_dh.d.tmp crypto/bn/bn_dh.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/bn/bn_dh.d.tmp; \
@@ -1650,7 +1667,7 @@ crypto/bn/bn_dh.o: crypto/bn/bn_dh.c
 		mv crypto/bn/bn_dh.d.tmp crypto/bn/bn_dh.d; \
 	fi
 crypto/bn/bn_div.o: crypto/bn/bn_div.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/bn/bn_div.d.tmp -MT $@ -c -o $@ crypto/bn/bn_div.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/bn/bn_div.d.tmp -MT $@ -c -o $@ crypto/bn/bn_div.c
 	@touch crypto/bn/bn_div.d.tmp
 	@if cmp crypto/bn/bn_div.d.tmp crypto/bn/bn_div.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/bn/bn_div.d.tmp; \
@@ -1658,7 +1675,7 @@ crypto/bn/bn_div.o: crypto/bn/bn_div.c
 		mv crypto/bn/bn_div.d.tmp crypto/bn/bn_div.d; \
 	fi
 crypto/bn/bn_err.o: crypto/bn/bn_err.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/bn/bn_err.d.tmp -MT $@ -c -o $@ crypto/bn/bn_err.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/bn/bn_err.d.tmp -MT $@ -c -o $@ crypto/bn/bn_err.c
 	@touch crypto/bn/bn_err.d.tmp
 	@if cmp crypto/bn/bn_err.d.tmp crypto/bn/bn_err.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/bn/bn_err.d.tmp; \
@@ -1666,7 +1683,7 @@ crypto/bn/bn_err.o: crypto/bn/bn_err.c
 		mv crypto/bn/bn_err.d.tmp crypto/bn/bn_err.d; \
 	fi
 crypto/bn/bn_exp.o: crypto/bn/bn_exp.c
-	$(CC)  -I. -Icrypto/include -Iinclude -Icrypto $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/bn/bn_exp.d.tmp -MT $@ -c -o $@ crypto/bn/bn_exp.c
+	$(CC)  -I. -Icrypto/include -Iinclude -Icrypto $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/bn/bn_exp.d.tmp -MT $@ -c -o $@ crypto/bn/bn_exp.c
 	@touch crypto/bn/bn_exp.d.tmp
 	@if cmp crypto/bn/bn_exp.d.tmp crypto/bn/bn_exp.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/bn/bn_exp.d.tmp; \
@@ -1674,7 +1691,7 @@ crypto/bn/bn_exp.o: crypto/bn/bn_exp.c
 		mv crypto/bn/bn_exp.d.tmp crypto/bn/bn_exp.d; \
 	fi
 crypto/bn/bn_exp2.o: crypto/bn/bn_exp2.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/bn/bn_exp2.d.tmp -MT $@ -c -o $@ crypto/bn/bn_exp2.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/bn/bn_exp2.d.tmp -MT $@ -c -o $@ crypto/bn/bn_exp2.c
 	@touch crypto/bn/bn_exp2.d.tmp
 	@if cmp crypto/bn/bn_exp2.d.tmp crypto/bn/bn_exp2.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/bn/bn_exp2.d.tmp; \
@@ -1682,7 +1699,7 @@ crypto/bn/bn_exp2.o: crypto/bn/bn_exp2.c
 		mv crypto/bn/bn_exp2.d.tmp crypto/bn/bn_exp2.d; \
 	fi
 crypto/bn/bn_gcd.o: crypto/bn/bn_gcd.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/bn/bn_gcd.d.tmp -MT $@ -c -o $@ crypto/bn/bn_gcd.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/bn/bn_gcd.d.tmp -MT $@ -c -o $@ crypto/bn/bn_gcd.c
 	@touch crypto/bn/bn_gcd.d.tmp
 	@if cmp crypto/bn/bn_gcd.d.tmp crypto/bn/bn_gcd.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/bn/bn_gcd.d.tmp; \
@@ -1690,7 +1707,7 @@ crypto/bn/bn_gcd.o: crypto/bn/bn_gcd.c
 		mv crypto/bn/bn_gcd.d.tmp crypto/bn/bn_gcd.d; \
 	fi
 crypto/bn/bn_gf2m.o: crypto/bn/bn_gf2m.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/bn/bn_gf2m.d.tmp -MT $@ -c -o $@ crypto/bn/bn_gf2m.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/bn/bn_gf2m.d.tmp -MT $@ -c -o $@ crypto/bn/bn_gf2m.c
 	@touch crypto/bn/bn_gf2m.d.tmp
 	@if cmp crypto/bn/bn_gf2m.d.tmp crypto/bn/bn_gf2m.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/bn/bn_gf2m.d.tmp; \
@@ -1698,7 +1715,7 @@ crypto/bn/bn_gf2m.o: crypto/bn/bn_gf2m.c
 		mv crypto/bn/bn_gf2m.d.tmp crypto/bn/bn_gf2m.d; \
 	fi
 crypto/bn/bn_intern.o: crypto/bn/bn_intern.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/bn/bn_intern.d.tmp -MT $@ -c -o $@ crypto/bn/bn_intern.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/bn/bn_intern.d.tmp -MT $@ -c -o $@ crypto/bn/bn_intern.c
 	@touch crypto/bn/bn_intern.d.tmp
 	@if cmp crypto/bn/bn_intern.d.tmp crypto/bn/bn_intern.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/bn/bn_intern.d.tmp; \
@@ -1706,7 +1723,7 @@ crypto/bn/bn_intern.o: crypto/bn/bn_intern.c
 		mv crypto/bn/bn_intern.d.tmp crypto/bn/bn_intern.d; \
 	fi
 crypto/bn/bn_kron.o: crypto/bn/bn_kron.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/bn/bn_kron.d.tmp -MT $@ -c -o $@ crypto/bn/bn_kron.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/bn/bn_kron.d.tmp -MT $@ -c -o $@ crypto/bn/bn_kron.c
 	@touch crypto/bn/bn_kron.d.tmp
 	@if cmp crypto/bn/bn_kron.d.tmp crypto/bn/bn_kron.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/bn/bn_kron.d.tmp; \
@@ -1714,7 +1731,7 @@ crypto/bn/bn_kron.o: crypto/bn/bn_kron.c
 		mv crypto/bn/bn_kron.d.tmp crypto/bn/bn_kron.d; \
 	fi
 crypto/bn/bn_lib.o: crypto/bn/bn_lib.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/bn/bn_lib.d.tmp -MT $@ -c -o $@ crypto/bn/bn_lib.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/bn/bn_lib.d.tmp -MT $@ -c -o $@ crypto/bn/bn_lib.c
 	@touch crypto/bn/bn_lib.d.tmp
 	@if cmp crypto/bn/bn_lib.d.tmp crypto/bn/bn_lib.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/bn/bn_lib.d.tmp; \
@@ -1722,7 +1739,7 @@ crypto/bn/bn_lib.o: crypto/bn/bn_lib.c
 		mv crypto/bn/bn_lib.d.tmp crypto/bn/bn_lib.d; \
 	fi
 crypto/bn/bn_mod.o: crypto/bn/bn_mod.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/bn/bn_mod.d.tmp -MT $@ -c -o $@ crypto/bn/bn_mod.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/bn/bn_mod.d.tmp -MT $@ -c -o $@ crypto/bn/bn_mod.c
 	@touch crypto/bn/bn_mod.d.tmp
 	@if cmp crypto/bn/bn_mod.d.tmp crypto/bn/bn_mod.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/bn/bn_mod.d.tmp; \
@@ -1730,7 +1747,7 @@ crypto/bn/bn_mod.o: crypto/bn/bn_mod.c
 		mv crypto/bn/bn_mod.d.tmp crypto/bn/bn_mod.d; \
 	fi
 crypto/bn/bn_mont.o: crypto/bn/bn_mont.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/bn/bn_mont.d.tmp -MT $@ -c -o $@ crypto/bn/bn_mont.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/bn/bn_mont.d.tmp -MT $@ -c -o $@ crypto/bn/bn_mont.c
 	@touch crypto/bn/bn_mont.d.tmp
 	@if cmp crypto/bn/bn_mont.d.tmp crypto/bn/bn_mont.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/bn/bn_mont.d.tmp; \
@@ -1738,7 +1755,7 @@ crypto/bn/bn_mont.o: crypto/bn/bn_mont.c
 		mv crypto/bn/bn_mont.d.tmp crypto/bn/bn_mont.d; \
 	fi
 crypto/bn/bn_mpi.o: crypto/bn/bn_mpi.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/bn/bn_mpi.d.tmp -MT $@ -c -o $@ crypto/bn/bn_mpi.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/bn/bn_mpi.d.tmp -MT $@ -c -o $@ crypto/bn/bn_mpi.c
 	@touch crypto/bn/bn_mpi.d.tmp
 	@if cmp crypto/bn/bn_mpi.d.tmp crypto/bn/bn_mpi.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/bn/bn_mpi.d.tmp; \
@@ -1746,7 +1763,7 @@ crypto/bn/bn_mpi.o: crypto/bn/bn_mpi.c
 		mv crypto/bn/bn_mpi.d.tmp crypto/bn/bn_mpi.d; \
 	fi
 crypto/bn/bn_mul.o: crypto/bn/bn_mul.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/bn/bn_mul.d.tmp -MT $@ -c -o $@ crypto/bn/bn_mul.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/bn/bn_mul.d.tmp -MT $@ -c -o $@ crypto/bn/bn_mul.c
 	@touch crypto/bn/bn_mul.d.tmp
 	@if cmp crypto/bn/bn_mul.d.tmp crypto/bn/bn_mul.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/bn/bn_mul.d.tmp; \
@@ -1754,7 +1771,7 @@ crypto/bn/bn_mul.o: crypto/bn/bn_mul.c
 		mv crypto/bn/bn_mul.d.tmp crypto/bn/bn_mul.d; \
 	fi
 crypto/bn/bn_nist.o: crypto/bn/bn_nist.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/bn/bn_nist.d.tmp -MT $@ -c -o $@ crypto/bn/bn_nist.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/bn/bn_nist.d.tmp -MT $@ -c -o $@ crypto/bn/bn_nist.c
 	@touch crypto/bn/bn_nist.d.tmp
 	@if cmp crypto/bn/bn_nist.d.tmp crypto/bn/bn_nist.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/bn/bn_nist.d.tmp; \
@@ -1762,7 +1779,7 @@ crypto/bn/bn_nist.o: crypto/bn/bn_nist.c
 		mv crypto/bn/bn_nist.d.tmp crypto/bn/bn_nist.d; \
 	fi
 crypto/bn/bn_prime.o: crypto/bn/bn_prime.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/bn/bn_prime.d.tmp -MT $@ -c -o $@ crypto/bn/bn_prime.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/bn/bn_prime.d.tmp -MT $@ -c -o $@ crypto/bn/bn_prime.c
 	@touch crypto/bn/bn_prime.d.tmp
 	@if cmp crypto/bn/bn_prime.d.tmp crypto/bn/bn_prime.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/bn/bn_prime.d.tmp; \
@@ -1770,7 +1787,7 @@ crypto/bn/bn_prime.o: crypto/bn/bn_prime.c
 		mv crypto/bn/bn_prime.d.tmp crypto/bn/bn_prime.d; \
 	fi
 crypto/bn/bn_print.o: crypto/bn/bn_print.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/bn/bn_print.d.tmp -MT $@ -c -o $@ crypto/bn/bn_print.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/bn/bn_print.d.tmp -MT $@ -c -o $@ crypto/bn/bn_print.c
 	@touch crypto/bn/bn_print.d.tmp
 	@if cmp crypto/bn/bn_print.d.tmp crypto/bn/bn_print.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/bn/bn_print.d.tmp; \
@@ -1778,7 +1795,7 @@ crypto/bn/bn_print.o: crypto/bn/bn_print.c
 		mv crypto/bn/bn_print.d.tmp crypto/bn/bn_print.d; \
 	fi
 crypto/bn/bn_rand.o: crypto/bn/bn_rand.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/bn/bn_rand.d.tmp -MT $@ -c -o $@ crypto/bn/bn_rand.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/bn/bn_rand.d.tmp -MT $@ -c -o $@ crypto/bn/bn_rand.c
 	@touch crypto/bn/bn_rand.d.tmp
 	@if cmp crypto/bn/bn_rand.d.tmp crypto/bn/bn_rand.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/bn/bn_rand.d.tmp; \
@@ -1786,7 +1803,7 @@ crypto/bn/bn_rand.o: crypto/bn/bn_rand.c
 		mv crypto/bn/bn_rand.d.tmp crypto/bn/bn_rand.d; \
 	fi
 crypto/bn/bn_recp.o: crypto/bn/bn_recp.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/bn/bn_recp.d.tmp -MT $@ -c -o $@ crypto/bn/bn_recp.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/bn/bn_recp.d.tmp -MT $@ -c -o $@ crypto/bn/bn_recp.c
 	@touch crypto/bn/bn_recp.d.tmp
 	@if cmp crypto/bn/bn_recp.d.tmp crypto/bn/bn_recp.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/bn/bn_recp.d.tmp; \
@@ -1794,7 +1811,7 @@ crypto/bn/bn_recp.o: crypto/bn/bn_recp.c
 		mv crypto/bn/bn_recp.d.tmp crypto/bn/bn_recp.d; \
 	fi
 crypto/bn/bn_shift.o: crypto/bn/bn_shift.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/bn/bn_shift.d.tmp -MT $@ -c -o $@ crypto/bn/bn_shift.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/bn/bn_shift.d.tmp -MT $@ -c -o $@ crypto/bn/bn_shift.c
 	@touch crypto/bn/bn_shift.d.tmp
 	@if cmp crypto/bn/bn_shift.d.tmp crypto/bn/bn_shift.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/bn/bn_shift.d.tmp; \
@@ -1802,7 +1819,7 @@ crypto/bn/bn_shift.o: crypto/bn/bn_shift.c
 		mv crypto/bn/bn_shift.d.tmp crypto/bn/bn_shift.d; \
 	fi
 crypto/bn/bn_sqr.o: crypto/bn/bn_sqr.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/bn/bn_sqr.d.tmp -MT $@ -c -o $@ crypto/bn/bn_sqr.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/bn/bn_sqr.d.tmp -MT $@ -c -o $@ crypto/bn/bn_sqr.c
 	@touch crypto/bn/bn_sqr.d.tmp
 	@if cmp crypto/bn/bn_sqr.d.tmp crypto/bn/bn_sqr.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/bn/bn_sqr.d.tmp; \
@@ -1810,7 +1827,7 @@ crypto/bn/bn_sqr.o: crypto/bn/bn_sqr.c
 		mv crypto/bn/bn_sqr.d.tmp crypto/bn/bn_sqr.d; \
 	fi
 crypto/bn/bn_sqrt.o: crypto/bn/bn_sqrt.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/bn/bn_sqrt.d.tmp -MT $@ -c -o $@ crypto/bn/bn_sqrt.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/bn/bn_sqrt.d.tmp -MT $@ -c -o $@ crypto/bn/bn_sqrt.c
 	@touch crypto/bn/bn_sqrt.d.tmp
 	@if cmp crypto/bn/bn_sqrt.d.tmp crypto/bn/bn_sqrt.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/bn/bn_sqrt.d.tmp; \
@@ -1818,7 +1835,7 @@ crypto/bn/bn_sqrt.o: crypto/bn/bn_sqrt.c
 		mv crypto/bn/bn_sqrt.d.tmp crypto/bn/bn_sqrt.d; \
 	fi
 crypto/bn/bn_srp.o: crypto/bn/bn_srp.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/bn/bn_srp.d.tmp -MT $@ -c -o $@ crypto/bn/bn_srp.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/bn/bn_srp.d.tmp -MT $@ -c -o $@ crypto/bn/bn_srp.c
 	@touch crypto/bn/bn_srp.d.tmp
 	@if cmp crypto/bn/bn_srp.d.tmp crypto/bn/bn_srp.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/bn/bn_srp.d.tmp; \
@@ -1826,7 +1843,7 @@ crypto/bn/bn_srp.o: crypto/bn/bn_srp.c
 		mv crypto/bn/bn_srp.d.tmp crypto/bn/bn_srp.d; \
 	fi
 crypto/bn/bn_word.o: crypto/bn/bn_word.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/bn/bn_word.d.tmp -MT $@ -c -o $@ crypto/bn/bn_word.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/bn/bn_word.d.tmp -MT $@ -c -o $@ crypto/bn/bn_word.c
 	@touch crypto/bn/bn_word.d.tmp
 	@if cmp crypto/bn/bn_word.d.tmp crypto/bn/bn_word.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/bn/bn_word.d.tmp; \
@@ -1834,7 +1851,7 @@ crypto/bn/bn_word.o: crypto/bn/bn_word.c
 		mv crypto/bn/bn_word.d.tmp crypto/bn/bn_word.d; \
 	fi
 crypto/bn/bn_x931p.o: crypto/bn/bn_x931p.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/bn/bn_x931p.d.tmp -MT $@ -c -o $@ crypto/bn/bn_x931p.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/bn/bn_x931p.d.tmp -MT $@ -c -o $@ crypto/bn/bn_x931p.c
 	@touch crypto/bn/bn_x931p.d.tmp
 	@if cmp crypto/bn/bn_x931p.d.tmp crypto/bn/bn_x931p.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/bn/bn_x931p.d.tmp; \
@@ -1842,7 +1859,7 @@ crypto/bn/bn_x931p.o: crypto/bn/bn_x931p.c
 		mv crypto/bn/bn_x931p.d.tmp crypto/bn/bn_x931p.d; \
 	fi
 crypto/buffer/buf_err.o: crypto/buffer/buf_err.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/buffer/buf_err.d.tmp -MT $@ -c -o $@ crypto/buffer/buf_err.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/buffer/buf_err.d.tmp -MT $@ -c -o $@ crypto/buffer/buf_err.c
 	@touch crypto/buffer/buf_err.d.tmp
 	@if cmp crypto/buffer/buf_err.d.tmp crypto/buffer/buf_err.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/buffer/buf_err.d.tmp; \
@@ -1850,7 +1867,7 @@ crypto/buffer/buf_err.o: crypto/buffer/buf_err.c
 		mv crypto/buffer/buf_err.d.tmp crypto/buffer/buf_err.d; \
 	fi
 crypto/buffer/buffer.o: crypto/buffer/buffer.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/buffer/buffer.d.tmp -MT $@ -c -o $@ crypto/buffer/buffer.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/buffer/buffer.d.tmp -MT $@ -c -o $@ crypto/buffer/buffer.c
 	@touch crypto/buffer/buffer.d.tmp
 	@if cmp crypto/buffer/buffer.d.tmp crypto/buffer/buffer.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/buffer/buffer.d.tmp; \
@@ -1858,7 +1875,7 @@ crypto/buffer/buffer.o: crypto/buffer/buffer.c
 		mv crypto/buffer/buffer.d.tmp crypto/buffer/buffer.d; \
 	fi
 crypto/camellia/camellia.o: crypto/camellia/camellia.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/camellia/camellia.d.tmp -MT $@ -c -o $@ crypto/camellia/camellia.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/camellia/camellia.d.tmp -MT $@ -c -o $@ crypto/camellia/camellia.c
 	@touch crypto/camellia/camellia.d.tmp
 	@if cmp crypto/camellia/camellia.d.tmp crypto/camellia/camellia.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/camellia/camellia.d.tmp; \
@@ -1866,7 +1883,7 @@ crypto/camellia/camellia.o: crypto/camellia/camellia.c
 		mv crypto/camellia/camellia.d.tmp crypto/camellia/camellia.d; \
 	fi
 crypto/camellia/cmll_cbc.o: crypto/camellia/cmll_cbc.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/camellia/cmll_cbc.d.tmp -MT $@ -c -o $@ crypto/camellia/cmll_cbc.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/camellia/cmll_cbc.d.tmp -MT $@ -c -o $@ crypto/camellia/cmll_cbc.c
 	@touch crypto/camellia/cmll_cbc.d.tmp
 	@if cmp crypto/camellia/cmll_cbc.d.tmp crypto/camellia/cmll_cbc.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/camellia/cmll_cbc.d.tmp; \
@@ -1874,7 +1891,7 @@ crypto/camellia/cmll_cbc.o: crypto/camellia/cmll_cbc.c
 		mv crypto/camellia/cmll_cbc.d.tmp crypto/camellia/cmll_cbc.d; \
 	fi
 crypto/camellia/cmll_cfb.o: crypto/camellia/cmll_cfb.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/camellia/cmll_cfb.d.tmp -MT $@ -c -o $@ crypto/camellia/cmll_cfb.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/camellia/cmll_cfb.d.tmp -MT $@ -c -o $@ crypto/camellia/cmll_cfb.c
 	@touch crypto/camellia/cmll_cfb.d.tmp
 	@if cmp crypto/camellia/cmll_cfb.d.tmp crypto/camellia/cmll_cfb.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/camellia/cmll_cfb.d.tmp; \
@@ -1882,7 +1899,7 @@ crypto/camellia/cmll_cfb.o: crypto/camellia/cmll_cfb.c
 		mv crypto/camellia/cmll_cfb.d.tmp crypto/camellia/cmll_cfb.d; \
 	fi
 crypto/camellia/cmll_ctr.o: crypto/camellia/cmll_ctr.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/camellia/cmll_ctr.d.tmp -MT $@ -c -o $@ crypto/camellia/cmll_ctr.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/camellia/cmll_ctr.d.tmp -MT $@ -c -o $@ crypto/camellia/cmll_ctr.c
 	@touch crypto/camellia/cmll_ctr.d.tmp
 	@if cmp crypto/camellia/cmll_ctr.d.tmp crypto/camellia/cmll_ctr.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/camellia/cmll_ctr.d.tmp; \
@@ -1890,7 +1907,7 @@ crypto/camellia/cmll_ctr.o: crypto/camellia/cmll_ctr.c
 		mv crypto/camellia/cmll_ctr.d.tmp crypto/camellia/cmll_ctr.d; \
 	fi
 crypto/camellia/cmll_ecb.o: crypto/camellia/cmll_ecb.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/camellia/cmll_ecb.d.tmp -MT $@ -c -o $@ crypto/camellia/cmll_ecb.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/camellia/cmll_ecb.d.tmp -MT $@ -c -o $@ crypto/camellia/cmll_ecb.c
 	@touch crypto/camellia/cmll_ecb.d.tmp
 	@if cmp crypto/camellia/cmll_ecb.d.tmp crypto/camellia/cmll_ecb.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/camellia/cmll_ecb.d.tmp; \
@@ -1898,7 +1915,7 @@ crypto/camellia/cmll_ecb.o: crypto/camellia/cmll_ecb.c
 		mv crypto/camellia/cmll_ecb.d.tmp crypto/camellia/cmll_ecb.d; \
 	fi
 crypto/camellia/cmll_misc.o: crypto/camellia/cmll_misc.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/camellia/cmll_misc.d.tmp -MT $@ -c -o $@ crypto/camellia/cmll_misc.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/camellia/cmll_misc.d.tmp -MT $@ -c -o $@ crypto/camellia/cmll_misc.c
 	@touch crypto/camellia/cmll_misc.d.tmp
 	@if cmp crypto/camellia/cmll_misc.d.tmp crypto/camellia/cmll_misc.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/camellia/cmll_misc.d.tmp; \
@@ -1906,7 +1923,7 @@ crypto/camellia/cmll_misc.o: crypto/camellia/cmll_misc.c
 		mv crypto/camellia/cmll_misc.d.tmp crypto/camellia/cmll_misc.d; \
 	fi
 crypto/camellia/cmll_ofb.o: crypto/camellia/cmll_ofb.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/camellia/cmll_ofb.d.tmp -MT $@ -c -o $@ crypto/camellia/cmll_ofb.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/camellia/cmll_ofb.d.tmp -MT $@ -c -o $@ crypto/camellia/cmll_ofb.c
 	@touch crypto/camellia/cmll_ofb.d.tmp
 	@if cmp crypto/camellia/cmll_ofb.d.tmp crypto/camellia/cmll_ofb.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/camellia/cmll_ofb.d.tmp; \
@@ -1914,7 +1931,7 @@ crypto/camellia/cmll_ofb.o: crypto/camellia/cmll_ofb.c
 		mv crypto/camellia/cmll_ofb.d.tmp crypto/camellia/cmll_ofb.d; \
 	fi
 crypto/cast/c_cfb64.o: crypto/cast/c_cfb64.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/cast/c_cfb64.d.tmp -MT $@ -c -o $@ crypto/cast/c_cfb64.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/cast/c_cfb64.d.tmp -MT $@ -c -o $@ crypto/cast/c_cfb64.c
 	@touch crypto/cast/c_cfb64.d.tmp
 	@if cmp crypto/cast/c_cfb64.d.tmp crypto/cast/c_cfb64.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/cast/c_cfb64.d.tmp; \
@@ -1922,7 +1939,7 @@ crypto/cast/c_cfb64.o: crypto/cast/c_cfb64.c
 		mv crypto/cast/c_cfb64.d.tmp crypto/cast/c_cfb64.d; \
 	fi
 crypto/cast/c_ecb.o: crypto/cast/c_ecb.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/cast/c_ecb.d.tmp -MT $@ -c -o $@ crypto/cast/c_ecb.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/cast/c_ecb.d.tmp -MT $@ -c -o $@ crypto/cast/c_ecb.c
 	@touch crypto/cast/c_ecb.d.tmp
 	@if cmp crypto/cast/c_ecb.d.tmp crypto/cast/c_ecb.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/cast/c_ecb.d.tmp; \
@@ -1930,7 +1947,7 @@ crypto/cast/c_ecb.o: crypto/cast/c_ecb.c
 		mv crypto/cast/c_ecb.d.tmp crypto/cast/c_ecb.d; \
 	fi
 crypto/cast/c_enc.o: crypto/cast/c_enc.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/cast/c_enc.d.tmp -MT $@ -c -o $@ crypto/cast/c_enc.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/cast/c_enc.d.tmp -MT $@ -c -o $@ crypto/cast/c_enc.c
 	@touch crypto/cast/c_enc.d.tmp
 	@if cmp crypto/cast/c_enc.d.tmp crypto/cast/c_enc.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/cast/c_enc.d.tmp; \
@@ -1938,7 +1955,7 @@ crypto/cast/c_enc.o: crypto/cast/c_enc.c
 		mv crypto/cast/c_enc.d.tmp crypto/cast/c_enc.d; \
 	fi
 crypto/cast/c_ofb64.o: crypto/cast/c_ofb64.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/cast/c_ofb64.d.tmp -MT $@ -c -o $@ crypto/cast/c_ofb64.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/cast/c_ofb64.d.tmp -MT $@ -c -o $@ crypto/cast/c_ofb64.c
 	@touch crypto/cast/c_ofb64.d.tmp
 	@if cmp crypto/cast/c_ofb64.d.tmp crypto/cast/c_ofb64.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/cast/c_ofb64.d.tmp; \
@@ -1946,7 +1963,7 @@ crypto/cast/c_ofb64.o: crypto/cast/c_ofb64.c
 		mv crypto/cast/c_ofb64.d.tmp crypto/cast/c_ofb64.d; \
 	fi
 crypto/cast/c_skey.o: crypto/cast/c_skey.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/cast/c_skey.d.tmp -MT $@ -c -o $@ crypto/cast/c_skey.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/cast/c_skey.d.tmp -MT $@ -c -o $@ crypto/cast/c_skey.c
 	@touch crypto/cast/c_skey.d.tmp
 	@if cmp crypto/cast/c_skey.d.tmp crypto/cast/c_skey.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/cast/c_skey.d.tmp; \
@@ -1954,7 +1971,7 @@ crypto/cast/c_skey.o: crypto/cast/c_skey.c
 		mv crypto/cast/c_skey.d.tmp crypto/cast/c_skey.d; \
 	fi
 crypto/chacha/chacha_enc.o: crypto/chacha/chacha_enc.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/chacha/chacha_enc.d.tmp -MT $@ -c -o $@ crypto/chacha/chacha_enc.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/chacha/chacha_enc.d.tmp -MT $@ -c -o $@ crypto/chacha/chacha_enc.c
 	@touch crypto/chacha/chacha_enc.d.tmp
 	@if cmp crypto/chacha/chacha_enc.d.tmp crypto/chacha/chacha_enc.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/chacha/chacha_enc.d.tmp; \
@@ -1962,7 +1979,7 @@ crypto/chacha/chacha_enc.o: crypto/chacha/chacha_enc.c
 		mv crypto/chacha/chacha_enc.d.tmp crypto/chacha/chacha_enc.d; \
 	fi
 crypto/cmac/cm_ameth.o: crypto/cmac/cm_ameth.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/cmac/cm_ameth.d.tmp -MT $@ -c -o $@ crypto/cmac/cm_ameth.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/cmac/cm_ameth.d.tmp -MT $@ -c -o $@ crypto/cmac/cm_ameth.c
 	@touch crypto/cmac/cm_ameth.d.tmp
 	@if cmp crypto/cmac/cm_ameth.d.tmp crypto/cmac/cm_ameth.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/cmac/cm_ameth.d.tmp; \
@@ -1970,7 +1987,7 @@ crypto/cmac/cm_ameth.o: crypto/cmac/cm_ameth.c
 		mv crypto/cmac/cm_ameth.d.tmp crypto/cmac/cm_ameth.d; \
 	fi
 crypto/cmac/cm_pmeth.o: crypto/cmac/cm_pmeth.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/cmac/cm_pmeth.d.tmp -MT $@ -c -o $@ crypto/cmac/cm_pmeth.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/cmac/cm_pmeth.d.tmp -MT $@ -c -o $@ crypto/cmac/cm_pmeth.c
 	@touch crypto/cmac/cm_pmeth.d.tmp
 	@if cmp crypto/cmac/cm_pmeth.d.tmp crypto/cmac/cm_pmeth.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/cmac/cm_pmeth.d.tmp; \
@@ -1978,7 +1995,7 @@ crypto/cmac/cm_pmeth.o: crypto/cmac/cm_pmeth.c
 		mv crypto/cmac/cm_pmeth.d.tmp crypto/cmac/cm_pmeth.d; \
 	fi
 crypto/cmac/cmac.o: crypto/cmac/cmac.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/cmac/cmac.d.tmp -MT $@ -c -o $@ crypto/cmac/cmac.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/cmac/cmac.d.tmp -MT $@ -c -o $@ crypto/cmac/cmac.c
 	@touch crypto/cmac/cmac.d.tmp
 	@if cmp crypto/cmac/cmac.d.tmp crypto/cmac/cmac.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/cmac/cmac.d.tmp; \
@@ -1986,7 +2003,7 @@ crypto/cmac/cmac.o: crypto/cmac/cmac.c
 		mv crypto/cmac/cmac.d.tmp crypto/cmac/cmac.d; \
 	fi
 crypto/cms/cms_asn1.o: crypto/cms/cms_asn1.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/cms/cms_asn1.d.tmp -MT $@ -c -o $@ crypto/cms/cms_asn1.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/cms/cms_asn1.d.tmp -MT $@ -c -o $@ crypto/cms/cms_asn1.c
 	@touch crypto/cms/cms_asn1.d.tmp
 	@if cmp crypto/cms/cms_asn1.d.tmp crypto/cms/cms_asn1.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/cms/cms_asn1.d.tmp; \
@@ -1994,7 +2011,7 @@ crypto/cms/cms_asn1.o: crypto/cms/cms_asn1.c
 		mv crypto/cms/cms_asn1.d.tmp crypto/cms/cms_asn1.d; \
 	fi
 crypto/cms/cms_att.o: crypto/cms/cms_att.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/cms/cms_att.d.tmp -MT $@ -c -o $@ crypto/cms/cms_att.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/cms/cms_att.d.tmp -MT $@ -c -o $@ crypto/cms/cms_att.c
 	@touch crypto/cms/cms_att.d.tmp
 	@if cmp crypto/cms/cms_att.d.tmp crypto/cms/cms_att.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/cms/cms_att.d.tmp; \
@@ -2002,7 +2019,7 @@ crypto/cms/cms_att.o: crypto/cms/cms_att.c
 		mv crypto/cms/cms_att.d.tmp crypto/cms/cms_att.d; \
 	fi
 crypto/cms/cms_cd.o: crypto/cms/cms_cd.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/cms/cms_cd.d.tmp -MT $@ -c -o $@ crypto/cms/cms_cd.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/cms/cms_cd.d.tmp -MT $@ -c -o $@ crypto/cms/cms_cd.c
 	@touch crypto/cms/cms_cd.d.tmp
 	@if cmp crypto/cms/cms_cd.d.tmp crypto/cms/cms_cd.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/cms/cms_cd.d.tmp; \
@@ -2010,7 +2027,7 @@ crypto/cms/cms_cd.o: crypto/cms/cms_cd.c
 		mv crypto/cms/cms_cd.d.tmp crypto/cms/cms_cd.d; \
 	fi
 crypto/cms/cms_dd.o: crypto/cms/cms_dd.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/cms/cms_dd.d.tmp -MT $@ -c -o $@ crypto/cms/cms_dd.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/cms/cms_dd.d.tmp -MT $@ -c -o $@ crypto/cms/cms_dd.c
 	@touch crypto/cms/cms_dd.d.tmp
 	@if cmp crypto/cms/cms_dd.d.tmp crypto/cms/cms_dd.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/cms/cms_dd.d.tmp; \
@@ -2018,7 +2035,7 @@ crypto/cms/cms_dd.o: crypto/cms/cms_dd.c
 		mv crypto/cms/cms_dd.d.tmp crypto/cms/cms_dd.d; \
 	fi
 crypto/cms/cms_enc.o: crypto/cms/cms_enc.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/cms/cms_enc.d.tmp -MT $@ -c -o $@ crypto/cms/cms_enc.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/cms/cms_enc.d.tmp -MT $@ -c -o $@ crypto/cms/cms_enc.c
 	@touch crypto/cms/cms_enc.d.tmp
 	@if cmp crypto/cms/cms_enc.d.tmp crypto/cms/cms_enc.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/cms/cms_enc.d.tmp; \
@@ -2026,7 +2043,7 @@ crypto/cms/cms_enc.o: crypto/cms/cms_enc.c
 		mv crypto/cms/cms_enc.d.tmp crypto/cms/cms_enc.d; \
 	fi
 crypto/cms/cms_env.o: crypto/cms/cms_env.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/cms/cms_env.d.tmp -MT $@ -c -o $@ crypto/cms/cms_env.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/cms/cms_env.d.tmp -MT $@ -c -o $@ crypto/cms/cms_env.c
 	@touch crypto/cms/cms_env.d.tmp
 	@if cmp crypto/cms/cms_env.d.tmp crypto/cms/cms_env.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/cms/cms_env.d.tmp; \
@@ -2034,7 +2051,7 @@ crypto/cms/cms_env.o: crypto/cms/cms_env.c
 		mv crypto/cms/cms_env.d.tmp crypto/cms/cms_env.d; \
 	fi
 crypto/cms/cms_err.o: crypto/cms/cms_err.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/cms/cms_err.d.tmp -MT $@ -c -o $@ crypto/cms/cms_err.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/cms/cms_err.d.tmp -MT $@ -c -o $@ crypto/cms/cms_err.c
 	@touch crypto/cms/cms_err.d.tmp
 	@if cmp crypto/cms/cms_err.d.tmp crypto/cms/cms_err.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/cms/cms_err.d.tmp; \
@@ -2042,7 +2059,7 @@ crypto/cms/cms_err.o: crypto/cms/cms_err.c
 		mv crypto/cms/cms_err.d.tmp crypto/cms/cms_err.d; \
 	fi
 crypto/cms/cms_ess.o: crypto/cms/cms_ess.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/cms/cms_ess.d.tmp -MT $@ -c -o $@ crypto/cms/cms_ess.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/cms/cms_ess.d.tmp -MT $@ -c -o $@ crypto/cms/cms_ess.c
 	@touch crypto/cms/cms_ess.d.tmp
 	@if cmp crypto/cms/cms_ess.d.tmp crypto/cms/cms_ess.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/cms/cms_ess.d.tmp; \
@@ -2050,7 +2067,7 @@ crypto/cms/cms_ess.o: crypto/cms/cms_ess.c
 		mv crypto/cms/cms_ess.d.tmp crypto/cms/cms_ess.d; \
 	fi
 crypto/cms/cms_io.o: crypto/cms/cms_io.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/cms/cms_io.d.tmp -MT $@ -c -o $@ crypto/cms/cms_io.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/cms/cms_io.d.tmp -MT $@ -c -o $@ crypto/cms/cms_io.c
 	@touch crypto/cms/cms_io.d.tmp
 	@if cmp crypto/cms/cms_io.d.tmp crypto/cms/cms_io.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/cms/cms_io.d.tmp; \
@@ -2058,7 +2075,7 @@ crypto/cms/cms_io.o: crypto/cms/cms_io.c
 		mv crypto/cms/cms_io.d.tmp crypto/cms/cms_io.d; \
 	fi
 crypto/cms/cms_kari.o: crypto/cms/cms_kari.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/cms/cms_kari.d.tmp -MT $@ -c -o $@ crypto/cms/cms_kari.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/cms/cms_kari.d.tmp -MT $@ -c -o $@ crypto/cms/cms_kari.c
 	@touch crypto/cms/cms_kari.d.tmp
 	@if cmp crypto/cms/cms_kari.d.tmp crypto/cms/cms_kari.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/cms/cms_kari.d.tmp; \
@@ -2066,7 +2083,7 @@ crypto/cms/cms_kari.o: crypto/cms/cms_kari.c
 		mv crypto/cms/cms_kari.d.tmp crypto/cms/cms_kari.d; \
 	fi
 crypto/cms/cms_lib.o: crypto/cms/cms_lib.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/cms/cms_lib.d.tmp -MT $@ -c -o $@ crypto/cms/cms_lib.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/cms/cms_lib.d.tmp -MT $@ -c -o $@ crypto/cms/cms_lib.c
 	@touch crypto/cms/cms_lib.d.tmp
 	@if cmp crypto/cms/cms_lib.d.tmp crypto/cms/cms_lib.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/cms/cms_lib.d.tmp; \
@@ -2074,7 +2091,7 @@ crypto/cms/cms_lib.o: crypto/cms/cms_lib.c
 		mv crypto/cms/cms_lib.d.tmp crypto/cms/cms_lib.d; \
 	fi
 crypto/cms/cms_pwri.o: crypto/cms/cms_pwri.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/cms/cms_pwri.d.tmp -MT $@ -c -o $@ crypto/cms/cms_pwri.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/cms/cms_pwri.d.tmp -MT $@ -c -o $@ crypto/cms/cms_pwri.c
 	@touch crypto/cms/cms_pwri.d.tmp
 	@if cmp crypto/cms/cms_pwri.d.tmp crypto/cms/cms_pwri.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/cms/cms_pwri.d.tmp; \
@@ -2082,7 +2099,7 @@ crypto/cms/cms_pwri.o: crypto/cms/cms_pwri.c
 		mv crypto/cms/cms_pwri.d.tmp crypto/cms/cms_pwri.d; \
 	fi
 crypto/cms/cms_sd.o: crypto/cms/cms_sd.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/cms/cms_sd.d.tmp -MT $@ -c -o $@ crypto/cms/cms_sd.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/cms/cms_sd.d.tmp -MT $@ -c -o $@ crypto/cms/cms_sd.c
 	@touch crypto/cms/cms_sd.d.tmp
 	@if cmp crypto/cms/cms_sd.d.tmp crypto/cms/cms_sd.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/cms/cms_sd.d.tmp; \
@@ -2090,7 +2107,7 @@ crypto/cms/cms_sd.o: crypto/cms/cms_sd.c
 		mv crypto/cms/cms_sd.d.tmp crypto/cms/cms_sd.d; \
 	fi
 crypto/cms/cms_smime.o: crypto/cms/cms_smime.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/cms/cms_smime.d.tmp -MT $@ -c -o $@ crypto/cms/cms_smime.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/cms/cms_smime.d.tmp -MT $@ -c -o $@ crypto/cms/cms_smime.c
 	@touch crypto/cms/cms_smime.d.tmp
 	@if cmp crypto/cms/cms_smime.d.tmp crypto/cms/cms_smime.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/cms/cms_smime.d.tmp; \
@@ -2098,7 +2115,7 @@ crypto/cms/cms_smime.o: crypto/cms/cms_smime.c
 		mv crypto/cms/cms_smime.d.tmp crypto/cms/cms_smime.d; \
 	fi
 crypto/comp/c_zlib.o: crypto/comp/c_zlib.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/comp/c_zlib.d.tmp -MT $@ -c -o $@ crypto/comp/c_zlib.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/comp/c_zlib.d.tmp -MT $@ -c -o $@ crypto/comp/c_zlib.c
 	@touch crypto/comp/c_zlib.d.tmp
 	@if cmp crypto/comp/c_zlib.d.tmp crypto/comp/c_zlib.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/comp/c_zlib.d.tmp; \
@@ -2106,7 +2123,7 @@ crypto/comp/c_zlib.o: crypto/comp/c_zlib.c
 		mv crypto/comp/c_zlib.d.tmp crypto/comp/c_zlib.d; \
 	fi
 crypto/comp/comp_err.o: crypto/comp/comp_err.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/comp/comp_err.d.tmp -MT $@ -c -o $@ crypto/comp/comp_err.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/comp/comp_err.d.tmp -MT $@ -c -o $@ crypto/comp/comp_err.c
 	@touch crypto/comp/comp_err.d.tmp
 	@if cmp crypto/comp/comp_err.d.tmp crypto/comp/comp_err.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/comp/comp_err.d.tmp; \
@@ -2114,7 +2131,7 @@ crypto/comp/comp_err.o: crypto/comp/comp_err.c
 		mv crypto/comp/comp_err.d.tmp crypto/comp/comp_err.d; \
 	fi
 crypto/comp/comp_lib.o: crypto/comp/comp_lib.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/comp/comp_lib.d.tmp -MT $@ -c -o $@ crypto/comp/comp_lib.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/comp/comp_lib.d.tmp -MT $@ -c -o $@ crypto/comp/comp_lib.c
 	@touch crypto/comp/comp_lib.d.tmp
 	@if cmp crypto/comp/comp_lib.d.tmp crypto/comp/comp_lib.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/comp/comp_lib.d.tmp; \
@@ -2122,7 +2139,7 @@ crypto/comp/comp_lib.o: crypto/comp/comp_lib.c
 		mv crypto/comp/comp_lib.d.tmp crypto/comp/comp_lib.d; \
 	fi
 crypto/conf/conf_api.o: crypto/conf/conf_api.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/conf/conf_api.d.tmp -MT $@ -c -o $@ crypto/conf/conf_api.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/conf/conf_api.d.tmp -MT $@ -c -o $@ crypto/conf/conf_api.c
 	@touch crypto/conf/conf_api.d.tmp
 	@if cmp crypto/conf/conf_api.d.tmp crypto/conf/conf_api.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/conf/conf_api.d.tmp; \
@@ -2130,7 +2147,7 @@ crypto/conf/conf_api.o: crypto/conf/conf_api.c
 		mv crypto/conf/conf_api.d.tmp crypto/conf/conf_api.d; \
 	fi
 crypto/conf/conf_def.o: crypto/conf/conf_def.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/conf/conf_def.d.tmp -MT $@ -c -o $@ crypto/conf/conf_def.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/conf/conf_def.d.tmp -MT $@ -c -o $@ crypto/conf/conf_def.c
 	@touch crypto/conf/conf_def.d.tmp
 	@if cmp crypto/conf/conf_def.d.tmp crypto/conf/conf_def.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/conf/conf_def.d.tmp; \
@@ -2138,7 +2155,7 @@ crypto/conf/conf_def.o: crypto/conf/conf_def.c
 		mv crypto/conf/conf_def.d.tmp crypto/conf/conf_def.d; \
 	fi
 crypto/conf/conf_err.o: crypto/conf/conf_err.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/conf/conf_err.d.tmp -MT $@ -c -o $@ crypto/conf/conf_err.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/conf/conf_err.d.tmp -MT $@ -c -o $@ crypto/conf/conf_err.c
 	@touch crypto/conf/conf_err.d.tmp
 	@if cmp crypto/conf/conf_err.d.tmp crypto/conf/conf_err.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/conf/conf_err.d.tmp; \
@@ -2146,7 +2163,7 @@ crypto/conf/conf_err.o: crypto/conf/conf_err.c
 		mv crypto/conf/conf_err.d.tmp crypto/conf/conf_err.d; \
 	fi
 crypto/conf/conf_lib.o: crypto/conf/conf_lib.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/conf/conf_lib.d.tmp -MT $@ -c -o $@ crypto/conf/conf_lib.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/conf/conf_lib.d.tmp -MT $@ -c -o $@ crypto/conf/conf_lib.c
 	@touch crypto/conf/conf_lib.d.tmp
 	@if cmp crypto/conf/conf_lib.d.tmp crypto/conf/conf_lib.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/conf/conf_lib.d.tmp; \
@@ -2154,7 +2171,7 @@ crypto/conf/conf_lib.o: crypto/conf/conf_lib.c
 		mv crypto/conf/conf_lib.d.tmp crypto/conf/conf_lib.d; \
 	fi
 crypto/conf/conf_mall.o: crypto/conf/conf_mall.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/conf/conf_mall.d.tmp -MT $@ -c -o $@ crypto/conf/conf_mall.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/conf/conf_mall.d.tmp -MT $@ -c -o $@ crypto/conf/conf_mall.c
 	@touch crypto/conf/conf_mall.d.tmp
 	@if cmp crypto/conf/conf_mall.d.tmp crypto/conf/conf_mall.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/conf/conf_mall.d.tmp; \
@@ -2162,7 +2179,7 @@ crypto/conf/conf_mall.o: crypto/conf/conf_mall.c
 		mv crypto/conf/conf_mall.d.tmp crypto/conf/conf_mall.d; \
 	fi
 crypto/conf/conf_mod.o: crypto/conf/conf_mod.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/conf/conf_mod.d.tmp -MT $@ -c -o $@ crypto/conf/conf_mod.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/conf/conf_mod.d.tmp -MT $@ -c -o $@ crypto/conf/conf_mod.c
 	@touch crypto/conf/conf_mod.d.tmp
 	@if cmp crypto/conf/conf_mod.d.tmp crypto/conf/conf_mod.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/conf/conf_mod.d.tmp; \
@@ -2170,7 +2187,7 @@ crypto/conf/conf_mod.o: crypto/conf/conf_mod.c
 		mv crypto/conf/conf_mod.d.tmp crypto/conf/conf_mod.d; \
 	fi
 crypto/conf/conf_sap.o: crypto/conf/conf_sap.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/conf/conf_sap.d.tmp -MT $@ -c -o $@ crypto/conf/conf_sap.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/conf/conf_sap.d.tmp -MT $@ -c -o $@ crypto/conf/conf_sap.c
 	@touch crypto/conf/conf_sap.d.tmp
 	@if cmp crypto/conf/conf_sap.d.tmp crypto/conf/conf_sap.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/conf/conf_sap.d.tmp; \
@@ -2178,7 +2195,7 @@ crypto/conf/conf_sap.o: crypto/conf/conf_sap.c
 		mv crypto/conf/conf_sap.d.tmp crypto/conf/conf_sap.d; \
 	fi
 crypto/cpt_err.o: crypto/cpt_err.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/cpt_err.d.tmp -MT $@ -c -o $@ crypto/cpt_err.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/cpt_err.d.tmp -MT $@ -c -o $@ crypto/cpt_err.c
 	@touch crypto/cpt_err.d.tmp
 	@if cmp crypto/cpt_err.d.tmp crypto/cpt_err.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/cpt_err.d.tmp; \
@@ -2186,7 +2203,7 @@ crypto/cpt_err.o: crypto/cpt_err.c
 		mv crypto/cpt_err.d.tmp crypto/cpt_err.d; \
 	fi
 crypto/cryptlib.o: crypto/cryptlib.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/cryptlib.d.tmp -MT $@ -c -o $@ crypto/cryptlib.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/cryptlib.d.tmp -MT $@ -c -o $@ crypto/cryptlib.c
 	@touch crypto/cryptlib.d.tmp
 	@if cmp crypto/cryptlib.d.tmp crypto/cryptlib.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/cryptlib.d.tmp; \
@@ -2194,7 +2211,7 @@ crypto/cryptlib.o: crypto/cryptlib.c
 		mv crypto/cryptlib.d.tmp crypto/cryptlib.d; \
 	fi
 crypto/ct/ct_b64.o: crypto/ct/ct_b64.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/ct/ct_b64.d.tmp -MT $@ -c -o $@ crypto/ct/ct_b64.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/ct/ct_b64.d.tmp -MT $@ -c -o $@ crypto/ct/ct_b64.c
 	@touch crypto/ct/ct_b64.d.tmp
 	@if cmp crypto/ct/ct_b64.d.tmp crypto/ct/ct_b64.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/ct/ct_b64.d.tmp; \
@@ -2202,7 +2219,7 @@ crypto/ct/ct_b64.o: crypto/ct/ct_b64.c
 		mv crypto/ct/ct_b64.d.tmp crypto/ct/ct_b64.d; \
 	fi
 crypto/ct/ct_err.o: crypto/ct/ct_err.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/ct/ct_err.d.tmp -MT $@ -c -o $@ crypto/ct/ct_err.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/ct/ct_err.d.tmp -MT $@ -c -o $@ crypto/ct/ct_err.c
 	@touch crypto/ct/ct_err.d.tmp
 	@if cmp crypto/ct/ct_err.d.tmp crypto/ct/ct_err.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/ct/ct_err.d.tmp; \
@@ -2210,7 +2227,7 @@ crypto/ct/ct_err.o: crypto/ct/ct_err.c
 		mv crypto/ct/ct_err.d.tmp crypto/ct/ct_err.d; \
 	fi
 crypto/ct/ct_log.o: crypto/ct/ct_log.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/ct/ct_log.d.tmp -MT $@ -c -o $@ crypto/ct/ct_log.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/ct/ct_log.d.tmp -MT $@ -c -o $@ crypto/ct/ct_log.c
 	@touch crypto/ct/ct_log.d.tmp
 	@if cmp crypto/ct/ct_log.d.tmp crypto/ct/ct_log.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/ct/ct_log.d.tmp; \
@@ -2218,7 +2235,7 @@ crypto/ct/ct_log.o: crypto/ct/ct_log.c
 		mv crypto/ct/ct_log.d.tmp crypto/ct/ct_log.d; \
 	fi
 crypto/ct/ct_oct.o: crypto/ct/ct_oct.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/ct/ct_oct.d.tmp -MT $@ -c -o $@ crypto/ct/ct_oct.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/ct/ct_oct.d.tmp -MT $@ -c -o $@ crypto/ct/ct_oct.c
 	@touch crypto/ct/ct_oct.d.tmp
 	@if cmp crypto/ct/ct_oct.d.tmp crypto/ct/ct_oct.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/ct/ct_oct.d.tmp; \
@@ -2226,7 +2243,7 @@ crypto/ct/ct_oct.o: crypto/ct/ct_oct.c
 		mv crypto/ct/ct_oct.d.tmp crypto/ct/ct_oct.d; \
 	fi
 crypto/ct/ct_policy.o: crypto/ct/ct_policy.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/ct/ct_policy.d.tmp -MT $@ -c -o $@ crypto/ct/ct_policy.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/ct/ct_policy.d.tmp -MT $@ -c -o $@ crypto/ct/ct_policy.c
 	@touch crypto/ct/ct_policy.d.tmp
 	@if cmp crypto/ct/ct_policy.d.tmp crypto/ct/ct_policy.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/ct/ct_policy.d.tmp; \
@@ -2234,7 +2251,7 @@ crypto/ct/ct_policy.o: crypto/ct/ct_policy.c
 		mv crypto/ct/ct_policy.d.tmp crypto/ct/ct_policy.d; \
 	fi
 crypto/ct/ct_prn.o: crypto/ct/ct_prn.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/ct/ct_prn.d.tmp -MT $@ -c -o $@ crypto/ct/ct_prn.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/ct/ct_prn.d.tmp -MT $@ -c -o $@ crypto/ct/ct_prn.c
 	@touch crypto/ct/ct_prn.d.tmp
 	@if cmp crypto/ct/ct_prn.d.tmp crypto/ct/ct_prn.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/ct/ct_prn.d.tmp; \
@@ -2242,7 +2259,7 @@ crypto/ct/ct_prn.o: crypto/ct/ct_prn.c
 		mv crypto/ct/ct_prn.d.tmp crypto/ct/ct_prn.d; \
 	fi
 crypto/ct/ct_sct.o: crypto/ct/ct_sct.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/ct/ct_sct.d.tmp -MT $@ -c -o $@ crypto/ct/ct_sct.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/ct/ct_sct.d.tmp -MT $@ -c -o $@ crypto/ct/ct_sct.c
 	@touch crypto/ct/ct_sct.d.tmp
 	@if cmp crypto/ct/ct_sct.d.tmp crypto/ct/ct_sct.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/ct/ct_sct.d.tmp; \
@@ -2250,7 +2267,7 @@ crypto/ct/ct_sct.o: crypto/ct/ct_sct.c
 		mv crypto/ct/ct_sct.d.tmp crypto/ct/ct_sct.d; \
 	fi
 crypto/ct/ct_sct_ctx.o: crypto/ct/ct_sct_ctx.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/ct/ct_sct_ctx.d.tmp -MT $@ -c -o $@ crypto/ct/ct_sct_ctx.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/ct/ct_sct_ctx.d.tmp -MT $@ -c -o $@ crypto/ct/ct_sct_ctx.c
 	@touch crypto/ct/ct_sct_ctx.d.tmp
 	@if cmp crypto/ct/ct_sct_ctx.d.tmp crypto/ct/ct_sct_ctx.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/ct/ct_sct_ctx.d.tmp; \
@@ -2258,7 +2275,7 @@ crypto/ct/ct_sct_ctx.o: crypto/ct/ct_sct_ctx.c
 		mv crypto/ct/ct_sct_ctx.d.tmp crypto/ct/ct_sct_ctx.d; \
 	fi
 crypto/ct/ct_vfy.o: crypto/ct/ct_vfy.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/ct/ct_vfy.d.tmp -MT $@ -c -o $@ crypto/ct/ct_vfy.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/ct/ct_vfy.d.tmp -MT $@ -c -o $@ crypto/ct/ct_vfy.c
 	@touch crypto/ct/ct_vfy.d.tmp
 	@if cmp crypto/ct/ct_vfy.d.tmp crypto/ct/ct_vfy.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/ct/ct_vfy.d.tmp; \
@@ -2266,7 +2283,7 @@ crypto/ct/ct_vfy.o: crypto/ct/ct_vfy.c
 		mv crypto/ct/ct_vfy.d.tmp crypto/ct/ct_vfy.d; \
 	fi
 crypto/ct/ct_x509v3.o: crypto/ct/ct_x509v3.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/ct/ct_x509v3.d.tmp -MT $@ -c -o $@ crypto/ct/ct_x509v3.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/ct/ct_x509v3.d.tmp -MT $@ -c -o $@ crypto/ct/ct_x509v3.c
 	@touch crypto/ct/ct_x509v3.d.tmp
 	@if cmp crypto/ct/ct_x509v3.d.tmp crypto/ct/ct_x509v3.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/ct/ct_x509v3.d.tmp; \
@@ -2274,7 +2291,7 @@ crypto/ct/ct_x509v3.o: crypto/ct/ct_x509v3.c
 		mv crypto/ct/ct_x509v3.d.tmp crypto/ct/ct_x509v3.d; \
 	fi
 crypto/ctype.o: crypto/ctype.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/ctype.d.tmp -MT $@ -c -o $@ crypto/ctype.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/ctype.d.tmp -MT $@ -c -o $@ crypto/ctype.c
 	@touch crypto/ctype.d.tmp
 	@if cmp crypto/ctype.d.tmp crypto/ctype.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/ctype.d.tmp; \
@@ -2282,7 +2299,7 @@ crypto/ctype.o: crypto/ctype.c
 		mv crypto/ctype.d.tmp crypto/ctype.d; \
 	fi
 crypto/cversion.o: crypto/cversion.c crypto/buildinf.h
-	$(CC)  -I. -Icrypto/include -Iinclude -Icrypto $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/cversion.d.tmp -MT $@ -c -o $@ crypto/cversion.c
+	$(CC)  -I. -Icrypto/include -Iinclude -Icrypto $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/cversion.d.tmp -MT $@ -c -o $@ crypto/cversion.c
 	@touch crypto/cversion.d.tmp
 	@if cmp crypto/cversion.d.tmp crypto/cversion.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/cversion.d.tmp; \
@@ -2290,9 +2307,9 @@ crypto/cversion.o: crypto/cversion.c crypto/buildinf.h
 		mv crypto/cversion.d.tmp crypto/cversion.d; \
 	fi
 crypto/buildinf.h: util/mkbuildinf.pl configdata.pm
-	$(PERL) util/mkbuildinf.pl "$(CC) $(CFLAGS) $(CPPFLAGS_Q)" "$(PLATFORM)" > $@
+	$(PERL) util/mkbuildinf.pl "$(CC) $(LIB_CFLAGS) $(CPPFLAGS_Q)" "$(PLATFORM)" > $@
 crypto/des/cbc_cksm.o: crypto/des/cbc_cksm.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/des/cbc_cksm.d.tmp -MT $@ -c -o $@ crypto/des/cbc_cksm.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/des/cbc_cksm.d.tmp -MT $@ -c -o $@ crypto/des/cbc_cksm.c
 	@touch crypto/des/cbc_cksm.d.tmp
 	@if cmp crypto/des/cbc_cksm.d.tmp crypto/des/cbc_cksm.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/des/cbc_cksm.d.tmp; \
@@ -2300,7 +2317,7 @@ crypto/des/cbc_cksm.o: crypto/des/cbc_cksm.c
 		mv crypto/des/cbc_cksm.d.tmp crypto/des/cbc_cksm.d; \
 	fi
 crypto/des/cbc_enc.o: crypto/des/cbc_enc.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/des/cbc_enc.d.tmp -MT $@ -c -o $@ crypto/des/cbc_enc.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/des/cbc_enc.d.tmp -MT $@ -c -o $@ crypto/des/cbc_enc.c
 	@touch crypto/des/cbc_enc.d.tmp
 	@if cmp crypto/des/cbc_enc.d.tmp crypto/des/cbc_enc.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/des/cbc_enc.d.tmp; \
@@ -2308,7 +2325,7 @@ crypto/des/cbc_enc.o: crypto/des/cbc_enc.c
 		mv crypto/des/cbc_enc.d.tmp crypto/des/cbc_enc.d; \
 	fi
 crypto/des/cfb64ede.o: crypto/des/cfb64ede.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/des/cfb64ede.d.tmp -MT $@ -c -o $@ crypto/des/cfb64ede.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/des/cfb64ede.d.tmp -MT $@ -c -o $@ crypto/des/cfb64ede.c
 	@touch crypto/des/cfb64ede.d.tmp
 	@if cmp crypto/des/cfb64ede.d.tmp crypto/des/cfb64ede.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/des/cfb64ede.d.tmp; \
@@ -2316,7 +2333,7 @@ crypto/des/cfb64ede.o: crypto/des/cfb64ede.c
 		mv crypto/des/cfb64ede.d.tmp crypto/des/cfb64ede.d; \
 	fi
 crypto/des/cfb64enc.o: crypto/des/cfb64enc.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/des/cfb64enc.d.tmp -MT $@ -c -o $@ crypto/des/cfb64enc.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/des/cfb64enc.d.tmp -MT $@ -c -o $@ crypto/des/cfb64enc.c
 	@touch crypto/des/cfb64enc.d.tmp
 	@if cmp crypto/des/cfb64enc.d.tmp crypto/des/cfb64enc.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/des/cfb64enc.d.tmp; \
@@ -2324,7 +2341,7 @@ crypto/des/cfb64enc.o: crypto/des/cfb64enc.c
 		mv crypto/des/cfb64enc.d.tmp crypto/des/cfb64enc.d; \
 	fi
 crypto/des/cfb_enc.o: crypto/des/cfb_enc.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/des/cfb_enc.d.tmp -MT $@ -c -o $@ crypto/des/cfb_enc.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/des/cfb_enc.d.tmp -MT $@ -c -o $@ crypto/des/cfb_enc.c
 	@touch crypto/des/cfb_enc.d.tmp
 	@if cmp crypto/des/cfb_enc.d.tmp crypto/des/cfb_enc.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/des/cfb_enc.d.tmp; \
@@ -2332,7 +2349,7 @@ crypto/des/cfb_enc.o: crypto/des/cfb_enc.c
 		mv crypto/des/cfb_enc.d.tmp crypto/des/cfb_enc.d; \
 	fi
 crypto/des/des_enc.o: crypto/des/des_enc.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/des/des_enc.d.tmp -MT $@ -c -o $@ crypto/des/des_enc.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/des/des_enc.d.tmp -MT $@ -c -o $@ crypto/des/des_enc.c
 	@touch crypto/des/des_enc.d.tmp
 	@if cmp crypto/des/des_enc.d.tmp crypto/des/des_enc.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/des/des_enc.d.tmp; \
@@ -2340,7 +2357,7 @@ crypto/des/des_enc.o: crypto/des/des_enc.c
 		mv crypto/des/des_enc.d.tmp crypto/des/des_enc.d; \
 	fi
 crypto/des/ecb3_enc.o: crypto/des/ecb3_enc.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/des/ecb3_enc.d.tmp -MT $@ -c -o $@ crypto/des/ecb3_enc.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/des/ecb3_enc.d.tmp -MT $@ -c -o $@ crypto/des/ecb3_enc.c
 	@touch crypto/des/ecb3_enc.d.tmp
 	@if cmp crypto/des/ecb3_enc.d.tmp crypto/des/ecb3_enc.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/des/ecb3_enc.d.tmp; \
@@ -2348,7 +2365,7 @@ crypto/des/ecb3_enc.o: crypto/des/ecb3_enc.c
 		mv crypto/des/ecb3_enc.d.tmp crypto/des/ecb3_enc.d; \
 	fi
 crypto/des/ecb_enc.o: crypto/des/ecb_enc.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/des/ecb_enc.d.tmp -MT $@ -c -o $@ crypto/des/ecb_enc.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/des/ecb_enc.d.tmp -MT $@ -c -o $@ crypto/des/ecb_enc.c
 	@touch crypto/des/ecb_enc.d.tmp
 	@if cmp crypto/des/ecb_enc.d.tmp crypto/des/ecb_enc.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/des/ecb_enc.d.tmp; \
@@ -2356,7 +2373,7 @@ crypto/des/ecb_enc.o: crypto/des/ecb_enc.c
 		mv crypto/des/ecb_enc.d.tmp crypto/des/ecb_enc.d; \
 	fi
 crypto/des/fcrypt.o: crypto/des/fcrypt.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/des/fcrypt.d.tmp -MT $@ -c -o $@ crypto/des/fcrypt.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/des/fcrypt.d.tmp -MT $@ -c -o $@ crypto/des/fcrypt.c
 	@touch crypto/des/fcrypt.d.tmp
 	@if cmp crypto/des/fcrypt.d.tmp crypto/des/fcrypt.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/des/fcrypt.d.tmp; \
@@ -2364,7 +2381,7 @@ crypto/des/fcrypt.o: crypto/des/fcrypt.c
 		mv crypto/des/fcrypt.d.tmp crypto/des/fcrypt.d; \
 	fi
 crypto/des/fcrypt_b.o: crypto/des/fcrypt_b.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/des/fcrypt_b.d.tmp -MT $@ -c -o $@ crypto/des/fcrypt_b.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/des/fcrypt_b.d.tmp -MT $@ -c -o $@ crypto/des/fcrypt_b.c
 	@touch crypto/des/fcrypt_b.d.tmp
 	@if cmp crypto/des/fcrypt_b.d.tmp crypto/des/fcrypt_b.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/des/fcrypt_b.d.tmp; \
@@ -2372,7 +2389,7 @@ crypto/des/fcrypt_b.o: crypto/des/fcrypt_b.c
 		mv crypto/des/fcrypt_b.d.tmp crypto/des/fcrypt_b.d; \
 	fi
 crypto/des/ofb64ede.o: crypto/des/ofb64ede.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/des/ofb64ede.d.tmp -MT $@ -c -o $@ crypto/des/ofb64ede.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/des/ofb64ede.d.tmp -MT $@ -c -o $@ crypto/des/ofb64ede.c
 	@touch crypto/des/ofb64ede.d.tmp
 	@if cmp crypto/des/ofb64ede.d.tmp crypto/des/ofb64ede.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/des/ofb64ede.d.tmp; \
@@ -2380,7 +2397,7 @@ crypto/des/ofb64ede.o: crypto/des/ofb64ede.c
 		mv crypto/des/ofb64ede.d.tmp crypto/des/ofb64ede.d; \
 	fi
 crypto/des/ofb64enc.o: crypto/des/ofb64enc.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/des/ofb64enc.d.tmp -MT $@ -c -o $@ crypto/des/ofb64enc.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/des/ofb64enc.d.tmp -MT $@ -c -o $@ crypto/des/ofb64enc.c
 	@touch crypto/des/ofb64enc.d.tmp
 	@if cmp crypto/des/ofb64enc.d.tmp crypto/des/ofb64enc.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/des/ofb64enc.d.tmp; \
@@ -2388,7 +2405,7 @@ crypto/des/ofb64enc.o: crypto/des/ofb64enc.c
 		mv crypto/des/ofb64enc.d.tmp crypto/des/ofb64enc.d; \
 	fi
 crypto/des/ofb_enc.o: crypto/des/ofb_enc.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/des/ofb_enc.d.tmp -MT $@ -c -o $@ crypto/des/ofb_enc.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/des/ofb_enc.d.tmp -MT $@ -c -o $@ crypto/des/ofb_enc.c
 	@touch crypto/des/ofb_enc.d.tmp
 	@if cmp crypto/des/ofb_enc.d.tmp crypto/des/ofb_enc.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/des/ofb_enc.d.tmp; \
@@ -2396,7 +2413,7 @@ crypto/des/ofb_enc.o: crypto/des/ofb_enc.c
 		mv crypto/des/ofb_enc.d.tmp crypto/des/ofb_enc.d; \
 	fi
 crypto/des/pcbc_enc.o: crypto/des/pcbc_enc.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/des/pcbc_enc.d.tmp -MT $@ -c -o $@ crypto/des/pcbc_enc.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/des/pcbc_enc.d.tmp -MT $@ -c -o $@ crypto/des/pcbc_enc.c
 	@touch crypto/des/pcbc_enc.d.tmp
 	@if cmp crypto/des/pcbc_enc.d.tmp crypto/des/pcbc_enc.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/des/pcbc_enc.d.tmp; \
@@ -2404,7 +2421,7 @@ crypto/des/pcbc_enc.o: crypto/des/pcbc_enc.c
 		mv crypto/des/pcbc_enc.d.tmp crypto/des/pcbc_enc.d; \
 	fi
 crypto/des/qud_cksm.o: crypto/des/qud_cksm.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/des/qud_cksm.d.tmp -MT $@ -c -o $@ crypto/des/qud_cksm.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/des/qud_cksm.d.tmp -MT $@ -c -o $@ crypto/des/qud_cksm.c
 	@touch crypto/des/qud_cksm.d.tmp
 	@if cmp crypto/des/qud_cksm.d.tmp crypto/des/qud_cksm.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/des/qud_cksm.d.tmp; \
@@ -2412,7 +2429,7 @@ crypto/des/qud_cksm.o: crypto/des/qud_cksm.c
 		mv crypto/des/qud_cksm.d.tmp crypto/des/qud_cksm.d; \
 	fi
 crypto/des/rand_key.o: crypto/des/rand_key.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/des/rand_key.d.tmp -MT $@ -c -o $@ crypto/des/rand_key.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/des/rand_key.d.tmp -MT $@ -c -o $@ crypto/des/rand_key.c
 	@touch crypto/des/rand_key.d.tmp
 	@if cmp crypto/des/rand_key.d.tmp crypto/des/rand_key.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/des/rand_key.d.tmp; \
@@ -2420,7 +2437,7 @@ crypto/des/rand_key.o: crypto/des/rand_key.c
 		mv crypto/des/rand_key.d.tmp crypto/des/rand_key.d; \
 	fi
 crypto/des/set_key.o: crypto/des/set_key.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/des/set_key.d.tmp -MT $@ -c -o $@ crypto/des/set_key.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/des/set_key.d.tmp -MT $@ -c -o $@ crypto/des/set_key.c
 	@touch crypto/des/set_key.d.tmp
 	@if cmp crypto/des/set_key.d.tmp crypto/des/set_key.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/des/set_key.d.tmp; \
@@ -2428,7 +2445,7 @@ crypto/des/set_key.o: crypto/des/set_key.c
 		mv crypto/des/set_key.d.tmp crypto/des/set_key.d; \
 	fi
 crypto/des/str2key.o: crypto/des/str2key.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/des/str2key.d.tmp -MT $@ -c -o $@ crypto/des/str2key.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/des/str2key.d.tmp -MT $@ -c -o $@ crypto/des/str2key.c
 	@touch crypto/des/str2key.d.tmp
 	@if cmp crypto/des/str2key.d.tmp crypto/des/str2key.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/des/str2key.d.tmp; \
@@ -2436,7 +2453,7 @@ crypto/des/str2key.o: crypto/des/str2key.c
 		mv crypto/des/str2key.d.tmp crypto/des/str2key.d; \
 	fi
 crypto/des/xcbc_enc.o: crypto/des/xcbc_enc.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/des/xcbc_enc.d.tmp -MT $@ -c -o $@ crypto/des/xcbc_enc.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/des/xcbc_enc.d.tmp -MT $@ -c -o $@ crypto/des/xcbc_enc.c
 	@touch crypto/des/xcbc_enc.d.tmp
 	@if cmp crypto/des/xcbc_enc.d.tmp crypto/des/xcbc_enc.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/des/xcbc_enc.d.tmp; \
@@ -2444,7 +2461,7 @@ crypto/des/xcbc_enc.o: crypto/des/xcbc_enc.c
 		mv crypto/des/xcbc_enc.d.tmp crypto/des/xcbc_enc.d; \
 	fi
 crypto/dh/dh_ameth.o: crypto/dh/dh_ameth.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/dh/dh_ameth.d.tmp -MT $@ -c -o $@ crypto/dh/dh_ameth.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/dh/dh_ameth.d.tmp -MT $@ -c -o $@ crypto/dh/dh_ameth.c
 	@touch crypto/dh/dh_ameth.d.tmp
 	@if cmp crypto/dh/dh_ameth.d.tmp crypto/dh/dh_ameth.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/dh/dh_ameth.d.tmp; \
@@ -2452,7 +2469,7 @@ crypto/dh/dh_ameth.o: crypto/dh/dh_ameth.c
 		mv crypto/dh/dh_ameth.d.tmp crypto/dh/dh_ameth.d; \
 	fi
 crypto/dh/dh_asn1.o: crypto/dh/dh_asn1.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/dh/dh_asn1.d.tmp -MT $@ -c -o $@ crypto/dh/dh_asn1.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/dh/dh_asn1.d.tmp -MT $@ -c -o $@ crypto/dh/dh_asn1.c
 	@touch crypto/dh/dh_asn1.d.tmp
 	@if cmp crypto/dh/dh_asn1.d.tmp crypto/dh/dh_asn1.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/dh/dh_asn1.d.tmp; \
@@ -2460,7 +2477,7 @@ crypto/dh/dh_asn1.o: crypto/dh/dh_asn1.c
 		mv crypto/dh/dh_asn1.d.tmp crypto/dh/dh_asn1.d; \
 	fi
 crypto/dh/dh_check.o: crypto/dh/dh_check.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/dh/dh_check.d.tmp -MT $@ -c -o $@ crypto/dh/dh_check.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/dh/dh_check.d.tmp -MT $@ -c -o $@ crypto/dh/dh_check.c
 	@touch crypto/dh/dh_check.d.tmp
 	@if cmp crypto/dh/dh_check.d.tmp crypto/dh/dh_check.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/dh/dh_check.d.tmp; \
@@ -2468,7 +2485,7 @@ crypto/dh/dh_check.o: crypto/dh/dh_check.c
 		mv crypto/dh/dh_check.d.tmp crypto/dh/dh_check.d; \
 	fi
 crypto/dh/dh_depr.o: crypto/dh/dh_depr.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/dh/dh_depr.d.tmp -MT $@ -c -o $@ crypto/dh/dh_depr.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/dh/dh_depr.d.tmp -MT $@ -c -o $@ crypto/dh/dh_depr.c
 	@touch crypto/dh/dh_depr.d.tmp
 	@if cmp crypto/dh/dh_depr.d.tmp crypto/dh/dh_depr.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/dh/dh_depr.d.tmp; \
@@ -2476,7 +2493,7 @@ crypto/dh/dh_depr.o: crypto/dh/dh_depr.c
 		mv crypto/dh/dh_depr.d.tmp crypto/dh/dh_depr.d; \
 	fi
 crypto/dh/dh_err.o: crypto/dh/dh_err.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/dh/dh_err.d.tmp -MT $@ -c -o $@ crypto/dh/dh_err.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/dh/dh_err.d.tmp -MT $@ -c -o $@ crypto/dh/dh_err.c
 	@touch crypto/dh/dh_err.d.tmp
 	@if cmp crypto/dh/dh_err.d.tmp crypto/dh/dh_err.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/dh/dh_err.d.tmp; \
@@ -2484,7 +2501,7 @@ crypto/dh/dh_err.o: crypto/dh/dh_err.c
 		mv crypto/dh/dh_err.d.tmp crypto/dh/dh_err.d; \
 	fi
 crypto/dh/dh_gen.o: crypto/dh/dh_gen.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/dh/dh_gen.d.tmp -MT $@ -c -o $@ crypto/dh/dh_gen.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/dh/dh_gen.d.tmp -MT $@ -c -o $@ crypto/dh/dh_gen.c
 	@touch crypto/dh/dh_gen.d.tmp
 	@if cmp crypto/dh/dh_gen.d.tmp crypto/dh/dh_gen.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/dh/dh_gen.d.tmp; \
@@ -2492,7 +2509,7 @@ crypto/dh/dh_gen.o: crypto/dh/dh_gen.c
 		mv crypto/dh/dh_gen.d.tmp crypto/dh/dh_gen.d; \
 	fi
 crypto/dh/dh_kdf.o: crypto/dh/dh_kdf.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/dh/dh_kdf.d.tmp -MT $@ -c -o $@ crypto/dh/dh_kdf.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/dh/dh_kdf.d.tmp -MT $@ -c -o $@ crypto/dh/dh_kdf.c
 	@touch crypto/dh/dh_kdf.d.tmp
 	@if cmp crypto/dh/dh_kdf.d.tmp crypto/dh/dh_kdf.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/dh/dh_kdf.d.tmp; \
@@ -2500,7 +2517,7 @@ crypto/dh/dh_kdf.o: crypto/dh/dh_kdf.c
 		mv crypto/dh/dh_kdf.d.tmp crypto/dh/dh_kdf.d; \
 	fi
 crypto/dh/dh_key.o: crypto/dh/dh_key.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/dh/dh_key.d.tmp -MT $@ -c -o $@ crypto/dh/dh_key.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/dh/dh_key.d.tmp -MT $@ -c -o $@ crypto/dh/dh_key.c
 	@touch crypto/dh/dh_key.d.tmp
 	@if cmp crypto/dh/dh_key.d.tmp crypto/dh/dh_key.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/dh/dh_key.d.tmp; \
@@ -2508,7 +2525,7 @@ crypto/dh/dh_key.o: crypto/dh/dh_key.c
 		mv crypto/dh/dh_key.d.tmp crypto/dh/dh_key.d; \
 	fi
 crypto/dh/dh_lib.o: crypto/dh/dh_lib.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/dh/dh_lib.d.tmp -MT $@ -c -o $@ crypto/dh/dh_lib.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/dh/dh_lib.d.tmp -MT $@ -c -o $@ crypto/dh/dh_lib.c
 	@touch crypto/dh/dh_lib.d.tmp
 	@if cmp crypto/dh/dh_lib.d.tmp crypto/dh/dh_lib.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/dh/dh_lib.d.tmp; \
@@ -2516,7 +2533,7 @@ crypto/dh/dh_lib.o: crypto/dh/dh_lib.c
 		mv crypto/dh/dh_lib.d.tmp crypto/dh/dh_lib.d; \
 	fi
 crypto/dh/dh_meth.o: crypto/dh/dh_meth.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/dh/dh_meth.d.tmp -MT $@ -c -o $@ crypto/dh/dh_meth.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/dh/dh_meth.d.tmp -MT $@ -c -o $@ crypto/dh/dh_meth.c
 	@touch crypto/dh/dh_meth.d.tmp
 	@if cmp crypto/dh/dh_meth.d.tmp crypto/dh/dh_meth.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/dh/dh_meth.d.tmp; \
@@ -2524,7 +2541,7 @@ crypto/dh/dh_meth.o: crypto/dh/dh_meth.c
 		mv crypto/dh/dh_meth.d.tmp crypto/dh/dh_meth.d; \
 	fi
 crypto/dh/dh_pmeth.o: crypto/dh/dh_pmeth.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/dh/dh_pmeth.d.tmp -MT $@ -c -o $@ crypto/dh/dh_pmeth.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/dh/dh_pmeth.d.tmp -MT $@ -c -o $@ crypto/dh/dh_pmeth.c
 	@touch crypto/dh/dh_pmeth.d.tmp
 	@if cmp crypto/dh/dh_pmeth.d.tmp crypto/dh/dh_pmeth.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/dh/dh_pmeth.d.tmp; \
@@ -2532,7 +2549,7 @@ crypto/dh/dh_pmeth.o: crypto/dh/dh_pmeth.c
 		mv crypto/dh/dh_pmeth.d.tmp crypto/dh/dh_pmeth.d; \
 	fi
 crypto/dh/dh_prn.o: crypto/dh/dh_prn.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/dh/dh_prn.d.tmp -MT $@ -c -o $@ crypto/dh/dh_prn.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/dh/dh_prn.d.tmp -MT $@ -c -o $@ crypto/dh/dh_prn.c
 	@touch crypto/dh/dh_prn.d.tmp
 	@if cmp crypto/dh/dh_prn.d.tmp crypto/dh/dh_prn.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/dh/dh_prn.d.tmp; \
@@ -2540,7 +2557,7 @@ crypto/dh/dh_prn.o: crypto/dh/dh_prn.c
 		mv crypto/dh/dh_prn.d.tmp crypto/dh/dh_prn.d; \
 	fi
 crypto/dh/dh_rfc5114.o: crypto/dh/dh_rfc5114.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/dh/dh_rfc5114.d.tmp -MT $@ -c -o $@ crypto/dh/dh_rfc5114.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/dh/dh_rfc5114.d.tmp -MT $@ -c -o $@ crypto/dh/dh_rfc5114.c
 	@touch crypto/dh/dh_rfc5114.d.tmp
 	@if cmp crypto/dh/dh_rfc5114.d.tmp crypto/dh/dh_rfc5114.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/dh/dh_rfc5114.d.tmp; \
@@ -2548,7 +2565,7 @@ crypto/dh/dh_rfc5114.o: crypto/dh/dh_rfc5114.c
 		mv crypto/dh/dh_rfc5114.d.tmp crypto/dh/dh_rfc5114.d; \
 	fi
 crypto/dh/dh_rfc7919.o: crypto/dh/dh_rfc7919.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/dh/dh_rfc7919.d.tmp -MT $@ -c -o $@ crypto/dh/dh_rfc7919.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/dh/dh_rfc7919.d.tmp -MT $@ -c -o $@ crypto/dh/dh_rfc7919.c
 	@touch crypto/dh/dh_rfc7919.d.tmp
 	@if cmp crypto/dh/dh_rfc7919.d.tmp crypto/dh/dh_rfc7919.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/dh/dh_rfc7919.d.tmp; \
@@ -2556,7 +2573,7 @@ crypto/dh/dh_rfc7919.o: crypto/dh/dh_rfc7919.c
 		mv crypto/dh/dh_rfc7919.d.tmp crypto/dh/dh_rfc7919.d; \
 	fi
 crypto/dsa/dsa_ameth.o: crypto/dsa/dsa_ameth.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/dsa/dsa_ameth.d.tmp -MT $@ -c -o $@ crypto/dsa/dsa_ameth.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/dsa/dsa_ameth.d.tmp -MT $@ -c -o $@ crypto/dsa/dsa_ameth.c
 	@touch crypto/dsa/dsa_ameth.d.tmp
 	@if cmp crypto/dsa/dsa_ameth.d.tmp crypto/dsa/dsa_ameth.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/dsa/dsa_ameth.d.tmp; \
@@ -2564,7 +2581,7 @@ crypto/dsa/dsa_ameth.o: crypto/dsa/dsa_ameth.c
 		mv crypto/dsa/dsa_ameth.d.tmp crypto/dsa/dsa_ameth.d; \
 	fi
 crypto/dsa/dsa_asn1.o: crypto/dsa/dsa_asn1.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/dsa/dsa_asn1.d.tmp -MT $@ -c -o $@ crypto/dsa/dsa_asn1.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/dsa/dsa_asn1.d.tmp -MT $@ -c -o $@ crypto/dsa/dsa_asn1.c
 	@touch crypto/dsa/dsa_asn1.d.tmp
 	@if cmp crypto/dsa/dsa_asn1.d.tmp crypto/dsa/dsa_asn1.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/dsa/dsa_asn1.d.tmp; \
@@ -2572,7 +2589,7 @@ crypto/dsa/dsa_asn1.o: crypto/dsa/dsa_asn1.c
 		mv crypto/dsa/dsa_asn1.d.tmp crypto/dsa/dsa_asn1.d; \
 	fi
 crypto/dsa/dsa_depr.o: crypto/dsa/dsa_depr.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/dsa/dsa_depr.d.tmp -MT $@ -c -o $@ crypto/dsa/dsa_depr.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/dsa/dsa_depr.d.tmp -MT $@ -c -o $@ crypto/dsa/dsa_depr.c
 	@touch crypto/dsa/dsa_depr.d.tmp
 	@if cmp crypto/dsa/dsa_depr.d.tmp crypto/dsa/dsa_depr.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/dsa/dsa_depr.d.tmp; \
@@ -2580,7 +2597,7 @@ crypto/dsa/dsa_depr.o: crypto/dsa/dsa_depr.c
 		mv crypto/dsa/dsa_depr.d.tmp crypto/dsa/dsa_depr.d; \
 	fi
 crypto/dsa/dsa_err.o: crypto/dsa/dsa_err.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/dsa/dsa_err.d.tmp -MT $@ -c -o $@ crypto/dsa/dsa_err.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/dsa/dsa_err.d.tmp -MT $@ -c -o $@ crypto/dsa/dsa_err.c
 	@touch crypto/dsa/dsa_err.d.tmp
 	@if cmp crypto/dsa/dsa_err.d.tmp crypto/dsa/dsa_err.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/dsa/dsa_err.d.tmp; \
@@ -2588,7 +2605,7 @@ crypto/dsa/dsa_err.o: crypto/dsa/dsa_err.c
 		mv crypto/dsa/dsa_err.d.tmp crypto/dsa/dsa_err.d; \
 	fi
 crypto/dsa/dsa_gen.o: crypto/dsa/dsa_gen.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/dsa/dsa_gen.d.tmp -MT $@ -c -o $@ crypto/dsa/dsa_gen.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/dsa/dsa_gen.d.tmp -MT $@ -c -o $@ crypto/dsa/dsa_gen.c
 	@touch crypto/dsa/dsa_gen.d.tmp
 	@if cmp crypto/dsa/dsa_gen.d.tmp crypto/dsa/dsa_gen.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/dsa/dsa_gen.d.tmp; \
@@ -2596,7 +2613,7 @@ crypto/dsa/dsa_gen.o: crypto/dsa/dsa_gen.c
 		mv crypto/dsa/dsa_gen.d.tmp crypto/dsa/dsa_gen.d; \
 	fi
 crypto/dsa/dsa_key.o: crypto/dsa/dsa_key.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/dsa/dsa_key.d.tmp -MT $@ -c -o $@ crypto/dsa/dsa_key.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/dsa/dsa_key.d.tmp -MT $@ -c -o $@ crypto/dsa/dsa_key.c
 	@touch crypto/dsa/dsa_key.d.tmp
 	@if cmp crypto/dsa/dsa_key.d.tmp crypto/dsa/dsa_key.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/dsa/dsa_key.d.tmp; \
@@ -2604,7 +2621,7 @@ crypto/dsa/dsa_key.o: crypto/dsa/dsa_key.c
 		mv crypto/dsa/dsa_key.d.tmp crypto/dsa/dsa_key.d; \
 	fi
 crypto/dsa/dsa_lib.o: crypto/dsa/dsa_lib.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/dsa/dsa_lib.d.tmp -MT $@ -c -o $@ crypto/dsa/dsa_lib.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/dsa/dsa_lib.d.tmp -MT $@ -c -o $@ crypto/dsa/dsa_lib.c
 	@touch crypto/dsa/dsa_lib.d.tmp
 	@if cmp crypto/dsa/dsa_lib.d.tmp crypto/dsa/dsa_lib.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/dsa/dsa_lib.d.tmp; \
@@ -2612,7 +2629,7 @@ crypto/dsa/dsa_lib.o: crypto/dsa/dsa_lib.c
 		mv crypto/dsa/dsa_lib.d.tmp crypto/dsa/dsa_lib.d; \
 	fi
 crypto/dsa/dsa_meth.o: crypto/dsa/dsa_meth.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/dsa/dsa_meth.d.tmp -MT $@ -c -o $@ crypto/dsa/dsa_meth.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/dsa/dsa_meth.d.tmp -MT $@ -c -o $@ crypto/dsa/dsa_meth.c
 	@touch crypto/dsa/dsa_meth.d.tmp
 	@if cmp crypto/dsa/dsa_meth.d.tmp crypto/dsa/dsa_meth.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/dsa/dsa_meth.d.tmp; \
@@ -2620,7 +2637,7 @@ crypto/dsa/dsa_meth.o: crypto/dsa/dsa_meth.c
 		mv crypto/dsa/dsa_meth.d.tmp crypto/dsa/dsa_meth.d; \
 	fi
 crypto/dsa/dsa_ossl.o: crypto/dsa/dsa_ossl.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/dsa/dsa_ossl.d.tmp -MT $@ -c -o $@ crypto/dsa/dsa_ossl.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/dsa/dsa_ossl.d.tmp -MT $@ -c -o $@ crypto/dsa/dsa_ossl.c
 	@touch crypto/dsa/dsa_ossl.d.tmp
 	@if cmp crypto/dsa/dsa_ossl.d.tmp crypto/dsa/dsa_ossl.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/dsa/dsa_ossl.d.tmp; \
@@ -2628,7 +2645,7 @@ crypto/dsa/dsa_ossl.o: crypto/dsa/dsa_ossl.c
 		mv crypto/dsa/dsa_ossl.d.tmp crypto/dsa/dsa_ossl.d; \
 	fi
 crypto/dsa/dsa_pmeth.o: crypto/dsa/dsa_pmeth.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/dsa/dsa_pmeth.d.tmp -MT $@ -c -o $@ crypto/dsa/dsa_pmeth.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/dsa/dsa_pmeth.d.tmp -MT $@ -c -o $@ crypto/dsa/dsa_pmeth.c
 	@touch crypto/dsa/dsa_pmeth.d.tmp
 	@if cmp crypto/dsa/dsa_pmeth.d.tmp crypto/dsa/dsa_pmeth.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/dsa/dsa_pmeth.d.tmp; \
@@ -2636,7 +2653,7 @@ crypto/dsa/dsa_pmeth.o: crypto/dsa/dsa_pmeth.c
 		mv crypto/dsa/dsa_pmeth.d.tmp crypto/dsa/dsa_pmeth.d; \
 	fi
 crypto/dsa/dsa_prn.o: crypto/dsa/dsa_prn.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/dsa/dsa_prn.d.tmp -MT $@ -c -o $@ crypto/dsa/dsa_prn.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/dsa/dsa_prn.d.tmp -MT $@ -c -o $@ crypto/dsa/dsa_prn.c
 	@touch crypto/dsa/dsa_prn.d.tmp
 	@if cmp crypto/dsa/dsa_prn.d.tmp crypto/dsa/dsa_prn.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/dsa/dsa_prn.d.tmp; \
@@ -2644,7 +2661,7 @@ crypto/dsa/dsa_prn.o: crypto/dsa/dsa_prn.c
 		mv crypto/dsa/dsa_prn.d.tmp crypto/dsa/dsa_prn.d; \
 	fi
 crypto/dsa/dsa_sign.o: crypto/dsa/dsa_sign.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/dsa/dsa_sign.d.tmp -MT $@ -c -o $@ crypto/dsa/dsa_sign.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/dsa/dsa_sign.d.tmp -MT $@ -c -o $@ crypto/dsa/dsa_sign.c
 	@touch crypto/dsa/dsa_sign.d.tmp
 	@if cmp crypto/dsa/dsa_sign.d.tmp crypto/dsa/dsa_sign.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/dsa/dsa_sign.d.tmp; \
@@ -2652,7 +2669,7 @@ crypto/dsa/dsa_sign.o: crypto/dsa/dsa_sign.c
 		mv crypto/dsa/dsa_sign.d.tmp crypto/dsa/dsa_sign.d; \
 	fi
 crypto/dsa/dsa_vrf.o: crypto/dsa/dsa_vrf.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/dsa/dsa_vrf.d.tmp -MT $@ -c -o $@ crypto/dsa/dsa_vrf.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/dsa/dsa_vrf.d.tmp -MT $@ -c -o $@ crypto/dsa/dsa_vrf.c
 	@touch crypto/dsa/dsa_vrf.d.tmp
 	@if cmp crypto/dsa/dsa_vrf.d.tmp crypto/dsa/dsa_vrf.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/dsa/dsa_vrf.d.tmp; \
@@ -2660,7 +2677,7 @@ crypto/dsa/dsa_vrf.o: crypto/dsa/dsa_vrf.c
 		mv crypto/dsa/dsa_vrf.d.tmp crypto/dsa/dsa_vrf.d; \
 	fi
 crypto/dso/dso_dl.o: crypto/dso/dso_dl.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/dso/dso_dl.d.tmp -MT $@ -c -o $@ crypto/dso/dso_dl.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/dso/dso_dl.d.tmp -MT $@ -c -o $@ crypto/dso/dso_dl.c
 	@touch crypto/dso/dso_dl.d.tmp
 	@if cmp crypto/dso/dso_dl.d.tmp crypto/dso/dso_dl.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/dso/dso_dl.d.tmp; \
@@ -2668,7 +2685,7 @@ crypto/dso/dso_dl.o: crypto/dso/dso_dl.c
 		mv crypto/dso/dso_dl.d.tmp crypto/dso/dso_dl.d; \
 	fi
 crypto/dso/dso_dlfcn.o: crypto/dso/dso_dlfcn.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/dso/dso_dlfcn.d.tmp -MT $@ -c -o $@ crypto/dso/dso_dlfcn.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/dso/dso_dlfcn.d.tmp -MT $@ -c -o $@ crypto/dso/dso_dlfcn.c
 	@touch crypto/dso/dso_dlfcn.d.tmp
 	@if cmp crypto/dso/dso_dlfcn.d.tmp crypto/dso/dso_dlfcn.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/dso/dso_dlfcn.d.tmp; \
@@ -2676,7 +2693,7 @@ crypto/dso/dso_dlfcn.o: crypto/dso/dso_dlfcn.c
 		mv crypto/dso/dso_dlfcn.d.tmp crypto/dso/dso_dlfcn.d; \
 	fi
 crypto/dso/dso_err.o: crypto/dso/dso_err.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/dso/dso_err.d.tmp -MT $@ -c -o $@ crypto/dso/dso_err.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/dso/dso_err.d.tmp -MT $@ -c -o $@ crypto/dso/dso_err.c
 	@touch crypto/dso/dso_err.d.tmp
 	@if cmp crypto/dso/dso_err.d.tmp crypto/dso/dso_err.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/dso/dso_err.d.tmp; \
@@ -2684,7 +2701,7 @@ crypto/dso/dso_err.o: crypto/dso/dso_err.c
 		mv crypto/dso/dso_err.d.tmp crypto/dso/dso_err.d; \
 	fi
 crypto/dso/dso_lib.o: crypto/dso/dso_lib.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/dso/dso_lib.d.tmp -MT $@ -c -o $@ crypto/dso/dso_lib.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/dso/dso_lib.d.tmp -MT $@ -c -o $@ crypto/dso/dso_lib.c
 	@touch crypto/dso/dso_lib.d.tmp
 	@if cmp crypto/dso/dso_lib.d.tmp crypto/dso/dso_lib.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/dso/dso_lib.d.tmp; \
@@ -2692,7 +2709,7 @@ crypto/dso/dso_lib.o: crypto/dso/dso_lib.c
 		mv crypto/dso/dso_lib.d.tmp crypto/dso/dso_lib.d; \
 	fi
 crypto/dso/dso_openssl.o: crypto/dso/dso_openssl.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/dso/dso_openssl.d.tmp -MT $@ -c -o $@ crypto/dso/dso_openssl.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/dso/dso_openssl.d.tmp -MT $@ -c -o $@ crypto/dso/dso_openssl.c
 	@touch crypto/dso/dso_openssl.d.tmp
 	@if cmp crypto/dso/dso_openssl.d.tmp crypto/dso/dso_openssl.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/dso/dso_openssl.d.tmp; \
@@ -2700,7 +2717,7 @@ crypto/dso/dso_openssl.o: crypto/dso/dso_openssl.c
 		mv crypto/dso/dso_openssl.d.tmp crypto/dso/dso_openssl.d; \
 	fi
 crypto/dso/dso_vms.o: crypto/dso/dso_vms.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/dso/dso_vms.d.tmp -MT $@ -c -o $@ crypto/dso/dso_vms.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/dso/dso_vms.d.tmp -MT $@ -c -o $@ crypto/dso/dso_vms.c
 	@touch crypto/dso/dso_vms.d.tmp
 	@if cmp crypto/dso/dso_vms.d.tmp crypto/dso/dso_vms.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/dso/dso_vms.d.tmp; \
@@ -2708,7 +2725,7 @@ crypto/dso/dso_vms.o: crypto/dso/dso_vms.c
 		mv crypto/dso/dso_vms.d.tmp crypto/dso/dso_vms.d; \
 	fi
 crypto/dso/dso_win32.o: crypto/dso/dso_win32.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/dso/dso_win32.d.tmp -MT $@ -c -o $@ crypto/dso/dso_win32.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/dso/dso_win32.d.tmp -MT $@ -c -o $@ crypto/dso/dso_win32.c
 	@touch crypto/dso/dso_win32.d.tmp
 	@if cmp crypto/dso/dso_win32.d.tmp crypto/dso/dso_win32.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/dso/dso_win32.d.tmp; \
@@ -2716,7 +2733,7 @@ crypto/dso/dso_win32.o: crypto/dso/dso_win32.c
 		mv crypto/dso/dso_win32.d.tmp crypto/dso/dso_win32.d; \
 	fi
 crypto/ebcdic.o: crypto/ebcdic.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/ebcdic.d.tmp -MT $@ -c -o $@ crypto/ebcdic.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/ebcdic.d.tmp -MT $@ -c -o $@ crypto/ebcdic.c
 	@touch crypto/ebcdic.d.tmp
 	@if cmp crypto/ebcdic.d.tmp crypto/ebcdic.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/ebcdic.d.tmp; \
@@ -2724,7 +2741,7 @@ crypto/ebcdic.o: crypto/ebcdic.c
 		mv crypto/ebcdic.d.tmp crypto/ebcdic.d; \
 	fi
 crypto/ec/curve25519.o: crypto/ec/curve25519.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/ec/curve25519.d.tmp -MT $@ -c -o $@ crypto/ec/curve25519.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/ec/curve25519.d.tmp -MT $@ -c -o $@ crypto/ec/curve25519.c
 	@touch crypto/ec/curve25519.d.tmp
 	@if cmp crypto/ec/curve25519.d.tmp crypto/ec/curve25519.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/ec/curve25519.d.tmp; \
@@ -2732,7 +2749,7 @@ crypto/ec/curve25519.o: crypto/ec/curve25519.c
 		mv crypto/ec/curve25519.d.tmp crypto/ec/curve25519.d; \
 	fi
 crypto/ec/curve448/arch_32/f_impl.o: crypto/ec/curve448/arch_32/f_impl.c
-	$(CC)  -I. -Icrypto/include -Iinclude -Icrypto/ec/curve448/arch_32 -Icrypto/ec/curve448 $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/ec/curve448/arch_32/f_impl.d.tmp -MT $@ -c -o $@ crypto/ec/curve448/arch_32/f_impl.c
+	$(CC)  -I. -Icrypto/include -Iinclude -Icrypto/ec/curve448/arch_32 -Icrypto/ec/curve448 $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/ec/curve448/arch_32/f_impl.d.tmp -MT $@ -c -o $@ crypto/ec/curve448/arch_32/f_impl.c
 	@touch crypto/ec/curve448/arch_32/f_impl.d.tmp
 	@if cmp crypto/ec/curve448/arch_32/f_impl.d.tmp crypto/ec/curve448/arch_32/f_impl.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/ec/curve448/arch_32/f_impl.d.tmp; \
@@ -2740,7 +2757,7 @@ crypto/ec/curve448/arch_32/f_impl.o: crypto/ec/curve448/arch_32/f_impl.c
 		mv crypto/ec/curve448/arch_32/f_impl.d.tmp crypto/ec/curve448/arch_32/f_impl.d; \
 	fi
 crypto/ec/curve448/curve448.o: crypto/ec/curve448/curve448.c
-	$(CC)  -I. -Icrypto/include -Iinclude -Icrypto/ec/curve448/arch_32 -Icrypto/ec/curve448 $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/ec/curve448/curve448.d.tmp -MT $@ -c -o $@ crypto/ec/curve448/curve448.c
+	$(CC)  -I. -Icrypto/include -Iinclude -Icrypto/ec/curve448/arch_32 -Icrypto/ec/curve448 $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/ec/curve448/curve448.d.tmp -MT $@ -c -o $@ crypto/ec/curve448/curve448.c
 	@touch crypto/ec/curve448/curve448.d.tmp
 	@if cmp crypto/ec/curve448/curve448.d.tmp crypto/ec/curve448/curve448.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/ec/curve448/curve448.d.tmp; \
@@ -2748,7 +2765,7 @@ crypto/ec/curve448/curve448.o: crypto/ec/curve448/curve448.c
 		mv crypto/ec/curve448/curve448.d.tmp crypto/ec/curve448/curve448.d; \
 	fi
 crypto/ec/curve448/curve448_tables.o: crypto/ec/curve448/curve448_tables.c
-	$(CC)  -I. -Icrypto/include -Iinclude -Icrypto/ec/curve448/arch_32 -Icrypto/ec/curve448 $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/ec/curve448/curve448_tables.d.tmp -MT $@ -c -o $@ crypto/ec/curve448/curve448_tables.c
+	$(CC)  -I. -Icrypto/include -Iinclude -Icrypto/ec/curve448/arch_32 -Icrypto/ec/curve448 $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/ec/curve448/curve448_tables.d.tmp -MT $@ -c -o $@ crypto/ec/curve448/curve448_tables.c
 	@touch crypto/ec/curve448/curve448_tables.d.tmp
 	@if cmp crypto/ec/curve448/curve448_tables.d.tmp crypto/ec/curve448/curve448_tables.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/ec/curve448/curve448_tables.d.tmp; \
@@ -2756,7 +2773,7 @@ crypto/ec/curve448/curve448_tables.o: crypto/ec/curve448/curve448_tables.c
 		mv crypto/ec/curve448/curve448_tables.d.tmp crypto/ec/curve448/curve448_tables.d; \
 	fi
 crypto/ec/curve448/eddsa.o: crypto/ec/curve448/eddsa.c
-	$(CC)  -I. -Icrypto/include -Iinclude -Icrypto/ec/curve448/arch_32 -Icrypto/ec/curve448 $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/ec/curve448/eddsa.d.tmp -MT $@ -c -o $@ crypto/ec/curve448/eddsa.c
+	$(CC)  -I. -Icrypto/include -Iinclude -Icrypto/ec/curve448/arch_32 -Icrypto/ec/curve448 $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/ec/curve448/eddsa.d.tmp -MT $@ -c -o $@ crypto/ec/curve448/eddsa.c
 	@touch crypto/ec/curve448/eddsa.d.tmp
 	@if cmp crypto/ec/curve448/eddsa.d.tmp crypto/ec/curve448/eddsa.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/ec/curve448/eddsa.d.tmp; \
@@ -2764,7 +2781,7 @@ crypto/ec/curve448/eddsa.o: crypto/ec/curve448/eddsa.c
 		mv crypto/ec/curve448/eddsa.d.tmp crypto/ec/curve448/eddsa.d; \
 	fi
 crypto/ec/curve448/f_generic.o: crypto/ec/curve448/f_generic.c
-	$(CC)  -I. -Icrypto/include -Iinclude -Icrypto/ec/curve448/arch_32 -Icrypto/ec/curve448 $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/ec/curve448/f_generic.d.tmp -MT $@ -c -o $@ crypto/ec/curve448/f_generic.c
+	$(CC)  -I. -Icrypto/include -Iinclude -Icrypto/ec/curve448/arch_32 -Icrypto/ec/curve448 $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/ec/curve448/f_generic.d.tmp -MT $@ -c -o $@ crypto/ec/curve448/f_generic.c
 	@touch crypto/ec/curve448/f_generic.d.tmp
 	@if cmp crypto/ec/curve448/f_generic.d.tmp crypto/ec/curve448/f_generic.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/ec/curve448/f_generic.d.tmp; \
@@ -2772,7 +2789,7 @@ crypto/ec/curve448/f_generic.o: crypto/ec/curve448/f_generic.c
 		mv crypto/ec/curve448/f_generic.d.tmp crypto/ec/curve448/f_generic.d; \
 	fi
 crypto/ec/curve448/scalar.o: crypto/ec/curve448/scalar.c
-	$(CC)  -I. -Icrypto/include -Iinclude -Icrypto/ec/curve448/arch_32 -Icrypto/ec/curve448 $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/ec/curve448/scalar.d.tmp -MT $@ -c -o $@ crypto/ec/curve448/scalar.c
+	$(CC)  -I. -Icrypto/include -Iinclude -Icrypto/ec/curve448/arch_32 -Icrypto/ec/curve448 $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/ec/curve448/scalar.d.tmp -MT $@ -c -o $@ crypto/ec/curve448/scalar.c
 	@touch crypto/ec/curve448/scalar.d.tmp
 	@if cmp crypto/ec/curve448/scalar.d.tmp crypto/ec/curve448/scalar.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/ec/curve448/scalar.d.tmp; \
@@ -2780,7 +2797,7 @@ crypto/ec/curve448/scalar.o: crypto/ec/curve448/scalar.c
 		mv crypto/ec/curve448/scalar.d.tmp crypto/ec/curve448/scalar.d; \
 	fi
 crypto/ec/ec2_mult.o: crypto/ec/ec2_mult.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/ec/ec2_mult.d.tmp -MT $@ -c -o $@ crypto/ec/ec2_mult.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/ec/ec2_mult.d.tmp -MT $@ -c -o $@ crypto/ec/ec2_mult.c
 	@touch crypto/ec/ec2_mult.d.tmp
 	@if cmp crypto/ec/ec2_mult.d.tmp crypto/ec/ec2_mult.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/ec/ec2_mult.d.tmp; \
@@ -2788,7 +2805,7 @@ crypto/ec/ec2_mult.o: crypto/ec/ec2_mult.c
 		mv crypto/ec/ec2_mult.d.tmp crypto/ec/ec2_mult.d; \
 	fi
 crypto/ec/ec2_oct.o: crypto/ec/ec2_oct.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/ec/ec2_oct.d.tmp -MT $@ -c -o $@ crypto/ec/ec2_oct.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/ec/ec2_oct.d.tmp -MT $@ -c -o $@ crypto/ec/ec2_oct.c
 	@touch crypto/ec/ec2_oct.d.tmp
 	@if cmp crypto/ec/ec2_oct.d.tmp crypto/ec/ec2_oct.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/ec/ec2_oct.d.tmp; \
@@ -2796,7 +2813,7 @@ crypto/ec/ec2_oct.o: crypto/ec/ec2_oct.c
 		mv crypto/ec/ec2_oct.d.tmp crypto/ec/ec2_oct.d; \
 	fi
 crypto/ec/ec2_smpl.o: crypto/ec/ec2_smpl.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/ec/ec2_smpl.d.tmp -MT $@ -c -o $@ crypto/ec/ec2_smpl.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/ec/ec2_smpl.d.tmp -MT $@ -c -o $@ crypto/ec/ec2_smpl.c
 	@touch crypto/ec/ec2_smpl.d.tmp
 	@if cmp crypto/ec/ec2_smpl.d.tmp crypto/ec/ec2_smpl.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/ec/ec2_smpl.d.tmp; \
@@ -2804,7 +2821,7 @@ crypto/ec/ec2_smpl.o: crypto/ec/ec2_smpl.c
 		mv crypto/ec/ec2_smpl.d.tmp crypto/ec/ec2_smpl.d; \
 	fi
 crypto/ec/ec_ameth.o: crypto/ec/ec_ameth.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/ec/ec_ameth.d.tmp -MT $@ -c -o $@ crypto/ec/ec_ameth.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/ec/ec_ameth.d.tmp -MT $@ -c -o $@ crypto/ec/ec_ameth.c
 	@touch crypto/ec/ec_ameth.d.tmp
 	@if cmp crypto/ec/ec_ameth.d.tmp crypto/ec/ec_ameth.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/ec/ec_ameth.d.tmp; \
@@ -2812,7 +2829,7 @@ crypto/ec/ec_ameth.o: crypto/ec/ec_ameth.c
 		mv crypto/ec/ec_ameth.d.tmp crypto/ec/ec_ameth.d; \
 	fi
 crypto/ec/ec_asn1.o: crypto/ec/ec_asn1.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/ec/ec_asn1.d.tmp -MT $@ -c -o $@ crypto/ec/ec_asn1.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/ec/ec_asn1.d.tmp -MT $@ -c -o $@ crypto/ec/ec_asn1.c
 	@touch crypto/ec/ec_asn1.d.tmp
 	@if cmp crypto/ec/ec_asn1.d.tmp crypto/ec/ec_asn1.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/ec/ec_asn1.d.tmp; \
@@ -2820,7 +2837,7 @@ crypto/ec/ec_asn1.o: crypto/ec/ec_asn1.c
 		mv crypto/ec/ec_asn1.d.tmp crypto/ec/ec_asn1.d; \
 	fi
 crypto/ec/ec_check.o: crypto/ec/ec_check.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/ec/ec_check.d.tmp -MT $@ -c -o $@ crypto/ec/ec_check.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/ec/ec_check.d.tmp -MT $@ -c -o $@ crypto/ec/ec_check.c
 	@touch crypto/ec/ec_check.d.tmp
 	@if cmp crypto/ec/ec_check.d.tmp crypto/ec/ec_check.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/ec/ec_check.d.tmp; \
@@ -2828,7 +2845,7 @@ crypto/ec/ec_check.o: crypto/ec/ec_check.c
 		mv crypto/ec/ec_check.d.tmp crypto/ec/ec_check.d; \
 	fi
 crypto/ec/ec_curve.o: crypto/ec/ec_curve.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/ec/ec_curve.d.tmp -MT $@ -c -o $@ crypto/ec/ec_curve.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/ec/ec_curve.d.tmp -MT $@ -c -o $@ crypto/ec/ec_curve.c
 	@touch crypto/ec/ec_curve.d.tmp
 	@if cmp crypto/ec/ec_curve.d.tmp crypto/ec/ec_curve.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/ec/ec_curve.d.tmp; \
@@ -2836,7 +2853,7 @@ crypto/ec/ec_curve.o: crypto/ec/ec_curve.c
 		mv crypto/ec/ec_curve.d.tmp crypto/ec/ec_curve.d; \
 	fi
 crypto/ec/ec_cvt.o: crypto/ec/ec_cvt.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/ec/ec_cvt.d.tmp -MT $@ -c -o $@ crypto/ec/ec_cvt.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/ec/ec_cvt.d.tmp -MT $@ -c -o $@ crypto/ec/ec_cvt.c
 	@touch crypto/ec/ec_cvt.d.tmp
 	@if cmp crypto/ec/ec_cvt.d.tmp crypto/ec/ec_cvt.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/ec/ec_cvt.d.tmp; \
@@ -2844,7 +2861,7 @@ crypto/ec/ec_cvt.o: crypto/ec/ec_cvt.c
 		mv crypto/ec/ec_cvt.d.tmp crypto/ec/ec_cvt.d; \
 	fi
 crypto/ec/ec_err.o: crypto/ec/ec_err.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/ec/ec_err.d.tmp -MT $@ -c -o $@ crypto/ec/ec_err.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/ec/ec_err.d.tmp -MT $@ -c -o $@ crypto/ec/ec_err.c
 	@touch crypto/ec/ec_err.d.tmp
 	@if cmp crypto/ec/ec_err.d.tmp crypto/ec/ec_err.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/ec/ec_err.d.tmp; \
@@ -2852,7 +2869,7 @@ crypto/ec/ec_err.o: crypto/ec/ec_err.c
 		mv crypto/ec/ec_err.d.tmp crypto/ec/ec_err.d; \
 	fi
 crypto/ec/ec_key.o: crypto/ec/ec_key.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/ec/ec_key.d.tmp -MT $@ -c -o $@ crypto/ec/ec_key.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/ec/ec_key.d.tmp -MT $@ -c -o $@ crypto/ec/ec_key.c
 	@touch crypto/ec/ec_key.d.tmp
 	@if cmp crypto/ec/ec_key.d.tmp crypto/ec/ec_key.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/ec/ec_key.d.tmp; \
@@ -2860,7 +2877,7 @@ crypto/ec/ec_key.o: crypto/ec/ec_key.c
 		mv crypto/ec/ec_key.d.tmp crypto/ec/ec_key.d; \
 	fi
 crypto/ec/ec_kmeth.o: crypto/ec/ec_kmeth.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/ec/ec_kmeth.d.tmp -MT $@ -c -o $@ crypto/ec/ec_kmeth.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/ec/ec_kmeth.d.tmp -MT $@ -c -o $@ crypto/ec/ec_kmeth.c
 	@touch crypto/ec/ec_kmeth.d.tmp
 	@if cmp crypto/ec/ec_kmeth.d.tmp crypto/ec/ec_kmeth.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/ec/ec_kmeth.d.tmp; \
@@ -2868,7 +2885,7 @@ crypto/ec/ec_kmeth.o: crypto/ec/ec_kmeth.c
 		mv crypto/ec/ec_kmeth.d.tmp crypto/ec/ec_kmeth.d; \
 	fi
 crypto/ec/ec_lib.o: crypto/ec/ec_lib.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/ec/ec_lib.d.tmp -MT $@ -c -o $@ crypto/ec/ec_lib.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/ec/ec_lib.d.tmp -MT $@ -c -o $@ crypto/ec/ec_lib.c
 	@touch crypto/ec/ec_lib.d.tmp
 	@if cmp crypto/ec/ec_lib.d.tmp crypto/ec/ec_lib.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/ec/ec_lib.d.tmp; \
@@ -2876,7 +2893,7 @@ crypto/ec/ec_lib.o: crypto/ec/ec_lib.c
 		mv crypto/ec/ec_lib.d.tmp crypto/ec/ec_lib.d; \
 	fi
 crypto/ec/ec_mult.o: crypto/ec/ec_mult.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/ec/ec_mult.d.tmp -MT $@ -c -o $@ crypto/ec/ec_mult.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/ec/ec_mult.d.tmp -MT $@ -c -o $@ crypto/ec/ec_mult.c
 	@touch crypto/ec/ec_mult.d.tmp
 	@if cmp crypto/ec/ec_mult.d.tmp crypto/ec/ec_mult.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/ec/ec_mult.d.tmp; \
@@ -2884,7 +2901,7 @@ crypto/ec/ec_mult.o: crypto/ec/ec_mult.c
 		mv crypto/ec/ec_mult.d.tmp crypto/ec/ec_mult.d; \
 	fi
 crypto/ec/ec_oct.o: crypto/ec/ec_oct.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/ec/ec_oct.d.tmp -MT $@ -c -o $@ crypto/ec/ec_oct.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/ec/ec_oct.d.tmp -MT $@ -c -o $@ crypto/ec/ec_oct.c
 	@touch crypto/ec/ec_oct.d.tmp
 	@if cmp crypto/ec/ec_oct.d.tmp crypto/ec/ec_oct.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/ec/ec_oct.d.tmp; \
@@ -2892,7 +2909,7 @@ crypto/ec/ec_oct.o: crypto/ec/ec_oct.c
 		mv crypto/ec/ec_oct.d.tmp crypto/ec/ec_oct.d; \
 	fi
 crypto/ec/ec_pmeth.o: crypto/ec/ec_pmeth.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/ec/ec_pmeth.d.tmp -MT $@ -c -o $@ crypto/ec/ec_pmeth.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/ec/ec_pmeth.d.tmp -MT $@ -c -o $@ crypto/ec/ec_pmeth.c
 	@touch crypto/ec/ec_pmeth.d.tmp
 	@if cmp crypto/ec/ec_pmeth.d.tmp crypto/ec/ec_pmeth.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/ec/ec_pmeth.d.tmp; \
@@ -2900,7 +2917,7 @@ crypto/ec/ec_pmeth.o: crypto/ec/ec_pmeth.c
 		mv crypto/ec/ec_pmeth.d.tmp crypto/ec/ec_pmeth.d; \
 	fi
 crypto/ec/ec_print.o: crypto/ec/ec_print.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/ec/ec_print.d.tmp -MT $@ -c -o $@ crypto/ec/ec_print.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/ec/ec_print.d.tmp -MT $@ -c -o $@ crypto/ec/ec_print.c
 	@touch crypto/ec/ec_print.d.tmp
 	@if cmp crypto/ec/ec_print.d.tmp crypto/ec/ec_print.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/ec/ec_print.d.tmp; \
@@ -2908,7 +2925,7 @@ crypto/ec/ec_print.o: crypto/ec/ec_print.c
 		mv crypto/ec/ec_print.d.tmp crypto/ec/ec_print.d; \
 	fi
 crypto/ec/ecdh_kdf.o: crypto/ec/ecdh_kdf.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/ec/ecdh_kdf.d.tmp -MT $@ -c -o $@ crypto/ec/ecdh_kdf.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/ec/ecdh_kdf.d.tmp -MT $@ -c -o $@ crypto/ec/ecdh_kdf.c
 	@touch crypto/ec/ecdh_kdf.d.tmp
 	@if cmp crypto/ec/ecdh_kdf.d.tmp crypto/ec/ecdh_kdf.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/ec/ecdh_kdf.d.tmp; \
@@ -2916,7 +2933,7 @@ crypto/ec/ecdh_kdf.o: crypto/ec/ecdh_kdf.c
 		mv crypto/ec/ecdh_kdf.d.tmp crypto/ec/ecdh_kdf.d; \
 	fi
 crypto/ec/ecdh_ossl.o: crypto/ec/ecdh_ossl.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/ec/ecdh_ossl.d.tmp -MT $@ -c -o $@ crypto/ec/ecdh_ossl.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/ec/ecdh_ossl.d.tmp -MT $@ -c -o $@ crypto/ec/ecdh_ossl.c
 	@touch crypto/ec/ecdh_ossl.d.tmp
 	@if cmp crypto/ec/ecdh_ossl.d.tmp crypto/ec/ecdh_ossl.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/ec/ecdh_ossl.d.tmp; \
@@ -2924,7 +2941,7 @@ crypto/ec/ecdh_ossl.o: crypto/ec/ecdh_ossl.c
 		mv crypto/ec/ecdh_ossl.d.tmp crypto/ec/ecdh_ossl.d; \
 	fi
 crypto/ec/ecdsa_ossl.o: crypto/ec/ecdsa_ossl.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/ec/ecdsa_ossl.d.tmp -MT $@ -c -o $@ crypto/ec/ecdsa_ossl.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/ec/ecdsa_ossl.d.tmp -MT $@ -c -o $@ crypto/ec/ecdsa_ossl.c
 	@touch crypto/ec/ecdsa_ossl.d.tmp
 	@if cmp crypto/ec/ecdsa_ossl.d.tmp crypto/ec/ecdsa_ossl.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/ec/ecdsa_ossl.d.tmp; \
@@ -2932,7 +2949,7 @@ crypto/ec/ecdsa_ossl.o: crypto/ec/ecdsa_ossl.c
 		mv crypto/ec/ecdsa_ossl.d.tmp crypto/ec/ecdsa_ossl.d; \
 	fi
 crypto/ec/ecdsa_sign.o: crypto/ec/ecdsa_sign.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/ec/ecdsa_sign.d.tmp -MT $@ -c -o $@ crypto/ec/ecdsa_sign.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/ec/ecdsa_sign.d.tmp -MT $@ -c -o $@ crypto/ec/ecdsa_sign.c
 	@touch crypto/ec/ecdsa_sign.d.tmp
 	@if cmp crypto/ec/ecdsa_sign.d.tmp crypto/ec/ecdsa_sign.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/ec/ecdsa_sign.d.tmp; \
@@ -2940,7 +2957,7 @@ crypto/ec/ecdsa_sign.o: crypto/ec/ecdsa_sign.c
 		mv crypto/ec/ecdsa_sign.d.tmp crypto/ec/ecdsa_sign.d; \
 	fi
 crypto/ec/ecdsa_vrf.o: crypto/ec/ecdsa_vrf.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/ec/ecdsa_vrf.d.tmp -MT $@ -c -o $@ crypto/ec/ecdsa_vrf.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/ec/ecdsa_vrf.d.tmp -MT $@ -c -o $@ crypto/ec/ecdsa_vrf.c
 	@touch crypto/ec/ecdsa_vrf.d.tmp
 	@if cmp crypto/ec/ecdsa_vrf.d.tmp crypto/ec/ecdsa_vrf.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/ec/ecdsa_vrf.d.tmp; \
@@ -2948,7 +2965,7 @@ crypto/ec/ecdsa_vrf.o: crypto/ec/ecdsa_vrf.c
 		mv crypto/ec/ecdsa_vrf.d.tmp crypto/ec/ecdsa_vrf.d; \
 	fi
 crypto/ec/eck_prn.o: crypto/ec/eck_prn.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/ec/eck_prn.d.tmp -MT $@ -c -o $@ crypto/ec/eck_prn.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/ec/eck_prn.d.tmp -MT $@ -c -o $@ crypto/ec/eck_prn.c
 	@touch crypto/ec/eck_prn.d.tmp
 	@if cmp crypto/ec/eck_prn.d.tmp crypto/ec/eck_prn.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/ec/eck_prn.d.tmp; \
@@ -2956,7 +2973,7 @@ crypto/ec/eck_prn.o: crypto/ec/eck_prn.c
 		mv crypto/ec/eck_prn.d.tmp crypto/ec/eck_prn.d; \
 	fi
 crypto/ec/ecp_mont.o: crypto/ec/ecp_mont.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/ec/ecp_mont.d.tmp -MT $@ -c -o $@ crypto/ec/ecp_mont.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/ec/ecp_mont.d.tmp -MT $@ -c -o $@ crypto/ec/ecp_mont.c
 	@touch crypto/ec/ecp_mont.d.tmp
 	@if cmp crypto/ec/ecp_mont.d.tmp crypto/ec/ecp_mont.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/ec/ecp_mont.d.tmp; \
@@ -2964,7 +2981,7 @@ crypto/ec/ecp_mont.o: crypto/ec/ecp_mont.c
 		mv crypto/ec/ecp_mont.d.tmp crypto/ec/ecp_mont.d; \
 	fi
 crypto/ec/ecp_nist.o: crypto/ec/ecp_nist.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/ec/ecp_nist.d.tmp -MT $@ -c -o $@ crypto/ec/ecp_nist.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/ec/ecp_nist.d.tmp -MT $@ -c -o $@ crypto/ec/ecp_nist.c
 	@touch crypto/ec/ecp_nist.d.tmp
 	@if cmp crypto/ec/ecp_nist.d.tmp crypto/ec/ecp_nist.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/ec/ecp_nist.d.tmp; \
@@ -2972,7 +2989,7 @@ crypto/ec/ecp_nist.o: crypto/ec/ecp_nist.c
 		mv crypto/ec/ecp_nist.d.tmp crypto/ec/ecp_nist.d; \
 	fi
 crypto/ec/ecp_nistp224.o: crypto/ec/ecp_nistp224.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/ec/ecp_nistp224.d.tmp -MT $@ -c -o $@ crypto/ec/ecp_nistp224.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/ec/ecp_nistp224.d.tmp -MT $@ -c -o $@ crypto/ec/ecp_nistp224.c
 	@touch crypto/ec/ecp_nistp224.d.tmp
 	@if cmp crypto/ec/ecp_nistp224.d.tmp crypto/ec/ecp_nistp224.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/ec/ecp_nistp224.d.tmp; \
@@ -2980,7 +2997,7 @@ crypto/ec/ecp_nistp224.o: crypto/ec/ecp_nistp224.c
 		mv crypto/ec/ecp_nistp224.d.tmp crypto/ec/ecp_nistp224.d; \
 	fi
 crypto/ec/ecp_nistp256.o: crypto/ec/ecp_nistp256.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/ec/ecp_nistp256.d.tmp -MT $@ -c -o $@ crypto/ec/ecp_nistp256.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/ec/ecp_nistp256.d.tmp -MT $@ -c -o $@ crypto/ec/ecp_nistp256.c
 	@touch crypto/ec/ecp_nistp256.d.tmp
 	@if cmp crypto/ec/ecp_nistp256.d.tmp crypto/ec/ecp_nistp256.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/ec/ecp_nistp256.d.tmp; \
@@ -2988,7 +3005,7 @@ crypto/ec/ecp_nistp256.o: crypto/ec/ecp_nistp256.c
 		mv crypto/ec/ecp_nistp256.d.tmp crypto/ec/ecp_nistp256.d; \
 	fi
 crypto/ec/ecp_nistp521.o: crypto/ec/ecp_nistp521.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/ec/ecp_nistp521.d.tmp -MT $@ -c -o $@ crypto/ec/ecp_nistp521.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/ec/ecp_nistp521.d.tmp -MT $@ -c -o $@ crypto/ec/ecp_nistp521.c
 	@touch crypto/ec/ecp_nistp521.d.tmp
 	@if cmp crypto/ec/ecp_nistp521.d.tmp crypto/ec/ecp_nistp521.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/ec/ecp_nistp521.d.tmp; \
@@ -2996,7 +3013,7 @@ crypto/ec/ecp_nistp521.o: crypto/ec/ecp_nistp521.c
 		mv crypto/ec/ecp_nistp521.d.tmp crypto/ec/ecp_nistp521.d; \
 	fi
 crypto/ec/ecp_nistputil.o: crypto/ec/ecp_nistputil.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/ec/ecp_nistputil.d.tmp -MT $@ -c -o $@ crypto/ec/ecp_nistputil.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/ec/ecp_nistputil.d.tmp -MT $@ -c -o $@ crypto/ec/ecp_nistputil.c
 	@touch crypto/ec/ecp_nistputil.d.tmp
 	@if cmp crypto/ec/ecp_nistputil.d.tmp crypto/ec/ecp_nistputil.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/ec/ecp_nistputil.d.tmp; \
@@ -3004,7 +3021,7 @@ crypto/ec/ecp_nistputil.o: crypto/ec/ecp_nistputil.c
 		mv crypto/ec/ecp_nistputil.d.tmp crypto/ec/ecp_nistputil.d; \
 	fi
 crypto/ec/ecp_oct.o: crypto/ec/ecp_oct.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/ec/ecp_oct.d.tmp -MT $@ -c -o $@ crypto/ec/ecp_oct.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/ec/ecp_oct.d.tmp -MT $@ -c -o $@ crypto/ec/ecp_oct.c
 	@touch crypto/ec/ecp_oct.d.tmp
 	@if cmp crypto/ec/ecp_oct.d.tmp crypto/ec/ecp_oct.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/ec/ecp_oct.d.tmp; \
@@ -3012,7 +3029,7 @@ crypto/ec/ecp_oct.o: crypto/ec/ecp_oct.c
 		mv crypto/ec/ecp_oct.d.tmp crypto/ec/ecp_oct.d; \
 	fi
 crypto/ec/ecp_smpl.o: crypto/ec/ecp_smpl.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/ec/ecp_smpl.d.tmp -MT $@ -c -o $@ crypto/ec/ecp_smpl.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/ec/ecp_smpl.d.tmp -MT $@ -c -o $@ crypto/ec/ecp_smpl.c
 	@touch crypto/ec/ecp_smpl.d.tmp
 	@if cmp crypto/ec/ecp_smpl.d.tmp crypto/ec/ecp_smpl.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/ec/ecp_smpl.d.tmp; \
@@ -3020,7 +3037,7 @@ crypto/ec/ecp_smpl.o: crypto/ec/ecp_smpl.c
 		mv crypto/ec/ecp_smpl.d.tmp crypto/ec/ecp_smpl.d; \
 	fi
 crypto/ec/ecx_meth.o: crypto/ec/ecx_meth.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/ec/ecx_meth.d.tmp -MT $@ -c -o $@ crypto/ec/ecx_meth.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/ec/ecx_meth.d.tmp -MT $@ -c -o $@ crypto/ec/ecx_meth.c
 	@touch crypto/ec/ecx_meth.d.tmp
 	@if cmp crypto/ec/ecx_meth.d.tmp crypto/ec/ecx_meth.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/ec/ecx_meth.d.tmp; \
@@ -3028,7 +3045,7 @@ crypto/ec/ecx_meth.o: crypto/ec/ecx_meth.c
 		mv crypto/ec/ecx_meth.d.tmp crypto/ec/ecx_meth.d; \
 	fi
 crypto/engine/eng_all.o: crypto/engine/eng_all.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/engine/eng_all.d.tmp -MT $@ -c -o $@ crypto/engine/eng_all.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/engine/eng_all.d.tmp -MT $@ -c -o $@ crypto/engine/eng_all.c
 	@touch crypto/engine/eng_all.d.tmp
 	@if cmp crypto/engine/eng_all.d.tmp crypto/engine/eng_all.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/engine/eng_all.d.tmp; \
@@ -3036,7 +3053,7 @@ crypto/engine/eng_all.o: crypto/engine/eng_all.c
 		mv crypto/engine/eng_all.d.tmp crypto/engine/eng_all.d; \
 	fi
 crypto/engine/eng_cnf.o: crypto/engine/eng_cnf.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/engine/eng_cnf.d.tmp -MT $@ -c -o $@ crypto/engine/eng_cnf.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/engine/eng_cnf.d.tmp -MT $@ -c -o $@ crypto/engine/eng_cnf.c
 	@touch crypto/engine/eng_cnf.d.tmp
 	@if cmp crypto/engine/eng_cnf.d.tmp crypto/engine/eng_cnf.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/engine/eng_cnf.d.tmp; \
@@ -3044,7 +3061,7 @@ crypto/engine/eng_cnf.o: crypto/engine/eng_cnf.c
 		mv crypto/engine/eng_cnf.d.tmp crypto/engine/eng_cnf.d; \
 	fi
 crypto/engine/eng_ctrl.o: crypto/engine/eng_ctrl.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/engine/eng_ctrl.d.tmp -MT $@ -c -o $@ crypto/engine/eng_ctrl.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/engine/eng_ctrl.d.tmp -MT $@ -c -o $@ crypto/engine/eng_ctrl.c
 	@touch crypto/engine/eng_ctrl.d.tmp
 	@if cmp crypto/engine/eng_ctrl.d.tmp crypto/engine/eng_ctrl.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/engine/eng_ctrl.d.tmp; \
@@ -3052,7 +3069,7 @@ crypto/engine/eng_ctrl.o: crypto/engine/eng_ctrl.c
 		mv crypto/engine/eng_ctrl.d.tmp crypto/engine/eng_ctrl.d; \
 	fi
 crypto/engine/eng_dyn.o: crypto/engine/eng_dyn.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/engine/eng_dyn.d.tmp -MT $@ -c -o $@ crypto/engine/eng_dyn.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/engine/eng_dyn.d.tmp -MT $@ -c -o $@ crypto/engine/eng_dyn.c
 	@touch crypto/engine/eng_dyn.d.tmp
 	@if cmp crypto/engine/eng_dyn.d.tmp crypto/engine/eng_dyn.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/engine/eng_dyn.d.tmp; \
@@ -3060,7 +3077,7 @@ crypto/engine/eng_dyn.o: crypto/engine/eng_dyn.c
 		mv crypto/engine/eng_dyn.d.tmp crypto/engine/eng_dyn.d; \
 	fi
 crypto/engine/eng_err.o: crypto/engine/eng_err.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/engine/eng_err.d.tmp -MT $@ -c -o $@ crypto/engine/eng_err.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/engine/eng_err.d.tmp -MT $@ -c -o $@ crypto/engine/eng_err.c
 	@touch crypto/engine/eng_err.d.tmp
 	@if cmp crypto/engine/eng_err.d.tmp crypto/engine/eng_err.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/engine/eng_err.d.tmp; \
@@ -3068,7 +3085,7 @@ crypto/engine/eng_err.o: crypto/engine/eng_err.c
 		mv crypto/engine/eng_err.d.tmp crypto/engine/eng_err.d; \
 	fi
 crypto/engine/eng_fat.o: crypto/engine/eng_fat.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/engine/eng_fat.d.tmp -MT $@ -c -o $@ crypto/engine/eng_fat.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/engine/eng_fat.d.tmp -MT $@ -c -o $@ crypto/engine/eng_fat.c
 	@touch crypto/engine/eng_fat.d.tmp
 	@if cmp crypto/engine/eng_fat.d.tmp crypto/engine/eng_fat.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/engine/eng_fat.d.tmp; \
@@ -3076,7 +3093,7 @@ crypto/engine/eng_fat.o: crypto/engine/eng_fat.c
 		mv crypto/engine/eng_fat.d.tmp crypto/engine/eng_fat.d; \
 	fi
 crypto/engine/eng_init.o: crypto/engine/eng_init.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/engine/eng_init.d.tmp -MT $@ -c -o $@ crypto/engine/eng_init.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/engine/eng_init.d.tmp -MT $@ -c -o $@ crypto/engine/eng_init.c
 	@touch crypto/engine/eng_init.d.tmp
 	@if cmp crypto/engine/eng_init.d.tmp crypto/engine/eng_init.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/engine/eng_init.d.tmp; \
@@ -3084,7 +3101,7 @@ crypto/engine/eng_init.o: crypto/engine/eng_init.c
 		mv crypto/engine/eng_init.d.tmp crypto/engine/eng_init.d; \
 	fi
 crypto/engine/eng_lib.o: crypto/engine/eng_lib.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/engine/eng_lib.d.tmp -MT $@ -c -o $@ crypto/engine/eng_lib.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/engine/eng_lib.d.tmp -MT $@ -c -o $@ crypto/engine/eng_lib.c
 	@touch crypto/engine/eng_lib.d.tmp
 	@if cmp crypto/engine/eng_lib.d.tmp crypto/engine/eng_lib.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/engine/eng_lib.d.tmp; \
@@ -3092,7 +3109,7 @@ crypto/engine/eng_lib.o: crypto/engine/eng_lib.c
 		mv crypto/engine/eng_lib.d.tmp crypto/engine/eng_lib.d; \
 	fi
 crypto/engine/eng_list.o: crypto/engine/eng_list.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/engine/eng_list.d.tmp -MT $@ -c -o $@ crypto/engine/eng_list.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/engine/eng_list.d.tmp -MT $@ -c -o $@ crypto/engine/eng_list.c
 	@touch crypto/engine/eng_list.d.tmp
 	@if cmp crypto/engine/eng_list.d.tmp crypto/engine/eng_list.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/engine/eng_list.d.tmp; \
@@ -3100,7 +3117,7 @@ crypto/engine/eng_list.o: crypto/engine/eng_list.c
 		mv crypto/engine/eng_list.d.tmp crypto/engine/eng_list.d; \
 	fi
 crypto/engine/eng_openssl.o: crypto/engine/eng_openssl.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/engine/eng_openssl.d.tmp -MT $@ -c -o $@ crypto/engine/eng_openssl.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/engine/eng_openssl.d.tmp -MT $@ -c -o $@ crypto/engine/eng_openssl.c
 	@touch crypto/engine/eng_openssl.d.tmp
 	@if cmp crypto/engine/eng_openssl.d.tmp crypto/engine/eng_openssl.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/engine/eng_openssl.d.tmp; \
@@ -3108,7 +3125,7 @@ crypto/engine/eng_openssl.o: crypto/engine/eng_openssl.c
 		mv crypto/engine/eng_openssl.d.tmp crypto/engine/eng_openssl.d; \
 	fi
 crypto/engine/eng_pkey.o: crypto/engine/eng_pkey.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/engine/eng_pkey.d.tmp -MT $@ -c -o $@ crypto/engine/eng_pkey.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/engine/eng_pkey.d.tmp -MT $@ -c -o $@ crypto/engine/eng_pkey.c
 	@touch crypto/engine/eng_pkey.d.tmp
 	@if cmp crypto/engine/eng_pkey.d.tmp crypto/engine/eng_pkey.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/engine/eng_pkey.d.tmp; \
@@ -3116,7 +3133,7 @@ crypto/engine/eng_pkey.o: crypto/engine/eng_pkey.c
 		mv crypto/engine/eng_pkey.d.tmp crypto/engine/eng_pkey.d; \
 	fi
 crypto/engine/eng_rdrand.o: crypto/engine/eng_rdrand.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/engine/eng_rdrand.d.tmp -MT $@ -c -o $@ crypto/engine/eng_rdrand.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/engine/eng_rdrand.d.tmp -MT $@ -c -o $@ crypto/engine/eng_rdrand.c
 	@touch crypto/engine/eng_rdrand.d.tmp
 	@if cmp crypto/engine/eng_rdrand.d.tmp crypto/engine/eng_rdrand.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/engine/eng_rdrand.d.tmp; \
@@ -3124,7 +3141,7 @@ crypto/engine/eng_rdrand.o: crypto/engine/eng_rdrand.c
 		mv crypto/engine/eng_rdrand.d.tmp crypto/engine/eng_rdrand.d; \
 	fi
 crypto/engine/eng_table.o: crypto/engine/eng_table.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/engine/eng_table.d.tmp -MT $@ -c -o $@ crypto/engine/eng_table.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/engine/eng_table.d.tmp -MT $@ -c -o $@ crypto/engine/eng_table.c
 	@touch crypto/engine/eng_table.d.tmp
 	@if cmp crypto/engine/eng_table.d.tmp crypto/engine/eng_table.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/engine/eng_table.d.tmp; \
@@ -3132,7 +3149,7 @@ crypto/engine/eng_table.o: crypto/engine/eng_table.c
 		mv crypto/engine/eng_table.d.tmp crypto/engine/eng_table.d; \
 	fi
 crypto/engine/tb_asnmth.o: crypto/engine/tb_asnmth.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/engine/tb_asnmth.d.tmp -MT $@ -c -o $@ crypto/engine/tb_asnmth.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/engine/tb_asnmth.d.tmp -MT $@ -c -o $@ crypto/engine/tb_asnmth.c
 	@touch crypto/engine/tb_asnmth.d.tmp
 	@if cmp crypto/engine/tb_asnmth.d.tmp crypto/engine/tb_asnmth.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/engine/tb_asnmth.d.tmp; \
@@ -3140,7 +3157,7 @@ crypto/engine/tb_asnmth.o: crypto/engine/tb_asnmth.c
 		mv crypto/engine/tb_asnmth.d.tmp crypto/engine/tb_asnmth.d; \
 	fi
 crypto/engine/tb_cipher.o: crypto/engine/tb_cipher.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/engine/tb_cipher.d.tmp -MT $@ -c -o $@ crypto/engine/tb_cipher.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/engine/tb_cipher.d.tmp -MT $@ -c -o $@ crypto/engine/tb_cipher.c
 	@touch crypto/engine/tb_cipher.d.tmp
 	@if cmp crypto/engine/tb_cipher.d.tmp crypto/engine/tb_cipher.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/engine/tb_cipher.d.tmp; \
@@ -3148,7 +3165,7 @@ crypto/engine/tb_cipher.o: crypto/engine/tb_cipher.c
 		mv crypto/engine/tb_cipher.d.tmp crypto/engine/tb_cipher.d; \
 	fi
 crypto/engine/tb_dh.o: crypto/engine/tb_dh.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/engine/tb_dh.d.tmp -MT $@ -c -o $@ crypto/engine/tb_dh.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/engine/tb_dh.d.tmp -MT $@ -c -o $@ crypto/engine/tb_dh.c
 	@touch crypto/engine/tb_dh.d.tmp
 	@if cmp crypto/engine/tb_dh.d.tmp crypto/engine/tb_dh.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/engine/tb_dh.d.tmp; \
@@ -3156,7 +3173,7 @@ crypto/engine/tb_dh.o: crypto/engine/tb_dh.c
 		mv crypto/engine/tb_dh.d.tmp crypto/engine/tb_dh.d; \
 	fi
 crypto/engine/tb_digest.o: crypto/engine/tb_digest.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/engine/tb_digest.d.tmp -MT $@ -c -o $@ crypto/engine/tb_digest.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/engine/tb_digest.d.tmp -MT $@ -c -o $@ crypto/engine/tb_digest.c
 	@touch crypto/engine/tb_digest.d.tmp
 	@if cmp crypto/engine/tb_digest.d.tmp crypto/engine/tb_digest.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/engine/tb_digest.d.tmp; \
@@ -3164,7 +3181,7 @@ crypto/engine/tb_digest.o: crypto/engine/tb_digest.c
 		mv crypto/engine/tb_digest.d.tmp crypto/engine/tb_digest.d; \
 	fi
 crypto/engine/tb_dsa.o: crypto/engine/tb_dsa.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/engine/tb_dsa.d.tmp -MT $@ -c -o $@ crypto/engine/tb_dsa.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/engine/tb_dsa.d.tmp -MT $@ -c -o $@ crypto/engine/tb_dsa.c
 	@touch crypto/engine/tb_dsa.d.tmp
 	@if cmp crypto/engine/tb_dsa.d.tmp crypto/engine/tb_dsa.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/engine/tb_dsa.d.tmp; \
@@ -3172,7 +3189,7 @@ crypto/engine/tb_dsa.o: crypto/engine/tb_dsa.c
 		mv crypto/engine/tb_dsa.d.tmp crypto/engine/tb_dsa.d; \
 	fi
 crypto/engine/tb_eckey.o: crypto/engine/tb_eckey.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/engine/tb_eckey.d.tmp -MT $@ -c -o $@ crypto/engine/tb_eckey.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/engine/tb_eckey.d.tmp -MT $@ -c -o $@ crypto/engine/tb_eckey.c
 	@touch crypto/engine/tb_eckey.d.tmp
 	@if cmp crypto/engine/tb_eckey.d.tmp crypto/engine/tb_eckey.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/engine/tb_eckey.d.tmp; \
@@ -3180,7 +3197,7 @@ crypto/engine/tb_eckey.o: crypto/engine/tb_eckey.c
 		mv crypto/engine/tb_eckey.d.tmp crypto/engine/tb_eckey.d; \
 	fi
 crypto/engine/tb_pkmeth.o: crypto/engine/tb_pkmeth.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/engine/tb_pkmeth.d.tmp -MT $@ -c -o $@ crypto/engine/tb_pkmeth.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/engine/tb_pkmeth.d.tmp -MT $@ -c -o $@ crypto/engine/tb_pkmeth.c
 	@touch crypto/engine/tb_pkmeth.d.tmp
 	@if cmp crypto/engine/tb_pkmeth.d.tmp crypto/engine/tb_pkmeth.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/engine/tb_pkmeth.d.tmp; \
@@ -3188,7 +3205,7 @@ crypto/engine/tb_pkmeth.o: crypto/engine/tb_pkmeth.c
 		mv crypto/engine/tb_pkmeth.d.tmp crypto/engine/tb_pkmeth.d; \
 	fi
 crypto/engine/tb_rand.o: crypto/engine/tb_rand.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/engine/tb_rand.d.tmp -MT $@ -c -o $@ crypto/engine/tb_rand.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/engine/tb_rand.d.tmp -MT $@ -c -o $@ crypto/engine/tb_rand.c
 	@touch crypto/engine/tb_rand.d.tmp
 	@if cmp crypto/engine/tb_rand.d.tmp crypto/engine/tb_rand.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/engine/tb_rand.d.tmp; \
@@ -3196,7 +3213,7 @@ crypto/engine/tb_rand.o: crypto/engine/tb_rand.c
 		mv crypto/engine/tb_rand.d.tmp crypto/engine/tb_rand.d; \
 	fi
 crypto/engine/tb_rsa.o: crypto/engine/tb_rsa.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/engine/tb_rsa.d.tmp -MT $@ -c -o $@ crypto/engine/tb_rsa.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/engine/tb_rsa.d.tmp -MT $@ -c -o $@ crypto/engine/tb_rsa.c
 	@touch crypto/engine/tb_rsa.d.tmp
 	@if cmp crypto/engine/tb_rsa.d.tmp crypto/engine/tb_rsa.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/engine/tb_rsa.d.tmp; \
@@ -3204,7 +3221,7 @@ crypto/engine/tb_rsa.o: crypto/engine/tb_rsa.c
 		mv crypto/engine/tb_rsa.d.tmp crypto/engine/tb_rsa.d; \
 	fi
 crypto/err/err.o: crypto/err/err.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/err/err.d.tmp -MT $@ -c -o $@ crypto/err/err.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/err/err.d.tmp -MT $@ -c -o $@ crypto/err/err.c
 	@touch crypto/err/err.d.tmp
 	@if cmp crypto/err/err.d.tmp crypto/err/err.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/err/err.d.tmp; \
@@ -3212,7 +3229,7 @@ crypto/err/err.o: crypto/err/err.c
 		mv crypto/err/err.d.tmp crypto/err/err.d; \
 	fi
 crypto/err/err_all.o: crypto/err/err_all.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/err/err_all.d.tmp -MT $@ -c -o $@ crypto/err/err_all.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/err/err_all.d.tmp -MT $@ -c -o $@ crypto/err/err_all.c
 	@touch crypto/err/err_all.d.tmp
 	@if cmp crypto/err/err_all.d.tmp crypto/err/err_all.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/err/err_all.d.tmp; \
@@ -3220,7 +3237,7 @@ crypto/err/err_all.o: crypto/err/err_all.c
 		mv crypto/err/err_all.d.tmp crypto/err/err_all.d; \
 	fi
 crypto/err/err_prn.o: crypto/err/err_prn.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/err/err_prn.d.tmp -MT $@ -c -o $@ crypto/err/err_prn.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/err/err_prn.d.tmp -MT $@ -c -o $@ crypto/err/err_prn.c
 	@touch crypto/err/err_prn.d.tmp
 	@if cmp crypto/err/err_prn.d.tmp crypto/err/err_prn.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/err/err_prn.d.tmp; \
@@ -3228,7 +3245,7 @@ crypto/err/err_prn.o: crypto/err/err_prn.c
 		mv crypto/err/err_prn.d.tmp crypto/err/err_prn.d; \
 	fi
 crypto/evp/bio_b64.o: crypto/evp/bio_b64.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/evp/bio_b64.d.tmp -MT $@ -c -o $@ crypto/evp/bio_b64.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/evp/bio_b64.d.tmp -MT $@ -c -o $@ crypto/evp/bio_b64.c
 	@touch crypto/evp/bio_b64.d.tmp
 	@if cmp crypto/evp/bio_b64.d.tmp crypto/evp/bio_b64.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/evp/bio_b64.d.tmp; \
@@ -3236,7 +3253,7 @@ crypto/evp/bio_b64.o: crypto/evp/bio_b64.c
 		mv crypto/evp/bio_b64.d.tmp crypto/evp/bio_b64.d; \
 	fi
 crypto/evp/bio_enc.o: crypto/evp/bio_enc.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/evp/bio_enc.d.tmp -MT $@ -c -o $@ crypto/evp/bio_enc.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/evp/bio_enc.d.tmp -MT $@ -c -o $@ crypto/evp/bio_enc.c
 	@touch crypto/evp/bio_enc.d.tmp
 	@if cmp crypto/evp/bio_enc.d.tmp crypto/evp/bio_enc.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/evp/bio_enc.d.tmp; \
@@ -3244,7 +3261,7 @@ crypto/evp/bio_enc.o: crypto/evp/bio_enc.c
 		mv crypto/evp/bio_enc.d.tmp crypto/evp/bio_enc.d; \
 	fi
 crypto/evp/bio_md.o: crypto/evp/bio_md.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/evp/bio_md.d.tmp -MT $@ -c -o $@ crypto/evp/bio_md.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/evp/bio_md.d.tmp -MT $@ -c -o $@ crypto/evp/bio_md.c
 	@touch crypto/evp/bio_md.d.tmp
 	@if cmp crypto/evp/bio_md.d.tmp crypto/evp/bio_md.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/evp/bio_md.d.tmp; \
@@ -3252,7 +3269,7 @@ crypto/evp/bio_md.o: crypto/evp/bio_md.c
 		mv crypto/evp/bio_md.d.tmp crypto/evp/bio_md.d; \
 	fi
 crypto/evp/bio_ok.o: crypto/evp/bio_ok.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/evp/bio_ok.d.tmp -MT $@ -c -o $@ crypto/evp/bio_ok.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/evp/bio_ok.d.tmp -MT $@ -c -o $@ crypto/evp/bio_ok.c
 	@touch crypto/evp/bio_ok.d.tmp
 	@if cmp crypto/evp/bio_ok.d.tmp crypto/evp/bio_ok.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/evp/bio_ok.d.tmp; \
@@ -3260,7 +3277,7 @@ crypto/evp/bio_ok.o: crypto/evp/bio_ok.c
 		mv crypto/evp/bio_ok.d.tmp crypto/evp/bio_ok.d; \
 	fi
 crypto/evp/c_allc.o: crypto/evp/c_allc.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/evp/c_allc.d.tmp -MT $@ -c -o $@ crypto/evp/c_allc.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/evp/c_allc.d.tmp -MT $@ -c -o $@ crypto/evp/c_allc.c
 	@touch crypto/evp/c_allc.d.tmp
 	@if cmp crypto/evp/c_allc.d.tmp crypto/evp/c_allc.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/evp/c_allc.d.tmp; \
@@ -3268,7 +3285,7 @@ crypto/evp/c_allc.o: crypto/evp/c_allc.c
 		mv crypto/evp/c_allc.d.tmp crypto/evp/c_allc.d; \
 	fi
 crypto/evp/c_alld.o: crypto/evp/c_alld.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/evp/c_alld.d.tmp -MT $@ -c -o $@ crypto/evp/c_alld.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/evp/c_alld.d.tmp -MT $@ -c -o $@ crypto/evp/c_alld.c
 	@touch crypto/evp/c_alld.d.tmp
 	@if cmp crypto/evp/c_alld.d.tmp crypto/evp/c_alld.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/evp/c_alld.d.tmp; \
@@ -3276,7 +3293,7 @@ crypto/evp/c_alld.o: crypto/evp/c_alld.c
 		mv crypto/evp/c_alld.d.tmp crypto/evp/c_alld.d; \
 	fi
 crypto/evp/cmeth_lib.o: crypto/evp/cmeth_lib.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/evp/cmeth_lib.d.tmp -MT $@ -c -o $@ crypto/evp/cmeth_lib.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/evp/cmeth_lib.d.tmp -MT $@ -c -o $@ crypto/evp/cmeth_lib.c
 	@touch crypto/evp/cmeth_lib.d.tmp
 	@if cmp crypto/evp/cmeth_lib.d.tmp crypto/evp/cmeth_lib.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/evp/cmeth_lib.d.tmp; \
@@ -3284,7 +3301,7 @@ crypto/evp/cmeth_lib.o: crypto/evp/cmeth_lib.c
 		mv crypto/evp/cmeth_lib.d.tmp crypto/evp/cmeth_lib.d; \
 	fi
 crypto/evp/digest.o: crypto/evp/digest.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/evp/digest.d.tmp -MT $@ -c -o $@ crypto/evp/digest.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/evp/digest.d.tmp -MT $@ -c -o $@ crypto/evp/digest.c
 	@touch crypto/evp/digest.d.tmp
 	@if cmp crypto/evp/digest.d.tmp crypto/evp/digest.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/evp/digest.d.tmp; \
@@ -3292,7 +3309,7 @@ crypto/evp/digest.o: crypto/evp/digest.c
 		mv crypto/evp/digest.d.tmp crypto/evp/digest.d; \
 	fi
 crypto/evp/e_aes.o: crypto/evp/e_aes.c
-	$(CC)  -I. -Icrypto/include -Iinclude -Icrypto -Icrypto/modes $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/evp/e_aes.d.tmp -MT $@ -c -o $@ crypto/evp/e_aes.c
+	$(CC)  -I. -Icrypto/include -Iinclude -Icrypto -Icrypto/modes $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/evp/e_aes.d.tmp -MT $@ -c -o $@ crypto/evp/e_aes.c
 	@touch crypto/evp/e_aes.d.tmp
 	@if cmp crypto/evp/e_aes.d.tmp crypto/evp/e_aes.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/evp/e_aes.d.tmp; \
@@ -3300,7 +3317,7 @@ crypto/evp/e_aes.o: crypto/evp/e_aes.c
 		mv crypto/evp/e_aes.d.tmp crypto/evp/e_aes.d; \
 	fi
 crypto/evp/e_aes_cbc_hmac_sha1.o: crypto/evp/e_aes_cbc_hmac_sha1.c
-	$(CC)  -I. -Icrypto/include -Iinclude -Icrypto/modes $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/evp/e_aes_cbc_hmac_sha1.d.tmp -MT $@ -c -o $@ crypto/evp/e_aes_cbc_hmac_sha1.c
+	$(CC)  -I. -Icrypto/include -Iinclude -Icrypto/modes $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/evp/e_aes_cbc_hmac_sha1.d.tmp -MT $@ -c -o $@ crypto/evp/e_aes_cbc_hmac_sha1.c
 	@touch crypto/evp/e_aes_cbc_hmac_sha1.d.tmp
 	@if cmp crypto/evp/e_aes_cbc_hmac_sha1.d.tmp crypto/evp/e_aes_cbc_hmac_sha1.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/evp/e_aes_cbc_hmac_sha1.d.tmp; \
@@ -3308,7 +3325,7 @@ crypto/evp/e_aes_cbc_hmac_sha1.o: crypto/evp/e_aes_cbc_hmac_sha1.c
 		mv crypto/evp/e_aes_cbc_hmac_sha1.d.tmp crypto/evp/e_aes_cbc_hmac_sha1.d; \
 	fi
 crypto/evp/e_aes_cbc_hmac_sha256.o: crypto/evp/e_aes_cbc_hmac_sha256.c
-	$(CC)  -I. -Icrypto/include -Iinclude -Icrypto/modes $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/evp/e_aes_cbc_hmac_sha256.d.tmp -MT $@ -c -o $@ crypto/evp/e_aes_cbc_hmac_sha256.c
+	$(CC)  -I. -Icrypto/include -Iinclude -Icrypto/modes $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/evp/e_aes_cbc_hmac_sha256.d.tmp -MT $@ -c -o $@ crypto/evp/e_aes_cbc_hmac_sha256.c
 	@touch crypto/evp/e_aes_cbc_hmac_sha256.d.tmp
 	@if cmp crypto/evp/e_aes_cbc_hmac_sha256.d.tmp crypto/evp/e_aes_cbc_hmac_sha256.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/evp/e_aes_cbc_hmac_sha256.d.tmp; \
@@ -3316,7 +3333,7 @@ crypto/evp/e_aes_cbc_hmac_sha256.o: crypto/evp/e_aes_cbc_hmac_sha256.c
 		mv crypto/evp/e_aes_cbc_hmac_sha256.d.tmp crypto/evp/e_aes_cbc_hmac_sha256.d; \
 	fi
 crypto/evp/e_aria.o: crypto/evp/e_aria.c
-	$(CC)  -I. -Icrypto/include -Iinclude -Icrypto -Icrypto/modes $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/evp/e_aria.d.tmp -MT $@ -c -o $@ crypto/evp/e_aria.c
+	$(CC)  -I. -Icrypto/include -Iinclude -Icrypto -Icrypto/modes $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/evp/e_aria.d.tmp -MT $@ -c -o $@ crypto/evp/e_aria.c
 	@touch crypto/evp/e_aria.d.tmp
 	@if cmp crypto/evp/e_aria.d.tmp crypto/evp/e_aria.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/evp/e_aria.d.tmp; \
@@ -3324,7 +3341,7 @@ crypto/evp/e_aria.o: crypto/evp/e_aria.c
 		mv crypto/evp/e_aria.d.tmp crypto/evp/e_aria.d; \
 	fi
 crypto/evp/e_bf.o: crypto/evp/e_bf.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/evp/e_bf.d.tmp -MT $@ -c -o $@ crypto/evp/e_bf.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/evp/e_bf.d.tmp -MT $@ -c -o $@ crypto/evp/e_bf.c
 	@touch crypto/evp/e_bf.d.tmp
 	@if cmp crypto/evp/e_bf.d.tmp crypto/evp/e_bf.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/evp/e_bf.d.tmp; \
@@ -3332,7 +3349,7 @@ crypto/evp/e_bf.o: crypto/evp/e_bf.c
 		mv crypto/evp/e_bf.d.tmp crypto/evp/e_bf.d; \
 	fi
 crypto/evp/e_camellia.o: crypto/evp/e_camellia.c
-	$(CC)  -I. -Icrypto/include -Iinclude -Icrypto -Icrypto/modes $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/evp/e_camellia.d.tmp -MT $@ -c -o $@ crypto/evp/e_camellia.c
+	$(CC)  -I. -Icrypto/include -Iinclude -Icrypto -Icrypto/modes $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/evp/e_camellia.d.tmp -MT $@ -c -o $@ crypto/evp/e_camellia.c
 	@touch crypto/evp/e_camellia.d.tmp
 	@if cmp crypto/evp/e_camellia.d.tmp crypto/evp/e_camellia.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/evp/e_camellia.d.tmp; \
@@ -3340,7 +3357,7 @@ crypto/evp/e_camellia.o: crypto/evp/e_camellia.c
 		mv crypto/evp/e_camellia.d.tmp crypto/evp/e_camellia.d; \
 	fi
 crypto/evp/e_cast.o: crypto/evp/e_cast.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/evp/e_cast.d.tmp -MT $@ -c -o $@ crypto/evp/e_cast.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/evp/e_cast.d.tmp -MT $@ -c -o $@ crypto/evp/e_cast.c
 	@touch crypto/evp/e_cast.d.tmp
 	@if cmp crypto/evp/e_cast.d.tmp crypto/evp/e_cast.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/evp/e_cast.d.tmp; \
@@ -3348,7 +3365,7 @@ crypto/evp/e_cast.o: crypto/evp/e_cast.c
 		mv crypto/evp/e_cast.d.tmp crypto/evp/e_cast.d; \
 	fi
 crypto/evp/e_chacha20_poly1305.o: crypto/evp/e_chacha20_poly1305.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/evp/e_chacha20_poly1305.d.tmp -MT $@ -c -o $@ crypto/evp/e_chacha20_poly1305.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/evp/e_chacha20_poly1305.d.tmp -MT $@ -c -o $@ crypto/evp/e_chacha20_poly1305.c
 	@touch crypto/evp/e_chacha20_poly1305.d.tmp
 	@if cmp crypto/evp/e_chacha20_poly1305.d.tmp crypto/evp/e_chacha20_poly1305.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/evp/e_chacha20_poly1305.d.tmp; \
@@ -3356,7 +3373,7 @@ crypto/evp/e_chacha20_poly1305.o: crypto/evp/e_chacha20_poly1305.c
 		mv crypto/evp/e_chacha20_poly1305.d.tmp crypto/evp/e_chacha20_poly1305.d; \
 	fi
 crypto/evp/e_des.o: crypto/evp/e_des.c
-	$(CC)  -I. -Icrypto/include -Iinclude -Icrypto $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/evp/e_des.d.tmp -MT $@ -c -o $@ crypto/evp/e_des.c
+	$(CC)  -I. -Icrypto/include -Iinclude -Icrypto $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/evp/e_des.d.tmp -MT $@ -c -o $@ crypto/evp/e_des.c
 	@touch crypto/evp/e_des.d.tmp
 	@if cmp crypto/evp/e_des.d.tmp crypto/evp/e_des.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/evp/e_des.d.tmp; \
@@ -3364,7 +3381,7 @@ crypto/evp/e_des.o: crypto/evp/e_des.c
 		mv crypto/evp/e_des.d.tmp crypto/evp/e_des.d; \
 	fi
 crypto/evp/e_des3.o: crypto/evp/e_des3.c
-	$(CC)  -I. -Icrypto/include -Iinclude -Icrypto $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/evp/e_des3.d.tmp -MT $@ -c -o $@ crypto/evp/e_des3.c
+	$(CC)  -I. -Icrypto/include -Iinclude -Icrypto $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/evp/e_des3.d.tmp -MT $@ -c -o $@ crypto/evp/e_des3.c
 	@touch crypto/evp/e_des3.d.tmp
 	@if cmp crypto/evp/e_des3.d.tmp crypto/evp/e_des3.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/evp/e_des3.d.tmp; \
@@ -3372,7 +3389,7 @@ crypto/evp/e_des3.o: crypto/evp/e_des3.c
 		mv crypto/evp/e_des3.d.tmp crypto/evp/e_des3.d; \
 	fi
 crypto/evp/e_idea.o: crypto/evp/e_idea.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/evp/e_idea.d.tmp -MT $@ -c -o $@ crypto/evp/e_idea.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/evp/e_idea.d.tmp -MT $@ -c -o $@ crypto/evp/e_idea.c
 	@touch crypto/evp/e_idea.d.tmp
 	@if cmp crypto/evp/e_idea.d.tmp crypto/evp/e_idea.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/evp/e_idea.d.tmp; \
@@ -3380,7 +3397,7 @@ crypto/evp/e_idea.o: crypto/evp/e_idea.c
 		mv crypto/evp/e_idea.d.tmp crypto/evp/e_idea.d; \
 	fi
 crypto/evp/e_null.o: crypto/evp/e_null.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/evp/e_null.d.tmp -MT $@ -c -o $@ crypto/evp/e_null.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/evp/e_null.d.tmp -MT $@ -c -o $@ crypto/evp/e_null.c
 	@touch crypto/evp/e_null.d.tmp
 	@if cmp crypto/evp/e_null.d.tmp crypto/evp/e_null.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/evp/e_null.d.tmp; \
@@ -3388,7 +3405,7 @@ crypto/evp/e_null.o: crypto/evp/e_null.c
 		mv crypto/evp/e_null.d.tmp crypto/evp/e_null.d; \
 	fi
 crypto/evp/e_old.o: crypto/evp/e_old.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/evp/e_old.d.tmp -MT $@ -c -o $@ crypto/evp/e_old.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/evp/e_old.d.tmp -MT $@ -c -o $@ crypto/evp/e_old.c
 	@touch crypto/evp/e_old.d.tmp
 	@if cmp crypto/evp/e_old.d.tmp crypto/evp/e_old.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/evp/e_old.d.tmp; \
@@ -3396,7 +3413,7 @@ crypto/evp/e_old.o: crypto/evp/e_old.c
 		mv crypto/evp/e_old.d.tmp crypto/evp/e_old.d; \
 	fi
 crypto/evp/e_rc2.o: crypto/evp/e_rc2.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/evp/e_rc2.d.tmp -MT $@ -c -o $@ crypto/evp/e_rc2.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/evp/e_rc2.d.tmp -MT $@ -c -o $@ crypto/evp/e_rc2.c
 	@touch crypto/evp/e_rc2.d.tmp
 	@if cmp crypto/evp/e_rc2.d.tmp crypto/evp/e_rc2.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/evp/e_rc2.d.tmp; \
@@ -3404,7 +3421,7 @@ crypto/evp/e_rc2.o: crypto/evp/e_rc2.c
 		mv crypto/evp/e_rc2.d.tmp crypto/evp/e_rc2.d; \
 	fi
 crypto/evp/e_rc4.o: crypto/evp/e_rc4.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/evp/e_rc4.d.tmp -MT $@ -c -o $@ crypto/evp/e_rc4.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/evp/e_rc4.d.tmp -MT $@ -c -o $@ crypto/evp/e_rc4.c
 	@touch crypto/evp/e_rc4.d.tmp
 	@if cmp crypto/evp/e_rc4.d.tmp crypto/evp/e_rc4.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/evp/e_rc4.d.tmp; \
@@ -3412,7 +3429,7 @@ crypto/evp/e_rc4.o: crypto/evp/e_rc4.c
 		mv crypto/evp/e_rc4.d.tmp crypto/evp/e_rc4.d; \
 	fi
 crypto/evp/e_rc4_hmac_md5.o: crypto/evp/e_rc4_hmac_md5.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/evp/e_rc4_hmac_md5.d.tmp -MT $@ -c -o $@ crypto/evp/e_rc4_hmac_md5.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/evp/e_rc4_hmac_md5.d.tmp -MT $@ -c -o $@ crypto/evp/e_rc4_hmac_md5.c
 	@touch crypto/evp/e_rc4_hmac_md5.d.tmp
 	@if cmp crypto/evp/e_rc4_hmac_md5.d.tmp crypto/evp/e_rc4_hmac_md5.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/evp/e_rc4_hmac_md5.d.tmp; \
@@ -3420,7 +3437,7 @@ crypto/evp/e_rc4_hmac_md5.o: crypto/evp/e_rc4_hmac_md5.c
 		mv crypto/evp/e_rc4_hmac_md5.d.tmp crypto/evp/e_rc4_hmac_md5.d; \
 	fi
 crypto/evp/e_rc5.o: crypto/evp/e_rc5.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/evp/e_rc5.d.tmp -MT $@ -c -o $@ crypto/evp/e_rc5.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/evp/e_rc5.d.tmp -MT $@ -c -o $@ crypto/evp/e_rc5.c
 	@touch crypto/evp/e_rc5.d.tmp
 	@if cmp crypto/evp/e_rc5.d.tmp crypto/evp/e_rc5.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/evp/e_rc5.d.tmp; \
@@ -3428,7 +3445,7 @@ crypto/evp/e_rc5.o: crypto/evp/e_rc5.c
 		mv crypto/evp/e_rc5.d.tmp crypto/evp/e_rc5.d; \
 	fi
 crypto/evp/e_seed.o: crypto/evp/e_seed.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/evp/e_seed.d.tmp -MT $@ -c -o $@ crypto/evp/e_seed.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/evp/e_seed.d.tmp -MT $@ -c -o $@ crypto/evp/e_seed.c
 	@touch crypto/evp/e_seed.d.tmp
 	@if cmp crypto/evp/e_seed.d.tmp crypto/evp/e_seed.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/evp/e_seed.d.tmp; \
@@ -3436,7 +3453,7 @@ crypto/evp/e_seed.o: crypto/evp/e_seed.c
 		mv crypto/evp/e_seed.d.tmp crypto/evp/e_seed.d; \
 	fi
 crypto/evp/e_sm4.o: crypto/evp/e_sm4.c
-	$(CC)  -I. -Icrypto/include -Iinclude -Icrypto -Icrypto/modes $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/evp/e_sm4.d.tmp -MT $@ -c -o $@ crypto/evp/e_sm4.c
+	$(CC)  -I. -Icrypto/include -Iinclude -Icrypto -Icrypto/modes $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/evp/e_sm4.d.tmp -MT $@ -c -o $@ crypto/evp/e_sm4.c
 	@touch crypto/evp/e_sm4.d.tmp
 	@if cmp crypto/evp/e_sm4.d.tmp crypto/evp/e_sm4.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/evp/e_sm4.d.tmp; \
@@ -3444,7 +3461,7 @@ crypto/evp/e_sm4.o: crypto/evp/e_sm4.c
 		mv crypto/evp/e_sm4.d.tmp crypto/evp/e_sm4.d; \
 	fi
 crypto/evp/e_xcbc_d.o: crypto/evp/e_xcbc_d.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/evp/e_xcbc_d.d.tmp -MT $@ -c -o $@ crypto/evp/e_xcbc_d.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/evp/e_xcbc_d.d.tmp -MT $@ -c -o $@ crypto/evp/e_xcbc_d.c
 	@touch crypto/evp/e_xcbc_d.d.tmp
 	@if cmp crypto/evp/e_xcbc_d.d.tmp crypto/evp/e_xcbc_d.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/evp/e_xcbc_d.d.tmp; \
@@ -3452,7 +3469,7 @@ crypto/evp/e_xcbc_d.o: crypto/evp/e_xcbc_d.c
 		mv crypto/evp/e_xcbc_d.d.tmp crypto/evp/e_xcbc_d.d; \
 	fi
 crypto/evp/encode.o: crypto/evp/encode.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/evp/encode.d.tmp -MT $@ -c -o $@ crypto/evp/encode.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/evp/encode.d.tmp -MT $@ -c -o $@ crypto/evp/encode.c
 	@touch crypto/evp/encode.d.tmp
 	@if cmp crypto/evp/encode.d.tmp crypto/evp/encode.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/evp/encode.d.tmp; \
@@ -3460,7 +3477,7 @@ crypto/evp/encode.o: crypto/evp/encode.c
 		mv crypto/evp/encode.d.tmp crypto/evp/encode.d; \
 	fi
 crypto/evp/evp_cnf.o: crypto/evp/evp_cnf.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/evp/evp_cnf.d.tmp -MT $@ -c -o $@ crypto/evp/evp_cnf.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/evp/evp_cnf.d.tmp -MT $@ -c -o $@ crypto/evp/evp_cnf.c
 	@touch crypto/evp/evp_cnf.d.tmp
 	@if cmp crypto/evp/evp_cnf.d.tmp crypto/evp/evp_cnf.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/evp/evp_cnf.d.tmp; \
@@ -3468,7 +3485,7 @@ crypto/evp/evp_cnf.o: crypto/evp/evp_cnf.c
 		mv crypto/evp/evp_cnf.d.tmp crypto/evp/evp_cnf.d; \
 	fi
 crypto/evp/evp_enc.o: crypto/evp/evp_enc.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/evp/evp_enc.d.tmp -MT $@ -c -o $@ crypto/evp/evp_enc.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/evp/evp_enc.d.tmp -MT $@ -c -o $@ crypto/evp/evp_enc.c
 	@touch crypto/evp/evp_enc.d.tmp
 	@if cmp crypto/evp/evp_enc.d.tmp crypto/evp/evp_enc.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/evp/evp_enc.d.tmp; \
@@ -3476,7 +3493,7 @@ crypto/evp/evp_enc.o: crypto/evp/evp_enc.c
 		mv crypto/evp/evp_enc.d.tmp crypto/evp/evp_enc.d; \
 	fi
 crypto/evp/evp_err.o: crypto/evp/evp_err.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/evp/evp_err.d.tmp -MT $@ -c -o $@ crypto/evp/evp_err.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/evp/evp_err.d.tmp -MT $@ -c -o $@ crypto/evp/evp_err.c
 	@touch crypto/evp/evp_err.d.tmp
 	@if cmp crypto/evp/evp_err.d.tmp crypto/evp/evp_err.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/evp/evp_err.d.tmp; \
@@ -3484,7 +3501,7 @@ crypto/evp/evp_err.o: crypto/evp/evp_err.c
 		mv crypto/evp/evp_err.d.tmp crypto/evp/evp_err.d; \
 	fi
 crypto/evp/evp_key.o: crypto/evp/evp_key.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/evp/evp_key.d.tmp -MT $@ -c -o $@ crypto/evp/evp_key.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/evp/evp_key.d.tmp -MT $@ -c -o $@ crypto/evp/evp_key.c
 	@touch crypto/evp/evp_key.d.tmp
 	@if cmp crypto/evp/evp_key.d.tmp crypto/evp/evp_key.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/evp/evp_key.d.tmp; \
@@ -3492,7 +3509,7 @@ crypto/evp/evp_key.o: crypto/evp/evp_key.c
 		mv crypto/evp/evp_key.d.tmp crypto/evp/evp_key.d; \
 	fi
 crypto/evp/evp_lib.o: crypto/evp/evp_lib.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/evp/evp_lib.d.tmp -MT $@ -c -o $@ crypto/evp/evp_lib.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/evp/evp_lib.d.tmp -MT $@ -c -o $@ crypto/evp/evp_lib.c
 	@touch crypto/evp/evp_lib.d.tmp
 	@if cmp crypto/evp/evp_lib.d.tmp crypto/evp/evp_lib.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/evp/evp_lib.d.tmp; \
@@ -3500,7 +3517,7 @@ crypto/evp/evp_lib.o: crypto/evp/evp_lib.c
 		mv crypto/evp/evp_lib.d.tmp crypto/evp/evp_lib.d; \
 	fi
 crypto/evp/evp_pbe.o: crypto/evp/evp_pbe.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/evp/evp_pbe.d.tmp -MT $@ -c -o $@ crypto/evp/evp_pbe.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/evp/evp_pbe.d.tmp -MT $@ -c -o $@ crypto/evp/evp_pbe.c
 	@touch crypto/evp/evp_pbe.d.tmp
 	@if cmp crypto/evp/evp_pbe.d.tmp crypto/evp/evp_pbe.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/evp/evp_pbe.d.tmp; \
@@ -3508,7 +3525,7 @@ crypto/evp/evp_pbe.o: crypto/evp/evp_pbe.c
 		mv crypto/evp/evp_pbe.d.tmp crypto/evp/evp_pbe.d; \
 	fi
 crypto/evp/evp_pkey.o: crypto/evp/evp_pkey.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/evp/evp_pkey.d.tmp -MT $@ -c -o $@ crypto/evp/evp_pkey.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/evp/evp_pkey.d.tmp -MT $@ -c -o $@ crypto/evp/evp_pkey.c
 	@touch crypto/evp/evp_pkey.d.tmp
 	@if cmp crypto/evp/evp_pkey.d.tmp crypto/evp/evp_pkey.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/evp/evp_pkey.d.tmp; \
@@ -3516,7 +3533,7 @@ crypto/evp/evp_pkey.o: crypto/evp/evp_pkey.c
 		mv crypto/evp/evp_pkey.d.tmp crypto/evp/evp_pkey.d; \
 	fi
 crypto/evp/m_md2.o: crypto/evp/m_md2.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/evp/m_md2.d.tmp -MT $@ -c -o $@ crypto/evp/m_md2.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/evp/m_md2.d.tmp -MT $@ -c -o $@ crypto/evp/m_md2.c
 	@touch crypto/evp/m_md2.d.tmp
 	@if cmp crypto/evp/m_md2.d.tmp crypto/evp/m_md2.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/evp/m_md2.d.tmp; \
@@ -3524,7 +3541,7 @@ crypto/evp/m_md2.o: crypto/evp/m_md2.c
 		mv crypto/evp/m_md2.d.tmp crypto/evp/m_md2.d; \
 	fi
 crypto/evp/m_md4.o: crypto/evp/m_md4.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/evp/m_md4.d.tmp -MT $@ -c -o $@ crypto/evp/m_md4.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/evp/m_md4.d.tmp -MT $@ -c -o $@ crypto/evp/m_md4.c
 	@touch crypto/evp/m_md4.d.tmp
 	@if cmp crypto/evp/m_md4.d.tmp crypto/evp/m_md4.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/evp/m_md4.d.tmp; \
@@ -3532,7 +3549,7 @@ crypto/evp/m_md4.o: crypto/evp/m_md4.c
 		mv crypto/evp/m_md4.d.tmp crypto/evp/m_md4.d; \
 	fi
 crypto/evp/m_md5.o: crypto/evp/m_md5.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/evp/m_md5.d.tmp -MT $@ -c -o $@ crypto/evp/m_md5.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/evp/m_md5.d.tmp -MT $@ -c -o $@ crypto/evp/m_md5.c
 	@touch crypto/evp/m_md5.d.tmp
 	@if cmp crypto/evp/m_md5.d.tmp crypto/evp/m_md5.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/evp/m_md5.d.tmp; \
@@ -3540,7 +3557,7 @@ crypto/evp/m_md5.o: crypto/evp/m_md5.c
 		mv crypto/evp/m_md5.d.tmp crypto/evp/m_md5.d; \
 	fi
 crypto/evp/m_md5_sha1.o: crypto/evp/m_md5_sha1.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/evp/m_md5_sha1.d.tmp -MT $@ -c -o $@ crypto/evp/m_md5_sha1.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/evp/m_md5_sha1.d.tmp -MT $@ -c -o $@ crypto/evp/m_md5_sha1.c
 	@touch crypto/evp/m_md5_sha1.d.tmp
 	@if cmp crypto/evp/m_md5_sha1.d.tmp crypto/evp/m_md5_sha1.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/evp/m_md5_sha1.d.tmp; \
@@ -3548,7 +3565,7 @@ crypto/evp/m_md5_sha1.o: crypto/evp/m_md5_sha1.c
 		mv crypto/evp/m_md5_sha1.d.tmp crypto/evp/m_md5_sha1.d; \
 	fi
 crypto/evp/m_mdc2.o: crypto/evp/m_mdc2.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/evp/m_mdc2.d.tmp -MT $@ -c -o $@ crypto/evp/m_mdc2.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/evp/m_mdc2.d.tmp -MT $@ -c -o $@ crypto/evp/m_mdc2.c
 	@touch crypto/evp/m_mdc2.d.tmp
 	@if cmp crypto/evp/m_mdc2.d.tmp crypto/evp/m_mdc2.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/evp/m_mdc2.d.tmp; \
@@ -3556,7 +3573,7 @@ crypto/evp/m_mdc2.o: crypto/evp/m_mdc2.c
 		mv crypto/evp/m_mdc2.d.tmp crypto/evp/m_mdc2.d; \
 	fi
 crypto/evp/m_null.o: crypto/evp/m_null.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/evp/m_null.d.tmp -MT $@ -c -o $@ crypto/evp/m_null.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/evp/m_null.d.tmp -MT $@ -c -o $@ crypto/evp/m_null.c
 	@touch crypto/evp/m_null.d.tmp
 	@if cmp crypto/evp/m_null.d.tmp crypto/evp/m_null.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/evp/m_null.d.tmp; \
@@ -3564,7 +3581,7 @@ crypto/evp/m_null.o: crypto/evp/m_null.c
 		mv crypto/evp/m_null.d.tmp crypto/evp/m_null.d; \
 	fi
 crypto/evp/m_ripemd.o: crypto/evp/m_ripemd.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/evp/m_ripemd.d.tmp -MT $@ -c -o $@ crypto/evp/m_ripemd.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/evp/m_ripemd.d.tmp -MT $@ -c -o $@ crypto/evp/m_ripemd.c
 	@touch crypto/evp/m_ripemd.d.tmp
 	@if cmp crypto/evp/m_ripemd.d.tmp crypto/evp/m_ripemd.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/evp/m_ripemd.d.tmp; \
@@ -3572,7 +3589,7 @@ crypto/evp/m_ripemd.o: crypto/evp/m_ripemd.c
 		mv crypto/evp/m_ripemd.d.tmp crypto/evp/m_ripemd.d; \
 	fi
 crypto/evp/m_sha1.o: crypto/evp/m_sha1.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/evp/m_sha1.d.tmp -MT $@ -c -o $@ crypto/evp/m_sha1.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/evp/m_sha1.d.tmp -MT $@ -c -o $@ crypto/evp/m_sha1.c
 	@touch crypto/evp/m_sha1.d.tmp
 	@if cmp crypto/evp/m_sha1.d.tmp crypto/evp/m_sha1.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/evp/m_sha1.d.tmp; \
@@ -3580,7 +3597,7 @@ crypto/evp/m_sha1.o: crypto/evp/m_sha1.c
 		mv crypto/evp/m_sha1.d.tmp crypto/evp/m_sha1.d; \
 	fi
 crypto/evp/m_sha3.o: crypto/evp/m_sha3.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/evp/m_sha3.d.tmp -MT $@ -c -o $@ crypto/evp/m_sha3.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/evp/m_sha3.d.tmp -MT $@ -c -o $@ crypto/evp/m_sha3.c
 	@touch crypto/evp/m_sha3.d.tmp
 	@if cmp crypto/evp/m_sha3.d.tmp crypto/evp/m_sha3.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/evp/m_sha3.d.tmp; \
@@ -3588,7 +3605,7 @@ crypto/evp/m_sha3.o: crypto/evp/m_sha3.c
 		mv crypto/evp/m_sha3.d.tmp crypto/evp/m_sha3.d; \
 	fi
 crypto/evp/m_sigver.o: crypto/evp/m_sigver.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/evp/m_sigver.d.tmp -MT $@ -c -o $@ crypto/evp/m_sigver.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/evp/m_sigver.d.tmp -MT $@ -c -o $@ crypto/evp/m_sigver.c
 	@touch crypto/evp/m_sigver.d.tmp
 	@if cmp crypto/evp/m_sigver.d.tmp crypto/evp/m_sigver.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/evp/m_sigver.d.tmp; \
@@ -3596,7 +3613,7 @@ crypto/evp/m_sigver.o: crypto/evp/m_sigver.c
 		mv crypto/evp/m_sigver.d.tmp crypto/evp/m_sigver.d; \
 	fi
 crypto/evp/m_wp.o: crypto/evp/m_wp.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/evp/m_wp.d.tmp -MT $@ -c -o $@ crypto/evp/m_wp.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/evp/m_wp.d.tmp -MT $@ -c -o $@ crypto/evp/m_wp.c
 	@touch crypto/evp/m_wp.d.tmp
 	@if cmp crypto/evp/m_wp.d.tmp crypto/evp/m_wp.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/evp/m_wp.d.tmp; \
@@ -3604,7 +3621,7 @@ crypto/evp/m_wp.o: crypto/evp/m_wp.c
 		mv crypto/evp/m_wp.d.tmp crypto/evp/m_wp.d; \
 	fi
 crypto/evp/names.o: crypto/evp/names.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/evp/names.d.tmp -MT $@ -c -o $@ crypto/evp/names.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/evp/names.d.tmp -MT $@ -c -o $@ crypto/evp/names.c
 	@touch crypto/evp/names.d.tmp
 	@if cmp crypto/evp/names.d.tmp crypto/evp/names.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/evp/names.d.tmp; \
@@ -3612,7 +3629,7 @@ crypto/evp/names.o: crypto/evp/names.c
 		mv crypto/evp/names.d.tmp crypto/evp/names.d; \
 	fi
 crypto/evp/p5_crpt.o: crypto/evp/p5_crpt.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/evp/p5_crpt.d.tmp -MT $@ -c -o $@ crypto/evp/p5_crpt.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/evp/p5_crpt.d.tmp -MT $@ -c -o $@ crypto/evp/p5_crpt.c
 	@touch crypto/evp/p5_crpt.d.tmp
 	@if cmp crypto/evp/p5_crpt.d.tmp crypto/evp/p5_crpt.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/evp/p5_crpt.d.tmp; \
@@ -3620,7 +3637,7 @@ crypto/evp/p5_crpt.o: crypto/evp/p5_crpt.c
 		mv crypto/evp/p5_crpt.d.tmp crypto/evp/p5_crpt.d; \
 	fi
 crypto/evp/p5_crpt2.o: crypto/evp/p5_crpt2.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/evp/p5_crpt2.d.tmp -MT $@ -c -o $@ crypto/evp/p5_crpt2.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/evp/p5_crpt2.d.tmp -MT $@ -c -o $@ crypto/evp/p5_crpt2.c
 	@touch crypto/evp/p5_crpt2.d.tmp
 	@if cmp crypto/evp/p5_crpt2.d.tmp crypto/evp/p5_crpt2.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/evp/p5_crpt2.d.tmp; \
@@ -3628,7 +3645,7 @@ crypto/evp/p5_crpt2.o: crypto/evp/p5_crpt2.c
 		mv crypto/evp/p5_crpt2.d.tmp crypto/evp/p5_crpt2.d; \
 	fi
 crypto/evp/p_dec.o: crypto/evp/p_dec.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/evp/p_dec.d.tmp -MT $@ -c -o $@ crypto/evp/p_dec.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/evp/p_dec.d.tmp -MT $@ -c -o $@ crypto/evp/p_dec.c
 	@touch crypto/evp/p_dec.d.tmp
 	@if cmp crypto/evp/p_dec.d.tmp crypto/evp/p_dec.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/evp/p_dec.d.tmp; \
@@ -3636,7 +3653,7 @@ crypto/evp/p_dec.o: crypto/evp/p_dec.c
 		mv crypto/evp/p_dec.d.tmp crypto/evp/p_dec.d; \
 	fi
 crypto/evp/p_enc.o: crypto/evp/p_enc.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/evp/p_enc.d.tmp -MT $@ -c -o $@ crypto/evp/p_enc.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/evp/p_enc.d.tmp -MT $@ -c -o $@ crypto/evp/p_enc.c
 	@touch crypto/evp/p_enc.d.tmp
 	@if cmp crypto/evp/p_enc.d.tmp crypto/evp/p_enc.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/evp/p_enc.d.tmp; \
@@ -3644,7 +3661,7 @@ crypto/evp/p_enc.o: crypto/evp/p_enc.c
 		mv crypto/evp/p_enc.d.tmp crypto/evp/p_enc.d; \
 	fi
 crypto/evp/p_lib.o: crypto/evp/p_lib.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/evp/p_lib.d.tmp -MT $@ -c -o $@ crypto/evp/p_lib.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/evp/p_lib.d.tmp -MT $@ -c -o $@ crypto/evp/p_lib.c
 	@touch crypto/evp/p_lib.d.tmp
 	@if cmp crypto/evp/p_lib.d.tmp crypto/evp/p_lib.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/evp/p_lib.d.tmp; \
@@ -3652,7 +3669,7 @@ crypto/evp/p_lib.o: crypto/evp/p_lib.c
 		mv crypto/evp/p_lib.d.tmp crypto/evp/p_lib.d; \
 	fi
 crypto/evp/p_open.o: crypto/evp/p_open.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/evp/p_open.d.tmp -MT $@ -c -o $@ crypto/evp/p_open.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/evp/p_open.d.tmp -MT $@ -c -o $@ crypto/evp/p_open.c
 	@touch crypto/evp/p_open.d.tmp
 	@if cmp crypto/evp/p_open.d.tmp crypto/evp/p_open.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/evp/p_open.d.tmp; \
@@ -3660,7 +3677,7 @@ crypto/evp/p_open.o: crypto/evp/p_open.c
 		mv crypto/evp/p_open.d.tmp crypto/evp/p_open.d; \
 	fi
 crypto/evp/p_seal.o: crypto/evp/p_seal.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/evp/p_seal.d.tmp -MT $@ -c -o $@ crypto/evp/p_seal.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/evp/p_seal.d.tmp -MT $@ -c -o $@ crypto/evp/p_seal.c
 	@touch crypto/evp/p_seal.d.tmp
 	@if cmp crypto/evp/p_seal.d.tmp crypto/evp/p_seal.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/evp/p_seal.d.tmp; \
@@ -3668,7 +3685,7 @@ crypto/evp/p_seal.o: crypto/evp/p_seal.c
 		mv crypto/evp/p_seal.d.tmp crypto/evp/p_seal.d; \
 	fi
 crypto/evp/p_sign.o: crypto/evp/p_sign.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/evp/p_sign.d.tmp -MT $@ -c -o $@ crypto/evp/p_sign.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/evp/p_sign.d.tmp -MT $@ -c -o $@ crypto/evp/p_sign.c
 	@touch crypto/evp/p_sign.d.tmp
 	@if cmp crypto/evp/p_sign.d.tmp crypto/evp/p_sign.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/evp/p_sign.d.tmp; \
@@ -3676,7 +3693,7 @@ crypto/evp/p_sign.o: crypto/evp/p_sign.c
 		mv crypto/evp/p_sign.d.tmp crypto/evp/p_sign.d; \
 	fi
 crypto/evp/p_verify.o: crypto/evp/p_verify.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/evp/p_verify.d.tmp -MT $@ -c -o $@ crypto/evp/p_verify.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/evp/p_verify.d.tmp -MT $@ -c -o $@ crypto/evp/p_verify.c
 	@touch crypto/evp/p_verify.d.tmp
 	@if cmp crypto/evp/p_verify.d.tmp crypto/evp/p_verify.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/evp/p_verify.d.tmp; \
@@ -3684,7 +3701,7 @@ crypto/evp/p_verify.o: crypto/evp/p_verify.c
 		mv crypto/evp/p_verify.d.tmp crypto/evp/p_verify.d; \
 	fi
 crypto/evp/pbe_scrypt.o: crypto/evp/pbe_scrypt.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/evp/pbe_scrypt.d.tmp -MT $@ -c -o $@ crypto/evp/pbe_scrypt.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/evp/pbe_scrypt.d.tmp -MT $@ -c -o $@ crypto/evp/pbe_scrypt.c
 	@touch crypto/evp/pbe_scrypt.d.tmp
 	@if cmp crypto/evp/pbe_scrypt.d.tmp crypto/evp/pbe_scrypt.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/evp/pbe_scrypt.d.tmp; \
@@ -3692,7 +3709,7 @@ crypto/evp/pbe_scrypt.o: crypto/evp/pbe_scrypt.c
 		mv crypto/evp/pbe_scrypt.d.tmp crypto/evp/pbe_scrypt.d; \
 	fi
 crypto/evp/pmeth_fn.o: crypto/evp/pmeth_fn.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/evp/pmeth_fn.d.tmp -MT $@ -c -o $@ crypto/evp/pmeth_fn.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/evp/pmeth_fn.d.tmp -MT $@ -c -o $@ crypto/evp/pmeth_fn.c
 	@touch crypto/evp/pmeth_fn.d.tmp
 	@if cmp crypto/evp/pmeth_fn.d.tmp crypto/evp/pmeth_fn.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/evp/pmeth_fn.d.tmp; \
@@ -3700,7 +3717,7 @@ crypto/evp/pmeth_fn.o: crypto/evp/pmeth_fn.c
 		mv crypto/evp/pmeth_fn.d.tmp crypto/evp/pmeth_fn.d; \
 	fi
 crypto/evp/pmeth_gn.o: crypto/evp/pmeth_gn.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/evp/pmeth_gn.d.tmp -MT $@ -c -o $@ crypto/evp/pmeth_gn.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/evp/pmeth_gn.d.tmp -MT $@ -c -o $@ crypto/evp/pmeth_gn.c
 	@touch crypto/evp/pmeth_gn.d.tmp
 	@if cmp crypto/evp/pmeth_gn.d.tmp crypto/evp/pmeth_gn.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/evp/pmeth_gn.d.tmp; \
@@ -3708,7 +3725,7 @@ crypto/evp/pmeth_gn.o: crypto/evp/pmeth_gn.c
 		mv crypto/evp/pmeth_gn.d.tmp crypto/evp/pmeth_gn.d; \
 	fi
 crypto/evp/pmeth_lib.o: crypto/evp/pmeth_lib.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/evp/pmeth_lib.d.tmp -MT $@ -c -o $@ crypto/evp/pmeth_lib.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/evp/pmeth_lib.d.tmp -MT $@ -c -o $@ crypto/evp/pmeth_lib.c
 	@touch crypto/evp/pmeth_lib.d.tmp
 	@if cmp crypto/evp/pmeth_lib.d.tmp crypto/evp/pmeth_lib.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/evp/pmeth_lib.d.tmp; \
@@ -3716,7 +3733,7 @@ crypto/evp/pmeth_lib.o: crypto/evp/pmeth_lib.c
 		mv crypto/evp/pmeth_lib.d.tmp crypto/evp/pmeth_lib.d; \
 	fi
 crypto/ex_data.o: crypto/ex_data.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/ex_data.d.tmp -MT $@ -c -o $@ crypto/ex_data.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/ex_data.d.tmp -MT $@ -c -o $@ crypto/ex_data.c
 	@touch crypto/ex_data.d.tmp
 	@if cmp crypto/ex_data.d.tmp crypto/ex_data.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/ex_data.d.tmp; \
@@ -3724,7 +3741,7 @@ crypto/ex_data.o: crypto/ex_data.c
 		mv crypto/ex_data.d.tmp crypto/ex_data.d; \
 	fi
 crypto/hmac/hm_ameth.o: crypto/hmac/hm_ameth.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/hmac/hm_ameth.d.tmp -MT $@ -c -o $@ crypto/hmac/hm_ameth.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/hmac/hm_ameth.d.tmp -MT $@ -c -o $@ crypto/hmac/hm_ameth.c
 	@touch crypto/hmac/hm_ameth.d.tmp
 	@if cmp crypto/hmac/hm_ameth.d.tmp crypto/hmac/hm_ameth.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/hmac/hm_ameth.d.tmp; \
@@ -3732,7 +3749,7 @@ crypto/hmac/hm_ameth.o: crypto/hmac/hm_ameth.c
 		mv crypto/hmac/hm_ameth.d.tmp crypto/hmac/hm_ameth.d; \
 	fi
 crypto/hmac/hm_pmeth.o: crypto/hmac/hm_pmeth.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/hmac/hm_pmeth.d.tmp -MT $@ -c -o $@ crypto/hmac/hm_pmeth.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/hmac/hm_pmeth.d.tmp -MT $@ -c -o $@ crypto/hmac/hm_pmeth.c
 	@touch crypto/hmac/hm_pmeth.d.tmp
 	@if cmp crypto/hmac/hm_pmeth.d.tmp crypto/hmac/hm_pmeth.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/hmac/hm_pmeth.d.tmp; \
@@ -3740,7 +3757,7 @@ crypto/hmac/hm_pmeth.o: crypto/hmac/hm_pmeth.c
 		mv crypto/hmac/hm_pmeth.d.tmp crypto/hmac/hm_pmeth.d; \
 	fi
 crypto/hmac/hmac.o: crypto/hmac/hmac.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/hmac/hmac.d.tmp -MT $@ -c -o $@ crypto/hmac/hmac.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/hmac/hmac.d.tmp -MT $@ -c -o $@ crypto/hmac/hmac.c
 	@touch crypto/hmac/hmac.d.tmp
 	@if cmp crypto/hmac/hmac.d.tmp crypto/hmac/hmac.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/hmac/hmac.d.tmp; \
@@ -3748,7 +3765,7 @@ crypto/hmac/hmac.o: crypto/hmac/hmac.c
 		mv crypto/hmac/hmac.d.tmp crypto/hmac/hmac.d; \
 	fi
 crypto/idea/i_cbc.o: crypto/idea/i_cbc.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/idea/i_cbc.d.tmp -MT $@ -c -o $@ crypto/idea/i_cbc.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/idea/i_cbc.d.tmp -MT $@ -c -o $@ crypto/idea/i_cbc.c
 	@touch crypto/idea/i_cbc.d.tmp
 	@if cmp crypto/idea/i_cbc.d.tmp crypto/idea/i_cbc.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/idea/i_cbc.d.tmp; \
@@ -3756,7 +3773,7 @@ crypto/idea/i_cbc.o: crypto/idea/i_cbc.c
 		mv crypto/idea/i_cbc.d.tmp crypto/idea/i_cbc.d; \
 	fi
 crypto/idea/i_cfb64.o: crypto/idea/i_cfb64.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/idea/i_cfb64.d.tmp -MT $@ -c -o $@ crypto/idea/i_cfb64.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/idea/i_cfb64.d.tmp -MT $@ -c -o $@ crypto/idea/i_cfb64.c
 	@touch crypto/idea/i_cfb64.d.tmp
 	@if cmp crypto/idea/i_cfb64.d.tmp crypto/idea/i_cfb64.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/idea/i_cfb64.d.tmp; \
@@ -3764,7 +3781,7 @@ crypto/idea/i_cfb64.o: crypto/idea/i_cfb64.c
 		mv crypto/idea/i_cfb64.d.tmp crypto/idea/i_cfb64.d; \
 	fi
 crypto/idea/i_ecb.o: crypto/idea/i_ecb.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/idea/i_ecb.d.tmp -MT $@ -c -o $@ crypto/idea/i_ecb.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/idea/i_ecb.d.tmp -MT $@ -c -o $@ crypto/idea/i_ecb.c
 	@touch crypto/idea/i_ecb.d.tmp
 	@if cmp crypto/idea/i_ecb.d.tmp crypto/idea/i_ecb.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/idea/i_ecb.d.tmp; \
@@ -3772,7 +3789,7 @@ crypto/idea/i_ecb.o: crypto/idea/i_ecb.c
 		mv crypto/idea/i_ecb.d.tmp crypto/idea/i_ecb.d; \
 	fi
 crypto/idea/i_ofb64.o: crypto/idea/i_ofb64.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/idea/i_ofb64.d.tmp -MT $@ -c -o $@ crypto/idea/i_ofb64.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/idea/i_ofb64.d.tmp -MT $@ -c -o $@ crypto/idea/i_ofb64.c
 	@touch crypto/idea/i_ofb64.d.tmp
 	@if cmp crypto/idea/i_ofb64.d.tmp crypto/idea/i_ofb64.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/idea/i_ofb64.d.tmp; \
@@ -3780,7 +3797,7 @@ crypto/idea/i_ofb64.o: crypto/idea/i_ofb64.c
 		mv crypto/idea/i_ofb64.d.tmp crypto/idea/i_ofb64.d; \
 	fi
 crypto/idea/i_skey.o: crypto/idea/i_skey.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/idea/i_skey.d.tmp -MT $@ -c -o $@ crypto/idea/i_skey.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/idea/i_skey.d.tmp -MT $@ -c -o $@ crypto/idea/i_skey.c
 	@touch crypto/idea/i_skey.d.tmp
 	@if cmp crypto/idea/i_skey.d.tmp crypto/idea/i_skey.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/idea/i_skey.d.tmp; \
@@ -3788,7 +3805,7 @@ crypto/idea/i_skey.o: crypto/idea/i_skey.c
 		mv crypto/idea/i_skey.d.tmp crypto/idea/i_skey.d; \
 	fi
 crypto/init.o: crypto/init.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/init.d.tmp -MT $@ -c -o $@ crypto/init.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/init.d.tmp -MT $@ -c -o $@ crypto/init.c
 	@touch crypto/init.d.tmp
 	@if cmp crypto/init.d.tmp crypto/init.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/init.d.tmp; \
@@ -3796,7 +3813,7 @@ crypto/init.o: crypto/init.c
 		mv crypto/init.d.tmp crypto/init.d; \
 	fi
 crypto/kdf/hkdf.o: crypto/kdf/hkdf.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/kdf/hkdf.d.tmp -MT $@ -c -o $@ crypto/kdf/hkdf.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/kdf/hkdf.d.tmp -MT $@ -c -o $@ crypto/kdf/hkdf.c
 	@touch crypto/kdf/hkdf.d.tmp
 	@if cmp crypto/kdf/hkdf.d.tmp crypto/kdf/hkdf.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/kdf/hkdf.d.tmp; \
@@ -3804,7 +3821,7 @@ crypto/kdf/hkdf.o: crypto/kdf/hkdf.c
 		mv crypto/kdf/hkdf.d.tmp crypto/kdf/hkdf.d; \
 	fi
 crypto/kdf/kdf_err.o: crypto/kdf/kdf_err.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/kdf/kdf_err.d.tmp -MT $@ -c -o $@ crypto/kdf/kdf_err.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/kdf/kdf_err.d.tmp -MT $@ -c -o $@ crypto/kdf/kdf_err.c
 	@touch crypto/kdf/kdf_err.d.tmp
 	@if cmp crypto/kdf/kdf_err.d.tmp crypto/kdf/kdf_err.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/kdf/kdf_err.d.tmp; \
@@ -3812,7 +3829,7 @@ crypto/kdf/kdf_err.o: crypto/kdf/kdf_err.c
 		mv crypto/kdf/kdf_err.d.tmp crypto/kdf/kdf_err.d; \
 	fi
 crypto/kdf/scrypt.o: crypto/kdf/scrypt.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/kdf/scrypt.d.tmp -MT $@ -c -o $@ crypto/kdf/scrypt.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/kdf/scrypt.d.tmp -MT $@ -c -o $@ crypto/kdf/scrypt.c
 	@touch crypto/kdf/scrypt.d.tmp
 	@if cmp crypto/kdf/scrypt.d.tmp crypto/kdf/scrypt.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/kdf/scrypt.d.tmp; \
@@ -3820,7 +3837,7 @@ crypto/kdf/scrypt.o: crypto/kdf/scrypt.c
 		mv crypto/kdf/scrypt.d.tmp crypto/kdf/scrypt.d; \
 	fi
 crypto/kdf/tls1_prf.o: crypto/kdf/tls1_prf.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/kdf/tls1_prf.d.tmp -MT $@ -c -o $@ crypto/kdf/tls1_prf.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/kdf/tls1_prf.d.tmp -MT $@ -c -o $@ crypto/kdf/tls1_prf.c
 	@touch crypto/kdf/tls1_prf.d.tmp
 	@if cmp crypto/kdf/tls1_prf.d.tmp crypto/kdf/tls1_prf.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/kdf/tls1_prf.d.tmp; \
@@ -3828,7 +3845,7 @@ crypto/kdf/tls1_prf.o: crypto/kdf/tls1_prf.c
 		mv crypto/kdf/tls1_prf.d.tmp crypto/kdf/tls1_prf.d; \
 	fi
 crypto/lhash/lh_stats.o: crypto/lhash/lh_stats.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/lhash/lh_stats.d.tmp -MT $@ -c -o $@ crypto/lhash/lh_stats.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/lhash/lh_stats.d.tmp -MT $@ -c -o $@ crypto/lhash/lh_stats.c
 	@touch crypto/lhash/lh_stats.d.tmp
 	@if cmp crypto/lhash/lh_stats.d.tmp crypto/lhash/lh_stats.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/lhash/lh_stats.d.tmp; \
@@ -3836,7 +3853,7 @@ crypto/lhash/lh_stats.o: crypto/lhash/lh_stats.c
 		mv crypto/lhash/lh_stats.d.tmp crypto/lhash/lh_stats.d; \
 	fi
 crypto/lhash/lhash.o: crypto/lhash/lhash.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/lhash/lhash.d.tmp -MT $@ -c -o $@ crypto/lhash/lhash.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/lhash/lhash.d.tmp -MT $@ -c -o $@ crypto/lhash/lhash.c
 	@touch crypto/lhash/lhash.d.tmp
 	@if cmp crypto/lhash/lhash.d.tmp crypto/lhash/lhash.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/lhash/lhash.d.tmp; \
@@ -3844,7 +3861,7 @@ crypto/lhash/lhash.o: crypto/lhash/lhash.c
 		mv crypto/lhash/lhash.d.tmp crypto/lhash/lhash.d; \
 	fi
 crypto/md4/md4_dgst.o: crypto/md4/md4_dgst.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/md4/md4_dgst.d.tmp -MT $@ -c -o $@ crypto/md4/md4_dgst.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/md4/md4_dgst.d.tmp -MT $@ -c -o $@ crypto/md4/md4_dgst.c
 	@touch crypto/md4/md4_dgst.d.tmp
 	@if cmp crypto/md4/md4_dgst.d.tmp crypto/md4/md4_dgst.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/md4/md4_dgst.d.tmp; \
@@ -3852,7 +3869,7 @@ crypto/md4/md4_dgst.o: crypto/md4/md4_dgst.c
 		mv crypto/md4/md4_dgst.d.tmp crypto/md4/md4_dgst.d; \
 	fi
 crypto/md4/md4_one.o: crypto/md4/md4_one.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/md4/md4_one.d.tmp -MT $@ -c -o $@ crypto/md4/md4_one.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/md4/md4_one.d.tmp -MT $@ -c -o $@ crypto/md4/md4_one.c
 	@touch crypto/md4/md4_one.d.tmp
 	@if cmp crypto/md4/md4_one.d.tmp crypto/md4/md4_one.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/md4/md4_one.d.tmp; \
@@ -3860,7 +3877,7 @@ crypto/md4/md4_one.o: crypto/md4/md4_one.c
 		mv crypto/md4/md4_one.d.tmp crypto/md4/md4_one.d; \
 	fi
 crypto/md5/md5_dgst.o: crypto/md5/md5_dgst.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/md5/md5_dgst.d.tmp -MT $@ -c -o $@ crypto/md5/md5_dgst.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/md5/md5_dgst.d.tmp -MT $@ -c -o $@ crypto/md5/md5_dgst.c
 	@touch crypto/md5/md5_dgst.d.tmp
 	@if cmp crypto/md5/md5_dgst.d.tmp crypto/md5/md5_dgst.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/md5/md5_dgst.d.tmp; \
@@ -3868,7 +3885,7 @@ crypto/md5/md5_dgst.o: crypto/md5/md5_dgst.c
 		mv crypto/md5/md5_dgst.d.tmp crypto/md5/md5_dgst.d; \
 	fi
 crypto/md5/md5_one.o: crypto/md5/md5_one.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/md5/md5_one.d.tmp -MT $@ -c -o $@ crypto/md5/md5_one.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/md5/md5_one.d.tmp -MT $@ -c -o $@ crypto/md5/md5_one.c
 	@touch crypto/md5/md5_one.d.tmp
 	@if cmp crypto/md5/md5_one.d.tmp crypto/md5/md5_one.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/md5/md5_one.d.tmp; \
@@ -3876,7 +3893,7 @@ crypto/md5/md5_one.o: crypto/md5/md5_one.c
 		mv crypto/md5/md5_one.d.tmp crypto/md5/md5_one.d; \
 	fi
 crypto/mdc2/mdc2_one.o: crypto/mdc2/mdc2_one.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/mdc2/mdc2_one.d.tmp -MT $@ -c -o $@ crypto/mdc2/mdc2_one.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/mdc2/mdc2_one.d.tmp -MT $@ -c -o $@ crypto/mdc2/mdc2_one.c
 	@touch crypto/mdc2/mdc2_one.d.tmp
 	@if cmp crypto/mdc2/mdc2_one.d.tmp crypto/mdc2/mdc2_one.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/mdc2/mdc2_one.d.tmp; \
@@ -3884,7 +3901,7 @@ crypto/mdc2/mdc2_one.o: crypto/mdc2/mdc2_one.c
 		mv crypto/mdc2/mdc2_one.d.tmp crypto/mdc2/mdc2_one.d; \
 	fi
 crypto/mdc2/mdc2dgst.o: crypto/mdc2/mdc2dgst.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/mdc2/mdc2dgst.d.tmp -MT $@ -c -o $@ crypto/mdc2/mdc2dgst.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/mdc2/mdc2dgst.d.tmp -MT $@ -c -o $@ crypto/mdc2/mdc2dgst.c
 	@touch crypto/mdc2/mdc2dgst.d.tmp
 	@if cmp crypto/mdc2/mdc2dgst.d.tmp crypto/mdc2/mdc2dgst.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/mdc2/mdc2dgst.d.tmp; \
@@ -3892,7 +3909,7 @@ crypto/mdc2/mdc2dgst.o: crypto/mdc2/mdc2dgst.c
 		mv crypto/mdc2/mdc2dgst.d.tmp crypto/mdc2/mdc2dgst.d; \
 	fi
 crypto/mem.o: crypto/mem.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/mem.d.tmp -MT $@ -c -o $@ crypto/mem.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/mem.d.tmp -MT $@ -c -o $@ crypto/mem.c
 	@touch crypto/mem.d.tmp
 	@if cmp crypto/mem.d.tmp crypto/mem.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/mem.d.tmp; \
@@ -3900,7 +3917,7 @@ crypto/mem.o: crypto/mem.c
 		mv crypto/mem.d.tmp crypto/mem.d; \
 	fi
 crypto/mem_clr.o: crypto/mem_clr.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/mem_clr.d.tmp -MT $@ -c -o $@ crypto/mem_clr.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/mem_clr.d.tmp -MT $@ -c -o $@ crypto/mem_clr.c
 	@touch crypto/mem_clr.d.tmp
 	@if cmp crypto/mem_clr.d.tmp crypto/mem_clr.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/mem_clr.d.tmp; \
@@ -3908,7 +3925,7 @@ crypto/mem_clr.o: crypto/mem_clr.c
 		mv crypto/mem_clr.d.tmp crypto/mem_clr.d; \
 	fi
 crypto/mem_dbg.o: crypto/mem_dbg.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/mem_dbg.d.tmp -MT $@ -c -o $@ crypto/mem_dbg.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/mem_dbg.d.tmp -MT $@ -c -o $@ crypto/mem_dbg.c
 	@touch crypto/mem_dbg.d.tmp
 	@if cmp crypto/mem_dbg.d.tmp crypto/mem_dbg.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/mem_dbg.d.tmp; \
@@ -3916,7 +3933,7 @@ crypto/mem_dbg.o: crypto/mem_dbg.c
 		mv crypto/mem_dbg.d.tmp crypto/mem_dbg.d; \
 	fi
 crypto/mem_sec.o: crypto/mem_sec.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/mem_sec.d.tmp -MT $@ -c -o $@ crypto/mem_sec.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/mem_sec.d.tmp -MT $@ -c -o $@ crypto/mem_sec.c
 	@touch crypto/mem_sec.d.tmp
 	@if cmp crypto/mem_sec.d.tmp crypto/mem_sec.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/mem_sec.d.tmp; \
@@ -3924,7 +3941,7 @@ crypto/mem_sec.o: crypto/mem_sec.c
 		mv crypto/mem_sec.d.tmp crypto/mem_sec.d; \
 	fi
 crypto/modes/cbc128.o: crypto/modes/cbc128.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/modes/cbc128.d.tmp -MT $@ -c -o $@ crypto/modes/cbc128.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/modes/cbc128.d.tmp -MT $@ -c -o $@ crypto/modes/cbc128.c
 	@touch crypto/modes/cbc128.d.tmp
 	@if cmp crypto/modes/cbc128.d.tmp crypto/modes/cbc128.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/modes/cbc128.d.tmp; \
@@ -3932,7 +3949,7 @@ crypto/modes/cbc128.o: crypto/modes/cbc128.c
 		mv crypto/modes/cbc128.d.tmp crypto/modes/cbc128.d; \
 	fi
 crypto/modes/ccm128.o: crypto/modes/ccm128.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/modes/ccm128.d.tmp -MT $@ -c -o $@ crypto/modes/ccm128.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/modes/ccm128.d.tmp -MT $@ -c -o $@ crypto/modes/ccm128.c
 	@touch crypto/modes/ccm128.d.tmp
 	@if cmp crypto/modes/ccm128.d.tmp crypto/modes/ccm128.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/modes/ccm128.d.tmp; \
@@ -3940,7 +3957,7 @@ crypto/modes/ccm128.o: crypto/modes/ccm128.c
 		mv crypto/modes/ccm128.d.tmp crypto/modes/ccm128.d; \
 	fi
 crypto/modes/cfb128.o: crypto/modes/cfb128.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/modes/cfb128.d.tmp -MT $@ -c -o $@ crypto/modes/cfb128.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/modes/cfb128.d.tmp -MT $@ -c -o $@ crypto/modes/cfb128.c
 	@touch crypto/modes/cfb128.d.tmp
 	@if cmp crypto/modes/cfb128.d.tmp crypto/modes/cfb128.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/modes/cfb128.d.tmp; \
@@ -3948,7 +3965,7 @@ crypto/modes/cfb128.o: crypto/modes/cfb128.c
 		mv crypto/modes/cfb128.d.tmp crypto/modes/cfb128.d; \
 	fi
 crypto/modes/ctr128.o: crypto/modes/ctr128.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/modes/ctr128.d.tmp -MT $@ -c -o $@ crypto/modes/ctr128.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/modes/ctr128.d.tmp -MT $@ -c -o $@ crypto/modes/ctr128.c
 	@touch crypto/modes/ctr128.d.tmp
 	@if cmp crypto/modes/ctr128.d.tmp crypto/modes/ctr128.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/modes/ctr128.d.tmp; \
@@ -3956,7 +3973,7 @@ crypto/modes/ctr128.o: crypto/modes/ctr128.c
 		mv crypto/modes/ctr128.d.tmp crypto/modes/ctr128.d; \
 	fi
 crypto/modes/cts128.o: crypto/modes/cts128.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/modes/cts128.d.tmp -MT $@ -c -o $@ crypto/modes/cts128.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/modes/cts128.d.tmp -MT $@ -c -o $@ crypto/modes/cts128.c
 	@touch crypto/modes/cts128.d.tmp
 	@if cmp crypto/modes/cts128.d.tmp crypto/modes/cts128.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/modes/cts128.d.tmp; \
@@ -3964,7 +3981,7 @@ crypto/modes/cts128.o: crypto/modes/cts128.c
 		mv crypto/modes/cts128.d.tmp crypto/modes/cts128.d; \
 	fi
 crypto/modes/gcm128.o: crypto/modes/gcm128.c
-	$(CC)  -I. -Icrypto/include -Iinclude -Icrypto $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/modes/gcm128.d.tmp -MT $@ -c -o $@ crypto/modes/gcm128.c
+	$(CC)  -I. -Icrypto/include -Iinclude -Icrypto $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/modes/gcm128.d.tmp -MT $@ -c -o $@ crypto/modes/gcm128.c
 	@touch crypto/modes/gcm128.d.tmp
 	@if cmp crypto/modes/gcm128.d.tmp crypto/modes/gcm128.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/modes/gcm128.d.tmp; \
@@ -3972,7 +3989,7 @@ crypto/modes/gcm128.o: crypto/modes/gcm128.c
 		mv crypto/modes/gcm128.d.tmp crypto/modes/gcm128.d; \
 	fi
 crypto/modes/ocb128.o: crypto/modes/ocb128.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/modes/ocb128.d.tmp -MT $@ -c -o $@ crypto/modes/ocb128.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/modes/ocb128.d.tmp -MT $@ -c -o $@ crypto/modes/ocb128.c
 	@touch crypto/modes/ocb128.d.tmp
 	@if cmp crypto/modes/ocb128.d.tmp crypto/modes/ocb128.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/modes/ocb128.d.tmp; \
@@ -3980,7 +3997,7 @@ crypto/modes/ocb128.o: crypto/modes/ocb128.c
 		mv crypto/modes/ocb128.d.tmp crypto/modes/ocb128.d; \
 	fi
 crypto/modes/ofb128.o: crypto/modes/ofb128.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/modes/ofb128.d.tmp -MT $@ -c -o $@ crypto/modes/ofb128.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/modes/ofb128.d.tmp -MT $@ -c -o $@ crypto/modes/ofb128.c
 	@touch crypto/modes/ofb128.d.tmp
 	@if cmp crypto/modes/ofb128.d.tmp crypto/modes/ofb128.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/modes/ofb128.d.tmp; \
@@ -3988,7 +4005,7 @@ crypto/modes/ofb128.o: crypto/modes/ofb128.c
 		mv crypto/modes/ofb128.d.tmp crypto/modes/ofb128.d; \
 	fi
 crypto/modes/wrap128.o: crypto/modes/wrap128.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/modes/wrap128.d.tmp -MT $@ -c -o $@ crypto/modes/wrap128.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/modes/wrap128.d.tmp -MT $@ -c -o $@ crypto/modes/wrap128.c
 	@touch crypto/modes/wrap128.d.tmp
 	@if cmp crypto/modes/wrap128.d.tmp crypto/modes/wrap128.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/modes/wrap128.d.tmp; \
@@ -3996,7 +4013,7 @@ crypto/modes/wrap128.o: crypto/modes/wrap128.c
 		mv crypto/modes/wrap128.d.tmp crypto/modes/wrap128.d; \
 	fi
 crypto/modes/xts128.o: crypto/modes/xts128.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/modes/xts128.d.tmp -MT $@ -c -o $@ crypto/modes/xts128.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/modes/xts128.d.tmp -MT $@ -c -o $@ crypto/modes/xts128.c
 	@touch crypto/modes/xts128.d.tmp
 	@if cmp crypto/modes/xts128.d.tmp crypto/modes/xts128.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/modes/xts128.d.tmp; \
@@ -4004,7 +4021,7 @@ crypto/modes/xts128.o: crypto/modes/xts128.c
 		mv crypto/modes/xts128.d.tmp crypto/modes/xts128.d; \
 	fi
 crypto/o_dir.o: crypto/o_dir.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/o_dir.d.tmp -MT $@ -c -o $@ crypto/o_dir.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/o_dir.d.tmp -MT $@ -c -o $@ crypto/o_dir.c
 	@touch crypto/o_dir.d.tmp
 	@if cmp crypto/o_dir.d.tmp crypto/o_dir.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/o_dir.d.tmp; \
@@ -4012,7 +4029,7 @@ crypto/o_dir.o: crypto/o_dir.c
 		mv crypto/o_dir.d.tmp crypto/o_dir.d; \
 	fi
 crypto/o_fips.o: crypto/o_fips.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/o_fips.d.tmp -MT $@ -c -o $@ crypto/o_fips.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/o_fips.d.tmp -MT $@ -c -o $@ crypto/o_fips.c
 	@touch crypto/o_fips.d.tmp
 	@if cmp crypto/o_fips.d.tmp crypto/o_fips.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/o_fips.d.tmp; \
@@ -4020,7 +4037,7 @@ crypto/o_fips.o: crypto/o_fips.c
 		mv crypto/o_fips.d.tmp crypto/o_fips.d; \
 	fi
 crypto/o_fopen.o: crypto/o_fopen.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/o_fopen.d.tmp -MT $@ -c -o $@ crypto/o_fopen.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/o_fopen.d.tmp -MT $@ -c -o $@ crypto/o_fopen.c
 	@touch crypto/o_fopen.d.tmp
 	@if cmp crypto/o_fopen.d.tmp crypto/o_fopen.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/o_fopen.d.tmp; \
@@ -4028,7 +4045,7 @@ crypto/o_fopen.o: crypto/o_fopen.c
 		mv crypto/o_fopen.d.tmp crypto/o_fopen.d; \
 	fi
 crypto/o_init.o: crypto/o_init.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/o_init.d.tmp -MT $@ -c -o $@ crypto/o_init.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/o_init.d.tmp -MT $@ -c -o $@ crypto/o_init.c
 	@touch crypto/o_init.d.tmp
 	@if cmp crypto/o_init.d.tmp crypto/o_init.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/o_init.d.tmp; \
@@ -4036,7 +4053,7 @@ crypto/o_init.o: crypto/o_init.c
 		mv crypto/o_init.d.tmp crypto/o_init.d; \
 	fi
 crypto/o_str.o: crypto/o_str.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/o_str.d.tmp -MT $@ -c -o $@ crypto/o_str.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/o_str.d.tmp -MT $@ -c -o $@ crypto/o_str.c
 	@touch crypto/o_str.d.tmp
 	@if cmp crypto/o_str.d.tmp crypto/o_str.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/o_str.d.tmp; \
@@ -4044,7 +4061,7 @@ crypto/o_str.o: crypto/o_str.c
 		mv crypto/o_str.d.tmp crypto/o_str.d; \
 	fi
 crypto/o_time.o: crypto/o_time.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/o_time.d.tmp -MT $@ -c -o $@ crypto/o_time.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/o_time.d.tmp -MT $@ -c -o $@ crypto/o_time.c
 	@touch crypto/o_time.d.tmp
 	@if cmp crypto/o_time.d.tmp crypto/o_time.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/o_time.d.tmp; \
@@ -4052,7 +4069,7 @@ crypto/o_time.o: crypto/o_time.c
 		mv crypto/o_time.d.tmp crypto/o_time.d; \
 	fi
 crypto/objects/o_names.o: crypto/objects/o_names.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/objects/o_names.d.tmp -MT $@ -c -o $@ crypto/objects/o_names.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/objects/o_names.d.tmp -MT $@ -c -o $@ crypto/objects/o_names.c
 	@touch crypto/objects/o_names.d.tmp
 	@if cmp crypto/objects/o_names.d.tmp crypto/objects/o_names.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/objects/o_names.d.tmp; \
@@ -4060,7 +4077,7 @@ crypto/objects/o_names.o: crypto/objects/o_names.c
 		mv crypto/objects/o_names.d.tmp crypto/objects/o_names.d; \
 	fi
 crypto/objects/obj_dat.o: crypto/objects/obj_dat.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/objects/obj_dat.d.tmp -MT $@ -c -o $@ crypto/objects/obj_dat.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/objects/obj_dat.d.tmp -MT $@ -c -o $@ crypto/objects/obj_dat.c
 	@touch crypto/objects/obj_dat.d.tmp
 	@if cmp crypto/objects/obj_dat.d.tmp crypto/objects/obj_dat.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/objects/obj_dat.d.tmp; \
@@ -4068,7 +4085,7 @@ crypto/objects/obj_dat.o: crypto/objects/obj_dat.c
 		mv crypto/objects/obj_dat.d.tmp crypto/objects/obj_dat.d; \
 	fi
 crypto/objects/obj_err.o: crypto/objects/obj_err.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/objects/obj_err.d.tmp -MT $@ -c -o $@ crypto/objects/obj_err.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/objects/obj_err.d.tmp -MT $@ -c -o $@ crypto/objects/obj_err.c
 	@touch crypto/objects/obj_err.d.tmp
 	@if cmp crypto/objects/obj_err.d.tmp crypto/objects/obj_err.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/objects/obj_err.d.tmp; \
@@ -4076,7 +4093,7 @@ crypto/objects/obj_err.o: crypto/objects/obj_err.c
 		mv crypto/objects/obj_err.d.tmp crypto/objects/obj_err.d; \
 	fi
 crypto/objects/obj_lib.o: crypto/objects/obj_lib.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/objects/obj_lib.d.tmp -MT $@ -c -o $@ crypto/objects/obj_lib.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/objects/obj_lib.d.tmp -MT $@ -c -o $@ crypto/objects/obj_lib.c
 	@touch crypto/objects/obj_lib.d.tmp
 	@if cmp crypto/objects/obj_lib.d.tmp crypto/objects/obj_lib.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/objects/obj_lib.d.tmp; \
@@ -4084,7 +4101,7 @@ crypto/objects/obj_lib.o: crypto/objects/obj_lib.c
 		mv crypto/objects/obj_lib.d.tmp crypto/objects/obj_lib.d; \
 	fi
 crypto/objects/obj_xref.o: crypto/objects/obj_xref.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/objects/obj_xref.d.tmp -MT $@ -c -o $@ crypto/objects/obj_xref.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/objects/obj_xref.d.tmp -MT $@ -c -o $@ crypto/objects/obj_xref.c
 	@touch crypto/objects/obj_xref.d.tmp
 	@if cmp crypto/objects/obj_xref.d.tmp crypto/objects/obj_xref.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/objects/obj_xref.d.tmp; \
@@ -4092,7 +4109,7 @@ crypto/objects/obj_xref.o: crypto/objects/obj_xref.c
 		mv crypto/objects/obj_xref.d.tmp crypto/objects/obj_xref.d; \
 	fi
 crypto/ocsp/ocsp_asn.o: crypto/ocsp/ocsp_asn.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/ocsp/ocsp_asn.d.tmp -MT $@ -c -o $@ crypto/ocsp/ocsp_asn.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/ocsp/ocsp_asn.d.tmp -MT $@ -c -o $@ crypto/ocsp/ocsp_asn.c
 	@touch crypto/ocsp/ocsp_asn.d.tmp
 	@if cmp crypto/ocsp/ocsp_asn.d.tmp crypto/ocsp/ocsp_asn.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/ocsp/ocsp_asn.d.tmp; \
@@ -4100,7 +4117,7 @@ crypto/ocsp/ocsp_asn.o: crypto/ocsp/ocsp_asn.c
 		mv crypto/ocsp/ocsp_asn.d.tmp crypto/ocsp/ocsp_asn.d; \
 	fi
 crypto/ocsp/ocsp_cl.o: crypto/ocsp/ocsp_cl.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/ocsp/ocsp_cl.d.tmp -MT $@ -c -o $@ crypto/ocsp/ocsp_cl.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/ocsp/ocsp_cl.d.tmp -MT $@ -c -o $@ crypto/ocsp/ocsp_cl.c
 	@touch crypto/ocsp/ocsp_cl.d.tmp
 	@if cmp crypto/ocsp/ocsp_cl.d.tmp crypto/ocsp/ocsp_cl.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/ocsp/ocsp_cl.d.tmp; \
@@ -4108,7 +4125,7 @@ crypto/ocsp/ocsp_cl.o: crypto/ocsp/ocsp_cl.c
 		mv crypto/ocsp/ocsp_cl.d.tmp crypto/ocsp/ocsp_cl.d; \
 	fi
 crypto/ocsp/ocsp_err.o: crypto/ocsp/ocsp_err.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/ocsp/ocsp_err.d.tmp -MT $@ -c -o $@ crypto/ocsp/ocsp_err.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/ocsp/ocsp_err.d.tmp -MT $@ -c -o $@ crypto/ocsp/ocsp_err.c
 	@touch crypto/ocsp/ocsp_err.d.tmp
 	@if cmp crypto/ocsp/ocsp_err.d.tmp crypto/ocsp/ocsp_err.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/ocsp/ocsp_err.d.tmp; \
@@ -4116,7 +4133,7 @@ crypto/ocsp/ocsp_err.o: crypto/ocsp/ocsp_err.c
 		mv crypto/ocsp/ocsp_err.d.tmp crypto/ocsp/ocsp_err.d; \
 	fi
 crypto/ocsp/ocsp_ext.o: crypto/ocsp/ocsp_ext.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/ocsp/ocsp_ext.d.tmp -MT $@ -c -o $@ crypto/ocsp/ocsp_ext.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/ocsp/ocsp_ext.d.tmp -MT $@ -c -o $@ crypto/ocsp/ocsp_ext.c
 	@touch crypto/ocsp/ocsp_ext.d.tmp
 	@if cmp crypto/ocsp/ocsp_ext.d.tmp crypto/ocsp/ocsp_ext.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/ocsp/ocsp_ext.d.tmp; \
@@ -4124,7 +4141,7 @@ crypto/ocsp/ocsp_ext.o: crypto/ocsp/ocsp_ext.c
 		mv crypto/ocsp/ocsp_ext.d.tmp crypto/ocsp/ocsp_ext.d; \
 	fi
 crypto/ocsp/ocsp_ht.o: crypto/ocsp/ocsp_ht.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/ocsp/ocsp_ht.d.tmp -MT $@ -c -o $@ crypto/ocsp/ocsp_ht.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/ocsp/ocsp_ht.d.tmp -MT $@ -c -o $@ crypto/ocsp/ocsp_ht.c
 	@touch crypto/ocsp/ocsp_ht.d.tmp
 	@if cmp crypto/ocsp/ocsp_ht.d.tmp crypto/ocsp/ocsp_ht.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/ocsp/ocsp_ht.d.tmp; \
@@ -4132,7 +4149,7 @@ crypto/ocsp/ocsp_ht.o: crypto/ocsp/ocsp_ht.c
 		mv crypto/ocsp/ocsp_ht.d.tmp crypto/ocsp/ocsp_ht.d; \
 	fi
 crypto/ocsp/ocsp_lib.o: crypto/ocsp/ocsp_lib.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/ocsp/ocsp_lib.d.tmp -MT $@ -c -o $@ crypto/ocsp/ocsp_lib.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/ocsp/ocsp_lib.d.tmp -MT $@ -c -o $@ crypto/ocsp/ocsp_lib.c
 	@touch crypto/ocsp/ocsp_lib.d.tmp
 	@if cmp crypto/ocsp/ocsp_lib.d.tmp crypto/ocsp/ocsp_lib.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/ocsp/ocsp_lib.d.tmp; \
@@ -4140,7 +4157,7 @@ crypto/ocsp/ocsp_lib.o: crypto/ocsp/ocsp_lib.c
 		mv crypto/ocsp/ocsp_lib.d.tmp crypto/ocsp/ocsp_lib.d; \
 	fi
 crypto/ocsp/ocsp_prn.o: crypto/ocsp/ocsp_prn.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/ocsp/ocsp_prn.d.tmp -MT $@ -c -o $@ crypto/ocsp/ocsp_prn.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/ocsp/ocsp_prn.d.tmp -MT $@ -c -o $@ crypto/ocsp/ocsp_prn.c
 	@touch crypto/ocsp/ocsp_prn.d.tmp
 	@if cmp crypto/ocsp/ocsp_prn.d.tmp crypto/ocsp/ocsp_prn.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/ocsp/ocsp_prn.d.tmp; \
@@ -4148,7 +4165,7 @@ crypto/ocsp/ocsp_prn.o: crypto/ocsp/ocsp_prn.c
 		mv crypto/ocsp/ocsp_prn.d.tmp crypto/ocsp/ocsp_prn.d; \
 	fi
 crypto/ocsp/ocsp_srv.o: crypto/ocsp/ocsp_srv.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/ocsp/ocsp_srv.d.tmp -MT $@ -c -o $@ crypto/ocsp/ocsp_srv.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/ocsp/ocsp_srv.d.tmp -MT $@ -c -o $@ crypto/ocsp/ocsp_srv.c
 	@touch crypto/ocsp/ocsp_srv.d.tmp
 	@if cmp crypto/ocsp/ocsp_srv.d.tmp crypto/ocsp/ocsp_srv.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/ocsp/ocsp_srv.d.tmp; \
@@ -4156,7 +4173,7 @@ crypto/ocsp/ocsp_srv.o: crypto/ocsp/ocsp_srv.c
 		mv crypto/ocsp/ocsp_srv.d.tmp crypto/ocsp/ocsp_srv.d; \
 	fi
 crypto/ocsp/ocsp_vfy.o: crypto/ocsp/ocsp_vfy.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/ocsp/ocsp_vfy.d.tmp -MT $@ -c -o $@ crypto/ocsp/ocsp_vfy.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/ocsp/ocsp_vfy.d.tmp -MT $@ -c -o $@ crypto/ocsp/ocsp_vfy.c
 	@touch crypto/ocsp/ocsp_vfy.d.tmp
 	@if cmp crypto/ocsp/ocsp_vfy.d.tmp crypto/ocsp/ocsp_vfy.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/ocsp/ocsp_vfy.d.tmp; \
@@ -4164,7 +4181,7 @@ crypto/ocsp/ocsp_vfy.o: crypto/ocsp/ocsp_vfy.c
 		mv crypto/ocsp/ocsp_vfy.d.tmp crypto/ocsp/ocsp_vfy.d; \
 	fi
 crypto/ocsp/v3_ocsp.o: crypto/ocsp/v3_ocsp.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/ocsp/v3_ocsp.d.tmp -MT $@ -c -o $@ crypto/ocsp/v3_ocsp.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/ocsp/v3_ocsp.d.tmp -MT $@ -c -o $@ crypto/ocsp/v3_ocsp.c
 	@touch crypto/ocsp/v3_ocsp.d.tmp
 	@if cmp crypto/ocsp/v3_ocsp.d.tmp crypto/ocsp/v3_ocsp.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/ocsp/v3_ocsp.d.tmp; \
@@ -4172,7 +4189,7 @@ crypto/ocsp/v3_ocsp.o: crypto/ocsp/v3_ocsp.c
 		mv crypto/ocsp/v3_ocsp.d.tmp crypto/ocsp/v3_ocsp.d; \
 	fi
 crypto/pem/pem_all.o: crypto/pem/pem_all.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/pem/pem_all.d.tmp -MT $@ -c -o $@ crypto/pem/pem_all.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/pem/pem_all.d.tmp -MT $@ -c -o $@ crypto/pem/pem_all.c
 	@touch crypto/pem/pem_all.d.tmp
 	@if cmp crypto/pem/pem_all.d.tmp crypto/pem/pem_all.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/pem/pem_all.d.tmp; \
@@ -4180,7 +4197,7 @@ crypto/pem/pem_all.o: crypto/pem/pem_all.c
 		mv crypto/pem/pem_all.d.tmp crypto/pem/pem_all.d; \
 	fi
 crypto/pem/pem_err.o: crypto/pem/pem_err.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/pem/pem_err.d.tmp -MT $@ -c -o $@ crypto/pem/pem_err.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/pem/pem_err.d.tmp -MT $@ -c -o $@ crypto/pem/pem_err.c
 	@touch crypto/pem/pem_err.d.tmp
 	@if cmp crypto/pem/pem_err.d.tmp crypto/pem/pem_err.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/pem/pem_err.d.tmp; \
@@ -4188,7 +4205,7 @@ crypto/pem/pem_err.o: crypto/pem/pem_err.c
 		mv crypto/pem/pem_err.d.tmp crypto/pem/pem_err.d; \
 	fi
 crypto/pem/pem_info.o: crypto/pem/pem_info.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/pem/pem_info.d.tmp -MT $@ -c -o $@ crypto/pem/pem_info.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/pem/pem_info.d.tmp -MT $@ -c -o $@ crypto/pem/pem_info.c
 	@touch crypto/pem/pem_info.d.tmp
 	@if cmp crypto/pem/pem_info.d.tmp crypto/pem/pem_info.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/pem/pem_info.d.tmp; \
@@ -4196,7 +4213,7 @@ crypto/pem/pem_info.o: crypto/pem/pem_info.c
 		mv crypto/pem/pem_info.d.tmp crypto/pem/pem_info.d; \
 	fi
 crypto/pem/pem_lib.o: crypto/pem/pem_lib.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/pem/pem_lib.d.tmp -MT $@ -c -o $@ crypto/pem/pem_lib.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/pem/pem_lib.d.tmp -MT $@ -c -o $@ crypto/pem/pem_lib.c
 	@touch crypto/pem/pem_lib.d.tmp
 	@if cmp crypto/pem/pem_lib.d.tmp crypto/pem/pem_lib.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/pem/pem_lib.d.tmp; \
@@ -4204,7 +4221,7 @@ crypto/pem/pem_lib.o: crypto/pem/pem_lib.c
 		mv crypto/pem/pem_lib.d.tmp crypto/pem/pem_lib.d; \
 	fi
 crypto/pem/pem_oth.o: crypto/pem/pem_oth.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/pem/pem_oth.d.tmp -MT $@ -c -o $@ crypto/pem/pem_oth.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/pem/pem_oth.d.tmp -MT $@ -c -o $@ crypto/pem/pem_oth.c
 	@touch crypto/pem/pem_oth.d.tmp
 	@if cmp crypto/pem/pem_oth.d.tmp crypto/pem/pem_oth.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/pem/pem_oth.d.tmp; \
@@ -4212,7 +4229,7 @@ crypto/pem/pem_oth.o: crypto/pem/pem_oth.c
 		mv crypto/pem/pem_oth.d.tmp crypto/pem/pem_oth.d; \
 	fi
 crypto/pem/pem_pk8.o: crypto/pem/pem_pk8.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/pem/pem_pk8.d.tmp -MT $@ -c -o $@ crypto/pem/pem_pk8.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/pem/pem_pk8.d.tmp -MT $@ -c -o $@ crypto/pem/pem_pk8.c
 	@touch crypto/pem/pem_pk8.d.tmp
 	@if cmp crypto/pem/pem_pk8.d.tmp crypto/pem/pem_pk8.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/pem/pem_pk8.d.tmp; \
@@ -4220,7 +4237,7 @@ crypto/pem/pem_pk8.o: crypto/pem/pem_pk8.c
 		mv crypto/pem/pem_pk8.d.tmp crypto/pem/pem_pk8.d; \
 	fi
 crypto/pem/pem_pkey.o: crypto/pem/pem_pkey.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/pem/pem_pkey.d.tmp -MT $@ -c -o $@ crypto/pem/pem_pkey.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/pem/pem_pkey.d.tmp -MT $@ -c -o $@ crypto/pem/pem_pkey.c
 	@touch crypto/pem/pem_pkey.d.tmp
 	@if cmp crypto/pem/pem_pkey.d.tmp crypto/pem/pem_pkey.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/pem/pem_pkey.d.tmp; \
@@ -4228,7 +4245,7 @@ crypto/pem/pem_pkey.o: crypto/pem/pem_pkey.c
 		mv crypto/pem/pem_pkey.d.tmp crypto/pem/pem_pkey.d; \
 	fi
 crypto/pem/pem_sign.o: crypto/pem/pem_sign.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/pem/pem_sign.d.tmp -MT $@ -c -o $@ crypto/pem/pem_sign.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/pem/pem_sign.d.tmp -MT $@ -c -o $@ crypto/pem/pem_sign.c
 	@touch crypto/pem/pem_sign.d.tmp
 	@if cmp crypto/pem/pem_sign.d.tmp crypto/pem/pem_sign.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/pem/pem_sign.d.tmp; \
@@ -4236,7 +4253,7 @@ crypto/pem/pem_sign.o: crypto/pem/pem_sign.c
 		mv crypto/pem/pem_sign.d.tmp crypto/pem/pem_sign.d; \
 	fi
 crypto/pem/pem_x509.o: crypto/pem/pem_x509.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/pem/pem_x509.d.tmp -MT $@ -c -o $@ crypto/pem/pem_x509.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/pem/pem_x509.d.tmp -MT $@ -c -o $@ crypto/pem/pem_x509.c
 	@touch crypto/pem/pem_x509.d.tmp
 	@if cmp crypto/pem/pem_x509.d.tmp crypto/pem/pem_x509.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/pem/pem_x509.d.tmp; \
@@ -4244,7 +4261,7 @@ crypto/pem/pem_x509.o: crypto/pem/pem_x509.c
 		mv crypto/pem/pem_x509.d.tmp crypto/pem/pem_x509.d; \
 	fi
 crypto/pem/pem_xaux.o: crypto/pem/pem_xaux.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/pem/pem_xaux.d.tmp -MT $@ -c -o $@ crypto/pem/pem_xaux.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/pem/pem_xaux.d.tmp -MT $@ -c -o $@ crypto/pem/pem_xaux.c
 	@touch crypto/pem/pem_xaux.d.tmp
 	@if cmp crypto/pem/pem_xaux.d.tmp crypto/pem/pem_xaux.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/pem/pem_xaux.d.tmp; \
@@ -4252,7 +4269,7 @@ crypto/pem/pem_xaux.o: crypto/pem/pem_xaux.c
 		mv crypto/pem/pem_xaux.d.tmp crypto/pem/pem_xaux.d; \
 	fi
 crypto/pem/pvkfmt.o: crypto/pem/pvkfmt.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/pem/pvkfmt.d.tmp -MT $@ -c -o $@ crypto/pem/pvkfmt.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/pem/pvkfmt.d.tmp -MT $@ -c -o $@ crypto/pem/pvkfmt.c
 	@touch crypto/pem/pvkfmt.d.tmp
 	@if cmp crypto/pem/pvkfmt.d.tmp crypto/pem/pvkfmt.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/pem/pvkfmt.d.tmp; \
@@ -4260,7 +4277,7 @@ crypto/pem/pvkfmt.o: crypto/pem/pvkfmt.c
 		mv crypto/pem/pvkfmt.d.tmp crypto/pem/pvkfmt.d; \
 	fi
 crypto/pkcs12/p12_add.o: crypto/pkcs12/p12_add.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/pkcs12/p12_add.d.tmp -MT $@ -c -o $@ crypto/pkcs12/p12_add.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/pkcs12/p12_add.d.tmp -MT $@ -c -o $@ crypto/pkcs12/p12_add.c
 	@touch crypto/pkcs12/p12_add.d.tmp
 	@if cmp crypto/pkcs12/p12_add.d.tmp crypto/pkcs12/p12_add.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/pkcs12/p12_add.d.tmp; \
@@ -4268,7 +4285,7 @@ crypto/pkcs12/p12_add.o: crypto/pkcs12/p12_add.c
 		mv crypto/pkcs12/p12_add.d.tmp crypto/pkcs12/p12_add.d; \
 	fi
 crypto/pkcs12/p12_asn.o: crypto/pkcs12/p12_asn.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/pkcs12/p12_asn.d.tmp -MT $@ -c -o $@ crypto/pkcs12/p12_asn.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/pkcs12/p12_asn.d.tmp -MT $@ -c -o $@ crypto/pkcs12/p12_asn.c
 	@touch crypto/pkcs12/p12_asn.d.tmp
 	@if cmp crypto/pkcs12/p12_asn.d.tmp crypto/pkcs12/p12_asn.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/pkcs12/p12_asn.d.tmp; \
@@ -4276,7 +4293,7 @@ crypto/pkcs12/p12_asn.o: crypto/pkcs12/p12_asn.c
 		mv crypto/pkcs12/p12_asn.d.tmp crypto/pkcs12/p12_asn.d; \
 	fi
 crypto/pkcs12/p12_attr.o: crypto/pkcs12/p12_attr.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/pkcs12/p12_attr.d.tmp -MT $@ -c -o $@ crypto/pkcs12/p12_attr.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/pkcs12/p12_attr.d.tmp -MT $@ -c -o $@ crypto/pkcs12/p12_attr.c
 	@touch crypto/pkcs12/p12_attr.d.tmp
 	@if cmp crypto/pkcs12/p12_attr.d.tmp crypto/pkcs12/p12_attr.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/pkcs12/p12_attr.d.tmp; \
@@ -4284,7 +4301,7 @@ crypto/pkcs12/p12_attr.o: crypto/pkcs12/p12_attr.c
 		mv crypto/pkcs12/p12_attr.d.tmp crypto/pkcs12/p12_attr.d; \
 	fi
 crypto/pkcs12/p12_crpt.o: crypto/pkcs12/p12_crpt.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/pkcs12/p12_crpt.d.tmp -MT $@ -c -o $@ crypto/pkcs12/p12_crpt.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/pkcs12/p12_crpt.d.tmp -MT $@ -c -o $@ crypto/pkcs12/p12_crpt.c
 	@touch crypto/pkcs12/p12_crpt.d.tmp
 	@if cmp crypto/pkcs12/p12_crpt.d.tmp crypto/pkcs12/p12_crpt.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/pkcs12/p12_crpt.d.tmp; \
@@ -4292,7 +4309,7 @@ crypto/pkcs12/p12_crpt.o: crypto/pkcs12/p12_crpt.c
 		mv crypto/pkcs12/p12_crpt.d.tmp crypto/pkcs12/p12_crpt.d; \
 	fi
 crypto/pkcs12/p12_crt.o: crypto/pkcs12/p12_crt.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/pkcs12/p12_crt.d.tmp -MT $@ -c -o $@ crypto/pkcs12/p12_crt.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/pkcs12/p12_crt.d.tmp -MT $@ -c -o $@ crypto/pkcs12/p12_crt.c
 	@touch crypto/pkcs12/p12_crt.d.tmp
 	@if cmp crypto/pkcs12/p12_crt.d.tmp crypto/pkcs12/p12_crt.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/pkcs12/p12_crt.d.tmp; \
@@ -4300,7 +4317,7 @@ crypto/pkcs12/p12_crt.o: crypto/pkcs12/p12_crt.c
 		mv crypto/pkcs12/p12_crt.d.tmp crypto/pkcs12/p12_crt.d; \
 	fi
 crypto/pkcs12/p12_decr.o: crypto/pkcs12/p12_decr.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/pkcs12/p12_decr.d.tmp -MT $@ -c -o $@ crypto/pkcs12/p12_decr.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/pkcs12/p12_decr.d.tmp -MT $@ -c -o $@ crypto/pkcs12/p12_decr.c
 	@touch crypto/pkcs12/p12_decr.d.tmp
 	@if cmp crypto/pkcs12/p12_decr.d.tmp crypto/pkcs12/p12_decr.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/pkcs12/p12_decr.d.tmp; \
@@ -4308,7 +4325,7 @@ crypto/pkcs12/p12_decr.o: crypto/pkcs12/p12_decr.c
 		mv crypto/pkcs12/p12_decr.d.tmp crypto/pkcs12/p12_decr.d; \
 	fi
 crypto/pkcs12/p12_init.o: crypto/pkcs12/p12_init.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/pkcs12/p12_init.d.tmp -MT $@ -c -o $@ crypto/pkcs12/p12_init.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/pkcs12/p12_init.d.tmp -MT $@ -c -o $@ crypto/pkcs12/p12_init.c
 	@touch crypto/pkcs12/p12_init.d.tmp
 	@if cmp crypto/pkcs12/p12_init.d.tmp crypto/pkcs12/p12_init.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/pkcs12/p12_init.d.tmp; \
@@ -4316,7 +4333,7 @@ crypto/pkcs12/p12_init.o: crypto/pkcs12/p12_init.c
 		mv crypto/pkcs12/p12_init.d.tmp crypto/pkcs12/p12_init.d; \
 	fi
 crypto/pkcs12/p12_key.o: crypto/pkcs12/p12_key.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/pkcs12/p12_key.d.tmp -MT $@ -c -o $@ crypto/pkcs12/p12_key.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/pkcs12/p12_key.d.tmp -MT $@ -c -o $@ crypto/pkcs12/p12_key.c
 	@touch crypto/pkcs12/p12_key.d.tmp
 	@if cmp crypto/pkcs12/p12_key.d.tmp crypto/pkcs12/p12_key.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/pkcs12/p12_key.d.tmp; \
@@ -4324,7 +4341,7 @@ crypto/pkcs12/p12_key.o: crypto/pkcs12/p12_key.c
 		mv crypto/pkcs12/p12_key.d.tmp crypto/pkcs12/p12_key.d; \
 	fi
 crypto/pkcs12/p12_kiss.o: crypto/pkcs12/p12_kiss.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/pkcs12/p12_kiss.d.tmp -MT $@ -c -o $@ crypto/pkcs12/p12_kiss.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/pkcs12/p12_kiss.d.tmp -MT $@ -c -o $@ crypto/pkcs12/p12_kiss.c
 	@touch crypto/pkcs12/p12_kiss.d.tmp
 	@if cmp crypto/pkcs12/p12_kiss.d.tmp crypto/pkcs12/p12_kiss.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/pkcs12/p12_kiss.d.tmp; \
@@ -4332,7 +4349,7 @@ crypto/pkcs12/p12_kiss.o: crypto/pkcs12/p12_kiss.c
 		mv crypto/pkcs12/p12_kiss.d.tmp crypto/pkcs12/p12_kiss.d; \
 	fi
 crypto/pkcs12/p12_mutl.o: crypto/pkcs12/p12_mutl.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/pkcs12/p12_mutl.d.tmp -MT $@ -c -o $@ crypto/pkcs12/p12_mutl.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/pkcs12/p12_mutl.d.tmp -MT $@ -c -o $@ crypto/pkcs12/p12_mutl.c
 	@touch crypto/pkcs12/p12_mutl.d.tmp
 	@if cmp crypto/pkcs12/p12_mutl.d.tmp crypto/pkcs12/p12_mutl.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/pkcs12/p12_mutl.d.tmp; \
@@ -4340,7 +4357,7 @@ crypto/pkcs12/p12_mutl.o: crypto/pkcs12/p12_mutl.c
 		mv crypto/pkcs12/p12_mutl.d.tmp crypto/pkcs12/p12_mutl.d; \
 	fi
 crypto/pkcs12/p12_npas.o: crypto/pkcs12/p12_npas.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/pkcs12/p12_npas.d.tmp -MT $@ -c -o $@ crypto/pkcs12/p12_npas.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/pkcs12/p12_npas.d.tmp -MT $@ -c -o $@ crypto/pkcs12/p12_npas.c
 	@touch crypto/pkcs12/p12_npas.d.tmp
 	@if cmp crypto/pkcs12/p12_npas.d.tmp crypto/pkcs12/p12_npas.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/pkcs12/p12_npas.d.tmp; \
@@ -4348,7 +4365,7 @@ crypto/pkcs12/p12_npas.o: crypto/pkcs12/p12_npas.c
 		mv crypto/pkcs12/p12_npas.d.tmp crypto/pkcs12/p12_npas.d; \
 	fi
 crypto/pkcs12/p12_p8d.o: crypto/pkcs12/p12_p8d.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/pkcs12/p12_p8d.d.tmp -MT $@ -c -o $@ crypto/pkcs12/p12_p8d.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/pkcs12/p12_p8d.d.tmp -MT $@ -c -o $@ crypto/pkcs12/p12_p8d.c
 	@touch crypto/pkcs12/p12_p8d.d.tmp
 	@if cmp crypto/pkcs12/p12_p8d.d.tmp crypto/pkcs12/p12_p8d.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/pkcs12/p12_p8d.d.tmp; \
@@ -4356,7 +4373,7 @@ crypto/pkcs12/p12_p8d.o: crypto/pkcs12/p12_p8d.c
 		mv crypto/pkcs12/p12_p8d.d.tmp crypto/pkcs12/p12_p8d.d; \
 	fi
 crypto/pkcs12/p12_p8e.o: crypto/pkcs12/p12_p8e.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/pkcs12/p12_p8e.d.tmp -MT $@ -c -o $@ crypto/pkcs12/p12_p8e.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/pkcs12/p12_p8e.d.tmp -MT $@ -c -o $@ crypto/pkcs12/p12_p8e.c
 	@touch crypto/pkcs12/p12_p8e.d.tmp
 	@if cmp crypto/pkcs12/p12_p8e.d.tmp crypto/pkcs12/p12_p8e.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/pkcs12/p12_p8e.d.tmp; \
@@ -4364,7 +4381,7 @@ crypto/pkcs12/p12_p8e.o: crypto/pkcs12/p12_p8e.c
 		mv crypto/pkcs12/p12_p8e.d.tmp crypto/pkcs12/p12_p8e.d; \
 	fi
 crypto/pkcs12/p12_sbag.o: crypto/pkcs12/p12_sbag.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/pkcs12/p12_sbag.d.tmp -MT $@ -c -o $@ crypto/pkcs12/p12_sbag.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/pkcs12/p12_sbag.d.tmp -MT $@ -c -o $@ crypto/pkcs12/p12_sbag.c
 	@touch crypto/pkcs12/p12_sbag.d.tmp
 	@if cmp crypto/pkcs12/p12_sbag.d.tmp crypto/pkcs12/p12_sbag.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/pkcs12/p12_sbag.d.tmp; \
@@ -4372,7 +4389,7 @@ crypto/pkcs12/p12_sbag.o: crypto/pkcs12/p12_sbag.c
 		mv crypto/pkcs12/p12_sbag.d.tmp crypto/pkcs12/p12_sbag.d; \
 	fi
 crypto/pkcs12/p12_utl.o: crypto/pkcs12/p12_utl.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/pkcs12/p12_utl.d.tmp -MT $@ -c -o $@ crypto/pkcs12/p12_utl.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/pkcs12/p12_utl.d.tmp -MT $@ -c -o $@ crypto/pkcs12/p12_utl.c
 	@touch crypto/pkcs12/p12_utl.d.tmp
 	@if cmp crypto/pkcs12/p12_utl.d.tmp crypto/pkcs12/p12_utl.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/pkcs12/p12_utl.d.tmp; \
@@ -4380,7 +4397,7 @@ crypto/pkcs12/p12_utl.o: crypto/pkcs12/p12_utl.c
 		mv crypto/pkcs12/p12_utl.d.tmp crypto/pkcs12/p12_utl.d; \
 	fi
 crypto/pkcs12/pk12err.o: crypto/pkcs12/pk12err.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/pkcs12/pk12err.d.tmp -MT $@ -c -o $@ crypto/pkcs12/pk12err.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/pkcs12/pk12err.d.tmp -MT $@ -c -o $@ crypto/pkcs12/pk12err.c
 	@touch crypto/pkcs12/pk12err.d.tmp
 	@if cmp crypto/pkcs12/pk12err.d.tmp crypto/pkcs12/pk12err.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/pkcs12/pk12err.d.tmp; \
@@ -4388,7 +4405,7 @@ crypto/pkcs12/pk12err.o: crypto/pkcs12/pk12err.c
 		mv crypto/pkcs12/pk12err.d.tmp crypto/pkcs12/pk12err.d; \
 	fi
 crypto/pkcs7/bio_pk7.o: crypto/pkcs7/bio_pk7.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/pkcs7/bio_pk7.d.tmp -MT $@ -c -o $@ crypto/pkcs7/bio_pk7.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/pkcs7/bio_pk7.d.tmp -MT $@ -c -o $@ crypto/pkcs7/bio_pk7.c
 	@touch crypto/pkcs7/bio_pk7.d.tmp
 	@if cmp crypto/pkcs7/bio_pk7.d.tmp crypto/pkcs7/bio_pk7.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/pkcs7/bio_pk7.d.tmp; \
@@ -4396,7 +4413,7 @@ crypto/pkcs7/bio_pk7.o: crypto/pkcs7/bio_pk7.c
 		mv crypto/pkcs7/bio_pk7.d.tmp crypto/pkcs7/bio_pk7.d; \
 	fi
 crypto/pkcs7/pk7_asn1.o: crypto/pkcs7/pk7_asn1.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/pkcs7/pk7_asn1.d.tmp -MT $@ -c -o $@ crypto/pkcs7/pk7_asn1.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/pkcs7/pk7_asn1.d.tmp -MT $@ -c -o $@ crypto/pkcs7/pk7_asn1.c
 	@touch crypto/pkcs7/pk7_asn1.d.tmp
 	@if cmp crypto/pkcs7/pk7_asn1.d.tmp crypto/pkcs7/pk7_asn1.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/pkcs7/pk7_asn1.d.tmp; \
@@ -4404,7 +4421,7 @@ crypto/pkcs7/pk7_asn1.o: crypto/pkcs7/pk7_asn1.c
 		mv crypto/pkcs7/pk7_asn1.d.tmp crypto/pkcs7/pk7_asn1.d; \
 	fi
 crypto/pkcs7/pk7_attr.o: crypto/pkcs7/pk7_attr.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/pkcs7/pk7_attr.d.tmp -MT $@ -c -o $@ crypto/pkcs7/pk7_attr.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/pkcs7/pk7_attr.d.tmp -MT $@ -c -o $@ crypto/pkcs7/pk7_attr.c
 	@touch crypto/pkcs7/pk7_attr.d.tmp
 	@if cmp crypto/pkcs7/pk7_attr.d.tmp crypto/pkcs7/pk7_attr.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/pkcs7/pk7_attr.d.tmp; \
@@ -4412,7 +4429,7 @@ crypto/pkcs7/pk7_attr.o: crypto/pkcs7/pk7_attr.c
 		mv crypto/pkcs7/pk7_attr.d.tmp crypto/pkcs7/pk7_attr.d; \
 	fi
 crypto/pkcs7/pk7_doit.o: crypto/pkcs7/pk7_doit.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/pkcs7/pk7_doit.d.tmp -MT $@ -c -o $@ crypto/pkcs7/pk7_doit.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/pkcs7/pk7_doit.d.tmp -MT $@ -c -o $@ crypto/pkcs7/pk7_doit.c
 	@touch crypto/pkcs7/pk7_doit.d.tmp
 	@if cmp crypto/pkcs7/pk7_doit.d.tmp crypto/pkcs7/pk7_doit.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/pkcs7/pk7_doit.d.tmp; \
@@ -4420,7 +4437,7 @@ crypto/pkcs7/pk7_doit.o: crypto/pkcs7/pk7_doit.c
 		mv crypto/pkcs7/pk7_doit.d.tmp crypto/pkcs7/pk7_doit.d; \
 	fi
 crypto/pkcs7/pk7_lib.o: crypto/pkcs7/pk7_lib.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/pkcs7/pk7_lib.d.tmp -MT $@ -c -o $@ crypto/pkcs7/pk7_lib.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/pkcs7/pk7_lib.d.tmp -MT $@ -c -o $@ crypto/pkcs7/pk7_lib.c
 	@touch crypto/pkcs7/pk7_lib.d.tmp
 	@if cmp crypto/pkcs7/pk7_lib.d.tmp crypto/pkcs7/pk7_lib.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/pkcs7/pk7_lib.d.tmp; \
@@ -4428,7 +4445,7 @@ crypto/pkcs7/pk7_lib.o: crypto/pkcs7/pk7_lib.c
 		mv crypto/pkcs7/pk7_lib.d.tmp crypto/pkcs7/pk7_lib.d; \
 	fi
 crypto/pkcs7/pk7_mime.o: crypto/pkcs7/pk7_mime.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/pkcs7/pk7_mime.d.tmp -MT $@ -c -o $@ crypto/pkcs7/pk7_mime.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/pkcs7/pk7_mime.d.tmp -MT $@ -c -o $@ crypto/pkcs7/pk7_mime.c
 	@touch crypto/pkcs7/pk7_mime.d.tmp
 	@if cmp crypto/pkcs7/pk7_mime.d.tmp crypto/pkcs7/pk7_mime.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/pkcs7/pk7_mime.d.tmp; \
@@ -4436,7 +4453,7 @@ crypto/pkcs7/pk7_mime.o: crypto/pkcs7/pk7_mime.c
 		mv crypto/pkcs7/pk7_mime.d.tmp crypto/pkcs7/pk7_mime.d; \
 	fi
 crypto/pkcs7/pk7_smime.o: crypto/pkcs7/pk7_smime.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/pkcs7/pk7_smime.d.tmp -MT $@ -c -o $@ crypto/pkcs7/pk7_smime.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/pkcs7/pk7_smime.d.tmp -MT $@ -c -o $@ crypto/pkcs7/pk7_smime.c
 	@touch crypto/pkcs7/pk7_smime.d.tmp
 	@if cmp crypto/pkcs7/pk7_smime.d.tmp crypto/pkcs7/pk7_smime.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/pkcs7/pk7_smime.d.tmp; \
@@ -4444,7 +4461,7 @@ crypto/pkcs7/pk7_smime.o: crypto/pkcs7/pk7_smime.c
 		mv crypto/pkcs7/pk7_smime.d.tmp crypto/pkcs7/pk7_smime.d; \
 	fi
 crypto/pkcs7/pkcs7err.o: crypto/pkcs7/pkcs7err.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/pkcs7/pkcs7err.d.tmp -MT $@ -c -o $@ crypto/pkcs7/pkcs7err.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/pkcs7/pkcs7err.d.tmp -MT $@ -c -o $@ crypto/pkcs7/pkcs7err.c
 	@touch crypto/pkcs7/pkcs7err.d.tmp
 	@if cmp crypto/pkcs7/pkcs7err.d.tmp crypto/pkcs7/pkcs7err.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/pkcs7/pkcs7err.d.tmp; \
@@ -4452,7 +4469,7 @@ crypto/pkcs7/pkcs7err.o: crypto/pkcs7/pkcs7err.c
 		mv crypto/pkcs7/pkcs7err.d.tmp crypto/pkcs7/pkcs7err.d; \
 	fi
 crypto/poly1305/poly1305.o: crypto/poly1305/poly1305.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/poly1305/poly1305.d.tmp -MT $@ -c -o $@ crypto/poly1305/poly1305.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/poly1305/poly1305.d.tmp -MT $@ -c -o $@ crypto/poly1305/poly1305.c
 	@touch crypto/poly1305/poly1305.d.tmp
 	@if cmp crypto/poly1305/poly1305.d.tmp crypto/poly1305/poly1305.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/poly1305/poly1305.d.tmp; \
@@ -4460,7 +4477,7 @@ crypto/poly1305/poly1305.o: crypto/poly1305/poly1305.c
 		mv crypto/poly1305/poly1305.d.tmp crypto/poly1305/poly1305.d; \
 	fi
 crypto/poly1305/poly1305_ameth.o: crypto/poly1305/poly1305_ameth.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/poly1305/poly1305_ameth.d.tmp -MT $@ -c -o $@ crypto/poly1305/poly1305_ameth.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/poly1305/poly1305_ameth.d.tmp -MT $@ -c -o $@ crypto/poly1305/poly1305_ameth.c
 	@touch crypto/poly1305/poly1305_ameth.d.tmp
 	@if cmp crypto/poly1305/poly1305_ameth.d.tmp crypto/poly1305/poly1305_ameth.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/poly1305/poly1305_ameth.d.tmp; \
@@ -4468,7 +4485,7 @@ crypto/poly1305/poly1305_ameth.o: crypto/poly1305/poly1305_ameth.c
 		mv crypto/poly1305/poly1305_ameth.d.tmp crypto/poly1305/poly1305_ameth.d; \
 	fi
 crypto/poly1305/poly1305_pmeth.o: crypto/poly1305/poly1305_pmeth.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/poly1305/poly1305_pmeth.d.tmp -MT $@ -c -o $@ crypto/poly1305/poly1305_pmeth.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/poly1305/poly1305_pmeth.d.tmp -MT $@ -c -o $@ crypto/poly1305/poly1305_pmeth.c
 	@touch crypto/poly1305/poly1305_pmeth.d.tmp
 	@if cmp crypto/poly1305/poly1305_pmeth.d.tmp crypto/poly1305/poly1305_pmeth.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/poly1305/poly1305_pmeth.d.tmp; \
@@ -4476,7 +4493,7 @@ crypto/poly1305/poly1305_pmeth.o: crypto/poly1305/poly1305_pmeth.c
 		mv crypto/poly1305/poly1305_pmeth.d.tmp crypto/poly1305/poly1305_pmeth.d; \
 	fi
 crypto/rand/drbg_ctr.o: crypto/rand/drbg_ctr.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/rand/drbg_ctr.d.tmp -MT $@ -c -o $@ crypto/rand/drbg_ctr.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/rand/drbg_ctr.d.tmp -MT $@ -c -o $@ crypto/rand/drbg_ctr.c
 	@touch crypto/rand/drbg_ctr.d.tmp
 	@if cmp crypto/rand/drbg_ctr.d.tmp crypto/rand/drbg_ctr.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/rand/drbg_ctr.d.tmp; \
@@ -4484,7 +4501,7 @@ crypto/rand/drbg_ctr.o: crypto/rand/drbg_ctr.c
 		mv crypto/rand/drbg_ctr.d.tmp crypto/rand/drbg_ctr.d; \
 	fi
 crypto/rand/drbg_lib.o: crypto/rand/drbg_lib.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/rand/drbg_lib.d.tmp -MT $@ -c -o $@ crypto/rand/drbg_lib.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/rand/drbg_lib.d.tmp -MT $@ -c -o $@ crypto/rand/drbg_lib.c
 	@touch crypto/rand/drbg_lib.d.tmp
 	@if cmp crypto/rand/drbg_lib.d.tmp crypto/rand/drbg_lib.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/rand/drbg_lib.d.tmp; \
@@ -4492,7 +4509,7 @@ crypto/rand/drbg_lib.o: crypto/rand/drbg_lib.c
 		mv crypto/rand/drbg_lib.d.tmp crypto/rand/drbg_lib.d; \
 	fi
 crypto/rand/rand_egd.o: crypto/rand/rand_egd.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/rand/rand_egd.d.tmp -MT $@ -c -o $@ crypto/rand/rand_egd.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/rand/rand_egd.d.tmp -MT $@ -c -o $@ crypto/rand/rand_egd.c
 	@touch crypto/rand/rand_egd.d.tmp
 	@if cmp crypto/rand/rand_egd.d.tmp crypto/rand/rand_egd.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/rand/rand_egd.d.tmp; \
@@ -4500,7 +4517,7 @@ crypto/rand/rand_egd.o: crypto/rand/rand_egd.c
 		mv crypto/rand/rand_egd.d.tmp crypto/rand/rand_egd.d; \
 	fi
 crypto/rand/rand_err.o: crypto/rand/rand_err.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/rand/rand_err.d.tmp -MT $@ -c -o $@ crypto/rand/rand_err.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/rand/rand_err.d.tmp -MT $@ -c -o $@ crypto/rand/rand_err.c
 	@touch crypto/rand/rand_err.d.tmp
 	@if cmp crypto/rand/rand_err.d.tmp crypto/rand/rand_err.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/rand/rand_err.d.tmp; \
@@ -4508,7 +4525,7 @@ crypto/rand/rand_err.o: crypto/rand/rand_err.c
 		mv crypto/rand/rand_err.d.tmp crypto/rand/rand_err.d; \
 	fi
 crypto/rand/rand_lib.o: crypto/rand/rand_lib.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/rand/rand_lib.d.tmp -MT $@ -c -o $@ crypto/rand/rand_lib.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/rand/rand_lib.d.tmp -MT $@ -c -o $@ crypto/rand/rand_lib.c
 	@touch crypto/rand/rand_lib.d.tmp
 	@if cmp crypto/rand/rand_lib.d.tmp crypto/rand/rand_lib.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/rand/rand_lib.d.tmp; \
@@ -4516,7 +4533,7 @@ crypto/rand/rand_lib.o: crypto/rand/rand_lib.c
 		mv crypto/rand/rand_lib.d.tmp crypto/rand/rand_lib.d; \
 	fi
 crypto/rand/rand_unix.o: crypto/rand/rand_unix.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/rand/rand_unix.d.tmp -MT $@ -c -o $@ crypto/rand/rand_unix.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/rand/rand_unix.d.tmp -MT $@ -c -o $@ crypto/rand/rand_unix.c
 	@touch crypto/rand/rand_unix.d.tmp
 	@if cmp crypto/rand/rand_unix.d.tmp crypto/rand/rand_unix.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/rand/rand_unix.d.tmp; \
@@ -4524,7 +4541,7 @@ crypto/rand/rand_unix.o: crypto/rand/rand_unix.c
 		mv crypto/rand/rand_unix.d.tmp crypto/rand/rand_unix.d; \
 	fi
 crypto/rand/rand_vms.o: crypto/rand/rand_vms.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/rand/rand_vms.d.tmp -MT $@ -c -o $@ crypto/rand/rand_vms.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/rand/rand_vms.d.tmp -MT $@ -c -o $@ crypto/rand/rand_vms.c
 	@touch crypto/rand/rand_vms.d.tmp
 	@if cmp crypto/rand/rand_vms.d.tmp crypto/rand/rand_vms.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/rand/rand_vms.d.tmp; \
@@ -4532,7 +4549,7 @@ crypto/rand/rand_vms.o: crypto/rand/rand_vms.c
 		mv crypto/rand/rand_vms.d.tmp crypto/rand/rand_vms.d; \
 	fi
 crypto/rand/rand_win.o: crypto/rand/rand_win.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/rand/rand_win.d.tmp -MT $@ -c -o $@ crypto/rand/rand_win.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/rand/rand_win.d.tmp -MT $@ -c -o $@ crypto/rand/rand_win.c
 	@touch crypto/rand/rand_win.d.tmp
 	@if cmp crypto/rand/rand_win.d.tmp crypto/rand/rand_win.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/rand/rand_win.d.tmp; \
@@ -4540,7 +4557,7 @@ crypto/rand/rand_win.o: crypto/rand/rand_win.c
 		mv crypto/rand/rand_win.d.tmp crypto/rand/rand_win.d; \
 	fi
 crypto/rand/randfile.o: crypto/rand/randfile.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/rand/randfile.d.tmp -MT $@ -c -o $@ crypto/rand/randfile.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/rand/randfile.d.tmp -MT $@ -c -o $@ crypto/rand/randfile.c
 	@touch crypto/rand/randfile.d.tmp
 	@if cmp crypto/rand/randfile.d.tmp crypto/rand/randfile.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/rand/randfile.d.tmp; \
@@ -4548,7 +4565,7 @@ crypto/rand/randfile.o: crypto/rand/randfile.c
 		mv crypto/rand/randfile.d.tmp crypto/rand/randfile.d; \
 	fi
 crypto/rc2/rc2_cbc.o: crypto/rc2/rc2_cbc.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/rc2/rc2_cbc.d.tmp -MT $@ -c -o $@ crypto/rc2/rc2_cbc.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/rc2/rc2_cbc.d.tmp -MT $@ -c -o $@ crypto/rc2/rc2_cbc.c
 	@touch crypto/rc2/rc2_cbc.d.tmp
 	@if cmp crypto/rc2/rc2_cbc.d.tmp crypto/rc2/rc2_cbc.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/rc2/rc2_cbc.d.tmp; \
@@ -4556,7 +4573,7 @@ crypto/rc2/rc2_cbc.o: crypto/rc2/rc2_cbc.c
 		mv crypto/rc2/rc2_cbc.d.tmp crypto/rc2/rc2_cbc.d; \
 	fi
 crypto/rc2/rc2_ecb.o: crypto/rc2/rc2_ecb.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/rc2/rc2_ecb.d.tmp -MT $@ -c -o $@ crypto/rc2/rc2_ecb.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/rc2/rc2_ecb.d.tmp -MT $@ -c -o $@ crypto/rc2/rc2_ecb.c
 	@touch crypto/rc2/rc2_ecb.d.tmp
 	@if cmp crypto/rc2/rc2_ecb.d.tmp crypto/rc2/rc2_ecb.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/rc2/rc2_ecb.d.tmp; \
@@ -4564,7 +4581,7 @@ crypto/rc2/rc2_ecb.o: crypto/rc2/rc2_ecb.c
 		mv crypto/rc2/rc2_ecb.d.tmp crypto/rc2/rc2_ecb.d; \
 	fi
 crypto/rc2/rc2_skey.o: crypto/rc2/rc2_skey.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/rc2/rc2_skey.d.tmp -MT $@ -c -o $@ crypto/rc2/rc2_skey.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/rc2/rc2_skey.d.tmp -MT $@ -c -o $@ crypto/rc2/rc2_skey.c
 	@touch crypto/rc2/rc2_skey.d.tmp
 	@if cmp crypto/rc2/rc2_skey.d.tmp crypto/rc2/rc2_skey.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/rc2/rc2_skey.d.tmp; \
@@ -4572,7 +4589,7 @@ crypto/rc2/rc2_skey.o: crypto/rc2/rc2_skey.c
 		mv crypto/rc2/rc2_skey.d.tmp crypto/rc2/rc2_skey.d; \
 	fi
 crypto/rc2/rc2cfb64.o: crypto/rc2/rc2cfb64.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/rc2/rc2cfb64.d.tmp -MT $@ -c -o $@ crypto/rc2/rc2cfb64.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/rc2/rc2cfb64.d.tmp -MT $@ -c -o $@ crypto/rc2/rc2cfb64.c
 	@touch crypto/rc2/rc2cfb64.d.tmp
 	@if cmp crypto/rc2/rc2cfb64.d.tmp crypto/rc2/rc2cfb64.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/rc2/rc2cfb64.d.tmp; \
@@ -4580,7 +4597,7 @@ crypto/rc2/rc2cfb64.o: crypto/rc2/rc2cfb64.c
 		mv crypto/rc2/rc2cfb64.d.tmp crypto/rc2/rc2cfb64.d; \
 	fi
 crypto/rc2/rc2ofb64.o: crypto/rc2/rc2ofb64.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/rc2/rc2ofb64.d.tmp -MT $@ -c -o $@ crypto/rc2/rc2ofb64.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/rc2/rc2ofb64.d.tmp -MT $@ -c -o $@ crypto/rc2/rc2ofb64.c
 	@touch crypto/rc2/rc2ofb64.d.tmp
 	@if cmp crypto/rc2/rc2ofb64.d.tmp crypto/rc2/rc2ofb64.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/rc2/rc2ofb64.d.tmp; \
@@ -4588,7 +4605,7 @@ crypto/rc2/rc2ofb64.o: crypto/rc2/rc2ofb64.c
 		mv crypto/rc2/rc2ofb64.d.tmp crypto/rc2/rc2ofb64.d; \
 	fi
 crypto/rc4/rc4_enc.o: crypto/rc4/rc4_enc.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/rc4/rc4_enc.d.tmp -MT $@ -c -o $@ crypto/rc4/rc4_enc.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/rc4/rc4_enc.d.tmp -MT $@ -c -o $@ crypto/rc4/rc4_enc.c
 	@touch crypto/rc4/rc4_enc.d.tmp
 	@if cmp crypto/rc4/rc4_enc.d.tmp crypto/rc4/rc4_enc.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/rc4/rc4_enc.d.tmp; \
@@ -4596,7 +4613,7 @@ crypto/rc4/rc4_enc.o: crypto/rc4/rc4_enc.c
 		mv crypto/rc4/rc4_enc.d.tmp crypto/rc4/rc4_enc.d; \
 	fi
 crypto/rc4/rc4_skey.o: crypto/rc4/rc4_skey.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/rc4/rc4_skey.d.tmp -MT $@ -c -o $@ crypto/rc4/rc4_skey.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/rc4/rc4_skey.d.tmp -MT $@ -c -o $@ crypto/rc4/rc4_skey.c
 	@touch crypto/rc4/rc4_skey.d.tmp
 	@if cmp crypto/rc4/rc4_skey.d.tmp crypto/rc4/rc4_skey.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/rc4/rc4_skey.d.tmp; \
@@ -4604,7 +4621,7 @@ crypto/rc4/rc4_skey.o: crypto/rc4/rc4_skey.c
 		mv crypto/rc4/rc4_skey.d.tmp crypto/rc4/rc4_skey.d; \
 	fi
 crypto/ripemd/rmd_dgst.o: crypto/ripemd/rmd_dgst.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/ripemd/rmd_dgst.d.tmp -MT $@ -c -o $@ crypto/ripemd/rmd_dgst.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/ripemd/rmd_dgst.d.tmp -MT $@ -c -o $@ crypto/ripemd/rmd_dgst.c
 	@touch crypto/ripemd/rmd_dgst.d.tmp
 	@if cmp crypto/ripemd/rmd_dgst.d.tmp crypto/ripemd/rmd_dgst.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/ripemd/rmd_dgst.d.tmp; \
@@ -4612,7 +4629,7 @@ crypto/ripemd/rmd_dgst.o: crypto/ripemd/rmd_dgst.c
 		mv crypto/ripemd/rmd_dgst.d.tmp crypto/ripemd/rmd_dgst.d; \
 	fi
 crypto/ripemd/rmd_one.o: crypto/ripemd/rmd_one.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/ripemd/rmd_one.d.tmp -MT $@ -c -o $@ crypto/ripemd/rmd_one.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/ripemd/rmd_one.d.tmp -MT $@ -c -o $@ crypto/ripemd/rmd_one.c
 	@touch crypto/ripemd/rmd_one.d.tmp
 	@if cmp crypto/ripemd/rmd_one.d.tmp crypto/ripemd/rmd_one.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/ripemd/rmd_one.d.tmp; \
@@ -4620,7 +4637,7 @@ crypto/ripemd/rmd_one.o: crypto/ripemd/rmd_one.c
 		mv crypto/ripemd/rmd_one.d.tmp crypto/ripemd/rmd_one.d; \
 	fi
 crypto/rsa/rsa_ameth.o: crypto/rsa/rsa_ameth.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/rsa/rsa_ameth.d.tmp -MT $@ -c -o $@ crypto/rsa/rsa_ameth.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/rsa/rsa_ameth.d.tmp -MT $@ -c -o $@ crypto/rsa/rsa_ameth.c
 	@touch crypto/rsa/rsa_ameth.d.tmp
 	@if cmp crypto/rsa/rsa_ameth.d.tmp crypto/rsa/rsa_ameth.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/rsa/rsa_ameth.d.tmp; \
@@ -4628,7 +4645,7 @@ crypto/rsa/rsa_ameth.o: crypto/rsa/rsa_ameth.c
 		mv crypto/rsa/rsa_ameth.d.tmp crypto/rsa/rsa_ameth.d; \
 	fi
 crypto/rsa/rsa_asn1.o: crypto/rsa/rsa_asn1.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/rsa/rsa_asn1.d.tmp -MT $@ -c -o $@ crypto/rsa/rsa_asn1.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/rsa/rsa_asn1.d.tmp -MT $@ -c -o $@ crypto/rsa/rsa_asn1.c
 	@touch crypto/rsa/rsa_asn1.d.tmp
 	@if cmp crypto/rsa/rsa_asn1.d.tmp crypto/rsa/rsa_asn1.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/rsa/rsa_asn1.d.tmp; \
@@ -4636,7 +4653,7 @@ crypto/rsa/rsa_asn1.o: crypto/rsa/rsa_asn1.c
 		mv crypto/rsa/rsa_asn1.d.tmp crypto/rsa/rsa_asn1.d; \
 	fi
 crypto/rsa/rsa_chk.o: crypto/rsa/rsa_chk.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/rsa/rsa_chk.d.tmp -MT $@ -c -o $@ crypto/rsa/rsa_chk.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/rsa/rsa_chk.d.tmp -MT $@ -c -o $@ crypto/rsa/rsa_chk.c
 	@touch crypto/rsa/rsa_chk.d.tmp
 	@if cmp crypto/rsa/rsa_chk.d.tmp crypto/rsa/rsa_chk.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/rsa/rsa_chk.d.tmp; \
@@ -4644,7 +4661,7 @@ crypto/rsa/rsa_chk.o: crypto/rsa/rsa_chk.c
 		mv crypto/rsa/rsa_chk.d.tmp crypto/rsa/rsa_chk.d; \
 	fi
 crypto/rsa/rsa_crpt.o: crypto/rsa/rsa_crpt.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/rsa/rsa_crpt.d.tmp -MT $@ -c -o $@ crypto/rsa/rsa_crpt.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/rsa/rsa_crpt.d.tmp -MT $@ -c -o $@ crypto/rsa/rsa_crpt.c
 	@touch crypto/rsa/rsa_crpt.d.tmp
 	@if cmp crypto/rsa/rsa_crpt.d.tmp crypto/rsa/rsa_crpt.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/rsa/rsa_crpt.d.tmp; \
@@ -4652,7 +4669,7 @@ crypto/rsa/rsa_crpt.o: crypto/rsa/rsa_crpt.c
 		mv crypto/rsa/rsa_crpt.d.tmp crypto/rsa/rsa_crpt.d; \
 	fi
 crypto/rsa/rsa_depr.o: crypto/rsa/rsa_depr.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/rsa/rsa_depr.d.tmp -MT $@ -c -o $@ crypto/rsa/rsa_depr.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/rsa/rsa_depr.d.tmp -MT $@ -c -o $@ crypto/rsa/rsa_depr.c
 	@touch crypto/rsa/rsa_depr.d.tmp
 	@if cmp crypto/rsa/rsa_depr.d.tmp crypto/rsa/rsa_depr.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/rsa/rsa_depr.d.tmp; \
@@ -4660,7 +4677,7 @@ crypto/rsa/rsa_depr.o: crypto/rsa/rsa_depr.c
 		mv crypto/rsa/rsa_depr.d.tmp crypto/rsa/rsa_depr.d; \
 	fi
 crypto/rsa/rsa_err.o: crypto/rsa/rsa_err.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/rsa/rsa_err.d.tmp -MT $@ -c -o $@ crypto/rsa/rsa_err.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/rsa/rsa_err.d.tmp -MT $@ -c -o $@ crypto/rsa/rsa_err.c
 	@touch crypto/rsa/rsa_err.d.tmp
 	@if cmp crypto/rsa/rsa_err.d.tmp crypto/rsa/rsa_err.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/rsa/rsa_err.d.tmp; \
@@ -4668,7 +4685,7 @@ crypto/rsa/rsa_err.o: crypto/rsa/rsa_err.c
 		mv crypto/rsa/rsa_err.d.tmp crypto/rsa/rsa_err.d; \
 	fi
 crypto/rsa/rsa_gen.o: crypto/rsa/rsa_gen.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/rsa/rsa_gen.d.tmp -MT $@ -c -o $@ crypto/rsa/rsa_gen.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/rsa/rsa_gen.d.tmp -MT $@ -c -o $@ crypto/rsa/rsa_gen.c
 	@touch crypto/rsa/rsa_gen.d.tmp
 	@if cmp crypto/rsa/rsa_gen.d.tmp crypto/rsa/rsa_gen.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/rsa/rsa_gen.d.tmp; \
@@ -4676,7 +4693,7 @@ crypto/rsa/rsa_gen.o: crypto/rsa/rsa_gen.c
 		mv crypto/rsa/rsa_gen.d.tmp crypto/rsa/rsa_gen.d; \
 	fi
 crypto/rsa/rsa_lib.o: crypto/rsa/rsa_lib.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/rsa/rsa_lib.d.tmp -MT $@ -c -o $@ crypto/rsa/rsa_lib.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/rsa/rsa_lib.d.tmp -MT $@ -c -o $@ crypto/rsa/rsa_lib.c
 	@touch crypto/rsa/rsa_lib.d.tmp
 	@if cmp crypto/rsa/rsa_lib.d.tmp crypto/rsa/rsa_lib.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/rsa/rsa_lib.d.tmp; \
@@ -4684,7 +4701,7 @@ crypto/rsa/rsa_lib.o: crypto/rsa/rsa_lib.c
 		mv crypto/rsa/rsa_lib.d.tmp crypto/rsa/rsa_lib.d; \
 	fi
 crypto/rsa/rsa_meth.o: crypto/rsa/rsa_meth.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/rsa/rsa_meth.d.tmp -MT $@ -c -o $@ crypto/rsa/rsa_meth.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/rsa/rsa_meth.d.tmp -MT $@ -c -o $@ crypto/rsa/rsa_meth.c
 	@touch crypto/rsa/rsa_meth.d.tmp
 	@if cmp crypto/rsa/rsa_meth.d.tmp crypto/rsa/rsa_meth.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/rsa/rsa_meth.d.tmp; \
@@ -4692,7 +4709,7 @@ crypto/rsa/rsa_meth.o: crypto/rsa/rsa_meth.c
 		mv crypto/rsa/rsa_meth.d.tmp crypto/rsa/rsa_meth.d; \
 	fi
 crypto/rsa/rsa_mp.o: crypto/rsa/rsa_mp.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/rsa/rsa_mp.d.tmp -MT $@ -c -o $@ crypto/rsa/rsa_mp.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/rsa/rsa_mp.d.tmp -MT $@ -c -o $@ crypto/rsa/rsa_mp.c
 	@touch crypto/rsa/rsa_mp.d.tmp
 	@if cmp crypto/rsa/rsa_mp.d.tmp crypto/rsa/rsa_mp.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/rsa/rsa_mp.d.tmp; \
@@ -4700,7 +4717,7 @@ crypto/rsa/rsa_mp.o: crypto/rsa/rsa_mp.c
 		mv crypto/rsa/rsa_mp.d.tmp crypto/rsa/rsa_mp.d; \
 	fi
 crypto/rsa/rsa_none.o: crypto/rsa/rsa_none.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/rsa/rsa_none.d.tmp -MT $@ -c -o $@ crypto/rsa/rsa_none.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/rsa/rsa_none.d.tmp -MT $@ -c -o $@ crypto/rsa/rsa_none.c
 	@touch crypto/rsa/rsa_none.d.tmp
 	@if cmp crypto/rsa/rsa_none.d.tmp crypto/rsa/rsa_none.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/rsa/rsa_none.d.tmp; \
@@ -4708,7 +4725,7 @@ crypto/rsa/rsa_none.o: crypto/rsa/rsa_none.c
 		mv crypto/rsa/rsa_none.d.tmp crypto/rsa/rsa_none.d; \
 	fi
 crypto/rsa/rsa_oaep.o: crypto/rsa/rsa_oaep.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/rsa/rsa_oaep.d.tmp -MT $@ -c -o $@ crypto/rsa/rsa_oaep.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/rsa/rsa_oaep.d.tmp -MT $@ -c -o $@ crypto/rsa/rsa_oaep.c
 	@touch crypto/rsa/rsa_oaep.d.tmp
 	@if cmp crypto/rsa/rsa_oaep.d.tmp crypto/rsa/rsa_oaep.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/rsa/rsa_oaep.d.tmp; \
@@ -4716,7 +4733,7 @@ crypto/rsa/rsa_oaep.o: crypto/rsa/rsa_oaep.c
 		mv crypto/rsa/rsa_oaep.d.tmp crypto/rsa/rsa_oaep.d; \
 	fi
 crypto/rsa/rsa_ossl.o: crypto/rsa/rsa_ossl.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/rsa/rsa_ossl.d.tmp -MT $@ -c -o $@ crypto/rsa/rsa_ossl.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/rsa/rsa_ossl.d.tmp -MT $@ -c -o $@ crypto/rsa/rsa_ossl.c
 	@touch crypto/rsa/rsa_ossl.d.tmp
 	@if cmp crypto/rsa/rsa_ossl.d.tmp crypto/rsa/rsa_ossl.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/rsa/rsa_ossl.d.tmp; \
@@ -4724,7 +4741,7 @@ crypto/rsa/rsa_ossl.o: crypto/rsa/rsa_ossl.c
 		mv crypto/rsa/rsa_ossl.d.tmp crypto/rsa/rsa_ossl.d; \
 	fi
 crypto/rsa/rsa_pk1.o: crypto/rsa/rsa_pk1.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/rsa/rsa_pk1.d.tmp -MT $@ -c -o $@ crypto/rsa/rsa_pk1.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/rsa/rsa_pk1.d.tmp -MT $@ -c -o $@ crypto/rsa/rsa_pk1.c
 	@touch crypto/rsa/rsa_pk1.d.tmp
 	@if cmp crypto/rsa/rsa_pk1.d.tmp crypto/rsa/rsa_pk1.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/rsa/rsa_pk1.d.tmp; \
@@ -4732,7 +4749,7 @@ crypto/rsa/rsa_pk1.o: crypto/rsa/rsa_pk1.c
 		mv crypto/rsa/rsa_pk1.d.tmp crypto/rsa/rsa_pk1.d; \
 	fi
 crypto/rsa/rsa_pmeth.o: crypto/rsa/rsa_pmeth.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/rsa/rsa_pmeth.d.tmp -MT $@ -c -o $@ crypto/rsa/rsa_pmeth.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/rsa/rsa_pmeth.d.tmp -MT $@ -c -o $@ crypto/rsa/rsa_pmeth.c
 	@touch crypto/rsa/rsa_pmeth.d.tmp
 	@if cmp crypto/rsa/rsa_pmeth.d.tmp crypto/rsa/rsa_pmeth.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/rsa/rsa_pmeth.d.tmp; \
@@ -4740,7 +4757,7 @@ crypto/rsa/rsa_pmeth.o: crypto/rsa/rsa_pmeth.c
 		mv crypto/rsa/rsa_pmeth.d.tmp crypto/rsa/rsa_pmeth.d; \
 	fi
 crypto/rsa/rsa_prn.o: crypto/rsa/rsa_prn.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/rsa/rsa_prn.d.tmp -MT $@ -c -o $@ crypto/rsa/rsa_prn.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/rsa/rsa_prn.d.tmp -MT $@ -c -o $@ crypto/rsa/rsa_prn.c
 	@touch crypto/rsa/rsa_prn.d.tmp
 	@if cmp crypto/rsa/rsa_prn.d.tmp crypto/rsa/rsa_prn.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/rsa/rsa_prn.d.tmp; \
@@ -4748,7 +4765,7 @@ crypto/rsa/rsa_prn.o: crypto/rsa/rsa_prn.c
 		mv crypto/rsa/rsa_prn.d.tmp crypto/rsa/rsa_prn.d; \
 	fi
 crypto/rsa/rsa_pss.o: crypto/rsa/rsa_pss.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/rsa/rsa_pss.d.tmp -MT $@ -c -o $@ crypto/rsa/rsa_pss.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/rsa/rsa_pss.d.tmp -MT $@ -c -o $@ crypto/rsa/rsa_pss.c
 	@touch crypto/rsa/rsa_pss.d.tmp
 	@if cmp crypto/rsa/rsa_pss.d.tmp crypto/rsa/rsa_pss.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/rsa/rsa_pss.d.tmp; \
@@ -4756,7 +4773,7 @@ crypto/rsa/rsa_pss.o: crypto/rsa/rsa_pss.c
 		mv crypto/rsa/rsa_pss.d.tmp crypto/rsa/rsa_pss.d; \
 	fi
 crypto/rsa/rsa_saos.o: crypto/rsa/rsa_saos.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/rsa/rsa_saos.d.tmp -MT $@ -c -o $@ crypto/rsa/rsa_saos.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/rsa/rsa_saos.d.tmp -MT $@ -c -o $@ crypto/rsa/rsa_saos.c
 	@touch crypto/rsa/rsa_saos.d.tmp
 	@if cmp crypto/rsa/rsa_saos.d.tmp crypto/rsa/rsa_saos.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/rsa/rsa_saos.d.tmp; \
@@ -4764,7 +4781,7 @@ crypto/rsa/rsa_saos.o: crypto/rsa/rsa_saos.c
 		mv crypto/rsa/rsa_saos.d.tmp crypto/rsa/rsa_saos.d; \
 	fi
 crypto/rsa/rsa_sign.o: crypto/rsa/rsa_sign.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/rsa/rsa_sign.d.tmp -MT $@ -c -o $@ crypto/rsa/rsa_sign.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/rsa/rsa_sign.d.tmp -MT $@ -c -o $@ crypto/rsa/rsa_sign.c
 	@touch crypto/rsa/rsa_sign.d.tmp
 	@if cmp crypto/rsa/rsa_sign.d.tmp crypto/rsa/rsa_sign.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/rsa/rsa_sign.d.tmp; \
@@ -4772,7 +4789,7 @@ crypto/rsa/rsa_sign.o: crypto/rsa/rsa_sign.c
 		mv crypto/rsa/rsa_sign.d.tmp crypto/rsa/rsa_sign.d; \
 	fi
 crypto/rsa/rsa_ssl.o: crypto/rsa/rsa_ssl.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/rsa/rsa_ssl.d.tmp -MT $@ -c -o $@ crypto/rsa/rsa_ssl.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/rsa/rsa_ssl.d.tmp -MT $@ -c -o $@ crypto/rsa/rsa_ssl.c
 	@touch crypto/rsa/rsa_ssl.d.tmp
 	@if cmp crypto/rsa/rsa_ssl.d.tmp crypto/rsa/rsa_ssl.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/rsa/rsa_ssl.d.tmp; \
@@ -4780,7 +4797,7 @@ crypto/rsa/rsa_ssl.o: crypto/rsa/rsa_ssl.c
 		mv crypto/rsa/rsa_ssl.d.tmp crypto/rsa/rsa_ssl.d; \
 	fi
 crypto/rsa/rsa_x931.o: crypto/rsa/rsa_x931.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/rsa/rsa_x931.d.tmp -MT $@ -c -o $@ crypto/rsa/rsa_x931.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/rsa/rsa_x931.d.tmp -MT $@ -c -o $@ crypto/rsa/rsa_x931.c
 	@touch crypto/rsa/rsa_x931.d.tmp
 	@if cmp crypto/rsa/rsa_x931.d.tmp crypto/rsa/rsa_x931.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/rsa/rsa_x931.d.tmp; \
@@ -4788,7 +4805,7 @@ crypto/rsa/rsa_x931.o: crypto/rsa/rsa_x931.c
 		mv crypto/rsa/rsa_x931.d.tmp crypto/rsa/rsa_x931.d; \
 	fi
 crypto/rsa/rsa_x931g.o: crypto/rsa/rsa_x931g.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/rsa/rsa_x931g.d.tmp -MT $@ -c -o $@ crypto/rsa/rsa_x931g.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/rsa/rsa_x931g.d.tmp -MT $@ -c -o $@ crypto/rsa/rsa_x931g.c
 	@touch crypto/rsa/rsa_x931g.d.tmp
 	@if cmp crypto/rsa/rsa_x931g.d.tmp crypto/rsa/rsa_x931g.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/rsa/rsa_x931g.d.tmp; \
@@ -4796,7 +4813,7 @@ crypto/rsa/rsa_x931g.o: crypto/rsa/rsa_x931g.c
 		mv crypto/rsa/rsa_x931g.d.tmp crypto/rsa/rsa_x931g.d; \
 	fi
 crypto/seed/seed.o: crypto/seed/seed.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/seed/seed.d.tmp -MT $@ -c -o $@ crypto/seed/seed.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/seed/seed.d.tmp -MT $@ -c -o $@ crypto/seed/seed.c
 	@touch crypto/seed/seed.d.tmp
 	@if cmp crypto/seed/seed.d.tmp crypto/seed/seed.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/seed/seed.d.tmp; \
@@ -4804,7 +4821,7 @@ crypto/seed/seed.o: crypto/seed/seed.c
 		mv crypto/seed/seed.d.tmp crypto/seed/seed.d; \
 	fi
 crypto/seed/seed_cbc.o: crypto/seed/seed_cbc.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/seed/seed_cbc.d.tmp -MT $@ -c -o $@ crypto/seed/seed_cbc.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/seed/seed_cbc.d.tmp -MT $@ -c -o $@ crypto/seed/seed_cbc.c
 	@touch crypto/seed/seed_cbc.d.tmp
 	@if cmp crypto/seed/seed_cbc.d.tmp crypto/seed/seed_cbc.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/seed/seed_cbc.d.tmp; \
@@ -4812,7 +4829,7 @@ crypto/seed/seed_cbc.o: crypto/seed/seed_cbc.c
 		mv crypto/seed/seed_cbc.d.tmp crypto/seed/seed_cbc.d; \
 	fi
 crypto/seed/seed_cfb.o: crypto/seed/seed_cfb.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/seed/seed_cfb.d.tmp -MT $@ -c -o $@ crypto/seed/seed_cfb.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/seed/seed_cfb.d.tmp -MT $@ -c -o $@ crypto/seed/seed_cfb.c
 	@touch crypto/seed/seed_cfb.d.tmp
 	@if cmp crypto/seed/seed_cfb.d.tmp crypto/seed/seed_cfb.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/seed/seed_cfb.d.tmp; \
@@ -4820,7 +4837,7 @@ crypto/seed/seed_cfb.o: crypto/seed/seed_cfb.c
 		mv crypto/seed/seed_cfb.d.tmp crypto/seed/seed_cfb.d; \
 	fi
 crypto/seed/seed_ecb.o: crypto/seed/seed_ecb.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/seed/seed_ecb.d.tmp -MT $@ -c -o $@ crypto/seed/seed_ecb.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/seed/seed_ecb.d.tmp -MT $@ -c -o $@ crypto/seed/seed_ecb.c
 	@touch crypto/seed/seed_ecb.d.tmp
 	@if cmp crypto/seed/seed_ecb.d.tmp crypto/seed/seed_ecb.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/seed/seed_ecb.d.tmp; \
@@ -4828,7 +4845,7 @@ crypto/seed/seed_ecb.o: crypto/seed/seed_ecb.c
 		mv crypto/seed/seed_ecb.d.tmp crypto/seed/seed_ecb.d; \
 	fi
 crypto/seed/seed_ofb.o: crypto/seed/seed_ofb.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/seed/seed_ofb.d.tmp -MT $@ -c -o $@ crypto/seed/seed_ofb.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/seed/seed_ofb.d.tmp -MT $@ -c -o $@ crypto/seed/seed_ofb.c
 	@touch crypto/seed/seed_ofb.d.tmp
 	@if cmp crypto/seed/seed_ofb.d.tmp crypto/seed/seed_ofb.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/seed/seed_ofb.d.tmp; \
@@ -4836,7 +4853,7 @@ crypto/seed/seed_ofb.o: crypto/seed/seed_ofb.c
 		mv crypto/seed/seed_ofb.d.tmp crypto/seed/seed_ofb.d; \
 	fi
 crypto/sha/keccak1600.o: crypto/sha/keccak1600.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/sha/keccak1600.d.tmp -MT $@ -c -o $@ crypto/sha/keccak1600.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/sha/keccak1600.d.tmp -MT $@ -c -o $@ crypto/sha/keccak1600.c
 	@touch crypto/sha/keccak1600.d.tmp
 	@if cmp crypto/sha/keccak1600.d.tmp crypto/sha/keccak1600.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/sha/keccak1600.d.tmp; \
@@ -4844,7 +4861,7 @@ crypto/sha/keccak1600.o: crypto/sha/keccak1600.c
 		mv crypto/sha/keccak1600.d.tmp crypto/sha/keccak1600.d; \
 	fi
 crypto/sha/sha1_one.o: crypto/sha/sha1_one.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/sha/sha1_one.d.tmp -MT $@ -c -o $@ crypto/sha/sha1_one.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/sha/sha1_one.d.tmp -MT $@ -c -o $@ crypto/sha/sha1_one.c
 	@touch crypto/sha/sha1_one.d.tmp
 	@if cmp crypto/sha/sha1_one.d.tmp crypto/sha/sha1_one.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/sha/sha1_one.d.tmp; \
@@ -4852,7 +4869,7 @@ crypto/sha/sha1_one.o: crypto/sha/sha1_one.c
 		mv crypto/sha/sha1_one.d.tmp crypto/sha/sha1_one.d; \
 	fi
 crypto/sha/sha1dgst.o: crypto/sha/sha1dgst.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/sha/sha1dgst.d.tmp -MT $@ -c -o $@ crypto/sha/sha1dgst.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/sha/sha1dgst.d.tmp -MT $@ -c -o $@ crypto/sha/sha1dgst.c
 	@touch crypto/sha/sha1dgst.d.tmp
 	@if cmp crypto/sha/sha1dgst.d.tmp crypto/sha/sha1dgst.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/sha/sha1dgst.d.tmp; \
@@ -4860,7 +4877,7 @@ crypto/sha/sha1dgst.o: crypto/sha/sha1dgst.c
 		mv crypto/sha/sha1dgst.d.tmp crypto/sha/sha1dgst.d; \
 	fi
 crypto/sha/sha256.o: crypto/sha/sha256.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/sha/sha256.d.tmp -MT $@ -c -o $@ crypto/sha/sha256.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/sha/sha256.d.tmp -MT $@ -c -o $@ crypto/sha/sha256.c
 	@touch crypto/sha/sha256.d.tmp
 	@if cmp crypto/sha/sha256.d.tmp crypto/sha/sha256.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/sha/sha256.d.tmp; \
@@ -4868,7 +4885,7 @@ crypto/sha/sha256.o: crypto/sha/sha256.c
 		mv crypto/sha/sha256.d.tmp crypto/sha/sha256.d; \
 	fi
 crypto/sha/sha512.o: crypto/sha/sha512.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/sha/sha512.d.tmp -MT $@ -c -o $@ crypto/sha/sha512.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/sha/sha512.d.tmp -MT $@ -c -o $@ crypto/sha/sha512.c
 	@touch crypto/sha/sha512.d.tmp
 	@if cmp crypto/sha/sha512.d.tmp crypto/sha/sha512.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/sha/sha512.d.tmp; \
@@ -4876,7 +4893,7 @@ crypto/sha/sha512.o: crypto/sha/sha512.c
 		mv crypto/sha/sha512.d.tmp crypto/sha/sha512.d; \
 	fi
 crypto/siphash/siphash.o: crypto/siphash/siphash.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/siphash/siphash.d.tmp -MT $@ -c -o $@ crypto/siphash/siphash.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/siphash/siphash.d.tmp -MT $@ -c -o $@ crypto/siphash/siphash.c
 	@touch crypto/siphash/siphash.d.tmp
 	@if cmp crypto/siphash/siphash.d.tmp crypto/siphash/siphash.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/siphash/siphash.d.tmp; \
@@ -4884,7 +4901,7 @@ crypto/siphash/siphash.o: crypto/siphash/siphash.c
 		mv crypto/siphash/siphash.d.tmp crypto/siphash/siphash.d; \
 	fi
 crypto/siphash/siphash_ameth.o: crypto/siphash/siphash_ameth.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/siphash/siphash_ameth.d.tmp -MT $@ -c -o $@ crypto/siphash/siphash_ameth.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/siphash/siphash_ameth.d.tmp -MT $@ -c -o $@ crypto/siphash/siphash_ameth.c
 	@touch crypto/siphash/siphash_ameth.d.tmp
 	@if cmp crypto/siphash/siphash_ameth.d.tmp crypto/siphash/siphash_ameth.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/siphash/siphash_ameth.d.tmp; \
@@ -4892,15 +4909,47 @@ crypto/siphash/siphash_ameth.o: crypto/siphash/siphash_ameth.c
 		mv crypto/siphash/siphash_ameth.d.tmp crypto/siphash/siphash_ameth.d; \
 	fi
 crypto/siphash/siphash_pmeth.o: crypto/siphash/siphash_pmeth.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/siphash/siphash_pmeth.d.tmp -MT $@ -c -o $@ crypto/siphash/siphash_pmeth.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/siphash/siphash_pmeth.d.tmp -MT $@ -c -o $@ crypto/siphash/siphash_pmeth.c
 	@touch crypto/siphash/siphash_pmeth.d.tmp
 	@if cmp crypto/siphash/siphash_pmeth.d.tmp crypto/siphash/siphash_pmeth.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/siphash/siphash_pmeth.d.tmp; \
 	else \
 		mv crypto/siphash/siphash_pmeth.d.tmp crypto/siphash/siphash_pmeth.d; \
 	fi
+crypto/sm2/sm2_crypt.o: crypto/sm2/sm2_crypt.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/sm2/sm2_crypt.d.tmp -MT $@ -c -o $@ crypto/sm2/sm2_crypt.c
+	@touch crypto/sm2/sm2_crypt.d.tmp
+	@if cmp crypto/sm2/sm2_crypt.d.tmp crypto/sm2/sm2_crypt.d > /dev/null 2> /dev/null; then \
+		rm -f crypto/sm2/sm2_crypt.d.tmp; \
+	else \
+		mv crypto/sm2/sm2_crypt.d.tmp crypto/sm2/sm2_crypt.d; \
+	fi
+crypto/sm2/sm2_err.o: crypto/sm2/sm2_err.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/sm2/sm2_err.d.tmp -MT $@ -c -o $@ crypto/sm2/sm2_err.c
+	@touch crypto/sm2/sm2_err.d.tmp
+	@if cmp crypto/sm2/sm2_err.d.tmp crypto/sm2/sm2_err.d > /dev/null 2> /dev/null; then \
+		rm -f crypto/sm2/sm2_err.d.tmp; \
+	else \
+		mv crypto/sm2/sm2_err.d.tmp crypto/sm2/sm2_err.d; \
+	fi
+crypto/sm2/sm2_sign.o: crypto/sm2/sm2_sign.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/sm2/sm2_sign.d.tmp -MT $@ -c -o $@ crypto/sm2/sm2_sign.c
+	@touch crypto/sm2/sm2_sign.d.tmp
+	@if cmp crypto/sm2/sm2_sign.d.tmp crypto/sm2/sm2_sign.d > /dev/null 2> /dev/null; then \
+		rm -f crypto/sm2/sm2_sign.d.tmp; \
+	else \
+		mv crypto/sm2/sm2_sign.d.tmp crypto/sm2/sm2_sign.d; \
+	fi
+crypto/sm2/sm2_za.o: crypto/sm2/sm2_za.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/sm2/sm2_za.d.tmp -MT $@ -c -o $@ crypto/sm2/sm2_za.c
+	@touch crypto/sm2/sm2_za.d.tmp
+	@if cmp crypto/sm2/sm2_za.d.tmp crypto/sm2/sm2_za.d > /dev/null 2> /dev/null; then \
+		rm -f crypto/sm2/sm2_za.d.tmp; \
+	else \
+		mv crypto/sm2/sm2_za.d.tmp crypto/sm2/sm2_za.d; \
+	fi
 crypto/sm3/m_sm3.o: crypto/sm3/m_sm3.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/sm3/m_sm3.d.tmp -MT $@ -c -o $@ crypto/sm3/m_sm3.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/sm3/m_sm3.d.tmp -MT $@ -c -o $@ crypto/sm3/m_sm3.c
 	@touch crypto/sm3/m_sm3.d.tmp
 	@if cmp crypto/sm3/m_sm3.d.tmp crypto/sm3/m_sm3.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/sm3/m_sm3.d.tmp; \
@@ -4908,7 +4957,7 @@ crypto/sm3/m_sm3.o: crypto/sm3/m_sm3.c
 		mv crypto/sm3/m_sm3.d.tmp crypto/sm3/m_sm3.d; \
 	fi
 crypto/sm3/sm3.o: crypto/sm3/sm3.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/sm3/sm3.d.tmp -MT $@ -c -o $@ crypto/sm3/sm3.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/sm3/sm3.d.tmp -MT $@ -c -o $@ crypto/sm3/sm3.c
 	@touch crypto/sm3/sm3.d.tmp
 	@if cmp crypto/sm3/sm3.d.tmp crypto/sm3/sm3.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/sm3/sm3.d.tmp; \
@@ -4916,7 +4965,7 @@ crypto/sm3/sm3.o: crypto/sm3/sm3.c
 		mv crypto/sm3/sm3.d.tmp crypto/sm3/sm3.d; \
 	fi
 crypto/sm4/sm4.o: crypto/sm4/sm4.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/sm4/sm4.d.tmp -MT $@ -c -o $@ crypto/sm4/sm4.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/sm4/sm4.d.tmp -MT $@ -c -o $@ crypto/sm4/sm4.c
 	@touch crypto/sm4/sm4.d.tmp
 	@if cmp crypto/sm4/sm4.d.tmp crypto/sm4/sm4.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/sm4/sm4.d.tmp; \
@@ -4924,7 +4973,7 @@ crypto/sm4/sm4.o: crypto/sm4/sm4.c
 		mv crypto/sm4/sm4.d.tmp crypto/sm4/sm4.d; \
 	fi
 crypto/srp/srp_lib.o: crypto/srp/srp_lib.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/srp/srp_lib.d.tmp -MT $@ -c -o $@ crypto/srp/srp_lib.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/srp/srp_lib.d.tmp -MT $@ -c -o $@ crypto/srp/srp_lib.c
 	@touch crypto/srp/srp_lib.d.tmp
 	@if cmp crypto/srp/srp_lib.d.tmp crypto/srp/srp_lib.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/srp/srp_lib.d.tmp; \
@@ -4932,7 +4981,7 @@ crypto/srp/srp_lib.o: crypto/srp/srp_lib.c
 		mv crypto/srp/srp_lib.d.tmp crypto/srp/srp_lib.d; \
 	fi
 crypto/srp/srp_vfy.o: crypto/srp/srp_vfy.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/srp/srp_vfy.d.tmp -MT $@ -c -o $@ crypto/srp/srp_vfy.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/srp/srp_vfy.d.tmp -MT $@ -c -o $@ crypto/srp/srp_vfy.c
 	@touch crypto/srp/srp_vfy.d.tmp
 	@if cmp crypto/srp/srp_vfy.d.tmp crypto/srp/srp_vfy.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/srp/srp_vfy.d.tmp; \
@@ -4940,7 +4989,7 @@ crypto/srp/srp_vfy.o: crypto/srp/srp_vfy.c
 		mv crypto/srp/srp_vfy.d.tmp crypto/srp/srp_vfy.d; \
 	fi
 crypto/stack/stack.o: crypto/stack/stack.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/stack/stack.d.tmp -MT $@ -c -o $@ crypto/stack/stack.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/stack/stack.d.tmp -MT $@ -c -o $@ crypto/stack/stack.c
 	@touch crypto/stack/stack.d.tmp
 	@if cmp crypto/stack/stack.d.tmp crypto/stack/stack.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/stack/stack.d.tmp; \
@@ -4948,7 +4997,7 @@ crypto/stack/stack.o: crypto/stack/stack.c
 		mv crypto/stack/stack.d.tmp crypto/stack/stack.d; \
 	fi
 crypto/store/loader_file.o: crypto/store/loader_file.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/store/loader_file.d.tmp -MT $@ -c -o $@ crypto/store/loader_file.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/store/loader_file.d.tmp -MT $@ -c -o $@ crypto/store/loader_file.c
 	@touch crypto/store/loader_file.d.tmp
 	@if cmp crypto/store/loader_file.d.tmp crypto/store/loader_file.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/store/loader_file.d.tmp; \
@@ -4956,7 +5005,7 @@ crypto/store/loader_file.o: crypto/store/loader_file.c
 		mv crypto/store/loader_file.d.tmp crypto/store/loader_file.d; \
 	fi
 crypto/store/store_err.o: crypto/store/store_err.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/store/store_err.d.tmp -MT $@ -c -o $@ crypto/store/store_err.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/store/store_err.d.tmp -MT $@ -c -o $@ crypto/store/store_err.c
 	@touch crypto/store/store_err.d.tmp
 	@if cmp crypto/store/store_err.d.tmp crypto/store/store_err.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/store/store_err.d.tmp; \
@@ -4964,7 +5013,7 @@ crypto/store/store_err.o: crypto/store/store_err.c
 		mv crypto/store/store_err.d.tmp crypto/store/store_err.d; \
 	fi
 crypto/store/store_init.o: crypto/store/store_init.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/store/store_init.d.tmp -MT $@ -c -o $@ crypto/store/store_init.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/store/store_init.d.tmp -MT $@ -c -o $@ crypto/store/store_init.c
 	@touch crypto/store/store_init.d.tmp
 	@if cmp crypto/store/store_init.d.tmp crypto/store/store_init.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/store/store_init.d.tmp; \
@@ -4972,7 +5021,7 @@ crypto/store/store_init.o: crypto/store/store_init.c
 		mv crypto/store/store_init.d.tmp crypto/store/store_init.d; \
 	fi
 crypto/store/store_lib.o: crypto/store/store_lib.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/store/store_lib.d.tmp -MT $@ -c -o $@ crypto/store/store_lib.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/store/store_lib.d.tmp -MT $@ -c -o $@ crypto/store/store_lib.c
 	@touch crypto/store/store_lib.d.tmp
 	@if cmp crypto/store/store_lib.d.tmp crypto/store/store_lib.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/store/store_lib.d.tmp; \
@@ -4980,7 +5029,7 @@ crypto/store/store_lib.o: crypto/store/store_lib.c
 		mv crypto/store/store_lib.d.tmp crypto/store/store_lib.d; \
 	fi
 crypto/store/store_register.o: crypto/store/store_register.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/store/store_register.d.tmp -MT $@ -c -o $@ crypto/store/store_register.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/store/store_register.d.tmp -MT $@ -c -o $@ crypto/store/store_register.c
 	@touch crypto/store/store_register.d.tmp
 	@if cmp crypto/store/store_register.d.tmp crypto/store/store_register.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/store/store_register.d.tmp; \
@@ -4988,7 +5037,7 @@ crypto/store/store_register.o: crypto/store/store_register.c
 		mv crypto/store/store_register.d.tmp crypto/store/store_register.d; \
 	fi
 crypto/store/store_strings.o: crypto/store/store_strings.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/store/store_strings.d.tmp -MT $@ -c -o $@ crypto/store/store_strings.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/store/store_strings.d.tmp -MT $@ -c -o $@ crypto/store/store_strings.c
 	@touch crypto/store/store_strings.d.tmp
 	@if cmp crypto/store/store_strings.d.tmp crypto/store/store_strings.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/store/store_strings.d.tmp; \
@@ -4996,7 +5045,7 @@ crypto/store/store_strings.o: crypto/store/store_strings.c
 		mv crypto/store/store_strings.d.tmp crypto/store/store_strings.d; \
 	fi
 crypto/threads_none.o: crypto/threads_none.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/threads_none.d.tmp -MT $@ -c -o $@ crypto/threads_none.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/threads_none.d.tmp -MT $@ -c -o $@ crypto/threads_none.c
 	@touch crypto/threads_none.d.tmp
 	@if cmp crypto/threads_none.d.tmp crypto/threads_none.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/threads_none.d.tmp; \
@@ -5004,7 +5053,7 @@ crypto/threads_none.o: crypto/threads_none.c
 		mv crypto/threads_none.d.tmp crypto/threads_none.d; \
 	fi
 crypto/threads_pthread.o: crypto/threads_pthread.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/threads_pthread.d.tmp -MT $@ -c -o $@ crypto/threads_pthread.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/threads_pthread.d.tmp -MT $@ -c -o $@ crypto/threads_pthread.c
 	@touch crypto/threads_pthread.d.tmp
 	@if cmp crypto/threads_pthread.d.tmp crypto/threads_pthread.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/threads_pthread.d.tmp; \
@@ -5012,7 +5061,7 @@ crypto/threads_pthread.o: crypto/threads_pthread.c
 		mv crypto/threads_pthread.d.tmp crypto/threads_pthread.d; \
 	fi
 crypto/threads_win.o: crypto/threads_win.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/threads_win.d.tmp -MT $@ -c -o $@ crypto/threads_win.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/threads_win.d.tmp -MT $@ -c -o $@ crypto/threads_win.c
 	@touch crypto/threads_win.d.tmp
 	@if cmp crypto/threads_win.d.tmp crypto/threads_win.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/threads_win.d.tmp; \
@@ -5020,7 +5069,7 @@ crypto/threads_win.o: crypto/threads_win.c
 		mv crypto/threads_win.d.tmp crypto/threads_win.d; \
 	fi
 crypto/ts/ts_asn1.o: crypto/ts/ts_asn1.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/ts/ts_asn1.d.tmp -MT $@ -c -o $@ crypto/ts/ts_asn1.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/ts/ts_asn1.d.tmp -MT $@ -c -o $@ crypto/ts/ts_asn1.c
 	@touch crypto/ts/ts_asn1.d.tmp
 	@if cmp crypto/ts/ts_asn1.d.tmp crypto/ts/ts_asn1.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/ts/ts_asn1.d.tmp; \
@@ -5028,7 +5077,7 @@ crypto/ts/ts_asn1.o: crypto/ts/ts_asn1.c
 		mv crypto/ts/ts_asn1.d.tmp crypto/ts/ts_asn1.d; \
 	fi
 crypto/ts/ts_conf.o: crypto/ts/ts_conf.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/ts/ts_conf.d.tmp -MT $@ -c -o $@ crypto/ts/ts_conf.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/ts/ts_conf.d.tmp -MT $@ -c -o $@ crypto/ts/ts_conf.c
 	@touch crypto/ts/ts_conf.d.tmp
 	@if cmp crypto/ts/ts_conf.d.tmp crypto/ts/ts_conf.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/ts/ts_conf.d.tmp; \
@@ -5036,7 +5085,7 @@ crypto/ts/ts_conf.o: crypto/ts/ts_conf.c
 		mv crypto/ts/ts_conf.d.tmp crypto/ts/ts_conf.d; \
 	fi
 crypto/ts/ts_err.o: crypto/ts/ts_err.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/ts/ts_err.d.tmp -MT $@ -c -o $@ crypto/ts/ts_err.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/ts/ts_err.d.tmp -MT $@ -c -o $@ crypto/ts/ts_err.c
 	@touch crypto/ts/ts_err.d.tmp
 	@if cmp crypto/ts/ts_err.d.tmp crypto/ts/ts_err.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/ts/ts_err.d.tmp; \
@@ -5044,7 +5093,7 @@ crypto/ts/ts_err.o: crypto/ts/ts_err.c
 		mv crypto/ts/ts_err.d.tmp crypto/ts/ts_err.d; \
 	fi
 crypto/ts/ts_lib.o: crypto/ts/ts_lib.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/ts/ts_lib.d.tmp -MT $@ -c -o $@ crypto/ts/ts_lib.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/ts/ts_lib.d.tmp -MT $@ -c -o $@ crypto/ts/ts_lib.c
 	@touch crypto/ts/ts_lib.d.tmp
 	@if cmp crypto/ts/ts_lib.d.tmp crypto/ts/ts_lib.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/ts/ts_lib.d.tmp; \
@@ -5052,7 +5101,7 @@ crypto/ts/ts_lib.o: crypto/ts/ts_lib.c
 		mv crypto/ts/ts_lib.d.tmp crypto/ts/ts_lib.d; \
 	fi
 crypto/ts/ts_req_print.o: crypto/ts/ts_req_print.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/ts/ts_req_print.d.tmp -MT $@ -c -o $@ crypto/ts/ts_req_print.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/ts/ts_req_print.d.tmp -MT $@ -c -o $@ crypto/ts/ts_req_print.c
 	@touch crypto/ts/ts_req_print.d.tmp
 	@if cmp crypto/ts/ts_req_print.d.tmp crypto/ts/ts_req_print.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/ts/ts_req_print.d.tmp; \
@@ -5060,7 +5109,7 @@ crypto/ts/ts_req_print.o: crypto/ts/ts_req_print.c
 		mv crypto/ts/ts_req_print.d.tmp crypto/ts/ts_req_print.d; \
 	fi
 crypto/ts/ts_req_utils.o: crypto/ts/ts_req_utils.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/ts/ts_req_utils.d.tmp -MT $@ -c -o $@ crypto/ts/ts_req_utils.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/ts/ts_req_utils.d.tmp -MT $@ -c -o $@ crypto/ts/ts_req_utils.c
 	@touch crypto/ts/ts_req_utils.d.tmp
 	@if cmp crypto/ts/ts_req_utils.d.tmp crypto/ts/ts_req_utils.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/ts/ts_req_utils.d.tmp; \
@@ -5068,7 +5117,7 @@ crypto/ts/ts_req_utils.o: crypto/ts/ts_req_utils.c
 		mv crypto/ts/ts_req_utils.d.tmp crypto/ts/ts_req_utils.d; \
 	fi
 crypto/ts/ts_rsp_print.o: crypto/ts/ts_rsp_print.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/ts/ts_rsp_print.d.tmp -MT $@ -c -o $@ crypto/ts/ts_rsp_print.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/ts/ts_rsp_print.d.tmp -MT $@ -c -o $@ crypto/ts/ts_rsp_print.c
 	@touch crypto/ts/ts_rsp_print.d.tmp
 	@if cmp crypto/ts/ts_rsp_print.d.tmp crypto/ts/ts_rsp_print.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/ts/ts_rsp_print.d.tmp; \
@@ -5076,7 +5125,7 @@ crypto/ts/ts_rsp_print.o: crypto/ts/ts_rsp_print.c
 		mv crypto/ts/ts_rsp_print.d.tmp crypto/ts/ts_rsp_print.d; \
 	fi
 crypto/ts/ts_rsp_sign.o: crypto/ts/ts_rsp_sign.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/ts/ts_rsp_sign.d.tmp -MT $@ -c -o $@ crypto/ts/ts_rsp_sign.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/ts/ts_rsp_sign.d.tmp -MT $@ -c -o $@ crypto/ts/ts_rsp_sign.c
 	@touch crypto/ts/ts_rsp_sign.d.tmp
 	@if cmp crypto/ts/ts_rsp_sign.d.tmp crypto/ts/ts_rsp_sign.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/ts/ts_rsp_sign.d.tmp; \
@@ -5084,7 +5133,7 @@ crypto/ts/ts_rsp_sign.o: crypto/ts/ts_rsp_sign.c
 		mv crypto/ts/ts_rsp_sign.d.tmp crypto/ts/ts_rsp_sign.d; \
 	fi
 crypto/ts/ts_rsp_utils.o: crypto/ts/ts_rsp_utils.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/ts/ts_rsp_utils.d.tmp -MT $@ -c -o $@ crypto/ts/ts_rsp_utils.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/ts/ts_rsp_utils.d.tmp -MT $@ -c -o $@ crypto/ts/ts_rsp_utils.c
 	@touch crypto/ts/ts_rsp_utils.d.tmp
 	@if cmp crypto/ts/ts_rsp_utils.d.tmp crypto/ts/ts_rsp_utils.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/ts/ts_rsp_utils.d.tmp; \
@@ -5092,7 +5141,7 @@ crypto/ts/ts_rsp_utils.o: crypto/ts/ts_rsp_utils.c
 		mv crypto/ts/ts_rsp_utils.d.tmp crypto/ts/ts_rsp_utils.d; \
 	fi
 crypto/ts/ts_rsp_verify.o: crypto/ts/ts_rsp_verify.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/ts/ts_rsp_verify.d.tmp -MT $@ -c -o $@ crypto/ts/ts_rsp_verify.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/ts/ts_rsp_verify.d.tmp -MT $@ -c -o $@ crypto/ts/ts_rsp_verify.c
 	@touch crypto/ts/ts_rsp_verify.d.tmp
 	@if cmp crypto/ts/ts_rsp_verify.d.tmp crypto/ts/ts_rsp_verify.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/ts/ts_rsp_verify.d.tmp; \
@@ -5100,7 +5149,7 @@ crypto/ts/ts_rsp_verify.o: crypto/ts/ts_rsp_verify.c
 		mv crypto/ts/ts_rsp_verify.d.tmp crypto/ts/ts_rsp_verify.d; \
 	fi
 crypto/ts/ts_verify_ctx.o: crypto/ts/ts_verify_ctx.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/ts/ts_verify_ctx.d.tmp -MT $@ -c -o $@ crypto/ts/ts_verify_ctx.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/ts/ts_verify_ctx.d.tmp -MT $@ -c -o $@ crypto/ts/ts_verify_ctx.c
 	@touch crypto/ts/ts_verify_ctx.d.tmp
 	@if cmp crypto/ts/ts_verify_ctx.d.tmp crypto/ts/ts_verify_ctx.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/ts/ts_verify_ctx.d.tmp; \
@@ -5108,7 +5157,7 @@ crypto/ts/ts_verify_ctx.o: crypto/ts/ts_verify_ctx.c
 		mv crypto/ts/ts_verify_ctx.d.tmp crypto/ts/ts_verify_ctx.d; \
 	fi
 crypto/txt_db/txt_db.o: crypto/txt_db/txt_db.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/txt_db/txt_db.d.tmp -MT $@ -c -o $@ crypto/txt_db/txt_db.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/txt_db/txt_db.d.tmp -MT $@ -c -o $@ crypto/txt_db/txt_db.c
 	@touch crypto/txt_db/txt_db.d.tmp
 	@if cmp crypto/txt_db/txt_db.d.tmp crypto/txt_db/txt_db.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/txt_db/txt_db.d.tmp; \
@@ -5116,7 +5165,7 @@ crypto/txt_db/txt_db.o: crypto/txt_db/txt_db.c
 		mv crypto/txt_db/txt_db.d.tmp crypto/txt_db/txt_db.d; \
 	fi
 crypto/ui/ui_err.o: crypto/ui/ui_err.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/ui/ui_err.d.tmp -MT $@ -c -o $@ crypto/ui/ui_err.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/ui/ui_err.d.tmp -MT $@ -c -o $@ crypto/ui/ui_err.c
 	@touch crypto/ui/ui_err.d.tmp
 	@if cmp crypto/ui/ui_err.d.tmp crypto/ui/ui_err.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/ui/ui_err.d.tmp; \
@@ -5124,7 +5173,7 @@ crypto/ui/ui_err.o: crypto/ui/ui_err.c
 		mv crypto/ui/ui_err.d.tmp crypto/ui/ui_err.d; \
 	fi
 crypto/ui/ui_lib.o: crypto/ui/ui_lib.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/ui/ui_lib.d.tmp -MT $@ -c -o $@ crypto/ui/ui_lib.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/ui/ui_lib.d.tmp -MT $@ -c -o $@ crypto/ui/ui_lib.c
 	@touch crypto/ui/ui_lib.d.tmp
 	@if cmp crypto/ui/ui_lib.d.tmp crypto/ui/ui_lib.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/ui/ui_lib.d.tmp; \
@@ -5132,7 +5181,7 @@ crypto/ui/ui_lib.o: crypto/ui/ui_lib.c
 		mv crypto/ui/ui_lib.d.tmp crypto/ui/ui_lib.d; \
 	fi
 crypto/ui/ui_null.o: crypto/ui/ui_null.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/ui/ui_null.d.tmp -MT $@ -c -o $@ crypto/ui/ui_null.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/ui/ui_null.d.tmp -MT $@ -c -o $@ crypto/ui/ui_null.c
 	@touch crypto/ui/ui_null.d.tmp
 	@if cmp crypto/ui/ui_null.d.tmp crypto/ui/ui_null.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/ui/ui_null.d.tmp; \
@@ -5140,7 +5189,7 @@ crypto/ui/ui_null.o: crypto/ui/ui_null.c
 		mv crypto/ui/ui_null.d.tmp crypto/ui/ui_null.d; \
 	fi
 crypto/ui/ui_openssl.o: crypto/ui/ui_openssl.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/ui/ui_openssl.d.tmp -MT $@ -c -o $@ crypto/ui/ui_openssl.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/ui/ui_openssl.d.tmp -MT $@ -c -o $@ crypto/ui/ui_openssl.c
 	@touch crypto/ui/ui_openssl.d.tmp
 	@if cmp crypto/ui/ui_openssl.d.tmp crypto/ui/ui_openssl.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/ui/ui_openssl.d.tmp; \
@@ -5148,7 +5197,7 @@ crypto/ui/ui_openssl.o: crypto/ui/ui_openssl.c
 		mv crypto/ui/ui_openssl.d.tmp crypto/ui/ui_openssl.d; \
 	fi
 crypto/ui/ui_util.o: crypto/ui/ui_util.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/ui/ui_util.d.tmp -MT $@ -c -o $@ crypto/ui/ui_util.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/ui/ui_util.d.tmp -MT $@ -c -o $@ crypto/ui/ui_util.c
 	@touch crypto/ui/ui_util.d.tmp
 	@if cmp crypto/ui/ui_util.d.tmp crypto/ui/ui_util.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/ui/ui_util.d.tmp; \
@@ -5156,7 +5205,7 @@ crypto/ui/ui_util.o: crypto/ui/ui_util.c
 		mv crypto/ui/ui_util.d.tmp crypto/ui/ui_util.d; \
 	fi
 crypto/uid.o: crypto/uid.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/uid.d.tmp -MT $@ -c -o $@ crypto/uid.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/uid.d.tmp -MT $@ -c -o $@ crypto/uid.c
 	@touch crypto/uid.d.tmp
 	@if cmp crypto/uid.d.tmp crypto/uid.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/uid.d.tmp; \
@@ -5164,7 +5213,7 @@ crypto/uid.o: crypto/uid.c
 		mv crypto/uid.d.tmp crypto/uid.d; \
 	fi
 crypto/whrlpool/wp_block.o: crypto/whrlpool/wp_block.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/whrlpool/wp_block.d.tmp -MT $@ -c -o $@ crypto/whrlpool/wp_block.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/whrlpool/wp_block.d.tmp -MT $@ -c -o $@ crypto/whrlpool/wp_block.c
 	@touch crypto/whrlpool/wp_block.d.tmp
 	@if cmp crypto/whrlpool/wp_block.d.tmp crypto/whrlpool/wp_block.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/whrlpool/wp_block.d.tmp; \
@@ -5172,7 +5221,7 @@ crypto/whrlpool/wp_block.o: crypto/whrlpool/wp_block.c
 		mv crypto/whrlpool/wp_block.d.tmp crypto/whrlpool/wp_block.d; \
 	fi
 crypto/whrlpool/wp_dgst.o: crypto/whrlpool/wp_dgst.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/whrlpool/wp_dgst.d.tmp -MT $@ -c -o $@ crypto/whrlpool/wp_dgst.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/whrlpool/wp_dgst.d.tmp -MT $@ -c -o $@ crypto/whrlpool/wp_dgst.c
 	@touch crypto/whrlpool/wp_dgst.d.tmp
 	@if cmp crypto/whrlpool/wp_dgst.d.tmp crypto/whrlpool/wp_dgst.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/whrlpool/wp_dgst.d.tmp; \
@@ -5180,7 +5229,7 @@ crypto/whrlpool/wp_dgst.o: crypto/whrlpool/wp_dgst.c
 		mv crypto/whrlpool/wp_dgst.d.tmp crypto/whrlpool/wp_dgst.d; \
 	fi
 crypto/x509/by_dir.o: crypto/x509/by_dir.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/x509/by_dir.d.tmp -MT $@ -c -o $@ crypto/x509/by_dir.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/x509/by_dir.d.tmp -MT $@ -c -o $@ crypto/x509/by_dir.c
 	@touch crypto/x509/by_dir.d.tmp
 	@if cmp crypto/x509/by_dir.d.tmp crypto/x509/by_dir.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/x509/by_dir.d.tmp; \
@@ -5188,7 +5237,7 @@ crypto/x509/by_dir.o: crypto/x509/by_dir.c
 		mv crypto/x509/by_dir.d.tmp crypto/x509/by_dir.d; \
 	fi
 crypto/x509/by_file.o: crypto/x509/by_file.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/x509/by_file.d.tmp -MT $@ -c -o $@ crypto/x509/by_file.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/x509/by_file.d.tmp -MT $@ -c -o $@ crypto/x509/by_file.c
 	@touch crypto/x509/by_file.d.tmp
 	@if cmp crypto/x509/by_file.d.tmp crypto/x509/by_file.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/x509/by_file.d.tmp; \
@@ -5196,7 +5245,7 @@ crypto/x509/by_file.o: crypto/x509/by_file.c
 		mv crypto/x509/by_file.d.tmp crypto/x509/by_file.d; \
 	fi
 crypto/x509/t_crl.o: crypto/x509/t_crl.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/x509/t_crl.d.tmp -MT $@ -c -o $@ crypto/x509/t_crl.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/x509/t_crl.d.tmp -MT $@ -c -o $@ crypto/x509/t_crl.c
 	@touch crypto/x509/t_crl.d.tmp
 	@if cmp crypto/x509/t_crl.d.tmp crypto/x509/t_crl.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/x509/t_crl.d.tmp; \
@@ -5204,7 +5253,7 @@ crypto/x509/t_crl.o: crypto/x509/t_crl.c
 		mv crypto/x509/t_crl.d.tmp crypto/x509/t_crl.d; \
 	fi
 crypto/x509/t_req.o: crypto/x509/t_req.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/x509/t_req.d.tmp -MT $@ -c -o $@ crypto/x509/t_req.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/x509/t_req.d.tmp -MT $@ -c -o $@ crypto/x509/t_req.c
 	@touch crypto/x509/t_req.d.tmp
 	@if cmp crypto/x509/t_req.d.tmp crypto/x509/t_req.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/x509/t_req.d.tmp; \
@@ -5212,7 +5261,7 @@ crypto/x509/t_req.o: crypto/x509/t_req.c
 		mv crypto/x509/t_req.d.tmp crypto/x509/t_req.d; \
 	fi
 crypto/x509/t_x509.o: crypto/x509/t_x509.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/x509/t_x509.d.tmp -MT $@ -c -o $@ crypto/x509/t_x509.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/x509/t_x509.d.tmp -MT $@ -c -o $@ crypto/x509/t_x509.c
 	@touch crypto/x509/t_x509.d.tmp
 	@if cmp crypto/x509/t_x509.d.tmp crypto/x509/t_x509.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/x509/t_x509.d.tmp; \
@@ -5220,7 +5269,7 @@ crypto/x509/t_x509.o: crypto/x509/t_x509.c
 		mv crypto/x509/t_x509.d.tmp crypto/x509/t_x509.d; \
 	fi
 crypto/x509/x509_att.o: crypto/x509/x509_att.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/x509/x509_att.d.tmp -MT $@ -c -o $@ crypto/x509/x509_att.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/x509/x509_att.d.tmp -MT $@ -c -o $@ crypto/x509/x509_att.c
 	@touch crypto/x509/x509_att.d.tmp
 	@if cmp crypto/x509/x509_att.d.tmp crypto/x509/x509_att.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/x509/x509_att.d.tmp; \
@@ -5228,7 +5277,7 @@ crypto/x509/x509_att.o: crypto/x509/x509_att.c
 		mv crypto/x509/x509_att.d.tmp crypto/x509/x509_att.d; \
 	fi
 crypto/x509/x509_cmp.o: crypto/x509/x509_cmp.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/x509/x509_cmp.d.tmp -MT $@ -c -o $@ crypto/x509/x509_cmp.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/x509/x509_cmp.d.tmp -MT $@ -c -o $@ crypto/x509/x509_cmp.c
 	@touch crypto/x509/x509_cmp.d.tmp
 	@if cmp crypto/x509/x509_cmp.d.tmp crypto/x509/x509_cmp.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/x509/x509_cmp.d.tmp; \
@@ -5236,7 +5285,7 @@ crypto/x509/x509_cmp.o: crypto/x509/x509_cmp.c
 		mv crypto/x509/x509_cmp.d.tmp crypto/x509/x509_cmp.d; \
 	fi
 crypto/x509/x509_d2.o: crypto/x509/x509_d2.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/x509/x509_d2.d.tmp -MT $@ -c -o $@ crypto/x509/x509_d2.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/x509/x509_d2.d.tmp -MT $@ -c -o $@ crypto/x509/x509_d2.c
 	@touch crypto/x509/x509_d2.d.tmp
 	@if cmp crypto/x509/x509_d2.d.tmp crypto/x509/x509_d2.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/x509/x509_d2.d.tmp; \
@@ -5244,7 +5293,7 @@ crypto/x509/x509_d2.o: crypto/x509/x509_d2.c
 		mv crypto/x509/x509_d2.d.tmp crypto/x509/x509_d2.d; \
 	fi
 crypto/x509/x509_def.o: crypto/x509/x509_def.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/x509/x509_def.d.tmp -MT $@ -c -o $@ crypto/x509/x509_def.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/x509/x509_def.d.tmp -MT $@ -c -o $@ crypto/x509/x509_def.c
 	@touch crypto/x509/x509_def.d.tmp
 	@if cmp crypto/x509/x509_def.d.tmp crypto/x509/x509_def.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/x509/x509_def.d.tmp; \
@@ -5252,7 +5301,7 @@ crypto/x509/x509_def.o: crypto/x509/x509_def.c
 		mv crypto/x509/x509_def.d.tmp crypto/x509/x509_def.d; \
 	fi
 crypto/x509/x509_err.o: crypto/x509/x509_err.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/x509/x509_err.d.tmp -MT $@ -c -o $@ crypto/x509/x509_err.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/x509/x509_err.d.tmp -MT $@ -c -o $@ crypto/x509/x509_err.c
 	@touch crypto/x509/x509_err.d.tmp
 	@if cmp crypto/x509/x509_err.d.tmp crypto/x509/x509_err.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/x509/x509_err.d.tmp; \
@@ -5260,7 +5309,7 @@ crypto/x509/x509_err.o: crypto/x509/x509_err.c
 		mv crypto/x509/x509_err.d.tmp crypto/x509/x509_err.d; \
 	fi
 crypto/x509/x509_ext.o: crypto/x509/x509_ext.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/x509/x509_ext.d.tmp -MT $@ -c -o $@ crypto/x509/x509_ext.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/x509/x509_ext.d.tmp -MT $@ -c -o $@ crypto/x509/x509_ext.c
 	@touch crypto/x509/x509_ext.d.tmp
 	@if cmp crypto/x509/x509_ext.d.tmp crypto/x509/x509_ext.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/x509/x509_ext.d.tmp; \
@@ -5268,7 +5317,7 @@ crypto/x509/x509_ext.o: crypto/x509/x509_ext.c
 		mv crypto/x509/x509_ext.d.tmp crypto/x509/x509_ext.d; \
 	fi
 crypto/x509/x509_lu.o: crypto/x509/x509_lu.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/x509/x509_lu.d.tmp -MT $@ -c -o $@ crypto/x509/x509_lu.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/x509/x509_lu.d.tmp -MT $@ -c -o $@ crypto/x509/x509_lu.c
 	@touch crypto/x509/x509_lu.d.tmp
 	@if cmp crypto/x509/x509_lu.d.tmp crypto/x509/x509_lu.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/x509/x509_lu.d.tmp; \
@@ -5276,7 +5325,7 @@ crypto/x509/x509_lu.o: crypto/x509/x509_lu.c
 		mv crypto/x509/x509_lu.d.tmp crypto/x509/x509_lu.d; \
 	fi
 crypto/x509/x509_obj.o: crypto/x509/x509_obj.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/x509/x509_obj.d.tmp -MT $@ -c -o $@ crypto/x509/x509_obj.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/x509/x509_obj.d.tmp -MT $@ -c -o $@ crypto/x509/x509_obj.c
 	@touch crypto/x509/x509_obj.d.tmp
 	@if cmp crypto/x509/x509_obj.d.tmp crypto/x509/x509_obj.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/x509/x509_obj.d.tmp; \
@@ -5284,7 +5333,7 @@ crypto/x509/x509_obj.o: crypto/x509/x509_obj.c
 		mv crypto/x509/x509_obj.d.tmp crypto/x509/x509_obj.d; \
 	fi
 crypto/x509/x509_r2x.o: crypto/x509/x509_r2x.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/x509/x509_r2x.d.tmp -MT $@ -c -o $@ crypto/x509/x509_r2x.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/x509/x509_r2x.d.tmp -MT $@ -c -o $@ crypto/x509/x509_r2x.c
 	@touch crypto/x509/x509_r2x.d.tmp
 	@if cmp crypto/x509/x509_r2x.d.tmp crypto/x509/x509_r2x.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/x509/x509_r2x.d.tmp; \
@@ -5292,7 +5341,7 @@ crypto/x509/x509_r2x.o: crypto/x509/x509_r2x.c
 		mv crypto/x509/x509_r2x.d.tmp crypto/x509/x509_r2x.d; \
 	fi
 crypto/x509/x509_req.o: crypto/x509/x509_req.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/x509/x509_req.d.tmp -MT $@ -c -o $@ crypto/x509/x509_req.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/x509/x509_req.d.tmp -MT $@ -c -o $@ crypto/x509/x509_req.c
 	@touch crypto/x509/x509_req.d.tmp
 	@if cmp crypto/x509/x509_req.d.tmp crypto/x509/x509_req.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/x509/x509_req.d.tmp; \
@@ -5300,7 +5349,7 @@ crypto/x509/x509_req.o: crypto/x509/x509_req.c
 		mv crypto/x509/x509_req.d.tmp crypto/x509/x509_req.d; \
 	fi
 crypto/x509/x509_set.o: crypto/x509/x509_set.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/x509/x509_set.d.tmp -MT $@ -c -o $@ crypto/x509/x509_set.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/x509/x509_set.d.tmp -MT $@ -c -o $@ crypto/x509/x509_set.c
 	@touch crypto/x509/x509_set.d.tmp
 	@if cmp crypto/x509/x509_set.d.tmp crypto/x509/x509_set.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/x509/x509_set.d.tmp; \
@@ -5308,7 +5357,7 @@ crypto/x509/x509_set.o: crypto/x509/x509_set.c
 		mv crypto/x509/x509_set.d.tmp crypto/x509/x509_set.d; \
 	fi
 crypto/x509/x509_trs.o: crypto/x509/x509_trs.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/x509/x509_trs.d.tmp -MT $@ -c -o $@ crypto/x509/x509_trs.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/x509/x509_trs.d.tmp -MT $@ -c -o $@ crypto/x509/x509_trs.c
 	@touch crypto/x509/x509_trs.d.tmp
 	@if cmp crypto/x509/x509_trs.d.tmp crypto/x509/x509_trs.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/x509/x509_trs.d.tmp; \
@@ -5316,7 +5365,7 @@ crypto/x509/x509_trs.o: crypto/x509/x509_trs.c
 		mv crypto/x509/x509_trs.d.tmp crypto/x509/x509_trs.d; \
 	fi
 crypto/x509/x509_txt.o: crypto/x509/x509_txt.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/x509/x509_txt.d.tmp -MT $@ -c -o $@ crypto/x509/x509_txt.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/x509/x509_txt.d.tmp -MT $@ -c -o $@ crypto/x509/x509_txt.c
 	@touch crypto/x509/x509_txt.d.tmp
 	@if cmp crypto/x509/x509_txt.d.tmp crypto/x509/x509_txt.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/x509/x509_txt.d.tmp; \
@@ -5324,7 +5373,7 @@ crypto/x509/x509_txt.o: crypto/x509/x509_txt.c
 		mv crypto/x509/x509_txt.d.tmp crypto/x509/x509_txt.d; \
 	fi
 crypto/x509/x509_v3.o: crypto/x509/x509_v3.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/x509/x509_v3.d.tmp -MT $@ -c -o $@ crypto/x509/x509_v3.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/x509/x509_v3.d.tmp -MT $@ -c -o $@ crypto/x509/x509_v3.c
 	@touch crypto/x509/x509_v3.d.tmp
 	@if cmp crypto/x509/x509_v3.d.tmp crypto/x509/x509_v3.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/x509/x509_v3.d.tmp; \
@@ -5332,7 +5381,7 @@ crypto/x509/x509_v3.o: crypto/x509/x509_v3.c
 		mv crypto/x509/x509_v3.d.tmp crypto/x509/x509_v3.d; \
 	fi
 crypto/x509/x509_vfy.o: crypto/x509/x509_vfy.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/x509/x509_vfy.d.tmp -MT $@ -c -o $@ crypto/x509/x509_vfy.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/x509/x509_vfy.d.tmp -MT $@ -c -o $@ crypto/x509/x509_vfy.c
 	@touch crypto/x509/x509_vfy.d.tmp
 	@if cmp crypto/x509/x509_vfy.d.tmp crypto/x509/x509_vfy.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/x509/x509_vfy.d.tmp; \
@@ -5340,7 +5389,7 @@ crypto/x509/x509_vfy.o: crypto/x509/x509_vfy.c
 		mv crypto/x509/x509_vfy.d.tmp crypto/x509/x509_vfy.d; \
 	fi
 crypto/x509/x509_vpm.o: crypto/x509/x509_vpm.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/x509/x509_vpm.d.tmp -MT $@ -c -o $@ crypto/x509/x509_vpm.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/x509/x509_vpm.d.tmp -MT $@ -c -o $@ crypto/x509/x509_vpm.c
 	@touch crypto/x509/x509_vpm.d.tmp
 	@if cmp crypto/x509/x509_vpm.d.tmp crypto/x509/x509_vpm.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/x509/x509_vpm.d.tmp; \
@@ -5348,7 +5397,7 @@ crypto/x509/x509_vpm.o: crypto/x509/x509_vpm.c
 		mv crypto/x509/x509_vpm.d.tmp crypto/x509/x509_vpm.d; \
 	fi
 crypto/x509/x509cset.o: crypto/x509/x509cset.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/x509/x509cset.d.tmp -MT $@ -c -o $@ crypto/x509/x509cset.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/x509/x509cset.d.tmp -MT $@ -c -o $@ crypto/x509/x509cset.c
 	@touch crypto/x509/x509cset.d.tmp
 	@if cmp crypto/x509/x509cset.d.tmp crypto/x509/x509cset.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/x509/x509cset.d.tmp; \
@@ -5356,7 +5405,7 @@ crypto/x509/x509cset.o: crypto/x509/x509cset.c
 		mv crypto/x509/x509cset.d.tmp crypto/x509/x509cset.d; \
 	fi
 crypto/x509/x509name.o: crypto/x509/x509name.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/x509/x509name.d.tmp -MT $@ -c -o $@ crypto/x509/x509name.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/x509/x509name.d.tmp -MT $@ -c -o $@ crypto/x509/x509name.c
 	@touch crypto/x509/x509name.d.tmp
 	@if cmp crypto/x509/x509name.d.tmp crypto/x509/x509name.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/x509/x509name.d.tmp; \
@@ -5364,7 +5413,7 @@ crypto/x509/x509name.o: crypto/x509/x509name.c
 		mv crypto/x509/x509name.d.tmp crypto/x509/x509name.d; \
 	fi
 crypto/x509/x509rset.o: crypto/x509/x509rset.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/x509/x509rset.d.tmp -MT $@ -c -o $@ crypto/x509/x509rset.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/x509/x509rset.d.tmp -MT $@ -c -o $@ crypto/x509/x509rset.c
 	@touch crypto/x509/x509rset.d.tmp
 	@if cmp crypto/x509/x509rset.d.tmp crypto/x509/x509rset.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/x509/x509rset.d.tmp; \
@@ -5372,7 +5421,7 @@ crypto/x509/x509rset.o: crypto/x509/x509rset.c
 		mv crypto/x509/x509rset.d.tmp crypto/x509/x509rset.d; \
 	fi
 crypto/x509/x509spki.o: crypto/x509/x509spki.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/x509/x509spki.d.tmp -MT $@ -c -o $@ crypto/x509/x509spki.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/x509/x509spki.d.tmp -MT $@ -c -o $@ crypto/x509/x509spki.c
 	@touch crypto/x509/x509spki.d.tmp
 	@if cmp crypto/x509/x509spki.d.tmp crypto/x509/x509spki.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/x509/x509spki.d.tmp; \
@@ -5380,7 +5429,7 @@ crypto/x509/x509spki.o: crypto/x509/x509spki.c
 		mv crypto/x509/x509spki.d.tmp crypto/x509/x509spki.d; \
 	fi
 crypto/x509/x509type.o: crypto/x509/x509type.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/x509/x509type.d.tmp -MT $@ -c -o $@ crypto/x509/x509type.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/x509/x509type.d.tmp -MT $@ -c -o $@ crypto/x509/x509type.c
 	@touch crypto/x509/x509type.d.tmp
 	@if cmp crypto/x509/x509type.d.tmp crypto/x509/x509type.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/x509/x509type.d.tmp; \
@@ -5388,7 +5437,7 @@ crypto/x509/x509type.o: crypto/x509/x509type.c
 		mv crypto/x509/x509type.d.tmp crypto/x509/x509type.d; \
 	fi
 crypto/x509/x_all.o: crypto/x509/x_all.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/x509/x_all.d.tmp -MT $@ -c -o $@ crypto/x509/x_all.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/x509/x_all.d.tmp -MT $@ -c -o $@ crypto/x509/x_all.c
 	@touch crypto/x509/x_all.d.tmp
 	@if cmp crypto/x509/x_all.d.tmp crypto/x509/x_all.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/x509/x_all.d.tmp; \
@@ -5396,7 +5445,7 @@ crypto/x509/x_all.o: crypto/x509/x_all.c
 		mv crypto/x509/x_all.d.tmp crypto/x509/x_all.d; \
 	fi
 crypto/x509/x_attrib.o: crypto/x509/x_attrib.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/x509/x_attrib.d.tmp -MT $@ -c -o $@ crypto/x509/x_attrib.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/x509/x_attrib.d.tmp -MT $@ -c -o $@ crypto/x509/x_attrib.c
 	@touch crypto/x509/x_attrib.d.tmp
 	@if cmp crypto/x509/x_attrib.d.tmp crypto/x509/x_attrib.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/x509/x_attrib.d.tmp; \
@@ -5404,7 +5453,7 @@ crypto/x509/x_attrib.o: crypto/x509/x_attrib.c
 		mv crypto/x509/x_attrib.d.tmp crypto/x509/x_attrib.d; \
 	fi
 crypto/x509/x_crl.o: crypto/x509/x_crl.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/x509/x_crl.d.tmp -MT $@ -c -o $@ crypto/x509/x_crl.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/x509/x_crl.d.tmp -MT $@ -c -o $@ crypto/x509/x_crl.c
 	@touch crypto/x509/x_crl.d.tmp
 	@if cmp crypto/x509/x_crl.d.tmp crypto/x509/x_crl.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/x509/x_crl.d.tmp; \
@@ -5412,7 +5461,7 @@ crypto/x509/x_crl.o: crypto/x509/x_crl.c
 		mv crypto/x509/x_crl.d.tmp crypto/x509/x_crl.d; \
 	fi
 crypto/x509/x_exten.o: crypto/x509/x_exten.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/x509/x_exten.d.tmp -MT $@ -c -o $@ crypto/x509/x_exten.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/x509/x_exten.d.tmp -MT $@ -c -o $@ crypto/x509/x_exten.c
 	@touch crypto/x509/x_exten.d.tmp
 	@if cmp crypto/x509/x_exten.d.tmp crypto/x509/x_exten.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/x509/x_exten.d.tmp; \
@@ -5420,7 +5469,7 @@ crypto/x509/x_exten.o: crypto/x509/x_exten.c
 		mv crypto/x509/x_exten.d.tmp crypto/x509/x_exten.d; \
 	fi
 crypto/x509/x_name.o: crypto/x509/x_name.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/x509/x_name.d.tmp -MT $@ -c -o $@ crypto/x509/x_name.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/x509/x_name.d.tmp -MT $@ -c -o $@ crypto/x509/x_name.c
 	@touch crypto/x509/x_name.d.tmp
 	@if cmp crypto/x509/x_name.d.tmp crypto/x509/x_name.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/x509/x_name.d.tmp; \
@@ -5428,7 +5477,7 @@ crypto/x509/x_name.o: crypto/x509/x_name.c
 		mv crypto/x509/x_name.d.tmp crypto/x509/x_name.d; \
 	fi
 crypto/x509/x_pubkey.o: crypto/x509/x_pubkey.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/x509/x_pubkey.d.tmp -MT $@ -c -o $@ crypto/x509/x_pubkey.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/x509/x_pubkey.d.tmp -MT $@ -c -o $@ crypto/x509/x_pubkey.c
 	@touch crypto/x509/x_pubkey.d.tmp
 	@if cmp crypto/x509/x_pubkey.d.tmp crypto/x509/x_pubkey.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/x509/x_pubkey.d.tmp; \
@@ -5436,7 +5485,7 @@ crypto/x509/x_pubkey.o: crypto/x509/x_pubkey.c
 		mv crypto/x509/x_pubkey.d.tmp crypto/x509/x_pubkey.d; \
 	fi
 crypto/x509/x_req.o: crypto/x509/x_req.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/x509/x_req.d.tmp -MT $@ -c -o $@ crypto/x509/x_req.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/x509/x_req.d.tmp -MT $@ -c -o $@ crypto/x509/x_req.c
 	@touch crypto/x509/x_req.d.tmp
 	@if cmp crypto/x509/x_req.d.tmp crypto/x509/x_req.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/x509/x_req.d.tmp; \
@@ -5444,7 +5493,7 @@ crypto/x509/x_req.o: crypto/x509/x_req.c
 		mv crypto/x509/x_req.d.tmp crypto/x509/x_req.d; \
 	fi
 crypto/x509/x_x509.o: crypto/x509/x_x509.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/x509/x_x509.d.tmp -MT $@ -c -o $@ crypto/x509/x_x509.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/x509/x_x509.d.tmp -MT $@ -c -o $@ crypto/x509/x_x509.c
 	@touch crypto/x509/x_x509.d.tmp
 	@if cmp crypto/x509/x_x509.d.tmp crypto/x509/x_x509.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/x509/x_x509.d.tmp; \
@@ -5452,7 +5501,7 @@ crypto/x509/x_x509.o: crypto/x509/x_x509.c
 		mv crypto/x509/x_x509.d.tmp crypto/x509/x_x509.d; \
 	fi
 crypto/x509/x_x509a.o: crypto/x509/x_x509a.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/x509/x_x509a.d.tmp -MT $@ -c -o $@ crypto/x509/x_x509a.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/x509/x_x509a.d.tmp -MT $@ -c -o $@ crypto/x509/x_x509a.c
 	@touch crypto/x509/x_x509a.d.tmp
 	@if cmp crypto/x509/x_x509a.d.tmp crypto/x509/x_x509a.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/x509/x_x509a.d.tmp; \
@@ -5460,7 +5509,7 @@ crypto/x509/x_x509a.o: crypto/x509/x_x509a.c
 		mv crypto/x509/x_x509a.d.tmp crypto/x509/x_x509a.d; \
 	fi
 crypto/x509v3/pcy_cache.o: crypto/x509v3/pcy_cache.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/x509v3/pcy_cache.d.tmp -MT $@ -c -o $@ crypto/x509v3/pcy_cache.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/x509v3/pcy_cache.d.tmp -MT $@ -c -o $@ crypto/x509v3/pcy_cache.c
 	@touch crypto/x509v3/pcy_cache.d.tmp
 	@if cmp crypto/x509v3/pcy_cache.d.tmp crypto/x509v3/pcy_cache.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/x509v3/pcy_cache.d.tmp; \
@@ -5468,7 +5517,7 @@ crypto/x509v3/pcy_cache.o: crypto/x509v3/pcy_cache.c
 		mv crypto/x509v3/pcy_cache.d.tmp crypto/x509v3/pcy_cache.d; \
 	fi
 crypto/x509v3/pcy_data.o: crypto/x509v3/pcy_data.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/x509v3/pcy_data.d.tmp -MT $@ -c -o $@ crypto/x509v3/pcy_data.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/x509v3/pcy_data.d.tmp -MT $@ -c -o $@ crypto/x509v3/pcy_data.c
 	@touch crypto/x509v3/pcy_data.d.tmp
 	@if cmp crypto/x509v3/pcy_data.d.tmp crypto/x509v3/pcy_data.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/x509v3/pcy_data.d.tmp; \
@@ -5476,7 +5525,7 @@ crypto/x509v3/pcy_data.o: crypto/x509v3/pcy_data.c
 		mv crypto/x509v3/pcy_data.d.tmp crypto/x509v3/pcy_data.d; \
 	fi
 crypto/x509v3/pcy_lib.o: crypto/x509v3/pcy_lib.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/x509v3/pcy_lib.d.tmp -MT $@ -c -o $@ crypto/x509v3/pcy_lib.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/x509v3/pcy_lib.d.tmp -MT $@ -c -o $@ crypto/x509v3/pcy_lib.c
 	@touch crypto/x509v3/pcy_lib.d.tmp
 	@if cmp crypto/x509v3/pcy_lib.d.tmp crypto/x509v3/pcy_lib.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/x509v3/pcy_lib.d.tmp; \
@@ -5484,7 +5533,7 @@ crypto/x509v3/pcy_lib.o: crypto/x509v3/pcy_lib.c
 		mv crypto/x509v3/pcy_lib.d.tmp crypto/x509v3/pcy_lib.d; \
 	fi
 crypto/x509v3/pcy_map.o: crypto/x509v3/pcy_map.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/x509v3/pcy_map.d.tmp -MT $@ -c -o $@ crypto/x509v3/pcy_map.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/x509v3/pcy_map.d.tmp -MT $@ -c -o $@ crypto/x509v3/pcy_map.c
 	@touch crypto/x509v3/pcy_map.d.tmp
 	@if cmp crypto/x509v3/pcy_map.d.tmp crypto/x509v3/pcy_map.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/x509v3/pcy_map.d.tmp; \
@@ -5492,7 +5541,7 @@ crypto/x509v3/pcy_map.o: crypto/x509v3/pcy_map.c
 		mv crypto/x509v3/pcy_map.d.tmp crypto/x509v3/pcy_map.d; \
 	fi
 crypto/x509v3/pcy_node.o: crypto/x509v3/pcy_node.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/x509v3/pcy_node.d.tmp -MT $@ -c -o $@ crypto/x509v3/pcy_node.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/x509v3/pcy_node.d.tmp -MT $@ -c -o $@ crypto/x509v3/pcy_node.c
 	@touch crypto/x509v3/pcy_node.d.tmp
 	@if cmp crypto/x509v3/pcy_node.d.tmp crypto/x509v3/pcy_node.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/x509v3/pcy_node.d.tmp; \
@@ -5500,7 +5549,7 @@ crypto/x509v3/pcy_node.o: crypto/x509v3/pcy_node.c
 		mv crypto/x509v3/pcy_node.d.tmp crypto/x509v3/pcy_node.d; \
 	fi
 crypto/x509v3/pcy_tree.o: crypto/x509v3/pcy_tree.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/x509v3/pcy_tree.d.tmp -MT $@ -c -o $@ crypto/x509v3/pcy_tree.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/x509v3/pcy_tree.d.tmp -MT $@ -c -o $@ crypto/x509v3/pcy_tree.c
 	@touch crypto/x509v3/pcy_tree.d.tmp
 	@if cmp crypto/x509v3/pcy_tree.d.tmp crypto/x509v3/pcy_tree.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/x509v3/pcy_tree.d.tmp; \
@@ -5508,7 +5557,7 @@ crypto/x509v3/pcy_tree.o: crypto/x509v3/pcy_tree.c
 		mv crypto/x509v3/pcy_tree.d.tmp crypto/x509v3/pcy_tree.d; \
 	fi
 crypto/x509v3/v3_addr.o: crypto/x509v3/v3_addr.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/x509v3/v3_addr.d.tmp -MT $@ -c -o $@ crypto/x509v3/v3_addr.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/x509v3/v3_addr.d.tmp -MT $@ -c -o $@ crypto/x509v3/v3_addr.c
 	@touch crypto/x509v3/v3_addr.d.tmp
 	@if cmp crypto/x509v3/v3_addr.d.tmp crypto/x509v3/v3_addr.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/x509v3/v3_addr.d.tmp; \
@@ -5516,7 +5565,7 @@ crypto/x509v3/v3_addr.o: crypto/x509v3/v3_addr.c
 		mv crypto/x509v3/v3_addr.d.tmp crypto/x509v3/v3_addr.d; \
 	fi
 crypto/x509v3/v3_admis.o: crypto/x509v3/v3_admis.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/x509v3/v3_admis.d.tmp -MT $@ -c -o $@ crypto/x509v3/v3_admis.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/x509v3/v3_admis.d.tmp -MT $@ -c -o $@ crypto/x509v3/v3_admis.c
 	@touch crypto/x509v3/v3_admis.d.tmp
 	@if cmp crypto/x509v3/v3_admis.d.tmp crypto/x509v3/v3_admis.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/x509v3/v3_admis.d.tmp; \
@@ -5524,7 +5573,7 @@ crypto/x509v3/v3_admis.o: crypto/x509v3/v3_admis.c
 		mv crypto/x509v3/v3_admis.d.tmp crypto/x509v3/v3_admis.d; \
 	fi
 crypto/x509v3/v3_akey.o: crypto/x509v3/v3_akey.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/x509v3/v3_akey.d.tmp -MT $@ -c -o $@ crypto/x509v3/v3_akey.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/x509v3/v3_akey.d.tmp -MT $@ -c -o $@ crypto/x509v3/v3_akey.c
 	@touch crypto/x509v3/v3_akey.d.tmp
 	@if cmp crypto/x509v3/v3_akey.d.tmp crypto/x509v3/v3_akey.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/x509v3/v3_akey.d.tmp; \
@@ -5532,7 +5581,7 @@ crypto/x509v3/v3_akey.o: crypto/x509v3/v3_akey.c
 		mv crypto/x509v3/v3_akey.d.tmp crypto/x509v3/v3_akey.d; \
 	fi
 crypto/x509v3/v3_akeya.o: crypto/x509v3/v3_akeya.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/x509v3/v3_akeya.d.tmp -MT $@ -c -o $@ crypto/x509v3/v3_akeya.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/x509v3/v3_akeya.d.tmp -MT $@ -c -o $@ crypto/x509v3/v3_akeya.c
 	@touch crypto/x509v3/v3_akeya.d.tmp
 	@if cmp crypto/x509v3/v3_akeya.d.tmp crypto/x509v3/v3_akeya.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/x509v3/v3_akeya.d.tmp; \
@@ -5540,7 +5589,7 @@ crypto/x509v3/v3_akeya.o: crypto/x509v3/v3_akeya.c
 		mv crypto/x509v3/v3_akeya.d.tmp crypto/x509v3/v3_akeya.d; \
 	fi
 crypto/x509v3/v3_alt.o: crypto/x509v3/v3_alt.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/x509v3/v3_alt.d.tmp -MT $@ -c -o $@ crypto/x509v3/v3_alt.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/x509v3/v3_alt.d.tmp -MT $@ -c -o $@ crypto/x509v3/v3_alt.c
 	@touch crypto/x509v3/v3_alt.d.tmp
 	@if cmp crypto/x509v3/v3_alt.d.tmp crypto/x509v3/v3_alt.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/x509v3/v3_alt.d.tmp; \
@@ -5548,7 +5597,7 @@ crypto/x509v3/v3_alt.o: crypto/x509v3/v3_alt.c
 		mv crypto/x509v3/v3_alt.d.tmp crypto/x509v3/v3_alt.d; \
 	fi
 crypto/x509v3/v3_asid.o: crypto/x509v3/v3_asid.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/x509v3/v3_asid.d.tmp -MT $@ -c -o $@ crypto/x509v3/v3_asid.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/x509v3/v3_asid.d.tmp -MT $@ -c -o $@ crypto/x509v3/v3_asid.c
 	@touch crypto/x509v3/v3_asid.d.tmp
 	@if cmp crypto/x509v3/v3_asid.d.tmp crypto/x509v3/v3_asid.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/x509v3/v3_asid.d.tmp; \
@@ -5556,7 +5605,7 @@ crypto/x509v3/v3_asid.o: crypto/x509v3/v3_asid.c
 		mv crypto/x509v3/v3_asid.d.tmp crypto/x509v3/v3_asid.d; \
 	fi
 crypto/x509v3/v3_bcons.o: crypto/x509v3/v3_bcons.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/x509v3/v3_bcons.d.tmp -MT $@ -c -o $@ crypto/x509v3/v3_bcons.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/x509v3/v3_bcons.d.tmp -MT $@ -c -o $@ crypto/x509v3/v3_bcons.c
 	@touch crypto/x509v3/v3_bcons.d.tmp
 	@if cmp crypto/x509v3/v3_bcons.d.tmp crypto/x509v3/v3_bcons.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/x509v3/v3_bcons.d.tmp; \
@@ -5564,7 +5613,7 @@ crypto/x509v3/v3_bcons.o: crypto/x509v3/v3_bcons.c
 		mv crypto/x509v3/v3_bcons.d.tmp crypto/x509v3/v3_bcons.d; \
 	fi
 crypto/x509v3/v3_bitst.o: crypto/x509v3/v3_bitst.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/x509v3/v3_bitst.d.tmp -MT $@ -c -o $@ crypto/x509v3/v3_bitst.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/x509v3/v3_bitst.d.tmp -MT $@ -c -o $@ crypto/x509v3/v3_bitst.c
 	@touch crypto/x509v3/v3_bitst.d.tmp
 	@if cmp crypto/x509v3/v3_bitst.d.tmp crypto/x509v3/v3_bitst.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/x509v3/v3_bitst.d.tmp; \
@@ -5572,7 +5621,7 @@ crypto/x509v3/v3_bitst.o: crypto/x509v3/v3_bitst.c
 		mv crypto/x509v3/v3_bitst.d.tmp crypto/x509v3/v3_bitst.d; \
 	fi
 crypto/x509v3/v3_conf.o: crypto/x509v3/v3_conf.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/x509v3/v3_conf.d.tmp -MT $@ -c -o $@ crypto/x509v3/v3_conf.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/x509v3/v3_conf.d.tmp -MT $@ -c -o $@ crypto/x509v3/v3_conf.c
 	@touch crypto/x509v3/v3_conf.d.tmp
 	@if cmp crypto/x509v3/v3_conf.d.tmp crypto/x509v3/v3_conf.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/x509v3/v3_conf.d.tmp; \
@@ -5580,7 +5629,7 @@ crypto/x509v3/v3_conf.o: crypto/x509v3/v3_conf.c
 		mv crypto/x509v3/v3_conf.d.tmp crypto/x509v3/v3_conf.d; \
 	fi
 crypto/x509v3/v3_cpols.o: crypto/x509v3/v3_cpols.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/x509v3/v3_cpols.d.tmp -MT $@ -c -o $@ crypto/x509v3/v3_cpols.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/x509v3/v3_cpols.d.tmp -MT $@ -c -o $@ crypto/x509v3/v3_cpols.c
 	@touch crypto/x509v3/v3_cpols.d.tmp
 	@if cmp crypto/x509v3/v3_cpols.d.tmp crypto/x509v3/v3_cpols.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/x509v3/v3_cpols.d.tmp; \
@@ -5588,7 +5637,7 @@ crypto/x509v3/v3_cpols.o: crypto/x509v3/v3_cpols.c
 		mv crypto/x509v3/v3_cpols.d.tmp crypto/x509v3/v3_cpols.d; \
 	fi
 crypto/x509v3/v3_crld.o: crypto/x509v3/v3_crld.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/x509v3/v3_crld.d.tmp -MT $@ -c -o $@ crypto/x509v3/v3_crld.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/x509v3/v3_crld.d.tmp -MT $@ -c -o $@ crypto/x509v3/v3_crld.c
 	@touch crypto/x509v3/v3_crld.d.tmp
 	@if cmp crypto/x509v3/v3_crld.d.tmp crypto/x509v3/v3_crld.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/x509v3/v3_crld.d.tmp; \
@@ -5596,7 +5645,7 @@ crypto/x509v3/v3_crld.o: crypto/x509v3/v3_crld.c
 		mv crypto/x509v3/v3_crld.d.tmp crypto/x509v3/v3_crld.d; \
 	fi
 crypto/x509v3/v3_enum.o: crypto/x509v3/v3_enum.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/x509v3/v3_enum.d.tmp -MT $@ -c -o $@ crypto/x509v3/v3_enum.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/x509v3/v3_enum.d.tmp -MT $@ -c -o $@ crypto/x509v3/v3_enum.c
 	@touch crypto/x509v3/v3_enum.d.tmp
 	@if cmp crypto/x509v3/v3_enum.d.tmp crypto/x509v3/v3_enum.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/x509v3/v3_enum.d.tmp; \
@@ -5604,7 +5653,7 @@ crypto/x509v3/v3_enum.o: crypto/x509v3/v3_enum.c
 		mv crypto/x509v3/v3_enum.d.tmp crypto/x509v3/v3_enum.d; \
 	fi
 crypto/x509v3/v3_extku.o: crypto/x509v3/v3_extku.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/x509v3/v3_extku.d.tmp -MT $@ -c -o $@ crypto/x509v3/v3_extku.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/x509v3/v3_extku.d.tmp -MT $@ -c -o $@ crypto/x509v3/v3_extku.c
 	@touch crypto/x509v3/v3_extku.d.tmp
 	@if cmp crypto/x509v3/v3_extku.d.tmp crypto/x509v3/v3_extku.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/x509v3/v3_extku.d.tmp; \
@@ -5612,7 +5661,7 @@ crypto/x509v3/v3_extku.o: crypto/x509v3/v3_extku.c
 		mv crypto/x509v3/v3_extku.d.tmp crypto/x509v3/v3_extku.d; \
 	fi
 crypto/x509v3/v3_genn.o: crypto/x509v3/v3_genn.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/x509v3/v3_genn.d.tmp -MT $@ -c -o $@ crypto/x509v3/v3_genn.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/x509v3/v3_genn.d.tmp -MT $@ -c -o $@ crypto/x509v3/v3_genn.c
 	@touch crypto/x509v3/v3_genn.d.tmp
 	@if cmp crypto/x509v3/v3_genn.d.tmp crypto/x509v3/v3_genn.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/x509v3/v3_genn.d.tmp; \
@@ -5620,7 +5669,7 @@ crypto/x509v3/v3_genn.o: crypto/x509v3/v3_genn.c
 		mv crypto/x509v3/v3_genn.d.tmp crypto/x509v3/v3_genn.d; \
 	fi
 crypto/x509v3/v3_ia5.o: crypto/x509v3/v3_ia5.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/x509v3/v3_ia5.d.tmp -MT $@ -c -o $@ crypto/x509v3/v3_ia5.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/x509v3/v3_ia5.d.tmp -MT $@ -c -o $@ crypto/x509v3/v3_ia5.c
 	@touch crypto/x509v3/v3_ia5.d.tmp
 	@if cmp crypto/x509v3/v3_ia5.d.tmp crypto/x509v3/v3_ia5.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/x509v3/v3_ia5.d.tmp; \
@@ -5628,7 +5677,7 @@ crypto/x509v3/v3_ia5.o: crypto/x509v3/v3_ia5.c
 		mv crypto/x509v3/v3_ia5.d.tmp crypto/x509v3/v3_ia5.d; \
 	fi
 crypto/x509v3/v3_info.o: crypto/x509v3/v3_info.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/x509v3/v3_info.d.tmp -MT $@ -c -o $@ crypto/x509v3/v3_info.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/x509v3/v3_info.d.tmp -MT $@ -c -o $@ crypto/x509v3/v3_info.c
 	@touch crypto/x509v3/v3_info.d.tmp
 	@if cmp crypto/x509v3/v3_info.d.tmp crypto/x509v3/v3_info.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/x509v3/v3_info.d.tmp; \
@@ -5636,7 +5685,7 @@ crypto/x509v3/v3_info.o: crypto/x509v3/v3_info.c
 		mv crypto/x509v3/v3_info.d.tmp crypto/x509v3/v3_info.d; \
 	fi
 crypto/x509v3/v3_int.o: crypto/x509v3/v3_int.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/x509v3/v3_int.d.tmp -MT $@ -c -o $@ crypto/x509v3/v3_int.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/x509v3/v3_int.d.tmp -MT $@ -c -o $@ crypto/x509v3/v3_int.c
 	@touch crypto/x509v3/v3_int.d.tmp
 	@if cmp crypto/x509v3/v3_int.d.tmp crypto/x509v3/v3_int.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/x509v3/v3_int.d.tmp; \
@@ -5644,7 +5693,7 @@ crypto/x509v3/v3_int.o: crypto/x509v3/v3_int.c
 		mv crypto/x509v3/v3_int.d.tmp crypto/x509v3/v3_int.d; \
 	fi
 crypto/x509v3/v3_lib.o: crypto/x509v3/v3_lib.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/x509v3/v3_lib.d.tmp -MT $@ -c -o $@ crypto/x509v3/v3_lib.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/x509v3/v3_lib.d.tmp -MT $@ -c -o $@ crypto/x509v3/v3_lib.c
 	@touch crypto/x509v3/v3_lib.d.tmp
 	@if cmp crypto/x509v3/v3_lib.d.tmp crypto/x509v3/v3_lib.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/x509v3/v3_lib.d.tmp; \
@@ -5652,7 +5701,7 @@ crypto/x509v3/v3_lib.o: crypto/x509v3/v3_lib.c
 		mv crypto/x509v3/v3_lib.d.tmp crypto/x509v3/v3_lib.d; \
 	fi
 crypto/x509v3/v3_ncons.o: crypto/x509v3/v3_ncons.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/x509v3/v3_ncons.d.tmp -MT $@ -c -o $@ crypto/x509v3/v3_ncons.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/x509v3/v3_ncons.d.tmp -MT $@ -c -o $@ crypto/x509v3/v3_ncons.c
 	@touch crypto/x509v3/v3_ncons.d.tmp
 	@if cmp crypto/x509v3/v3_ncons.d.tmp crypto/x509v3/v3_ncons.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/x509v3/v3_ncons.d.tmp; \
@@ -5660,7 +5709,7 @@ crypto/x509v3/v3_ncons.o: crypto/x509v3/v3_ncons.c
 		mv crypto/x509v3/v3_ncons.d.tmp crypto/x509v3/v3_ncons.d; \
 	fi
 crypto/x509v3/v3_pci.o: crypto/x509v3/v3_pci.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/x509v3/v3_pci.d.tmp -MT $@ -c -o $@ crypto/x509v3/v3_pci.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/x509v3/v3_pci.d.tmp -MT $@ -c -o $@ crypto/x509v3/v3_pci.c
 	@touch crypto/x509v3/v3_pci.d.tmp
 	@if cmp crypto/x509v3/v3_pci.d.tmp crypto/x509v3/v3_pci.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/x509v3/v3_pci.d.tmp; \
@@ -5668,7 +5717,7 @@ crypto/x509v3/v3_pci.o: crypto/x509v3/v3_pci.c
 		mv crypto/x509v3/v3_pci.d.tmp crypto/x509v3/v3_pci.d; \
 	fi
 crypto/x509v3/v3_pcia.o: crypto/x509v3/v3_pcia.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/x509v3/v3_pcia.d.tmp -MT $@ -c -o $@ crypto/x509v3/v3_pcia.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/x509v3/v3_pcia.d.tmp -MT $@ -c -o $@ crypto/x509v3/v3_pcia.c
 	@touch crypto/x509v3/v3_pcia.d.tmp
 	@if cmp crypto/x509v3/v3_pcia.d.tmp crypto/x509v3/v3_pcia.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/x509v3/v3_pcia.d.tmp; \
@@ -5676,7 +5725,7 @@ crypto/x509v3/v3_pcia.o: crypto/x509v3/v3_pcia.c
 		mv crypto/x509v3/v3_pcia.d.tmp crypto/x509v3/v3_pcia.d; \
 	fi
 crypto/x509v3/v3_pcons.o: crypto/x509v3/v3_pcons.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/x509v3/v3_pcons.d.tmp -MT $@ -c -o $@ crypto/x509v3/v3_pcons.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/x509v3/v3_pcons.d.tmp -MT $@ -c -o $@ crypto/x509v3/v3_pcons.c
 	@touch crypto/x509v3/v3_pcons.d.tmp
 	@if cmp crypto/x509v3/v3_pcons.d.tmp crypto/x509v3/v3_pcons.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/x509v3/v3_pcons.d.tmp; \
@@ -5684,7 +5733,7 @@ crypto/x509v3/v3_pcons.o: crypto/x509v3/v3_pcons.c
 		mv crypto/x509v3/v3_pcons.d.tmp crypto/x509v3/v3_pcons.d; \
 	fi
 crypto/x509v3/v3_pku.o: crypto/x509v3/v3_pku.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/x509v3/v3_pku.d.tmp -MT $@ -c -o $@ crypto/x509v3/v3_pku.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/x509v3/v3_pku.d.tmp -MT $@ -c -o $@ crypto/x509v3/v3_pku.c
 	@touch crypto/x509v3/v3_pku.d.tmp
 	@if cmp crypto/x509v3/v3_pku.d.tmp crypto/x509v3/v3_pku.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/x509v3/v3_pku.d.tmp; \
@@ -5692,7 +5741,7 @@ crypto/x509v3/v3_pku.o: crypto/x509v3/v3_pku.c
 		mv crypto/x509v3/v3_pku.d.tmp crypto/x509v3/v3_pku.d; \
 	fi
 crypto/x509v3/v3_pmaps.o: crypto/x509v3/v3_pmaps.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/x509v3/v3_pmaps.d.tmp -MT $@ -c -o $@ crypto/x509v3/v3_pmaps.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/x509v3/v3_pmaps.d.tmp -MT $@ -c -o $@ crypto/x509v3/v3_pmaps.c
 	@touch crypto/x509v3/v3_pmaps.d.tmp
 	@if cmp crypto/x509v3/v3_pmaps.d.tmp crypto/x509v3/v3_pmaps.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/x509v3/v3_pmaps.d.tmp; \
@@ -5700,7 +5749,7 @@ crypto/x509v3/v3_pmaps.o: crypto/x509v3/v3_pmaps.c
 		mv crypto/x509v3/v3_pmaps.d.tmp crypto/x509v3/v3_pmaps.d; \
 	fi
 crypto/x509v3/v3_prn.o: crypto/x509v3/v3_prn.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/x509v3/v3_prn.d.tmp -MT $@ -c -o $@ crypto/x509v3/v3_prn.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/x509v3/v3_prn.d.tmp -MT $@ -c -o $@ crypto/x509v3/v3_prn.c
 	@touch crypto/x509v3/v3_prn.d.tmp
 	@if cmp crypto/x509v3/v3_prn.d.tmp crypto/x509v3/v3_prn.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/x509v3/v3_prn.d.tmp; \
@@ -5708,7 +5757,7 @@ crypto/x509v3/v3_prn.o: crypto/x509v3/v3_prn.c
 		mv crypto/x509v3/v3_prn.d.tmp crypto/x509v3/v3_prn.d; \
 	fi
 crypto/x509v3/v3_purp.o: crypto/x509v3/v3_purp.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/x509v3/v3_purp.d.tmp -MT $@ -c -o $@ crypto/x509v3/v3_purp.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/x509v3/v3_purp.d.tmp -MT $@ -c -o $@ crypto/x509v3/v3_purp.c
 	@touch crypto/x509v3/v3_purp.d.tmp
 	@if cmp crypto/x509v3/v3_purp.d.tmp crypto/x509v3/v3_purp.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/x509v3/v3_purp.d.tmp; \
@@ -5716,7 +5765,7 @@ crypto/x509v3/v3_purp.o: crypto/x509v3/v3_purp.c
 		mv crypto/x509v3/v3_purp.d.tmp crypto/x509v3/v3_purp.d; \
 	fi
 crypto/x509v3/v3_skey.o: crypto/x509v3/v3_skey.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/x509v3/v3_skey.d.tmp -MT $@ -c -o $@ crypto/x509v3/v3_skey.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/x509v3/v3_skey.d.tmp -MT $@ -c -o $@ crypto/x509v3/v3_skey.c
 	@touch crypto/x509v3/v3_skey.d.tmp
 	@if cmp crypto/x509v3/v3_skey.d.tmp crypto/x509v3/v3_skey.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/x509v3/v3_skey.d.tmp; \
@@ -5724,7 +5773,7 @@ crypto/x509v3/v3_skey.o: crypto/x509v3/v3_skey.c
 		mv crypto/x509v3/v3_skey.d.tmp crypto/x509v3/v3_skey.d; \
 	fi
 crypto/x509v3/v3_sxnet.o: crypto/x509v3/v3_sxnet.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/x509v3/v3_sxnet.d.tmp -MT $@ -c -o $@ crypto/x509v3/v3_sxnet.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/x509v3/v3_sxnet.d.tmp -MT $@ -c -o $@ crypto/x509v3/v3_sxnet.c
 	@touch crypto/x509v3/v3_sxnet.d.tmp
 	@if cmp crypto/x509v3/v3_sxnet.d.tmp crypto/x509v3/v3_sxnet.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/x509v3/v3_sxnet.d.tmp; \
@@ -5732,7 +5781,7 @@ crypto/x509v3/v3_sxnet.o: crypto/x509v3/v3_sxnet.c
 		mv crypto/x509v3/v3_sxnet.d.tmp crypto/x509v3/v3_sxnet.d; \
 	fi
 crypto/x509v3/v3_tlsf.o: crypto/x509v3/v3_tlsf.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/x509v3/v3_tlsf.d.tmp -MT $@ -c -o $@ crypto/x509v3/v3_tlsf.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/x509v3/v3_tlsf.d.tmp -MT $@ -c -o $@ crypto/x509v3/v3_tlsf.c
 	@touch crypto/x509v3/v3_tlsf.d.tmp
 	@if cmp crypto/x509v3/v3_tlsf.d.tmp crypto/x509v3/v3_tlsf.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/x509v3/v3_tlsf.d.tmp; \
@@ -5740,7 +5789,7 @@ crypto/x509v3/v3_tlsf.o: crypto/x509v3/v3_tlsf.c
 		mv crypto/x509v3/v3_tlsf.d.tmp crypto/x509v3/v3_tlsf.d; \
 	fi
 crypto/x509v3/v3_utl.o: crypto/x509v3/v3_utl.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/x509v3/v3_utl.d.tmp -MT $@ -c -o $@ crypto/x509v3/v3_utl.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/x509v3/v3_utl.d.tmp -MT $@ -c -o $@ crypto/x509v3/v3_utl.c
 	@touch crypto/x509v3/v3_utl.d.tmp
 	@if cmp crypto/x509v3/v3_utl.d.tmp crypto/x509v3/v3_utl.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/x509v3/v3_utl.d.tmp; \
@@ -5748,7 +5797,7 @@ crypto/x509v3/v3_utl.o: crypto/x509v3/v3_utl.c
 		mv crypto/x509v3/v3_utl.d.tmp crypto/x509v3/v3_utl.d; \
 	fi
 crypto/x509v3/v3err.o: crypto/x509v3/v3err.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF crypto/x509v3/v3err.d.tmp -MT $@ -c -o $@ crypto/x509v3/v3err.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF crypto/x509v3/v3err.d.tmp -MT $@ -c -o $@ crypto/x509v3/v3err.c
 	@touch crypto/x509v3/v3err.d.tmp
 	@if cmp crypto/x509v3/v3err.d.tmp crypto/x509v3/v3err.d > /dev/null 2> /dev/null; then \
 		rm -f crypto/x509v3/v3err.d.tmp; \
@@ -5756,7 +5805,7 @@ crypto/x509v3/v3err.o: crypto/x509v3/v3err.c
 		mv crypto/x509v3/v3err.d.tmp crypto/x509v3/v3err.d; \
 	fi
 engines/e_capi.o: engines/e_capi.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF engines/e_capi.d.tmp -MT $@ -c -o $@ engines/e_capi.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF engines/e_capi.d.tmp -MT $@ -c -o $@ engines/e_capi.c
 	@touch engines/e_capi.d.tmp
 	@if cmp engines/e_capi.d.tmp engines/e_capi.d > /dev/null 2> /dev/null; then \
 		rm -f engines/e_capi.d.tmp; \
@@ -5764,7 +5813,7 @@ engines/e_capi.o: engines/e_capi.c
 		mv engines/e_capi.d.tmp engines/e_capi.d; \
 	fi
 engines/e_padlock.o: engines/e_padlock.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF engines/e_padlock.d.tmp -MT $@ -c -o $@ engines/e_padlock.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF engines/e_padlock.d.tmp -MT $@ -c -o $@ engines/e_padlock.c
 	@touch engines/e_padlock.d.tmp
 	@if cmp engines/e_padlock.d.tmp engines/e_padlock.d > /dev/null 2> /dev/null; then \
 		rm -f engines/e_padlock.d.tmp; \
@@ -5775,7 +5824,7 @@ libssl.a: ssl/bio_ssl.o ssl/d1_lib.o ssl/d1_msg.o ssl/d1_srtp.o ssl/methods.o ss
 	$(AR) $(ARFLAGS) $@ $?
 	$(RANLIB) $@ || echo Never mind.
 ssl/bio_ssl.o: ssl/bio_ssl.c
-	$(CC)  -I. -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF ssl/bio_ssl.d.tmp -MT $@ -c -o $@ ssl/bio_ssl.c
+	$(CC)  -I. -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF ssl/bio_ssl.d.tmp -MT $@ -c -o $@ ssl/bio_ssl.c
 	@touch ssl/bio_ssl.d.tmp
 	@if cmp ssl/bio_ssl.d.tmp ssl/bio_ssl.d > /dev/null 2> /dev/null; then \
 		rm -f ssl/bio_ssl.d.tmp; \
@@ -5783,7 +5832,7 @@ ssl/bio_ssl.o: ssl/bio_ssl.c
 		mv ssl/bio_ssl.d.tmp ssl/bio_ssl.d; \
 	fi
 ssl/d1_lib.o: ssl/d1_lib.c
-	$(CC)  -I. -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF ssl/d1_lib.d.tmp -MT $@ -c -o $@ ssl/d1_lib.c
+	$(CC)  -I. -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF ssl/d1_lib.d.tmp -MT $@ -c -o $@ ssl/d1_lib.c
 	@touch ssl/d1_lib.d.tmp
 	@if cmp ssl/d1_lib.d.tmp ssl/d1_lib.d > /dev/null 2> /dev/null; then \
 		rm -f ssl/d1_lib.d.tmp; \
@@ -5791,7 +5840,7 @@ ssl/d1_lib.o: ssl/d1_lib.c
 		mv ssl/d1_lib.d.tmp ssl/d1_lib.d; \
 	fi
 ssl/d1_msg.o: ssl/d1_msg.c
-	$(CC)  -I. -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF ssl/d1_msg.d.tmp -MT $@ -c -o $@ ssl/d1_msg.c
+	$(CC)  -I. -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF ssl/d1_msg.d.tmp -MT $@ -c -o $@ ssl/d1_msg.c
 	@touch ssl/d1_msg.d.tmp
 	@if cmp ssl/d1_msg.d.tmp ssl/d1_msg.d > /dev/null 2> /dev/null; then \
 		rm -f ssl/d1_msg.d.tmp; \
@@ -5799,7 +5848,7 @@ ssl/d1_msg.o: ssl/d1_msg.c
 		mv ssl/d1_msg.d.tmp ssl/d1_msg.d; \
 	fi
 ssl/d1_srtp.o: ssl/d1_srtp.c
-	$(CC)  -I. -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF ssl/d1_srtp.d.tmp -MT $@ -c -o $@ ssl/d1_srtp.c
+	$(CC)  -I. -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF ssl/d1_srtp.d.tmp -MT $@ -c -o $@ ssl/d1_srtp.c
 	@touch ssl/d1_srtp.d.tmp
 	@if cmp ssl/d1_srtp.d.tmp ssl/d1_srtp.d > /dev/null 2> /dev/null; then \
 		rm -f ssl/d1_srtp.d.tmp; \
@@ -5807,7 +5856,7 @@ ssl/d1_srtp.o: ssl/d1_srtp.c
 		mv ssl/d1_srtp.d.tmp ssl/d1_srtp.d; \
 	fi
 ssl/methods.o: ssl/methods.c
-	$(CC)  -I. -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF ssl/methods.d.tmp -MT $@ -c -o $@ ssl/methods.c
+	$(CC)  -I. -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF ssl/methods.d.tmp -MT $@ -c -o $@ ssl/methods.c
 	@touch ssl/methods.d.tmp
 	@if cmp ssl/methods.d.tmp ssl/methods.d > /dev/null 2> /dev/null; then \
 		rm -f ssl/methods.d.tmp; \
@@ -5815,7 +5864,7 @@ ssl/methods.o: ssl/methods.c
 		mv ssl/methods.d.tmp ssl/methods.d; \
 	fi
 ssl/packet.o: ssl/packet.c
-	$(CC)  -I. -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF ssl/packet.d.tmp -MT $@ -c -o $@ ssl/packet.c
+	$(CC)  -I. -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF ssl/packet.d.tmp -MT $@ -c -o $@ ssl/packet.c
 	@touch ssl/packet.d.tmp
 	@if cmp ssl/packet.d.tmp ssl/packet.d > /dev/null 2> /dev/null; then \
 		rm -f ssl/packet.d.tmp; \
@@ -5823,7 +5872,7 @@ ssl/packet.o: ssl/packet.c
 		mv ssl/packet.d.tmp ssl/packet.d; \
 	fi
 ssl/pqueue.o: ssl/pqueue.c
-	$(CC)  -I. -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF ssl/pqueue.d.tmp -MT $@ -c -o $@ ssl/pqueue.c
+	$(CC)  -I. -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF ssl/pqueue.d.tmp -MT $@ -c -o $@ ssl/pqueue.c
 	@touch ssl/pqueue.d.tmp
 	@if cmp ssl/pqueue.d.tmp ssl/pqueue.d > /dev/null 2> /dev/null; then \
 		rm -f ssl/pqueue.d.tmp; \
@@ -5831,7 +5880,7 @@ ssl/pqueue.o: ssl/pqueue.c
 		mv ssl/pqueue.d.tmp ssl/pqueue.d; \
 	fi
 ssl/record/dtls1_bitmap.o: ssl/record/dtls1_bitmap.c
-	$(CC)  -I. -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF ssl/record/dtls1_bitmap.d.tmp -MT $@ -c -o $@ ssl/record/dtls1_bitmap.c
+	$(CC)  -I. -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF ssl/record/dtls1_bitmap.d.tmp -MT $@ -c -o $@ ssl/record/dtls1_bitmap.c
 	@touch ssl/record/dtls1_bitmap.d.tmp
 	@if cmp ssl/record/dtls1_bitmap.d.tmp ssl/record/dtls1_bitmap.d > /dev/null 2> /dev/null; then \
 		rm -f ssl/record/dtls1_bitmap.d.tmp; \
@@ -5839,7 +5888,7 @@ ssl/record/dtls1_bitmap.o: ssl/record/dtls1_bitmap.c
 		mv ssl/record/dtls1_bitmap.d.tmp ssl/record/dtls1_bitmap.d; \
 	fi
 ssl/record/rec_layer_d1.o: ssl/record/rec_layer_d1.c
-	$(CC)  -I. -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF ssl/record/rec_layer_d1.d.tmp -MT $@ -c -o $@ ssl/record/rec_layer_d1.c
+	$(CC)  -I. -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF ssl/record/rec_layer_d1.d.tmp -MT $@ -c -o $@ ssl/record/rec_layer_d1.c
 	@touch ssl/record/rec_layer_d1.d.tmp
 	@if cmp ssl/record/rec_layer_d1.d.tmp ssl/record/rec_layer_d1.d > /dev/null 2> /dev/null; then \
 		rm -f ssl/record/rec_layer_d1.d.tmp; \
@@ -5847,7 +5896,7 @@ ssl/record/rec_layer_d1.o: ssl/record/rec_layer_d1.c
 		mv ssl/record/rec_layer_d1.d.tmp ssl/record/rec_layer_d1.d; \
 	fi
 ssl/record/rec_layer_s3.o: ssl/record/rec_layer_s3.c
-	$(CC)  -I. -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF ssl/record/rec_layer_s3.d.tmp -MT $@ -c -o $@ ssl/record/rec_layer_s3.c
+	$(CC)  -I. -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF ssl/record/rec_layer_s3.d.tmp -MT $@ -c -o $@ ssl/record/rec_layer_s3.c
 	@touch ssl/record/rec_layer_s3.d.tmp
 	@if cmp ssl/record/rec_layer_s3.d.tmp ssl/record/rec_layer_s3.d > /dev/null 2> /dev/null; then \
 		rm -f ssl/record/rec_layer_s3.d.tmp; \
@@ -5855,7 +5904,7 @@ ssl/record/rec_layer_s3.o: ssl/record/rec_layer_s3.c
 		mv ssl/record/rec_layer_s3.d.tmp ssl/record/rec_layer_s3.d; \
 	fi
 ssl/record/ssl3_buffer.o: ssl/record/ssl3_buffer.c
-	$(CC)  -I. -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF ssl/record/ssl3_buffer.d.tmp -MT $@ -c -o $@ ssl/record/ssl3_buffer.c
+	$(CC)  -I. -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF ssl/record/ssl3_buffer.d.tmp -MT $@ -c -o $@ ssl/record/ssl3_buffer.c
 	@touch ssl/record/ssl3_buffer.d.tmp
 	@if cmp ssl/record/ssl3_buffer.d.tmp ssl/record/ssl3_buffer.d > /dev/null 2> /dev/null; then \
 		rm -f ssl/record/ssl3_buffer.d.tmp; \
@@ -5863,7 +5912,7 @@ ssl/record/ssl3_buffer.o: ssl/record/ssl3_buffer.c
 		mv ssl/record/ssl3_buffer.d.tmp ssl/record/ssl3_buffer.d; \
 	fi
 ssl/record/ssl3_record.o: ssl/record/ssl3_record.c
-	$(CC)  -I. -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF ssl/record/ssl3_record.d.tmp -MT $@ -c -o $@ ssl/record/ssl3_record.c
+	$(CC)  -I. -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF ssl/record/ssl3_record.d.tmp -MT $@ -c -o $@ ssl/record/ssl3_record.c
 	@touch ssl/record/ssl3_record.d.tmp
 	@if cmp ssl/record/ssl3_record.d.tmp ssl/record/ssl3_record.d > /dev/null 2> /dev/null; then \
 		rm -f ssl/record/ssl3_record.d.tmp; \
@@ -5871,7 +5920,7 @@ ssl/record/ssl3_record.o: ssl/record/ssl3_record.c
 		mv ssl/record/ssl3_record.d.tmp ssl/record/ssl3_record.d; \
 	fi
 ssl/record/ssl3_record_tls13.o: ssl/record/ssl3_record_tls13.c
-	$(CC)  -I. -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF ssl/record/ssl3_record_tls13.d.tmp -MT $@ -c -o $@ ssl/record/ssl3_record_tls13.c
+	$(CC)  -I. -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF ssl/record/ssl3_record_tls13.d.tmp -MT $@ -c -o $@ ssl/record/ssl3_record_tls13.c
 	@touch ssl/record/ssl3_record_tls13.d.tmp
 	@if cmp ssl/record/ssl3_record_tls13.d.tmp ssl/record/ssl3_record_tls13.d > /dev/null 2> /dev/null; then \
 		rm -f ssl/record/ssl3_record_tls13.d.tmp; \
@@ -5879,7 +5928,7 @@ ssl/record/ssl3_record_tls13.o: ssl/record/ssl3_record_tls13.c
 		mv ssl/record/ssl3_record_tls13.d.tmp ssl/record/ssl3_record_tls13.d; \
 	fi
 ssl/s3_cbc.o: ssl/s3_cbc.c
-	$(CC)  -I. -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF ssl/s3_cbc.d.tmp -MT $@ -c -o $@ ssl/s3_cbc.c
+	$(CC)  -I. -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF ssl/s3_cbc.d.tmp -MT $@ -c -o $@ ssl/s3_cbc.c
 	@touch ssl/s3_cbc.d.tmp
 	@if cmp ssl/s3_cbc.d.tmp ssl/s3_cbc.d > /dev/null 2> /dev/null; then \
 		rm -f ssl/s3_cbc.d.tmp; \
@@ -5887,7 +5936,7 @@ ssl/s3_cbc.o: ssl/s3_cbc.c
 		mv ssl/s3_cbc.d.tmp ssl/s3_cbc.d; \
 	fi
 ssl/s3_enc.o: ssl/s3_enc.c
-	$(CC)  -I. -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF ssl/s3_enc.d.tmp -MT $@ -c -o $@ ssl/s3_enc.c
+	$(CC)  -I. -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF ssl/s3_enc.d.tmp -MT $@ -c -o $@ ssl/s3_enc.c
 	@touch ssl/s3_enc.d.tmp
 	@if cmp ssl/s3_enc.d.tmp ssl/s3_enc.d > /dev/null 2> /dev/null; then \
 		rm -f ssl/s3_enc.d.tmp; \
@@ -5895,7 +5944,7 @@ ssl/s3_enc.o: ssl/s3_enc.c
 		mv ssl/s3_enc.d.tmp ssl/s3_enc.d; \
 	fi
 ssl/s3_lib.o: ssl/s3_lib.c
-	$(CC)  -I. -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF ssl/s3_lib.d.tmp -MT $@ -c -o $@ ssl/s3_lib.c
+	$(CC)  -I. -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF ssl/s3_lib.d.tmp -MT $@ -c -o $@ ssl/s3_lib.c
 	@touch ssl/s3_lib.d.tmp
 	@if cmp ssl/s3_lib.d.tmp ssl/s3_lib.d > /dev/null 2> /dev/null; then \
 		rm -f ssl/s3_lib.d.tmp; \
@@ -5903,7 +5952,7 @@ ssl/s3_lib.o: ssl/s3_lib.c
 		mv ssl/s3_lib.d.tmp ssl/s3_lib.d; \
 	fi
 ssl/s3_msg.o: ssl/s3_msg.c
-	$(CC)  -I. -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF ssl/s3_msg.d.tmp -MT $@ -c -o $@ ssl/s3_msg.c
+	$(CC)  -I. -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF ssl/s3_msg.d.tmp -MT $@ -c -o $@ ssl/s3_msg.c
 	@touch ssl/s3_msg.d.tmp
 	@if cmp ssl/s3_msg.d.tmp ssl/s3_msg.d > /dev/null 2> /dev/null; then \
 		rm -f ssl/s3_msg.d.tmp; \
@@ -5911,7 +5960,7 @@ ssl/s3_msg.o: ssl/s3_msg.c
 		mv ssl/s3_msg.d.tmp ssl/s3_msg.d; \
 	fi
 ssl/ssl_asn1.o: ssl/ssl_asn1.c
-	$(CC)  -I. -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF ssl/ssl_asn1.d.tmp -MT $@ -c -o $@ ssl/ssl_asn1.c
+	$(CC)  -I. -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF ssl/ssl_asn1.d.tmp -MT $@ -c -o $@ ssl/ssl_asn1.c
 	@touch ssl/ssl_asn1.d.tmp
 	@if cmp ssl/ssl_asn1.d.tmp ssl/ssl_asn1.d > /dev/null 2> /dev/null; then \
 		rm -f ssl/ssl_asn1.d.tmp; \
@@ -5919,7 +5968,7 @@ ssl/ssl_asn1.o: ssl/ssl_asn1.c
 		mv ssl/ssl_asn1.d.tmp ssl/ssl_asn1.d; \
 	fi
 ssl/ssl_cert.o: ssl/ssl_cert.c
-	$(CC)  -I. -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF ssl/ssl_cert.d.tmp -MT $@ -c -o $@ ssl/ssl_cert.c
+	$(CC)  -I. -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF ssl/ssl_cert.d.tmp -MT $@ -c -o $@ ssl/ssl_cert.c
 	@touch ssl/ssl_cert.d.tmp
 	@if cmp ssl/ssl_cert.d.tmp ssl/ssl_cert.d > /dev/null 2> /dev/null; then \
 		rm -f ssl/ssl_cert.d.tmp; \
@@ -5927,7 +5976,7 @@ ssl/ssl_cert.o: ssl/ssl_cert.c
 		mv ssl/ssl_cert.d.tmp ssl/ssl_cert.d; \
 	fi
 ssl/ssl_ciph.o: ssl/ssl_ciph.c
-	$(CC)  -I. -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF ssl/ssl_ciph.d.tmp -MT $@ -c -o $@ ssl/ssl_ciph.c
+	$(CC)  -I. -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF ssl/ssl_ciph.d.tmp -MT $@ -c -o $@ ssl/ssl_ciph.c
 	@touch ssl/ssl_ciph.d.tmp
 	@if cmp ssl/ssl_ciph.d.tmp ssl/ssl_ciph.d > /dev/null 2> /dev/null; then \
 		rm -f ssl/ssl_ciph.d.tmp; \
@@ -5935,7 +5984,7 @@ ssl/ssl_ciph.o: ssl/ssl_ciph.c
 		mv ssl/ssl_ciph.d.tmp ssl/ssl_ciph.d; \
 	fi
 ssl/ssl_conf.o: ssl/ssl_conf.c
-	$(CC)  -I. -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF ssl/ssl_conf.d.tmp -MT $@ -c -o $@ ssl/ssl_conf.c
+	$(CC)  -I. -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF ssl/ssl_conf.d.tmp -MT $@ -c -o $@ ssl/ssl_conf.c
 	@touch ssl/ssl_conf.d.tmp
 	@if cmp ssl/ssl_conf.d.tmp ssl/ssl_conf.d > /dev/null 2> /dev/null; then \
 		rm -f ssl/ssl_conf.d.tmp; \
@@ -5943,7 +5992,7 @@ ssl/ssl_conf.o: ssl/ssl_conf.c
 		mv ssl/ssl_conf.d.tmp ssl/ssl_conf.d; \
 	fi
 ssl/ssl_err.o: ssl/ssl_err.c
-	$(CC)  -I. -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF ssl/ssl_err.d.tmp -MT $@ -c -o $@ ssl/ssl_err.c
+	$(CC)  -I. -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF ssl/ssl_err.d.tmp -MT $@ -c -o $@ ssl/ssl_err.c
 	@touch ssl/ssl_err.d.tmp
 	@if cmp ssl/ssl_err.d.tmp ssl/ssl_err.d > /dev/null 2> /dev/null; then \
 		rm -f ssl/ssl_err.d.tmp; \
@@ -5951,7 +6000,7 @@ ssl/ssl_err.o: ssl/ssl_err.c
 		mv ssl/ssl_err.d.tmp ssl/ssl_err.d; \
 	fi
 ssl/ssl_init.o: ssl/ssl_init.c
-	$(CC)  -I. -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF ssl/ssl_init.d.tmp -MT $@ -c -o $@ ssl/ssl_init.c
+	$(CC)  -I. -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF ssl/ssl_init.d.tmp -MT $@ -c -o $@ ssl/ssl_init.c
 	@touch ssl/ssl_init.d.tmp
 	@if cmp ssl/ssl_init.d.tmp ssl/ssl_init.d > /dev/null 2> /dev/null; then \
 		rm -f ssl/ssl_init.d.tmp; \
@@ -5959,7 +6008,7 @@ ssl/ssl_init.o: ssl/ssl_init.c
 		mv ssl/ssl_init.d.tmp ssl/ssl_init.d; \
 	fi
 ssl/ssl_lib.o: ssl/ssl_lib.c
-	$(CC)  -I. -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF ssl/ssl_lib.d.tmp -MT $@ -c -o $@ ssl/ssl_lib.c
+	$(CC)  -I. -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF ssl/ssl_lib.d.tmp -MT $@ -c -o $@ ssl/ssl_lib.c
 	@touch ssl/ssl_lib.d.tmp
 	@if cmp ssl/ssl_lib.d.tmp ssl/ssl_lib.d > /dev/null 2> /dev/null; then \
 		rm -f ssl/ssl_lib.d.tmp; \
@@ -5967,7 +6016,7 @@ ssl/ssl_lib.o: ssl/ssl_lib.c
 		mv ssl/ssl_lib.d.tmp ssl/ssl_lib.d; \
 	fi
 ssl/ssl_mcnf.o: ssl/ssl_mcnf.c
-	$(CC)  -I. -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF ssl/ssl_mcnf.d.tmp -MT $@ -c -o $@ ssl/ssl_mcnf.c
+	$(CC)  -I. -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF ssl/ssl_mcnf.d.tmp -MT $@ -c -o $@ ssl/ssl_mcnf.c
 	@touch ssl/ssl_mcnf.d.tmp
 	@if cmp ssl/ssl_mcnf.d.tmp ssl/ssl_mcnf.d > /dev/null 2> /dev/null; then \
 		rm -f ssl/ssl_mcnf.d.tmp; \
@@ -5975,7 +6024,7 @@ ssl/ssl_mcnf.o: ssl/ssl_mcnf.c
 		mv ssl/ssl_mcnf.d.tmp ssl/ssl_mcnf.d; \
 	fi
 ssl/ssl_rsa.o: ssl/ssl_rsa.c
-	$(CC)  -I. -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF ssl/ssl_rsa.d.tmp -MT $@ -c -o $@ ssl/ssl_rsa.c
+	$(CC)  -I. -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF ssl/ssl_rsa.d.tmp -MT $@ -c -o $@ ssl/ssl_rsa.c
 	@touch ssl/ssl_rsa.d.tmp
 	@if cmp ssl/ssl_rsa.d.tmp ssl/ssl_rsa.d > /dev/null 2> /dev/null; then \
 		rm -f ssl/ssl_rsa.d.tmp; \
@@ -5983,7 +6032,7 @@ ssl/ssl_rsa.o: ssl/ssl_rsa.c
 		mv ssl/ssl_rsa.d.tmp ssl/ssl_rsa.d; \
 	fi
 ssl/ssl_sess.o: ssl/ssl_sess.c
-	$(CC)  -I. -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF ssl/ssl_sess.d.tmp -MT $@ -c -o $@ ssl/ssl_sess.c
+	$(CC)  -I. -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF ssl/ssl_sess.d.tmp -MT $@ -c -o $@ ssl/ssl_sess.c
 	@touch ssl/ssl_sess.d.tmp
 	@if cmp ssl/ssl_sess.d.tmp ssl/ssl_sess.d > /dev/null 2> /dev/null; then \
 		rm -f ssl/ssl_sess.d.tmp; \
@@ -5991,7 +6040,7 @@ ssl/ssl_sess.o: ssl/ssl_sess.c
 		mv ssl/ssl_sess.d.tmp ssl/ssl_sess.d; \
 	fi
 ssl/ssl_stat.o: ssl/ssl_stat.c
-	$(CC)  -I. -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF ssl/ssl_stat.d.tmp -MT $@ -c -o $@ ssl/ssl_stat.c
+	$(CC)  -I. -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF ssl/ssl_stat.d.tmp -MT $@ -c -o $@ ssl/ssl_stat.c
 	@touch ssl/ssl_stat.d.tmp
 	@if cmp ssl/ssl_stat.d.tmp ssl/ssl_stat.d > /dev/null 2> /dev/null; then \
 		rm -f ssl/ssl_stat.d.tmp; \
@@ -5999,7 +6048,7 @@ ssl/ssl_stat.o: ssl/ssl_stat.c
 		mv ssl/ssl_stat.d.tmp ssl/ssl_stat.d; \
 	fi
 ssl/ssl_txt.o: ssl/ssl_txt.c
-	$(CC)  -I. -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF ssl/ssl_txt.d.tmp -MT $@ -c -o $@ ssl/ssl_txt.c
+	$(CC)  -I. -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF ssl/ssl_txt.d.tmp -MT $@ -c -o $@ ssl/ssl_txt.c
 	@touch ssl/ssl_txt.d.tmp
 	@if cmp ssl/ssl_txt.d.tmp ssl/ssl_txt.d > /dev/null 2> /dev/null; then \
 		rm -f ssl/ssl_txt.d.tmp; \
@@ -6007,7 +6056,7 @@ ssl/ssl_txt.o: ssl/ssl_txt.c
 		mv ssl/ssl_txt.d.tmp ssl/ssl_txt.d; \
 	fi
 ssl/ssl_utst.o: ssl/ssl_utst.c
-	$(CC)  -I. -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF ssl/ssl_utst.d.tmp -MT $@ -c -o $@ ssl/ssl_utst.c
+	$(CC)  -I. -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF ssl/ssl_utst.d.tmp -MT $@ -c -o $@ ssl/ssl_utst.c
 	@touch ssl/ssl_utst.d.tmp
 	@if cmp ssl/ssl_utst.d.tmp ssl/ssl_utst.d > /dev/null 2> /dev/null; then \
 		rm -f ssl/ssl_utst.d.tmp; \
@@ -6015,7 +6064,7 @@ ssl/ssl_utst.o: ssl/ssl_utst.c
 		mv ssl/ssl_utst.d.tmp ssl/ssl_utst.d; \
 	fi
 ssl/statem/extensions.o: ssl/statem/extensions.c
-	$(CC)  -I. -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF ssl/statem/extensions.d.tmp -MT $@ -c -o $@ ssl/statem/extensions.c
+	$(CC)  -I. -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF ssl/statem/extensions.d.tmp -MT $@ -c -o $@ ssl/statem/extensions.c
 	@touch ssl/statem/extensions.d.tmp
 	@if cmp ssl/statem/extensions.d.tmp ssl/statem/extensions.d > /dev/null 2> /dev/null; then \
 		rm -f ssl/statem/extensions.d.tmp; \
@@ -6023,7 +6072,7 @@ ssl/statem/extensions.o: ssl/statem/extensions.c
 		mv ssl/statem/extensions.d.tmp ssl/statem/extensions.d; \
 	fi
 ssl/statem/extensions_clnt.o: ssl/statem/extensions_clnt.c
-	$(CC)  -I. -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF ssl/statem/extensions_clnt.d.tmp -MT $@ -c -o $@ ssl/statem/extensions_clnt.c
+	$(CC)  -I. -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF ssl/statem/extensions_clnt.d.tmp -MT $@ -c -o $@ ssl/statem/extensions_clnt.c
 	@touch ssl/statem/extensions_clnt.d.tmp
 	@if cmp ssl/statem/extensions_clnt.d.tmp ssl/statem/extensions_clnt.d > /dev/null 2> /dev/null; then \
 		rm -f ssl/statem/extensions_clnt.d.tmp; \
@@ -6031,7 +6080,7 @@ ssl/statem/extensions_clnt.o: ssl/statem/extensions_clnt.c
 		mv ssl/statem/extensions_clnt.d.tmp ssl/statem/extensions_clnt.d; \
 	fi
 ssl/statem/extensions_cust.o: ssl/statem/extensions_cust.c
-	$(CC)  -I. -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF ssl/statem/extensions_cust.d.tmp -MT $@ -c -o $@ ssl/statem/extensions_cust.c
+	$(CC)  -I. -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF ssl/statem/extensions_cust.d.tmp -MT $@ -c -o $@ ssl/statem/extensions_cust.c
 	@touch ssl/statem/extensions_cust.d.tmp
 	@if cmp ssl/statem/extensions_cust.d.tmp ssl/statem/extensions_cust.d > /dev/null 2> /dev/null; then \
 		rm -f ssl/statem/extensions_cust.d.tmp; \
@@ -6039,7 +6088,7 @@ ssl/statem/extensions_cust.o: ssl/statem/extensions_cust.c
 		mv ssl/statem/extensions_cust.d.tmp ssl/statem/extensions_cust.d; \
 	fi
 ssl/statem/extensions_srvr.o: ssl/statem/extensions_srvr.c
-	$(CC)  -I. -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF ssl/statem/extensions_srvr.d.tmp -MT $@ -c -o $@ ssl/statem/extensions_srvr.c
+	$(CC)  -I. -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF ssl/statem/extensions_srvr.d.tmp -MT $@ -c -o $@ ssl/statem/extensions_srvr.c
 	@touch ssl/statem/extensions_srvr.d.tmp
 	@if cmp ssl/statem/extensions_srvr.d.tmp ssl/statem/extensions_srvr.d > /dev/null 2> /dev/null; then \
 		rm -f ssl/statem/extensions_srvr.d.tmp; \
@@ -6047,7 +6096,7 @@ ssl/statem/extensions_srvr.o: ssl/statem/extensions_srvr.c
 		mv ssl/statem/extensions_srvr.d.tmp ssl/statem/extensions_srvr.d; \
 	fi
 ssl/statem/statem.o: ssl/statem/statem.c
-	$(CC)  -I. -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF ssl/statem/statem.d.tmp -MT $@ -c -o $@ ssl/statem/statem.c
+	$(CC)  -I. -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF ssl/statem/statem.d.tmp -MT $@ -c -o $@ ssl/statem/statem.c
 	@touch ssl/statem/statem.d.tmp
 	@if cmp ssl/statem/statem.d.tmp ssl/statem/statem.d > /dev/null 2> /dev/null; then \
 		rm -f ssl/statem/statem.d.tmp; \
@@ -6055,7 +6104,7 @@ ssl/statem/statem.o: ssl/statem/statem.c
 		mv ssl/statem/statem.d.tmp ssl/statem/statem.d; \
 	fi
 ssl/statem/statem_clnt.o: ssl/statem/statem_clnt.c
-	$(CC)  -I. -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF ssl/statem/statem_clnt.d.tmp -MT $@ -c -o $@ ssl/statem/statem_clnt.c
+	$(CC)  -I. -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF ssl/statem/statem_clnt.d.tmp -MT $@ -c -o $@ ssl/statem/statem_clnt.c
 	@touch ssl/statem/statem_clnt.d.tmp
 	@if cmp ssl/statem/statem_clnt.d.tmp ssl/statem/statem_clnt.d > /dev/null 2> /dev/null; then \
 		rm -f ssl/statem/statem_clnt.d.tmp; \
@@ -6063,7 +6112,7 @@ ssl/statem/statem_clnt.o: ssl/statem/statem_clnt.c
 		mv ssl/statem/statem_clnt.d.tmp ssl/statem/statem_clnt.d; \
 	fi
 ssl/statem/statem_dtls.o: ssl/statem/statem_dtls.c
-	$(CC)  -I. -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF ssl/statem/statem_dtls.d.tmp -MT $@ -c -o $@ ssl/statem/statem_dtls.c
+	$(CC)  -I. -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF ssl/statem/statem_dtls.d.tmp -MT $@ -c -o $@ ssl/statem/statem_dtls.c
 	@touch ssl/statem/statem_dtls.d.tmp
 	@if cmp ssl/statem/statem_dtls.d.tmp ssl/statem/statem_dtls.d > /dev/null 2> /dev/null; then \
 		rm -f ssl/statem/statem_dtls.d.tmp; \
@@ -6071,7 +6120,7 @@ ssl/statem/statem_dtls.o: ssl/statem/statem_dtls.c
 		mv ssl/statem/statem_dtls.d.tmp ssl/statem/statem_dtls.d; \
 	fi
 ssl/statem/statem_lib.o: ssl/statem/statem_lib.c
-	$(CC)  -I. -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF ssl/statem/statem_lib.d.tmp -MT $@ -c -o $@ ssl/statem/statem_lib.c
+	$(CC)  -I. -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF ssl/statem/statem_lib.d.tmp -MT $@ -c -o $@ ssl/statem/statem_lib.c
 	@touch ssl/statem/statem_lib.d.tmp
 	@if cmp ssl/statem/statem_lib.d.tmp ssl/statem/statem_lib.d > /dev/null 2> /dev/null; then \
 		rm -f ssl/statem/statem_lib.d.tmp; \
@@ -6079,7 +6128,7 @@ ssl/statem/statem_lib.o: ssl/statem/statem_lib.c
 		mv ssl/statem/statem_lib.d.tmp ssl/statem/statem_lib.d; \
 	fi
 ssl/statem/statem_srvr.o: ssl/statem/statem_srvr.c
-	$(CC)  -I. -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF ssl/statem/statem_srvr.d.tmp -MT $@ -c -o $@ ssl/statem/statem_srvr.c
+	$(CC)  -I. -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF ssl/statem/statem_srvr.d.tmp -MT $@ -c -o $@ ssl/statem/statem_srvr.c
 	@touch ssl/statem/statem_srvr.d.tmp
 	@if cmp ssl/statem/statem_srvr.d.tmp ssl/statem/statem_srvr.d > /dev/null 2> /dev/null; then \
 		rm -f ssl/statem/statem_srvr.d.tmp; \
@@ -6087,7 +6136,7 @@ ssl/statem/statem_srvr.o: ssl/statem/statem_srvr.c
 		mv ssl/statem/statem_srvr.d.tmp ssl/statem/statem_srvr.d; \
 	fi
 ssl/t1_enc.o: ssl/t1_enc.c
-	$(CC)  -I. -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF ssl/t1_enc.d.tmp -MT $@ -c -o $@ ssl/t1_enc.c
+	$(CC)  -I. -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF ssl/t1_enc.d.tmp -MT $@ -c -o $@ ssl/t1_enc.c
 	@touch ssl/t1_enc.d.tmp
 	@if cmp ssl/t1_enc.d.tmp ssl/t1_enc.d > /dev/null 2> /dev/null; then \
 		rm -f ssl/t1_enc.d.tmp; \
@@ -6095,7 +6144,7 @@ ssl/t1_enc.o: ssl/t1_enc.c
 		mv ssl/t1_enc.d.tmp ssl/t1_enc.d; \
 	fi
 ssl/t1_lib.o: ssl/t1_lib.c
-	$(CC)  -I. -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF ssl/t1_lib.d.tmp -MT $@ -c -o $@ ssl/t1_lib.c
+	$(CC)  -I. -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF ssl/t1_lib.d.tmp -MT $@ -c -o $@ ssl/t1_lib.c
 	@touch ssl/t1_lib.d.tmp
 	@if cmp ssl/t1_lib.d.tmp ssl/t1_lib.d > /dev/null 2> /dev/null; then \
 		rm -f ssl/t1_lib.d.tmp; \
@@ -6103,7 +6152,7 @@ ssl/t1_lib.o: ssl/t1_lib.c
 		mv ssl/t1_lib.d.tmp ssl/t1_lib.d; \
 	fi
 ssl/t1_trce.o: ssl/t1_trce.c
-	$(CC)  -I. -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF ssl/t1_trce.d.tmp -MT $@ -c -o $@ ssl/t1_trce.c
+	$(CC)  -I. -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF ssl/t1_trce.d.tmp -MT $@ -c -o $@ ssl/t1_trce.c
 	@touch ssl/t1_trce.d.tmp
 	@if cmp ssl/t1_trce.d.tmp ssl/t1_trce.d > /dev/null 2> /dev/null; then \
 		rm -f ssl/t1_trce.d.tmp; \
@@ -6111,7 +6160,7 @@ ssl/t1_trce.o: ssl/t1_trce.c
 		mv ssl/t1_trce.d.tmp ssl/t1_trce.d; \
 	fi
 ssl/tls13_enc.o: ssl/tls13_enc.c
-	$(CC)  -I. -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF ssl/tls13_enc.d.tmp -MT $@ -c -o $@ ssl/tls13_enc.c
+	$(CC)  -I. -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF ssl/tls13_enc.d.tmp -MT $@ -c -o $@ ssl/tls13_enc.c
 	@touch ssl/tls13_enc.d.tmp
 	@if cmp ssl/tls13_enc.d.tmp ssl/tls13_enc.d > /dev/null 2> /dev/null; then \
 		rm -f ssl/tls13_enc.d.tmp; \
@@ -6119,7 +6168,7 @@ ssl/tls13_enc.o: ssl/tls13_enc.c
 		mv ssl/tls13_enc.d.tmp ssl/tls13_enc.d; \
 	fi
 ssl/tls_srp.o: ssl/tls_srp.c
-	$(CC)  -I. -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF ssl/tls_srp.d.tmp -MT $@ -c -o $@ ssl/tls_srp.c
+	$(CC)  -I. -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF ssl/tls_srp.d.tmp -MT $@ -c -o $@ ssl/tls_srp.c
 	@touch ssl/tls_srp.d.tmp
 	@if cmp ssl/tls_srp.d.tmp ssl/tls_srp.d > /dev/null 2> /dev/null; then \
 		rm -f ssl/tls_srp.d.tmp; \
@@ -6130,7 +6179,7 @@ test/libtestutil.a: test/testutil/basic_output.o test/testutil/cb.o test/testuti
 	$(AR) $(ARFLAGS) $@ $?
 	$(RANLIB) $@ || echo Never mind.
 test/testutil/basic_output.o: test/testutil/basic_output.c
-	$(CC)  -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF test/testutil/basic_output.d.tmp -MT $@ -c -o $@ test/testutil/basic_output.c
+	$(CC)  -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF test/testutil/basic_output.d.tmp -MT $@ -c -o $@ test/testutil/basic_output.c
 	@touch test/testutil/basic_output.d.tmp
 	@if cmp test/testutil/basic_output.d.tmp test/testutil/basic_output.d > /dev/null 2> /dev/null; then \
 		rm -f test/testutil/basic_output.d.tmp; \
@@ -6138,7 +6187,7 @@ test/testutil/basic_output.o: test/testutil/basic_output.c
 		mv test/testutil/basic_output.d.tmp test/testutil/basic_output.d; \
 	fi
 test/testutil/cb.o: test/testutil/cb.c
-	$(CC)  -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF test/testutil/cb.d.tmp -MT $@ -c -o $@ test/testutil/cb.c
+	$(CC)  -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF test/testutil/cb.d.tmp -MT $@ -c -o $@ test/testutil/cb.c
 	@touch test/testutil/cb.d.tmp
 	@if cmp test/testutil/cb.d.tmp test/testutil/cb.d > /dev/null 2> /dev/null; then \
 		rm -f test/testutil/cb.d.tmp; \
@@ -6146,7 +6195,7 @@ test/testutil/cb.o: test/testutil/cb.c
 		mv test/testutil/cb.d.tmp test/testutil/cb.d; \
 	fi
 test/testutil/driver.o: test/testutil/driver.c
-	$(CC)  -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF test/testutil/driver.d.tmp -MT $@ -c -o $@ test/testutil/driver.c
+	$(CC)  -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF test/testutil/driver.d.tmp -MT $@ -c -o $@ test/testutil/driver.c
 	@touch test/testutil/driver.d.tmp
 	@if cmp test/testutil/driver.d.tmp test/testutil/driver.d > /dev/null 2> /dev/null; then \
 		rm -f test/testutil/driver.d.tmp; \
@@ -6154,7 +6203,7 @@ test/testutil/driver.o: test/testutil/driver.c
 		mv test/testutil/driver.d.tmp test/testutil/driver.d; \
 	fi
 test/testutil/format_output.o: test/testutil/format_output.c
-	$(CC)  -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF test/testutil/format_output.d.tmp -MT $@ -c -o $@ test/testutil/format_output.c
+	$(CC)  -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF test/testutil/format_output.d.tmp -MT $@ -c -o $@ test/testutil/format_output.c
 	@touch test/testutil/format_output.d.tmp
 	@if cmp test/testutil/format_output.d.tmp test/testutil/format_output.d > /dev/null 2> /dev/null; then \
 		rm -f test/testutil/format_output.d.tmp; \
@@ -6162,7 +6211,7 @@ test/testutil/format_output.o: test/testutil/format_output.c
 		mv test/testutil/format_output.d.tmp test/testutil/format_output.d; \
 	fi
 test/testutil/init.o: test/testutil/init.c
-	$(CC)  -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF test/testutil/init.d.tmp -MT $@ -c -o $@ test/testutil/init.c
+	$(CC)  -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF test/testutil/init.d.tmp -MT $@ -c -o $@ test/testutil/init.c
 	@touch test/testutil/init.d.tmp
 	@if cmp test/testutil/init.d.tmp test/testutil/init.d > /dev/null 2> /dev/null; then \
 		rm -f test/testutil/init.d.tmp; \
@@ -6170,7 +6219,7 @@ test/testutil/init.o: test/testutil/init.c
 		mv test/testutil/init.d.tmp test/testutil/init.d; \
 	fi
 test/testutil/main.o: test/testutil/main.c
-	$(CC)  -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF test/testutil/main.d.tmp -MT $@ -c -o $@ test/testutil/main.c
+	$(CC)  -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF test/testutil/main.d.tmp -MT $@ -c -o $@ test/testutil/main.c
 	@touch test/testutil/main.d.tmp
 	@if cmp test/testutil/main.d.tmp test/testutil/main.d > /dev/null 2> /dev/null; then \
 		rm -f test/testutil/main.d.tmp; \
@@ -6178,7 +6227,7 @@ test/testutil/main.o: test/testutil/main.c
 		mv test/testutil/main.d.tmp test/testutil/main.d; \
 	fi
 test/testutil/output_helpers.o: test/testutil/output_helpers.c
-	$(CC)  -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF test/testutil/output_helpers.d.tmp -MT $@ -c -o $@ test/testutil/output_helpers.c
+	$(CC)  -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF test/testutil/output_helpers.d.tmp -MT $@ -c -o $@ test/testutil/output_helpers.c
 	@touch test/testutil/output_helpers.d.tmp
 	@if cmp test/testutil/output_helpers.d.tmp test/testutil/output_helpers.d > /dev/null 2> /dev/null; then \
 		rm -f test/testutil/output_helpers.d.tmp; \
@@ -6186,7 +6235,7 @@ test/testutil/output_helpers.o: test/testutil/output_helpers.c
 		mv test/testutil/output_helpers.d.tmp test/testutil/output_helpers.d; \
 	fi
 test/testutil/stanza.o: test/testutil/stanza.c
-	$(CC)  -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF test/testutil/stanza.d.tmp -MT $@ -c -o $@ test/testutil/stanza.c
+	$(CC)  -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF test/testutil/stanza.d.tmp -MT $@ -c -o $@ test/testutil/stanza.c
 	@touch test/testutil/stanza.d.tmp
 	@if cmp test/testutil/stanza.d.tmp test/testutil/stanza.d > /dev/null 2> /dev/null; then \
 		rm -f test/testutil/stanza.d.tmp; \
@@ -6194,7 +6243,7 @@ test/testutil/stanza.o: test/testutil/stanza.c
 		mv test/testutil/stanza.d.tmp test/testutil/stanza.d; \
 	fi
 test/testutil/tap_bio.o: test/testutil/tap_bio.c
-	$(CC)  -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF test/testutil/tap_bio.d.tmp -MT $@ -c -o $@ test/testutil/tap_bio.c
+	$(CC)  -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF test/testutil/tap_bio.d.tmp -MT $@ -c -o $@ test/testutil/tap_bio.c
 	@touch test/testutil/tap_bio.d.tmp
 	@if cmp test/testutil/tap_bio.d.tmp test/testutil/tap_bio.d > /dev/null 2> /dev/null; then \
 		rm -f test/testutil/tap_bio.d.tmp; \
@@ -6202,7 +6251,7 @@ test/testutil/tap_bio.o: test/testutil/tap_bio.c
 		mv test/testutil/tap_bio.d.tmp test/testutil/tap_bio.d; \
 	fi
 test/testutil/test_cleanup.o: test/testutil/test_cleanup.c
-	$(CC)  -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF test/testutil/test_cleanup.d.tmp -MT $@ -c -o $@ test/testutil/test_cleanup.c
+	$(CC)  -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF test/testutil/test_cleanup.d.tmp -MT $@ -c -o $@ test/testutil/test_cleanup.c
 	@touch test/testutil/test_cleanup.d.tmp
 	@if cmp test/testutil/test_cleanup.d.tmp test/testutil/test_cleanup.d > /dev/null 2> /dev/null; then \
 		rm -f test/testutil/test_cleanup.d.tmp; \
@@ -6210,7 +6259,7 @@ test/testutil/test_cleanup.o: test/testutil/test_cleanup.c
 		mv test/testutil/test_cleanup.d.tmp test/testutil/test_cleanup.d; \
 	fi
 test/testutil/tests.o: test/testutil/tests.c
-	$(CC)  -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -c -MMD -MF test/testutil/tests.d.tmp -MT $@ -c -o $@ test/testutil/tests.c
+	$(CC)  -Iinclude $(LIB_CFLAGS) $(LIB_CPPFLAGS) -MMD -MF test/testutil/tests.d.tmp -MT $@ -c -o $@ test/testutil/tests.c
 	@touch test/testutil/tests.d.tmp
 	@if cmp test/testutil/tests.d.tmp test/testutil/tests.d > /dev/null 2> /dev/null; then \
 		rm -f test/testutil/tests.d.tmp; \
@@ -6221,9 +6270,9 @@ apps/openssl: apps/asn1pars.o apps/ca.o apps/ciphers.o apps/cms.o apps/crl.o app
 	rm -f apps/openssl
 	$${LDCMD:-$(CC)} $(BIN_CFLAGS) -L. $(BIN_LDFLAGS) \
 		-o apps/openssl apps/asn1pars.o apps/ca.o apps/ciphers.o apps/cms.o apps/crl.o apps/crl2p7.o apps/dgst.o apps/dhparam.o apps/dsa.o apps/dsaparam.o apps/ec.o apps/ecparam.o apps/enc.o apps/engine.o apps/errstr.o apps/gendsa.o apps/genpkey.o apps/genrsa.o apps/nseq.o apps/ocsp.o apps/openssl.o apps/passwd.o apps/pkcs12.o apps/pkcs7.o apps/pkcs8.o apps/pkey.o apps/pkeyparam.o apps/pkeyutl.o apps/prime.o apps/rand.o apps/rehash.o apps/req.o apps/rsa.o apps/rsautl.o apps/s_client.o apps/s_server.o apps/s_time.o apps/sess_id.o apps/smime.o apps/speed.o apps/spkac.o apps/srp.o apps/storeutl.o apps/ts.o apps/verify.o apps/version.o apps/x509.o \
-		$(PLIB_LDFLAGS)  apps/libapps.a -lssl -lcrypto $(EX_LIBS)
+		 apps/libapps.a -lssl -lcrypto $(BIN_EX_LIBS)
 apps/asn1pars.o: apps/asn1pars.c apps/progs.h
-	$(CC)  -I. -Iinclude -Iapps $(BIN_CFLAGS) $(BIN_CPPFLAGS) -c -MMD -MF apps/asn1pars.d.tmp -MT $@ -c -o $@ apps/asn1pars.c
+	$(CC)  -I. -Iinclude -Iapps $(BIN_CFLAGS) $(BIN_CPPFLAGS) -MMD -MF apps/asn1pars.d.tmp -MT $@ -c -o $@ apps/asn1pars.c
 	@touch apps/asn1pars.d.tmp
 	@if cmp apps/asn1pars.d.tmp apps/asn1pars.d > /dev/null 2> /dev/null; then \
 		rm -f apps/asn1pars.d.tmp; \
@@ -6233,7 +6282,7 @@ apps/asn1pars.o: apps/asn1pars.c apps/progs.h
 apps/progs.h: apps/progs.pl configdata.pm
 	$(PERL) apps/progs.pl $(APPS_OPENSSL) > $@
 apps/ca.o: apps/ca.c apps/progs.h
-	$(CC)  -I. -Iinclude -Iapps $(BIN_CFLAGS) $(BIN_CPPFLAGS) -c -MMD -MF apps/ca.d.tmp -MT $@ -c -o $@ apps/ca.c
+	$(CC)  -I. -Iinclude -Iapps $(BIN_CFLAGS) $(BIN_CPPFLAGS) -MMD -MF apps/ca.d.tmp -MT $@ -c -o $@ apps/ca.c
 	@touch apps/ca.d.tmp
 	@if cmp apps/ca.d.tmp apps/ca.d > /dev/null 2> /dev/null; then \
 		rm -f apps/ca.d.tmp; \
@@ -6241,7 +6290,7 @@ apps/ca.o: apps/ca.c apps/progs.h
 		mv apps/ca.d.tmp apps/ca.d; \
 	fi
 apps/ciphers.o: apps/ciphers.c apps/progs.h
-	$(CC)  -I. -Iinclude -Iapps $(BIN_CFLAGS) $(BIN_CPPFLAGS) -c -MMD -MF apps/ciphers.d.tmp -MT $@ -c -o $@ apps/ciphers.c
+	$(CC)  -I. -Iinclude -Iapps $(BIN_CFLAGS) $(BIN_CPPFLAGS) -MMD -MF apps/ciphers.d.tmp -MT $@ -c -o $@ apps/ciphers.c
 	@touch apps/ciphers.d.tmp
 	@if cmp apps/ciphers.d.tmp apps/ciphers.d > /dev/null 2> /dev/null; then \
 		rm -f apps/ciphers.d.tmp; \
@@ -6249,7 +6298,7 @@ apps/ciphers.o: apps/ciphers.c apps/progs.h
 		mv apps/ciphers.d.tmp apps/ciphers.d; \
 	fi
 apps/cms.o: apps/cms.c apps/progs.h
-	$(CC)  -I. -Iinclude -Iapps $(BIN_CFLAGS) $(BIN_CPPFLAGS) -c -MMD -MF apps/cms.d.tmp -MT $@ -c -o $@ apps/cms.c
+	$(CC)  -I. -Iinclude -Iapps $(BIN_CFLAGS) $(BIN_CPPFLAGS) -MMD -MF apps/cms.d.tmp -MT $@ -c -o $@ apps/cms.c
 	@touch apps/cms.d.tmp
 	@if cmp apps/cms.d.tmp apps/cms.d > /dev/null 2> /dev/null; then \
 		rm -f apps/cms.d.tmp; \
@@ -6257,7 +6306,7 @@ apps/cms.o: apps/cms.c apps/progs.h
 		mv apps/cms.d.tmp apps/cms.d; \
 	fi
 apps/crl.o: apps/crl.c apps/progs.h
-	$(CC)  -I. -Iinclude -Iapps $(BIN_CFLAGS) $(BIN_CPPFLAGS) -c -MMD -MF apps/crl.d.tmp -MT $@ -c -o $@ apps/crl.c
+	$(CC)  -I. -Iinclude -Iapps $(BIN_CFLAGS) $(BIN_CPPFLAGS) -MMD -MF apps/crl.d.tmp -MT $@ -c -o $@ apps/crl.c
 	@touch apps/crl.d.tmp
 	@if cmp apps/crl.d.tmp apps/crl.d > /dev/null 2> /dev/null; then \
 		rm -f apps/crl.d.tmp; \
@@ -6265,7 +6314,7 @@ apps/crl.o: apps/crl.c apps/progs.h
 		mv apps/crl.d.tmp apps/crl.d; \
 	fi
 apps/crl2p7.o: apps/crl2p7.c apps/progs.h
-	$(CC)  -I. -Iinclude -Iapps $(BIN_CFLAGS) $(BIN_CPPFLAGS) -c -MMD -MF apps/crl2p7.d.tmp -MT $@ -c -o $@ apps/crl2p7.c
+	$(CC)  -I. -Iinclude -Iapps $(BIN_CFLAGS) $(BIN_CPPFLAGS) -MMD -MF apps/crl2p7.d.tmp -MT $@ -c -o $@ apps/crl2p7.c
 	@touch apps/crl2p7.d.tmp
 	@if cmp apps/crl2p7.d.tmp apps/crl2p7.d > /dev/null 2> /dev/null; then \
 		rm -f apps/crl2p7.d.tmp; \
@@ -6273,7 +6322,7 @@ apps/crl2p7.o: apps/crl2p7.c apps/progs.h
 		mv apps/crl2p7.d.tmp apps/crl2p7.d; \
 	fi
 apps/dgst.o: apps/dgst.c apps/progs.h
-	$(CC)  -I. -Iinclude -Iapps $(BIN_CFLAGS) $(BIN_CPPFLAGS) -c -MMD -MF apps/dgst.d.tmp -MT $@ -c -o $@ apps/dgst.c
+	$(CC)  -I. -Iinclude -Iapps $(BIN_CFLAGS) $(BIN_CPPFLAGS) -MMD -MF apps/dgst.d.tmp -MT $@ -c -o $@ apps/dgst.c
 	@touch apps/dgst.d.tmp
 	@if cmp apps/dgst.d.tmp apps/dgst.d > /dev/null 2> /dev/null; then \
 		rm -f apps/dgst.d.tmp; \
@@ -6281,7 +6330,7 @@ apps/dgst.o: apps/dgst.c apps/progs.h
 		mv apps/dgst.d.tmp apps/dgst.d; \
 	fi
 apps/dhparam.o: apps/dhparam.c apps/progs.h
-	$(CC)  -I. -Iinclude -Iapps $(BIN_CFLAGS) $(BIN_CPPFLAGS) -c -MMD -MF apps/dhparam.d.tmp -MT $@ -c -o $@ apps/dhparam.c
+	$(CC)  -I. -Iinclude -Iapps $(BIN_CFLAGS) $(BIN_CPPFLAGS) -MMD -MF apps/dhparam.d.tmp -MT $@ -c -o $@ apps/dhparam.c
 	@touch apps/dhparam.d.tmp
 	@if cmp apps/dhparam.d.tmp apps/dhparam.d > /dev/null 2> /dev/null; then \
 		rm -f apps/dhparam.d.tmp; \
@@ -6289,7 +6338,7 @@ apps/dhparam.o: apps/dhparam.c apps/progs.h
 		mv apps/dhparam.d.tmp apps/dhparam.d; \
 	fi
 apps/dsa.o: apps/dsa.c apps/progs.h
-	$(CC)  -I. -Iinclude -Iapps $(BIN_CFLAGS) $(BIN_CPPFLAGS) -c -MMD -MF apps/dsa.d.tmp -MT $@ -c -o $@ apps/dsa.c
+	$(CC)  -I. -Iinclude -Iapps $(BIN_CFLAGS) $(BIN_CPPFLAGS) -MMD -MF apps/dsa.d.tmp -MT $@ -c -o $@ apps/dsa.c
 	@touch apps/dsa.d.tmp
 	@if cmp apps/dsa.d.tmp apps/dsa.d > /dev/null 2> /dev/null; then \
 		rm -f apps/dsa.d.tmp; \
@@ -6297,7 +6346,7 @@ apps/dsa.o: apps/dsa.c apps/progs.h
 		mv apps/dsa.d.tmp apps/dsa.d; \
 	fi
 apps/dsaparam.o: apps/dsaparam.c apps/progs.h
-	$(CC)  -I. -Iinclude -Iapps $(BIN_CFLAGS) $(BIN_CPPFLAGS) -c -MMD -MF apps/dsaparam.d.tmp -MT $@ -c -o $@ apps/dsaparam.c
+	$(CC)  -I. -Iinclude -Iapps $(BIN_CFLAGS) $(BIN_CPPFLAGS) -MMD -MF apps/dsaparam.d.tmp -MT $@ -c -o $@ apps/dsaparam.c
 	@touch apps/dsaparam.d.tmp
 	@if cmp apps/dsaparam.d.tmp apps/dsaparam.d > /dev/null 2> /dev/null; then \
 		rm -f apps/dsaparam.d.tmp; \
@@ -6305,7 +6354,7 @@ apps/dsaparam.o: apps/dsaparam.c apps/progs.h
 		mv apps/dsaparam.d.tmp apps/dsaparam.d; \
 	fi
 apps/ec.o: apps/ec.c apps/progs.h
-	$(CC)  -I. -Iinclude -Iapps $(BIN_CFLAGS) $(BIN_CPPFLAGS) -c -MMD -MF apps/ec.d.tmp -MT $@ -c -o $@ apps/ec.c
+	$(CC)  -I. -Iinclude -Iapps $(BIN_CFLAGS) $(BIN_CPPFLAGS) -MMD -MF apps/ec.d.tmp -MT $@ -c -o $@ apps/ec.c
 	@touch apps/ec.d.tmp
 	@if cmp apps/ec.d.tmp apps/ec.d > /dev/null 2> /dev/null; then \
 		rm -f apps/ec.d.tmp; \
@@ -6313,7 +6362,7 @@ apps/ec.o: apps/ec.c apps/progs.h
 		mv apps/ec.d.tmp apps/ec.d; \
 	fi
 apps/ecparam.o: apps/ecparam.c apps/progs.h
-	$(CC)  -I. -Iinclude -Iapps $(BIN_CFLAGS) $(BIN_CPPFLAGS) -c -MMD -MF apps/ecparam.d.tmp -MT $@ -c -o $@ apps/ecparam.c
+	$(CC)  -I. -Iinclude -Iapps $(BIN_CFLAGS) $(BIN_CPPFLAGS) -MMD -MF apps/ecparam.d.tmp -MT $@ -c -o $@ apps/ecparam.c
 	@touch apps/ecparam.d.tmp
 	@if cmp apps/ecparam.d.tmp apps/ecparam.d > /dev/null 2> /dev/null; then \
 		rm -f apps/ecparam.d.tmp; \
@@ -6321,7 +6370,7 @@ apps/ecparam.o: apps/ecparam.c apps/progs.h
 		mv apps/ecparam.d.tmp apps/ecparam.d; \
 	fi
 apps/enc.o: apps/enc.c apps/progs.h
-	$(CC)  -I. -Iinclude -Iapps $(BIN_CFLAGS) $(BIN_CPPFLAGS) -c -MMD -MF apps/enc.d.tmp -MT $@ -c -o $@ apps/enc.c
+	$(CC)  -I. -Iinclude -Iapps $(BIN_CFLAGS) $(BIN_CPPFLAGS) -MMD -MF apps/enc.d.tmp -MT $@ -c -o $@ apps/enc.c
 	@touch apps/enc.d.tmp
 	@if cmp apps/enc.d.tmp apps/enc.d > /dev/null 2> /dev/null; then \
 		rm -f apps/enc.d.tmp; \
@@ -6329,7 +6378,7 @@ apps/enc.o: apps/enc.c apps/progs.h
 		mv apps/enc.d.tmp apps/enc.d; \
 	fi
 apps/engine.o: apps/engine.c apps/progs.h
-	$(CC)  -I. -Iinclude -Iapps $(BIN_CFLAGS) $(BIN_CPPFLAGS) -c -MMD -MF apps/engine.d.tmp -MT $@ -c -o $@ apps/engine.c
+	$(CC)  -I. -Iinclude -Iapps $(BIN_CFLAGS) $(BIN_CPPFLAGS) -MMD -MF apps/engine.d.tmp -MT $@ -c -o $@ apps/engine.c
 	@touch apps/engine.d.tmp
 	@if cmp apps/engine.d.tmp apps/engine.d > /dev/null 2> /dev/null; then \
 		rm -f apps/engine.d.tmp; \
@@ -6337,7 +6386,7 @@ apps/engine.o: apps/engine.c apps/progs.h
 		mv apps/engine.d.tmp apps/engine.d; \
 	fi
 apps/errstr.o: apps/errstr.c apps/progs.h
-	$(CC)  -I. -Iinclude -Iapps $(BIN_CFLAGS) $(BIN_CPPFLAGS) -c -MMD -MF apps/errstr.d.tmp -MT $@ -c -o $@ apps/errstr.c
+	$(CC)  -I. -Iinclude -Iapps $(BIN_CFLAGS) $(BIN_CPPFLAGS) -MMD -MF apps/errstr.d.tmp -MT $@ -c -o $@ apps/errstr.c
 	@touch apps/errstr.d.tmp
 	@if cmp apps/errstr.d.tmp apps/errstr.d > /dev/null 2> /dev/null; then \
 		rm -f apps/errstr.d.tmp; \
@@ -6345,7 +6394,7 @@ apps/errstr.o: apps/errstr.c apps/progs.h
 		mv apps/errstr.d.tmp apps/errstr.d; \
 	fi
 apps/gendsa.o: apps/gendsa.c apps/progs.h
-	$(CC)  -I. -Iinclude -Iapps $(BIN_CFLAGS) $(BIN_CPPFLAGS) -c -MMD -MF apps/gendsa.d.tmp -MT $@ -c -o $@ apps/gendsa.c
+	$(CC)  -I. -Iinclude -Iapps $(BIN_CFLAGS) $(BIN_CPPFLAGS) -MMD -MF apps/gendsa.d.tmp -MT $@ -c -o $@ apps/gendsa.c
 	@touch apps/gendsa.d.tmp
 	@if cmp apps/gendsa.d.tmp apps/gendsa.d > /dev/null 2> /dev/null; then \
 		rm -f apps/gendsa.d.tmp; \
@@ -6353,7 +6402,7 @@ apps/gendsa.o: apps/gendsa.c apps/progs.h
 		mv apps/gendsa.d.tmp apps/gendsa.d; \
 	fi
 apps/genpkey.o: apps/genpkey.c apps/progs.h
-	$(CC)  -I. -Iinclude -Iapps $(BIN_CFLAGS) $(BIN_CPPFLAGS) -c -MMD -MF apps/genpkey.d.tmp -MT $@ -c -o $@ apps/genpkey.c
+	$(CC)  -I. -Iinclude -Iapps $(BIN_CFLAGS) $(BIN_CPPFLAGS) -MMD -MF apps/genpkey.d.tmp -MT $@ -c -o $@ apps/genpkey.c
 	@touch apps/genpkey.d.tmp
 	@if cmp apps/genpkey.d.tmp apps/genpkey.d > /dev/null 2> /dev/null; then \
 		rm -f apps/genpkey.d.tmp; \
@@ -6361,7 +6410,7 @@ apps/genpkey.o: apps/genpkey.c apps/progs.h
 		mv apps/genpkey.d.tmp apps/genpkey.d; \
 	fi
 apps/genrsa.o: apps/genrsa.c apps/progs.h
-	$(CC)  -I. -Iinclude -Iapps $(BIN_CFLAGS) $(BIN_CPPFLAGS) -c -MMD -MF apps/genrsa.d.tmp -MT $@ -c -o $@ apps/genrsa.c
+	$(CC)  -I. -Iinclude -Iapps $(BIN_CFLAGS) $(BIN_CPPFLAGS) -MMD -MF apps/genrsa.d.tmp -MT $@ -c -o $@ apps/genrsa.c
 	@touch apps/genrsa.d.tmp
 	@if cmp apps/genrsa.d.tmp apps/genrsa.d > /dev/null 2> /dev/null; then \
 		rm -f apps/genrsa.d.tmp; \
@@ -6369,7 +6418,7 @@ apps/genrsa.o: apps/genrsa.c apps/progs.h
 		mv apps/genrsa.d.tmp apps/genrsa.d; \
 	fi
 apps/nseq.o: apps/nseq.c apps/progs.h
-	$(CC)  -I. -Iinclude -Iapps $(BIN_CFLAGS) $(BIN_CPPFLAGS) -c -MMD -MF apps/nseq.d.tmp -MT $@ -c -o $@ apps/nseq.c
+	$(CC)  -I. -Iinclude -Iapps $(BIN_CFLAGS) $(BIN_CPPFLAGS) -MMD -MF apps/nseq.d.tmp -MT $@ -c -o $@ apps/nseq.c
 	@touch apps/nseq.d.tmp
 	@if cmp apps/nseq.d.tmp apps/nseq.d > /dev/null 2> /dev/null; then \
 		rm -f apps/nseq.d.tmp; \
@@ -6377,7 +6426,7 @@ apps/nseq.o: apps/nseq.c apps/progs.h
 		mv apps/nseq.d.tmp apps/nseq.d; \
 	fi
 apps/ocsp.o: apps/ocsp.c apps/progs.h
-	$(CC)  -I. -Iinclude -Iapps $(BIN_CFLAGS) $(BIN_CPPFLAGS) -c -MMD -MF apps/ocsp.d.tmp -MT $@ -c -o $@ apps/ocsp.c
+	$(CC)  -I. -Iinclude -Iapps $(BIN_CFLAGS) $(BIN_CPPFLAGS) -MMD -MF apps/ocsp.d.tmp -MT $@ -c -o $@ apps/ocsp.c
 	@touch apps/ocsp.d.tmp
 	@if cmp apps/ocsp.d.tmp apps/ocsp.d > /dev/null 2> /dev/null; then \
 		rm -f apps/ocsp.d.tmp; \
@@ -6385,7 +6434,7 @@ apps/ocsp.o: apps/ocsp.c apps/progs.h
 		mv apps/ocsp.d.tmp apps/ocsp.d; \
 	fi
 apps/openssl.o: apps/openssl.c apps/progs.h
-	$(CC)  -I. -Iinclude -Iapps $(BIN_CFLAGS) $(BIN_CPPFLAGS) -c -MMD -MF apps/openssl.d.tmp -MT $@ -c -o $@ apps/openssl.c
+	$(CC)  -I. -Iinclude -Iapps $(BIN_CFLAGS) $(BIN_CPPFLAGS) -MMD -MF apps/openssl.d.tmp -MT $@ -c -o $@ apps/openssl.c
 	@touch apps/openssl.d.tmp
 	@if cmp apps/openssl.d.tmp apps/openssl.d > /dev/null 2> /dev/null; then \
 		rm -f apps/openssl.d.tmp; \
@@ -6393,7 +6442,7 @@ apps/openssl.o: apps/openssl.c apps/progs.h
 		mv apps/openssl.d.tmp apps/openssl.d; \
 	fi
 apps/passwd.o: apps/passwd.c apps/progs.h
-	$(CC)  -I. -Iinclude -Iapps $(BIN_CFLAGS) $(BIN_CPPFLAGS) -c -MMD -MF apps/passwd.d.tmp -MT $@ -c -o $@ apps/passwd.c
+	$(CC)  -I. -Iinclude -Iapps $(BIN_CFLAGS) $(BIN_CPPFLAGS) -MMD -MF apps/passwd.d.tmp -MT $@ -c -o $@ apps/passwd.c
 	@touch apps/passwd.d.tmp
 	@if cmp apps/passwd.d.tmp apps/passwd.d > /dev/null 2> /dev/null; then \
 		rm -f apps/passwd.d.tmp; \
@@ -6401,7 +6450,7 @@ apps/passwd.o: apps/passwd.c apps/progs.h
 		mv apps/passwd.d.tmp apps/passwd.d; \
 	fi
 apps/pkcs12.o: apps/pkcs12.c apps/progs.h
-	$(CC)  -I. -Iinclude -Iapps $(BIN_CFLAGS) $(BIN_CPPFLAGS) -c -MMD -MF apps/pkcs12.d.tmp -MT $@ -c -o $@ apps/pkcs12.c
+	$(CC)  -I. -Iinclude -Iapps $(BIN_CFLAGS) $(BIN_CPPFLAGS) -MMD -MF apps/pkcs12.d.tmp -MT $@ -c -o $@ apps/pkcs12.c
 	@touch apps/pkcs12.d.tmp
 	@if cmp apps/pkcs12.d.tmp apps/pkcs12.d > /dev/null 2> /dev/null; then \
 		rm -f apps/pkcs12.d.tmp; \
@@ -6409,7 +6458,7 @@ apps/pkcs12.o: apps/pkcs12.c apps/progs.h
 		mv apps/pkcs12.d.tmp apps/pkcs12.d; \
 	fi
 apps/pkcs7.o: apps/pkcs7.c apps/progs.h
-	$(CC)  -I. -Iinclude -Iapps $(BIN_CFLAGS) $(BIN_CPPFLAGS) -c -MMD -MF apps/pkcs7.d.tmp -MT $@ -c -o $@ apps/pkcs7.c
+	$(CC)  -I. -Iinclude -Iapps $(BIN_CFLAGS) $(BIN_CPPFLAGS) -MMD -MF apps/pkcs7.d.tmp -MT $@ -c -o $@ apps/pkcs7.c
 	@touch apps/pkcs7.d.tmp
 	@if cmp apps/pkcs7.d.tmp apps/pkcs7.d > /dev/null 2> /dev/null; then \
 		rm -f apps/pkcs7.d.tmp; \
@@ -6417,7 +6466,7 @@ apps/pkcs7.o: apps/pkcs7.c apps/progs.h
 		mv apps/pkcs7.d.tmp apps/pkcs7.d; \
 	fi
 apps/pkcs8.o: apps/pkcs8.c apps/progs.h
-	$(CC)  -I. -Iinclude -Iapps $(BIN_CFLAGS) $(BIN_CPPFLAGS) -c -MMD -MF apps/pkcs8.d.tmp -MT $@ -c -o $@ apps/pkcs8.c
+	$(CC)  -I. -Iinclude -Iapps $(BIN_CFLAGS) $(BIN_CPPFLAGS) -MMD -MF apps/pkcs8.d.tmp -MT $@ -c -o $@ apps/pkcs8.c
 	@touch apps/pkcs8.d.tmp
 	@if cmp apps/pkcs8.d.tmp apps/pkcs8.d > /dev/null 2> /dev/null; then \
 		rm -f apps/pkcs8.d.tmp; \
@@ -6425,7 +6474,7 @@ apps/pkcs8.o: apps/pkcs8.c apps/progs.h
 		mv apps/pkcs8.d.tmp apps/pkcs8.d; \
 	fi
 apps/pkey.o: apps/pkey.c apps/progs.h
-	$(CC)  -I. -Iinclude -Iapps $(BIN_CFLAGS) $(BIN_CPPFLAGS) -c -MMD -MF apps/pkey.d.tmp -MT $@ -c -o $@ apps/pkey.c
+	$(CC)  -I. -Iinclude -Iapps $(BIN_CFLAGS) $(BIN_CPPFLAGS) -MMD -MF apps/pkey.d.tmp -MT $@ -c -o $@ apps/pkey.c
 	@touch apps/pkey.d.tmp
 	@if cmp apps/pkey.d.tmp apps/pkey.d > /dev/null 2> /dev/null; then \
 		rm -f apps/pkey.d.tmp; \
@@ -6433,7 +6482,7 @@ apps/pkey.o: apps/pkey.c apps/progs.h
 		mv apps/pkey.d.tmp apps/pkey.d; \
 	fi
 apps/pkeyparam.o: apps/pkeyparam.c apps/progs.h
-	$(CC)  -I. -Iinclude -Iapps $(BIN_CFLAGS) $(BIN_CPPFLAGS) -c -MMD -MF apps/pkeyparam.d.tmp -MT $@ -c -o $@ apps/pkeyparam.c
+	$(CC)  -I. -Iinclude -Iapps $(BIN_CFLAGS) $(BIN_CPPFLAGS) -MMD -MF apps/pkeyparam.d.tmp -MT $@ -c -o $@ apps/pkeyparam.c
 	@touch apps/pkeyparam.d.tmp
 	@if cmp apps/pkeyparam.d.tmp apps/pkeyparam.d > /dev/null 2> /dev/null; then \
 		rm -f apps/pkeyparam.d.tmp; \
@@ -6441,7 +6490,7 @@ apps/pkeyparam.o: apps/pkeyparam.c apps/progs.h
 		mv apps/pkeyparam.d.tmp apps/pkeyparam.d; \
 	fi
 apps/pkeyutl.o: apps/pkeyutl.c apps/progs.h
-	$(CC)  -I. -Iinclude -Iapps $(BIN_CFLAGS) $(BIN_CPPFLAGS) -c -MMD -MF apps/pkeyutl.d.tmp -MT $@ -c -o $@ apps/pkeyutl.c
+	$(CC)  -I. -Iinclude -Iapps $(BIN_CFLAGS) $(BIN_CPPFLAGS) -MMD -MF apps/pkeyutl.d.tmp -MT $@ -c -o $@ apps/pkeyutl.c
 	@touch apps/pkeyutl.d.tmp
 	@if cmp apps/pkeyutl.d.tmp apps/pkeyutl.d > /dev/null 2> /dev/null; then \
 		rm -f apps/pkeyutl.d.tmp; \
@@ -6449,7 +6498,7 @@ apps/pkeyutl.o: apps/pkeyutl.c apps/progs.h
 		mv apps/pkeyutl.d.tmp apps/pkeyutl.d; \
 	fi
 apps/prime.o: apps/prime.c apps/progs.h
-	$(CC)  -I. -Iinclude -Iapps $(BIN_CFLAGS) $(BIN_CPPFLAGS) -c -MMD -MF apps/prime.d.tmp -MT $@ -c -o $@ apps/prime.c
+	$(CC)  -I. -Iinclude -Iapps $(BIN_CFLAGS) $(BIN_CPPFLAGS) -MMD -MF apps/prime.d.tmp -MT $@ -c -o $@ apps/prime.c
 	@touch apps/prime.d.tmp
 	@if cmp apps/prime.d.tmp apps/prime.d > /dev/null 2> /dev/null; then \
 		rm -f apps/prime.d.tmp; \
@@ -6457,7 +6506,7 @@ apps/prime.o: apps/prime.c apps/progs.h
 		mv apps/prime.d.tmp apps/prime.d; \
 	fi
 apps/rand.o: apps/rand.c apps/progs.h
-	$(CC)  -I. -Iinclude -Iapps $(BIN_CFLAGS) $(BIN_CPPFLAGS) -c -MMD -MF apps/rand.d.tmp -MT $@ -c -o $@ apps/rand.c
+	$(CC)  -I. -Iinclude -Iapps $(BIN_CFLAGS) $(BIN_CPPFLAGS) -MMD -MF apps/rand.d.tmp -MT $@ -c -o $@ apps/rand.c
 	@touch apps/rand.d.tmp
 	@if cmp apps/rand.d.tmp apps/rand.d > /dev/null 2> /dev/null; then \
 		rm -f apps/rand.d.tmp; \
@@ -6465,7 +6514,7 @@ apps/rand.o: apps/rand.c apps/progs.h
 		mv apps/rand.d.tmp apps/rand.d; \
 	fi
 apps/rehash.o: apps/rehash.c apps/progs.h
-	$(CC)  -I. -Iinclude -Iapps $(BIN_CFLAGS) $(BIN_CPPFLAGS) -c -MMD -MF apps/rehash.d.tmp -MT $@ -c -o $@ apps/rehash.c
+	$(CC)  -I. -Iinclude -Iapps $(BIN_CFLAGS) $(BIN_CPPFLAGS) -MMD -MF apps/rehash.d.tmp -MT $@ -c -o $@ apps/rehash.c
 	@touch apps/rehash.d.tmp
 	@if cmp apps/rehash.d.tmp apps/rehash.d > /dev/null 2> /dev/null; then \
 		rm -f apps/rehash.d.tmp; \
@@ -6473,7 +6522,7 @@ apps/rehash.o: apps/rehash.c apps/progs.h
 		mv apps/rehash.d.tmp apps/rehash.d; \
 	fi
 apps/req.o: apps/req.c apps/progs.h
-	$(CC)  -I. -Iinclude -Iapps $(BIN_CFLAGS) $(BIN_CPPFLAGS) -c -MMD -MF apps/req.d.tmp -MT $@ -c -o $@ apps/req.c
+	$(CC)  -I. -Iinclude -Iapps $(BIN_CFLAGS) $(BIN_CPPFLAGS) -MMD -MF apps/req.d.tmp -MT $@ -c -o $@ apps/req.c
 	@touch apps/req.d.tmp
 	@if cmp apps/req.d.tmp apps/req.d > /dev/null 2> /dev/null; then \
 		rm -f apps/req.d.tmp; \
@@ -6481,7 +6530,7 @@ apps/req.o: apps/req.c apps/progs.h
 		mv apps/req.d.tmp apps/req.d; \
 	fi
 apps/rsa.o: apps/rsa.c apps/progs.h
-	$(CC)  -I. -Iinclude -Iapps $(BIN_CFLAGS) $(BIN_CPPFLAGS) -c -MMD -MF apps/rsa.d.tmp -MT $@ -c -o $@ apps/rsa.c
+	$(CC)  -I. -Iinclude -Iapps $(BIN_CFLAGS) $(BIN_CPPFLAGS) -MMD -MF apps/rsa.d.tmp -MT $@ -c -o $@ apps/rsa.c
 	@touch apps/rsa.d.tmp
 	@if cmp apps/rsa.d.tmp apps/rsa.d > /dev/null 2> /dev/null; then \
 		rm -f apps/rsa.d.tmp; \
@@ -6489,7 +6538,7 @@ apps/rsa.o: apps/rsa.c apps/progs.h
 		mv apps/rsa.d.tmp apps/rsa.d; \
 	fi
 apps/rsautl.o: apps/rsautl.c apps/progs.h
-	$(CC)  -I. -Iinclude -Iapps $(BIN_CFLAGS) $(BIN_CPPFLAGS) -c -MMD -MF apps/rsautl.d.tmp -MT $@ -c -o $@ apps/rsautl.c
+	$(CC)  -I. -Iinclude -Iapps $(BIN_CFLAGS) $(BIN_CPPFLAGS) -MMD -MF apps/rsautl.d.tmp -MT $@ -c -o $@ apps/rsautl.c
 	@touch apps/rsautl.d.tmp
 	@if cmp apps/rsautl.d.tmp apps/rsautl.d > /dev/null 2> /dev/null; then \
 		rm -f apps/rsautl.d.tmp; \
@@ -6497,7 +6546,7 @@ apps/rsautl.o: apps/rsautl.c apps/progs.h
 		mv apps/rsautl.d.tmp apps/rsautl.d; \
 	fi
 apps/s_client.o: apps/s_client.c apps/progs.h
-	$(CC)  -I. -Iinclude -Iapps $(BIN_CFLAGS) $(BIN_CPPFLAGS) -c -MMD -MF apps/s_client.d.tmp -MT $@ -c -o $@ apps/s_client.c
+	$(CC)  -I. -Iinclude -Iapps $(BIN_CFLAGS) $(BIN_CPPFLAGS) -MMD -MF apps/s_client.d.tmp -MT $@ -c -o $@ apps/s_client.c
 	@touch apps/s_client.d.tmp
 	@if cmp apps/s_client.d.tmp apps/s_client.d > /dev/null 2> /dev/null; then \
 		rm -f apps/s_client.d.tmp; \
@@ -6505,7 +6554,7 @@ apps/s_client.o: apps/s_client.c apps/progs.h
 		mv apps/s_client.d.tmp apps/s_client.d; \
 	fi
 apps/s_server.o: apps/s_server.c apps/progs.h
-	$(CC)  -I. -Iinclude -Iapps $(BIN_CFLAGS) $(BIN_CPPFLAGS) -c -MMD -MF apps/s_server.d.tmp -MT $@ -c -o $@ apps/s_server.c
+	$(CC)  -I. -Iinclude -Iapps $(BIN_CFLAGS) $(BIN_CPPFLAGS) -MMD -MF apps/s_server.d.tmp -MT $@ -c -o $@ apps/s_server.c
 	@touch apps/s_server.d.tmp
 	@if cmp apps/s_server.d.tmp apps/s_server.d > /dev/null 2> /dev/null; then \
 		rm -f apps/s_server.d.tmp; \
@@ -6513,7 +6562,7 @@ apps/s_server.o: apps/s_server.c apps/progs.h
 		mv apps/s_server.d.tmp apps/s_server.d; \
 	fi
 apps/s_time.o: apps/s_time.c apps/progs.h
-	$(CC)  -I. -Iinclude -Iapps $(BIN_CFLAGS) $(BIN_CPPFLAGS) -c -MMD -MF apps/s_time.d.tmp -MT $@ -c -o $@ apps/s_time.c
+	$(CC)  -I. -Iinclude -Iapps $(BIN_CFLAGS) $(BIN_CPPFLAGS) -MMD -MF apps/s_time.d.tmp -MT $@ -c -o $@ apps/s_time.c
 	@touch apps/s_time.d.tmp
 	@if cmp apps/s_time.d.tmp apps/s_time.d > /dev/null 2> /dev/null; then \
 		rm -f apps/s_time.d.tmp; \
@@ -6521,7 +6570,7 @@ apps/s_time.o: apps/s_time.c apps/progs.h
 		mv apps/s_time.d.tmp apps/s_time.d; \
 	fi
 apps/sess_id.o: apps/sess_id.c apps/progs.h
-	$(CC)  -I. -Iinclude -Iapps $(BIN_CFLAGS) $(BIN_CPPFLAGS) -c -MMD -MF apps/sess_id.d.tmp -MT $@ -c -o $@ apps/sess_id.c
+	$(CC)  -I. -Iinclude -Iapps $(BIN_CFLAGS) $(BIN_CPPFLAGS) -MMD -MF apps/sess_id.d.tmp -MT $@ -c -o $@ apps/sess_id.c
 	@touch apps/sess_id.d.tmp
 	@if cmp apps/sess_id.d.tmp apps/sess_id.d > /dev/null 2> /dev/null; then \
 		rm -f apps/sess_id.d.tmp; \
@@ -6529,7 +6578,7 @@ apps/sess_id.o: apps/sess_id.c apps/progs.h
 		mv apps/sess_id.d.tmp apps/sess_id.d; \
 	fi
 apps/smime.o: apps/smime.c apps/progs.h
-	$(CC)  -I. -Iinclude -Iapps $(BIN_CFLAGS) $(BIN_CPPFLAGS) -c -MMD -MF apps/smime.d.tmp -MT $@ -c -o $@ apps/smime.c
+	$(CC)  -I. -Iinclude -Iapps $(BIN_CFLAGS) $(BIN_CPPFLAGS) -MMD -MF apps/smime.d.tmp -MT $@ -c -o $@ apps/smime.c
 	@touch apps/smime.d.tmp
 	@if cmp apps/smime.d.tmp apps/smime.d > /dev/null 2> /dev/null; then \
 		rm -f apps/smime.d.tmp; \
@@ -6537,7 +6586,7 @@ apps/smime.o: apps/smime.c apps/progs.h
 		mv apps/smime.d.tmp apps/smime.d; \
 	fi
 apps/speed.o: apps/speed.c apps/progs.h
-	$(CC)  -I. -Iinclude -Iapps $(BIN_CFLAGS) $(BIN_CPPFLAGS) -c -MMD -MF apps/speed.d.tmp -MT $@ -c -o $@ apps/speed.c
+	$(CC)  -I. -Iinclude -Iapps $(BIN_CFLAGS) $(BIN_CPPFLAGS) -MMD -MF apps/speed.d.tmp -MT $@ -c -o $@ apps/speed.c
 	@touch apps/speed.d.tmp
 	@if cmp apps/speed.d.tmp apps/speed.d > /dev/null 2> /dev/null; then \
 		rm -f apps/speed.d.tmp; \
@@ -6545,7 +6594,7 @@ apps/speed.o: apps/speed.c apps/progs.h
 		mv apps/speed.d.tmp apps/speed.d; \
 	fi
 apps/spkac.o: apps/spkac.c apps/progs.h
-	$(CC)  -I. -Iinclude -Iapps $(BIN_CFLAGS) $(BIN_CPPFLAGS) -c -MMD -MF apps/spkac.d.tmp -MT $@ -c -o $@ apps/spkac.c
+	$(CC)  -I. -Iinclude -Iapps $(BIN_CFLAGS) $(BIN_CPPFLAGS) -MMD -MF apps/spkac.d.tmp -MT $@ -c -o $@ apps/spkac.c
 	@touch apps/spkac.d.tmp
 	@if cmp apps/spkac.d.tmp apps/spkac.d > /dev/null 2> /dev/null; then \
 		rm -f apps/spkac.d.tmp; \
@@ -6553,7 +6602,7 @@ apps/spkac.o: apps/spkac.c apps/progs.h
 		mv apps/spkac.d.tmp apps/spkac.d; \
 	fi
 apps/srp.o: apps/srp.c apps/progs.h
-	$(CC)  -I. -Iinclude -Iapps $(BIN_CFLAGS) $(BIN_CPPFLAGS) -c -MMD -MF apps/srp.d.tmp -MT $@ -c -o $@ apps/srp.c
+	$(CC)  -I. -Iinclude -Iapps $(BIN_CFLAGS) $(BIN_CPPFLAGS) -MMD -MF apps/srp.d.tmp -MT $@ -c -o $@ apps/srp.c
 	@touch apps/srp.d.tmp
 	@if cmp apps/srp.d.tmp apps/srp.d > /dev/null 2> /dev/null; then \
 		rm -f apps/srp.d.tmp; \
@@ -6561,7 +6610,7 @@ apps/srp.o: apps/srp.c apps/progs.h
 		mv apps/srp.d.tmp apps/srp.d; \
 	fi
 apps/storeutl.o: apps/storeutl.c apps/progs.h
-	$(CC)  -I. -Iinclude -Iapps $(BIN_CFLAGS) $(BIN_CPPFLAGS) -c -MMD -MF apps/storeutl.d.tmp -MT $@ -c -o $@ apps/storeutl.c
+	$(CC)  -I. -Iinclude -Iapps $(BIN_CFLAGS) $(BIN_CPPFLAGS) -MMD -MF apps/storeutl.d.tmp -MT $@ -c -o $@ apps/storeutl.c
 	@touch apps/storeutl.d.tmp
 	@if cmp apps/storeutl.d.tmp apps/storeutl.d > /dev/null 2> /dev/null; then \
 		rm -f apps/storeutl.d.tmp; \
@@ -6569,7 +6618,7 @@ apps/storeutl.o: apps/storeutl.c apps/progs.h
 		mv apps/storeutl.d.tmp apps/storeutl.d; \
 	fi
 apps/ts.o: apps/ts.c apps/progs.h
-	$(CC)  -I. -Iinclude -Iapps $(BIN_CFLAGS) $(BIN_CPPFLAGS) -c -MMD -MF apps/ts.d.tmp -MT $@ -c -o $@ apps/ts.c
+	$(CC)  -I. -Iinclude -Iapps $(BIN_CFLAGS) $(BIN_CPPFLAGS) -MMD -MF apps/ts.d.tmp -MT $@ -c -o $@ apps/ts.c
 	@touch apps/ts.d.tmp
 	@if cmp apps/ts.d.tmp apps/ts.d > /dev/null 2> /dev/null; then \
 		rm -f apps/ts.d.tmp; \
@@ -6577,7 +6626,7 @@ apps/ts.o: apps/ts.c apps/progs.h
 		mv apps/ts.d.tmp apps/ts.d; \
 	fi
 apps/verify.o: apps/verify.c apps/progs.h
-	$(CC)  -I. -Iinclude -Iapps $(BIN_CFLAGS) $(BIN_CPPFLAGS) -c -MMD -MF apps/verify.d.tmp -MT $@ -c -o $@ apps/verify.c
+	$(CC)  -I. -Iinclude -Iapps $(BIN_CFLAGS) $(BIN_CPPFLAGS) -MMD -MF apps/verify.d.tmp -MT $@ -c -o $@ apps/verify.c
 	@touch apps/verify.d.tmp
 	@if cmp apps/verify.d.tmp apps/verify.d > /dev/null 2> /dev/null; then \
 		rm -f apps/verify.d.tmp; \
@@ -6585,7 +6634,7 @@ apps/verify.o: apps/verify.c apps/progs.h
 		mv apps/verify.d.tmp apps/verify.d; \
 	fi
 apps/version.o: apps/version.c apps/progs.h
-	$(CC)  -I. -Iinclude -Iapps $(BIN_CFLAGS) $(BIN_CPPFLAGS) -c -MMD -MF apps/version.d.tmp -MT $@ -c -o $@ apps/version.c
+	$(CC)  -I. -Iinclude -Iapps $(BIN_CFLAGS) $(BIN_CPPFLAGS) -MMD -MF apps/version.d.tmp -MT $@ -c -o $@ apps/version.c
 	@touch apps/version.d.tmp
 	@if cmp apps/version.d.tmp apps/version.d > /dev/null 2> /dev/null; then \
 		rm -f apps/version.d.tmp; \
@@ -6593,7 +6642,7 @@ apps/version.o: apps/version.c apps/progs.h
 		mv apps/version.d.tmp apps/version.d; \
 	fi
 apps/x509.o: apps/x509.c apps/progs.h
-	$(CC)  -I. -Iinclude -Iapps $(BIN_CFLAGS) $(BIN_CPPFLAGS) -c -MMD -MF apps/x509.d.tmp -MT $@ -c -o $@ apps/x509.c
+	$(CC)  -I. -Iinclude -Iapps $(BIN_CFLAGS) $(BIN_CPPFLAGS) -MMD -MF apps/x509.d.tmp -MT $@ -c -o $@ apps/x509.c
 	@touch apps/x509.d.tmp
 	@if cmp apps/x509.d.tmp apps/x509.d > /dev/null 2> /dev/null; then \
 		rm -f apps/x509.d.tmp; \
@@ -6604,9 +6653,9 @@ fuzz/asn1-test: fuzz/asn1.o fuzz/test-corpus.o libssl.a libcrypto.a
 	rm -f fuzz/asn1-test
 	$${LDCMD:-$(CC)} $(BIN_CFLAGS) -L. $(BIN_LDFLAGS) \
 		-o fuzz/asn1-test fuzz/asn1.o fuzz/test-corpus.o \
-		$(PLIB_LDFLAGS)  -lssl -lcrypto $(EX_LIBS)
+		 -lssl -lcrypto $(BIN_EX_LIBS)
 fuzz/asn1.o: fuzz/asn1.c
-	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -c -MMD -MF fuzz/asn1.d.tmp -MT $@ -c -o $@ fuzz/asn1.c
+	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -MMD -MF fuzz/asn1.d.tmp -MT $@ -c -o $@ fuzz/asn1.c
 	@touch fuzz/asn1.d.tmp
 	@if cmp fuzz/asn1.d.tmp fuzz/asn1.d > /dev/null 2> /dev/null; then \
 		rm -f fuzz/asn1.d.tmp; \
@@ -6614,7 +6663,7 @@ fuzz/asn1.o: fuzz/asn1.c
 		mv fuzz/asn1.d.tmp fuzz/asn1.d; \
 	fi
 fuzz/test-corpus.o: fuzz/test-corpus.c
-	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -c -MMD -MF fuzz/test-corpus.d.tmp -MT $@ -c -o $@ fuzz/test-corpus.c
+	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -MMD -MF fuzz/test-corpus.d.tmp -MT $@ -c -o $@ fuzz/test-corpus.c
 	@touch fuzz/test-corpus.d.tmp
 	@if cmp fuzz/test-corpus.d.tmp fuzz/test-corpus.d > /dev/null 2> /dev/null; then \
 		rm -f fuzz/test-corpus.d.tmp; \
@@ -6625,9 +6674,9 @@ fuzz/asn1parse-test: fuzz/asn1parse.o fuzz/test-corpus.o libcrypto.a
 	rm -f fuzz/asn1parse-test
 	$${LDCMD:-$(CC)} $(BIN_CFLAGS) -L. $(BIN_LDFLAGS) \
 		-o fuzz/asn1parse-test fuzz/asn1parse.o fuzz/test-corpus.o \
-		$(PLIB_LDFLAGS)  -lcrypto $(EX_LIBS)
+		 -lcrypto $(BIN_EX_LIBS)
 fuzz/asn1parse.o: fuzz/asn1parse.c
-	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -c -MMD -MF fuzz/asn1parse.d.tmp -MT $@ -c -o $@ fuzz/asn1parse.c
+	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -MMD -MF fuzz/asn1parse.d.tmp -MT $@ -c -o $@ fuzz/asn1parse.c
 	@touch fuzz/asn1parse.d.tmp
 	@if cmp fuzz/asn1parse.d.tmp fuzz/asn1parse.d > /dev/null 2> /dev/null; then \
 		rm -f fuzz/asn1parse.d.tmp; \
@@ -6638,9 +6687,9 @@ fuzz/bignum-test: fuzz/bignum.o fuzz/test-corpus.o libcrypto.a
 	rm -f fuzz/bignum-test
 	$${LDCMD:-$(CC)} $(BIN_CFLAGS) -L. $(BIN_LDFLAGS) \
 		-o fuzz/bignum-test fuzz/bignum.o fuzz/test-corpus.o \
-		$(PLIB_LDFLAGS)  -lcrypto $(EX_LIBS)
+		 -lcrypto $(BIN_EX_LIBS)
 fuzz/bignum.o: fuzz/bignum.c
-	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -c -MMD -MF fuzz/bignum.d.tmp -MT $@ -c -o $@ fuzz/bignum.c
+	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -MMD -MF fuzz/bignum.d.tmp -MT $@ -c -o $@ fuzz/bignum.c
 	@touch fuzz/bignum.d.tmp
 	@if cmp fuzz/bignum.d.tmp fuzz/bignum.d > /dev/null 2> /dev/null; then \
 		rm -f fuzz/bignum.d.tmp; \
@@ -6651,9 +6700,9 @@ fuzz/bndiv-test: fuzz/bndiv.o fuzz/test-corpus.o libcrypto.a
 	rm -f fuzz/bndiv-test
 	$${LDCMD:-$(CC)} $(BIN_CFLAGS) -L. $(BIN_LDFLAGS) \
 		-o fuzz/bndiv-test fuzz/bndiv.o fuzz/test-corpus.o \
-		$(PLIB_LDFLAGS)  -lcrypto $(EX_LIBS)
+		 -lcrypto $(BIN_EX_LIBS)
 fuzz/bndiv.o: fuzz/bndiv.c
-	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -c -MMD -MF fuzz/bndiv.d.tmp -MT $@ -c -o $@ fuzz/bndiv.c
+	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -MMD -MF fuzz/bndiv.d.tmp -MT $@ -c -o $@ fuzz/bndiv.c
 	@touch fuzz/bndiv.d.tmp
 	@if cmp fuzz/bndiv.d.tmp fuzz/bndiv.d > /dev/null 2> /dev/null; then \
 		rm -f fuzz/bndiv.d.tmp; \
@@ -6664,9 +6713,9 @@ fuzz/client-test: fuzz/client.o fuzz/test-corpus.o libssl.a libcrypto.a
 	rm -f fuzz/client-test
 	$${LDCMD:-$(CC)} $(BIN_CFLAGS) -L. $(BIN_LDFLAGS) \
 		-o fuzz/client-test fuzz/client.o fuzz/test-corpus.o \
-		$(PLIB_LDFLAGS)  -lssl -lcrypto $(EX_LIBS)
+		 -lssl -lcrypto $(BIN_EX_LIBS)
 fuzz/client.o: fuzz/client.c
-	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -c -MMD -MF fuzz/client.d.tmp -MT $@ -c -o $@ fuzz/client.c
+	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -MMD -MF fuzz/client.d.tmp -MT $@ -c -o $@ fuzz/client.c
 	@touch fuzz/client.d.tmp
 	@if cmp fuzz/client.d.tmp fuzz/client.d > /dev/null 2> /dev/null; then \
 		rm -f fuzz/client.d.tmp; \
@@ -6677,9 +6726,9 @@ fuzz/cms-test: fuzz/cms.o fuzz/test-corpus.o libcrypto.a
 	rm -f fuzz/cms-test
 	$${LDCMD:-$(CC)} $(BIN_CFLAGS) -L. $(BIN_LDFLAGS) \
 		-o fuzz/cms-test fuzz/cms.o fuzz/test-corpus.o \
-		$(PLIB_LDFLAGS)  -lcrypto $(EX_LIBS)
+		 -lcrypto $(BIN_EX_LIBS)
 fuzz/cms.o: fuzz/cms.c
-	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -c -MMD -MF fuzz/cms.d.tmp -MT $@ -c -o $@ fuzz/cms.c
+	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -MMD -MF fuzz/cms.d.tmp -MT $@ -c -o $@ fuzz/cms.c
 	@touch fuzz/cms.d.tmp
 	@if cmp fuzz/cms.d.tmp fuzz/cms.d > /dev/null 2> /dev/null; then \
 		rm -f fuzz/cms.d.tmp; \
@@ -6690,9 +6739,9 @@ fuzz/conf-test: fuzz/conf.o fuzz/test-corpus.o libcrypto.a
 	rm -f fuzz/conf-test
 	$${LDCMD:-$(CC)} $(BIN_CFLAGS) -L. $(BIN_LDFLAGS) \
 		-o fuzz/conf-test fuzz/conf.o fuzz/test-corpus.o \
-		$(PLIB_LDFLAGS)  -lcrypto $(EX_LIBS)
+		 -lcrypto $(BIN_EX_LIBS)
 fuzz/conf.o: fuzz/conf.c
-	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -c -MMD -MF fuzz/conf.d.tmp -MT $@ -c -o $@ fuzz/conf.c
+	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -MMD -MF fuzz/conf.d.tmp -MT $@ -c -o $@ fuzz/conf.c
 	@touch fuzz/conf.d.tmp
 	@if cmp fuzz/conf.d.tmp fuzz/conf.d > /dev/null 2> /dev/null; then \
 		rm -f fuzz/conf.d.tmp; \
@@ -6703,9 +6752,9 @@ fuzz/crl-test: fuzz/crl.o fuzz/test-corpus.o libcrypto.a
 	rm -f fuzz/crl-test
 	$${LDCMD:-$(CC)} $(BIN_CFLAGS) -L. $(BIN_LDFLAGS) \
 		-o fuzz/crl-test fuzz/crl.o fuzz/test-corpus.o \
-		$(PLIB_LDFLAGS)  -lcrypto $(EX_LIBS)
+		 -lcrypto $(BIN_EX_LIBS)
 fuzz/crl.o: fuzz/crl.c
-	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -c -MMD -MF fuzz/crl.d.tmp -MT $@ -c -o $@ fuzz/crl.c
+	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -MMD -MF fuzz/crl.d.tmp -MT $@ -c -o $@ fuzz/crl.c
 	@touch fuzz/crl.d.tmp
 	@if cmp fuzz/crl.d.tmp fuzz/crl.d > /dev/null 2> /dev/null; then \
 		rm -f fuzz/crl.d.tmp; \
@@ -6716,9 +6765,9 @@ fuzz/ct-test: fuzz/ct.o fuzz/test-corpus.o libcrypto.a
 	rm -f fuzz/ct-test
 	$${LDCMD:-$(CC)} $(BIN_CFLAGS) -L. $(BIN_LDFLAGS) \
 		-o fuzz/ct-test fuzz/ct.o fuzz/test-corpus.o \
-		$(PLIB_LDFLAGS)  -lcrypto $(EX_LIBS)
+		 -lcrypto $(BIN_EX_LIBS)
 fuzz/ct.o: fuzz/ct.c
-	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -c -MMD -MF fuzz/ct.d.tmp -MT $@ -c -o $@ fuzz/ct.c
+	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -MMD -MF fuzz/ct.d.tmp -MT $@ -c -o $@ fuzz/ct.c
 	@touch fuzz/ct.d.tmp
 	@if cmp fuzz/ct.d.tmp fuzz/ct.d > /dev/null 2> /dev/null; then \
 		rm -f fuzz/ct.d.tmp; \
@@ -6729,9 +6778,9 @@ fuzz/server-test: fuzz/server.o fuzz/test-corpus.o libssl.a libcrypto.a
 	rm -f fuzz/server-test
 	$${LDCMD:-$(CC)} $(BIN_CFLAGS) -L. $(BIN_LDFLAGS) \
 		-o fuzz/server-test fuzz/server.o fuzz/test-corpus.o \
-		$(PLIB_LDFLAGS)  -lssl -lcrypto $(EX_LIBS)
+		 -lssl -lcrypto $(BIN_EX_LIBS)
 fuzz/server.o: fuzz/server.c
-	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -c -MMD -MF fuzz/server.d.tmp -MT $@ -c -o $@ fuzz/server.c
+	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -MMD -MF fuzz/server.d.tmp -MT $@ -c -o $@ fuzz/server.c
 	@touch fuzz/server.d.tmp
 	@if cmp fuzz/server.d.tmp fuzz/server.d > /dev/null 2> /dev/null; then \
 		rm -f fuzz/server.d.tmp; \
@@ -6742,9 +6791,9 @@ fuzz/x509-test: fuzz/test-corpus.o fuzz/x509.o libcrypto.a
 	rm -f fuzz/x509-test
 	$${LDCMD:-$(CC)} $(BIN_CFLAGS) -L. $(BIN_LDFLAGS) \
 		-o fuzz/x509-test fuzz/test-corpus.o fuzz/x509.o \
-		$(PLIB_LDFLAGS)  -lcrypto $(EX_LIBS)
+		 -lcrypto $(BIN_EX_LIBS)
 fuzz/x509.o: fuzz/x509.c
-	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -c -MMD -MF fuzz/x509.d.tmp -MT $@ -c -o $@ fuzz/x509.c
+	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -MMD -MF fuzz/x509.d.tmp -MT $@ -c -o $@ fuzz/x509.c
 	@touch fuzz/x509.d.tmp
 	@if cmp fuzz/x509.d.tmp fuzz/x509.d > /dev/null 2> /dev/null; then \
 		rm -f fuzz/x509.d.tmp; \
@@ -6755,9 +6804,9 @@ test/aborttest: test/aborttest.o libcrypto.a
 	rm -f test/aborttest
 	$${LDCMD:-$(CC)} $(BIN_CFLAGS) -L. $(BIN_LDFLAGS) \
 		-o test/aborttest test/aborttest.o \
-		$(PLIB_LDFLAGS)  -lcrypto $(EX_LIBS)
+		 -lcrypto $(BIN_EX_LIBS)
 test/aborttest.o: test/aborttest.c
-	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -c -MMD -MF test/aborttest.d.tmp -MT $@ -c -o $@ test/aborttest.c
+	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -MMD -MF test/aborttest.d.tmp -MT $@ -c -o $@ test/aborttest.c
 	@touch test/aborttest.d.tmp
 	@if cmp test/aborttest.d.tmp test/aborttest.d > /dev/null 2> /dev/null; then \
 		rm -f test/aborttest.d.tmp; \
@@ -6768,9 +6817,9 @@ test/afalgtest: test/afalgtest.o test/libtestutil.a libcrypto.a
 	rm -f test/afalgtest
 	$${LDCMD:-$(CC)} $(BIN_CFLAGS) -L. $(BIN_LDFLAGS) \
 		-o test/afalgtest test/afalgtest.o \
-		$(PLIB_LDFLAGS)  test/libtestutil.a -lcrypto $(EX_LIBS)
+		 test/libtestutil.a -lcrypto $(BIN_EX_LIBS)
 test/afalgtest.o: test/afalgtest.c
-	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -c -MMD -MF test/afalgtest.d.tmp -MT $@ -c -o $@ test/afalgtest.c
+	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -MMD -MF test/afalgtest.d.tmp -MT $@ -c -o $@ test/afalgtest.c
 	@touch test/afalgtest.d.tmp
 	@if cmp test/afalgtest.d.tmp test/afalgtest.d > /dev/null 2> /dev/null; then \
 		rm -f test/afalgtest.d.tmp; \
@@ -6781,9 +6830,9 @@ test/asn1_encode_test: test/asn1_encode_test.o test/libtestutil.a libcrypto.a
 	rm -f test/asn1_encode_test
 	$${LDCMD:-$(CC)} $(BIN_CFLAGS) -L. $(BIN_LDFLAGS) \
 		-o test/asn1_encode_test test/asn1_encode_test.o \
-		$(PLIB_LDFLAGS)  test/libtestutil.a -lcrypto $(EX_LIBS)
+		 test/libtestutil.a -lcrypto $(BIN_EX_LIBS)
 test/asn1_encode_test.o: test/asn1_encode_test.c
-	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -c -MMD -MF test/asn1_encode_test.d.tmp -MT $@ -c -o $@ test/asn1_encode_test.c
+	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -MMD -MF test/asn1_encode_test.d.tmp -MT $@ -c -o $@ test/asn1_encode_test.c
 	@touch test/asn1_encode_test.d.tmp
 	@if cmp test/asn1_encode_test.d.tmp test/asn1_encode_test.d > /dev/null 2> /dev/null; then \
 		rm -f test/asn1_encode_test.d.tmp; \
@@ -6794,9 +6843,9 @@ test/asn1_internal_test: test/asn1_internal_test.o test/libtestutil.a libcrypto.
 	rm -f test/asn1_internal_test
 	$${LDCMD:-$(CC)} $(BIN_CFLAGS) -L. $(BIN_LDFLAGS) \
 		-o test/asn1_internal_test test/asn1_internal_test.o \
-		$(PLIB_LDFLAGS)  test/libtestutil.a libcrypto.a $(EX_LIBS)
+		 test/libtestutil.a libcrypto.a $(BIN_EX_LIBS)
 test/asn1_internal_test.o: test/asn1_internal_test.c
-	$(CC)  -I. -Iinclude -Icrypto/include $(BIN_CFLAGS) $(BIN_CPPFLAGS) -c -MMD -MF test/asn1_internal_test.d.tmp -MT $@ -c -o $@ test/asn1_internal_test.c
+	$(CC)  -I. -Iinclude -Icrypto/include $(BIN_CFLAGS) $(BIN_CPPFLAGS) -MMD -MF test/asn1_internal_test.d.tmp -MT $@ -c -o $@ test/asn1_internal_test.c
 	@touch test/asn1_internal_test.d.tmp
 	@if cmp test/asn1_internal_test.d.tmp test/asn1_internal_test.d > /dev/null 2> /dev/null; then \
 		rm -f test/asn1_internal_test.d.tmp; \
@@ -6807,9 +6856,9 @@ test/asn1_string_table_test: test/asn1_string_table_test.o test/libtestutil.a li
 	rm -f test/asn1_string_table_test
 	$${LDCMD:-$(CC)} $(BIN_CFLAGS) -L. $(BIN_LDFLAGS) \
 		-o test/asn1_string_table_test test/asn1_string_table_test.o \
-		$(PLIB_LDFLAGS)  test/libtestutil.a -lcrypto $(EX_LIBS)
+		 test/libtestutil.a -lcrypto $(BIN_EX_LIBS)
 test/asn1_string_table_test.o: test/asn1_string_table_test.c
-	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -c -MMD -MF test/asn1_string_table_test.d.tmp -MT $@ -c -o $@ test/asn1_string_table_test.c
+	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -MMD -MF test/asn1_string_table_test.d.tmp -MT $@ -c -o $@ test/asn1_string_table_test.c
 	@touch test/asn1_string_table_test.d.tmp
 	@if cmp test/asn1_string_table_test.d.tmp test/asn1_string_table_test.d > /dev/null 2> /dev/null; then \
 		rm -f test/asn1_string_table_test.d.tmp; \
@@ -6820,9 +6869,9 @@ test/asn1_time_test: test/asn1_time_test.o test/libtestutil.a libcrypto.a
 	rm -f test/asn1_time_test
 	$${LDCMD:-$(CC)} $(BIN_CFLAGS) -L. $(BIN_LDFLAGS) \
 		-o test/asn1_time_test test/asn1_time_test.o \
-		$(PLIB_LDFLAGS)  test/libtestutil.a -lcrypto $(EX_LIBS)
+		 test/libtestutil.a -lcrypto $(BIN_EX_LIBS)
 test/asn1_time_test.o: test/asn1_time_test.c
-	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -c -MMD -MF test/asn1_time_test.d.tmp -MT $@ -c -o $@ test/asn1_time_test.c
+	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -MMD -MF test/asn1_time_test.d.tmp -MT $@ -c -o $@ test/asn1_time_test.c
 	@touch test/asn1_time_test.d.tmp
 	@if cmp test/asn1_time_test.d.tmp test/asn1_time_test.d > /dev/null 2> /dev/null; then \
 		rm -f test/asn1_time_test.d.tmp; \
@@ -6833,9 +6882,9 @@ test/asynciotest: test/asynciotest.o test/ssltestlib.o libssl.a test/libtestutil
 	rm -f test/asynciotest
 	$${LDCMD:-$(CC)} $(BIN_CFLAGS) -L. $(BIN_LDFLAGS) \
 		-o test/asynciotest test/asynciotest.o test/ssltestlib.o \
-		$(PLIB_LDFLAGS)  -lssl test/libtestutil.a -lcrypto $(EX_LIBS)
+		 -lssl test/libtestutil.a -lcrypto $(BIN_EX_LIBS)
 test/asynciotest.o: test/asynciotest.c
-	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -c -MMD -MF test/asynciotest.d.tmp -MT $@ -c -o $@ test/asynciotest.c
+	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -MMD -MF test/asynciotest.d.tmp -MT $@ -c -o $@ test/asynciotest.c
 	@touch test/asynciotest.d.tmp
 	@if cmp test/asynciotest.d.tmp test/asynciotest.d > /dev/null 2> /dev/null; then \
 		rm -f test/asynciotest.d.tmp; \
@@ -6843,7 +6892,7 @@ test/asynciotest.o: test/asynciotest.c
 		mv test/asynciotest.d.tmp test/asynciotest.d; \
 	fi
 test/ssltestlib.o: test/ssltestlib.c
-	$(CC)  -I. -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -c -MMD -MF test/ssltestlib.d.tmp -MT $@ -c -o $@ test/ssltestlib.c
+	$(CC)  -I. -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -MMD -MF test/ssltestlib.d.tmp -MT $@ -c -o $@ test/ssltestlib.c
 	@touch test/ssltestlib.d.tmp
 	@if cmp test/ssltestlib.d.tmp test/ssltestlib.d > /dev/null 2> /dev/null; then \
 		rm -f test/ssltestlib.d.tmp; \
@@ -6854,9 +6903,9 @@ test/asynctest: test/asynctest.o libcrypto.a
 	rm -f test/asynctest
 	$${LDCMD:-$(CC)} $(BIN_CFLAGS) -L. $(BIN_LDFLAGS) \
 		-o test/asynctest test/asynctest.o \
-		$(PLIB_LDFLAGS)  -lcrypto $(EX_LIBS)
+		 -lcrypto $(BIN_EX_LIBS)
 test/asynctest.o: test/asynctest.c
-	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -c -MMD -MF test/asynctest.d.tmp -MT $@ -c -o $@ test/asynctest.c
+	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -MMD -MF test/asynctest.d.tmp -MT $@ -c -o $@ test/asynctest.c
 	@touch test/asynctest.d.tmp
 	@if cmp test/asynctest.d.tmp test/asynctest.d > /dev/null 2> /dev/null; then \
 		rm -f test/asynctest.d.tmp; \
@@ -6867,9 +6916,9 @@ test/bad_dtls_test: test/bad_dtls_test.o libssl.a test/libtestutil.a libcrypto.a
 	rm -f test/bad_dtls_test
 	$${LDCMD:-$(CC)} $(BIN_CFLAGS) -L. $(BIN_LDFLAGS) \
 		-o test/bad_dtls_test test/bad_dtls_test.o \
-		$(PLIB_LDFLAGS)  -lssl test/libtestutil.a -lcrypto $(EX_LIBS)
+		 -lssl test/libtestutil.a -lcrypto $(BIN_EX_LIBS)
 test/bad_dtls_test.o: test/bad_dtls_test.c
-	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -c -MMD -MF test/bad_dtls_test.d.tmp -MT $@ -c -o $@ test/bad_dtls_test.c
+	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -MMD -MF test/bad_dtls_test.d.tmp -MT $@ -c -o $@ test/bad_dtls_test.c
 	@touch test/bad_dtls_test.d.tmp
 	@if cmp test/bad_dtls_test.d.tmp test/bad_dtls_test.d > /dev/null 2> /dev/null; then \
 		rm -f test/bad_dtls_test.d.tmp; \
@@ -6880,22 +6929,35 @@ test/bftest: test/bftest.o test/libtestutil.a libcrypto.a
 	rm -f test/bftest
 	$${LDCMD:-$(CC)} $(BIN_CFLAGS) -L. $(BIN_LDFLAGS) \
 		-o test/bftest test/bftest.o \
-		$(PLIB_LDFLAGS)  test/libtestutil.a -lcrypto $(EX_LIBS)
+		 test/libtestutil.a -lcrypto $(BIN_EX_LIBS)
 test/bftest.o: test/bftest.c
-	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -c -MMD -MF test/bftest.d.tmp -MT $@ -c -o $@ test/bftest.c
+	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -MMD -MF test/bftest.d.tmp -MT $@ -c -o $@ test/bftest.c
 	@touch test/bftest.d.tmp
 	@if cmp test/bftest.d.tmp test/bftest.d > /dev/null 2> /dev/null; then \
 		rm -f test/bftest.d.tmp; \
 	else \
 		mv test/bftest.d.tmp test/bftest.d; \
 	fi
+test/bio_callback_test: test/bio_callback_test.o test/libtestutil.a libcrypto.a
+	rm -f test/bio_callback_test
+	$${LDCMD:-$(CC)} $(BIN_CFLAGS) -L. $(BIN_LDFLAGS) \
+		-o test/bio_callback_test test/bio_callback_test.o \
+		 test/libtestutil.a -lcrypto $(BIN_EX_LIBS)
+test/bio_callback_test.o: test/bio_callback_test.c
+	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -MMD -MF test/bio_callback_test.d.tmp -MT $@ -c -o $@ test/bio_callback_test.c
+	@touch test/bio_callback_test.d.tmp
+	@if cmp test/bio_callback_test.d.tmp test/bio_callback_test.d > /dev/null 2> /dev/null; then \
+		rm -f test/bio_callback_test.d.tmp; \
+	else \
+		mv test/bio_callback_test.d.tmp test/bio_callback_test.d; \
+	fi
 test/bio_enc_test: test/bio_enc_test.o test/libtestutil.a libcrypto.a
 	rm -f test/bio_enc_test
 	$${LDCMD:-$(CC)} $(BIN_CFLAGS) -L. $(BIN_LDFLAGS) \
 		-o test/bio_enc_test test/bio_enc_test.o \
-		$(PLIB_LDFLAGS)  test/libtestutil.a -lcrypto $(EX_LIBS)
+		 test/libtestutil.a -lcrypto $(BIN_EX_LIBS)
 test/bio_enc_test.o: test/bio_enc_test.c
-	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -c -MMD -MF test/bio_enc_test.d.tmp -MT $@ -c -o $@ test/bio_enc_test.c
+	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -MMD -MF test/bio_enc_test.d.tmp -MT $@ -c -o $@ test/bio_enc_test.c
 	@touch test/bio_enc_test.d.tmp
 	@if cmp test/bio_enc_test.d.tmp test/bio_enc_test.d > /dev/null 2> /dev/null; then \
 		rm -f test/bio_enc_test.d.tmp; \
@@ -6906,9 +6968,9 @@ test/bioprinttest: test/bioprinttest.o test/libtestutil.a libcrypto.a
 	rm -f test/bioprinttest
 	$${LDCMD:-$(CC)} $(BIN_CFLAGS) -L. $(BIN_LDFLAGS) \
 		-o test/bioprinttest test/bioprinttest.o \
-		$(PLIB_LDFLAGS)  test/libtestutil.a -lcrypto $(EX_LIBS)
+		 test/libtestutil.a -lcrypto $(BIN_EX_LIBS)
 test/bioprinttest.o: test/bioprinttest.c
-	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -c -MMD -MF test/bioprinttest.d.tmp -MT $@ -c -o $@ test/bioprinttest.c
+	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -MMD -MF test/bioprinttest.d.tmp -MT $@ -c -o $@ test/bioprinttest.c
 	@touch test/bioprinttest.d.tmp
 	@if cmp test/bioprinttest.d.tmp test/bioprinttest.d > /dev/null 2> /dev/null; then \
 		rm -f test/bioprinttest.d.tmp; \
@@ -6919,9 +6981,9 @@ test/bntest: test/bntest.o test/libtestutil.a libcrypto.a
 	rm -f test/bntest
 	$${LDCMD:-$(CC)} $(BIN_CFLAGS) -L. $(BIN_LDFLAGS) \
 		-o test/bntest test/bntest.o \
-		$(PLIB_LDFLAGS)  test/libtestutil.a -lcrypto $(EX_LIBS)
+		 test/libtestutil.a -lcrypto $(BIN_EX_LIBS)
 test/bntest.o: test/bntest.c
-	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -c -MMD -MF test/bntest.d.tmp -MT $@ -c -o $@ test/bntest.c
+	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -MMD -MF test/bntest.d.tmp -MT $@ -c -o $@ test/bntest.c
 	@touch test/bntest.d.tmp
 	@if cmp test/bntest.d.tmp test/bntest.d > /dev/null 2> /dev/null; then \
 		rm -f test/bntest.d.tmp; \
@@ -6932,9 +6994,9 @@ test/buildtest_aes: test/buildtest_aes.o libssl.a libcrypto.a
 	rm -f test/buildtest_aes
 	$${LDCMD:-$(CC)} $(BIN_CFLAGS) -L. $(BIN_LDFLAGS) \
 		-o test/buildtest_aes test/buildtest_aes.o \
-		$(PLIB_LDFLAGS)  -lssl -lcrypto $(EX_LIBS)
+		 -lssl -lcrypto $(BIN_EX_LIBS)
 test/buildtest_aes.o: test/buildtest_aes.c
-	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -c -MMD -MF test/buildtest_aes.d.tmp -MT $@ -c -o $@ test/buildtest_aes.c
+	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -MMD -MF test/buildtest_aes.d.tmp -MT $@ -c -o $@ test/buildtest_aes.c
 	@touch test/buildtest_aes.d.tmp
 	@if cmp test/buildtest_aes.d.tmp test/buildtest_aes.d > /dev/null 2> /dev/null; then \
 		rm -f test/buildtest_aes.d.tmp; \
@@ -6947,9 +7009,9 @@ test/buildtest_asn1: test/buildtest_asn1.o libssl.a libcrypto.a
 	rm -f test/buildtest_asn1
 	$${LDCMD:-$(CC)} $(BIN_CFLAGS) -L. $(BIN_LDFLAGS) \
 		-o test/buildtest_asn1 test/buildtest_asn1.o \
-		$(PLIB_LDFLAGS)  -lssl -lcrypto $(EX_LIBS)
+		 -lssl -lcrypto $(BIN_EX_LIBS)
 test/buildtest_asn1.o: test/buildtest_asn1.c
-	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -c -MMD -MF test/buildtest_asn1.d.tmp -MT $@ -c -o $@ test/buildtest_asn1.c
+	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -MMD -MF test/buildtest_asn1.d.tmp -MT $@ -c -o $@ test/buildtest_asn1.c
 	@touch test/buildtest_asn1.d.tmp
 	@if cmp test/buildtest_asn1.d.tmp test/buildtest_asn1.d > /dev/null 2> /dev/null; then \
 		rm -f test/buildtest_asn1.d.tmp; \
@@ -6958,28 +7020,13 @@ test/buildtest_asn1.o: test/buildtest_asn1.c
 	fi
 test/buildtest_asn1.c: test/generate_buildtest.pl 
 	$(PERL) test/generate_buildtest.pl asn1 > $@
-test/buildtest_asn1err: test/buildtest_asn1err.o libssl.a libcrypto.a
-	rm -f test/buildtest_asn1err
-	$${LDCMD:-$(CC)} $(BIN_CFLAGS) -L. $(BIN_LDFLAGS) \
-		-o test/buildtest_asn1err test/buildtest_asn1err.o \
-		$(PLIB_LDFLAGS)  -lssl -lcrypto $(EX_LIBS)
-test/buildtest_asn1err.o: test/buildtest_asn1err.c
-	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -c -MMD -MF test/buildtest_asn1err.d.tmp -MT $@ -c -o $@ test/buildtest_asn1err.c
-	@touch test/buildtest_asn1err.d.tmp
-	@if cmp test/buildtest_asn1err.d.tmp test/buildtest_asn1err.d > /dev/null 2> /dev/null; then \
-		rm -f test/buildtest_asn1err.d.tmp; \
-	else \
-		mv test/buildtest_asn1err.d.tmp test/buildtest_asn1err.d; \
-	fi
-test/buildtest_asn1err.c: test/generate_buildtest.pl 
-	$(PERL) test/generate_buildtest.pl asn1err > $@
 test/buildtest_asn1t: test/buildtest_asn1t.o libssl.a libcrypto.a
 	rm -f test/buildtest_asn1t
 	$${LDCMD:-$(CC)} $(BIN_CFLAGS) -L. $(BIN_LDFLAGS) \
 		-o test/buildtest_asn1t test/buildtest_asn1t.o \
-		$(PLIB_LDFLAGS)  -lssl -lcrypto $(EX_LIBS)
+		 -lssl -lcrypto $(BIN_EX_LIBS)
 test/buildtest_asn1t.o: test/buildtest_asn1t.c
-	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -c -MMD -MF test/buildtest_asn1t.d.tmp -MT $@ -c -o $@ test/buildtest_asn1t.c
+	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -MMD -MF test/buildtest_asn1t.d.tmp -MT $@ -c -o $@ test/buildtest_asn1t.c
 	@touch test/buildtest_asn1t.d.tmp
 	@if cmp test/buildtest_asn1t.d.tmp test/buildtest_asn1t.d > /dev/null 2> /dev/null; then \
 		rm -f test/buildtest_asn1t.d.tmp; \
@@ -6992,9 +7039,9 @@ test/buildtest_async: test/buildtest_async.o libssl.a libcrypto.a
 	rm -f test/buildtest_async
 	$${LDCMD:-$(CC)} $(BIN_CFLAGS) -L. $(BIN_LDFLAGS) \
 		-o test/buildtest_async test/buildtest_async.o \
-		$(PLIB_LDFLAGS)  -lssl -lcrypto $(EX_LIBS)
+		 -lssl -lcrypto $(BIN_EX_LIBS)
 test/buildtest_async.o: test/buildtest_async.c
-	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -c -MMD -MF test/buildtest_async.d.tmp -MT $@ -c -o $@ test/buildtest_async.c
+	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -MMD -MF test/buildtest_async.d.tmp -MT $@ -c -o $@ test/buildtest_async.c
 	@touch test/buildtest_async.d.tmp
 	@if cmp test/buildtest_async.d.tmp test/buildtest_async.d > /dev/null 2> /dev/null; then \
 		rm -f test/buildtest_async.d.tmp; \
@@ -7003,28 +7050,13 @@ test/buildtest_async.o: test/buildtest_async.c
 	fi
 test/buildtest_async.c: test/generate_buildtest.pl 
 	$(PERL) test/generate_buildtest.pl async > $@
-test/buildtest_asyncerr: test/buildtest_asyncerr.o libssl.a libcrypto.a
-	rm -f test/buildtest_asyncerr
-	$${LDCMD:-$(CC)} $(BIN_CFLAGS) -L. $(BIN_LDFLAGS) \
-		-o test/buildtest_asyncerr test/buildtest_asyncerr.o \
-		$(PLIB_LDFLAGS)  -lssl -lcrypto $(EX_LIBS)
-test/buildtest_asyncerr.o: test/buildtest_asyncerr.c
-	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -c -MMD -MF test/buildtest_asyncerr.d.tmp -MT $@ -c -o $@ test/buildtest_asyncerr.c
-	@touch test/buildtest_asyncerr.d.tmp
-	@if cmp test/buildtest_asyncerr.d.tmp test/buildtest_asyncerr.d > /dev/null 2> /dev/null; then \
-		rm -f test/buildtest_asyncerr.d.tmp; \
-	else \
-		mv test/buildtest_asyncerr.d.tmp test/buildtest_asyncerr.d; \
-	fi
-test/buildtest_asyncerr.c: test/generate_buildtest.pl 
-	$(PERL) test/generate_buildtest.pl asyncerr > $@
 test/buildtest_bio: test/buildtest_bio.o libssl.a libcrypto.a
 	rm -f test/buildtest_bio
 	$${LDCMD:-$(CC)} $(BIN_CFLAGS) -L. $(BIN_LDFLAGS) \
 		-o test/buildtest_bio test/buildtest_bio.o \
-		$(PLIB_LDFLAGS)  -lssl -lcrypto $(EX_LIBS)
+		 -lssl -lcrypto $(BIN_EX_LIBS)
 test/buildtest_bio.o: test/buildtest_bio.c
-	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -c -MMD -MF test/buildtest_bio.d.tmp -MT $@ -c -o $@ test/buildtest_bio.c
+	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -MMD -MF test/buildtest_bio.d.tmp -MT $@ -c -o $@ test/buildtest_bio.c
 	@touch test/buildtest_bio.d.tmp
 	@if cmp test/buildtest_bio.d.tmp test/buildtest_bio.d > /dev/null 2> /dev/null; then \
 		rm -f test/buildtest_bio.d.tmp; \
@@ -7033,28 +7065,13 @@ test/buildtest_bio.o: test/buildtest_bio.c
 	fi
 test/buildtest_bio.c: test/generate_buildtest.pl 
 	$(PERL) test/generate_buildtest.pl bio > $@
-test/buildtest_bioerr: test/buildtest_bioerr.o libssl.a libcrypto.a
-	rm -f test/buildtest_bioerr
-	$${LDCMD:-$(CC)} $(BIN_CFLAGS) -L. $(BIN_LDFLAGS) \
-		-o test/buildtest_bioerr test/buildtest_bioerr.o \
-		$(PLIB_LDFLAGS)  -lssl -lcrypto $(EX_LIBS)
-test/buildtest_bioerr.o: test/buildtest_bioerr.c
-	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -c -MMD -MF test/buildtest_bioerr.d.tmp -MT $@ -c -o $@ test/buildtest_bioerr.c
-	@touch test/buildtest_bioerr.d.tmp
-	@if cmp test/buildtest_bioerr.d.tmp test/buildtest_bioerr.d > /dev/null 2> /dev/null; then \
-		rm -f test/buildtest_bioerr.d.tmp; \
-	else \
-		mv test/buildtest_bioerr.d.tmp test/buildtest_bioerr.d; \
-	fi
-test/buildtest_bioerr.c: test/generate_buildtest.pl 
-	$(PERL) test/generate_buildtest.pl bioerr > $@
 test/buildtest_blowfish: test/buildtest_blowfish.o libssl.a libcrypto.a
 	rm -f test/buildtest_blowfish
 	$${LDCMD:-$(CC)} $(BIN_CFLAGS) -L. $(BIN_LDFLAGS) \
 		-o test/buildtest_blowfish test/buildtest_blowfish.o \
-		$(PLIB_LDFLAGS)  -lssl -lcrypto $(EX_LIBS)
+		 -lssl -lcrypto $(BIN_EX_LIBS)
 test/buildtest_blowfish.o: test/buildtest_blowfish.c
-	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -c -MMD -MF test/buildtest_blowfish.d.tmp -MT $@ -c -o $@ test/buildtest_blowfish.c
+	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -MMD -MF test/buildtest_blowfish.d.tmp -MT $@ -c -o $@ test/buildtest_blowfish.c
 	@touch test/buildtest_blowfish.d.tmp
 	@if cmp test/buildtest_blowfish.d.tmp test/buildtest_blowfish.d > /dev/null 2> /dev/null; then \
 		rm -f test/buildtest_blowfish.d.tmp; \
@@ -7067,9 +7084,9 @@ test/buildtest_bn: test/buildtest_bn.o libssl.a libcrypto.a
 	rm -f test/buildtest_bn
 	$${LDCMD:-$(CC)} $(BIN_CFLAGS) -L. $(BIN_LDFLAGS) \
 		-o test/buildtest_bn test/buildtest_bn.o \
-		$(PLIB_LDFLAGS)  -lssl -lcrypto $(EX_LIBS)
+		 -lssl -lcrypto $(BIN_EX_LIBS)
 test/buildtest_bn.o: test/buildtest_bn.c
-	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -c -MMD -MF test/buildtest_bn.d.tmp -MT $@ -c -o $@ test/buildtest_bn.c
+	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -MMD -MF test/buildtest_bn.d.tmp -MT $@ -c -o $@ test/buildtest_bn.c
 	@touch test/buildtest_bn.d.tmp
 	@if cmp test/buildtest_bn.d.tmp test/buildtest_bn.d > /dev/null 2> /dev/null; then \
 		rm -f test/buildtest_bn.d.tmp; \
@@ -7078,28 +7095,13 @@ test/buildtest_bn.o: test/buildtest_bn.c
 	fi
 test/buildtest_bn.c: test/generate_buildtest.pl 
 	$(PERL) test/generate_buildtest.pl bn > $@
-test/buildtest_bnerr: test/buildtest_bnerr.o libssl.a libcrypto.a
-	rm -f test/buildtest_bnerr
-	$${LDCMD:-$(CC)} $(BIN_CFLAGS) -L. $(BIN_LDFLAGS) \
-		-o test/buildtest_bnerr test/buildtest_bnerr.o \
-		$(PLIB_LDFLAGS)  -lssl -lcrypto $(EX_LIBS)
-test/buildtest_bnerr.o: test/buildtest_bnerr.c
-	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -c -MMD -MF test/buildtest_bnerr.d.tmp -MT $@ -c -o $@ test/buildtest_bnerr.c
-	@touch test/buildtest_bnerr.d.tmp
-	@if cmp test/buildtest_bnerr.d.tmp test/buildtest_bnerr.d > /dev/null 2> /dev/null; then \
-		rm -f test/buildtest_bnerr.d.tmp; \
-	else \
-		mv test/buildtest_bnerr.d.tmp test/buildtest_bnerr.d; \
-	fi
-test/buildtest_bnerr.c: test/generate_buildtest.pl 
-	$(PERL) test/generate_buildtest.pl bnerr > $@
 test/buildtest_buffer: test/buildtest_buffer.o libssl.a libcrypto.a
 	rm -f test/buildtest_buffer
 	$${LDCMD:-$(CC)} $(BIN_CFLAGS) -L. $(BIN_LDFLAGS) \
 		-o test/buildtest_buffer test/buildtest_buffer.o \
-		$(PLIB_LDFLAGS)  -lssl -lcrypto $(EX_LIBS)
+		 -lssl -lcrypto $(BIN_EX_LIBS)
 test/buildtest_buffer.o: test/buildtest_buffer.c
-	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -c -MMD -MF test/buildtest_buffer.d.tmp -MT $@ -c -o $@ test/buildtest_buffer.c
+	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -MMD -MF test/buildtest_buffer.d.tmp -MT $@ -c -o $@ test/buildtest_buffer.c
 	@touch test/buildtest_buffer.d.tmp
 	@if cmp test/buildtest_buffer.d.tmp test/buildtest_buffer.d > /dev/null 2> /dev/null; then \
 		rm -f test/buildtest_buffer.d.tmp; \
@@ -7108,28 +7110,13 @@ test/buildtest_buffer.o: test/buildtest_buffer.c
 	fi
 test/buildtest_buffer.c: test/generate_buildtest.pl 
 	$(PERL) test/generate_buildtest.pl buffer > $@
-test/buildtest_buffererr: test/buildtest_buffererr.o libssl.a libcrypto.a
-	rm -f test/buildtest_buffererr
-	$${LDCMD:-$(CC)} $(BIN_CFLAGS) -L. $(BIN_LDFLAGS) \
-		-o test/buildtest_buffererr test/buildtest_buffererr.o \
-		$(PLIB_LDFLAGS)  -lssl -lcrypto $(EX_LIBS)
-test/buildtest_buffererr.o: test/buildtest_buffererr.c
-	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -c -MMD -MF test/buildtest_buffererr.d.tmp -MT $@ -c -o $@ test/buildtest_buffererr.c
-	@touch test/buildtest_buffererr.d.tmp
-	@if cmp test/buildtest_buffererr.d.tmp test/buildtest_buffererr.d > /dev/null 2> /dev/null; then \
-		rm -f test/buildtest_buffererr.d.tmp; \
-	else \
-		mv test/buildtest_buffererr.d.tmp test/buildtest_buffererr.d; \
-	fi
-test/buildtest_buffererr.c: test/generate_buildtest.pl 
-	$(PERL) test/generate_buildtest.pl buffererr > $@
 test/buildtest_camellia: test/buildtest_camellia.o libssl.a libcrypto.a
 	rm -f test/buildtest_camellia
 	$${LDCMD:-$(CC)} $(BIN_CFLAGS) -L. $(BIN_LDFLAGS) \
 		-o test/buildtest_camellia test/buildtest_camellia.o \
-		$(PLIB_LDFLAGS)  -lssl -lcrypto $(EX_LIBS)
+		 -lssl -lcrypto $(BIN_EX_LIBS)
 test/buildtest_camellia.o: test/buildtest_camellia.c
-	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -c -MMD -MF test/buildtest_camellia.d.tmp -MT $@ -c -o $@ test/buildtest_camellia.c
+	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -MMD -MF test/buildtest_camellia.d.tmp -MT $@ -c -o $@ test/buildtest_camellia.c
 	@touch test/buildtest_camellia.d.tmp
 	@if cmp test/buildtest_camellia.d.tmp test/buildtest_camellia.d > /dev/null 2> /dev/null; then \
 		rm -f test/buildtest_camellia.d.tmp; \
@@ -7142,9 +7129,9 @@ test/buildtest_cast: test/buildtest_cast.o libssl.a libcrypto.a
 	rm -f test/buildtest_cast
 	$${LDCMD:-$(CC)} $(BIN_CFLAGS) -L. $(BIN_LDFLAGS) \
 		-o test/buildtest_cast test/buildtest_cast.o \
-		$(PLIB_LDFLAGS)  -lssl -lcrypto $(EX_LIBS)
+		 -lssl -lcrypto $(BIN_EX_LIBS)
 test/buildtest_cast.o: test/buildtest_cast.c
-	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -c -MMD -MF test/buildtest_cast.d.tmp -MT $@ -c -o $@ test/buildtest_cast.c
+	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -MMD -MF test/buildtest_cast.d.tmp -MT $@ -c -o $@ test/buildtest_cast.c
 	@touch test/buildtest_cast.d.tmp
 	@if cmp test/buildtest_cast.d.tmp test/buildtest_cast.d > /dev/null 2> /dev/null; then \
 		rm -f test/buildtest_cast.d.tmp; \
@@ -7157,9 +7144,9 @@ test/buildtest_cmac: test/buildtest_cmac.o libssl.a libcrypto.a
 	rm -f test/buildtest_cmac
 	$${LDCMD:-$(CC)} $(BIN_CFLAGS) -L. $(BIN_LDFLAGS) \
 		-o test/buildtest_cmac test/buildtest_cmac.o \
-		$(PLIB_LDFLAGS)  -lssl -lcrypto $(EX_LIBS)
+		 -lssl -lcrypto $(BIN_EX_LIBS)
 test/buildtest_cmac.o: test/buildtest_cmac.c
-	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -c -MMD -MF test/buildtest_cmac.d.tmp -MT $@ -c -o $@ test/buildtest_cmac.c
+	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -MMD -MF test/buildtest_cmac.d.tmp -MT $@ -c -o $@ test/buildtest_cmac.c
 	@touch test/buildtest_cmac.d.tmp
 	@if cmp test/buildtest_cmac.d.tmp test/buildtest_cmac.d > /dev/null 2> /dev/null; then \
 		rm -f test/buildtest_cmac.d.tmp; \
@@ -7172,9 +7159,9 @@ test/buildtest_cms: test/buildtest_cms.o libssl.a libcrypto.a
 	rm -f test/buildtest_cms
 	$${LDCMD:-$(CC)} $(BIN_CFLAGS) -L. $(BIN_LDFLAGS) \
 		-o test/buildtest_cms test/buildtest_cms.o \
-		$(PLIB_LDFLAGS)  -lssl -lcrypto $(EX_LIBS)
+		 -lssl -lcrypto $(BIN_EX_LIBS)
 test/buildtest_cms.o: test/buildtest_cms.c
-	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -c -MMD -MF test/buildtest_cms.d.tmp -MT $@ -c -o $@ test/buildtest_cms.c
+	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -MMD -MF test/buildtest_cms.d.tmp -MT $@ -c -o $@ test/buildtest_cms.c
 	@touch test/buildtest_cms.d.tmp
 	@if cmp test/buildtest_cms.d.tmp test/buildtest_cms.d > /dev/null 2> /dev/null; then \
 		rm -f test/buildtest_cms.d.tmp; \
@@ -7183,28 +7170,13 @@ test/buildtest_cms.o: test/buildtest_cms.c
 	fi
 test/buildtest_cms.c: test/generate_buildtest.pl 
 	$(PERL) test/generate_buildtest.pl cms > $@
-test/buildtest_cmserr: test/buildtest_cmserr.o libssl.a libcrypto.a
-	rm -f test/buildtest_cmserr
-	$${LDCMD:-$(CC)} $(BIN_CFLAGS) -L. $(BIN_LDFLAGS) \
-		-o test/buildtest_cmserr test/buildtest_cmserr.o \
-		$(PLIB_LDFLAGS)  -lssl -lcrypto $(EX_LIBS)
-test/buildtest_cmserr.o: test/buildtest_cmserr.c
-	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -c -MMD -MF test/buildtest_cmserr.d.tmp -MT $@ -c -o $@ test/buildtest_cmserr.c
-	@touch test/buildtest_cmserr.d.tmp
-	@if cmp test/buildtest_cmserr.d.tmp test/buildtest_cmserr.d > /dev/null 2> /dev/null; then \
-		rm -f test/buildtest_cmserr.d.tmp; \
-	else \
-		mv test/buildtest_cmserr.d.tmp test/buildtest_cmserr.d; \
-	fi
-test/buildtest_cmserr.c: test/generate_buildtest.pl 
-	$(PERL) test/generate_buildtest.pl cmserr > $@
 test/buildtest_comp: test/buildtest_comp.o libssl.a libcrypto.a
 	rm -f test/buildtest_comp
 	$${LDCMD:-$(CC)} $(BIN_CFLAGS) -L. $(BIN_LDFLAGS) \
 		-o test/buildtest_comp test/buildtest_comp.o \
-		$(PLIB_LDFLAGS)  -lssl -lcrypto $(EX_LIBS)
+		 -lssl -lcrypto $(BIN_EX_LIBS)
 test/buildtest_comp.o: test/buildtest_comp.c
-	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -c -MMD -MF test/buildtest_comp.d.tmp -MT $@ -c -o $@ test/buildtest_comp.c
+	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -MMD -MF test/buildtest_comp.d.tmp -MT $@ -c -o $@ test/buildtest_comp.c
 	@touch test/buildtest_comp.d.tmp
 	@if cmp test/buildtest_comp.d.tmp test/buildtest_comp.d > /dev/null 2> /dev/null; then \
 		rm -f test/buildtest_comp.d.tmp; \
@@ -7213,28 +7185,13 @@ test/buildtest_comp.o: test/buildtest_comp.c
 	fi
 test/buildtest_comp.c: test/generate_buildtest.pl 
 	$(PERL) test/generate_buildtest.pl comp > $@
-test/buildtest_comperr: test/buildtest_comperr.o libssl.a libcrypto.a
-	rm -f test/buildtest_comperr
-	$${LDCMD:-$(CC)} $(BIN_CFLAGS) -L. $(BIN_LDFLAGS) \
-		-o test/buildtest_comperr test/buildtest_comperr.o \
-		$(PLIB_LDFLAGS)  -lssl -lcrypto $(EX_LIBS)
-test/buildtest_comperr.o: test/buildtest_comperr.c
-	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -c -MMD -MF test/buildtest_comperr.d.tmp -MT $@ -c -o $@ test/buildtest_comperr.c
-	@touch test/buildtest_comperr.d.tmp
-	@if cmp test/buildtest_comperr.d.tmp test/buildtest_comperr.d > /dev/null 2> /dev/null; then \
-		rm -f test/buildtest_comperr.d.tmp; \
-	else \
-		mv test/buildtest_comperr.d.tmp test/buildtest_comperr.d; \
-	fi
-test/buildtest_comperr.c: test/generate_buildtest.pl 
-	$(PERL) test/generate_buildtest.pl comperr > $@
 test/buildtest_conf: test/buildtest_conf.o libssl.a libcrypto.a
 	rm -f test/buildtest_conf
 	$${LDCMD:-$(CC)} $(BIN_CFLAGS) -L. $(BIN_LDFLAGS) \
 		-o test/buildtest_conf test/buildtest_conf.o \
-		$(PLIB_LDFLAGS)  -lssl -lcrypto $(EX_LIBS)
+		 -lssl -lcrypto $(BIN_EX_LIBS)
 test/buildtest_conf.o: test/buildtest_conf.c
-	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -c -MMD -MF test/buildtest_conf.d.tmp -MT $@ -c -o $@ test/buildtest_conf.c
+	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -MMD -MF test/buildtest_conf.d.tmp -MT $@ -c -o $@ test/buildtest_conf.c
 	@touch test/buildtest_conf.d.tmp
 	@if cmp test/buildtest_conf.d.tmp test/buildtest_conf.d > /dev/null 2> /dev/null; then \
 		rm -f test/buildtest_conf.d.tmp; \
@@ -7247,9 +7204,9 @@ test/buildtest_conf_api: test/buildtest_conf_api.o libssl.a libcrypto.a
 	rm -f test/buildtest_conf_api
 	$${LDCMD:-$(CC)} $(BIN_CFLAGS) -L. $(BIN_LDFLAGS) \
 		-o test/buildtest_conf_api test/buildtest_conf_api.o \
-		$(PLIB_LDFLAGS)  -lssl -lcrypto $(EX_LIBS)
+		 -lssl -lcrypto $(BIN_EX_LIBS)
 test/buildtest_conf_api.o: test/buildtest_conf_api.c
-	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -c -MMD -MF test/buildtest_conf_api.d.tmp -MT $@ -c -o $@ test/buildtest_conf_api.c
+	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -MMD -MF test/buildtest_conf_api.d.tmp -MT $@ -c -o $@ test/buildtest_conf_api.c
 	@touch test/buildtest_conf_api.d.tmp
 	@if cmp test/buildtest_conf_api.d.tmp test/buildtest_conf_api.d > /dev/null 2> /dev/null; then \
 		rm -f test/buildtest_conf_api.d.tmp; \
@@ -7258,28 +7215,13 @@ test/buildtest_conf_api.o: test/buildtest_conf_api.c
 	fi
 test/buildtest_conf_api.c: test/generate_buildtest.pl 
 	$(PERL) test/generate_buildtest.pl conf_api > $@
-test/buildtest_conferr: test/buildtest_conferr.o libssl.a libcrypto.a
-	rm -f test/buildtest_conferr
-	$${LDCMD:-$(CC)} $(BIN_CFLAGS) -L. $(BIN_LDFLAGS) \
-		-o test/buildtest_conferr test/buildtest_conferr.o \
-		$(PLIB_LDFLAGS)  -lssl -lcrypto $(EX_LIBS)
-test/buildtest_conferr.o: test/buildtest_conferr.c
-	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -c -MMD -MF test/buildtest_conferr.d.tmp -MT $@ -c -o $@ test/buildtest_conferr.c
-	@touch test/buildtest_conferr.d.tmp
-	@if cmp test/buildtest_conferr.d.tmp test/buildtest_conferr.d > /dev/null 2> /dev/null; then \
-		rm -f test/buildtest_conferr.d.tmp; \
-	else \
-		mv test/buildtest_conferr.d.tmp test/buildtest_conferr.d; \
-	fi
-test/buildtest_conferr.c: test/generate_buildtest.pl 
-	$(PERL) test/generate_buildtest.pl conferr > $@
 test/buildtest_crypto: test/buildtest_crypto.o libssl.a libcrypto.a
 	rm -f test/buildtest_crypto
 	$${LDCMD:-$(CC)} $(BIN_CFLAGS) -L. $(BIN_LDFLAGS) \
 		-o test/buildtest_crypto test/buildtest_crypto.o \
-		$(PLIB_LDFLAGS)  -lssl -lcrypto $(EX_LIBS)
+		 -lssl -lcrypto $(BIN_EX_LIBS)
 test/buildtest_crypto.o: test/buildtest_crypto.c
-	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -c -MMD -MF test/buildtest_crypto.d.tmp -MT $@ -c -o $@ test/buildtest_crypto.c
+	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -MMD -MF test/buildtest_crypto.d.tmp -MT $@ -c -o $@ test/buildtest_crypto.c
 	@touch test/buildtest_crypto.d.tmp
 	@if cmp test/buildtest_crypto.d.tmp test/buildtest_crypto.d > /dev/null 2> /dev/null; then \
 		rm -f test/buildtest_crypto.d.tmp; \
@@ -7288,28 +7230,13 @@ test/buildtest_crypto.o: test/buildtest_crypto.c
 	fi
 test/buildtest_crypto.c: test/generate_buildtest.pl 
 	$(PERL) test/generate_buildtest.pl crypto > $@
-test/buildtest_cryptoerr: test/buildtest_cryptoerr.o libssl.a libcrypto.a
-	rm -f test/buildtest_cryptoerr
-	$${LDCMD:-$(CC)} $(BIN_CFLAGS) -L. $(BIN_LDFLAGS) \
-		-o test/buildtest_cryptoerr test/buildtest_cryptoerr.o \
-		$(PLIB_LDFLAGS)  -lssl -lcrypto $(EX_LIBS)
-test/buildtest_cryptoerr.o: test/buildtest_cryptoerr.c
-	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -c -MMD -MF test/buildtest_cryptoerr.d.tmp -MT $@ -c -o $@ test/buildtest_cryptoerr.c
-	@touch test/buildtest_cryptoerr.d.tmp
-	@if cmp test/buildtest_cryptoerr.d.tmp test/buildtest_cryptoerr.d > /dev/null 2> /dev/null; then \
-		rm -f test/buildtest_cryptoerr.d.tmp; \
-	else \
-		mv test/buildtest_cryptoerr.d.tmp test/buildtest_cryptoerr.d; \
-	fi
-test/buildtest_cryptoerr.c: test/generate_buildtest.pl 
-	$(PERL) test/generate_buildtest.pl cryptoerr > $@
 test/buildtest_ct: test/buildtest_ct.o libssl.a libcrypto.a
 	rm -f test/buildtest_ct
 	$${LDCMD:-$(CC)} $(BIN_CFLAGS) -L. $(BIN_LDFLAGS) \
 		-o test/buildtest_ct test/buildtest_ct.o \
-		$(PLIB_LDFLAGS)  -lssl -lcrypto $(EX_LIBS)
+		 -lssl -lcrypto $(BIN_EX_LIBS)
 test/buildtest_ct.o: test/buildtest_ct.c
-	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -c -MMD -MF test/buildtest_ct.d.tmp -MT $@ -c -o $@ test/buildtest_ct.c
+	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -MMD -MF test/buildtest_ct.d.tmp -MT $@ -c -o $@ test/buildtest_ct.c
 	@touch test/buildtest_ct.d.tmp
 	@if cmp test/buildtest_ct.d.tmp test/buildtest_ct.d > /dev/null 2> /dev/null; then \
 		rm -f test/buildtest_ct.d.tmp; \
@@ -7318,28 +7245,13 @@ test/buildtest_ct.o: test/buildtest_ct.c
 	fi
 test/buildtest_ct.c: test/generate_buildtest.pl 
 	$(PERL) test/generate_buildtest.pl ct > $@
-test/buildtest_cterr: test/buildtest_cterr.o libssl.a libcrypto.a
-	rm -f test/buildtest_cterr
-	$${LDCMD:-$(CC)} $(BIN_CFLAGS) -L. $(BIN_LDFLAGS) \
-		-o test/buildtest_cterr test/buildtest_cterr.o \
-		$(PLIB_LDFLAGS)  -lssl -lcrypto $(EX_LIBS)
-test/buildtest_cterr.o: test/buildtest_cterr.c
-	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -c -MMD -MF test/buildtest_cterr.d.tmp -MT $@ -c -o $@ test/buildtest_cterr.c
-	@touch test/buildtest_cterr.d.tmp
-	@if cmp test/buildtest_cterr.d.tmp test/buildtest_cterr.d > /dev/null 2> /dev/null; then \
-		rm -f test/buildtest_cterr.d.tmp; \
-	else \
-		mv test/buildtest_cterr.d.tmp test/buildtest_cterr.d; \
-	fi
-test/buildtest_cterr.c: test/generate_buildtest.pl 
-	$(PERL) test/generate_buildtest.pl cterr > $@
 test/buildtest_des: test/buildtest_des.o libssl.a libcrypto.a
 	rm -f test/buildtest_des
 	$${LDCMD:-$(CC)} $(BIN_CFLAGS) -L. $(BIN_LDFLAGS) \
 		-o test/buildtest_des test/buildtest_des.o \
-		$(PLIB_LDFLAGS)  -lssl -lcrypto $(EX_LIBS)
+		 -lssl -lcrypto $(BIN_EX_LIBS)
 test/buildtest_des.o: test/buildtest_des.c
-	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -c -MMD -MF test/buildtest_des.d.tmp -MT $@ -c -o $@ test/buildtest_des.c
+	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -MMD -MF test/buildtest_des.d.tmp -MT $@ -c -o $@ test/buildtest_des.c
 	@touch test/buildtest_des.d.tmp
 	@if cmp test/buildtest_des.d.tmp test/buildtest_des.d > /dev/null 2> /dev/null; then \
 		rm -f test/buildtest_des.d.tmp; \
@@ -7352,9 +7264,9 @@ test/buildtest_dh: test/buildtest_dh.o libssl.a libcrypto.a
 	rm -f test/buildtest_dh
 	$${LDCMD:-$(CC)} $(BIN_CFLAGS) -L. $(BIN_LDFLAGS) \
 		-o test/buildtest_dh test/buildtest_dh.o \
-		$(PLIB_LDFLAGS)  -lssl -lcrypto $(EX_LIBS)
+		 -lssl -lcrypto $(BIN_EX_LIBS)
 test/buildtest_dh.o: test/buildtest_dh.c
-	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -c -MMD -MF test/buildtest_dh.d.tmp -MT $@ -c -o $@ test/buildtest_dh.c
+	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -MMD -MF test/buildtest_dh.d.tmp -MT $@ -c -o $@ test/buildtest_dh.c
 	@touch test/buildtest_dh.d.tmp
 	@if cmp test/buildtest_dh.d.tmp test/buildtest_dh.d > /dev/null 2> /dev/null; then \
 		rm -f test/buildtest_dh.d.tmp; \
@@ -7363,28 +7275,13 @@ test/buildtest_dh.o: test/buildtest_dh.c
 	fi
 test/buildtest_dh.c: test/generate_buildtest.pl 
 	$(PERL) test/generate_buildtest.pl dh > $@
-test/buildtest_dherr: test/buildtest_dherr.o libssl.a libcrypto.a
-	rm -f test/buildtest_dherr
-	$${LDCMD:-$(CC)} $(BIN_CFLAGS) -L. $(BIN_LDFLAGS) \
-		-o test/buildtest_dherr test/buildtest_dherr.o \
-		$(PLIB_LDFLAGS)  -lssl -lcrypto $(EX_LIBS)
-test/buildtest_dherr.o: test/buildtest_dherr.c
-	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -c -MMD -MF test/buildtest_dherr.d.tmp -MT $@ -c -o $@ test/buildtest_dherr.c
-	@touch test/buildtest_dherr.d.tmp
-	@if cmp test/buildtest_dherr.d.tmp test/buildtest_dherr.d > /dev/null 2> /dev/null; then \
-		rm -f test/buildtest_dherr.d.tmp; \
-	else \
-		mv test/buildtest_dherr.d.tmp test/buildtest_dherr.d; \
-	fi
-test/buildtest_dherr.c: test/generate_buildtest.pl 
-	$(PERL) test/generate_buildtest.pl dherr > $@
 test/buildtest_dsa: test/buildtest_dsa.o libssl.a libcrypto.a
 	rm -f test/buildtest_dsa
 	$${LDCMD:-$(CC)} $(BIN_CFLAGS) -L. $(BIN_LDFLAGS) \
 		-o test/buildtest_dsa test/buildtest_dsa.o \
-		$(PLIB_LDFLAGS)  -lssl -lcrypto $(EX_LIBS)
+		 -lssl -lcrypto $(BIN_EX_LIBS)
 test/buildtest_dsa.o: test/buildtest_dsa.c
-	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -c -MMD -MF test/buildtest_dsa.d.tmp -MT $@ -c -o $@ test/buildtest_dsa.c
+	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -MMD -MF test/buildtest_dsa.d.tmp -MT $@ -c -o $@ test/buildtest_dsa.c
 	@touch test/buildtest_dsa.d.tmp
 	@if cmp test/buildtest_dsa.d.tmp test/buildtest_dsa.d > /dev/null 2> /dev/null; then \
 		rm -f test/buildtest_dsa.d.tmp; \
@@ -7393,28 +7290,13 @@ test/buildtest_dsa.o: test/buildtest_dsa.c
 	fi
 test/buildtest_dsa.c: test/generate_buildtest.pl 
 	$(PERL) test/generate_buildtest.pl dsa > $@
-test/buildtest_dsaerr: test/buildtest_dsaerr.o libssl.a libcrypto.a
-	rm -f test/buildtest_dsaerr
-	$${LDCMD:-$(CC)} $(BIN_CFLAGS) -L. $(BIN_LDFLAGS) \
-		-o test/buildtest_dsaerr test/buildtest_dsaerr.o \
-		$(PLIB_LDFLAGS)  -lssl -lcrypto $(EX_LIBS)
-test/buildtest_dsaerr.o: test/buildtest_dsaerr.c
-	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -c -MMD -MF test/buildtest_dsaerr.d.tmp -MT $@ -c -o $@ test/buildtest_dsaerr.c
-	@touch test/buildtest_dsaerr.d.tmp
-	@if cmp test/buildtest_dsaerr.d.tmp test/buildtest_dsaerr.d > /dev/null 2> /dev/null; then \
-		rm -f test/buildtest_dsaerr.d.tmp; \
-	else \
-		mv test/buildtest_dsaerr.d.tmp test/buildtest_dsaerr.d; \
-	fi
-test/buildtest_dsaerr.c: test/generate_buildtest.pl 
-	$(PERL) test/generate_buildtest.pl dsaerr > $@
 test/buildtest_dtls1: test/buildtest_dtls1.o libssl.a libcrypto.a
 	rm -f test/buildtest_dtls1
 	$${LDCMD:-$(CC)} $(BIN_CFLAGS) -L. $(BIN_LDFLAGS) \
 		-o test/buildtest_dtls1 test/buildtest_dtls1.o \
-		$(PLIB_LDFLAGS)  -lssl -lcrypto $(EX_LIBS)
+		 -lssl -lcrypto $(BIN_EX_LIBS)
 test/buildtest_dtls1.o: test/buildtest_dtls1.c
-	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -c -MMD -MF test/buildtest_dtls1.d.tmp -MT $@ -c -o $@ test/buildtest_dtls1.c
+	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -MMD -MF test/buildtest_dtls1.d.tmp -MT $@ -c -o $@ test/buildtest_dtls1.c
 	@touch test/buildtest_dtls1.d.tmp
 	@if cmp test/buildtest_dtls1.d.tmp test/buildtest_dtls1.d > /dev/null 2> /dev/null; then \
 		rm -f test/buildtest_dtls1.d.tmp; \
@@ -7427,9 +7309,9 @@ test/buildtest_e_os2: test/buildtest_e_os2.o libssl.a libcrypto.a
 	rm -f test/buildtest_e_os2
 	$${LDCMD:-$(CC)} $(BIN_CFLAGS) -L. $(BIN_LDFLAGS) \
 		-o test/buildtest_e_os2 test/buildtest_e_os2.o \
-		$(PLIB_LDFLAGS)  -lssl -lcrypto $(EX_LIBS)
+		 -lssl -lcrypto $(BIN_EX_LIBS)
 test/buildtest_e_os2.o: test/buildtest_e_os2.c
-	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -c -MMD -MF test/buildtest_e_os2.d.tmp -MT $@ -c -o $@ test/buildtest_e_os2.c
+	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -MMD -MF test/buildtest_e_os2.d.tmp -MT $@ -c -o $@ test/buildtest_e_os2.c
 	@touch test/buildtest_e_os2.d.tmp
 	@if cmp test/buildtest_e_os2.d.tmp test/buildtest_e_os2.d > /dev/null 2> /dev/null; then \
 		rm -f test/buildtest_e_os2.d.tmp; \
@@ -7442,9 +7324,9 @@ test/buildtest_ebcdic: test/buildtest_ebcdic.o libssl.a libcrypto.a
 	rm -f test/buildtest_ebcdic
 	$${LDCMD:-$(CC)} $(BIN_CFLAGS) -L. $(BIN_LDFLAGS) \
 		-o test/buildtest_ebcdic test/buildtest_ebcdic.o \
-		$(PLIB_LDFLAGS)  -lssl -lcrypto $(EX_LIBS)
+		 -lssl -lcrypto $(BIN_EX_LIBS)
 test/buildtest_ebcdic.o: test/buildtest_ebcdic.c
-	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -c -MMD -MF test/buildtest_ebcdic.d.tmp -MT $@ -c -o $@ test/buildtest_ebcdic.c
+	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -MMD -MF test/buildtest_ebcdic.d.tmp -MT $@ -c -o $@ test/buildtest_ebcdic.c
 	@touch test/buildtest_ebcdic.d.tmp
 	@if cmp test/buildtest_ebcdic.d.tmp test/buildtest_ebcdic.d > /dev/null 2> /dev/null; then \
 		rm -f test/buildtest_ebcdic.d.tmp; \
@@ -7457,9 +7339,9 @@ test/buildtest_ec: test/buildtest_ec.o libssl.a libcrypto.a
 	rm -f test/buildtest_ec
 	$${LDCMD:-$(CC)} $(BIN_CFLAGS) -L. $(BIN_LDFLAGS) \
 		-o test/buildtest_ec test/buildtest_ec.o \
-		$(PLIB_LDFLAGS)  -lssl -lcrypto $(EX_LIBS)
+		 -lssl -lcrypto $(BIN_EX_LIBS)
 test/buildtest_ec.o: test/buildtest_ec.c
-	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -c -MMD -MF test/buildtest_ec.d.tmp -MT $@ -c -o $@ test/buildtest_ec.c
+	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -MMD -MF test/buildtest_ec.d.tmp -MT $@ -c -o $@ test/buildtest_ec.c
 	@touch test/buildtest_ec.d.tmp
 	@if cmp test/buildtest_ec.d.tmp test/buildtest_ec.d > /dev/null 2> /dev/null; then \
 		rm -f test/buildtest_ec.d.tmp; \
@@ -7472,9 +7354,9 @@ test/buildtest_ecdh: test/buildtest_ecdh.o libssl.a libcrypto.a
 	rm -f test/buildtest_ecdh
 	$${LDCMD:-$(CC)} $(BIN_CFLAGS) -L. $(BIN_LDFLAGS) \
 		-o test/buildtest_ecdh test/buildtest_ecdh.o \
-		$(PLIB_LDFLAGS)  -lssl -lcrypto $(EX_LIBS)
+		 -lssl -lcrypto $(BIN_EX_LIBS)
 test/buildtest_ecdh.o: test/buildtest_ecdh.c
-	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -c -MMD -MF test/buildtest_ecdh.d.tmp -MT $@ -c -o $@ test/buildtest_ecdh.c
+	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -MMD -MF test/buildtest_ecdh.d.tmp -MT $@ -c -o $@ test/buildtest_ecdh.c
 	@touch test/buildtest_ecdh.d.tmp
 	@if cmp test/buildtest_ecdh.d.tmp test/buildtest_ecdh.d > /dev/null 2> /dev/null; then \
 		rm -f test/buildtest_ecdh.d.tmp; \
@@ -7487,9 +7369,9 @@ test/buildtest_ecdsa: test/buildtest_ecdsa.o libssl.a libcrypto.a
 	rm -f test/buildtest_ecdsa
 	$${LDCMD:-$(CC)} $(BIN_CFLAGS) -L. $(BIN_LDFLAGS) \
 		-o test/buildtest_ecdsa test/buildtest_ecdsa.o \
-		$(PLIB_LDFLAGS)  -lssl -lcrypto $(EX_LIBS)
+		 -lssl -lcrypto $(BIN_EX_LIBS)
 test/buildtest_ecdsa.o: test/buildtest_ecdsa.c
-	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -c -MMD -MF test/buildtest_ecdsa.d.tmp -MT $@ -c -o $@ test/buildtest_ecdsa.c
+	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -MMD -MF test/buildtest_ecdsa.d.tmp -MT $@ -c -o $@ test/buildtest_ecdsa.c
 	@touch test/buildtest_ecdsa.d.tmp
 	@if cmp test/buildtest_ecdsa.d.tmp test/buildtest_ecdsa.d > /dev/null 2> /dev/null; then \
 		rm -f test/buildtest_ecdsa.d.tmp; \
@@ -7498,28 +7380,13 @@ test/buildtest_ecdsa.o: test/buildtest_ecdsa.c
 	fi
 test/buildtest_ecdsa.c: test/generate_buildtest.pl 
 	$(PERL) test/generate_buildtest.pl ecdsa > $@
-test/buildtest_ecerr: test/buildtest_ecerr.o libssl.a libcrypto.a
-	rm -f test/buildtest_ecerr
-	$${LDCMD:-$(CC)} $(BIN_CFLAGS) -L. $(BIN_LDFLAGS) \
-		-o test/buildtest_ecerr test/buildtest_ecerr.o \
-		$(PLIB_LDFLAGS)  -lssl -lcrypto $(EX_LIBS)
-test/buildtest_ecerr.o: test/buildtest_ecerr.c
-	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -c -MMD -MF test/buildtest_ecerr.d.tmp -MT $@ -c -o $@ test/buildtest_ecerr.c
-	@touch test/buildtest_ecerr.d.tmp
-	@if cmp test/buildtest_ecerr.d.tmp test/buildtest_ecerr.d > /dev/null 2> /dev/null; then \
-		rm -f test/buildtest_ecerr.d.tmp; \
-	else \
-		mv test/buildtest_ecerr.d.tmp test/buildtest_ecerr.d; \
-	fi
-test/buildtest_ecerr.c: test/generate_buildtest.pl 
-	$(PERL) test/generate_buildtest.pl ecerr > $@
 test/buildtest_engine: test/buildtest_engine.o libssl.a libcrypto.a
 	rm -f test/buildtest_engine
 	$${LDCMD:-$(CC)} $(BIN_CFLAGS) -L. $(BIN_LDFLAGS) \
 		-o test/buildtest_engine test/buildtest_engine.o \
-		$(PLIB_LDFLAGS)  -lssl -lcrypto $(EX_LIBS)
+		 -lssl -lcrypto $(BIN_EX_LIBS)
 test/buildtest_engine.o: test/buildtest_engine.c
-	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -c -MMD -MF test/buildtest_engine.d.tmp -MT $@ -c -o $@ test/buildtest_engine.c
+	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -MMD -MF test/buildtest_engine.d.tmp -MT $@ -c -o $@ test/buildtest_engine.c
 	@touch test/buildtest_engine.d.tmp
 	@if cmp test/buildtest_engine.d.tmp test/buildtest_engine.d > /dev/null 2> /dev/null; then \
 		rm -f test/buildtest_engine.d.tmp; \
@@ -7528,43 +7395,13 @@ test/buildtest_engine.o: test/buildtest_engine.c
 	fi
 test/buildtest_engine.c: test/generate_buildtest.pl 
 	$(PERL) test/generate_buildtest.pl engine > $@
-test/buildtest_engineerr: test/buildtest_engineerr.o libssl.a libcrypto.a
-	rm -f test/buildtest_engineerr
-	$${LDCMD:-$(CC)} $(BIN_CFLAGS) -L. $(BIN_LDFLAGS) \
-		-o test/buildtest_engineerr test/buildtest_engineerr.o \
-		$(PLIB_LDFLAGS)  -lssl -lcrypto $(EX_LIBS)
-test/buildtest_engineerr.o: test/buildtest_engineerr.c
-	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -c -MMD -MF test/buildtest_engineerr.d.tmp -MT $@ -c -o $@ test/buildtest_engineerr.c
-	@touch test/buildtest_engineerr.d.tmp
-	@if cmp test/buildtest_engineerr.d.tmp test/buildtest_engineerr.d > /dev/null 2> /dev/null; then \
-		rm -f test/buildtest_engineerr.d.tmp; \
-	else \
-		mv test/buildtest_engineerr.d.tmp test/buildtest_engineerr.d; \
-	fi
-test/buildtest_engineerr.c: test/generate_buildtest.pl 
-	$(PERL) test/generate_buildtest.pl engineerr > $@
-test/buildtest_err: test/buildtest_err.o libssl.a libcrypto.a
-	rm -f test/buildtest_err
-	$${LDCMD:-$(CC)} $(BIN_CFLAGS) -L. $(BIN_LDFLAGS) \
-		-o test/buildtest_err test/buildtest_err.o \
-		$(PLIB_LDFLAGS)  -lssl -lcrypto $(EX_LIBS)
-test/buildtest_err.o: test/buildtest_err.c
-	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -c -MMD -MF test/buildtest_err.d.tmp -MT $@ -c -o $@ test/buildtest_err.c
-	@touch test/buildtest_err.d.tmp
-	@if cmp test/buildtest_err.d.tmp test/buildtest_err.d > /dev/null 2> /dev/null; then \
-		rm -f test/buildtest_err.d.tmp; \
-	else \
-		mv test/buildtest_err.d.tmp test/buildtest_err.d; \
-	fi
-test/buildtest_err.c: test/generate_buildtest.pl 
-	$(PERL) test/generate_buildtest.pl err > $@
 test/buildtest_evp: test/buildtest_evp.o libssl.a libcrypto.a
 	rm -f test/buildtest_evp
 	$${LDCMD:-$(CC)} $(BIN_CFLAGS) -L. $(BIN_LDFLAGS) \
 		-o test/buildtest_evp test/buildtest_evp.o \
-		$(PLIB_LDFLAGS)  -lssl -lcrypto $(EX_LIBS)
+		 -lssl -lcrypto $(BIN_EX_LIBS)
 test/buildtest_evp.o: test/buildtest_evp.c
-	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -c -MMD -MF test/buildtest_evp.d.tmp -MT $@ -c -o $@ test/buildtest_evp.c
+	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -MMD -MF test/buildtest_evp.d.tmp -MT $@ -c -o $@ test/buildtest_evp.c
 	@touch test/buildtest_evp.d.tmp
 	@if cmp test/buildtest_evp.d.tmp test/buildtest_evp.d > /dev/null 2> /dev/null; then \
 		rm -f test/buildtest_evp.d.tmp; \
@@ -7573,28 +7410,13 @@ test/buildtest_evp.o: test/buildtest_evp.c
 	fi
 test/buildtest_evp.c: test/generate_buildtest.pl 
 	$(PERL) test/generate_buildtest.pl evp > $@
-test/buildtest_evperr: test/buildtest_evperr.o libssl.a libcrypto.a
-	rm -f test/buildtest_evperr
-	$${LDCMD:-$(CC)} $(BIN_CFLAGS) -L. $(BIN_LDFLAGS) \
-		-o test/buildtest_evperr test/buildtest_evperr.o \
-		$(PLIB_LDFLAGS)  -lssl -lcrypto $(EX_LIBS)
-test/buildtest_evperr.o: test/buildtest_evperr.c
-	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -c -MMD -MF test/buildtest_evperr.d.tmp -MT $@ -c -o $@ test/buildtest_evperr.c
-	@touch test/buildtest_evperr.d.tmp
-	@if cmp test/buildtest_evperr.d.tmp test/buildtest_evperr.d > /dev/null 2> /dev/null; then \
-		rm -f test/buildtest_evperr.d.tmp; \
-	else \
-		mv test/buildtest_evperr.d.tmp test/buildtest_evperr.d; \
-	fi
-test/buildtest_evperr.c: test/generate_buildtest.pl 
-	$(PERL) test/generate_buildtest.pl evperr > $@
 test/buildtest_hmac: test/buildtest_hmac.o libssl.a libcrypto.a
 	rm -f test/buildtest_hmac
 	$${LDCMD:-$(CC)} $(BIN_CFLAGS) -L. $(BIN_LDFLAGS) \
 		-o test/buildtest_hmac test/buildtest_hmac.o \
-		$(PLIB_LDFLAGS)  -lssl -lcrypto $(EX_LIBS)
+		 -lssl -lcrypto $(BIN_EX_LIBS)
 test/buildtest_hmac.o: test/buildtest_hmac.c
-	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -c -MMD -MF test/buildtest_hmac.d.tmp -MT $@ -c -o $@ test/buildtest_hmac.c
+	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -MMD -MF test/buildtest_hmac.d.tmp -MT $@ -c -o $@ test/buildtest_hmac.c
 	@touch test/buildtest_hmac.d.tmp
 	@if cmp test/buildtest_hmac.d.tmp test/buildtest_hmac.d > /dev/null 2> /dev/null; then \
 		rm -f test/buildtest_hmac.d.tmp; \
@@ -7607,9 +7429,9 @@ test/buildtest_idea: test/buildtest_idea.o libssl.a libcrypto.a
 	rm -f test/buildtest_idea
 	$${LDCMD:-$(CC)} $(BIN_CFLAGS) -L. $(BIN_LDFLAGS) \
 		-o test/buildtest_idea test/buildtest_idea.o \
-		$(PLIB_LDFLAGS)  -lssl -lcrypto $(EX_LIBS)
+		 -lssl -lcrypto $(BIN_EX_LIBS)
 test/buildtest_idea.o: test/buildtest_idea.c
-	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -c -MMD -MF test/buildtest_idea.d.tmp -MT $@ -c -o $@ test/buildtest_idea.c
+	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -MMD -MF test/buildtest_idea.d.tmp -MT $@ -c -o $@ test/buildtest_idea.c
 	@touch test/buildtest_idea.d.tmp
 	@if cmp test/buildtest_idea.d.tmp test/buildtest_idea.d > /dev/null 2> /dev/null; then \
 		rm -f test/buildtest_idea.d.tmp; \
@@ -7622,9 +7444,9 @@ test/buildtest_kdf: test/buildtest_kdf.o libssl.a libcrypto.a
 	rm -f test/buildtest_kdf
 	$${LDCMD:-$(CC)} $(BIN_CFLAGS) -L. $(BIN_LDFLAGS) \
 		-o test/buildtest_kdf test/buildtest_kdf.o \
-		$(PLIB_LDFLAGS)  -lssl -lcrypto $(EX_LIBS)
+		 -lssl -lcrypto $(BIN_EX_LIBS)
 test/buildtest_kdf.o: test/buildtest_kdf.c
-	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -c -MMD -MF test/buildtest_kdf.d.tmp -MT $@ -c -o $@ test/buildtest_kdf.c
+	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -MMD -MF test/buildtest_kdf.d.tmp -MT $@ -c -o $@ test/buildtest_kdf.c
 	@touch test/buildtest_kdf.d.tmp
 	@if cmp test/buildtest_kdf.d.tmp test/buildtest_kdf.d > /dev/null 2> /dev/null; then \
 		rm -f test/buildtest_kdf.d.tmp; \
@@ -7633,28 +7455,13 @@ test/buildtest_kdf.o: test/buildtest_kdf.c
 	fi
 test/buildtest_kdf.c: test/generate_buildtest.pl 
 	$(PERL) test/generate_buildtest.pl kdf > $@
-test/buildtest_kdferr: test/buildtest_kdferr.o libssl.a libcrypto.a
-	rm -f test/buildtest_kdferr
-	$${LDCMD:-$(CC)} $(BIN_CFLAGS) -L. $(BIN_LDFLAGS) \
-		-o test/buildtest_kdferr test/buildtest_kdferr.o \
-		$(PLIB_LDFLAGS)  -lssl -lcrypto $(EX_LIBS)
-test/buildtest_kdferr.o: test/buildtest_kdferr.c
-	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -c -MMD -MF test/buildtest_kdferr.d.tmp -MT $@ -c -o $@ test/buildtest_kdferr.c
-	@touch test/buildtest_kdferr.d.tmp
-	@if cmp test/buildtest_kdferr.d.tmp test/buildtest_kdferr.d > /dev/null 2> /dev/null; then \
-		rm -f test/buildtest_kdferr.d.tmp; \
-	else \
-		mv test/buildtest_kdferr.d.tmp test/buildtest_kdferr.d; \
-	fi
-test/buildtest_kdferr.c: test/generate_buildtest.pl 
-	$(PERL) test/generate_buildtest.pl kdferr > $@
 test/buildtest_lhash: test/buildtest_lhash.o libssl.a libcrypto.a
 	rm -f test/buildtest_lhash
 	$${LDCMD:-$(CC)} $(BIN_CFLAGS) -L. $(BIN_LDFLAGS) \
 		-o test/buildtest_lhash test/buildtest_lhash.o \
-		$(PLIB_LDFLAGS)  -lssl -lcrypto $(EX_LIBS)
+		 -lssl -lcrypto $(BIN_EX_LIBS)
 test/buildtest_lhash.o: test/buildtest_lhash.c
-	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -c -MMD -MF test/buildtest_lhash.d.tmp -MT $@ -c -o $@ test/buildtest_lhash.c
+	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -MMD -MF test/buildtest_lhash.d.tmp -MT $@ -c -o $@ test/buildtest_lhash.c
 	@touch test/buildtest_lhash.d.tmp
 	@if cmp test/buildtest_lhash.d.tmp test/buildtest_lhash.d > /dev/null 2> /dev/null; then \
 		rm -f test/buildtest_lhash.d.tmp; \
@@ -7667,9 +7474,9 @@ test/buildtest_md4: test/buildtest_md4.o libssl.a libcrypto.a
 	rm -f test/buildtest_md4
 	$${LDCMD:-$(CC)} $(BIN_CFLAGS) -L. $(BIN_LDFLAGS) \
 		-o test/buildtest_md4 test/buildtest_md4.o \
-		$(PLIB_LDFLAGS)  -lssl -lcrypto $(EX_LIBS)
+		 -lssl -lcrypto $(BIN_EX_LIBS)
 test/buildtest_md4.o: test/buildtest_md4.c
-	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -c -MMD -MF test/buildtest_md4.d.tmp -MT $@ -c -o $@ test/buildtest_md4.c
+	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -MMD -MF test/buildtest_md4.d.tmp -MT $@ -c -o $@ test/buildtest_md4.c
 	@touch test/buildtest_md4.d.tmp
 	@if cmp test/buildtest_md4.d.tmp test/buildtest_md4.d > /dev/null 2> /dev/null; then \
 		rm -f test/buildtest_md4.d.tmp; \
@@ -7682,9 +7489,9 @@ test/buildtest_md5: test/buildtest_md5.o libssl.a libcrypto.a
 	rm -f test/buildtest_md5
 	$${LDCMD:-$(CC)} $(BIN_CFLAGS) -L. $(BIN_LDFLAGS) \
 		-o test/buildtest_md5 test/buildtest_md5.o \
-		$(PLIB_LDFLAGS)  -lssl -lcrypto $(EX_LIBS)
+		 -lssl -lcrypto $(BIN_EX_LIBS)
 test/buildtest_md5.o: test/buildtest_md5.c
-	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -c -MMD -MF test/buildtest_md5.d.tmp -MT $@ -c -o $@ test/buildtest_md5.c
+	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -MMD -MF test/buildtest_md5.d.tmp -MT $@ -c -o $@ test/buildtest_md5.c
 	@touch test/buildtest_md5.d.tmp
 	@if cmp test/buildtest_md5.d.tmp test/buildtest_md5.d > /dev/null 2> /dev/null; then \
 		rm -f test/buildtest_md5.d.tmp; \
@@ -7697,9 +7504,9 @@ test/buildtest_mdc2: test/buildtest_mdc2.o libssl.a libcrypto.a
 	rm -f test/buildtest_mdc2
 	$${LDCMD:-$(CC)} $(BIN_CFLAGS) -L. $(BIN_LDFLAGS) \
 		-o test/buildtest_mdc2 test/buildtest_mdc2.o \
-		$(PLIB_LDFLAGS)  -lssl -lcrypto $(EX_LIBS)
+		 -lssl -lcrypto $(BIN_EX_LIBS)
 test/buildtest_mdc2.o: test/buildtest_mdc2.c
-	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -c -MMD -MF test/buildtest_mdc2.d.tmp -MT $@ -c -o $@ test/buildtest_mdc2.c
+	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -MMD -MF test/buildtest_mdc2.d.tmp -MT $@ -c -o $@ test/buildtest_mdc2.c
 	@touch test/buildtest_mdc2.d.tmp
 	@if cmp test/buildtest_mdc2.d.tmp test/buildtest_mdc2.d > /dev/null 2> /dev/null; then \
 		rm -f test/buildtest_mdc2.d.tmp; \
@@ -7712,9 +7519,9 @@ test/buildtest_modes: test/buildtest_modes.o libssl.a libcrypto.a
 	rm -f test/buildtest_modes
 	$${LDCMD:-$(CC)} $(BIN_CFLAGS) -L. $(BIN_LDFLAGS) \
 		-o test/buildtest_modes test/buildtest_modes.o \
-		$(PLIB_LDFLAGS)  -lssl -lcrypto $(EX_LIBS)
+		 -lssl -lcrypto $(BIN_EX_LIBS)
 test/buildtest_modes.o: test/buildtest_modes.c
-	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -c -MMD -MF test/buildtest_modes.d.tmp -MT $@ -c -o $@ test/buildtest_modes.c
+	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -MMD -MF test/buildtest_modes.d.tmp -MT $@ -c -o $@ test/buildtest_modes.c
 	@touch test/buildtest_modes.d.tmp
 	@if cmp test/buildtest_modes.d.tmp test/buildtest_modes.d > /dev/null 2> /dev/null; then \
 		rm -f test/buildtest_modes.d.tmp; \
@@ -7727,9 +7534,9 @@ test/buildtest_obj_mac: test/buildtest_obj_mac.o libssl.a libcrypto.a
 	rm -f test/buildtest_obj_mac
 	$${LDCMD:-$(CC)} $(BIN_CFLAGS) -L. $(BIN_LDFLAGS) \
 		-o test/buildtest_obj_mac test/buildtest_obj_mac.o \
-		$(PLIB_LDFLAGS)  -lssl -lcrypto $(EX_LIBS)
+		 -lssl -lcrypto $(BIN_EX_LIBS)
 test/buildtest_obj_mac.o: test/buildtest_obj_mac.c
-	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -c -MMD -MF test/buildtest_obj_mac.d.tmp -MT $@ -c -o $@ test/buildtest_obj_mac.c
+	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -MMD -MF test/buildtest_obj_mac.d.tmp -MT $@ -c -o $@ test/buildtest_obj_mac.c
 	@touch test/buildtest_obj_mac.d.tmp
 	@if cmp test/buildtest_obj_mac.d.tmp test/buildtest_obj_mac.d > /dev/null 2> /dev/null; then \
 		rm -f test/buildtest_obj_mac.d.tmp; \
@@ -7742,9 +7549,9 @@ test/buildtest_objects: test/buildtest_objects.o libssl.a libcrypto.a
 	rm -f test/buildtest_objects
 	$${LDCMD:-$(CC)} $(BIN_CFLAGS) -L. $(BIN_LDFLAGS) \
 		-o test/buildtest_objects test/buildtest_objects.o \
-		$(PLIB_LDFLAGS)  -lssl -lcrypto $(EX_LIBS)
+		 -lssl -lcrypto $(BIN_EX_LIBS)
 test/buildtest_objects.o: test/buildtest_objects.c
-	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -c -MMD -MF test/buildtest_objects.d.tmp -MT $@ -c -o $@ test/buildtest_objects.c
+	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -MMD -MF test/buildtest_objects.d.tmp -MT $@ -c -o $@ test/buildtest_objects.c
 	@touch test/buildtest_objects.d.tmp
 	@if cmp test/buildtest_objects.d.tmp test/buildtest_objects.d > /dev/null 2> /dev/null; then \
 		rm -f test/buildtest_objects.d.tmp; \
@@ -7753,28 +7560,13 @@ test/buildtest_objects.o: test/buildtest_objects.c
 	fi
 test/buildtest_objects.c: test/generate_buildtest.pl 
 	$(PERL) test/generate_buildtest.pl objects > $@
-test/buildtest_objectserr: test/buildtest_objectserr.o libssl.a libcrypto.a
-	rm -f test/buildtest_objectserr
-	$${LDCMD:-$(CC)} $(BIN_CFLAGS) -L. $(BIN_LDFLAGS) \
-		-o test/buildtest_objectserr test/buildtest_objectserr.o \
-		$(PLIB_LDFLAGS)  -lssl -lcrypto $(EX_LIBS)
-test/buildtest_objectserr.o: test/buildtest_objectserr.c
-	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -c -MMD -MF test/buildtest_objectserr.d.tmp -MT $@ -c -o $@ test/buildtest_objectserr.c
-	@touch test/buildtest_objectserr.d.tmp
-	@if cmp test/buildtest_objectserr.d.tmp test/buildtest_objectserr.d > /dev/null 2> /dev/null; then \
-		rm -f test/buildtest_objectserr.d.tmp; \
-	else \
-		mv test/buildtest_objectserr.d.tmp test/buildtest_objectserr.d; \
-	fi
-test/buildtest_objectserr.c: test/generate_buildtest.pl 
-	$(PERL) test/generate_buildtest.pl objectserr > $@
 test/buildtest_ocsp: test/buildtest_ocsp.o libssl.a libcrypto.a
 	rm -f test/buildtest_ocsp
 	$${LDCMD:-$(CC)} $(BIN_CFLAGS) -L. $(BIN_LDFLAGS) \
 		-o test/buildtest_ocsp test/buildtest_ocsp.o \
-		$(PLIB_LDFLAGS)  -lssl -lcrypto $(EX_LIBS)
+		 -lssl -lcrypto $(BIN_EX_LIBS)
 test/buildtest_ocsp.o: test/buildtest_ocsp.c
-	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -c -MMD -MF test/buildtest_ocsp.d.tmp -MT $@ -c -o $@ test/buildtest_ocsp.c
+	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -MMD -MF test/buildtest_ocsp.d.tmp -MT $@ -c -o $@ test/buildtest_ocsp.c
 	@touch test/buildtest_ocsp.d.tmp
 	@if cmp test/buildtest_ocsp.d.tmp test/buildtest_ocsp.d > /dev/null 2> /dev/null; then \
 		rm -f test/buildtest_ocsp.d.tmp; \
@@ -7783,28 +7575,13 @@ test/buildtest_ocsp.o: test/buildtest_ocsp.c
 	fi
 test/buildtest_ocsp.c: test/generate_buildtest.pl 
 	$(PERL) test/generate_buildtest.pl ocsp > $@
-test/buildtest_ocsperr: test/buildtest_ocsperr.o libssl.a libcrypto.a
-	rm -f test/buildtest_ocsperr
-	$${LDCMD:-$(CC)} $(BIN_CFLAGS) -L. $(BIN_LDFLAGS) \
-		-o test/buildtest_ocsperr test/buildtest_ocsperr.o \
-		$(PLIB_LDFLAGS)  -lssl -lcrypto $(EX_LIBS)
-test/buildtest_ocsperr.o: test/buildtest_ocsperr.c
-	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -c -MMD -MF test/buildtest_ocsperr.d.tmp -MT $@ -c -o $@ test/buildtest_ocsperr.c
-	@touch test/buildtest_ocsperr.d.tmp
-	@if cmp test/buildtest_ocsperr.d.tmp test/buildtest_ocsperr.d > /dev/null 2> /dev/null; then \
-		rm -f test/buildtest_ocsperr.d.tmp; \
-	else \
-		mv test/buildtest_ocsperr.d.tmp test/buildtest_ocsperr.d; \
-	fi
-test/buildtest_ocsperr.c: test/generate_buildtest.pl 
-	$(PERL) test/generate_buildtest.pl ocsperr > $@
 test/buildtest_opensslv: test/buildtest_opensslv.o libssl.a libcrypto.a
 	rm -f test/buildtest_opensslv
 	$${LDCMD:-$(CC)} $(BIN_CFLAGS) -L. $(BIN_LDFLAGS) \
 		-o test/buildtest_opensslv test/buildtest_opensslv.o \
-		$(PLIB_LDFLAGS)  -lssl -lcrypto $(EX_LIBS)
+		 -lssl -lcrypto $(BIN_EX_LIBS)
 test/buildtest_opensslv.o: test/buildtest_opensslv.c
-	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -c -MMD -MF test/buildtest_opensslv.d.tmp -MT $@ -c -o $@ test/buildtest_opensslv.c
+	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -MMD -MF test/buildtest_opensslv.d.tmp -MT $@ -c -o $@ test/buildtest_opensslv.c
 	@touch test/buildtest_opensslv.d.tmp
 	@if cmp test/buildtest_opensslv.d.tmp test/buildtest_opensslv.d > /dev/null 2> /dev/null; then \
 		rm -f test/buildtest_opensslv.d.tmp; \
@@ -7817,9 +7594,9 @@ test/buildtest_ossl_typ: test/buildtest_ossl_typ.o libssl.a libcrypto.a
 	rm -f test/buildtest_ossl_typ
 	$${LDCMD:-$(CC)} $(BIN_CFLAGS) -L. $(BIN_LDFLAGS) \
 		-o test/buildtest_ossl_typ test/buildtest_ossl_typ.o \
-		$(PLIB_LDFLAGS)  -lssl -lcrypto $(EX_LIBS)
+		 -lssl -lcrypto $(BIN_EX_LIBS)
 test/buildtest_ossl_typ.o: test/buildtest_ossl_typ.c
-	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -c -MMD -MF test/buildtest_ossl_typ.d.tmp -MT $@ -c -o $@ test/buildtest_ossl_typ.c
+	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -MMD -MF test/buildtest_ossl_typ.d.tmp -MT $@ -c -o $@ test/buildtest_ossl_typ.c
 	@touch test/buildtest_ossl_typ.d.tmp
 	@if cmp test/buildtest_ossl_typ.d.tmp test/buildtest_ossl_typ.d > /dev/null 2> /dev/null; then \
 		rm -f test/buildtest_ossl_typ.d.tmp; \
@@ -7832,9 +7609,9 @@ test/buildtest_pem: test/buildtest_pem.o libssl.a libcrypto.a
 	rm -f test/buildtest_pem
 	$${LDCMD:-$(CC)} $(BIN_CFLAGS) -L. $(BIN_LDFLAGS) \
 		-o test/buildtest_pem test/buildtest_pem.o \
-		$(PLIB_LDFLAGS)  -lssl -lcrypto $(EX_LIBS)
+		 -lssl -lcrypto $(BIN_EX_LIBS)
 test/buildtest_pem.o: test/buildtest_pem.c
-	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -c -MMD -MF test/buildtest_pem.d.tmp -MT $@ -c -o $@ test/buildtest_pem.c
+	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -MMD -MF test/buildtest_pem.d.tmp -MT $@ -c -o $@ test/buildtest_pem.c
 	@touch test/buildtest_pem.d.tmp
 	@if cmp test/buildtest_pem.d.tmp test/buildtest_pem.d > /dev/null 2> /dev/null; then \
 		rm -f test/buildtest_pem.d.tmp; \
@@ -7847,9 +7624,9 @@ test/buildtest_pem2: test/buildtest_pem2.o libssl.a libcrypto.a
 	rm -f test/buildtest_pem2
 	$${LDCMD:-$(CC)} $(BIN_CFLAGS) -L. $(BIN_LDFLAGS) \
 		-o test/buildtest_pem2 test/buildtest_pem2.o \
-		$(PLIB_LDFLAGS)  -lssl -lcrypto $(EX_LIBS)
+		 -lssl -lcrypto $(BIN_EX_LIBS)
 test/buildtest_pem2.o: test/buildtest_pem2.c
-	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -c -MMD -MF test/buildtest_pem2.d.tmp -MT $@ -c -o $@ test/buildtest_pem2.c
+	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -MMD -MF test/buildtest_pem2.d.tmp -MT $@ -c -o $@ test/buildtest_pem2.c
 	@touch test/buildtest_pem2.d.tmp
 	@if cmp test/buildtest_pem2.d.tmp test/buildtest_pem2.d > /dev/null 2> /dev/null; then \
 		rm -f test/buildtest_pem2.d.tmp; \
@@ -7858,28 +7635,13 @@ test/buildtest_pem2.o: test/buildtest_pem2.c
 	fi
 test/buildtest_pem2.c: test/generate_buildtest.pl 
 	$(PERL) test/generate_buildtest.pl pem2 > $@
-test/buildtest_pemerr: test/buildtest_pemerr.o libssl.a libcrypto.a
-	rm -f test/buildtest_pemerr
-	$${LDCMD:-$(CC)} $(BIN_CFLAGS) -L. $(BIN_LDFLAGS) \
-		-o test/buildtest_pemerr test/buildtest_pemerr.o \
-		$(PLIB_LDFLAGS)  -lssl -lcrypto $(EX_LIBS)
-test/buildtest_pemerr.o: test/buildtest_pemerr.c
-	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -c -MMD -MF test/buildtest_pemerr.d.tmp -MT $@ -c -o $@ test/buildtest_pemerr.c
-	@touch test/buildtest_pemerr.d.tmp
-	@if cmp test/buildtest_pemerr.d.tmp test/buildtest_pemerr.d > /dev/null 2> /dev/null; then \
-		rm -f test/buildtest_pemerr.d.tmp; \
-	else \
-		mv test/buildtest_pemerr.d.tmp test/buildtest_pemerr.d; \
-	fi
-test/buildtest_pemerr.c: test/generate_buildtest.pl 
-	$(PERL) test/generate_buildtest.pl pemerr > $@
 test/buildtest_pkcs12: test/buildtest_pkcs12.o libssl.a libcrypto.a
 	rm -f test/buildtest_pkcs12
 	$${LDCMD:-$(CC)} $(BIN_CFLAGS) -L. $(BIN_LDFLAGS) \
 		-o test/buildtest_pkcs12 test/buildtest_pkcs12.o \
-		$(PLIB_LDFLAGS)  -lssl -lcrypto $(EX_LIBS)
+		 -lssl -lcrypto $(BIN_EX_LIBS)
 test/buildtest_pkcs12.o: test/buildtest_pkcs12.c
-	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -c -MMD -MF test/buildtest_pkcs12.d.tmp -MT $@ -c -o $@ test/buildtest_pkcs12.c
+	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -MMD -MF test/buildtest_pkcs12.d.tmp -MT $@ -c -o $@ test/buildtest_pkcs12.c
 	@touch test/buildtest_pkcs12.d.tmp
 	@if cmp test/buildtest_pkcs12.d.tmp test/buildtest_pkcs12.d > /dev/null 2> /dev/null; then \
 		rm -f test/buildtest_pkcs12.d.tmp; \
@@ -7888,28 +7650,13 @@ test/buildtest_pkcs12.o: test/buildtest_pkcs12.c
 	fi
 test/buildtest_pkcs12.c: test/generate_buildtest.pl 
 	$(PERL) test/generate_buildtest.pl pkcs12 > $@
-test/buildtest_pkcs12err: test/buildtest_pkcs12err.o libssl.a libcrypto.a
-	rm -f test/buildtest_pkcs12err
-	$${LDCMD:-$(CC)} $(BIN_CFLAGS) -L. $(BIN_LDFLAGS) \
-		-o test/buildtest_pkcs12err test/buildtest_pkcs12err.o \
-		$(PLIB_LDFLAGS)  -lssl -lcrypto $(EX_LIBS)
-test/buildtest_pkcs12err.o: test/buildtest_pkcs12err.c
-	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -c -MMD -MF test/buildtest_pkcs12err.d.tmp -MT $@ -c -o $@ test/buildtest_pkcs12err.c
-	@touch test/buildtest_pkcs12err.d.tmp
-	@if cmp test/buildtest_pkcs12err.d.tmp test/buildtest_pkcs12err.d > /dev/null 2> /dev/null; then \
-		rm -f test/buildtest_pkcs12err.d.tmp; \
-	else \
-		mv test/buildtest_pkcs12err.d.tmp test/buildtest_pkcs12err.d; \
-	fi
-test/buildtest_pkcs12err.c: test/generate_buildtest.pl 
-	$(PERL) test/generate_buildtest.pl pkcs12err > $@
 test/buildtest_pkcs7: test/buildtest_pkcs7.o libssl.a libcrypto.a
 	rm -f test/buildtest_pkcs7
 	$${LDCMD:-$(CC)} $(BIN_CFLAGS) -L. $(BIN_LDFLAGS) \
 		-o test/buildtest_pkcs7 test/buildtest_pkcs7.o \
-		$(PLIB_LDFLAGS)  -lssl -lcrypto $(EX_LIBS)
+		 -lssl -lcrypto $(BIN_EX_LIBS)
 test/buildtest_pkcs7.o: test/buildtest_pkcs7.c
-	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -c -MMD -MF test/buildtest_pkcs7.d.tmp -MT $@ -c -o $@ test/buildtest_pkcs7.c
+	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -MMD -MF test/buildtest_pkcs7.d.tmp -MT $@ -c -o $@ test/buildtest_pkcs7.c
 	@touch test/buildtest_pkcs7.d.tmp
 	@if cmp test/buildtest_pkcs7.d.tmp test/buildtest_pkcs7.d > /dev/null 2> /dev/null; then \
 		rm -f test/buildtest_pkcs7.d.tmp; \
@@ -7918,28 +7665,13 @@ test/buildtest_pkcs7.o: test/buildtest_pkcs7.c
 	fi
 test/buildtest_pkcs7.c: test/generate_buildtest.pl 
 	$(PERL) test/generate_buildtest.pl pkcs7 > $@
-test/buildtest_pkcs7err: test/buildtest_pkcs7err.o libssl.a libcrypto.a
-	rm -f test/buildtest_pkcs7err
-	$${LDCMD:-$(CC)} $(BIN_CFLAGS) -L. $(BIN_LDFLAGS) \
-		-o test/buildtest_pkcs7err test/buildtest_pkcs7err.o \
-		$(PLIB_LDFLAGS)  -lssl -lcrypto $(EX_LIBS)
-test/buildtest_pkcs7err.o: test/buildtest_pkcs7err.c
-	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -c -MMD -MF test/buildtest_pkcs7err.d.tmp -MT $@ -c -o $@ test/buildtest_pkcs7err.c
-	@touch test/buildtest_pkcs7err.d.tmp
-	@if cmp test/buildtest_pkcs7err.d.tmp test/buildtest_pkcs7err.d > /dev/null 2> /dev/null; then \
-		rm -f test/buildtest_pkcs7err.d.tmp; \
-	else \
-		mv test/buildtest_pkcs7err.d.tmp test/buildtest_pkcs7err.d; \
-	fi
-test/buildtest_pkcs7err.c: test/generate_buildtest.pl 
-	$(PERL) test/generate_buildtest.pl pkcs7err > $@
 test/buildtest_rand: test/buildtest_rand.o libssl.a libcrypto.a
 	rm -f test/buildtest_rand
 	$${LDCMD:-$(CC)} $(BIN_CFLAGS) -L. $(BIN_LDFLAGS) \
 		-o test/buildtest_rand test/buildtest_rand.o \
-		$(PLIB_LDFLAGS)  -lssl -lcrypto $(EX_LIBS)
+		 -lssl -lcrypto $(BIN_EX_LIBS)
 test/buildtest_rand.o: test/buildtest_rand.c
-	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -c -MMD -MF test/buildtest_rand.d.tmp -MT $@ -c -o $@ test/buildtest_rand.c
+	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -MMD -MF test/buildtest_rand.d.tmp -MT $@ -c -o $@ test/buildtest_rand.c
 	@touch test/buildtest_rand.d.tmp
 	@if cmp test/buildtest_rand.d.tmp test/buildtest_rand.d > /dev/null 2> /dev/null; then \
 		rm -f test/buildtest_rand.d.tmp; \
@@ -7948,28 +7680,28 @@ test/buildtest_rand.o: test/buildtest_rand.c
 	fi
 test/buildtest_rand.c: test/generate_buildtest.pl 
 	$(PERL) test/generate_buildtest.pl rand > $@
-test/buildtest_randerr: test/buildtest_randerr.o libssl.a libcrypto.a
-	rm -f test/buildtest_randerr
+test/buildtest_rand_drbg: test/buildtest_rand_drbg.o libssl.a libcrypto.a
+	rm -f test/buildtest_rand_drbg
 	$${LDCMD:-$(CC)} $(BIN_CFLAGS) -L. $(BIN_LDFLAGS) \
-		-o test/buildtest_randerr test/buildtest_randerr.o \
-		$(PLIB_LDFLAGS)  -lssl -lcrypto $(EX_LIBS)
-test/buildtest_randerr.o: test/buildtest_randerr.c
-	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -c -MMD -MF test/buildtest_randerr.d.tmp -MT $@ -c -o $@ test/buildtest_randerr.c
-	@touch test/buildtest_randerr.d.tmp
-	@if cmp test/buildtest_randerr.d.tmp test/buildtest_randerr.d > /dev/null 2> /dev/null; then \
-		rm -f test/buildtest_randerr.d.tmp; \
+		-o test/buildtest_rand_drbg test/buildtest_rand_drbg.o \
+		 -lssl -lcrypto $(BIN_EX_LIBS)
+test/buildtest_rand_drbg.o: test/buildtest_rand_drbg.c
+	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -MMD -MF test/buildtest_rand_drbg.d.tmp -MT $@ -c -o $@ test/buildtest_rand_drbg.c
+	@touch test/buildtest_rand_drbg.d.tmp
+	@if cmp test/buildtest_rand_drbg.d.tmp test/buildtest_rand_drbg.d > /dev/null 2> /dev/null; then \
+		rm -f test/buildtest_rand_drbg.d.tmp; \
 	else \
-		mv test/buildtest_randerr.d.tmp test/buildtest_randerr.d; \
+		mv test/buildtest_rand_drbg.d.tmp test/buildtest_rand_drbg.d; \
 	fi
-test/buildtest_randerr.c: test/generate_buildtest.pl 
-	$(PERL) test/generate_buildtest.pl randerr > $@
+test/buildtest_rand_drbg.c: test/generate_buildtest.pl 
+	$(PERL) test/generate_buildtest.pl rand_drbg > $@
 test/buildtest_rc2: test/buildtest_rc2.o libssl.a libcrypto.a
 	rm -f test/buildtest_rc2
 	$${LDCMD:-$(CC)} $(BIN_CFLAGS) -L. $(BIN_LDFLAGS) \
 		-o test/buildtest_rc2 test/buildtest_rc2.o \
-		$(PLIB_LDFLAGS)  -lssl -lcrypto $(EX_LIBS)
+		 -lssl -lcrypto $(BIN_EX_LIBS)
 test/buildtest_rc2.o: test/buildtest_rc2.c
-	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -c -MMD -MF test/buildtest_rc2.d.tmp -MT $@ -c -o $@ test/buildtest_rc2.c
+	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -MMD -MF test/buildtest_rc2.d.tmp -MT $@ -c -o $@ test/buildtest_rc2.c
 	@touch test/buildtest_rc2.d.tmp
 	@if cmp test/buildtest_rc2.d.tmp test/buildtest_rc2.d > /dev/null 2> /dev/null; then \
 		rm -f test/buildtest_rc2.d.tmp; \
@@ -7982,9 +7714,9 @@ test/buildtest_rc4: test/buildtest_rc4.o libssl.a libcrypto.a
 	rm -f test/buildtest_rc4
 	$${LDCMD:-$(CC)} $(BIN_CFLAGS) -L. $(BIN_LDFLAGS) \
 		-o test/buildtest_rc4 test/buildtest_rc4.o \
-		$(PLIB_LDFLAGS)  -lssl -lcrypto $(EX_LIBS)
+		 -lssl -lcrypto $(BIN_EX_LIBS)
 test/buildtest_rc4.o: test/buildtest_rc4.c
-	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -c -MMD -MF test/buildtest_rc4.d.tmp -MT $@ -c -o $@ test/buildtest_rc4.c
+	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -MMD -MF test/buildtest_rc4.d.tmp -MT $@ -c -o $@ test/buildtest_rc4.c
 	@touch test/buildtest_rc4.d.tmp
 	@if cmp test/buildtest_rc4.d.tmp test/buildtest_rc4.d > /dev/null 2> /dev/null; then \
 		rm -f test/buildtest_rc4.d.tmp; \
@@ -7997,9 +7729,9 @@ test/buildtest_ripemd: test/buildtest_ripemd.o libssl.a libcrypto.a
 	rm -f test/buildtest_ripemd
 	$${LDCMD:-$(CC)} $(BIN_CFLAGS) -L. $(BIN_LDFLAGS) \
 		-o test/buildtest_ripemd test/buildtest_ripemd.o \
-		$(PLIB_LDFLAGS)  -lssl -lcrypto $(EX_LIBS)
+		 -lssl -lcrypto $(BIN_EX_LIBS)
 test/buildtest_ripemd.o: test/buildtest_ripemd.c
-	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -c -MMD -MF test/buildtest_ripemd.d.tmp -MT $@ -c -o $@ test/buildtest_ripemd.c
+	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -MMD -MF test/buildtest_ripemd.d.tmp -MT $@ -c -o $@ test/buildtest_ripemd.c
 	@touch test/buildtest_ripemd.d.tmp
 	@if cmp test/buildtest_ripemd.d.tmp test/buildtest_ripemd.d > /dev/null 2> /dev/null; then \
 		rm -f test/buildtest_ripemd.d.tmp; \
@@ -8012,9 +7744,9 @@ test/buildtest_rsa: test/buildtest_rsa.o libssl.a libcrypto.a
 	rm -f test/buildtest_rsa
 	$${LDCMD:-$(CC)} $(BIN_CFLAGS) -L. $(BIN_LDFLAGS) \
 		-o test/buildtest_rsa test/buildtest_rsa.o \
-		$(PLIB_LDFLAGS)  -lssl -lcrypto $(EX_LIBS)
+		 -lssl -lcrypto $(BIN_EX_LIBS)
 test/buildtest_rsa.o: test/buildtest_rsa.c
-	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -c -MMD -MF test/buildtest_rsa.d.tmp -MT $@ -c -o $@ test/buildtest_rsa.c
+	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -MMD -MF test/buildtest_rsa.d.tmp -MT $@ -c -o $@ test/buildtest_rsa.c
 	@touch test/buildtest_rsa.d.tmp
 	@if cmp test/buildtest_rsa.d.tmp test/buildtest_rsa.d > /dev/null 2> /dev/null; then \
 		rm -f test/buildtest_rsa.d.tmp; \
@@ -8023,28 +7755,13 @@ test/buildtest_rsa.o: test/buildtest_rsa.c
 	fi
 test/buildtest_rsa.c: test/generate_buildtest.pl 
 	$(PERL) test/generate_buildtest.pl rsa > $@
-test/buildtest_rsaerr: test/buildtest_rsaerr.o libssl.a libcrypto.a
-	rm -f test/buildtest_rsaerr
-	$${LDCMD:-$(CC)} $(BIN_CFLAGS) -L. $(BIN_LDFLAGS) \
-		-o test/buildtest_rsaerr test/buildtest_rsaerr.o \
-		$(PLIB_LDFLAGS)  -lssl -lcrypto $(EX_LIBS)
-test/buildtest_rsaerr.o: test/buildtest_rsaerr.c
-	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -c -MMD -MF test/buildtest_rsaerr.d.tmp -MT $@ -c -o $@ test/buildtest_rsaerr.c
-	@touch test/buildtest_rsaerr.d.tmp
-	@if cmp test/buildtest_rsaerr.d.tmp test/buildtest_rsaerr.d > /dev/null 2> /dev/null; then \
-		rm -f test/buildtest_rsaerr.d.tmp; \
-	else \
-		mv test/buildtest_rsaerr.d.tmp test/buildtest_rsaerr.d; \
-	fi
-test/buildtest_rsaerr.c: test/generate_buildtest.pl 
-	$(PERL) test/generate_buildtest.pl rsaerr > $@
 test/buildtest_safestack: test/buildtest_safestack.o libssl.a libcrypto.a
 	rm -f test/buildtest_safestack
 	$${LDCMD:-$(CC)} $(BIN_CFLAGS) -L. $(BIN_LDFLAGS) \
 		-o test/buildtest_safestack test/buildtest_safestack.o \
-		$(PLIB_LDFLAGS)  -lssl -lcrypto $(EX_LIBS)
+		 -lssl -lcrypto $(BIN_EX_LIBS)
 test/buildtest_safestack.o: test/buildtest_safestack.c
-	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -c -MMD -MF test/buildtest_safestack.d.tmp -MT $@ -c -o $@ test/buildtest_safestack.c
+	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -MMD -MF test/buildtest_safestack.d.tmp -MT $@ -c -o $@ test/buildtest_safestack.c
 	@touch test/buildtest_safestack.d.tmp
 	@if cmp test/buildtest_safestack.d.tmp test/buildtest_safestack.d > /dev/null 2> /dev/null; then \
 		rm -f test/buildtest_safestack.d.tmp; \
@@ -8057,9 +7774,9 @@ test/buildtest_seed: test/buildtest_seed.o libssl.a libcrypto.a
 	rm -f test/buildtest_seed
 	$${LDCMD:-$(CC)} $(BIN_CFLAGS) -L. $(BIN_LDFLAGS) \
 		-o test/buildtest_seed test/buildtest_seed.o \
-		$(PLIB_LDFLAGS)  -lssl -lcrypto $(EX_LIBS)
+		 -lssl -lcrypto $(BIN_EX_LIBS)
 test/buildtest_seed.o: test/buildtest_seed.c
-	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -c -MMD -MF test/buildtest_seed.d.tmp -MT $@ -c -o $@ test/buildtest_seed.c
+	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -MMD -MF test/buildtest_seed.d.tmp -MT $@ -c -o $@ test/buildtest_seed.c
 	@touch test/buildtest_seed.d.tmp
 	@if cmp test/buildtest_seed.d.tmp test/buildtest_seed.d > /dev/null 2> /dev/null; then \
 		rm -f test/buildtest_seed.d.tmp; \
@@ -8072,9 +7789,9 @@ test/buildtest_sha: test/buildtest_sha.o libssl.a libcrypto.a
 	rm -f test/buildtest_sha
 	$${LDCMD:-$(CC)} $(BIN_CFLAGS) -L. $(BIN_LDFLAGS) \
 		-o test/buildtest_sha test/buildtest_sha.o \
-		$(PLIB_LDFLAGS)  -lssl -lcrypto $(EX_LIBS)
+		 -lssl -lcrypto $(BIN_EX_LIBS)
 test/buildtest_sha.o: test/buildtest_sha.c
-	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -c -MMD -MF test/buildtest_sha.d.tmp -MT $@ -c -o $@ test/buildtest_sha.c
+	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -MMD -MF test/buildtest_sha.d.tmp -MT $@ -c -o $@ test/buildtest_sha.c
 	@touch test/buildtest_sha.d.tmp
 	@if cmp test/buildtest_sha.d.tmp test/buildtest_sha.d > /dev/null 2> /dev/null; then \
 		rm -f test/buildtest_sha.d.tmp; \
@@ -8083,13 +7800,28 @@ test/buildtest_sha.o: test/buildtest_sha.c
 	fi
 test/buildtest_sha.c: test/generate_buildtest.pl 
 	$(PERL) test/generate_buildtest.pl sha > $@
+test/buildtest_sm2: test/buildtest_sm2.o libssl.a libcrypto.a
+	rm -f test/buildtest_sm2
+	$${LDCMD:-$(CC)} $(BIN_CFLAGS) -L. $(BIN_LDFLAGS) \
+		-o test/buildtest_sm2 test/buildtest_sm2.o \
+		 -lssl -lcrypto $(BIN_EX_LIBS)
+test/buildtest_sm2.o: test/buildtest_sm2.c
+	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -MMD -MF test/buildtest_sm2.d.tmp -MT $@ -c -o $@ test/buildtest_sm2.c
+	@touch test/buildtest_sm2.d.tmp
+	@if cmp test/buildtest_sm2.d.tmp test/buildtest_sm2.d > /dev/null 2> /dev/null; then \
+		rm -f test/buildtest_sm2.d.tmp; \
+	else \
+		mv test/buildtest_sm2.d.tmp test/buildtest_sm2.d; \
+	fi
+test/buildtest_sm2.c: test/generate_buildtest.pl 
+	$(PERL) test/generate_buildtest.pl sm2 > $@
 test/buildtest_srp: test/buildtest_srp.o libssl.a libcrypto.a
 	rm -f test/buildtest_srp
 	$${LDCMD:-$(CC)} $(BIN_CFLAGS) -L. $(BIN_LDFLAGS) \
 		-o test/buildtest_srp test/buildtest_srp.o \
-		$(PLIB_LDFLAGS)  -lssl -lcrypto $(EX_LIBS)
+		 -lssl -lcrypto $(BIN_EX_LIBS)
 test/buildtest_srp.o: test/buildtest_srp.c
-	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -c -MMD -MF test/buildtest_srp.d.tmp -MT $@ -c -o $@ test/buildtest_srp.c
+	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -MMD -MF test/buildtest_srp.d.tmp -MT $@ -c -o $@ test/buildtest_srp.c
 	@touch test/buildtest_srp.d.tmp
 	@if cmp test/buildtest_srp.d.tmp test/buildtest_srp.d > /dev/null 2> /dev/null; then \
 		rm -f test/buildtest_srp.d.tmp; \
@@ -8102,9 +7834,9 @@ test/buildtest_srtp: test/buildtest_srtp.o libssl.a libcrypto.a
 	rm -f test/buildtest_srtp
 	$${LDCMD:-$(CC)} $(BIN_CFLAGS) -L. $(BIN_LDFLAGS) \
 		-o test/buildtest_srtp test/buildtest_srtp.o \
-		$(PLIB_LDFLAGS)  -lssl -lcrypto $(EX_LIBS)
+		 -lssl -lcrypto $(BIN_EX_LIBS)
 test/buildtest_srtp.o: test/buildtest_srtp.c
-	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -c -MMD -MF test/buildtest_srtp.d.tmp -MT $@ -c -o $@ test/buildtest_srtp.c
+	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -MMD -MF test/buildtest_srtp.d.tmp -MT $@ -c -o $@ test/buildtest_srtp.c
 	@touch test/buildtest_srtp.d.tmp
 	@if cmp test/buildtest_srtp.d.tmp test/buildtest_srtp.d > /dev/null 2> /dev/null; then \
 		rm -f test/buildtest_srtp.d.tmp; \
@@ -8117,9 +7849,9 @@ test/buildtest_ssl: test/buildtest_ssl.o libssl.a libcrypto.a
 	rm -f test/buildtest_ssl
 	$${LDCMD:-$(CC)} $(BIN_CFLAGS) -L. $(BIN_LDFLAGS) \
 		-o test/buildtest_ssl test/buildtest_ssl.o \
-		$(PLIB_LDFLAGS)  -lssl -lcrypto $(EX_LIBS)
+		 -lssl -lcrypto $(BIN_EX_LIBS)
 test/buildtest_ssl.o: test/buildtest_ssl.c
-	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -c -MMD -MF test/buildtest_ssl.d.tmp -MT $@ -c -o $@ test/buildtest_ssl.c
+	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -MMD -MF test/buildtest_ssl.d.tmp -MT $@ -c -o $@ test/buildtest_ssl.c
 	@touch test/buildtest_ssl.d.tmp
 	@if cmp test/buildtest_ssl.d.tmp test/buildtest_ssl.d > /dev/null 2> /dev/null; then \
 		rm -f test/buildtest_ssl.d.tmp; \
@@ -8132,9 +7864,9 @@ test/buildtest_ssl2: test/buildtest_ssl2.o libssl.a libcrypto.a
 	rm -f test/buildtest_ssl2
 	$${LDCMD:-$(CC)} $(BIN_CFLAGS) -L. $(BIN_LDFLAGS) \
 		-o test/buildtest_ssl2 test/buildtest_ssl2.o \
-		$(PLIB_LDFLAGS)  -lssl -lcrypto $(EX_LIBS)
+		 -lssl -lcrypto $(BIN_EX_LIBS)
 test/buildtest_ssl2.o: test/buildtest_ssl2.c
-	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -c -MMD -MF test/buildtest_ssl2.d.tmp -MT $@ -c -o $@ test/buildtest_ssl2.c
+	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -MMD -MF test/buildtest_ssl2.d.tmp -MT $@ -c -o $@ test/buildtest_ssl2.c
 	@touch test/buildtest_ssl2.d.tmp
 	@if cmp test/buildtest_ssl2.d.tmp test/buildtest_ssl2.d > /dev/null 2> /dev/null; then \
 		rm -f test/buildtest_ssl2.d.tmp; \
@@ -8143,28 +7875,13 @@ test/buildtest_ssl2.o: test/buildtest_ssl2.c
 	fi
 test/buildtest_ssl2.c: test/generate_buildtest.pl 
 	$(PERL) test/generate_buildtest.pl ssl2 > $@
-test/buildtest_sslerr: test/buildtest_sslerr.o libssl.a libcrypto.a
-	rm -f test/buildtest_sslerr
-	$${LDCMD:-$(CC)} $(BIN_CFLAGS) -L. $(BIN_LDFLAGS) \
-		-o test/buildtest_sslerr test/buildtest_sslerr.o \
-		$(PLIB_LDFLAGS)  -lssl -lcrypto $(EX_LIBS)
-test/buildtest_sslerr.o: test/buildtest_sslerr.c
-	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -c -MMD -MF test/buildtest_sslerr.d.tmp -MT $@ -c -o $@ test/buildtest_sslerr.c
-	@touch test/buildtest_sslerr.d.tmp
-	@if cmp test/buildtest_sslerr.d.tmp test/buildtest_sslerr.d > /dev/null 2> /dev/null; then \
-		rm -f test/buildtest_sslerr.d.tmp; \
-	else \
-		mv test/buildtest_sslerr.d.tmp test/buildtest_sslerr.d; \
-	fi
-test/buildtest_sslerr.c: test/generate_buildtest.pl 
-	$(PERL) test/generate_buildtest.pl sslerr > $@
 test/buildtest_stack: test/buildtest_stack.o libssl.a libcrypto.a
 	rm -f test/buildtest_stack
 	$${LDCMD:-$(CC)} $(BIN_CFLAGS) -L. $(BIN_LDFLAGS) \
 		-o test/buildtest_stack test/buildtest_stack.o \
-		$(PLIB_LDFLAGS)  -lssl -lcrypto $(EX_LIBS)
+		 -lssl -lcrypto $(BIN_EX_LIBS)
 test/buildtest_stack.o: test/buildtest_stack.c
-	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -c -MMD -MF test/buildtest_stack.d.tmp -MT $@ -c -o $@ test/buildtest_stack.c
+	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -MMD -MF test/buildtest_stack.d.tmp -MT $@ -c -o $@ test/buildtest_stack.c
 	@touch test/buildtest_stack.d.tmp
 	@if cmp test/buildtest_stack.d.tmp test/buildtest_stack.d > /dev/null 2> /dev/null; then \
 		rm -f test/buildtest_stack.d.tmp; \
@@ -8177,9 +7894,9 @@ test/buildtest_store: test/buildtest_store.o libssl.a libcrypto.a
 	rm -f test/buildtest_store
 	$${LDCMD:-$(CC)} $(BIN_CFLAGS) -L. $(BIN_LDFLAGS) \
 		-o test/buildtest_store test/buildtest_store.o \
-		$(PLIB_LDFLAGS)  -lssl -lcrypto $(EX_LIBS)
+		 -lssl -lcrypto $(BIN_EX_LIBS)
 test/buildtest_store.o: test/buildtest_store.c
-	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -c -MMD -MF test/buildtest_store.d.tmp -MT $@ -c -o $@ test/buildtest_store.c
+	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -MMD -MF test/buildtest_store.d.tmp -MT $@ -c -o $@ test/buildtest_store.c
 	@touch test/buildtest_store.d.tmp
 	@if cmp test/buildtest_store.d.tmp test/buildtest_store.d > /dev/null 2> /dev/null; then \
 		rm -f test/buildtest_store.d.tmp; \
@@ -8188,28 +7905,13 @@ test/buildtest_store.o: test/buildtest_store.c
 	fi
 test/buildtest_store.c: test/generate_buildtest.pl 
 	$(PERL) test/generate_buildtest.pl store > $@
-test/buildtest_storeerr: test/buildtest_storeerr.o libssl.a libcrypto.a
-	rm -f test/buildtest_storeerr
-	$${LDCMD:-$(CC)} $(BIN_CFLAGS) -L. $(BIN_LDFLAGS) \
-		-o test/buildtest_storeerr test/buildtest_storeerr.o \
-		$(PLIB_LDFLAGS)  -lssl -lcrypto $(EX_LIBS)
-test/buildtest_storeerr.o: test/buildtest_storeerr.c
-	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -c -MMD -MF test/buildtest_storeerr.d.tmp -MT $@ -c -o $@ test/buildtest_storeerr.c
-	@touch test/buildtest_storeerr.d.tmp
-	@if cmp test/buildtest_storeerr.d.tmp test/buildtest_storeerr.d > /dev/null 2> /dev/null; then \
-		rm -f test/buildtest_storeerr.d.tmp; \
-	else \
-		mv test/buildtest_storeerr.d.tmp test/buildtest_storeerr.d; \
-	fi
-test/buildtest_storeerr.c: test/generate_buildtest.pl 
-	$(PERL) test/generate_buildtest.pl storeerr > $@
 test/buildtest_symhacks: test/buildtest_symhacks.o libssl.a libcrypto.a
 	rm -f test/buildtest_symhacks
 	$${LDCMD:-$(CC)} $(BIN_CFLAGS) -L. $(BIN_LDFLAGS) \
 		-o test/buildtest_symhacks test/buildtest_symhacks.o \
-		$(PLIB_LDFLAGS)  -lssl -lcrypto $(EX_LIBS)
+		 -lssl -lcrypto $(BIN_EX_LIBS)
 test/buildtest_symhacks.o: test/buildtest_symhacks.c
-	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -c -MMD -MF test/buildtest_symhacks.d.tmp -MT $@ -c -o $@ test/buildtest_symhacks.c
+	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -MMD -MF test/buildtest_symhacks.d.tmp -MT $@ -c -o $@ test/buildtest_symhacks.c
 	@touch test/buildtest_symhacks.d.tmp
 	@if cmp test/buildtest_symhacks.d.tmp test/buildtest_symhacks.d > /dev/null 2> /dev/null; then \
 		rm -f test/buildtest_symhacks.d.tmp; \
@@ -8222,9 +7924,9 @@ test/buildtest_tls1: test/buildtest_tls1.o libssl.a libcrypto.a
 	rm -f test/buildtest_tls1
 	$${LDCMD:-$(CC)} $(BIN_CFLAGS) -L. $(BIN_LDFLAGS) \
 		-o test/buildtest_tls1 test/buildtest_tls1.o \
-		$(PLIB_LDFLAGS)  -lssl -lcrypto $(EX_LIBS)
+		 -lssl -lcrypto $(BIN_EX_LIBS)
 test/buildtest_tls1.o: test/buildtest_tls1.c
-	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -c -MMD -MF test/buildtest_tls1.d.tmp -MT $@ -c -o $@ test/buildtest_tls1.c
+	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -MMD -MF test/buildtest_tls1.d.tmp -MT $@ -c -o $@ test/buildtest_tls1.c
 	@touch test/buildtest_tls1.d.tmp
 	@if cmp test/buildtest_tls1.d.tmp test/buildtest_tls1.d > /dev/null 2> /dev/null; then \
 		rm -f test/buildtest_tls1.d.tmp; \
@@ -8237,9 +7939,9 @@ test/buildtest_ts: test/buildtest_ts.o libssl.a libcrypto.a
 	rm -f test/buildtest_ts
 	$${LDCMD:-$(CC)} $(BIN_CFLAGS) -L. $(BIN_LDFLAGS) \
 		-o test/buildtest_ts test/buildtest_ts.o \
-		$(PLIB_LDFLAGS)  -lssl -lcrypto $(EX_LIBS)
+		 -lssl -lcrypto $(BIN_EX_LIBS)
 test/buildtest_ts.o: test/buildtest_ts.c
-	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -c -MMD -MF test/buildtest_ts.d.tmp -MT $@ -c -o $@ test/buildtest_ts.c
+	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -MMD -MF test/buildtest_ts.d.tmp -MT $@ -c -o $@ test/buildtest_ts.c
 	@touch test/buildtest_ts.d.tmp
 	@if cmp test/buildtest_ts.d.tmp test/buildtest_ts.d > /dev/null 2> /dev/null; then \
 		rm -f test/buildtest_ts.d.tmp; \
@@ -8248,28 +7950,13 @@ test/buildtest_ts.o: test/buildtest_ts.c
 	fi
 test/buildtest_ts.c: test/generate_buildtest.pl 
 	$(PERL) test/generate_buildtest.pl ts > $@
-test/buildtest_tserr: test/buildtest_tserr.o libssl.a libcrypto.a
-	rm -f test/buildtest_tserr
-	$${LDCMD:-$(CC)} $(BIN_CFLAGS) -L. $(BIN_LDFLAGS) \
-		-o test/buildtest_tserr test/buildtest_tserr.o \
-		$(PLIB_LDFLAGS)  -lssl -lcrypto $(EX_LIBS)
-test/buildtest_tserr.o: test/buildtest_tserr.c
-	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -c -MMD -MF test/buildtest_tserr.d.tmp -MT $@ -c -o $@ test/buildtest_tserr.c
-	@touch test/buildtest_tserr.d.tmp
-	@if cmp test/buildtest_tserr.d.tmp test/buildtest_tserr.d > /dev/null 2> /dev/null; then \
-		rm -f test/buildtest_tserr.d.tmp; \
-	else \
-		mv test/buildtest_tserr.d.tmp test/buildtest_tserr.d; \
-	fi
-test/buildtest_tserr.c: test/generate_buildtest.pl 
-	$(PERL) test/generate_buildtest.pl tserr > $@
 test/buildtest_txt_db: test/buildtest_txt_db.o libssl.a libcrypto.a
 	rm -f test/buildtest_txt_db
 	$${LDCMD:-$(CC)} $(BIN_CFLAGS) -L. $(BIN_LDFLAGS) \
 		-o test/buildtest_txt_db test/buildtest_txt_db.o \
-		$(PLIB_LDFLAGS)  -lssl -lcrypto $(EX_LIBS)
+		 -lssl -lcrypto $(BIN_EX_LIBS)
 test/buildtest_txt_db.o: test/buildtest_txt_db.c
-	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -c -MMD -MF test/buildtest_txt_db.d.tmp -MT $@ -c -o $@ test/buildtest_txt_db.c
+	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -MMD -MF test/buildtest_txt_db.d.tmp -MT $@ -c -o $@ test/buildtest_txt_db.c
 	@touch test/buildtest_txt_db.d.tmp
 	@if cmp test/buildtest_txt_db.d.tmp test/buildtest_txt_db.d > /dev/null 2> /dev/null; then \
 		rm -f test/buildtest_txt_db.d.tmp; \
@@ -8282,9 +7969,9 @@ test/buildtest_ui: test/buildtest_ui.o libssl.a libcrypto.a
 	rm -f test/buildtest_ui
 	$${LDCMD:-$(CC)} $(BIN_CFLAGS) -L. $(BIN_LDFLAGS) \
 		-o test/buildtest_ui test/buildtest_ui.o \
-		$(PLIB_LDFLAGS)  -lssl -lcrypto $(EX_LIBS)
+		 -lssl -lcrypto $(BIN_EX_LIBS)
 test/buildtest_ui.o: test/buildtest_ui.c
-	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -c -MMD -MF test/buildtest_ui.d.tmp -MT $@ -c -o $@ test/buildtest_ui.c
+	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -MMD -MF test/buildtest_ui.d.tmp -MT $@ -c -o $@ test/buildtest_ui.c
 	@touch test/buildtest_ui.d.tmp
 	@if cmp test/buildtest_ui.d.tmp test/buildtest_ui.d > /dev/null 2> /dev/null; then \
 		rm -f test/buildtest_ui.d.tmp; \
@@ -8293,28 +7980,13 @@ test/buildtest_ui.o: test/buildtest_ui.c
 	fi
 test/buildtest_ui.c: test/generate_buildtest.pl 
 	$(PERL) test/generate_buildtest.pl ui > $@
-test/buildtest_uierr: test/buildtest_uierr.o libssl.a libcrypto.a
-	rm -f test/buildtest_uierr
-	$${LDCMD:-$(CC)} $(BIN_CFLAGS) -L. $(BIN_LDFLAGS) \
-		-o test/buildtest_uierr test/buildtest_uierr.o \
-		$(PLIB_LDFLAGS)  -lssl -lcrypto $(EX_LIBS)
-test/buildtest_uierr.o: test/buildtest_uierr.c
-	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -c -MMD -MF test/buildtest_uierr.d.tmp -MT $@ -c -o $@ test/buildtest_uierr.c
-	@touch test/buildtest_uierr.d.tmp
-	@if cmp test/buildtest_uierr.d.tmp test/buildtest_uierr.d > /dev/null 2> /dev/null; then \
-		rm -f test/buildtest_uierr.d.tmp; \
-	else \
-		mv test/buildtest_uierr.d.tmp test/buildtest_uierr.d; \
-	fi
-test/buildtest_uierr.c: test/generate_buildtest.pl 
-	$(PERL) test/generate_buildtest.pl uierr > $@
 test/buildtest_whrlpool: test/buildtest_whrlpool.o libssl.a libcrypto.a
 	rm -f test/buildtest_whrlpool
 	$${LDCMD:-$(CC)} $(BIN_CFLAGS) -L. $(BIN_LDFLAGS) \
 		-o test/buildtest_whrlpool test/buildtest_whrlpool.o \
-		$(PLIB_LDFLAGS)  -lssl -lcrypto $(EX_LIBS)
+		 -lssl -lcrypto $(BIN_EX_LIBS)
 test/buildtest_whrlpool.o: test/buildtest_whrlpool.c
-	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -c -MMD -MF test/buildtest_whrlpool.d.tmp -MT $@ -c -o $@ test/buildtest_whrlpool.c
+	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -MMD -MF test/buildtest_whrlpool.d.tmp -MT $@ -c -o $@ test/buildtest_whrlpool.c
 	@touch test/buildtest_whrlpool.d.tmp
 	@if cmp test/buildtest_whrlpool.d.tmp test/buildtest_whrlpool.d > /dev/null 2> /dev/null; then \
 		rm -f test/buildtest_whrlpool.d.tmp; \
@@ -8327,9 +7999,9 @@ test/buildtest_x509: test/buildtest_x509.o libssl.a libcrypto.a
 	rm -f test/buildtest_x509
 	$${LDCMD:-$(CC)} $(BIN_CFLAGS) -L. $(BIN_LDFLAGS) \
 		-o test/buildtest_x509 test/buildtest_x509.o \
-		$(PLIB_LDFLAGS)  -lssl -lcrypto $(EX_LIBS)
+		 -lssl -lcrypto $(BIN_EX_LIBS)
 test/buildtest_x509.o: test/buildtest_x509.c
-	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -c -MMD -MF test/buildtest_x509.d.tmp -MT $@ -c -o $@ test/buildtest_x509.c
+	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -MMD -MF test/buildtest_x509.d.tmp -MT $@ -c -o $@ test/buildtest_x509.c
 	@touch test/buildtest_x509.d.tmp
 	@if cmp test/buildtest_x509.d.tmp test/buildtest_x509.d > /dev/null 2> /dev/null; then \
 		rm -f test/buildtest_x509.d.tmp; \
@@ -8342,9 +8014,9 @@ test/buildtest_x509_vfy: test/buildtest_x509_vfy.o libssl.a libcrypto.a
 	rm -f test/buildtest_x509_vfy
 	$${LDCMD:-$(CC)} $(BIN_CFLAGS) -L. $(BIN_LDFLAGS) \
 		-o test/buildtest_x509_vfy test/buildtest_x509_vfy.o \
-		$(PLIB_LDFLAGS)  -lssl -lcrypto $(EX_LIBS)
+		 -lssl -lcrypto $(BIN_EX_LIBS)
 test/buildtest_x509_vfy.o: test/buildtest_x509_vfy.c
-	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -c -MMD -MF test/buildtest_x509_vfy.d.tmp -MT $@ -c -o $@ test/buildtest_x509_vfy.c
+	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -MMD -MF test/buildtest_x509_vfy.d.tmp -MT $@ -c -o $@ test/buildtest_x509_vfy.c
 	@touch test/buildtest_x509_vfy.d.tmp
 	@if cmp test/buildtest_x509_vfy.d.tmp test/buildtest_x509_vfy.d > /dev/null 2> /dev/null; then \
 		rm -f test/buildtest_x509_vfy.d.tmp; \
@@ -8353,28 +8025,13 @@ test/buildtest_x509_vfy.o: test/buildtest_x509_vfy.c
 	fi
 test/buildtest_x509_vfy.c: test/generate_buildtest.pl 
 	$(PERL) test/generate_buildtest.pl x509_vfy > $@
-test/buildtest_x509err: test/buildtest_x509err.o libssl.a libcrypto.a
-	rm -f test/buildtest_x509err
-	$${LDCMD:-$(CC)} $(BIN_CFLAGS) -L. $(BIN_LDFLAGS) \
-		-o test/buildtest_x509err test/buildtest_x509err.o \
-		$(PLIB_LDFLAGS)  -lssl -lcrypto $(EX_LIBS)
-test/buildtest_x509err.o: test/buildtest_x509err.c
-	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -c -MMD -MF test/buildtest_x509err.d.tmp -MT $@ -c -o $@ test/buildtest_x509err.c
-	@touch test/buildtest_x509err.d.tmp
-	@if cmp test/buildtest_x509err.d.tmp test/buildtest_x509err.d > /dev/null 2> /dev/null; then \
-		rm -f test/buildtest_x509err.d.tmp; \
-	else \
-		mv test/buildtest_x509err.d.tmp test/buildtest_x509err.d; \
-	fi
-test/buildtest_x509err.c: test/generate_buildtest.pl 
-	$(PERL) test/generate_buildtest.pl x509err > $@
 test/buildtest_x509v3: test/buildtest_x509v3.o libssl.a libcrypto.a
 	rm -f test/buildtest_x509v3
 	$${LDCMD:-$(CC)} $(BIN_CFLAGS) -L. $(BIN_LDFLAGS) \
 		-o test/buildtest_x509v3 test/buildtest_x509v3.o \
-		$(PLIB_LDFLAGS)  -lssl -lcrypto $(EX_LIBS)
+		 -lssl -lcrypto $(BIN_EX_LIBS)
 test/buildtest_x509v3.o: test/buildtest_x509v3.c
-	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -c -MMD -MF test/buildtest_x509v3.d.tmp -MT $@ -c -o $@ test/buildtest_x509v3.c
+	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -MMD -MF test/buildtest_x509v3.d.tmp -MT $@ -c -o $@ test/buildtest_x509v3.c
 	@touch test/buildtest_x509v3.d.tmp
 	@if cmp test/buildtest_x509v3.d.tmp test/buildtest_x509v3.d > /dev/null 2> /dev/null; then \
 		rm -f test/buildtest_x509v3.d.tmp; \
@@ -8383,28 +8040,13 @@ test/buildtest_x509v3.o: test/buildtest_x509v3.c
 	fi
 test/buildtest_x509v3.c: test/generate_buildtest.pl 
 	$(PERL) test/generate_buildtest.pl x509v3 > $@
-test/buildtest_x509v3err: test/buildtest_x509v3err.o libssl.a libcrypto.a
-	rm -f test/buildtest_x509v3err
-	$${LDCMD:-$(CC)} $(BIN_CFLAGS) -L. $(BIN_LDFLAGS) \
-		-o test/buildtest_x509v3err test/buildtest_x509v3err.o \
-		$(PLIB_LDFLAGS)  -lssl -lcrypto $(EX_LIBS)
-test/buildtest_x509v3err.o: test/buildtest_x509v3err.c
-	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -c -MMD -MF test/buildtest_x509v3err.d.tmp -MT $@ -c -o $@ test/buildtest_x509v3err.c
-	@touch test/buildtest_x509v3err.d.tmp
-	@if cmp test/buildtest_x509v3err.d.tmp test/buildtest_x509v3err.d > /dev/null 2> /dev/null; then \
-		rm -f test/buildtest_x509v3err.d.tmp; \
-	else \
-		mv test/buildtest_x509v3err.d.tmp test/buildtest_x509v3err.d; \
-	fi
-test/buildtest_x509v3err.c: test/generate_buildtest.pl 
-	$(PERL) test/generate_buildtest.pl x509v3err > $@
 test/casttest: test/casttest.o test/libtestutil.a libcrypto.a
 	rm -f test/casttest
 	$${LDCMD:-$(CC)} $(BIN_CFLAGS) -L. $(BIN_LDFLAGS) \
 		-o test/casttest test/casttest.o \
-		$(PLIB_LDFLAGS)  test/libtestutil.a -lcrypto $(EX_LIBS)
+		 test/libtestutil.a -lcrypto $(BIN_EX_LIBS)
 test/casttest.o: test/casttest.c
-	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -c -MMD -MF test/casttest.d.tmp -MT $@ -c -o $@ test/casttest.c
+	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -MMD -MF test/casttest.d.tmp -MT $@ -c -o $@ test/casttest.c
 	@touch test/casttest.d.tmp
 	@if cmp test/casttest.d.tmp test/casttest.d > /dev/null 2> /dev/null; then \
 		rm -f test/casttest.d.tmp; \
@@ -8415,9 +8057,9 @@ test/chacha_internal_test: test/chacha_internal_test.o test/libtestutil.a libcry
 	rm -f test/chacha_internal_test
 	$${LDCMD:-$(CC)} $(BIN_CFLAGS) -L. $(BIN_LDFLAGS) \
 		-o test/chacha_internal_test test/chacha_internal_test.o \
-		$(PLIB_LDFLAGS)  test/libtestutil.a libcrypto.a $(EX_LIBS)
+		 test/libtestutil.a libcrypto.a $(BIN_EX_LIBS)
 test/chacha_internal_test.o: test/chacha_internal_test.c
-	$(CC)  -I. -Iinclude -Icrypto/include $(BIN_CFLAGS) $(BIN_CPPFLAGS) -c -MMD -MF test/chacha_internal_test.d.tmp -MT $@ -c -o $@ test/chacha_internal_test.c
+	$(CC)  -I. -Iinclude -Icrypto/include $(BIN_CFLAGS) $(BIN_CPPFLAGS) -MMD -MF test/chacha_internal_test.d.tmp -MT $@ -c -o $@ test/chacha_internal_test.c
 	@touch test/chacha_internal_test.d.tmp
 	@if cmp test/chacha_internal_test.d.tmp test/chacha_internal_test.d > /dev/null 2> /dev/null; then \
 		rm -f test/chacha_internal_test.d.tmp; \
@@ -8428,9 +8070,9 @@ test/cipher_overhead_test: test/cipher_overhead_test.o libssl.a test/libtestutil
 	rm -f test/cipher_overhead_test
 	$${LDCMD:-$(CC)} $(BIN_CFLAGS) -L. $(BIN_LDFLAGS) \
 		-o test/cipher_overhead_test test/cipher_overhead_test.o \
-		$(PLIB_LDFLAGS)  -lssl test/libtestutil.a -lcrypto $(EX_LIBS)
+		 -lssl test/libtestutil.a -lcrypto $(BIN_EX_LIBS)
 test/cipher_overhead_test.o: test/cipher_overhead_test.c
-	$(CC)  -I. -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -c -MMD -MF test/cipher_overhead_test.d.tmp -MT $@ -c -o $@ test/cipher_overhead_test.c
+	$(CC)  -I. -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -MMD -MF test/cipher_overhead_test.d.tmp -MT $@ -c -o $@ test/cipher_overhead_test.c
 	@touch test/cipher_overhead_test.d.tmp
 	@if cmp test/cipher_overhead_test.d.tmp test/cipher_overhead_test.d > /dev/null 2> /dev/null; then \
 		rm -f test/cipher_overhead_test.d.tmp; \
@@ -8441,9 +8083,9 @@ test/cipherbytes_test: test/cipherbytes_test.o libssl.a test/libtestutil.a libcr
 	rm -f test/cipherbytes_test
 	$${LDCMD:-$(CC)} $(BIN_CFLAGS) -L. $(BIN_LDFLAGS) \
 		-o test/cipherbytes_test test/cipherbytes_test.o \
-		$(PLIB_LDFLAGS)  -lssl test/libtestutil.a -lcrypto $(EX_LIBS)
+		 -lssl test/libtestutil.a -lcrypto $(BIN_EX_LIBS)
 test/cipherbytes_test.o: test/cipherbytes_test.c
-	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -c -MMD -MF test/cipherbytes_test.d.tmp -MT $@ -c -o $@ test/cipherbytes_test.c
+	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -MMD -MF test/cipherbytes_test.d.tmp -MT $@ -c -o $@ test/cipherbytes_test.c
 	@touch test/cipherbytes_test.d.tmp
 	@if cmp test/cipherbytes_test.d.tmp test/cipherbytes_test.d > /dev/null 2> /dev/null; then \
 		rm -f test/cipherbytes_test.d.tmp; \
@@ -8454,9 +8096,9 @@ test/cipherlist_test: test/cipherlist_test.o libssl.a test/libtestutil.a libcryp
 	rm -f test/cipherlist_test
 	$${LDCMD:-$(CC)} $(BIN_CFLAGS) -L. $(BIN_LDFLAGS) \
 		-o test/cipherlist_test test/cipherlist_test.o \
-		$(PLIB_LDFLAGS)  -lssl test/libtestutil.a -lcrypto $(EX_LIBS)
+		 -lssl test/libtestutil.a -lcrypto $(BIN_EX_LIBS)
 test/cipherlist_test.o: test/cipherlist_test.c
-	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -c -MMD -MF test/cipherlist_test.d.tmp -MT $@ -c -o $@ test/cipherlist_test.c
+	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -MMD -MF test/cipherlist_test.d.tmp -MT $@ -c -o $@ test/cipherlist_test.c
 	@touch test/cipherlist_test.d.tmp
 	@if cmp test/cipherlist_test.d.tmp test/cipherlist_test.d > /dev/null 2> /dev/null; then \
 		rm -f test/cipherlist_test.d.tmp; \
@@ -8467,9 +8109,9 @@ test/ciphername_test: test/ciphername_test.o libssl.a test/libtestutil.a libcryp
 	rm -f test/ciphername_test
 	$${LDCMD:-$(CC)} $(BIN_CFLAGS) -L. $(BIN_LDFLAGS) \
 		-o test/ciphername_test test/ciphername_test.o \
-		$(PLIB_LDFLAGS)  -lssl test/libtestutil.a -lcrypto $(EX_LIBS)
+		 -lssl test/libtestutil.a -lcrypto $(BIN_EX_LIBS)
 test/ciphername_test.o: test/ciphername_test.c
-	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -c -MMD -MF test/ciphername_test.d.tmp -MT $@ -c -o $@ test/ciphername_test.c
+	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -MMD -MF test/ciphername_test.d.tmp -MT $@ -c -o $@ test/ciphername_test.c
 	@touch test/ciphername_test.d.tmp
 	@if cmp test/ciphername_test.d.tmp test/ciphername_test.d > /dev/null 2> /dev/null; then \
 		rm -f test/ciphername_test.d.tmp; \
@@ -8480,22 +8122,35 @@ test/clienthellotest: test/clienthellotest.o libssl.a test/libtestutil.a libcryp
 	rm -f test/clienthellotest
 	$${LDCMD:-$(CC)} $(BIN_CFLAGS) -L. $(BIN_LDFLAGS) \
 		-o test/clienthellotest test/clienthellotest.o \
-		$(PLIB_LDFLAGS)  -lssl test/libtestutil.a -lcrypto $(EX_LIBS)
+		 -lssl test/libtestutil.a -lcrypto $(BIN_EX_LIBS)
 test/clienthellotest.o: test/clienthellotest.c
-	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -c -MMD -MF test/clienthellotest.d.tmp -MT $@ -c -o $@ test/clienthellotest.c
+	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -MMD -MF test/clienthellotest.d.tmp -MT $@ -c -o $@ test/clienthellotest.c
 	@touch test/clienthellotest.d.tmp
 	@if cmp test/clienthellotest.d.tmp test/clienthellotest.d > /dev/null 2> /dev/null; then \
 		rm -f test/clienthellotest.d.tmp; \
 	else \
 		mv test/clienthellotest.d.tmp test/clienthellotest.d; \
 	fi
+test/conf_include_test: test/conf_include_test.o test/libtestutil.a libcrypto.a
+	rm -f test/conf_include_test
+	$${LDCMD:-$(CC)} $(BIN_CFLAGS) -L. $(BIN_LDFLAGS) \
+		-o test/conf_include_test test/conf_include_test.o \
+		 test/libtestutil.a -lcrypto $(BIN_EX_LIBS)
+test/conf_include_test.o: test/conf_include_test.c
+	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -MMD -MF test/conf_include_test.d.tmp -MT $@ -c -o $@ test/conf_include_test.c
+	@touch test/conf_include_test.d.tmp
+	@if cmp test/conf_include_test.d.tmp test/conf_include_test.d > /dev/null 2> /dev/null; then \
+		rm -f test/conf_include_test.d.tmp; \
+	else \
+		mv test/conf_include_test.d.tmp test/conf_include_test.d; \
+	fi
 test/constant_time_test: test/constant_time_test.o test/libtestutil.a libcrypto.a
 	rm -f test/constant_time_test
 	$${LDCMD:-$(CC)} $(BIN_CFLAGS) -L. $(BIN_LDFLAGS) \
 		-o test/constant_time_test test/constant_time_test.o \
-		$(PLIB_LDFLAGS)  test/libtestutil.a -lcrypto $(EX_LIBS)
+		 test/libtestutil.a -lcrypto $(BIN_EX_LIBS)
 test/constant_time_test.o: test/constant_time_test.c
-	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -c -MMD -MF test/constant_time_test.d.tmp -MT $@ -c -o $@ test/constant_time_test.c
+	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -MMD -MF test/constant_time_test.d.tmp -MT $@ -c -o $@ test/constant_time_test.c
 	@touch test/constant_time_test.d.tmp
 	@if cmp test/constant_time_test.d.tmp test/constant_time_test.d > /dev/null 2> /dev/null; then \
 		rm -f test/constant_time_test.d.tmp; \
@@ -8506,9 +8161,9 @@ test/crltest: test/crltest.o test/libtestutil.a libcrypto.a
 	rm -f test/crltest
 	$${LDCMD:-$(CC)} $(BIN_CFLAGS) -L. $(BIN_LDFLAGS) \
 		-o test/crltest test/crltest.o \
-		$(PLIB_LDFLAGS)  test/libtestutil.a -lcrypto $(EX_LIBS)
+		 test/libtestutil.a -lcrypto $(BIN_EX_LIBS)
 test/crltest.o: test/crltest.c
-	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -c -MMD -MF test/crltest.d.tmp -MT $@ -c -o $@ test/crltest.c
+	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -MMD -MF test/crltest.d.tmp -MT $@ -c -o $@ test/crltest.c
 	@touch test/crltest.d.tmp
 	@if cmp test/crltest.d.tmp test/crltest.d > /dev/null 2> /dev/null; then \
 		rm -f test/crltest.d.tmp; \
@@ -8519,9 +8174,9 @@ test/ct_test: test/ct_test.o test/libtestutil.a libcrypto.a
 	rm -f test/ct_test
 	$${LDCMD:-$(CC)} $(BIN_CFLAGS) -L. $(BIN_LDFLAGS) \
 		-o test/ct_test test/ct_test.o \
-		$(PLIB_LDFLAGS)  test/libtestutil.a -lcrypto $(EX_LIBS)
+		 test/libtestutil.a -lcrypto $(BIN_EX_LIBS)
 test/ct_test.o: test/ct_test.c
-	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -c -MMD -MF test/ct_test.d.tmp -MT $@ -c -o $@ test/ct_test.c
+	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -MMD -MF test/ct_test.d.tmp -MT $@ -c -o $@ test/ct_test.c
 	@touch test/ct_test.d.tmp
 	@if cmp test/ct_test.d.tmp test/ct_test.d > /dev/null 2> /dev/null; then \
 		rm -f test/ct_test.d.tmp; \
@@ -8532,9 +8187,9 @@ test/ctype_internal_test: test/ctype_internal_test.o test/libtestutil.a libcrypt
 	rm -f test/ctype_internal_test
 	$${LDCMD:-$(CC)} $(BIN_CFLAGS) -L. $(BIN_LDFLAGS) \
 		-o test/ctype_internal_test test/ctype_internal_test.o \
-		$(PLIB_LDFLAGS)  test/libtestutil.a libcrypto.a $(EX_LIBS)
+		 test/libtestutil.a libcrypto.a $(BIN_EX_LIBS)
 test/ctype_internal_test.o: test/ctype_internal_test.c
-	$(CC)  -I. -Icrypto/include -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -c -MMD -MF test/ctype_internal_test.d.tmp -MT $@ -c -o $@ test/ctype_internal_test.c
+	$(CC)  -I. -Icrypto/include -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -MMD -MF test/ctype_internal_test.d.tmp -MT $@ -c -o $@ test/ctype_internal_test.c
 	@touch test/ctype_internal_test.d.tmp
 	@if cmp test/ctype_internal_test.d.tmp test/ctype_internal_test.d > /dev/null 2> /dev/null; then \
 		rm -f test/ctype_internal_test.d.tmp; \
@@ -8545,9 +8200,9 @@ test/curve448_internal_test: test/curve448_internal_test.o test/libtestutil.a li
 	rm -f test/curve448_internal_test
 	$${LDCMD:-$(CC)} $(BIN_CFLAGS) -L. $(BIN_LDFLAGS) \
 		-o test/curve448_internal_test test/curve448_internal_test.o \
-		$(PLIB_LDFLAGS)  test/libtestutil.a libcrypto.a $(EX_LIBS)
+		 test/libtestutil.a libcrypto.a $(BIN_EX_LIBS)
 test/curve448_internal_test.o: test/curve448_internal_test.c
-	$(CC)  -I. -Iinclude -Icrypto/ec/curve448 $(BIN_CFLAGS) $(BIN_CPPFLAGS) -c -MMD -MF test/curve448_internal_test.d.tmp -MT $@ -c -o $@ test/curve448_internal_test.c
+	$(CC)  -I. -Iinclude -Icrypto/ec/curve448 $(BIN_CFLAGS) $(BIN_CPPFLAGS) -MMD -MF test/curve448_internal_test.d.tmp -MT $@ -c -o $@ test/curve448_internal_test.c
 	@touch test/curve448_internal_test.d.tmp
 	@if cmp test/curve448_internal_test.d.tmp test/curve448_internal_test.d > /dev/null 2> /dev/null; then \
 		rm -f test/curve448_internal_test.d.tmp; \
@@ -8558,9 +8213,9 @@ test/d2i_test: test/d2i_test.o test/libtestutil.a libcrypto.a
 	rm -f test/d2i_test
 	$${LDCMD:-$(CC)} $(BIN_CFLAGS) -L. $(BIN_LDFLAGS) \
 		-o test/d2i_test test/d2i_test.o \
-		$(PLIB_LDFLAGS)  test/libtestutil.a -lcrypto $(EX_LIBS)
+		 test/libtestutil.a -lcrypto $(BIN_EX_LIBS)
 test/d2i_test.o: test/d2i_test.c
-	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -c -MMD -MF test/d2i_test.d.tmp -MT $@ -c -o $@ test/d2i_test.c
+	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -MMD -MF test/d2i_test.d.tmp -MT $@ -c -o $@ test/d2i_test.c
 	@touch test/d2i_test.d.tmp
 	@if cmp test/d2i_test.d.tmp test/d2i_test.d > /dev/null 2> /dev/null; then \
 		rm -f test/d2i_test.d.tmp; \
@@ -8571,9 +8226,9 @@ test/danetest: test/danetest.o libssl.a test/libtestutil.a libcrypto.a
 	rm -f test/danetest
 	$${LDCMD:-$(CC)} $(BIN_CFLAGS) -L. $(BIN_LDFLAGS) \
 		-o test/danetest test/danetest.o \
-		$(PLIB_LDFLAGS)  -lssl test/libtestutil.a -lcrypto $(EX_LIBS)
+		 -lssl test/libtestutil.a -lcrypto $(BIN_EX_LIBS)
 test/danetest.o: test/danetest.c
-	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -c -MMD -MF test/danetest.d.tmp -MT $@ -c -o $@ test/danetest.c
+	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -MMD -MF test/danetest.d.tmp -MT $@ -c -o $@ test/danetest.c
 	@touch test/danetest.d.tmp
 	@if cmp test/danetest.d.tmp test/danetest.d > /dev/null 2> /dev/null; then \
 		rm -f test/danetest.d.tmp; \
@@ -8584,9 +8239,9 @@ test/destest: test/destest.o test/libtestutil.a libcrypto.a
 	rm -f test/destest
 	$${LDCMD:-$(CC)} $(BIN_CFLAGS) -L. $(BIN_LDFLAGS) \
 		-o test/destest test/destest.o \
-		$(PLIB_LDFLAGS)  test/libtestutil.a -lcrypto $(EX_LIBS)
+		 test/libtestutil.a -lcrypto $(BIN_EX_LIBS)
 test/destest.o: test/destest.c
-	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -c -MMD -MF test/destest.d.tmp -MT $@ -c -o $@ test/destest.c
+	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -MMD -MF test/destest.d.tmp -MT $@ -c -o $@ test/destest.c
 	@touch test/destest.d.tmp
 	@if cmp test/destest.d.tmp test/destest.d > /dev/null 2> /dev/null; then \
 		rm -f test/destest.d.tmp; \
@@ -8597,9 +8252,9 @@ test/dhtest: test/dhtest.o test/libtestutil.a libcrypto.a
 	rm -f test/dhtest
 	$${LDCMD:-$(CC)} $(BIN_CFLAGS) -L. $(BIN_LDFLAGS) \
 		-o test/dhtest test/dhtest.o \
-		$(PLIB_LDFLAGS)  test/libtestutil.a -lcrypto $(EX_LIBS)
+		 test/libtestutil.a -lcrypto $(BIN_EX_LIBS)
 test/dhtest.o: test/dhtest.c
-	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -c -MMD -MF test/dhtest.d.tmp -MT $@ -c -o $@ test/dhtest.c
+	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -MMD -MF test/dhtest.d.tmp -MT $@ -c -o $@ test/dhtest.c
 	@touch test/dhtest.d.tmp
 	@if cmp test/dhtest.d.tmp test/dhtest.d > /dev/null 2> /dev/null; then \
 		rm -f test/dhtest.d.tmp; \
@@ -8610,9 +8265,9 @@ test/drbgtest: test/drbgtest.o test/libtestutil.a libcrypto.a
 	rm -f test/drbgtest
 	$${LDCMD:-$(CC)} $(BIN_CFLAGS) -L. $(BIN_LDFLAGS) \
 		-o test/drbgtest test/drbgtest.o \
-		$(PLIB_LDFLAGS)  test/libtestutil.a -lcrypto $(EX_LIBS)
+		 test/libtestutil.a -lcrypto $(BIN_EX_LIBS)
 test/drbgtest.o: test/drbgtest.c
-	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -c -MMD -MF test/drbgtest.d.tmp -MT $@ -c -o $@ test/drbgtest.c
+	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -MMD -MF test/drbgtest.d.tmp -MT $@ -c -o $@ test/drbgtest.c
 	@touch test/drbgtest.d.tmp
 	@if cmp test/drbgtest.d.tmp test/drbgtest.d > /dev/null 2> /dev/null; then \
 		rm -f test/drbgtest.d.tmp; \
@@ -8623,9 +8278,9 @@ test/dsatest: test/dsatest.o test/libtestutil.a libcrypto.a
 	rm -f test/dsatest
 	$${LDCMD:-$(CC)} $(BIN_CFLAGS) -L. $(BIN_LDFLAGS) \
 		-o test/dsatest test/dsatest.o \
-		$(PLIB_LDFLAGS)  test/libtestutil.a -lcrypto $(EX_LIBS)
+		 test/libtestutil.a -lcrypto $(BIN_EX_LIBS)
 test/dsatest.o: test/dsatest.c
-	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -c -MMD -MF test/dsatest.d.tmp -MT $@ -c -o $@ test/dsatest.c
+	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -MMD -MF test/dsatest.d.tmp -MT $@ -c -o $@ test/dsatest.c
 	@touch test/dsatest.d.tmp
 	@if cmp test/dsatest.d.tmp test/dsatest.d > /dev/null 2> /dev/null; then \
 		rm -f test/dsatest.d.tmp; \
@@ -8636,9 +8291,9 @@ test/dtls_mtu_test: test/dtls_mtu_test.o test/ssltestlib.o libssl.a test/libtest
 	rm -f test/dtls_mtu_test
 	$${LDCMD:-$(CC)} $(BIN_CFLAGS) -L. $(BIN_LDFLAGS) \
 		-o test/dtls_mtu_test test/dtls_mtu_test.o test/ssltestlib.o \
-		$(PLIB_LDFLAGS)  -lssl test/libtestutil.a -lcrypto $(EX_LIBS)
+		 -lssl test/libtestutil.a -lcrypto $(BIN_EX_LIBS)
 test/dtls_mtu_test.o: test/dtls_mtu_test.c
-	$(CC)  -I. -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -c -MMD -MF test/dtls_mtu_test.d.tmp -MT $@ -c -o $@ test/dtls_mtu_test.c
+	$(CC)  -I. -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -MMD -MF test/dtls_mtu_test.d.tmp -MT $@ -c -o $@ test/dtls_mtu_test.c
 	@touch test/dtls_mtu_test.d.tmp
 	@if cmp test/dtls_mtu_test.d.tmp test/dtls_mtu_test.d > /dev/null 2> /dev/null; then \
 		rm -f test/dtls_mtu_test.d.tmp; \
@@ -8649,9 +8304,9 @@ test/dtlstest: test/dtlstest.o test/ssltestlib.o libssl.a test/libtestutil.a lib
 	rm -f test/dtlstest
 	$${LDCMD:-$(CC)} $(BIN_CFLAGS) -L. $(BIN_LDFLAGS) \
 		-o test/dtlstest test/dtlstest.o test/ssltestlib.o \
-		$(PLIB_LDFLAGS)  -lssl test/libtestutil.a -lcrypto $(EX_LIBS)
+		 -lssl test/libtestutil.a -lcrypto $(BIN_EX_LIBS)
 test/dtlstest.o: test/dtlstest.c
-	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -c -MMD -MF test/dtlstest.d.tmp -MT $@ -c -o $@ test/dtlstest.c
+	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -MMD -MF test/dtlstest.d.tmp -MT $@ -c -o $@ test/dtlstest.c
 	@touch test/dtlstest.d.tmp
 	@if cmp test/dtlstest.d.tmp test/dtlstest.d > /dev/null 2> /dev/null; then \
 		rm -f test/dtlstest.d.tmp; \
@@ -8662,9 +8317,9 @@ test/dtlsv1listentest: test/dtlsv1listentest.o libssl.a test/libtestutil.a libcr
 	rm -f test/dtlsv1listentest
 	$${LDCMD:-$(CC)} $(BIN_CFLAGS) -L. $(BIN_LDFLAGS) \
 		-o test/dtlsv1listentest test/dtlsv1listentest.o \
-		$(PLIB_LDFLAGS)  -lssl test/libtestutil.a -lcrypto $(EX_LIBS)
+		 -lssl test/libtestutil.a -lcrypto $(BIN_EX_LIBS)
 test/dtlsv1listentest.o: test/dtlsv1listentest.c
-	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -c -MMD -MF test/dtlsv1listentest.d.tmp -MT $@ -c -o $@ test/dtlsv1listentest.c
+	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -MMD -MF test/dtlsv1listentest.d.tmp -MT $@ -c -o $@ test/dtlsv1listentest.c
 	@touch test/dtlsv1listentest.d.tmp
 	@if cmp test/dtlsv1listentest.d.tmp test/dtlsv1listentest.d > /dev/null 2> /dev/null; then \
 		rm -f test/dtlsv1listentest.d.tmp; \
@@ -8675,9 +8330,9 @@ test/ecdsatest: test/ecdsatest.o test/libtestutil.a libcrypto.a
 	rm -f test/ecdsatest
 	$${LDCMD:-$(CC)} $(BIN_CFLAGS) -L. $(BIN_LDFLAGS) \
 		-o test/ecdsatest test/ecdsatest.o \
-		$(PLIB_LDFLAGS)  test/libtestutil.a -lcrypto $(EX_LIBS)
+		 test/libtestutil.a -lcrypto $(BIN_EX_LIBS)
 test/ecdsatest.o: test/ecdsatest.c
-	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -c -MMD -MF test/ecdsatest.d.tmp -MT $@ -c -o $@ test/ecdsatest.c
+	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -MMD -MF test/ecdsatest.d.tmp -MT $@ -c -o $@ test/ecdsatest.c
 	@touch test/ecdsatest.d.tmp
 	@if cmp test/ecdsatest.d.tmp test/ecdsatest.d > /dev/null 2> /dev/null; then \
 		rm -f test/ecdsatest.d.tmp; \
@@ -8688,9 +8343,9 @@ test/ecstresstest: test/ecstresstest.o test/libtestutil.a libcrypto.a
 	rm -f test/ecstresstest
 	$${LDCMD:-$(CC)} $(BIN_CFLAGS) -L. $(BIN_LDFLAGS) \
 		-o test/ecstresstest test/ecstresstest.o \
-		$(PLIB_LDFLAGS)  test/libtestutil.a -lcrypto $(EX_LIBS)
+		 test/libtestutil.a -lcrypto $(BIN_EX_LIBS)
 test/ecstresstest.o: test/ecstresstest.c
-	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -c -MMD -MF test/ecstresstest.d.tmp -MT $@ -c -o $@ test/ecstresstest.c
+	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -MMD -MF test/ecstresstest.d.tmp -MT $@ -c -o $@ test/ecstresstest.c
 	@touch test/ecstresstest.d.tmp
 	@if cmp test/ecstresstest.d.tmp test/ecstresstest.d > /dev/null 2> /dev/null; then \
 		rm -f test/ecstresstest.d.tmp; \
@@ -8701,9 +8356,9 @@ test/ectest: test/ectest.o test/libtestutil.a libcrypto.a
 	rm -f test/ectest
 	$${LDCMD:-$(CC)} $(BIN_CFLAGS) -L. $(BIN_LDFLAGS) \
 		-o test/ectest test/ectest.o \
-		$(PLIB_LDFLAGS)  test/libtestutil.a -lcrypto $(EX_LIBS)
+		 test/libtestutil.a -lcrypto $(BIN_EX_LIBS)
 test/ectest.o: test/ectest.c
-	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -c -MMD -MF test/ectest.d.tmp -MT $@ -c -o $@ test/ectest.c
+	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -MMD -MF test/ectest.d.tmp -MT $@ -c -o $@ test/ectest.c
 	@touch test/ectest.d.tmp
 	@if cmp test/ectest.d.tmp test/ectest.d > /dev/null 2> /dev/null; then \
 		rm -f test/ectest.d.tmp; \
@@ -8714,9 +8369,9 @@ test/enginetest: test/enginetest.o test/libtestutil.a libcrypto.a
 	rm -f test/enginetest
 	$${LDCMD:-$(CC)} $(BIN_CFLAGS) -L. $(BIN_LDFLAGS) \
 		-o test/enginetest test/enginetest.o \
-		$(PLIB_LDFLAGS)  test/libtestutil.a -lcrypto $(EX_LIBS)
+		 test/libtestutil.a -lcrypto $(BIN_EX_LIBS)
 test/enginetest.o: test/enginetest.c
-	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -c -MMD -MF test/enginetest.d.tmp -MT $@ -c -o $@ test/enginetest.c
+	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -MMD -MF test/enginetest.d.tmp -MT $@ -c -o $@ test/enginetest.c
 	@touch test/enginetest.d.tmp
 	@if cmp test/enginetest.d.tmp test/enginetest.d > /dev/null 2> /dev/null; then \
 		rm -f test/enginetest.d.tmp; \
@@ -8727,9 +8382,9 @@ test/evp_extra_test: test/evp_extra_test.o test/libtestutil.a libcrypto.a
 	rm -f test/evp_extra_test
 	$${LDCMD:-$(CC)} $(BIN_CFLAGS) -L. $(BIN_LDFLAGS) \
 		-o test/evp_extra_test test/evp_extra_test.o \
-		$(PLIB_LDFLAGS)  test/libtestutil.a -lcrypto $(EX_LIBS)
+		 test/libtestutil.a -lcrypto $(BIN_EX_LIBS)
 test/evp_extra_test.o: test/evp_extra_test.c
-	$(CC)  -Iinclude -Icrypto/include $(BIN_CFLAGS) $(BIN_CPPFLAGS) -c -MMD -MF test/evp_extra_test.d.tmp -MT $@ -c -o $@ test/evp_extra_test.c
+	$(CC)  -Iinclude -Icrypto/include $(BIN_CFLAGS) $(BIN_CPPFLAGS) -MMD -MF test/evp_extra_test.d.tmp -MT $@ -c -o $@ test/evp_extra_test.c
 	@touch test/evp_extra_test.d.tmp
 	@if cmp test/evp_extra_test.d.tmp test/evp_extra_test.d > /dev/null 2> /dev/null; then \
 		rm -f test/evp_extra_test.d.tmp; \
@@ -8740,9 +8395,9 @@ test/evp_test: test/evp_test.o test/libtestutil.a libcrypto.a
 	rm -f test/evp_test
 	$${LDCMD:-$(CC)} $(BIN_CFLAGS) -L. $(BIN_LDFLAGS) \
 		-o test/evp_test test/evp_test.o \
-		$(PLIB_LDFLAGS)  test/libtestutil.a -lcrypto $(EX_LIBS)
+		 test/libtestutil.a -lcrypto $(BIN_EX_LIBS)
 test/evp_test.o: test/evp_test.c
-	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -c -MMD -MF test/evp_test.d.tmp -MT $@ -c -o $@ test/evp_test.c
+	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -MMD -MF test/evp_test.d.tmp -MT $@ -c -o $@ test/evp_test.c
 	@touch test/evp_test.d.tmp
 	@if cmp test/evp_test.d.tmp test/evp_test.d > /dev/null 2> /dev/null; then \
 		rm -f test/evp_test.d.tmp; \
@@ -8753,9 +8408,9 @@ test/exdatatest: test/exdatatest.o test/libtestutil.a libcrypto.a
 	rm -f test/exdatatest
 	$${LDCMD:-$(CC)} $(BIN_CFLAGS) -L. $(BIN_LDFLAGS) \
 		-o test/exdatatest test/exdatatest.o \
-		$(PLIB_LDFLAGS)  test/libtestutil.a -lcrypto $(EX_LIBS)
+		 test/libtestutil.a -lcrypto $(BIN_EX_LIBS)
 test/exdatatest.o: test/exdatatest.c
-	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -c -MMD -MF test/exdatatest.d.tmp -MT $@ -c -o $@ test/exdatatest.c
+	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -MMD -MF test/exdatatest.d.tmp -MT $@ -c -o $@ test/exdatatest.c
 	@touch test/exdatatest.d.tmp
 	@if cmp test/exdatatest.d.tmp test/exdatatest.d > /dev/null 2> /dev/null; then \
 		rm -f test/exdatatest.d.tmp; \
@@ -8766,9 +8421,9 @@ test/exptest: test/exptest.o test/libtestutil.a libcrypto.a
 	rm -f test/exptest
 	$${LDCMD:-$(CC)} $(BIN_CFLAGS) -L. $(BIN_LDFLAGS) \
 		-o test/exptest test/exptest.o \
-		$(PLIB_LDFLAGS)  test/libtestutil.a -lcrypto $(EX_LIBS)
+		 test/libtestutil.a -lcrypto $(BIN_EX_LIBS)
 test/exptest.o: test/exptest.c
-	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -c -MMD -MF test/exptest.d.tmp -MT $@ -c -o $@ test/exptest.c
+	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -MMD -MF test/exptest.d.tmp -MT $@ -c -o $@ test/exptest.c
 	@touch test/exptest.d.tmp
 	@if cmp test/exptest.d.tmp test/exptest.d > /dev/null 2> /dev/null; then \
 		rm -f test/exptest.d.tmp; \
@@ -8779,9 +8434,9 @@ test/fatalerrtest: test/fatalerrtest.o test/ssltestlib.o libssl.a test/libtestut
 	rm -f test/fatalerrtest
 	$${LDCMD:-$(CC)} $(BIN_CFLAGS) -L. $(BIN_LDFLAGS) \
 		-o test/fatalerrtest test/fatalerrtest.o test/ssltestlib.o \
-		$(PLIB_LDFLAGS)  -lssl test/libtestutil.a -lcrypto $(EX_LIBS)
+		 -lssl test/libtestutil.a -lcrypto $(BIN_EX_LIBS)
 test/fatalerrtest.o: test/fatalerrtest.c
-	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -c -MMD -MF test/fatalerrtest.d.tmp -MT $@ -c -o $@ test/fatalerrtest.c
+	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -MMD -MF test/fatalerrtest.d.tmp -MT $@ -c -o $@ test/fatalerrtest.c
 	@touch test/fatalerrtest.d.tmp
 	@if cmp test/fatalerrtest.d.tmp test/fatalerrtest.d > /dev/null 2> /dev/null; then \
 		rm -f test/fatalerrtest.d.tmp; \
@@ -8792,9 +8447,9 @@ test/gmdifftest: test/gmdifftest.o test/libtestutil.a libcrypto.a
 	rm -f test/gmdifftest
 	$${LDCMD:-$(CC)} $(BIN_CFLAGS) -L. $(BIN_LDFLAGS) \
 		-o test/gmdifftest test/gmdifftest.o \
-		$(PLIB_LDFLAGS)  test/libtestutil.a -lcrypto $(EX_LIBS)
+		 test/libtestutil.a -lcrypto $(BIN_EX_LIBS)
 test/gmdifftest.o: test/gmdifftest.c
-	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -c -MMD -MF test/gmdifftest.d.tmp -MT $@ -c -o $@ test/gmdifftest.c
+	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -MMD -MF test/gmdifftest.d.tmp -MT $@ -c -o $@ test/gmdifftest.c
 	@touch test/gmdifftest.d.tmp
 	@if cmp test/gmdifftest.d.tmp test/gmdifftest.d > /dev/null 2> /dev/null; then \
 		rm -f test/gmdifftest.d.tmp; \
@@ -8805,9 +8460,9 @@ test/hmactest: test/hmactest.o test/libtestutil.a libcrypto.a
 	rm -f test/hmactest
 	$${LDCMD:-$(CC)} $(BIN_CFLAGS) -L. $(BIN_LDFLAGS) \
 		-o test/hmactest test/hmactest.o \
-		$(PLIB_LDFLAGS)  test/libtestutil.a -lcrypto $(EX_LIBS)
+		 test/libtestutil.a -lcrypto $(BIN_EX_LIBS)
 test/hmactest.o: test/hmactest.c
-	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -c -MMD -MF test/hmactest.d.tmp -MT $@ -c -o $@ test/hmactest.c
+	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -MMD -MF test/hmactest.d.tmp -MT $@ -c -o $@ test/hmactest.c
 	@touch test/hmactest.d.tmp
 	@if cmp test/hmactest.d.tmp test/hmactest.d > /dev/null 2> /dev/null; then \
 		rm -f test/hmactest.d.tmp; \
@@ -8818,9 +8473,9 @@ test/ideatest: test/ideatest.o test/libtestutil.a libcrypto.a
 	rm -f test/ideatest
 	$${LDCMD:-$(CC)} $(BIN_CFLAGS) -L. $(BIN_LDFLAGS) \
 		-o test/ideatest test/ideatest.o \
-		$(PLIB_LDFLAGS)  test/libtestutil.a -lcrypto $(EX_LIBS)
+		 test/libtestutil.a -lcrypto $(BIN_EX_LIBS)
 test/ideatest.o: test/ideatest.c
-	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -c -MMD -MF test/ideatest.d.tmp -MT $@ -c -o $@ test/ideatest.c
+	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -MMD -MF test/ideatest.d.tmp -MT $@ -c -o $@ test/ideatest.c
 	@touch test/ideatest.d.tmp
 	@if cmp test/ideatest.d.tmp test/ideatest.d > /dev/null 2> /dev/null; then \
 		rm -f test/ideatest.d.tmp; \
@@ -8831,9 +8486,9 @@ test/igetest: test/igetest.o test/libtestutil.a libcrypto.a
 	rm -f test/igetest
 	$${LDCMD:-$(CC)} $(BIN_CFLAGS) -L. $(BIN_LDFLAGS) \
 		-o test/igetest test/igetest.o \
-		$(PLIB_LDFLAGS)  test/libtestutil.a -lcrypto $(EX_LIBS)
+		 test/libtestutil.a -lcrypto $(BIN_EX_LIBS)
 test/igetest.o: test/igetest.c
-	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -c -MMD -MF test/igetest.d.tmp -MT $@ -c -o $@ test/igetest.c
+	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -MMD -MF test/igetest.d.tmp -MT $@ -c -o $@ test/igetest.c
 	@touch test/igetest.d.tmp
 	@if cmp test/igetest.d.tmp test/igetest.d > /dev/null 2> /dev/null; then \
 		rm -f test/igetest.d.tmp; \
@@ -8844,9 +8499,9 @@ test/lhash_test: test/lhash_test.o test/libtestutil.a libcrypto.a
 	rm -f test/lhash_test
 	$${LDCMD:-$(CC)} $(BIN_CFLAGS) -L. $(BIN_LDFLAGS) \
 		-o test/lhash_test test/lhash_test.o \
-		$(PLIB_LDFLAGS)  test/libtestutil.a -lcrypto $(EX_LIBS)
+		 test/libtestutil.a -lcrypto $(BIN_EX_LIBS)
 test/lhash_test.o: test/lhash_test.c
-	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -c -MMD -MF test/lhash_test.d.tmp -MT $@ -c -o $@ test/lhash_test.c
+	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -MMD -MF test/lhash_test.d.tmp -MT $@ -c -o $@ test/lhash_test.c
 	@touch test/lhash_test.d.tmp
 	@if cmp test/lhash_test.d.tmp test/lhash_test.d > /dev/null 2> /dev/null; then \
 		rm -f test/lhash_test.d.tmp; \
@@ -8857,9 +8512,9 @@ test/md2test: test/md2test.o test/libtestutil.a libcrypto.a
 	rm -f test/md2test
 	$${LDCMD:-$(CC)} $(BIN_CFLAGS) -L. $(BIN_LDFLAGS) \
 		-o test/md2test test/md2test.o \
-		$(PLIB_LDFLAGS)  test/libtestutil.a -lcrypto $(EX_LIBS)
+		 test/libtestutil.a -lcrypto $(BIN_EX_LIBS)
 test/md2test.o: test/md2test.c
-	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -c -MMD -MF test/md2test.d.tmp -MT $@ -c -o $@ test/md2test.c
+	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -MMD -MF test/md2test.d.tmp -MT $@ -c -o $@ test/md2test.c
 	@touch test/md2test.d.tmp
 	@if cmp test/md2test.d.tmp test/md2test.d > /dev/null 2> /dev/null; then \
 		rm -f test/md2test.d.tmp; \
@@ -8870,9 +8525,9 @@ test/mdc2_internal_test: test/mdc2_internal_test.o test/libtestutil.a libcrypto.
 	rm -f test/mdc2_internal_test
 	$${LDCMD:-$(CC)} $(BIN_CFLAGS) -L. $(BIN_LDFLAGS) \
 		-o test/mdc2_internal_test test/mdc2_internal_test.o \
-		$(PLIB_LDFLAGS)  test/libtestutil.a -lcrypto $(EX_LIBS)
+		 test/libtestutil.a -lcrypto $(BIN_EX_LIBS)
 test/mdc2_internal_test.o: test/mdc2_internal_test.c
-	$(CC)  -I. -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -c -MMD -MF test/mdc2_internal_test.d.tmp -MT $@ -c -o $@ test/mdc2_internal_test.c
+	$(CC)  -I. -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -MMD -MF test/mdc2_internal_test.d.tmp -MT $@ -c -o $@ test/mdc2_internal_test.c
 	@touch test/mdc2_internal_test.d.tmp
 	@if cmp test/mdc2_internal_test.d.tmp test/mdc2_internal_test.d > /dev/null 2> /dev/null; then \
 		rm -f test/mdc2_internal_test.d.tmp; \
@@ -8883,9 +8538,9 @@ test/mdc2test: test/mdc2test.o test/libtestutil.a libcrypto.a
 	rm -f test/mdc2test
 	$${LDCMD:-$(CC)} $(BIN_CFLAGS) -L. $(BIN_LDFLAGS) \
 		-o test/mdc2test test/mdc2test.o \
-		$(PLIB_LDFLAGS)  test/libtestutil.a -lcrypto $(EX_LIBS)
+		 test/libtestutil.a -lcrypto $(BIN_EX_LIBS)
 test/mdc2test.o: test/mdc2test.c
-	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -c -MMD -MF test/mdc2test.d.tmp -MT $@ -c -o $@ test/mdc2test.c
+	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -MMD -MF test/mdc2test.d.tmp -MT $@ -c -o $@ test/mdc2test.c
 	@touch test/mdc2test.d.tmp
 	@if cmp test/mdc2test.d.tmp test/mdc2test.d > /dev/null 2> /dev/null; then \
 		rm -f test/mdc2test.d.tmp; \
@@ -8896,9 +8551,9 @@ test/memleaktest: test/memleaktest.o test/libtestutil.a libcrypto.a
 	rm -f test/memleaktest
 	$${LDCMD:-$(CC)} $(BIN_CFLAGS) -L. $(BIN_LDFLAGS) \
 		-o test/memleaktest test/memleaktest.o \
-		$(PLIB_LDFLAGS)  test/libtestutil.a -lcrypto $(EX_LIBS)
+		 test/libtestutil.a -lcrypto $(BIN_EX_LIBS)
 test/memleaktest.o: test/memleaktest.c
-	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -c -MMD -MF test/memleaktest.d.tmp -MT $@ -c -o $@ test/memleaktest.c
+	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -MMD -MF test/memleaktest.d.tmp -MT $@ -c -o $@ test/memleaktest.c
 	@touch test/memleaktest.d.tmp
 	@if cmp test/memleaktest.d.tmp test/memleaktest.d > /dev/null 2> /dev/null; then \
 		rm -f test/memleaktest.d.tmp; \
@@ -8909,9 +8564,9 @@ test/modes_internal_test: test/modes_internal_test.o test/libtestutil.a libcrypt
 	rm -f test/modes_internal_test
 	$${LDCMD:-$(CC)} $(BIN_CFLAGS) -L. $(BIN_LDFLAGS) \
 		-o test/modes_internal_test test/modes_internal_test.o \
-		$(PLIB_LDFLAGS)  test/libtestutil.a libcrypto.a $(EX_LIBS)
+		 test/libtestutil.a libcrypto.a $(BIN_EX_LIBS)
 test/modes_internal_test.o: test/modes_internal_test.c
-	$(CC)  -I. -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -c -MMD -MF test/modes_internal_test.d.tmp -MT $@ -c -o $@ test/modes_internal_test.c
+	$(CC)  -I. -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -MMD -MF test/modes_internal_test.d.tmp -MT $@ -c -o $@ test/modes_internal_test.c
 	@touch test/modes_internal_test.d.tmp
 	@if cmp test/modes_internal_test.d.tmp test/modes_internal_test.d > /dev/null 2> /dev/null; then \
 		rm -f test/modes_internal_test.d.tmp; \
@@ -8922,9 +8577,9 @@ test/ocspapitest: test/ocspapitest.o test/libtestutil.a libcrypto.a
 	rm -f test/ocspapitest
 	$${LDCMD:-$(CC)} $(BIN_CFLAGS) -L. $(BIN_LDFLAGS) \
 		-o test/ocspapitest test/ocspapitest.o \
-		$(PLIB_LDFLAGS)  test/libtestutil.a -lcrypto $(EX_LIBS)
+		 test/libtestutil.a -lcrypto $(BIN_EX_LIBS)
 test/ocspapitest.o: test/ocspapitest.c
-	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -c -MMD -MF test/ocspapitest.d.tmp -MT $@ -c -o $@ test/ocspapitest.c
+	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -MMD -MF test/ocspapitest.d.tmp -MT $@ -c -o $@ test/ocspapitest.c
 	@touch test/ocspapitest.d.tmp
 	@if cmp test/ocspapitest.d.tmp test/ocspapitest.d > /dev/null 2> /dev/null; then \
 		rm -f test/ocspapitest.d.tmp; \
@@ -8935,9 +8590,9 @@ test/packettest: test/packettest.o test/libtestutil.a libcrypto.a
 	rm -f test/packettest
 	$${LDCMD:-$(CC)} $(BIN_CFLAGS) -L. $(BIN_LDFLAGS) \
 		-o test/packettest test/packettest.o \
-		$(PLIB_LDFLAGS)  test/libtestutil.a -lcrypto $(EX_LIBS)
+		 test/libtestutil.a -lcrypto $(BIN_EX_LIBS)
 test/packettest.o: test/packettest.c
-	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -c -MMD -MF test/packettest.d.tmp -MT $@ -c -o $@ test/packettest.c
+	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -MMD -MF test/packettest.d.tmp -MT $@ -c -o $@ test/packettest.c
 	@touch test/packettest.d.tmp
 	@if cmp test/packettest.d.tmp test/packettest.d > /dev/null 2> /dev/null; then \
 		rm -f test/packettest.d.tmp; \
@@ -8948,9 +8603,9 @@ test/pbelutest: test/pbelutest.o test/libtestutil.a libcrypto.a
 	rm -f test/pbelutest
 	$${LDCMD:-$(CC)} $(BIN_CFLAGS) -L. $(BIN_LDFLAGS) \
 		-o test/pbelutest test/pbelutest.o \
-		$(PLIB_LDFLAGS)  test/libtestutil.a -lcrypto $(EX_LIBS)
+		 test/libtestutil.a -lcrypto $(BIN_EX_LIBS)
 test/pbelutest.o: test/pbelutest.c
-	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -c -MMD -MF test/pbelutest.d.tmp -MT $@ -c -o $@ test/pbelutest.c
+	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -MMD -MF test/pbelutest.d.tmp -MT $@ -c -o $@ test/pbelutest.c
 	@touch test/pbelutest.d.tmp
 	@if cmp test/pbelutest.d.tmp test/pbelutest.d > /dev/null 2> /dev/null; then \
 		rm -f test/pbelutest.d.tmp; \
@@ -8961,9 +8616,9 @@ test/pemtest: test/pemtest.o test/libtestutil.a libcrypto.a
 	rm -f test/pemtest
 	$${LDCMD:-$(CC)} $(BIN_CFLAGS) -L. $(BIN_LDFLAGS) \
 		-o test/pemtest test/pemtest.o \
-		$(PLIB_LDFLAGS)  test/libtestutil.a -lcrypto $(EX_LIBS)
+		 test/libtestutil.a -lcrypto $(BIN_EX_LIBS)
 test/pemtest.o: test/pemtest.c
-	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -c -MMD -MF test/pemtest.d.tmp -MT $@ -c -o $@ test/pemtest.c
+	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -MMD -MF test/pemtest.d.tmp -MT $@ -c -o $@ test/pemtest.c
 	@touch test/pemtest.d.tmp
 	@if cmp test/pemtest.d.tmp test/pemtest.d > /dev/null 2> /dev/null; then \
 		rm -f test/pemtest.d.tmp; \
@@ -8974,9 +8629,9 @@ test/pkey_meth_kdf_test: test/pkey_meth_kdf_test.o test/libtestutil.a libcrypto.
 	rm -f test/pkey_meth_kdf_test
 	$${LDCMD:-$(CC)} $(BIN_CFLAGS) -L. $(BIN_LDFLAGS) \
 		-o test/pkey_meth_kdf_test test/pkey_meth_kdf_test.o \
-		$(PLIB_LDFLAGS)  test/libtestutil.a -lcrypto $(EX_LIBS)
+		 test/libtestutil.a -lcrypto $(BIN_EX_LIBS)
 test/pkey_meth_kdf_test.o: test/pkey_meth_kdf_test.c
-	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -c -MMD -MF test/pkey_meth_kdf_test.d.tmp -MT $@ -c -o $@ test/pkey_meth_kdf_test.c
+	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -MMD -MF test/pkey_meth_kdf_test.d.tmp -MT $@ -c -o $@ test/pkey_meth_kdf_test.c
 	@touch test/pkey_meth_kdf_test.d.tmp
 	@if cmp test/pkey_meth_kdf_test.d.tmp test/pkey_meth_kdf_test.d > /dev/null 2> /dev/null; then \
 		rm -f test/pkey_meth_kdf_test.d.tmp; \
@@ -8987,9 +8642,9 @@ test/pkey_meth_test: test/pkey_meth_test.o test/libtestutil.a libcrypto.a
 	rm -f test/pkey_meth_test
 	$${LDCMD:-$(CC)} $(BIN_CFLAGS) -L. $(BIN_LDFLAGS) \
 		-o test/pkey_meth_test test/pkey_meth_test.o \
-		$(PLIB_LDFLAGS)  test/libtestutil.a -lcrypto $(EX_LIBS)
+		 test/libtestutil.a -lcrypto $(BIN_EX_LIBS)
 test/pkey_meth_test.o: test/pkey_meth_test.c
-	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -c -MMD -MF test/pkey_meth_test.d.tmp -MT $@ -c -o $@ test/pkey_meth_test.c
+	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -MMD -MF test/pkey_meth_test.d.tmp -MT $@ -c -o $@ test/pkey_meth_test.c
 	@touch test/pkey_meth_test.d.tmp
 	@if cmp test/pkey_meth_test.d.tmp test/pkey_meth_test.d > /dev/null 2> /dev/null; then \
 		rm -f test/pkey_meth_test.d.tmp; \
@@ -9000,9 +8655,9 @@ test/poly1305_internal_test: test/poly1305_internal_test.o test/libtestutil.a li
 	rm -f test/poly1305_internal_test
 	$${LDCMD:-$(CC)} $(BIN_CFLAGS) -L. $(BIN_LDFLAGS) \
 		-o test/poly1305_internal_test test/poly1305_internal_test.o \
-		$(PLIB_LDFLAGS)  test/libtestutil.a libcrypto.a $(EX_LIBS)
+		 test/libtestutil.a libcrypto.a $(BIN_EX_LIBS)
 test/poly1305_internal_test.o: test/poly1305_internal_test.c
-	$(CC)  -I. -Iinclude -Icrypto/include $(BIN_CFLAGS) $(BIN_CPPFLAGS) -c -MMD -MF test/poly1305_internal_test.d.tmp -MT $@ -c -o $@ test/poly1305_internal_test.c
+	$(CC)  -I. -Iinclude -Icrypto/include $(BIN_CFLAGS) $(BIN_CPPFLAGS) -MMD -MF test/poly1305_internal_test.d.tmp -MT $@ -c -o $@ test/poly1305_internal_test.c
 	@touch test/poly1305_internal_test.d.tmp
 	@if cmp test/poly1305_internal_test.d.tmp test/poly1305_internal_test.d > /dev/null 2> /dev/null; then \
 		rm -f test/poly1305_internal_test.d.tmp; \
@@ -9013,9 +8668,9 @@ test/rc2test: test/rc2test.o test/libtestutil.a libcrypto.a
 	rm -f test/rc2test
 	$${LDCMD:-$(CC)} $(BIN_CFLAGS) -L. $(BIN_LDFLAGS) \
 		-o test/rc2test test/rc2test.o \
-		$(PLIB_LDFLAGS)  test/libtestutil.a -lcrypto $(EX_LIBS)
+		 test/libtestutil.a -lcrypto $(BIN_EX_LIBS)
 test/rc2test.o: test/rc2test.c
-	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -c -MMD -MF test/rc2test.d.tmp -MT $@ -c -o $@ test/rc2test.c
+	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -MMD -MF test/rc2test.d.tmp -MT $@ -c -o $@ test/rc2test.c
 	@touch test/rc2test.d.tmp
 	@if cmp test/rc2test.d.tmp test/rc2test.d > /dev/null 2> /dev/null; then \
 		rm -f test/rc2test.d.tmp; \
@@ -9026,9 +8681,9 @@ test/rc4test: test/rc4test.o test/libtestutil.a libcrypto.a
 	rm -f test/rc4test
 	$${LDCMD:-$(CC)} $(BIN_CFLAGS) -L. $(BIN_LDFLAGS) \
 		-o test/rc4test test/rc4test.o \
-		$(PLIB_LDFLAGS)  test/libtestutil.a -lcrypto $(EX_LIBS)
+		 test/libtestutil.a -lcrypto $(BIN_EX_LIBS)
 test/rc4test.o: test/rc4test.c
-	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -c -MMD -MF test/rc4test.d.tmp -MT $@ -c -o $@ test/rc4test.c
+	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -MMD -MF test/rc4test.d.tmp -MT $@ -c -o $@ test/rc4test.c
 	@touch test/rc4test.d.tmp
 	@if cmp test/rc4test.d.tmp test/rc4test.d > /dev/null 2> /dev/null; then \
 		rm -f test/rc4test.d.tmp; \
@@ -9039,22 +8694,35 @@ test/rc5test: test/rc5test.o test/libtestutil.a libcrypto.a
 	rm -f test/rc5test
 	$${LDCMD:-$(CC)} $(BIN_CFLAGS) -L. $(BIN_LDFLAGS) \
 		-o test/rc5test test/rc5test.o \
-		$(PLIB_LDFLAGS)  test/libtestutil.a -lcrypto $(EX_LIBS)
+		 test/libtestutil.a -lcrypto $(BIN_EX_LIBS)
 test/rc5test.o: test/rc5test.c
-	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -c -MMD -MF test/rc5test.d.tmp -MT $@ -c -o $@ test/rc5test.c
+	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -MMD -MF test/rc5test.d.tmp -MT $@ -c -o $@ test/rc5test.c
 	@touch test/rc5test.d.tmp
 	@if cmp test/rc5test.d.tmp test/rc5test.d > /dev/null 2> /dev/null; then \
 		rm -f test/rc5test.d.tmp; \
 	else \
 		mv test/rc5test.d.tmp test/rc5test.d; \
 	fi
+test/rdrand_sanitytest: test/rdrand_sanitytest.o test/libtestutil.a libcrypto.a
+	rm -f test/rdrand_sanitytest
+	$${LDCMD:-$(CC)} $(BIN_CFLAGS) -L. $(BIN_LDFLAGS) \
+		-o test/rdrand_sanitytest test/rdrand_sanitytest.o \
+		 test/libtestutil.a libcrypto.a $(BIN_EX_LIBS)
+test/rdrand_sanitytest.o: test/rdrand_sanitytest.c
+	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -MMD -MF test/rdrand_sanitytest.d.tmp -MT $@ -c -o $@ test/rdrand_sanitytest.c
+	@touch test/rdrand_sanitytest.d.tmp
+	@if cmp test/rdrand_sanitytest.d.tmp test/rdrand_sanitytest.d > /dev/null 2> /dev/null; then \
+		rm -f test/rdrand_sanitytest.d.tmp; \
+	else \
+		mv test/rdrand_sanitytest.d.tmp test/rdrand_sanitytest.d; \
+	fi
 test/recordlentest: test/recordlentest.o test/ssltestlib.o libssl.a test/libtestutil.a libcrypto.a
 	rm -f test/recordlentest
 	$${LDCMD:-$(CC)} $(BIN_CFLAGS) -L. $(BIN_LDFLAGS) \
 		-o test/recordlentest test/recordlentest.o test/ssltestlib.o \
-		$(PLIB_LDFLAGS)  -lssl test/libtestutil.a -lcrypto $(EX_LIBS)
+		 -lssl test/libtestutil.a -lcrypto $(BIN_EX_LIBS)
 test/recordlentest.o: test/recordlentest.c
-	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -c -MMD -MF test/recordlentest.d.tmp -MT $@ -c -o $@ test/recordlentest.c
+	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -MMD -MF test/recordlentest.d.tmp -MT $@ -c -o $@ test/recordlentest.c
 	@touch test/recordlentest.d.tmp
 	@if cmp test/recordlentest.d.tmp test/recordlentest.d > /dev/null 2> /dev/null; then \
 		rm -f test/recordlentest.d.tmp; \
@@ -9065,9 +8733,9 @@ test/rsa_mp_test: test/rsa_mp_test.o test/libtestutil.a libcrypto.a
 	rm -f test/rsa_mp_test
 	$${LDCMD:-$(CC)} $(BIN_CFLAGS) -L. $(BIN_LDFLAGS) \
 		-o test/rsa_mp_test test/rsa_mp_test.o \
-		$(PLIB_LDFLAGS)  test/libtestutil.a -lcrypto $(EX_LIBS)
+		 test/libtestutil.a -lcrypto $(BIN_EX_LIBS)
 test/rsa_mp_test.o: test/rsa_mp_test.c
-	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -c -MMD -MF test/rsa_mp_test.d.tmp -MT $@ -c -o $@ test/rsa_mp_test.c
+	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -MMD -MF test/rsa_mp_test.d.tmp -MT $@ -c -o $@ test/rsa_mp_test.c
 	@touch test/rsa_mp_test.d.tmp
 	@if cmp test/rsa_mp_test.d.tmp test/rsa_mp_test.d > /dev/null 2> /dev/null; then \
 		rm -f test/rsa_mp_test.d.tmp; \
@@ -9078,9 +8746,9 @@ test/rsa_test: test/rsa_test.o test/libtestutil.a libcrypto.a
 	rm -f test/rsa_test
 	$${LDCMD:-$(CC)} $(BIN_CFLAGS) -L. $(BIN_LDFLAGS) \
 		-o test/rsa_test test/rsa_test.o \
-		$(PLIB_LDFLAGS)  test/libtestutil.a -lcrypto $(EX_LIBS)
+		 test/libtestutil.a -lcrypto $(BIN_EX_LIBS)
 test/rsa_test.o: test/rsa_test.c
-	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -c -MMD -MF test/rsa_test.d.tmp -MT $@ -c -o $@ test/rsa_test.c
+	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -MMD -MF test/rsa_test.d.tmp -MT $@ -c -o $@ test/rsa_test.c
 	@touch test/rsa_test.d.tmp
 	@if cmp test/rsa_test.d.tmp test/rsa_test.d > /dev/null 2> /dev/null; then \
 		rm -f test/rsa_test.d.tmp; \
@@ -9091,9 +8759,9 @@ test/sanitytest: test/sanitytest.o test/libtestutil.a libcrypto.a
 	rm -f test/sanitytest
 	$${LDCMD:-$(CC)} $(BIN_CFLAGS) -L. $(BIN_LDFLAGS) \
 		-o test/sanitytest test/sanitytest.o \
-		$(PLIB_LDFLAGS)  test/libtestutil.a -lcrypto $(EX_LIBS)
+		 test/libtestutil.a -lcrypto $(BIN_EX_LIBS)
 test/sanitytest.o: test/sanitytest.c
-	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -c -MMD -MF test/sanitytest.d.tmp -MT $@ -c -o $@ test/sanitytest.c
+	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -MMD -MF test/sanitytest.d.tmp -MT $@ -c -o $@ test/sanitytest.c
 	@touch test/sanitytest.d.tmp
 	@if cmp test/sanitytest.d.tmp test/sanitytest.d > /dev/null 2> /dev/null; then \
 		rm -f test/sanitytest.d.tmp; \
@@ -9104,9 +8772,9 @@ test/secmemtest: test/secmemtest.o test/libtestutil.a libcrypto.a
 	rm -f test/secmemtest
 	$${LDCMD:-$(CC)} $(BIN_CFLAGS) -L. $(BIN_LDFLAGS) \
 		-o test/secmemtest test/secmemtest.o \
-		$(PLIB_LDFLAGS)  test/libtestutil.a -lcrypto $(EX_LIBS)
+		 test/libtestutil.a -lcrypto $(BIN_EX_LIBS)
 test/secmemtest.o: test/secmemtest.c
-	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -c -MMD -MF test/secmemtest.d.tmp -MT $@ -c -o $@ test/secmemtest.c
+	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -MMD -MF test/secmemtest.d.tmp -MT $@ -c -o $@ test/secmemtest.c
 	@touch test/secmemtest.d.tmp
 	@if cmp test/secmemtest.d.tmp test/secmemtest.d > /dev/null 2> /dev/null; then \
 		rm -f test/secmemtest.d.tmp; \
@@ -9117,9 +8785,9 @@ test/servername_test: test/servername_test.o libssl.a test/libtestutil.a libcryp
 	rm -f test/servername_test
 	$${LDCMD:-$(CC)} $(BIN_CFLAGS) -L. $(BIN_LDFLAGS) \
 		-o test/servername_test test/servername_test.o \
-		$(PLIB_LDFLAGS)  -lssl test/libtestutil.a -lcrypto $(EX_LIBS)
+		 -lssl test/libtestutil.a -lcrypto $(BIN_EX_LIBS)
 test/servername_test.o: test/servername_test.c
-	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -c -MMD -MF test/servername_test.d.tmp -MT $@ -c -o $@ test/servername_test.c
+	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -MMD -MF test/servername_test.d.tmp -MT $@ -c -o $@ test/servername_test.c
 	@touch test/servername_test.d.tmp
 	@if cmp test/servername_test.d.tmp test/servername_test.d > /dev/null 2> /dev/null; then \
 		rm -f test/servername_test.d.tmp; \
@@ -9130,22 +8798,48 @@ test/siphash_internal_test: test/siphash_internal_test.o test/libtestutil.a libc
 	rm -f test/siphash_internal_test
 	$${LDCMD:-$(CC)} $(BIN_CFLAGS) -L. $(BIN_LDFLAGS) \
 		-o test/siphash_internal_test test/siphash_internal_test.o \
-		$(PLIB_LDFLAGS)  test/libtestutil.a libcrypto.a $(EX_LIBS)
+		 test/libtestutil.a libcrypto.a $(BIN_EX_LIBS)
 test/siphash_internal_test.o: test/siphash_internal_test.c
-	$(CC)  -I. -Iinclude -Icrypto/include $(BIN_CFLAGS) $(BIN_CPPFLAGS) -c -MMD -MF test/siphash_internal_test.d.tmp -MT $@ -c -o $@ test/siphash_internal_test.c
+	$(CC)  -I. -Iinclude -Icrypto/include $(BIN_CFLAGS) $(BIN_CPPFLAGS) -MMD -MF test/siphash_internal_test.d.tmp -MT $@ -c -o $@ test/siphash_internal_test.c
 	@touch test/siphash_internal_test.d.tmp
 	@if cmp test/siphash_internal_test.d.tmp test/siphash_internal_test.d > /dev/null 2> /dev/null; then \
 		rm -f test/siphash_internal_test.d.tmp; \
 	else \
 		mv test/siphash_internal_test.d.tmp test/siphash_internal_test.d; \
 	fi
+test/sm2crypttest: test/sm2crypttest.o test/libtestutil.a libcrypto.a
+	rm -f test/sm2crypttest
+	$${LDCMD:-$(CC)} $(BIN_CFLAGS) -L. $(BIN_LDFLAGS) \
+		-o test/sm2crypttest test/sm2crypttest.o \
+		 test/libtestutil.a -lcrypto $(BIN_EX_LIBS)
+test/sm2crypttest.o: test/sm2crypttest.c
+	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -MMD -MF test/sm2crypttest.d.tmp -MT $@ -c -o $@ test/sm2crypttest.c
+	@touch test/sm2crypttest.d.tmp
+	@if cmp test/sm2crypttest.d.tmp test/sm2crypttest.d > /dev/null 2> /dev/null; then \
+		rm -f test/sm2crypttest.d.tmp; \
+	else \
+		mv test/sm2crypttest.d.tmp test/sm2crypttest.d; \
+	fi
+test/sm2sigtest: test/sm2sigtest.o test/libtestutil.a libcrypto.a
+	rm -f test/sm2sigtest
+	$${LDCMD:-$(CC)} $(BIN_CFLAGS) -L. $(BIN_LDFLAGS) \
+		-o test/sm2sigtest test/sm2sigtest.o \
+		 test/libtestutil.a -lcrypto $(BIN_EX_LIBS)
+test/sm2sigtest.o: test/sm2sigtest.c
+	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -MMD -MF test/sm2sigtest.d.tmp -MT $@ -c -o $@ test/sm2sigtest.c
+	@touch test/sm2sigtest.d.tmp
+	@if cmp test/sm2sigtest.d.tmp test/sm2sigtest.d > /dev/null 2> /dev/null; then \
+		rm -f test/sm2sigtest.d.tmp; \
+	else \
+		mv test/sm2sigtest.d.tmp test/sm2sigtest.d; \
+	fi
 test/sm4_internal_test: test/sm4_internal_test.o test/libtestutil.a libcrypto.a
 	rm -f test/sm4_internal_test
 	$${LDCMD:-$(CC)} $(BIN_CFLAGS) -L. $(BIN_LDFLAGS) \
 		-o test/sm4_internal_test test/sm4_internal_test.o \
-		$(PLIB_LDFLAGS)  test/libtestutil.a libcrypto.a $(EX_LIBS)
+		 test/libtestutil.a libcrypto.a $(BIN_EX_LIBS)
 test/sm4_internal_test.o: test/sm4_internal_test.c
-	$(CC)  -I. -Iinclude -Icrypto/include $(BIN_CFLAGS) $(BIN_CPPFLAGS) -c -MMD -MF test/sm4_internal_test.d.tmp -MT $@ -c -o $@ test/sm4_internal_test.c
+	$(CC)  -I. -Iinclude -Icrypto/include $(BIN_CFLAGS) $(BIN_CPPFLAGS) -MMD -MF test/sm4_internal_test.d.tmp -MT $@ -c -o $@ test/sm4_internal_test.c
 	@touch test/sm4_internal_test.d.tmp
 	@if cmp test/sm4_internal_test.d.tmp test/sm4_internal_test.d > /dev/null 2> /dev/null; then \
 		rm -f test/sm4_internal_test.d.tmp; \
@@ -9156,9 +8850,9 @@ test/srptest: test/srptest.o test/libtestutil.a libcrypto.a
 	rm -f test/srptest
 	$${LDCMD:-$(CC)} $(BIN_CFLAGS) -L. $(BIN_LDFLAGS) \
 		-o test/srptest test/srptest.o \
-		$(PLIB_LDFLAGS)  test/libtestutil.a -lcrypto $(EX_LIBS)
+		 test/libtestutil.a -lcrypto $(BIN_EX_LIBS)
 test/srptest.o: test/srptest.c
-	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -c -MMD -MF test/srptest.d.tmp -MT $@ -c -o $@ test/srptest.c
+	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -MMD -MF test/srptest.d.tmp -MT $@ -c -o $@ test/srptest.c
 	@touch test/srptest.d.tmp
 	@if cmp test/srptest.d.tmp test/srptest.d > /dev/null 2> /dev/null; then \
 		rm -f test/srptest.d.tmp; \
@@ -9169,9 +8863,9 @@ test/ssl_cert_table_internal_test: test/ssl_cert_table_internal_test.o test/libt
 	rm -f test/ssl_cert_table_internal_test
 	$${LDCMD:-$(CC)} $(BIN_CFLAGS) -L. $(BIN_LDFLAGS) \
 		-o test/ssl_cert_table_internal_test test/ssl_cert_table_internal_test.o \
-		$(PLIB_LDFLAGS)  test/libtestutil.a -lcrypto $(EX_LIBS)
+		 test/libtestutil.a -lcrypto $(BIN_EX_LIBS)
 test/ssl_cert_table_internal_test.o: test/ssl_cert_table_internal_test.c
-	$(CC)  -I. -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -c -MMD -MF test/ssl_cert_table_internal_test.d.tmp -MT $@ -c -o $@ test/ssl_cert_table_internal_test.c
+	$(CC)  -I. -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -MMD -MF test/ssl_cert_table_internal_test.d.tmp -MT $@ -c -o $@ test/ssl_cert_table_internal_test.c
 	@touch test/ssl_cert_table_internal_test.d.tmp
 	@if cmp test/ssl_cert_table_internal_test.d.tmp test/ssl_cert_table_internal_test.d > /dev/null 2> /dev/null; then \
 		rm -f test/ssl_cert_table_internal_test.d.tmp; \
@@ -9182,9 +8876,9 @@ test/ssl_test: test/handshake_helper.o test/ssl_test.o test/ssl_test_ctx.o libss
 	rm -f test/ssl_test
 	$${LDCMD:-$(CC)} $(BIN_CFLAGS) -L. $(BIN_LDFLAGS) \
 		-o test/ssl_test test/handshake_helper.o test/ssl_test.o test/ssl_test_ctx.o \
-		$(PLIB_LDFLAGS)  -lssl test/libtestutil.a -lcrypto $(EX_LIBS)
+		 -lssl test/libtestutil.a -lcrypto $(BIN_EX_LIBS)
 test/handshake_helper.o: test/handshake_helper.c
-	$(CC)  -I. -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -c -MMD -MF test/handshake_helper.d.tmp -MT $@ -c -o $@ test/handshake_helper.c
+	$(CC)  -I. -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -MMD -MF test/handshake_helper.d.tmp -MT $@ -c -o $@ test/handshake_helper.c
 	@touch test/handshake_helper.d.tmp
 	@if cmp test/handshake_helper.d.tmp test/handshake_helper.d > /dev/null 2> /dev/null; then \
 		rm -f test/handshake_helper.d.tmp; \
@@ -9192,7 +8886,7 @@ test/handshake_helper.o: test/handshake_helper.c
 		mv test/handshake_helper.d.tmp test/handshake_helper.d; \
 	fi
 test/ssl_test.o: test/ssl_test.c
-	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -c -MMD -MF test/ssl_test.d.tmp -MT $@ -c -o $@ test/ssl_test.c
+	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -MMD -MF test/ssl_test.d.tmp -MT $@ -c -o $@ test/ssl_test.c
 	@touch test/ssl_test.d.tmp
 	@if cmp test/ssl_test.d.tmp test/ssl_test.d > /dev/null 2> /dev/null; then \
 		rm -f test/ssl_test.d.tmp; \
@@ -9200,7 +8894,7 @@ test/ssl_test.o: test/ssl_test.c
 		mv test/ssl_test.d.tmp test/ssl_test.d; \
 	fi
 test/ssl_test_ctx.o: test/ssl_test_ctx.c
-	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -c -MMD -MF test/ssl_test_ctx.d.tmp -MT $@ -c -o $@ test/ssl_test_ctx.c
+	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -MMD -MF test/ssl_test_ctx.d.tmp -MT $@ -c -o $@ test/ssl_test_ctx.c
 	@touch test/ssl_test_ctx.d.tmp
 	@if cmp test/ssl_test_ctx.d.tmp test/ssl_test_ctx.d > /dev/null 2> /dev/null; then \
 		rm -f test/ssl_test_ctx.d.tmp; \
@@ -9211,9 +8905,9 @@ test/ssl_test_ctx_test: test/ssl_test_ctx.o test/ssl_test_ctx_test.o libssl.a te
 	rm -f test/ssl_test_ctx_test
 	$${LDCMD:-$(CC)} $(BIN_CFLAGS) -L. $(BIN_LDFLAGS) \
 		-o test/ssl_test_ctx_test test/ssl_test_ctx.o test/ssl_test_ctx_test.o \
-		$(PLIB_LDFLAGS)  -lssl test/libtestutil.a -lcrypto $(EX_LIBS)
+		 -lssl test/libtestutil.a -lcrypto $(BIN_EX_LIBS)
 test/ssl_test_ctx_test.o: test/ssl_test_ctx_test.c
-	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -c -MMD -MF test/ssl_test_ctx_test.d.tmp -MT $@ -c -o $@ test/ssl_test_ctx_test.c
+	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -MMD -MF test/ssl_test_ctx_test.d.tmp -MT $@ -c -o $@ test/ssl_test_ctx_test.c
 	@touch test/ssl_test_ctx_test.d.tmp
 	@if cmp test/ssl_test_ctx_test.d.tmp test/ssl_test_ctx_test.d > /dev/null 2> /dev/null; then \
 		rm -f test/ssl_test_ctx_test.d.tmp; \
@@ -9224,9 +8918,9 @@ test/sslapitest: test/sslapitest.o test/ssltestlib.o libssl.a test/libtestutil.a
 	rm -f test/sslapitest
 	$${LDCMD:-$(CC)} $(BIN_CFLAGS) -L. $(BIN_LDFLAGS) \
 		-o test/sslapitest test/sslapitest.o test/ssltestlib.o \
-		$(PLIB_LDFLAGS)  -lssl test/libtestutil.a -lcrypto $(EX_LIBS)
+		 -lssl test/libtestutil.a -lcrypto $(BIN_EX_LIBS)
 test/sslapitest.o: test/sslapitest.c
-	$(CC)  -Iinclude -I. $(BIN_CFLAGS) $(BIN_CPPFLAGS) -c -MMD -MF test/sslapitest.d.tmp -MT $@ -c -o $@ test/sslapitest.c
+	$(CC)  -Iinclude -I. $(BIN_CFLAGS) $(BIN_CPPFLAGS) -MMD -MF test/sslapitest.d.tmp -MT $@ -c -o $@ test/sslapitest.c
 	@touch test/sslapitest.d.tmp
 	@if cmp test/sslapitest.d.tmp test/sslapitest.d > /dev/null 2> /dev/null; then \
 		rm -f test/sslapitest.d.tmp; \
@@ -9237,9 +8931,9 @@ test/sslbuffertest: test/sslbuffertest.o test/ssltestlib.o libssl.a test/libtest
 	rm -f test/sslbuffertest
 	$${LDCMD:-$(CC)} $(BIN_CFLAGS) -L. $(BIN_LDFLAGS) \
 		-o test/sslbuffertest test/sslbuffertest.o test/ssltestlib.o \
-		$(PLIB_LDFLAGS)  -lssl test/libtestutil.a -lcrypto $(EX_LIBS)
+		 -lssl test/libtestutil.a -lcrypto $(BIN_EX_LIBS)
 test/sslbuffertest.o: test/sslbuffertest.c
-	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -c -MMD -MF test/sslbuffertest.d.tmp -MT $@ -c -o $@ test/sslbuffertest.c
+	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -MMD -MF test/sslbuffertest.d.tmp -MT $@ -c -o $@ test/sslbuffertest.c
 	@touch test/sslbuffertest.d.tmp
 	@if cmp test/sslbuffertest.d.tmp test/sslbuffertest.d > /dev/null 2> /dev/null; then \
 		rm -f test/sslbuffertest.d.tmp; \
@@ -9250,9 +8944,9 @@ test/sslcorrupttest: test/sslcorrupttest.o test/ssltestlib.o libssl.a test/libte
 	rm -f test/sslcorrupttest
 	$${LDCMD:-$(CC)} $(BIN_CFLAGS) -L. $(BIN_LDFLAGS) \
 		-o test/sslcorrupttest test/sslcorrupttest.o test/ssltestlib.o \
-		$(PLIB_LDFLAGS)  -lssl test/libtestutil.a -lcrypto $(EX_LIBS)
+		 -lssl test/libtestutil.a -lcrypto $(BIN_EX_LIBS)
 test/sslcorrupttest.o: test/sslcorrupttest.c
-	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -c -MMD -MF test/sslcorrupttest.d.tmp -MT $@ -c -o $@ test/sslcorrupttest.c
+	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -MMD -MF test/sslcorrupttest.d.tmp -MT $@ -c -o $@ test/sslcorrupttest.c
 	@touch test/sslcorrupttest.d.tmp
 	@if cmp test/sslcorrupttest.d.tmp test/sslcorrupttest.d > /dev/null 2> /dev/null; then \
 		rm -f test/sslcorrupttest.d.tmp; \
@@ -9263,9 +8957,9 @@ test/ssltest_old: test/ssltest_old.o libssl.a libcrypto.a
 	rm -f test/ssltest_old
 	$${LDCMD:-$(CC)} $(BIN_CFLAGS) -L. $(BIN_LDFLAGS) \
 		-o test/ssltest_old test/ssltest_old.o \
-		$(PLIB_LDFLAGS)  -lssl -lcrypto $(EX_LIBS)
+		 -lssl -lcrypto $(BIN_EX_LIBS)
 test/ssltest_old.o: test/ssltest_old.c
-	$(CC)  -I. -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -c -MMD -MF test/ssltest_old.d.tmp -MT $@ -c -o $@ test/ssltest_old.c
+	$(CC)  -I. -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -MMD -MF test/ssltest_old.d.tmp -MT $@ -c -o $@ test/ssltest_old.c
 	@touch test/ssltest_old.d.tmp
 	@if cmp test/ssltest_old.d.tmp test/ssltest_old.d > /dev/null 2> /dev/null; then \
 		rm -f test/ssltest_old.d.tmp; \
@@ -9276,22 +8970,35 @@ test/stack_test: test/stack_test.o test/libtestutil.a libcrypto.a
 	rm -f test/stack_test
 	$${LDCMD:-$(CC)} $(BIN_CFLAGS) -L. $(BIN_LDFLAGS) \
 		-o test/stack_test test/stack_test.o \
-		$(PLIB_LDFLAGS)  test/libtestutil.a -lcrypto $(EX_LIBS)
+		 test/libtestutil.a -lcrypto $(BIN_EX_LIBS)
 test/stack_test.o: test/stack_test.c
-	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -c -MMD -MF test/stack_test.d.tmp -MT $@ -c -o $@ test/stack_test.c
+	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -MMD -MF test/stack_test.d.tmp -MT $@ -c -o $@ test/stack_test.c
 	@touch test/stack_test.d.tmp
 	@if cmp test/stack_test.d.tmp test/stack_test.d > /dev/null 2> /dev/null; then \
 		rm -f test/stack_test.d.tmp; \
 	else \
 		mv test/stack_test.d.tmp test/stack_test.d; \
 	fi
+test/sysdefaulttest: test/sysdefaulttest.o libssl.a test/libtestutil.a libcrypto.a
+	rm -f test/sysdefaulttest
+	$${LDCMD:-$(CC)} $(BIN_CFLAGS) -L. $(BIN_LDFLAGS) \
+		-o test/sysdefaulttest test/sysdefaulttest.o \
+		 -lssl test/libtestutil.a -lcrypto $(BIN_EX_LIBS)
+test/sysdefaulttest.o: test/sysdefaulttest.c
+	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -MMD -MF test/sysdefaulttest.d.tmp -MT $@ -c -o $@ test/sysdefaulttest.c
+	@touch test/sysdefaulttest.d.tmp
+	@if cmp test/sysdefaulttest.d.tmp test/sysdefaulttest.d > /dev/null 2> /dev/null; then \
+		rm -f test/sysdefaulttest.d.tmp; \
+	else \
+		mv test/sysdefaulttest.d.tmp test/sysdefaulttest.d; \
+	fi
 test/test_test: test/test_test.o test/libtestutil.a libcrypto.a
 	rm -f test/test_test
 	$${LDCMD:-$(CC)} $(BIN_CFLAGS) -L. $(BIN_LDFLAGS) \
 		-o test/test_test test/test_test.o \
-		$(PLIB_LDFLAGS)  test/libtestutil.a -lcrypto $(EX_LIBS)
+		 test/libtestutil.a -lcrypto $(BIN_EX_LIBS)
 test/test_test.o: test/test_test.c
-	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -c -MMD -MF test/test_test.d.tmp -MT $@ -c -o $@ test/test_test.c
+	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -MMD -MF test/test_test.d.tmp -MT $@ -c -o $@ test/test_test.c
 	@touch test/test_test.d.tmp
 	@if cmp test/test_test.d.tmp test/test_test.d > /dev/null 2> /dev/null; then \
 		rm -f test/test_test.d.tmp; \
@@ -9302,9 +9009,9 @@ test/threadstest: test/threadstest.o test/libtestutil.a libcrypto.a
 	rm -f test/threadstest
 	$${LDCMD:-$(CC)} $(BIN_CFLAGS) -L. $(BIN_LDFLAGS) \
 		-o test/threadstest test/threadstest.o \
-		$(PLIB_LDFLAGS)  test/libtestutil.a -lcrypto $(EX_LIBS)
+		 test/libtestutil.a -lcrypto $(BIN_EX_LIBS)
 test/threadstest.o: test/threadstest.c
-	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -c -MMD -MF test/threadstest.d.tmp -MT $@ -c -o $@ test/threadstest.c
+	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -MMD -MF test/threadstest.d.tmp -MT $@ -c -o $@ test/threadstest.c
 	@touch test/threadstest.d.tmp
 	@if cmp test/threadstest.d.tmp test/threadstest.d > /dev/null 2> /dev/null; then \
 		rm -f test/threadstest.d.tmp; \
@@ -9315,9 +9022,9 @@ test/time_offset_test: test/time_offset_test.o test/libtestutil.a libcrypto.a
 	rm -f test/time_offset_test
 	$${LDCMD:-$(CC)} $(BIN_CFLAGS) -L. $(BIN_LDFLAGS) \
 		-o test/time_offset_test test/time_offset_test.o \
-		$(PLIB_LDFLAGS)  test/libtestutil.a -lcrypto $(EX_LIBS)
+		 test/libtestutil.a -lcrypto $(BIN_EX_LIBS)
 test/time_offset_test.o: test/time_offset_test.c
-	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -c -MMD -MF test/time_offset_test.d.tmp -MT $@ -c -o $@ test/time_offset_test.c
+	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -MMD -MF test/time_offset_test.d.tmp -MT $@ -c -o $@ test/time_offset_test.c
 	@touch test/time_offset_test.d.tmp
 	@if cmp test/time_offset_test.d.tmp test/time_offset_test.d > /dev/null 2> /dev/null; then \
 		rm -f test/time_offset_test.d.tmp; \
@@ -9328,9 +9035,9 @@ test/tls13ccstest: test/ssltestlib.o test/tls13ccstest.o libssl.a test/libtestut
 	rm -f test/tls13ccstest
 	$${LDCMD:-$(CC)} $(BIN_CFLAGS) -L. $(BIN_LDFLAGS) \
 		-o test/tls13ccstest test/ssltestlib.o test/tls13ccstest.o \
-		$(PLIB_LDFLAGS)  -lssl test/libtestutil.a -lcrypto $(EX_LIBS)
+		 -lssl test/libtestutil.a -lcrypto $(BIN_EX_LIBS)
 test/tls13ccstest.o: test/tls13ccstest.c
-	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -c -MMD -MF test/tls13ccstest.d.tmp -MT $@ -c -o $@ test/tls13ccstest.c
+	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -MMD -MF test/tls13ccstest.d.tmp -MT $@ -c -o $@ test/tls13ccstest.c
 	@touch test/tls13ccstest.d.tmp
 	@if cmp test/tls13ccstest.d.tmp test/tls13ccstest.d > /dev/null 2> /dev/null; then \
 		rm -f test/tls13ccstest.d.tmp; \
@@ -9341,9 +9048,9 @@ test/tls13encryptiontest: test/tls13encryptiontest.o libssl.a test/libtestutil.a
 	rm -f test/tls13encryptiontest
 	$${LDCMD:-$(CC)} $(BIN_CFLAGS) -L. $(BIN_LDFLAGS) \
 		-o test/tls13encryptiontest test/tls13encryptiontest.o \
-		$(PLIB_LDFLAGS)  libssl.a test/libtestutil.a -lcrypto $(EX_LIBS)
+		 libssl.a test/libtestutil.a -lcrypto $(BIN_EX_LIBS)
 test/tls13encryptiontest.o: test/tls13encryptiontest.c
-	$(CC)  -I. -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -c -MMD -MF test/tls13encryptiontest.d.tmp -MT $@ -c -o $@ test/tls13encryptiontest.c
+	$(CC)  -I. -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -MMD -MF test/tls13encryptiontest.d.tmp -MT $@ -c -o $@ test/tls13encryptiontest.c
 	@touch test/tls13encryptiontest.d.tmp
 	@if cmp test/tls13encryptiontest.d.tmp test/tls13encryptiontest.d > /dev/null 2> /dev/null; then \
 		rm -f test/tls13encryptiontest.d.tmp; \
@@ -9354,9 +9061,9 @@ test/uitest: test/uitest.o apps/libapps.a libssl.a test/libtestutil.a libcrypto.
 	rm -f test/uitest
 	$${LDCMD:-$(CC)} $(BIN_CFLAGS) -L. $(BIN_LDFLAGS) \
 		-o test/uitest test/uitest.o \
-		$(PLIB_LDFLAGS)  apps/libapps.a -lssl test/libtestutil.a -lcrypto $(EX_LIBS)
+		 apps/libapps.a -lssl test/libtestutil.a -lcrypto $(BIN_EX_LIBS)
 test/uitest.o: test/uitest.c
-	$(CC)  -I. -Iinclude -Iapps $(BIN_CFLAGS) $(BIN_CPPFLAGS) -c -MMD -MF test/uitest.d.tmp -MT $@ -c -o $@ test/uitest.c
+	$(CC)  -I. -Iinclude -Iapps $(BIN_CFLAGS) $(BIN_CPPFLAGS) -MMD -MF test/uitest.d.tmp -MT $@ -c -o $@ test/uitest.c
 	@touch test/uitest.d.tmp
 	@if cmp test/uitest.d.tmp test/uitest.d > /dev/null 2> /dev/null; then \
 		rm -f test/uitest.d.tmp; \
@@ -9367,9 +9074,9 @@ test/v3ext: test/v3ext.o test/libtestutil.a libcrypto.a
 	rm -f test/v3ext
 	$${LDCMD:-$(CC)} $(BIN_CFLAGS) -L. $(BIN_LDFLAGS) \
 		-o test/v3ext test/v3ext.o \
-		$(PLIB_LDFLAGS)  test/libtestutil.a -lcrypto $(EX_LIBS)
+		 test/libtestutil.a -lcrypto $(BIN_EX_LIBS)
 test/v3ext.o: test/v3ext.c
-	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -c -MMD -MF test/v3ext.d.tmp -MT $@ -c -o $@ test/v3ext.c
+	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -MMD -MF test/v3ext.d.tmp -MT $@ -c -o $@ test/v3ext.c
 	@touch test/v3ext.d.tmp
 	@if cmp test/v3ext.d.tmp test/v3ext.d > /dev/null 2> /dev/null; then \
 		rm -f test/v3ext.d.tmp; \
@@ -9380,9 +9087,9 @@ test/v3nametest: test/v3nametest.o test/libtestutil.a libcrypto.a
 	rm -f test/v3nametest
 	$${LDCMD:-$(CC)} $(BIN_CFLAGS) -L. $(BIN_LDFLAGS) \
 		-o test/v3nametest test/v3nametest.o \
-		$(PLIB_LDFLAGS)  test/libtestutil.a -lcrypto $(EX_LIBS)
+		 test/libtestutil.a -lcrypto $(BIN_EX_LIBS)
 test/v3nametest.o: test/v3nametest.c
-	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -c -MMD -MF test/v3nametest.d.tmp -MT $@ -c -o $@ test/v3nametest.c
+	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -MMD -MF test/v3nametest.d.tmp -MT $@ -c -o $@ test/v3nametest.c
 	@touch test/v3nametest.d.tmp
 	@if cmp test/v3nametest.d.tmp test/v3nametest.d > /dev/null 2> /dev/null; then \
 		rm -f test/v3nametest.d.tmp; \
@@ -9393,9 +9100,9 @@ test/verify_extra_test: test/verify_extra_test.o test/libtestutil.a libcrypto.a
 	rm -f test/verify_extra_test
 	$${LDCMD:-$(CC)} $(BIN_CFLAGS) -L. $(BIN_LDFLAGS) \
 		-o test/verify_extra_test test/verify_extra_test.o \
-		$(PLIB_LDFLAGS)  test/libtestutil.a -lcrypto $(EX_LIBS)
+		 test/libtestutil.a -lcrypto $(BIN_EX_LIBS)
 test/verify_extra_test.o: test/verify_extra_test.c
-	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -c -MMD -MF test/verify_extra_test.d.tmp -MT $@ -c -o $@ test/verify_extra_test.c
+	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -MMD -MF test/verify_extra_test.d.tmp -MT $@ -c -o $@ test/verify_extra_test.c
 	@touch test/verify_extra_test.d.tmp
 	@if cmp test/verify_extra_test.d.tmp test/verify_extra_test.d > /dev/null 2> /dev/null; then \
 		rm -f test/verify_extra_test.d.tmp; \
@@ -9406,9 +9113,9 @@ test/wpackettest: test/wpackettest.o libssl.a test/libtestutil.a libcrypto.a
 	rm -f test/wpackettest
 	$${LDCMD:-$(CC)} $(BIN_CFLAGS) -L. $(BIN_LDFLAGS) \
 		-o test/wpackettest test/wpackettest.o \
-		$(PLIB_LDFLAGS)  libssl.a test/libtestutil.a -lcrypto $(EX_LIBS)
+		 libssl.a test/libtestutil.a -lcrypto $(BIN_EX_LIBS)
 test/wpackettest.o: test/wpackettest.c
-	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -c -MMD -MF test/wpackettest.d.tmp -MT $@ -c -o $@ test/wpackettest.c
+	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -MMD -MF test/wpackettest.d.tmp -MT $@ -c -o $@ test/wpackettest.c
 	@touch test/wpackettest.d.tmp
 	@if cmp test/wpackettest.d.tmp test/wpackettest.d > /dev/null 2> /dev/null; then \
 		rm -f test/wpackettest.d.tmp; \
@@ -9419,9 +9126,9 @@ test/x509_check_cert_pkey_test: test/x509_check_cert_pkey_test.o test/libtestuti
 	rm -f test/x509_check_cert_pkey_test
 	$${LDCMD:-$(CC)} $(BIN_CFLAGS) -L. $(BIN_LDFLAGS) \
 		-o test/x509_check_cert_pkey_test test/x509_check_cert_pkey_test.o \
-		$(PLIB_LDFLAGS)  test/libtestutil.a -lcrypto $(EX_LIBS)
+		 test/libtestutil.a -lcrypto $(BIN_EX_LIBS)
 test/x509_check_cert_pkey_test.o: test/x509_check_cert_pkey_test.c
-	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -c -MMD -MF test/x509_check_cert_pkey_test.d.tmp -MT $@ -c -o $@ test/x509_check_cert_pkey_test.c
+	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -MMD -MF test/x509_check_cert_pkey_test.d.tmp -MT $@ -c -o $@ test/x509_check_cert_pkey_test.c
 	@touch test/x509_check_cert_pkey_test.d.tmp
 	@if cmp test/x509_check_cert_pkey_test.d.tmp test/x509_check_cert_pkey_test.d > /dev/null 2> /dev/null; then \
 		rm -f test/x509_check_cert_pkey_test.d.tmp; \
@@ -9432,9 +9139,9 @@ test/x509_dup_cert_test: test/x509_dup_cert_test.o test/libtestutil.a libcrypto.
 	rm -f test/x509_dup_cert_test
 	$${LDCMD:-$(CC)} $(BIN_CFLAGS) -L. $(BIN_LDFLAGS) \
 		-o test/x509_dup_cert_test test/x509_dup_cert_test.o \
-		$(PLIB_LDFLAGS)  test/libtestutil.a -lcrypto $(EX_LIBS)
+		 test/libtestutil.a -lcrypto $(BIN_EX_LIBS)
 test/x509_dup_cert_test.o: test/x509_dup_cert_test.c
-	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -c -MMD -MF test/x509_dup_cert_test.d.tmp -MT $@ -c -o $@ test/x509_dup_cert_test.c
+	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -MMD -MF test/x509_dup_cert_test.d.tmp -MT $@ -c -o $@ test/x509_dup_cert_test.c
 	@touch test/x509_dup_cert_test.d.tmp
 	@if cmp test/x509_dup_cert_test.d.tmp test/x509_dup_cert_test.d > /dev/null 2> /dev/null; then \
 		rm -f test/x509_dup_cert_test.d.tmp; \
@@ -9445,9 +9152,9 @@ test/x509_internal_test: test/x509_internal_test.o test/libtestutil.a libcrypto.
 	rm -f test/x509_internal_test
 	$${LDCMD:-$(CC)} $(BIN_CFLAGS) -L. $(BIN_LDFLAGS) \
 		-o test/x509_internal_test test/x509_internal_test.o \
-		$(PLIB_LDFLAGS)  test/libtestutil.a libcrypto.a $(EX_LIBS)
+		 test/libtestutil.a libcrypto.a $(BIN_EX_LIBS)
 test/x509_internal_test.o: test/x509_internal_test.c
-	$(CC)  -I. -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -c -MMD -MF test/x509_internal_test.d.tmp -MT $@ -c -o $@ test/x509_internal_test.c
+	$(CC)  -I. -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -MMD -MF test/x509_internal_test.d.tmp -MT $@ -c -o $@ test/x509_internal_test.c
 	@touch test/x509_internal_test.d.tmp
 	@if cmp test/x509_internal_test.d.tmp test/x509_internal_test.d > /dev/null 2> /dev/null; then \
 		rm -f test/x509_internal_test.d.tmp; \
@@ -9458,9 +9165,9 @@ test/x509_time_test: test/x509_time_test.o test/libtestutil.a libcrypto.a
 	rm -f test/x509_time_test
 	$${LDCMD:-$(CC)} $(BIN_CFLAGS) -L. $(BIN_LDFLAGS) \
 		-o test/x509_time_test test/x509_time_test.o \
-		$(PLIB_LDFLAGS)  test/libtestutil.a -lcrypto $(EX_LIBS)
+		 test/libtestutil.a -lcrypto $(BIN_EX_LIBS)
 test/x509_time_test.o: test/x509_time_test.c
-	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -c -MMD -MF test/x509_time_test.d.tmp -MT $@ -c -o $@ test/x509_time_test.c
+	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -MMD -MF test/x509_time_test.d.tmp -MT $@ -c -o $@ test/x509_time_test.c
 	@touch test/x509_time_test.d.tmp
 	@if cmp test/x509_time_test.d.tmp test/x509_time_test.d > /dev/null 2> /dev/null; then \
 		rm -f test/x509_time_test.d.tmp; \
@@ -9471,9 +9178,9 @@ test/x509aux: test/x509aux.o test/libtestutil.a libcrypto.a
 	rm -f test/x509aux
 	$${LDCMD:-$(CC)} $(BIN_CFLAGS) -L. $(BIN_LDFLAGS) \
 		-o test/x509aux test/x509aux.o \
-		$(PLIB_LDFLAGS)  test/libtestutil.a -lcrypto $(EX_LIBS)
+		 test/libtestutil.a -lcrypto $(BIN_EX_LIBS)
 test/x509aux.o: test/x509aux.c
-	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -c -MMD -MF test/x509aux.d.tmp -MT $@ -c -o $@ test/x509aux.c
+	$(CC)  -Iinclude $(BIN_CFLAGS) $(BIN_CPPFLAGS) -MMD -MF test/x509aux.d.tmp -MT $@ -c -o $@ test/x509aux.c
 	@touch test/x509aux.d.tmp
 	@if cmp test/x509aux.d.tmp test/x509aux.d > /dev/null 2> /dev/null; then \
 		rm -f test/x509aux.d.tmp; \
@@ -9548,6 +9255,7 @@ crypto/rsa crypto/rsa/: crypto/rsa/rsa_ameth.o crypto/rsa/rsa_asn1.o crypto/rsa/
 crypto/seed crypto/seed/: crypto/seed/seed.o crypto/seed/seed_cbc.o crypto/seed/seed_cfb.o crypto/seed/seed_ecb.o crypto/seed/seed_ofb.o
 crypto/sha crypto/sha/: crypto/sha/keccak1600.o crypto/sha/sha1_one.o crypto/sha/sha1dgst.o crypto/sha/sha256.o crypto/sha/sha512.o
 crypto/siphash crypto/siphash/: crypto/siphash/siphash.o crypto/siphash/siphash_ameth.o crypto/siphash/siphash_pmeth.o
+crypto/sm2 crypto/sm2/: crypto/sm2/sm2_crypt.o crypto/sm2/sm2_err.o crypto/sm2/sm2_sign.o crypto/sm2/sm2_za.o
 crypto/sm3 crypto/sm3/: crypto/sm3/m_sm3.o crypto/sm3/sm3.o
 crypto/sm4 crypto/sm4/: crypto/sm4/sm4.o
 crypto/srp crypto/srp/: crypto/srp/srp_lib.o crypto/srp/srp_vfy.o

@@ -533,6 +533,12 @@ static bssl::UniquePtr<SSL_CTX> SetupCtx(const TestConfig *config) {
       !SSL_CTX_set_max_proto_version(ssl_ctx.get(), TLS1_3_VERSION)) {
     return nullptr;
   }
+#else
+  /* Ensure we don't negotiate TLSv1.3 until we can handle it */
+  if (!config->is_dtls &&
+      !SSL_CTX_set_max_proto_version(ssl_ctx.get(), TLS1_2_VERSION)) {
+    return nullptr;
+  }
 #endif
 
   std::string cipher_list = "ALL";
@@ -968,7 +974,7 @@ static bool DoExchange(bssl::UniquePtr<SSL_SESSION> *out_session,
   }
   if (config->enable_all_curves) {
     static const int kAllCurves[] = {
-      NID_X9_62_prime256v1, NID_secp384r1, NID_secp521r1, NID_X25519,
+      NID_X25519, NID_X9_62_prime256v1, NID_X448, NID_secp521r1, NID_secp384r1
     };
     if (!SSL_set1_curves(ssl.get(), kAllCurves,
                          OPENSSL_ARRAY_SIZE(kAllCurves))) {

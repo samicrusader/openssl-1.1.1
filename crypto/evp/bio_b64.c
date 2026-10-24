@@ -1,5 +1,5 @@
 /*
- * Copyright 1995-2016 The OpenSSL Project Authors. All Rights Reserved.
+ * Copyright 1995-2018 The OpenSSL Project Authors. All Rights Reserved.
  *
  * Licensed under the OpenSSL license (the "License").  You may not use
  * this file except in compliance with the License.  You can obtain a copy
@@ -289,6 +289,14 @@ static int b64_read(BIO *b, char *out, int outl)
                                  (unsigned char *)ctx->tmp, i);
             ctx->tmp_len = 0;
         }
+        /*
+         * If eof or an error was signalled, then the condition
+         * 'ctx->cont <= 0' will prevent b64_read() from reading
+         * more data on subsequent calls. This assignment was
+         * deleted accidentally in commit 5562cfaca4f3.
+         */
+        ctx->cont = i;
+
         ctx->buf_off = 0;
         if (i < 0) {
             ret_code = 0;

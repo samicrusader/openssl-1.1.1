@@ -1,5 +1,5 @@
 #!/usr/bin/env perl
-# Copyright 2017 The OpenSSL Project Authors. All Rights Reserved.
+# Copyright 2017-2018 The OpenSSL Project Authors. All Rights Reserved.
 #
 # Licensed under the OpenSSL license (the "License").  You may not use
 # this file except in compliance with the License.  You can obtain a copy
@@ -386,5 +386,7 @@ iotas:
 .asciz	"Keccak-1600 absorb and squeeze for AVX512VL, CRYPTOGAMS by <appro\@openssl.org>"
 ___
 
+$output=pop;
+open STDOUT,">$output";
 print $code;
 close STDOUT;

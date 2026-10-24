@@ -25,6 +25,12 @@
 #endif
 #include <ctype.h>
 #include <errno.h>
+#ifdef __VMS
+# include <descrip.h>
+# include <iledef.h>
+# include <fscndef.h>
+# include <starlet.h>
+#endif
 #include <openssl/err.h>
 #include <openssl/x509.h>
 #include <openssl/x509v3.h>
@@ -1532,12 +1538,27 @@ CA_DB *load_index(const char *dbfile, DB_ATTR *db_attr)
     BIO *in;
     CONF *dbattr_conf = NULL;
     char buf[BSIZE];
+#ifndef OPENSSL_NO_POSIX_IO
+    FILE *dbfp;
+    struct stat dbst;
+#endif
 
     in = BIO_new_file(dbfile, "r");
     if (in == NULL) {
         ERR_print_errors(bio_err);
         goto err;
     }
+
+#ifndef OPENSSL_NO_POSIX_IO
+    BIO_get_fp(in, &dbfp);
+    if (fstat(fileno(dbfp), &dbst) == -1) {
+        SYSerr(SYS_F_FSTAT, errno);
+        ERR_add_error_data(3, "fstat('", dbfile, "')");
+        ERR_print_errors(bio_err);
+        goto err;
+    }
+#endif
+
     if ((tmpdb = TXT_DB_read(in, DB_NUMBER)) == NULL)
         goto err;
 
@@ -1563,6 +1584,11 @@ CA_DB *load_index(const char *dbfile, DB_ATTR *db_attr)
             retdb->attributes.unique_subject = parse_yesno(p, 1);
         }
     }
+
+    retdb->dbfname = OPENSSL_strdup(dbfile);
+#ifndef OPENSSL_NO_POSIX_IO
+    retdb->dbst = dbst;
+#endif
 
  err:
     NCONF_free(dbattr_conf);
@@ -1709,6 +1735,7 @@ void free_index(CA_DB *db)
 {
     if (db) {
         TXT_DB_free(db->db);
+        OPENSSL_free(db->dbfname);
         OPENSSL_free(db);
     }
 }
@@ -2337,6 +2364,116 @@ int app_isdir(const char *name)
 # else
     return -1;
 # endif
+}
+#endif
+
+/* app_dirname section */
+
+/*
+ * This exactly follows what POSIX's
+ * dirname does, but is implemented
+ * in a more platform independent way.
+ *
+ * path        dirname
+ * /usr/lib    /usr
+ * /usr/       /
+ * usr         .
+ * /           /
+ * .           .
+ * ..          .
+ * ""          .
+ *
+ * Note: this function also keeps the
+ * possibility of modifying the 'path'
+ * string same as POSIX dirname.
+ */
+static char *posix_dirname(char *path)
+{
+    size_t l;
+    char *ret = ".";
+
+    l = strlen(path);
+    if (l == 0)
+        goto out;
+    if (strcmp(path, ".") == 0)
+        goto out;
+    if (strcmp(path, "..") == 0)
+        goto out;
+    if (strcmp(path, "/") == 0) {
+        ret = "/";
+        goto out;
+    }
+    if (path[l - 1] == '/') {
+        /* /usr/ */
+        path[l - 1] = '\0';
+    }
+    if ((ret = strrchr(path, '/')) == NULL) {
+        /* usr */
+        ret = ".";
+    } else if (ret == path) {
+        /* /usr */
+        *++ret = '\0';
+        ret = path;
+    } else {
+        /* /usr/lib */
+        *ret = '\0';
+        ret = path;
+    }
+ out:
+    return ret;
+}
+
+/*
+ * TODO: implement app_dirname for Windows.
+ */
+#if !defined(_WIN32)
+char *app_dirname(char *path)
+{
+    return posix_dirname(path);
+}
+#elif defined(__VMS)
+/*
+ * sys$filescan fills the given item list with pointers into the original
+ * path string, so all we need to do is to find the file name and simply
+ * put a NUL byte wherever the FSCN$_NAME pointer points.  If there is no
+ * file name part and the path string isn't the empty string, we know for
+ * a fact that the whole string is a directory spec and return it as is.
+ * Otherwise or if that pointer is the starting address of the original
+ * path string, we know to return "sys$disk:[]", which corresponds to the
+ * Unixly ".".
+ *
+ * If sys$filescan returns an error status, we know that this is not
+ * parsable as a VMS file spec, and then use the fallback, in case we
+ * have a Unix type path.
+ */
+char *app_dirname(char *path)
+{
+    char *ret = "sys$disk:[]";
+    struct dsc$descriptor_s dsc_path = { 0 };
+    ile2 itemlist[] = {
+        {0, FSCN$_NAME, 0},
+        {0, 0, 0}
+    };
+    int fields;
+    int status;
+
+    dsc_path.dsc$a_pointer = path;
+    dsc_path.dsc$w_length = strlen(path);
+    status = sys$filescan(&dsc_path, itemlist, &fields, 0, 0);
+
+    if (!(status & 1))
+        return posix_dirname(path);
+
+    if ((fields & (1 << FSCN$_NAME)) == 0) {
+        if (dsc_path.dsc$w_length != 0)
+            ret = path;
+    } else if (itemlist[0].ile2$ps_bufaddr != path) {
+        if (itemlist[0].ile2$ps_bufaddr != path) {
+            *itemlist[0].ile2$ps_bufaddr = '\0';
+            ret = path;
+        }
+    }
+    return ret;
 }
 #endif
 

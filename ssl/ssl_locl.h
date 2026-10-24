@@ -381,7 +381,8 @@
 # define SSL_PKEY_GOST12_256     5
 # define SSL_PKEY_GOST12_512     6
 # define SSL_PKEY_ED25519        7
-# define SSL_PKEY_NUM            8
+# define SSL_PKEY_ED448          8
+# define SSL_PKEY_NUM            9
 /*
  * Pseudo-constant. GOST cipher suites can use different certs for 1
  * SSL_CIPHER. So let's see which one we have in fact.
@@ -590,6 +591,8 @@ struct ssl_session_st {
 # ifndef OPENSSL_NO_SRP
     char *srp_username;
 # endif
+    unsigned char *ticket_appdata;
+    size_t ticket_appdata_len;
     uint32_t flags;
     CRYPTO_RWLOCK *lock;
 };
@@ -730,13 +733,21 @@ DEFINE_LHASH_OF(SSL_SESSION);
 /* Needed in ssl_cert.c */
 DEFINE_LHASH_OF(X509_NAME);
 
-# define TLSEXT_KEYNAME_LENGTH 16
+# define TLSEXT_KEYNAME_LENGTH  16
+# define TLSEXT_TICK_KEY_LENGTH 32
+
+typedef struct ssl_ctx_ext_secure_st {
+    unsigned char tick_hmac_key[TLSEXT_TICK_KEY_LENGTH];
+    unsigned char tick_aes_key[TLSEXT_TICK_KEY_LENGTH];
+} SSL_CTX_EXT_SECURE;
 
 struct ssl_ctx_st {
     const SSL_METHOD *method;
     STACK_OF(SSL_CIPHER) *cipher_list;
     /* same as above but sorted for lookup */
     STACK_OF(SSL_CIPHER) *cipher_list_by_id;
+    /* TLSv1.3 specific ciphersuites */
+    STACK_OF(SSL_CIPHER) *tls13_ciphersuites;
     struct x509_store_st /* X509_STORE */ *cert_store;
     LHASH_OF(SSL_SESSION) *sessions;
     /*
@@ -816,6 +827,14 @@ struct ssl_ctx_st {
     /* verify cookie callback */
     int (*app_verify_cookie_cb) (SSL *ssl, const unsigned char *cookie,
                                  unsigned int cookie_len);
+
+    /* TLS1.3 app-controlled cookie generate callback */
+    int (*gen_stateless_cookie_cb) (SSL *ssl, unsigned char *cookie,
+                                    size_t *cookie_len);
+
+    /* TLS1.3 verify app-controlled cookie callback */
+    int (*verify_stateless_cookie_cb) (SSL *ssl, const unsigned char *cookie,
+                                       size_t cookie_len);
 
     CRYPTO_EX_DATA ex_data;
 
@@ -914,8 +933,7 @@ struct ssl_ctx_st {
         void *servername_arg;
         /* RFC 4507 session ticket keys */
         unsigned char tick_key_name[TLSEXT_KEYNAME_LENGTH];
-        unsigned char tick_hmac_key[32];
-        unsigned char tick_aes_key[32];
+        SSL_CTX_EXT_SECURE *secure;
         /* Callback to support customisation of ticket key setting */
         int (*ticket_key_cb) (SSL *ssl,
                               unsigned char *name, unsigned char *iv,
@@ -1024,6 +1042,11 @@ struct ssl_ctx_st {
     size_t (*record_padding_cb)(SSL *s, int type, size_t len, void *arg);
     void *record_padding_arg;
     size_t block_padding;
+
+    /* Session ticket appdata */
+    SSL_CTX_generate_session_ticket_fn generate_ticket_cb;
+    SSL_CTX_decrypt_session_ticket_fn decrypt_ticket_cb;
+    void *ticket_cb_data;
 };
 
 struct ssl_st {
@@ -1092,6 +1115,8 @@ struct ssl_st {
     /* crypto */
     STACK_OF(SSL_CIPHER) *cipher_list;
     STACK_OF(SSL_CIPHER) *cipher_list_by_id;
+    /* TLSv1.3 specific ciphersuites */
+    STACK_OF(SSL_CIPHER) *tls13_ciphersuites;
     /*
      * These are the ones being used, the ones in SSL_SESSION are the ones to
      * be 'copied' into these ones
@@ -1387,7 +1412,6 @@ struct ssl_st {
     size_t block_padding;
 
     CRYPTO_RWLOCK *lock;
-    RAND_DRBG *drbg;
 };
 
 /*
@@ -1962,6 +1986,7 @@ typedef enum downgrade_en {
 #define TLSEXT_SIGALG_gostr34102001_gostr3411                   0xeded
 
 #define TLSEXT_SIGALG_ed25519                                   0x0807
+#define TLSEXT_SIGALG_ed448                                     0x0808
 
 /* Known PSK key exchange modes */
 #define TLSEXT_KEX_MODE_KE                                      0x00
@@ -2181,10 +2206,10 @@ __owur int ssl_cipher_id_cmp(const SSL_CIPHER *a, const SSL_CIPHER *b);
 DECLARE_OBJ_BSEARCH_GLOBAL_CMP_FN(SSL_CIPHER, SSL_CIPHER, ssl_cipher_id);
 __owur int ssl_cipher_ptr_id_cmp(const SSL_CIPHER *const *ap,
                                  const SSL_CIPHER *const *bp);
-__owur STACK_OF(SSL_CIPHER) *ssl_create_cipher_list(const SSL_METHOD *meth,
-                                                    STACK_OF(SSL_CIPHER) **pref,
-                                                    STACK_OF(SSL_CIPHER)
-                                                    **sorted,
+__owur STACK_OF(SSL_CIPHER) *ssl_create_cipher_list(const SSL_METHOD *ssl_method,
+                                                    STACK_OF(SSL_CIPHER) *tls13_ciphersuites,
+                                                    STACK_OF(SSL_CIPHER) **cipher_list,
+                                                    STACK_OF(SSL_CIPHER) **cipher_list_by_id,
                                                     const char *rule_str,
                                                     CERT *c);
 __owur int ssl_cache_cipherlist(SSL *s, PACKET *cipher_suites, int sslv2format);
@@ -2217,7 +2242,6 @@ __owur int ssl_build_cert_chain(SSL *s, SSL_CTX *ctx, int flags);
 __owur int ssl_cert_set_cert_store(CERT *c, X509_STORE *store, int chain,
                                    int ref);
 
-__owur int ssl_randbytes(SSL *s, unsigned char *buf, size_t num);
 __owur int ssl_security(const SSL *s, int op, int bits, int nid, void *other);
 __owur int ssl_ctx_security(const SSL_CTX *ctx, int op, int bits, int nid,
                             void *other);
@@ -2444,30 +2468,12 @@ void tls1_get_supported_groups(SSL *s, const uint16_t **pgroups,
 
 __owur int tls1_set_server_sigalgs(SSL *s);
 
-/* Return codes for tls_get_ticket_from_client() and tls_decrypt_ticket() */
-typedef enum ticket_en {
-    /* fatal error, malloc failure */
-    TICKET_FATAL_ERR_MALLOC,
-    /* fatal error, either from parsing or decrypting the ticket */
-    TICKET_FATAL_ERR_OTHER,
-    /* No ticket present */
-    TICKET_NONE,
-    /* Empty ticket present */
-    TICKET_EMPTY,
-    /* the ticket couldn't be decrypted */
-    TICKET_NO_DECRYPT,
-    /* a ticket was successfully decrypted */
-    TICKET_SUCCESS,
-    /* same as above but the ticket needs to be renewed */
-    TICKET_SUCCESS_RENEW
-} TICKET_RETURN;
-
-__owur TICKET_RETURN tls_get_ticket_from_client(SSL *s, CLIENTHELLO_MSG *hello,
-                                                SSL_SESSION **ret);
-__owur TICKET_RETURN tls_decrypt_ticket(SSL *s, const unsigned char *etick,
-                                        size_t eticklen,
-                                        const unsigned char *sess_id,
-                                        size_t sesslen, SSL_SESSION **psess);
+__owur SSL_TICKET_RETURN tls_get_ticket_from_client(SSL *s, CLIENTHELLO_MSG *hello,
+                                                    SSL_SESSION **ret);
+__owur SSL_TICKET_RETURN tls_decrypt_ticket(SSL *s, const unsigned char *etick,
+                                            size_t eticklen,
+                                            const unsigned char *sess_id,
+                                            size_t sesslen, SSL_SESSION **psess);
 
 __owur int tls_use_ticket(SSL *s);
 
@@ -2585,6 +2591,9 @@ __owur int custom_exts_copy_flags(custom_ext_methods *dst,
 void custom_exts_free(custom_ext_methods *exts);
 
 void ssl_comp_free_compression_methods_int(void);
+
+/* ssl_mcnf.c */
+void ssl_ctx_system_config(SSL_CTX *ctx);
 
 # else /* OPENSSL_UNIT_TEST */
 

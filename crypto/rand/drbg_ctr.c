@@ -12,9 +12,9 @@
 #include <openssl/crypto.h>
 #include <openssl/err.h>
 #include <openssl/rand.h>
-#include "rand_lcl.h"
 #include "internal/thread_once.h"
-
+#include "internal/thread_once.h"
+#include "rand_lcl.h"
 /*
  * Implementation of NIST SP 800-90A CTR DRBG.
  */
@@ -317,7 +317,7 @@ int drbg_ctr_init(RAND_DRBG *drbg)
     RAND_DRBG_CTR *ctr = &drbg->data.ctr;
     size_t keylen;
 
-    switch (drbg->nid) {
+    switch (drbg->type) {
     default:
         /* This can't happen, but silence the compiler warning. */
         return 0;
@@ -366,6 +366,6 @@ int drbg_ctr_init(RAND_DRBG *drbg)
     }
 
     drbg->max_request = 1 << 16;
-    drbg->reseed_interval = MAX_RESEED_INTERVAL;
+
     return 1;
 }

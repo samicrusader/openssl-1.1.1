@@ -1,5 +1,5 @@
 /*
- * Copyright 2016 The OpenSSL Project Authors. All Rights Reserved.
+ * Copyright 2016-2018 The OpenSSL Project Authors. All Rights Reserved.
  *
  * Licensed under the OpenSSL license (the "License").  You may not use
  * this file except in compliance with the License.  You can obtain a copy
@@ -193,7 +193,7 @@ static int tls1_prf_P_hash(const EVP_MD *md,
     if (ctx == NULL || ctx_tmp == NULL || ctx_init == NULL)
         goto err;
     EVP_MD_CTX_set_flags(ctx_init, EVP_MD_CTX_FLAG_NON_FIPS_ALLOW);
-    mac_key = EVP_PKEY_new_mac_key(EVP_PKEY_HMAC, NULL, sec, sec_len);
+    mac_key = EVP_PKEY_new_raw_private_key(EVP_PKEY_HMAC, NULL, sec, sec_len);
     if (mac_key == NULL)
         goto err;
     if (!EVP_DigestSignInit(ctx_init, NULL, md, NULL, mac_key))

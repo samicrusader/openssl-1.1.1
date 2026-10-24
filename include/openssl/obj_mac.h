@@ -63,6 +63,15 @@
 #define NID_certicom_arc                677
 #define OBJ_certicom_arc                OBJ_identified_organization,132L
 
+#define SN_ieee         "ieee"
+#define NID_ieee                1170
+#define OBJ_ieee                OBJ_identified_organization,111L
+
+#define SN_ieee_siswg           "ieee-siswg"
+#define LN_ieee_siswg           "IEEE Security in Storage Working Group"
+#define NID_ieee_siswg          1171
+#define OBJ_ieee_siswg          OBJ_ieee,2L,1619L
+
 #define SN_international_organizations          "international-organizations"
 #define LN_international_organizations          "International Organizations"
 #define NID_international_organizations         647
@@ -99,6 +108,19 @@
 #define LN_X9cm         "X9.57 CM ?"
 #define NID_X9cm                185
 #define OBJ_X9cm                OBJ_X9_57,4L
+
+#define SN_ISO_CN               "ISO-CN"
+#define LN_ISO_CN               "ISO CN Member Body"
+#define NID_ISO_CN              1140
+#define OBJ_ISO_CN              OBJ_member_body,156L
+
+#define SN_oscca                "oscca"
+#define NID_oscca               1141
+#define OBJ_oscca               OBJ_ISO_CN,10197L
+
+#define SN_sm_scheme            "sm-scheme"
+#define NID_sm_scheme           1142
+#define OBJ_sm_scheme           OBJ_oscca,1L
 
 #define SN_dsa          "DSA"
 #define LN_dsa          "dsaEncryption"
@@ -1142,15 +1164,20 @@
 #define NID_hmacWithSHA1                163
 #define OBJ_hmacWithSHA1                OBJ_rsadsi,2L,7L
 
+#define SN_sm2          "SM2"
+#define LN_sm2          "sm2"
+#define NID_sm2         1172
+#define OBJ_sm2         OBJ_sm_scheme,301L
+
 #define SN_sm3          "SM3"
 #define LN_sm3          "sm3"
 #define NID_sm3         1143
-#define OBJ_sm3         OBJ_member_body,156L,10197L,1L,401L
+#define OBJ_sm3         OBJ_sm_scheme,401L
 
 #define SN_sm3WithRSAEncryption         "RSA-SM3"
 #define LN_sm3WithRSAEncryption         "sm3WithRSAEncryption"
 #define NID_sm3WithRSAEncryption                1144
-#define OBJ_sm3WithRSAEncryption                OBJ_member_body,156L,10197L,1L,504L
+#define OBJ_sm3WithRSAEncryption                OBJ_sm_scheme,504L
 
 #define LN_hmacWithSHA224               "hmacWithSHA224"
 #define NID_hmacWithSHA224              798
@@ -2780,6 +2807,16 @@
 #define NID_id_aes256_wrap_pad          903
 #define OBJ_id_aes256_wrap_pad          OBJ_aes,48L
 
+#define SN_aes_128_xts          "AES-128-XTS"
+#define LN_aes_128_xts          "aes-128-xts"
+#define NID_aes_128_xts         913
+#define OBJ_aes_128_xts         OBJ_ieee_siswg,0L,1L,1L
+
+#define SN_aes_256_xts          "AES-256-XTS"
+#define LN_aes_256_xts          "aes-256-xts"
+#define NID_aes_256_xts         914
+#define OBJ_aes_256_xts         OBJ_ieee_siswg,0L,1L,2L
+
 #define SN_aes_128_cfb1         "AES-128-CFB1"
 #define LN_aes_128_cfb1         "aes-128-cfb1"
 #define NID_aes_128_cfb1                650
@@ -2827,14 +2864,6 @@
 #define SN_aes_256_ocb          "AES-256-OCB"
 #define LN_aes_256_ocb          "aes-256-ocb"
 #define NID_aes_256_ocb         960
-
-#define SN_aes_128_xts          "AES-128-XTS"
-#define LN_aes_128_xts          "aes-128-xts"
-#define NID_aes_128_xts         913
-
-#define SN_aes_256_xts          "AES-256-XTS"
-#define LN_aes_256_xts          "aes-256-xts"
-#define NID_aes_256_xts         914
 
 #define SN_des_cfb1             "DES-CFB1"
 #define LN_des_cfb1             "des-cfb1"
@@ -4209,6 +4238,15 @@
 #define NID_id_tc26_sign_constants              995
 #define OBJ_id_tc26_sign_constants              OBJ_id_tc26_constants,1L
 
+#define SN_id_tc26_gost_3410_2012_256_constants         "id-tc26-gost-3410-2012-256-constants"
+#define NID_id_tc26_gost_3410_2012_256_constants                1147
+#define OBJ_id_tc26_gost_3410_2012_256_constants                OBJ_id_tc26_sign_constants,1L
+
+#define SN_id_tc26_gost_3410_2012_256_paramSetA         "id-tc26-gost-3410-2012-256-paramSetA"
+#define LN_id_tc26_gost_3410_2012_256_paramSetA         "GOST R 34.10-2012 (256 bit) ParamSet A"
+#define NID_id_tc26_gost_3410_2012_256_paramSetA                1148
+#define OBJ_id_tc26_gost_3410_2012_256_paramSetA                OBJ_id_tc26_gost_3410_2012_256_constants,1L
+
 #define SN_id_tc26_gost_3410_2012_512_constants         "id-tc26-gost-3410-2012-512-constants"
 #define NID_id_tc26_gost_3410_2012_512_constants                996
 #define OBJ_id_tc26_gost_3410_2012_512_constants                OBJ_id_tc26_sign_constants,2L
@@ -4227,6 +4265,11 @@
 #define LN_id_tc26_gost_3410_2012_512_paramSetB         "GOST R 34.10-2012 (512 bit) ParamSet B"
 #define NID_id_tc26_gost_3410_2012_512_paramSetB                999
 #define OBJ_id_tc26_gost_3410_2012_512_paramSetB                OBJ_id_tc26_gost_3410_2012_512_constants,2L
+
+#define SN_id_tc26_gost_3410_2012_512_paramSetC         "id-tc26-gost-3410-2012-512-paramSetC"
+#define LN_id_tc26_gost_3410_2012_512_paramSetC         "GOST R 34.10-2012 (512 bit) ParamSet C"
+#define NID_id_tc26_gost_3410_2012_512_paramSetC                1149
+#define OBJ_id_tc26_gost_3410_2012_512_paramSetC                OBJ_id_tc26_gost_3410_2012_512_constants,3L
 
 #define SN_id_tc26_digest_constants             "id-tc26-digest-constants"
 #define NID_id_tc26_digest_constants            1000
@@ -4604,19 +4647,6 @@
 #define NID_seed_ofb128         778
 #define OBJ_seed_ofb128         OBJ_kisa,1L,6L
 
-#define SN_ISO_CN               "ISO-CN"
-#define LN_ISO_CN               "ISO CN Member Body"
-#define NID_ISO_CN              1140
-#define OBJ_ISO_CN              OBJ_member_body,156L
-
-#define SN_oscca                "oscca"
-#define NID_oscca               1141
-#define OBJ_oscca               OBJ_ISO_CN,10197L
-
-#define SN_sm_scheme            "sm-scheme"
-#define NID_sm_scheme           1142
-#define OBJ_sm_scheme           OBJ_oscca,1L
-
 #define SN_sm4_ecb              "SM4-ECB"
 #define LN_sm4_ecb              "sm4-ecb"
 #define NID_sm4_ecb             1133
@@ -4983,3 +5013,101 @@
 
 #define SN_ffdhe8192            "ffdhe8192"
 #define NID_ffdhe8192           1130
+
+#define SN_ISO_UA               "ISO-UA"
+#define NID_ISO_UA              1150
+#define OBJ_ISO_UA              OBJ_member_body,804L
+
+#define SN_ua_pki               "ua-pki"
+#define NID_ua_pki              1151
+#define OBJ_ua_pki              OBJ_ISO_UA,2L,1L,1L,1L
+
+#define SN_dstu28147            "dstu28147"
+#define LN_dstu28147            "DSTU Gost 28147-2009"
+#define NID_dstu28147           1152
+#define OBJ_dstu28147           OBJ_ua_pki,1L,1L,1L
+
+#define SN_dstu28147_ofb                "dstu28147-ofb"
+#define LN_dstu28147_ofb                "DSTU Gost 28147-2009 OFB mode"
+#define NID_dstu28147_ofb               1153
+#define OBJ_dstu28147_ofb               OBJ_dstu28147,2L
+
+#define SN_dstu28147_cfb                "dstu28147-cfb"
+#define LN_dstu28147_cfb                "DSTU Gost 28147-2009 CFB mode"
+#define NID_dstu28147_cfb               1154
+#define OBJ_dstu28147_cfb               OBJ_dstu28147,3L
+
+#define SN_dstu28147_wrap               "dstu28147-wrap"
+#define LN_dstu28147_wrap               "DSTU Gost 28147-2009 key wrap"
+#define NID_dstu28147_wrap              1155
+#define OBJ_dstu28147_wrap              OBJ_dstu28147,5L
+
+#define SN_hmacWithDstu34311            "hmacWithDstu34311"
+#define LN_hmacWithDstu34311            "HMAC DSTU Gost 34311-95"
+#define NID_hmacWithDstu34311           1156
+#define OBJ_hmacWithDstu34311           OBJ_ua_pki,1L,1L,2L
+
+#define SN_dstu34311            "dstu34311"
+#define LN_dstu34311            "DSTU Gost 34311-95"
+#define NID_dstu34311           1157
+#define OBJ_dstu34311           OBJ_ua_pki,1L,2L,1L
+
+#define SN_dstu4145le           "dstu4145le"
+#define LN_dstu4145le           "DSTU 4145-2002 little endian"
+#define NID_dstu4145le          1158
+#define OBJ_dstu4145le          OBJ_ua_pki,1L,3L,1L,1L
+
+#define SN_dstu4145be           "dstu4145be"
+#define LN_dstu4145be           "DSTU 4145-2002 big endian"
+#define NID_dstu4145be          1159
+#define OBJ_dstu4145be          OBJ_dstu4145le,1L,1L
+
+#define SN_uacurve0             "uacurve0"
+#define LN_uacurve0             "DSTU curve 0"
+#define NID_uacurve0            1160
+#define OBJ_uacurve0            OBJ_dstu4145le,2L,0L
+
+#define SN_uacurve1             "uacurve1"
+#define LN_uacurve1             "DSTU curve 1"
+#define NID_uacurve1            1161
+#define OBJ_uacurve1            OBJ_dstu4145le,2L,1L
+
+#define SN_uacurve2             "uacurve2"
+#define LN_uacurve2             "DSTU curve 2"
+#define NID_uacurve2            1162
+#define OBJ_uacurve2            OBJ_dstu4145le,2L,2L
+
+#define SN_uacurve3             "uacurve3"
+#define LN_uacurve3             "DSTU curve 3"
+#define NID_uacurve3            1163
+#define OBJ_uacurve3            OBJ_dstu4145le,2L,3L
+
+#define SN_uacurve4             "uacurve4"
+#define LN_uacurve4             "DSTU curve 4"
+#define NID_uacurve4            1164
+#define OBJ_uacurve4            OBJ_dstu4145le,2L,4L
+
+#define SN_uacurve5             "uacurve5"
+#define LN_uacurve5             "DSTU curve 5"
+#define NID_uacurve5            1165
+#define OBJ_uacurve5            OBJ_dstu4145le,2L,5L
+
+#define SN_uacurve6             "uacurve6"
+#define LN_uacurve6             "DSTU curve 6"
+#define NID_uacurve6            1166
+#define OBJ_uacurve6            OBJ_dstu4145le,2L,6L
+
+#define SN_uacurve7             "uacurve7"
+#define LN_uacurve7             "DSTU curve 7"
+#define NID_uacurve7            1167
+#define OBJ_uacurve7            OBJ_dstu4145le,2L,7L
+
+#define SN_uacurve8             "uacurve8"
+#define LN_uacurve8             "DSTU curve 8"
+#define NID_uacurve8            1168
+#define OBJ_uacurve8            OBJ_dstu4145le,2L,8L
+
+#define SN_uacurve9             "uacurve9"
+#define LN_uacurve9             "DSTU curve 9"
+#define NID_uacurve9            1169
+#define OBJ_uacurve9            OBJ_dstu4145le,2L,9L

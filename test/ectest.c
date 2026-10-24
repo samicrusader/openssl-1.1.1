@@ -1,5 +1,5 @@
 /*
- * Copyright 2001-2017 The OpenSSL Project Authors. All Rights Reserved.
+ * Copyright 2001-2018 The OpenSSL Project Authors. All Rights Reserved.
  * Copyright (c) 2002, Oracle and/or its affiliates. All rights reserved
  *
  * Licensed under the OpenSSL license (the "License").  You may not use
@@ -1152,12 +1152,6 @@ static int internal_curve_test_method(int n)
     int r, nid = curves[n].nid;
     EC_GROUP *group;
 
-    /*
-     * Skip for X25519 because low level operations such as EC_POINT_mul()
-     * are not supported for this curve
-     */
-    if (nid == NID_X25519)
-        return 1;
     if (!TEST_ptr(group = EC_GROUP_new_by_curve_name(nid))) {
         TEST_info("Curve %s failed\n", OBJ_nid2sn(nid));
         return 0;

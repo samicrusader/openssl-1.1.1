@@ -1,5 +1,5 @@
 /*
- * Copyright 2006-2017 The OpenSSL Project Authors. All Rights Reserved.
+ * Copyright 2006-2018 The OpenSSL Project Authors. All Rights Reserved.
  *
  * Licensed under the OpenSSL license (the "License").  You may not use
  * this file except in compliance with the License.  You can obtain a copy
@@ -51,6 +51,7 @@ static const EVP_PKEY_METHOD *standard_methods[] = {
     &tls1_prf_pkey_meth,
 #ifndef OPENSSL_NO_EC
     &ecx25519_pkey_meth,
+    &ecx448_pkey_meth,
 #endif
     &hkdf_pkey_meth,
 #ifndef OPENSSL_NO_POLY1305
@@ -61,6 +62,7 @@ static const EVP_PKEY_METHOD *standard_methods[] = {
 #endif
 #ifndef OPENSSL_NO_EC
     &ed25519_pkey_meth,
+    &ed448_pkey_meth,
 #endif
 };
 

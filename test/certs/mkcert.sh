@@ -1,6 +1,6 @@
 #! /bin/bash
 #
-# Copyright 2016-2017 The OpenSSL Project Authors. All Rights Reserved.
+# Copyright 2016-2018 The OpenSSL Project Authors. All Rights Reserved.
 # Copyright (c) 2016 Viktor Dukhovni <openssl-users@dukhovni.org>.
 # All rights reserved.
 #
@@ -55,6 +55,7 @@ key() {
                args=("${args[@]}" -pkeyopt ec_param_enc:named_curve);;
         dsa)  args=(-paramfile "$bits");;
         ed25519)  ;;
+        ed448)  ;;
         *) printf "Unsupported key algorithm: %s\n" "$alg" >&2; return 1;;
         esac
         stderr_onerror \

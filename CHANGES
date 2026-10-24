@@ -9,6 +9,37 @@
 
  Changes between 1.1.0g and 1.1.1 [xx XXX xxxx]
 
+  *) TLSv1.3 replay protection for early data has been implemented. See the
+     SSL_read_early_data() man page for further details.
+     [Matt Caswell]
+
+  *) Separated TLSv1.3 ciphersuite configuration out from TLSv1.2 ciphersuite
+     configuration. TLSv1.3 ciphersuites are not compatible with TLSv1.2 and
+     below. Similarly TLSv1.2 ciphersuites are not compatible with TLSv1.3.
+     In order to avoid issues where legacy TLSv1.2 ciphersuite configuration
+     would otherwise inadvertently disable all TLSv1.3 ciphersuites the
+     configuraton has been separated out. See the ciphers man page or the
+     SSL_CTX_set_ciphersuites() man page for more information.
+     [Matt Caswell]
+
+  *) On POSIX (BSD, Linux, ...) systems the ocsp(1) command running
+     in responder mode now supports the new "-multi" option, which
+     spawns the specified number of child processes to handle OCSP
+     requests.  The "-timeout" option now also limits the OCSP
+     responder's patience to wait to receive the full client request
+     on a newly accepted connection. Child processes are respawned
+     as needed, and the CA index file is automatically reloaded
+     when changed.  This makes it possible to run the "ocsp" responder
+     as a long-running service, making the OpenSSL CA somewhat more
+     feature-complete.  In this mode, most diagnostic messages logged
+     after entering the event loop are logged via syslog(3) rather than
+     written to stderr.
+     [Viktor Dukhovni]
+
+  *) Added support for X448 and Ed448. Heavily based on original work by
+     Mike Hamburg.
+     [Matt Caswell]
+
   *) Extend OSSL_STORE with capabilities to search and to narrow the set of
      objects loaded.  This adds the functions OSSL_STORE_expect() and
      OSSL_STORE_find() as well as needed tools to construct searches and
@@ -17,12 +48,7 @@
 
   *) Support for TLSv1.3 added. Note that users upgrading from an earlier
      version of OpenSSL should review their configuration settings to ensure
-     that they are still appropriate for TLSv1.3. In particular if no TLSv1.3
-     ciphersuites are enabled then OpenSSL will refuse to make a connection
-     unless (1) TLSv1.3 is explicitly disabled or (2) the ciphersuite
-     configuration is updated to include suitable ciphersuites. The DEFAULT
-     ciphersuite configuration does include TLSv1.3 ciphersuites. For further
-     information on this and other related issues please see:
+     that they are still appropriate for TLSv1.3. For further information see:
      https://www.openssl.org/blog/blog/2018/02/08/tlsv1.3/
 
      NOTE: In this pre-release of OpenSSL a draft version of the
@@ -3256,8 +3282,11 @@
      to work with OPENSSL_NO_SSL_INTERN defined.
      [Steve Henson]
 
-  *) Add SRP support.
-     [Tom Wu <tjw@cs.stanford.edu> and Ben Laurie]
+  *) A long standing patch to add support for SRP from EdelWeb (Peter
+     Sylvester and Christophe Renou) was integrated.
+     [Christophe Renou <christophe.renou@edelweb.fr>, Peter Sylvester
+     <peter.sylvester@edelweb.fr>, Tom Wu <tjw@cs.stanford.edu>, and
+     Ben Laurie]
 
   *) Add functions to copy EVP_PKEY_METHOD and retrieve flags and id.
      [Steve Henson]

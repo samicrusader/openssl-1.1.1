@@ -248,11 +248,11 @@ size_t tls13_final_finish_mac(SSL *s, const char *str, size_t slen,
     }
 
     if (str == s->method->ssl3_enc->server_finished_label)
-        key = EVP_PKEY_new_mac_key(EVP_PKEY_HMAC, NULL,
-                                   s->server_finished_secret, hashlen);
+        key = EVP_PKEY_new_raw_private_key(EVP_PKEY_HMAC, NULL,
+                                           s->server_finished_secret, hashlen);
     else
-        key = EVP_PKEY_new_mac_key(EVP_PKEY_HMAC, NULL,
-                                   s->client_finished_secret, hashlen);
+        key = EVP_PKEY_new_raw_private_key(EVP_PKEY_HMAC, NULL,
+                                           s->client_finished_secret, hashlen);
 
     if (key == NULL
             || ctx == NULL
@@ -397,6 +397,7 @@ int tls13_change_cipher_state(SSL *s, int which)
 
         RECORD_LAYER_reset_read_sequence(&s->rlayer);
     } else {
+        s->statem.invalid_enc_write_ctx = 1;
         if (s->enc_write_ctx != NULL) {
             EVP_CIPHER_CTX_reset(s->enc_write_ctx);
         } else {
@@ -608,6 +609,7 @@ int tls13_change_cipher_state(SSL *s, int which)
         goto err;
     }
 
+    s->statem.invalid_enc_write_ctx = 0;
     ret = 1;
  err:
     OPENSSL_cleanse(secret, sizeof(secret));
@@ -630,6 +632,7 @@ int tls13_update_key(SSL *s, int sending)
         insecret = s->client_app_traffic_secret;
 
     if (sending) {
+        s->statem.invalid_enc_write_ctx = 1;
         iv = s->write_iv;
         ciph_ctx = s->enc_write_ctx;
         RECORD_LAYER_reset_write_sequence(&s->rlayer);
@@ -650,6 +653,7 @@ int tls13_update_key(SSL *s, int sending)
 
     memcpy(insecret, secret, hashlen);
 
+    s->statem.invalid_enc_write_ctx = 0;
     ret = 1;
  err:
     OPENSSL_cleanse(secret, sizeof(secret));

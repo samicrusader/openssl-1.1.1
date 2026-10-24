@@ -729,7 +729,7 @@ int tls_parse_ctos_cookie(SSL *s, PACKET *pkt, unsigned int context, X509 *x,
     unsigned long tm, now;
 
     /* Ignore any cookie if we're not set up to verify it */
-    if (s->ctx->app_verify_cookie_cb == NULL
+    if (s->ctx->verify_stateless_cookie_cb == NULL
             || (s->s3->flags & TLS1_FLAGS_STATELESS) == 0)
         return 1;
 
@@ -752,9 +752,10 @@ int tls_parse_ctos_cookie(SSL *s, PACKET *pkt, unsigned int context, X509 *x,
 
     /* Verify the HMAC of the cookie */
     hctx = EVP_MD_CTX_create();
-    pkey = EVP_PKEY_new_mac_key(EVP_PKEY_HMAC, NULL,
-                                s->session_ctx->ext.cookie_hmac_key,
-                                sizeof(s->session_ctx->ext.cookie_hmac_key));
+    pkey = EVP_PKEY_new_raw_private_key(EVP_PKEY_HMAC, NULL,
+                                        s->session_ctx->ext.cookie_hmac_key,
+                                        sizeof(s->session_ctx->ext
+                                               .cookie_hmac_key));
     if (hctx == NULL || pkey == NULL) {
         EVP_MD_CTX_free(hctx);
         EVP_PKEY_free(pkey);
@@ -852,7 +853,7 @@ int tls_parse_ctos_cookie(SSL *s, PACKET *pkt, unsigned int context, X509 *x,
     }
 
     /* Verify the app cookie */
-    if (s->ctx->app_verify_cookie_cb(s, PACKET_data(&appcookie),
+    if (s->ctx->verify_stateless_cookie_cb(s, PACKET_data(&appcookie),
                                      PACKET_remaining(&appcookie)) == 0) {
         SSLfatal(s, SSL_AD_ILLEGAL_PARAMETER, SSL_F_TLS_PARSE_CTOS_COOKIE,
                  SSL_R_COOKIE_MISMATCH);
@@ -1028,6 +1029,7 @@ int tls_parse_ctos_psk(SSL *s, PACKET *pkt, unsigned int context, X509 *x,
     for (id = 0; PACKET_remaining(&identities) != 0; id++) {
         PACKET identity;
         unsigned long ticket_agel;
+        size_t idlen;
 
         if (!PACKET_get_length_prefixed_2(&identities, &identity)
                 || !PACKET_get_net_4(&identities, &ticket_agel)) {
@@ -1036,14 +1038,67 @@ int tls_parse_ctos_psk(SSL *s, PACKET *pkt, unsigned int context, X509 *x,
             return 0;
         }
 
+        idlen = PACKET_remaining(&identity);
         if (s->psk_find_session_cb != NULL
-                && !s->psk_find_session_cb(s, PACKET_data(&identity),
-                                           PACKET_remaining(&identity),
+                && !s->psk_find_session_cb(s, PACKET_data(&identity), idlen,
                                            &sess)) {
             SSLfatal(s, SSL_AD_INTERNAL_ERROR,
                      SSL_F_TLS_PARSE_CTOS_PSK, SSL_R_BAD_EXTENSION);
             return 0;
         }
+
+#ifndef OPENSSL_NO_PSK
+        if(sess == NULL
+                && s->psk_server_callback != NULL
+                && idlen <= PSK_MAX_IDENTITY_LEN) {
+            char *pskid = NULL;
+            unsigned char pskdata[PSK_MAX_PSK_LEN];
+            unsigned int pskdatalen;
+
+            if (!PACKET_strndup(&identity, &pskid)) {
+                SSLfatal(s, SSL_AD_INTERNAL_ERROR, SSL_F_TLS_PARSE_CTOS_PSK,
+                         ERR_R_INTERNAL_ERROR);
+                return 0;
+            }
+            pskdatalen = s->psk_server_callback(s, pskid, pskdata,
+                                                sizeof(pskdata));
+            OPENSSL_free(pskid);
+            if (pskdatalen > PSK_MAX_PSK_LEN) {
+                SSLfatal(s, SSL_AD_INTERNAL_ERROR, SSL_F_TLS_PARSE_CTOS_PSK,
+                         ERR_R_INTERNAL_ERROR);
+                return 0;
+            } else if (pskdatalen > 0) {
+                const SSL_CIPHER *cipher;
+                const unsigned char tls13_aes128gcmsha256_id[] = { 0x13, 0x01 };
+
+                /*
+                 * We found a PSK using an old style callback. We don't know
+                 * the digest so we default to SHA256 as per the TLSv1.3 spec
+                 */
+                cipher = SSL_CIPHER_find(s, tls13_aes128gcmsha256_id);
+                if (cipher == NULL) {
+                    OPENSSL_cleanse(pskdata, pskdatalen);
+                    SSLfatal(s, SSL_AD_INTERNAL_ERROR, SSL_F_TLS_PARSE_CTOS_PSK,
+                             ERR_R_INTERNAL_ERROR);
+                    return 0;
+                }
+
+                sess = SSL_SESSION_new();
+                if (sess == NULL
+                        || !SSL_SESSION_set1_master_key(sess, pskdata,
+                                                        pskdatalen)
+                        || !SSL_SESSION_set_cipher(sess, cipher)
+                        || !SSL_SESSION_set_protocol_version(sess,
+                                                             TLS1_3_VERSION)) {
+                    OPENSSL_cleanse(pskdata, pskdatalen);
+                    SSLfatal(s, SSL_AD_INTERNAL_ERROR, SSL_F_TLS_PARSE_CTOS_PSK,
+                             ERR_R_INTERNAL_ERROR);
+                    goto err;
+                }
+                OPENSSL_cleanse(pskdata, pskdatalen);
+            }
+        }
+#endif /* OPENSSL_NO_PSK */
 
         if (sess != NULL) {
             /* We found a PSK */
@@ -1072,14 +1127,22 @@ int tls_parse_ctos_psk(SSL *s, PACKET *pkt, unsigned int context, X509 *x,
                                          PACKET_remaining(&identity), NULL, 0,
                                          &sess);
 
-            if (ret == TICKET_FATAL_ERR_MALLOC
-                    || ret == TICKET_FATAL_ERR_OTHER) {
+            if (ret == SSL_TICKET_FATAL_ERR_MALLOC
+                    || ret == SSL_TICKET_FATAL_ERR_OTHER) {
                 SSLfatal(s, SSL_AD_INTERNAL_ERROR,
                          SSL_F_TLS_PARSE_CTOS_PSK, ERR_R_INTERNAL_ERROR);
                 return 0;
             }
-            if (ret == TICKET_NO_DECRYPT)
+            if (ret == SSL_TICKET_NO_DECRYPT)
                 continue;
+
+            /* Check for replay */
+            if (s->max_early_data > 0
+                    && !SSL_CTX_remove_session(s->session_ctx, sess)) {
+                SSL_SESSION_free(sess);
+                sess = NULL;
+                continue;
+            }
 
             ticket_age = (uint32_t)ticket_agel;
             now = (uint32_t)time(NULL);
@@ -1520,8 +1583,12 @@ EXT_RETURN tls_construct_stoc_supported_versions(SSL *s, WPACKET *pkt,
                                                  unsigned int context, X509 *x,
                                                  size_t chainidx)
 {
-    if (!SSL_IS_TLS13(s))
-        return EXT_RETURN_NOT_SENT;
+    if (!ossl_assert(SSL_IS_TLS13(s))) {
+        SSLfatal(s, SSL_AD_INTERNAL_ERROR,
+                 SSL_F_TLS_CONSTRUCT_STOC_SUPPORTED_VERSIONS,
+                 ERR_R_INTERNAL_ERROR);
+        return EXT_RETURN_FAIL;
+    }
 
     if (!WPACKET_put_bytes_u16(pkt, TLSEXT_TYPE_supported_versions)
             || !WPACKET_start_sub_packet_u16(pkt)
@@ -1624,15 +1691,19 @@ EXT_RETURN tls_construct_stoc_cookie(SSL *s, WPACKET *pkt, unsigned int context,
 {
     unsigned char *hashval1, *hashval2, *appcookie1, *appcookie2, *cookie;
     unsigned char *hmac, *hmac2;
-    size_t startlen, ciphlen, totcookielen, hashlen, hmaclen;
-    unsigned int appcookielen;
+    size_t startlen, ciphlen, totcookielen, hashlen, hmaclen, appcookielen;
     EVP_MD_CTX *hctx;
     EVP_PKEY *pkey;
     int ret = EXT_RETURN_FAIL;
 
-    if (s->ctx->app_gen_cookie_cb == NULL
-            || (s->s3->flags & TLS1_FLAGS_STATELESS) == 0)
+    if ((s->s3->flags & TLS1_FLAGS_STATELESS) == 0)
         return EXT_RETURN_NOT_SENT;
+
+    if (s->ctx->gen_stateless_cookie_cb == NULL) {
+        SSLfatal(s, SSL_AD_INTERNAL_ERROR, SSL_F_TLS_CONSTRUCT_STOC_COOKIE,
+                 SSL_R_NO_COOKIE_CALLBACK_SET);
+        return EXT_RETURN_FAIL;
+    }
 
     if (!WPACKET_put_bytes_u16(pkt, TLSEXT_TYPE_cookie)
             || !WPACKET_start_sub_packet_u16(pkt)
@@ -1676,7 +1747,7 @@ EXT_RETURN tls_construct_stoc_cookie(SSL *s, WPACKET *pkt, unsigned int context,
     }
 
     /* Generate the application cookie */
-    if (s->ctx->app_gen_cookie_cb(s, appcookie1, &appcookielen) == 0) {
+    if (s->ctx->gen_stateless_cookie_cb(s, appcookie1, &appcookielen) == 0) {
         SSLfatal(s, SSL_AD_INTERNAL_ERROR, SSL_F_TLS_CONSTRUCT_STOC_COOKIE,
                  SSL_R_COOKIE_GEN_CALLBACK_FAILURE);
         return EXT_RETURN_FAIL;
@@ -1702,9 +1773,10 @@ EXT_RETURN tls_construct_stoc_cookie(SSL *s, WPACKET *pkt, unsigned int context,
 
     /* HMAC the cookie */
     hctx = EVP_MD_CTX_create();
-    pkey = EVP_PKEY_new_mac_key(EVP_PKEY_HMAC, NULL,
-                                s->session_ctx->ext.cookie_hmac_key,
-                                sizeof(s->session_ctx->ext.cookie_hmac_key));
+    pkey = EVP_PKEY_new_raw_private_key(EVP_PKEY_HMAC, NULL,
+                                        s->session_ctx->ext.cookie_hmac_key,
+                                        sizeof(s->session_ctx->ext
+                                               .cookie_hmac_key));
     if (hctx == NULL || pkey == NULL) {
         SSLfatal(s, SSL_AD_INTERNAL_ERROR, SSL_F_TLS_CONSTRUCT_STOC_COOKIE,
                  ERR_R_MALLOC_FAILURE);
