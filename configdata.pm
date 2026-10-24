@@ -30,7 +30,7 @@ our %config = (
   b64l => "0",
   bn_ll => "0",
   build_file => "Makefile",
-  build_file_templates => [ "Configurations/unix-Makefile.tmpl", "Configurations/common.tmpl" ],
+  build_file_templates => [ "Configurations/common0.tmpl", "Configurations/unix-Makefile.tmpl", "Configurations/common.tmpl" ],
   build_infos => [ "./build.info", "crypto/build.info", "ssl/build.info", "engines/build.info", "apps/build.info", "test/build.info", "util/build.info", "tools/build.info", "fuzz/build.info", "crypto/objects/build.info", "crypto/md4/build.info", "crypto/md5/build.info", "crypto/sha/build.info", "crypto/mdc2/build.info", "crypto/hmac/build.info", "crypto/ripemd/build.info", "crypto/whrlpool/build.info", "crypto/poly1305/build.info", "crypto/blake2/build.info", "crypto/siphash/build.info", "crypto/sm3/build.info", "crypto/des/build.info", "crypto/aes/build.info", "crypto/rc2/build.info", "crypto/rc4/build.info", "crypto/idea/build.info", "crypto/aria/build.info", "crypto/bf/build.info", "crypto/cast/build.info", "crypto/camellia/build.info", "crypto/seed/build.info", "crypto/sm4/build.info", "crypto/chacha/build.info", "crypto/modes/build.info", "crypto/bn/build.info", "crypto/ec/build.info", "crypto/rsa/build.info", "crypto/dsa/build.info", "crypto/dh/build.info", "crypto/sm2/build.info", "crypto/dso/build.info", "crypto/engine/build.info", "crypto/buffer/build.info", "crypto/bio/build.info", "crypto/stack/build.info", "crypto/lhash/build.info", "crypto/rand/build.info", "crypto/err/build.info", "crypto/evp/build.info", "crypto/asn1/build.info", "crypto/pem/build.info", "crypto/x509/build.info", "crypto/x509v3/build.info", "crypto/conf/build.info", "crypto/txt_db/build.info", "crypto/pkcs7/build.info", "crypto/pkcs12/build.info", "crypto/comp/build.info", "crypto/ocsp/build.info", "crypto/ui/build.info", "crypto/cms/build.info", "crypto/ts/build.info", "crypto/srp/build.info", "crypto/cmac/build.info", "crypto/ct/build.info", "crypto/async/build.info", "crypto/kdf/build.info", "crypto/store/build.info", "test/ossl_shim/build.info" ],
   build_type => "release",
   builddir => ".",
@@ -60,7 +60,7 @@ our %config = (
   perl => "/usr/bin/perl",
   perl_archname => "x86_64-linux-gnu-thread-multi",
   perl_cmd => "/usr/bin/perl",
-  perl_version => "5.26.0",
+  perl_version => "5.26.1",
   perlargv => [ "dist" ],
   perlenv => {
       "AR" => undef,
@@ -109,8 +109,8 @@ our %config = (
   sourcedir => ".",
   target => "dist",
   tdirs => [ "ossl_shim" ],
-  version => "1.1.1-pre4",
-  version_num => "0x10101004L",
+  version => "1.1.1-pre5",
+  version_num => "0x10101005L",
 );
 
 our %target = (
@@ -4336,6 +4336,12 @@ our %unified_info = (
                     "include",
                 ],
             "crypto/conf/conf_sap.o" =>
+                [
+                    ".",
+                    "crypto/include",
+                    "include",
+                ],
+            "crypto/conf/conf_ssl.o" =>
                 [
                     ".",
                     "crypto/include",
@@ -10116,6 +10122,10 @@ our %unified_info = (
                 [
                     "crypto/conf/conf_sap.c",
                 ],
+            "crypto/conf/conf_ssl.o" =>
+                [
+                    "crypto/conf/conf_ssl.c",
+                ],
             "crypto/cpt_err.o" =>
                 [
                     "crypto/cpt_err.c",
@@ -12217,6 +12227,7 @@ our %unified_info = (
                     "crypto/conf/conf_mall.o",
                     "crypto/conf/conf_mod.o",
                     "crypto/conf/conf_sap.o",
+                    "crypto/conf/conf_ssl.o",
                     "crypto/cpt_err.o",
                     "crypto/cryptlib.o",
                     "crypto/ct/ct_b64.o",
