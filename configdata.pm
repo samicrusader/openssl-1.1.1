@@ -35,7 +35,7 @@ our %config = (
   build_type => "release",
   builddir => ".",
   cflags => [  ],
-  conf_files => [ "Configurations/00-base-templates.conf", "Configurations/90-team.conf", "Configurations/shared-info.pl" ],
+  conf_files => [ "Configurations/00-base-templates.conf", "Configurations/dist.conf", "Configurations/shared-info.pl" ],
   cppflags => [  ],
   cxxflags => [  ],
   defines => [ "NDEBUG" ],
@@ -60,7 +60,7 @@ our %config = (
   perl => "/usr/bin/perl",
   perl_archname => "x86_64-linux-gnu-thread-multi",
   perl_cmd => "/usr/bin/perl",
-  perl_version => "5.26.1",
+  perl_version => "5.26.0",
   perlargv => [ "dist" ],
   perlenv => {
       "AR" => undef,
@@ -109,8 +109,8 @@ our %config = (
   sourcedir => ".",
   target => "dist",
   tdirs => [ "ossl_shim" ],
-  version => "1.1.1-pre5",
-  version_num => "0x10101005L",
+  version => "1.1.1-pre6",
+  version_num => "0x10101006L",
 );
 
 our %target = (
@@ -121,7 +121,7 @@ our %target = (
   HASHBANGPERL => "/usr/bin/env perl",
   RANLIB => "ranlib",
   RC => "windres",
-  _conf_fname_int => [ "Configurations/00-base-templates.conf", "Configurations/00-base-templates.conf", "Configurations/90-team.conf", "Configurations/shared-info.pl" ],
+  _conf_fname_int => [ "Configurations/00-base-templates.conf", "Configurations/00-base-templates.conf", "Configurations/dist.conf", "Configurations/shared-info.pl" ],
   aes_asm_src => "aes_core.c aes_cbc.c",
   aes_obj => "aes_core.o aes_cbc.o",
   apps_aux_src => "",
@@ -153,6 +153,8 @@ our %target = (
   enable => [  ],
   exe_extension => "",
   includes => [  ],
+  keccak1600_asm_src => "keccak1600.c",
+  keccak1600_obj => "keccak1600.o",
   lflags => "",
   lib_cflags => "",
   lib_cppflags => "",
@@ -211,6 +213,7 @@ our @disablables = (
   "async",
   "autoalginit",
   "autoerrinit",
+  "autoload-config",
   "bf",
   "blake2",
   "camellia",
@@ -2228,6 +2231,31 @@ our %unified_info = (
             "crypto/s390xcpuid.S" =>
                 [
                     "crypto/s390xcpuid.pl",
+                    "\$(PERLASM_SCHEME)",
+                ],
+            "crypto/sha/keccak1600-armv4.S" =>
+                [
+                    "crypto/sha/asm/keccak1600-armv4.pl",
+                    "\$(PERLASM_SCHEME)",
+                ],
+            "crypto/sha/keccak1600-armv8.S" =>
+                [
+                    "crypto/sha/asm/keccak1600-armv8.pl",
+                    "\$(PERLASM_SCHEME)",
+                ],
+            "crypto/sha/keccak1600-ppc64.s" =>
+                [
+                    "crypto/sha/asm/keccak1600-ppc64.pl",
+                    "\$(PERLASM_SCHEME)",
+                ],
+            "crypto/sha/keccak1600-s390x.S" =>
+                [
+                    "crypto/sha/asm/keccak1600-s390x.pl",
+                    "\$(PERLASM_SCHEME)",
+                ],
+            "crypto/sha/keccak1600-x86_64.s" =>
+                [
+                    "crypto/sha/asm/keccak1600-x86_64.pl",
                     "\$(PERLASM_SCHEME)",
                 ],
             "crypto/sha/sha1-586.s" =>
@@ -6428,6 +6456,10 @@ our %unified_info = (
                     ".",
                     "crypto/include",
                     "include",
+                ],
+            "crypto/sha/keccak1600-armv4.o" =>
+                [
+                    "crypto",
                 ],
             "crypto/sha/keccak1600.o" =>
                 [
