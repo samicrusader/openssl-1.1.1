@@ -5,6 +5,12 @@
   This file gives a brief overview of the major changes between each OpenSSL
   release. For more details please read the CHANGES file.
 
+  Major changes between OpenSSL 1.1.1ze and OpenSSL 1.1.1zf [3 Feb 2026]
+
+      o Fixed Missing ASN1_TYPE validation in TS_RESP_verify_response()
+        function.
+        (CVE-2025-69420)
+
   Major changes between OpenSSL 1.1.1zd and OpenSSL 1.1.1ze [27 Jan 2026]
 
       o Fixed Heap out-of-bounds write in BIO_f_linebuffer on short writes.

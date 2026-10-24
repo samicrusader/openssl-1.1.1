@@ -1,5 +1,5 @@
 /*
- * Copyright 2006-2021 The OpenSSL Project Authors. All Rights Reserved.
+ * Copyright 2006-2026 The OpenSSL Project Authors. All Rights Reserved.
  *
  * Licensed under the OpenSSL license (the "License").  You may not use
  * this file except in compliance with the License.  You can obtain a copy
@@ -262,7 +262,7 @@ static ESS_SIGNING_CERT *ess_get_signing_cert(PKCS7_SIGNER_INFO *si)
     ASN1_TYPE *attr;
     const unsigned char *p;
     attr = PKCS7_get_signed_attribute(si, NID_id_smime_aa_signingCertificate);
-    if (!attr)
+    if (attr == NULL || attr->type != V_ASN1_SEQUENCE)
         return NULL;
     p = attr->value.sequence->data;
     return d2i_ESS_SIGNING_CERT(NULL, &p, attr->value.sequence->length);
@@ -274,7 +274,7 @@ static ESS_SIGNING_CERT_V2 *ess_get_signing_cert_v2(PKCS7_SIGNER_INFO *si)
     const unsigned char *p;
 
     attr = PKCS7_get_signed_attribute(si, NID_id_smime_aa_signingCertificateV2);
-    if (attr == NULL)
+    if (attr == NULL || attr->type != V_ASN1_SEQUENCE)
         return NULL;
     p = attr->value.sequence->data;
     return d2i_ESS_SIGNING_CERT_V2(NULL, &p, attr->value.sequence->length);

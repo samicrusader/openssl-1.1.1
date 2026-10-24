@@ -7,6 +7,26 @@
  https://github.com/openssl/openssl/commits/ and pick the appropriate
  release branch.
 
+ Changes between 1.1.1ze and 1.1.1zf [3 Feb 2026]
+
+ *) Fixed Missing ASN1_TYPE validation in TS_RESP_verify_response() function.
+
+    Severity: Low
+
+    Issue summary: A type confusion vulnerability exists in the TimeStamp
+    Response verification code where an ASN1_TYPE union member is accessed
+    without first validating the type, causing an invalid or NULL pointer
+    dereference when processing a malformed TimeStamp Response file.
+
+    Impact summary: An application calling TS_RESP_verify_response()
+    with a malformed TimeStamp Response can be caused to dereference an invalid
+    or NULL pointer when reading, resulting in a Denial of Service.
+
+    Reported by: Luigino Camastra (Aisle Research)
+
+    (CVE-2025-69420)
+    [Bob Beck]
+
  Changes between 1.1.1zd and 1.1.1ze [27 Jan 2026]
 
  *) Fixed Unauthenticated/unecrypted trailing bytes with low-level OCB
