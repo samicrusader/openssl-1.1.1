@@ -810,7 +810,7 @@ int tls_construct_extensions(SSL *s, WPACKET *pkt, unsigned int context,
     }
 
     if ((context & SSL_EXT_CLIENT_HELLO) != 0) {
-        reason = ssl_get_min_max_version(s, &min_version, &max_version);
+        reason = ssl_get_min_max_version(s, &min_version, &max_version, NULL);
         if (reason != 0) {
             SSLfatal(s, SSL_AD_INTERNAL_ERROR, SSL_F_TLS_CONSTRUCT_EXTENSIONS,
                      reason);
@@ -904,8 +904,12 @@ static int final_renegotiate(SSL *s, unsigned int context, int sent)
 
 static int init_server_name(SSL *s, unsigned int context)
 {
-    if (s->server)
+    if (s->server) {
         s->servername_done = 0;
+
+        OPENSSL_free(s->ext.hostname);
+        s->ext.hostname = NULL;
+    }
 
     return 1;
 }
@@ -938,11 +942,8 @@ static int final_server_name(SSL *s, unsigned int context, int sent)
      * was successful.
      */
     if (s->server) {
-        if (!sent) {
-            /* Nothing from the client this handshake; cleanup stale value */
-            OPENSSL_free(s->ext.hostname);
-            s->ext.hostname = NULL;
-        } else if (ret == SSL_TLSEXT_ERR_OK && (!s->hit || SSL_IS_TLS13(s))) {
+        /* TODO(OpenSSL1.2) revisit !sent case */
+        if (sent && ret == SSL_TLSEXT_ERR_OK && (!s->hit || SSL_IS_TLS13(s))) {
             /* Only store the hostname in the session if we accepted it. */
             OPENSSL_free(s->session->ext.hostname);
             s->session->ext.hostname = OPENSSL_strdup(s->ext.hostname);

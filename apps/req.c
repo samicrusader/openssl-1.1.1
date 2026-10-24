@@ -622,8 +622,7 @@ int req_main(int argc, char **argv)
         if (pkey_type == EVP_PKEY_EC) {
             BIO_printf(bio_err, "Generating an EC private key\n");
         } else {
-            BIO_printf(bio_err, "Generating a %ld bit %s private key\n",
-                       newkey, keyalgstr);
+            BIO_printf(bio_err, "Generating a %s private key\n", keyalgstr);
         }
 
         EVP_PKEY_CTX_set_cb(genctx, genpkey_cb);
@@ -1601,10 +1600,19 @@ static int do_sign_init(EVP_MD_CTX *ctx, EVP_PKEY *pkey,
                         const EVP_MD *md, STACK_OF(OPENSSL_STRING) *sigopts)
 {
     EVP_PKEY_CTX *pkctx = NULL;
-    int i;
+    int i, def_nid;
 
     if (ctx == NULL)
         return 0;
+    /*
+     * EVP_PKEY_get_default_digest_nid() returns 2 if the digest is mandatory
+     * for this algorithm.
+     */
+    if (EVP_PKEY_get_default_digest_nid(pkey, &def_nid) == 2
+            && def_nid == NID_undef) {
+        /* The signing algorithm requires there to be no digest */
+        md = NULL;
+    }
     if (!EVP_DigestSignInit(ctx, &pkctx, md, NULL, pkey))
         return 0;
     for (i = 0; i < sk_OPENSSL_STRING_num(sigopts); i++) {

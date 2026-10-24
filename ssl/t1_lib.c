@@ -1103,7 +1103,7 @@ int ssl_set_client_disabled(SSL *s)
     s->s3->tmp.mask_k = 0;
     ssl_set_sig_mask(&s->s3->tmp.mask_a, s, SSL_SECOP_SIGALG_MASK);
     if (ssl_get_min_max_version(s, &s->s3->tmp.min_ver,
-                                &s->s3->tmp.max_ver) != 0)
+                                &s->s3->tmp.max_ver, NULL) != 0)
         return 0;
 #ifndef OPENSSL_NO_PSK
     /* with PSK there must be client callback set */
@@ -2473,7 +2473,10 @@ static int tls12_get_cert_sigalg_idx(const SSL *s, const SIGALG_LOOKUP *lu)
     const SSL_CERT_LOOKUP *clu = ssl_cert_lookup_by_idx(sig_idx);
 
     /* If not recognised or not supported by cipher mask it is not suitable */
-    if (clu == NULL || !(clu->amask & s->s3->tmp.new_cipher->algorithm_auth))
+    if (clu == NULL
+            || (clu->amask & s->s3->tmp.new_cipher->algorithm_auth) == 0
+            || (clu->nid == EVP_PKEY_RSA_PSS
+                && (s->s3->tmp.new_cipher->algorithm_mkey & SSL_kRSA) != 0))
         return -1;
 
     return s->s3->tmp.valid_flags[sig_idx] & CERT_PKEY_VALID ? sig_idx : -1;
@@ -2643,8 +2646,9 @@ int tls_choose_sigalg(SSL *s, int fatalerrs)
                 if (i == s->cert->shared_sigalgslen) {
                     if (!fatalerrs)
                         return 1;
-                    SSLfatal(s, SSL_AD_INTERNAL_ERROR, SSL_F_TLS_CHOOSE_SIGALG,
-                             ERR_R_INTERNAL_ERROR);
+                    SSLfatal(s, SSL_AD_HANDSHAKE_FAILURE,
+                             SSL_F_TLS_CHOOSE_SIGALG,
+                             SSL_R_NO_SUITABLE_SIGNATURE_ALGORITHM);
                     return 0;
                 }
             } else {
